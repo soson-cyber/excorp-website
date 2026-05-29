@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+/*
+  EX Corporation — Design System tokens
+  Dark, real-time XR / broadcast aesthetic.
+  Section label rule: [ NN ] Section Name — uppercase, mono, bracketed.
+*/
+
+@theme {
+  /*
+    Official EX brand palette — "New Logo Color System 1"
+    (221025 이엑스코퍼레이션 브랜딩 가이드, p.11)
+  */
+  --color-purple: #5e2ec0;
+  --color-mint: #45f1e0;
+  --color-pink: #d206ee;
+  --color-deep-purple: #310a9e;
+  --color-dark-purple: #1a1d40;
+  --color-grey: #9c9e9e;
+
+  /* Surfaces — LIGHT theme (site-wide white migration, 2026-05).
+     The redesigned Home uses literal hex and is unaffected by these tokens. */
+  --color-bg: #ffffff;
+  --color-surface: #f7f8fa; /* paper — card / alt-section bg */
+  --color-surface-2: #eef0f5;
+  --color-border: #e5e7eb; /* hairline */
+  --color-fg: #0f1129; /* ink — primary text / headings */
+  --color-muted: #51545e; /* body / secondary text — AA on white */
+  --color-faint: #6b7280; /* captions / least-emphasis */
+
+  /* Primary — brand Purple (works on white) */
+  --color-primary: #5e2ec0;
+  --color-primary-hover: #4a23a0;
+  --color-primary-soft: rgba(94, 46, 192, 0.1);
+
+  /* Accent — brand Pink (point color) */
+  --color-accent: #d206ee;
+  --color-accent-soft: rgba(210, 6, 238, 0.1);
+
+  /* Semantic — tuned for AA on white */
+  --color-live: #e11d48;
+  --color-success: #16a34a;
+  --color-warning: #b45309;
+  --color-error: #dc2626;
+
+  /* Typography — Poppins(영문) → Noto Sans KR(국문) 자동 폴백 */
+  --font-sans: var(--font-poppins), var(--font-noto-kr), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Layout — section rhythm scale (sm / base / lg) */
+  --spacing-section-sm: 5rem;
+  --spacing-section: 7rem;
+  --spacing-section-lg: 10rem;
+  --breakpoint-xs: 24rem;
+}
+
+:root {
+  color-scheme: light;
+  --ease-ex: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/*
+  Scroll reveal — gated by `[data-anim]` on <html>, which a beforeInteractive
+  script in layout sets ONLY when motion is allowed. So: JS off → visible,
+  reduced-motion → visible. Stagger via inline transition-delay on the element.
+*/
+[data-anim] [data-reveal] {
+  opacity: 0;
+  transform: translateY(48px);
+  filter: blur(8px);
+  transition:
+    opacity 0.7s var(--ease-ex),
+    transform 0.7s var(--ease-ex),
+    filter 0.7s var(--ease-ex);
+}
+[data-anim] [data-reveal].in-view {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-anim] [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Global keyboard focus ring (WCAG 2.4.7) — purple reads on white */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  border-radius: 0.5rem;
+  background: var(--color-primary);
+  padding: 0.6rem 1rem;
+  color: #fff;
+  font-size: 0.875rem;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* GNB megamenu dropdown entrance */
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-dropdown {
+  animation: dropdown-in 0.16s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-dropdown {
+    animation: none;
+  }
+}
+
+/* Floating accent (EX cube) */
+@keyframes ex-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(3deg);
+  }
+}
+.animate-ex-float {
+  animation: ex-float 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-ex-float {
+    animation: none;
+  }
+}
+
+/* Subtle grid backdrop used by hero/section accents */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 17, 41, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 17, 41, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility container-ex {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* EX brand gradient text — light theme: Purple → Deep Purple (reads on white) */
+@utility text-gradient-ex {
+  background-image: linear-gradient(
+    120deg,
+    var(--color-primary) 0%,
+    var(--color-deep-purple) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* keep a readable fallback if background-clip unsupported */
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle gradient drift on brand H1s (motion only) */
+@keyframes ex-gradient-drift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .text-gradient-ex {
+    animation: ex-gradient-drift 9s ease-in-out infinite alternate;
+  }
+}
+
+/*
+  ────────────────────────────────────────────────────────────────────────
+  LIGHT design language — used ONLY by the redesigned white Home (route "/").
+  Additive: does NOT touch the dark @theme tokens, body bg, or color-scheme.
+  Reference tone: clean creative-tech startup (kakaocorp.com) — white surfaces,
+  generous whitespace, bold ink type, one restrained purple accent.
+  ────────────────────────────────────────────────────────────────────────
+*/
+:root {
+  --ex-white: #ffffff;
+  --ex-paper: #f7f8fa; /* alt section bg */
+  --ex-pale: #f2f4f7; /* placeholder fill */
+  --ex-ink: #0f1129; /* headings + primary text */
+  --ex-body: #51545e; /* paragraph text */
+  --ex-muted: #7c8090; /* labels, captions */
+  --ex-line: #e5e7eb; /* borders */
+  --ex-accent: #5e2ec0; /* the ONLY brand color — use sparingly */
+  --ex-green: #16a34a; /* live / chroma dot */
+  --ex-red: #e64449; /* REC dot */
+}
