@@ -361,9 +361,9 @@ function FeaturedCase() {
           </div>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-[#51545E] lg:text-lg">
             분산된 촬영·트래킹·렌더·송출 장비를 EXLINK 하나로 묶어, 운영 부담은
-            줄이고 실시간 합성 품질은 끌어올린 대표 구축 사례입니다.
+            줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.
           </p>
-          <ArrowLink href="/work" accent className="mt-8">
+          <ArrowLink href="/work/exlink-broadcast" accent className="mt-8">
             사례 자세히
           </ArrowLink>
         </Reveal>

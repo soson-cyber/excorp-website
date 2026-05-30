@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { insights } from "@/lib/insights";
 
 /*
   News & Insight — 카테고리 필터(클라이언트) + 카드 그리드.
-  정직성: 보도자료는 실제 마일스톤만 노출(연도 기준). 케이스/인사이트/자료실은
-  콘텐츠 준비 전이므로 빈 상태(empty state)로 안내 — CMS 연동 시 자동 노출.
+  정직성: 보도자료는 실제 마일스톤만 노출(연도 기준). 인사이트는 기술 설명 글
+  (/news/[slug] 상세). 케이스/자료실은 준비 전이므로 빈 상태로 안내 — CMS 연동 시 자동 노출.
   Light theme: 시맨틱 토큰 사용.
 */
 
@@ -14,10 +16,11 @@ type Item = {
   year: string;
   title: string;
   excerpt?: string;
+  href?: string;
   featured?: boolean;
 };
 
-const items: Item[] = [
+const press: Item[] = [
   {
     cat: "보도자료",
     year: "2024",
@@ -30,6 +33,16 @@ const items: Item[] = [
   { cat: "보도자료", year: "2023", title: "경기 하남 XR 스튜디오 오픈" },
   { cat: "보도자료", year: "2023", title: "성균관대 · 중앙대 · 계원예술대 산학 MOU 체결" },
 ];
+
+const insightItems: Item[] = insights.map((i) => ({
+  cat: "인사이트",
+  year: i.year,
+  title: i.title,
+  excerpt: i.summary,
+  href: `/news/${i.slug}`,
+}));
+
+const items: Item[] = [...press, ...insightItems];
 
 const categories = ["전체", "보도자료", "케이스", "인사이트", "자료실"] as const;
 
@@ -70,9 +83,9 @@ export function NewsList() {
       {list.length > 0 ? (
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {list.map((n) => (
-            <a
+            <Link
               key={n.title}
-              href="#"
+              href={n.href ?? "#"}
               className={`group flex flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/50 ${
                 n.featured && active === "전체" ? "md:col-span-2 lg:col-span-2" : ""
               }`}
@@ -90,7 +103,7 @@ export function NewsList() {
               <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
                 자세히 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
-            </a>
+            </Link>
           ))}
         </div>
       ) : (
