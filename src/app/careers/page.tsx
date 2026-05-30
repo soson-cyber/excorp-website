@@ -67,11 +67,9 @@ export default function CareersPage() {
 
       {/* §01 Culture */}
       <section className="container-ex py-section">
-        <div className="text-center">
-          <SectionLabel index="01">Culture</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">이엑스가 일하는 10가지 방식</h2>
-        </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-x-12 gap-y-7 sm:grid-cols-2">
+        <SectionLabel index="01">Culture</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">이엑스가 일하는 10가지 방식</h2>
+        <div className="mt-12 grid gap-x-12 gap-y-7 sm:grid-cols-2">
           {culture.map((c, i) => (
             <div key={c} className="flex gap-4 border-t border-border pt-5">
               <span className="font-mono text-xl font-bold text-faint">{String(i + 1).padStart(2, "0")}</span>
@@ -81,17 +79,15 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* §02 Environment / Benefits */}
+      {/* §02 Environment */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
-            <SectionLabel index="02">Environment</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">일하는 환경</h2>
-          </div>
-          <dl className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <SectionLabel index="02">Environment</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">일하는 환경</h2>
+          <dl className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {env.map((e) => (
               <div key={e.k} className="bg-surface p-6">
-                <dt className="font-semibold text-gradient-ex">{e.k}</dt>
+                <dt className="font-semibold text-fg">{e.k}</dt>
                 <dd className="mt-2 text-sm leading-relaxed text-muted">{e.v}</dd>
               </div>
             ))}
@@ -106,7 +102,7 @@ export default function CareersPage() {
         <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
           <div className="flex flex-col gap-2 border-b border-border p-6 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div>
-              <span className="text-lg font-semibold">상시 지원</span>
+              <span className="text-lg font-semibold text-fg">상시 지원</span>
               <p className="mt-1 text-sm text-muted">XR/실시간 콘텐츠 개발·기획·운영 — 직무 무관 상시 지원 환영</p>
             </div>
             <span className="shrink-0 rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
@@ -122,11 +118,9 @@ export default function CareersPage() {
       {/* §04 How to Apply */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
-            <SectionLabel index="04">How to Apply</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">지원 절차</h2>
-          </div>
-          <ol className="mx-auto mt-12 max-w-3xl space-y-4">
+          <SectionLabel index="04">How to Apply</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">지원 절차</h2>
+          <ol className="mt-12 max-w-3xl space-y-4">
             {steps.map((s, i) => (
               <li
                 key={s.t}
@@ -136,7 +130,7 @@ export default function CareersPage() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="relative z-10">
-                  <h3 className="text-lg font-semibold">{s.t}</h3>
+                  <h3 className="text-lg font-semibold text-fg">{s.t}</h3>
                   <p className="mt-1 text-sm text-muted">{s.d}</p>
                 </div>
                 <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 font-mono text-7xl font-bold text-faint/15">
@@ -145,7 +139,7 @@ export default function CareersPage() {
               </li>
             ))}
           </ol>
-          <div className="mt-10 text-center">
+          <div className="mt-10">
             <Button href={`mailto:${site.contact.email}`} variant="accent">
               채용 지원하기 →
             </Button>

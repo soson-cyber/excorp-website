@@ -60,37 +60,37 @@ export default function AboutPage() {
         lead="이엑스(EX Corp.)는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다."
       />
 
-      {/* Vision & Mission */}
+      {/* §01 Vision & Mission */}
       <section className="container-ex py-section">
-        <div className="mx-auto grid max-w-4xl gap-12 text-center sm:grid-cols-2">
-          <div>
-            <h2 className="text-gradient-ex text-2xl font-bold">Vision</h2>
-            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted">
+        <SectionLabel index="01">Vision &amp; Mission</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">우리가 그리는 세상</h2>
+        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-surface p-8">
+            <span className="font-mono text-xs uppercase tracking-wider text-primary">Vision</span>
+            <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
               모든 사람이 경계를 넘어 ‘새로운 경험(Experience)’을 창조하는 세상.
             </p>
           </div>
-          <div>
-            <h2 className="text-gradient-ex text-2xl font-bold">Mission</h2>
-            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted">
+          <div className="rounded-2xl border border-border bg-surface p-8">
+            <span className="font-mono text-xs uppercase tracking-wider text-primary">Mission</span>
+            <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
               AI + XR 융합 기술로 문화콘텐츠 제작의 문턱을 허물고, 몰입형 경험 혁신을 선도합니다.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Why EX */}
+      {/* §02 Why EX */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
-            <SectionLabel index="01">Why EX</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 EX인가</h2>
-          </div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
+          <SectionLabel index="02">Why EX</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 EX인가</h2>
+          <div className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
             {whyEx.map((c, i) => (
               <div key={c.t} className="flex gap-5 border-t border-border pt-6">
                 <span className="font-mono text-2xl font-bold text-faint">0{i + 1}</span>
                 <div>
-                  <h3 className="text-lg font-semibold">{c.t}</h3>
+                  <h3 className="text-lg font-semibold text-fg">{c.t}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
                 </div>
               </div>
@@ -99,14 +99,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Patents */}
+      {/* §03 Patents */}
       <section className="container-ex py-section">
-        <div className="text-center">
-          <SectionLabel index="02">Patents &amp; Certifications</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">보유 특허 &amp; 인증</h2>
-          <p className="mt-4 text-muted">기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증</p>
-        </div>
-        <ol className="mx-auto mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+        <SectionLabel index="03">Patents &amp; Certifications</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">보유 특허 &amp; 인증</h2>
+        <p className="mt-4 text-muted">기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증</p>
+        <ol className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {patents.map((p) => (
             <li key={p.no} className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-sm text-fg">{p.name}</span>
@@ -116,14 +114,12 @@ export default function AboutPage() {
         </ol>
       </section>
 
-      {/* History */}
+      {/* §04 History */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
-            <SectionLabel index="03">History</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">연혁</h2>
-          </div>
-          <div className="mx-auto mt-12 max-w-3xl">
+          <SectionLabel index="04">History</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">연혁</h2>
+          <div className="mt-12 max-w-3xl">
             {history.map((h) => (
               <div key={h.year} className="flex gap-6 border-l border-border pl-6 pb-8 last:pb-0">
                 <span className="-ml-[2.1rem] flex h-10 w-16 shrink-0 items-center justify-center rounded-full bg-surface font-mono text-sm font-bold text-primary ring-1 ring-border">
@@ -142,13 +138,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Locations */}
+      {/* §05 Locations */}
       <section className="container-ex py-section">
-        <div className="text-center">
-          <SectionLabel index="04">Location</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">오시는 길</h2>
-        </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+        <SectionLabel index="05">Location</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">오시는 길</h2>
+        <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
           {locations.map((loc) => (
             <div key={loc.kind} className="rounded-2xl border border-border bg-surface p-6">
               <span className="font-mono text-xs uppercase tracking-wider text-primary">{loc.kind}</span>

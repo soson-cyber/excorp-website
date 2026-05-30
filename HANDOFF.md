@@ -45,7 +45,8 @@
 | `/work` | ✅ 필터 갤러리(정적 데이터) |
 | `/product` + `/product/{aximmetry,moverse,retracker}` | ✅ **1차 규격서 실사양 반영**(`docs/sales-products.md`) |
 | `/xr-studio` (EX Studio) | ✅ **메뉴형 상품 재구성** — 차별점 + 콘텐츠 메뉴(탭+S/M/L, `components/studio/StudioMenu.tsx`) + 옵션 + 이용안내 + 시설스펙 + 견적 CTA |
-| `/about` `/news` `/careers` `/support` `/contact` `/privacy` `/terms` | ✅ 라이트 마이그레이션됨 |
+| `/about` `/news` `/careers` (Company) | ✅ **재구성** — 좌측 에디토리얼 헤더 통일 · News 필터 실동작(`components/news/NewsList.tsx`, 실 마일스톤만) · 액센트 절제 |
+| `/support` `/contact` `/privacy` `/terms` | ✅ 라이트 마이그레이션됨 (재구성 미진행) |
 
 ## 7. 콘텐츠 정직성 규칙 (반드시 유지)
 - 파트너 제품(Aximmetry·Moverse·RETracker)은 **"연결·조율"**, 자체 개발 아님. 자체 개발 = **EXLINK 통합 코어**.
