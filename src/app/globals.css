@@ -205,16 +205,16 @@ body {
   will-change: transform;
 }
 .ex-cursor-dot {
-  width: 7px;
-  height: 7px;
-  margin: -3.5px 0 0 -3.5px;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
   background: var(--color-primary);
 }
 .ex-cursor-ring {
-  width: 34px;
-  height: 34px;
-  margin: -17px 0 0 -17px;
-  border: 1.5px solid rgba(94, 46, 192, 0.55);
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 2px solid rgba(94, 46, 192, 0.7);
   transition:
     width 0.2s var(--ease-ex),
     height 0.2s var(--ease-ex),
@@ -234,6 +234,10 @@ body {
   width: 26px;
   height: 26px;
   margin: -13px 0 0 -13px;
+}
+/* reduced-motion: keep the cursor but drop trailing/scale transitions */
+html.cursor-reduce .ex-cursor-ring {
+  transition: opacity 0.2s ease;
 }
 /* hide native cursor while custom is active — but keep it on form fields */
 html.has-custom-cursor * {

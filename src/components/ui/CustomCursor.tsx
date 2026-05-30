@@ -14,9 +14,12 @@ export function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Only on devices with a mouse/trackpad (skip touch).
     const fine = window.matchMedia("(pointer: fine)").matches;
+    if (!fine) return;
+    // Under reduced-motion we still show the cursor, but the ring snaps to the
+    // pointer (no trailing lerp) and CSS transitions are disabled.
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!fine || reduce) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;
@@ -24,6 +27,7 @@ export function CustomCursor() {
 
     const root = document.documentElement;
     root.classList.add("has-custom-cursor");
+    if (reduce) root.classList.add("cursor-reduce");
 
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
@@ -36,6 +40,7 @@ export function CustomCursor() {
       mx = e.clientX;
       my = e.clientY;
       dot.style.transform = `translate(${mx}px, ${my}px)`;
+      if (reduce) ring.style.transform = `translate(${mx}px, ${my}px)`;
       const target = e.target as Element | null;
       const interactive = !!(
         target &&
@@ -69,10 +74,11 @@ export function CustomCursor() {
     document.addEventListener("mouseenter", show);
     window.addEventListener("mousedown", down);
     window.addEventListener("mouseup", up);
-    raf = requestAnimationFrame(tick);
+    if (!reduce) raf = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(raf);
+      root.classList.remove("cursor-reduce");
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", hide);
       document.removeEventListener("mouseenter", show);
