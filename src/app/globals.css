@@ -189,6 +189,68 @@ body {
     0 6px 16px rgba(15, 17, 41, 0.06);
 }
 
+/*
+  Custom pointer follower (CustomCursor.tsx). Active only when JS adds
+  `.has-custom-cursor` to <html> (fine pointer + motion allowed).
+*/
+.ex-cursor-dot,
+.ex-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  pointer-events: none;
+  border-radius: 9999px;
+  transform: translate(-100px, -100px);
+  will-change: transform;
+}
+.ex-cursor-dot {
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  background: var(--color-primary);
+}
+.ex-cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid rgba(94, 46, 192, 0.55);
+  transition:
+    width 0.2s var(--ease-ex),
+    height 0.2s var(--ease-ex),
+    margin 0.2s var(--ease-ex),
+    background-color 0.2s var(--ease-ex),
+    border-color 0.2s var(--ease-ex),
+    opacity 0.25s ease;
+}
+.ex-cursor-ring.is-hover {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  background: rgba(94, 46, 192, 0.08);
+  border-color: rgba(94, 46, 192, 0.9);
+}
+.ex-cursor-ring.is-down {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+}
+/* hide native cursor while custom is active — but keep it on form fields */
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor select {
+  cursor: auto !important;
+}
+@media (pointer: coarse) {
+  .ex-cursor-dot,
+  .ex-cursor-ring {
+    display: none;
+  }
+}
+
 /* EX brand gradient text — light theme: Purple → Deep Purple (reads on white) */
 @utility text-gradient-ex {
   background-image: linear-gradient(

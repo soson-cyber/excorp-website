@@ -4,6 +4,7 @@ import { Poppins, Noto_Sans_KR, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 // Official EX brand typeface (브랜딩 가이드 p.10): Poppins (영문) + Noto Sans KR (국문)
 const poppins = Poppins({
@@ -107,6 +108,7 @@ export default function RootLayout({
             }),
           }}
         />
+        <CustomCursor />
         <Header />
         <main id="main" className="flex-1">
           {children}
