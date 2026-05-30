@@ -3,7 +3,9 @@ import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
+import { MediaBlank } from "@/components/ui/MediaBlank";
 import { StudioMenu } from "@/components/studio/StudioMenu";
+import { StudioOptions } from "@/components/studio/StudioOptions";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -31,27 +33,21 @@ const reasons = [
   },
 ];
 
-const optionGroups = [
-  {
-    t: "영상 · 편집",
-    items: ["즉시 편집본 송출 (촬영 종료 후 빠른 전달)", "멀티 카메라 컷 편집본", "세로 컷 동시 녹화 (숏폼용)", "자막 베이크 · 음성 마스터링"],
-  },
-  {
-    t: "그래픽 · 연출",
-    items: ["PPT 송출 위치 변경 (좌 / 우 / 풀스크린)", "PPT 입체화 (3D 그래픽 변환)", "자막 · 로워서드 삽입", "입체 AR 그래픽 (제품 데모)"],
-  },
-  {
-    t: "배경 · 커스텀",
-    items: ["브랜드 컬러 매칭 배경 커스텀", "추가 커스텀 배경 제작", "가상 객석 반응 합성"],
-  },
-  {
-    t: "라이브 송출",
-    items: ["라이브 스트리밍 (YouTube / Zoom 등)", "다중 송출 (유튜브 · 사내방송)", "Q&A 자막 · 라이브 채팅 위젯", "실시간 통역 화면 합성"],
-  },
-  {
-    t: "현장 지원",
-    items: ["사전 미팅 · 리허설 추가", "발표자 메이크업 · 의상 연계 (외주)"],
-  },
+const presets = [
+  { name: "IR 기본", cat: "IR" },
+  { name: "강의실", cat: "WEBI" },
+  { name: "라운지", cat: "TALK" },
+  { name: "미니멀 스튜디오", cat: "WEBI" },
+  { name: "카페 스타일", cat: "TALK" },
+  { name: "다크 토크", cat: "TALK" },
+  { name: "컨퍼런스홀", cat: "WEBI" },
+  { name: "키노트 무대", cat: "IR" },
+];
+
+const galleryBlanks = [
+  { label: "무대 와이드", tag: "STUDIO" },
+  { label: "조명 · 장비", tag: "STUDIO" },
+  { label: "스튜디오 도면", tag: "FLOORPLAN" },
 ];
 
 const guide = [
@@ -119,89 +115,118 @@ export default function XrStudioPage() {
         </div>
       </section>
 
-      {/* §03 Options */}
+      {/* §03 Background presets */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <SectionLabel index="03">Options</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">옵션 서비스</h2>
-          <p className="mt-4 max-w-2xl text-muted">기본 구성에 필요한 옵션을 더할 수 있습니다.</p>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {optionGroups.map((g) => (
-              <div key={g.t} className="rounded-2xl border border-border bg-surface p-6">
-                <h3 className="font-semibold text-fg">{g.t}</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted">
-                  {g.items.map((it) => (
-                    <li key={it} className="flex gap-2.5">
-                      <span className="mt-2 h-1 w-1 flex-none rounded-full bg-primary" />
-                      <span className="leading-relaxed">{it}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-faint">외 다수 · 문의 시 안내</p>
-              </div>
+          <SectionLabel index="03">Backgrounds</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">배경 프리셋</h2>
+          <p className="mt-4 max-w-2xl text-muted">
+            콘텐츠 성격에 맞춰 가상 배경을 선택합니다. 기본 프리셋 외 브랜드 맞춤 배경도 제작합니다.
+          </p>
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {presets.map((p) => (
+              <MediaBlank
+                key={p.name}
+                tag={p.cat}
+                label={p.name}
+                sublabel="프리뷰 준비 중"
+                className="aspect-[4/3]"
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* §04 Guide */}
+      {/* §04 Options (toggle) */}
       <section className="container-ex py-section">
-        <SectionLabel index="04">Guide</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">이용 안내</h2>
-        <ul className="mt-12 max-w-3xl space-y-4">
-          {guide.map((g) => (
-            <li key={g} className="flex gap-3 text-fg">
-              <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
-              <span className="leading-relaxed">{g}</span>
-            </li>
-          ))}
-        </ul>
+        <SectionLabel index="04">Options</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">옵션 서비스</h2>
+        <p className="mt-4 max-w-2xl text-muted">기본 구성에 필요한 옵션을 더할 수 있습니다.</p>
+        <div className="mt-12">
+          <StudioOptions />
+        </div>
       </section>
 
-      {/* §05 Facilities & specs */}
-      <section id="facilities" className="bg-surface/40">
+      {/* §05 Guide */}
+      <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <SectionLabel index="05">Facilities</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">스튜디오 시설 &amp; 스펙</h2>
-          <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
-            <dl>
-              {facilitySpecs.map(([k, v]) => (
-                <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
-                  <dt className="w-44 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">{k}</dt>
-                  <dd className="text-sm text-fg">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          <SectionLabel index="05">Guide</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">이용 안내</h2>
+          <ul className="mt-12 max-w-3xl space-y-4">
+            {guide.map((g) => (
+              <li key={g} className="flex gap-3 text-fg">
+                <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
+                <span className="leading-relaxed">{g}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* §06 Studio tour — sample video + gallery */}
+      <section id="facilities" className="container-ex py-section">
+        <SectionLabel index="06">Studio</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">스튜디오 둘러보기</h2>
+
+        {/* sample video stage */}
+        <div className="mt-12">
+          <MediaBlank
+            tag="STUDIO · VIDEO"
+            glyph="play"
+            label="촬영 샘플 영상"
+            sublabel="영상 에셋 추가 예정"
+            className="aspect-[16/9] w-full"
+          />
+        </div>
+
+        {/* gallery blanks */}
+        <div className="mt-5 grid gap-5 sm:grid-cols-3">
+          {galleryBlanks.map((b) => (
+            <MediaBlank key={b.label} tag={b.tag} label={b.label} sublabel="이미지 준비 중" className="aspect-video" />
+          ))}
+        </div>
+
+        {/* specs */}
+        <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
+          <dl>
+            {facilitySpecs.map(([k, v]) => (
+              <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
+                <dt className="w-44 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">{k}</dt>
+                <dd className="text-sm text-fg">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
       {/* CTA — quote & booking */}
-      <section className="container-ex py-section">
-        <div className="rounded-3xl border border-border bg-surface px-8 py-14 text-center">
-          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-primary">
-            <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
-            가격 및 예약 문의
-          </span>
-          <h2 className="mx-auto mt-6 max-w-2xl text-balance text-3xl font-bold leading-snug md:text-4xl">
-            목적에 맞는 최적의 구성을 제안해 드립니다.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted">
-            콘텐츠 형태 · 규모 · 옵션에 따라 견적을 맞춤 안내합니다. 부담 없이 문의 주세요.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/contact" variant="accent">
-              견적 문의하기 →
-            </Button>
-            <Button href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} variant="secondary">
-              전화 {site.contact.tel}
-            </Button>
+      <section className="bg-surface/40">
+        <div className="container-ex py-section">
+          <div className="rounded-3xl border border-border bg-bg px-8 py-14 text-center">
+            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-primary">
+              <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
+              가격 및 예약 문의
+            </span>
+            <h2 className="mx-auto mt-6 max-w-2xl text-balance text-3xl font-bold leading-snug md:text-4xl">
+              목적에 맞는 최적의 구성을 제안해 드립니다.
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted">
+              콘텐츠 형태 · 규모 · 옵션에 따라 견적을 맞춤 안내합니다. 부담 없이 문의 주세요.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Button href="/contact" variant="accent">
+                견적 문의하기 →
+              </Button>
+              <Button href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} variant="secondary">
+                전화 {site.contact.tel}
+              </Button>
+            </div>
+            <p className="mt-6 font-mono text-xs text-faint">
+              <a href={`mailto:${site.contact.email}`} className="transition-colors hover:text-muted">
+                {site.contact.email}
+              </a>
+            </p>
           </div>
-          <p className="mt-6 font-mono text-xs text-faint">
-            <a href={`mailto:${site.contact.email}`} className="transition-colors hover:text-muted">
-              {site.contact.email}
-            </a>
-          </p>
         </div>
       </section>
     </>
