@@ -47,14 +47,18 @@ function ArrowLink({
 
 function Hero() {
   return (
-    <section className="relative flex min-h-[94vh] items-center justify-center overflow-hidden bg-[#120733]">
+    <section className="relative -mt-16 flex min-h-[100vh] items-center justify-center overflow-hidden bg-[#0E0626] pt-16">
       {/* full-bleed pointer-reactive aurora */}
       <HeroAurora />
 
-      {/* aurora → white fade, eases into the §01 section below */}
+      {/* aurora → white fade — long, eased transition into the §01 section */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-32 bg-gradient-to-b from-transparent to-white"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[36vh]"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 24%, rgba(255,255,255,0.4) 58%, rgba(255,255,255,0.82) 82%, #ffffff 100%)",
+        }}
       />
 
       {/* centered copy (Highnote-style stack) */}

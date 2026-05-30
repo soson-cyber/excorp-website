@@ -2,16 +2,34 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "@/lib/site";
-import { Button } from "@/components/ui/Button";
 
 export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Site-wide LIGHT theme (white migration). The header is always light now.
-  const light = true;
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Transparent, white-on-dark header while sitting over the dark home hero;
+  // flips to the solid light header once scrolled past the hero (or off-home,
+  // or while the mobile sheet is open).
+  const overHero = isHome && !scrolled && !mobileOpen;
+
+  // Track whether we've scrolled past (most of) the hero.
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.82);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
 
   // lock body scroll while the mobile menu is open
   useEffect(() => {
@@ -23,11 +41,11 @@ export function Header() {
 
   return (
     <header
-      className={
-        light
-          ? "sticky top-0 z-50 border-b border-[#E5E7EB] bg-white/80 backdrop-blur-xl"
-          : "sticky top-0 z-50 border-b border-border/70 bg-bg/80 backdrop-blur-xl"
-      }
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        overHero
+          ? "border-b border-white/10 bg-transparent"
+          : "border-b border-[#E5E7EB] bg-white/80 backdrop-blur-xl"
+      }`}
     >
       <div className="container-ex flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center" aria-label="EX Corporation 홈">
@@ -37,25 +55,32 @@ export function Header() {
             width={1001}
             height={201}
             priority
-            className="h-6 w-auto"
+            className="h-6 w-auto transition-[filter] duration-300"
+            style={{ filter: overHero ? "brightness(0) invert(1)" : "none" }}
           />
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex" onMouseLeave={() => setOpenMenu(null)}>
           {nav.map((item) => (
-            <div key={item.label} className="relative" onMouseEnter={() => setOpenMenu(item.children ? item.label : null)}>
+            <div
+              key={item.label}
+              className="relative"
+              onMouseEnter={() => setOpenMenu(item.children ? item.label : null)}
+            >
               <Link
                 href={item.href}
-                className={
-                  light
-                    ? "flex items-center gap-1 rounded-md px-3 py-2 text-sm text-[#51545E] transition-colors hover:text-[#0F1129]"
-                    : "flex items-center gap-1 rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-fg"
-                }
+                className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm transition-colors ${
+                  overHero
+                    ? "text-white/80 hover:text-white"
+                    : "text-[#51545E] hover:text-[#0F1129]"
+                }`}
               >
                 {item.label}
                 {item.children && (
-                  <span className={light ? "text-[10px] text-[#6b7280]" : "text-[10px] text-faint"}>▾</span>
+                  <span className={overHero ? "text-[10px] text-white/50" : "text-[10px] text-[#6b7280]"}>
+                    ▾
+                  </span>
                 )}
               </Link>
 
@@ -131,21 +156,19 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <span className={light ? "font-mono text-xs text-[#6b7280]" : "font-mono text-xs text-faint"}>
+          <span className={overHero ? "font-mono text-xs text-white/60" : "font-mono text-xs text-[#6b7280]"}>
             KO / EN
           </span>
-          {light ? (
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#0F1129] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#23264a]"
-            >
-              문의하기
-            </Link>
-          ) : (
-            <Button href="/contact" className="px-4 py-2">
-              문의하기
-            </Button>
-          )}
+          <Link
+            href="/contact"
+            className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-bold transition-colors ${
+              overHero
+                ? "bg-white text-[#0F1129] hover:bg-white/90"
+                : "bg-[#0F1129] text-white hover:bg-[#23264a]"
+            }`}
+          >
+            문의하기
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -153,11 +176,9 @@ export function Header() {
           type="button"
           aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={mobileOpen}
-          className={
-            light
-              ? "flex h-11 w-11 items-center justify-center rounded-md text-[#0F1129] transition-colors hover:bg-[#F7F8FA] lg:hidden"
-              : "flex h-11 w-11 items-center justify-center rounded-md text-fg transition-colors hover:bg-surface lg:hidden"
-          }
+          className={`flex h-11 w-11 items-center justify-center rounded-md transition-colors lg:hidden ${
+            overHero ? "text-white hover:bg-white/10" : "text-[#0F1129] hover:bg-[#F7F8FA]"
+          }`}
           onClick={() => setMobileOpen((v) => !v)}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -179,24 +200,24 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className={light ? "border-t border-[#E5E7EB] bg-white lg:hidden" : "border-t border-border bg-bg lg:hidden"}>
+        <div className="border-t border-[#E5E7EB] bg-white lg:hidden">
           <nav className="container-ex flex flex-col py-4">
             {nav.map((item) => (
               <div key={item.label} className="py-1">
                 <Link
                   href={item.href}
-                  className={light ? "block py-2 text-base font-medium text-[#0F1129]" : "block py-2 text-base font-medium text-fg"}
+                  className="block py-2 text-base font-medium text-[#0F1129]"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
                 </Link>
                 {item.children && (
-                  <div className={light ? "ml-3 flex flex-col border-l border-[#E5E7EB] pl-3" : "ml-3 flex flex-col border-l border-border pl-3"}>
+                  <div className="ml-3 flex flex-col border-l border-[#E5E7EB] pl-3">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className={light ? "py-1.5 text-sm text-[#51545E]" : "py-1.5 text-sm text-muted"}
+                        className="py-1.5 text-sm text-[#51545E]"
                         onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
@@ -206,19 +227,13 @@ export function Header() {
                 )}
               </div>
             ))}
-            {light ? (
-              <Link
-                href="/contact"
-                className="mt-4 inline-flex items-center justify-center rounded-full bg-[#0F1129] px-5 py-2.5 text-sm font-bold text-white"
-                onClick={() => setMobileOpen(false)}
-              >
-                문의하기
-              </Link>
-            ) : (
-              <Button href="/contact" className="mt-4" onClick={() => setMobileOpen(false)}>
-                문의하기
-              </Button>
-            )}
+            <Link
+              href="/contact"
+              className="mt-4 inline-flex items-center justify-center rounded-full bg-[#0F1129] px-5 py-2.5 text-sm font-bold text-white"
+              onClick={() => setMobileOpen(false)}
+            >
+              문의하기
+            </Link>
           </nav>
         </div>
       )}

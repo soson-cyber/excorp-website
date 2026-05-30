@@ -3,68 +3,66 @@
 import { useEffect, useRef } from "react";
 
 /*
-  HeroAurora — full-bleed, pointer-reactive aurora for the dark Highnote-style
-  hero. Soft EX-triad glows (mint / pink / purple) drift on their own and
-  parallax toward the pointer over a deep-purple base, with a faint concentric
-  "sunburst" ring echo and a center vignette so white text stays legible.
+  HeroAurora — Highnote-style concentric COLOUR-BAND gradient that tracks the
+  pointer with eased (non-linear) motion.
 
-  Pure DOM/CSS (GPU translate3d) → robustly visible and cheap. Gradients are
-  inline styles on purpose: runtime-applied, so the build/dev CSS compiler never
-  touches them. Fine pointers parallax; everything also drifts autonomously.
-  prefers-reduced-motion → one static frame. Decorative: aria-hidden + no events.
+  The bands ARE the gradient: a multi-stop radial of EX-triad glows (mint /
+  purple / pink) on a deep base, painted onto one huge ring layer. That layer is
+  GPU-translated so the ring centre follows the cursor — large, obvious motion —
+  with an easing lag (non-linear) plus an autonomous lissajous drift so it lives
+  even at rest. A fixed vignette behind the headline keeps white text legible no
+  matter where the bands are.
+
+  Pure DOM/CSS, gradients inline (compiler never touches them). Fine pointers
+  track; everything drifts on its own. prefers-reduced-motion → static, centred.
+  Decorative: aria-hidden + pointer-events:none.
 */
 export default function HeroAurora() {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const mintRef = useRef<HTMLDivElement>(null);
-  const pinkRef = useRef<HTMLDivElement>(null);
-  const purpleRef = useRef<HTMLDivElement>(null);
+  const ringsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const wrap = wrapRef.current;
-    const mint = mintRef.current;
-    const pink = pinkRef.current;
-    const purple = purpleRef.current;
-    if (!wrap || !mint || !pink || !purple) return;
+    const rings = ringsRef.current;
+    if (!wrap || !rings) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const fine = window.matchMedia("(pointer: fine)").matches;
 
-    // per-layer parallax strength (px) — different depths
-    const layers = [
-      { el: mint, px: 42, py: 30 },
-      { el: pink, px: -54, py: 26 },
-      { el: purple, px: 26, py: -38 },
-    ];
+    const place = (dx: number, dy: number) => {
+      rings.style.transform = `translate3d(calc(-50% + ${dx.toFixed(1)}px), calc(-50% + ${dy.toFixed(1)}px), 0)`;
+    };
 
     if (reduced) {
-      // static, centered — no drift, no parallax
-      for (const L of layers) L.el.style.transform = "translate3d(0,0,0)";
+      place(0, 0);
       return;
     }
 
     let raf = 0;
     let t = 0;
-    let tx = 0; // pointer target, -1..1 from center
+    let tx = 0; // pointer offset from hero centre (px)
     let ty = 0;
-    let cx = 0; // eased current
+    let cx = 0; // eased current offset
     let cy = 0;
 
     const onMove = (e: PointerEvent) => {
       const r = wrap.getBoundingClientRect();
-      tx = ((e.clientX - r.left) / r.width) * 2 - 1;
-      ty = ((e.clientY - r.top) / r.height) * 2 - 1;
+      tx = e.clientX - (r.left + r.width / 2);
+      ty = e.clientY - (r.top + r.height / 2);
     };
 
     const frame = () => {
-      t += 0.004;
-      // autonomous lissajous drift, plus eased pointer follow
-      const dax = Math.cos(t) * 0.5;
-      const day = Math.sin(t * 0.8) * 0.5;
-      cx += (tx + dax - cx) * 0.04;
-      cy += (ty + day - cy) * 0.04;
-      for (const L of layers) {
-        L.el.style.transform = `translate3d(${(cx * L.px).toFixed(1)}px, ${(cy * L.py).toFixed(1)}px, 0)`;
-      }
+      t += 0.005;
+      // autonomous lissajous drift (px) — non-linear path, keeps it alive at rest
+      const dax = Math.cos(t) * 90 + Math.sin(t * 1.7) * 26;
+      const day = Math.sin(t * 0.8) * 70 + Math.cos(t * 1.3) * 22;
+      // pointer follow (0.85 of the offset) + drift
+      const gx = (fine ? tx * 0.85 : 0) + dax;
+      const gy = (fine ? ty * 0.85 : 0) + day;
+      // easing lag = non-linear, organic motion
+      cx += (gx - cx) * 0.06;
+      cy += (gy - cy) * 0.06;
+      place(cx, cy);
       raf = requestAnimationFrame(frame);
     };
 
@@ -79,39 +77,37 @@ export default function HeroAurora() {
   return (
     <div ref={wrapRef} aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       {/* deep base wash */}
-      <div className="absolute inset-0 bg-[#120733]" />
+      <div className="absolute inset-0 bg-[#0E0626]" />
 
-      {/* aurora glows (parallax layers) */}
+      {/* concentric colour bands — this whole layer's centre tracks the pointer */}
       <div
-        ref={purpleRef}
-        className="absolute left-[18%] top-[34%] h-[92vh] w-[92vh] rounded-full blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(94,46,192,0.9), transparent 60%)", willChange: "transform" }}
-      />
-      <div
-        ref={mintRef}
-        className="absolute -left-[12%] -top-[18%] h-[80vh] w-[80vh] rounded-full blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(69,241,224,0.5), transparent 62%)", willChange: "transform" }}
-      />
-      <div
-        ref={pinkRef}
-        className="absolute -right-[14%] top-[2%] h-[78vh] w-[78vh] rounded-full blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(210,6,238,0.5), transparent 62%)", willChange: "transform" }}
-      />
-
-      {/* faint concentric sunburst rings (Highnote echo) */}
-      <div
-        className="absolute left-1/2 top-[28%] h-[130vh] w-[130vh] -translate-x-1/2"
+        ref={ringsRef}
+        className="absolute left-1/2 top-1/2 h-[220vmax] w-[220vmax]"
         style={{
-          opacity: 0.06,
+          willChange: "transform",
           background:
-            "repeating-radial-gradient(circle at center, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0.9) 1px, transparent 1px, transparent 66px)",
+            "radial-gradient(circle at 50% 50%," +
+            " rgba(125,92,255,0.52) 0%," +
+            " rgba(69,241,224,0.26) 12%," +
+            " rgba(94,46,192,0.58) 25%," +
+            " rgba(210,6,238,0.32) 38%," +
+            " rgba(94,46,192,0.50) 52%," +
+            " rgba(69,241,224,0.20) 66%," +
+            " rgba(168,85,247,0.34) 79%," +
+            " rgba(14,6,38,0) 92%)",
         }}
       />
 
-      {/* center vignette → keeps the white headline readable */}
+      {/* fixed spotlight vignette → headline stays legible wherever the bands sit */}
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(circle at 50% 42%, rgba(18,7,51,0) 38%, rgba(18,7,51,0.55) 82%)" }}
+        style={{ background: "radial-gradient(58% 54% at 50% 46%, rgba(14,6,38,0.66) 0%, rgba(14,6,38,0) 72%)" }}
+      />
+
+      {/* edge darkening for depth */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "radial-gradient(125% 125% at 50% 50%, rgba(14,6,38,0) 52%, rgba(14,6,38,0.6) 100%)" }}
       />
     </div>
   );
