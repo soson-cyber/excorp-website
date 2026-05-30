@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { SectionLabel } from "@/components/home/SectionLabel";
 import { CountUp } from "@/components/motion/CountUp";
-import HeroFieldStage from "@/components/three/HeroFieldStage";
+import HeroTracking from "@/components/home/HeroTracking";
 
 /*
   HomeClean — the redesigned WHITE, clean "creative-tech startup" Home.
@@ -47,44 +47,37 @@ function ArrowLink({
 
 function Hero() {
   return (
-    <section className="relative min-h-[88vh] overflow-hidden bg-[radial-gradient(120%_100%_at_70%_30%,#15132c_0%,#0a0913_45%,#07070c_100%)]">
-      {/* full-bleed pointer-reactive node field (additive glow on dark) */}
-      <HeroFieldStage />
+    <section className="relative min-h-[88vh] overflow-hidden bg-white">
+      {/* faint tracking grid */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
 
-      {/* vignette + left readability gradient for the headline */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_50%,transparent_55%,rgba(5,5,10,0.7)_100%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#07070c]/85 via-[#07070c]/35 to-transparent sm:w-4/5 lg:w-3/5"
-      />
+      {/* cursor-following camera-tracking reticle + live coordinates */}
+      <HeroTracking />
 
-      {/* framed-viewport corner ticks (light on dark) */}
-      <span aria-hidden="true" className="pointer-events-none absolute left-5 top-5 h-4 w-4 border-l border-t border-white/25" />
-      <span aria-hidden="true" className="pointer-events-none absolute right-5 top-5 h-4 w-4 border-r border-t border-white/25" />
-      <span aria-hidden="true" className="pointer-events-none absolute bottom-5 left-5 h-4 w-4 border-b border-l border-white/25" />
-      <span aria-hidden="true" className="pointer-events-none absolute bottom-5 right-5 h-4 w-4 border-b border-r border-white/25" />
+      {/* framed-viewport corner ticks */}
+      <span aria-hidden="true" className="pointer-events-none absolute left-5 top-5 z-10 h-4 w-4 border-l border-t border-[#5E2EC0]/40" />
+      <span aria-hidden="true" className="pointer-events-none absolute right-5 top-5 z-10 h-4 w-4 border-r border-t border-[#5E2EC0]/40" />
+      <span aria-hidden="true" className="pointer-events-none absolute bottom-5 left-5 z-10 h-4 w-4 border-b border-l border-[#5E2EC0]/40" />
+      <span aria-hidden="true" className="pointer-events-none absolute bottom-5 right-5 z-10 h-4 w-4 border-b border-r border-[#5E2EC0]/40" />
 
-      {/* technical caption */}
-      <span className="pointer-events-none absolute bottom-6 right-7 z-10 font-mono text-[10px] uppercase tracking-wider text-[#8b86b0]">
-        REAL-TIME XR · NODE FIELD
+      {/* HUD */}
+      <span className="pointer-events-none absolute left-6 top-6 z-10 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#16A34A]" /> TRACKING · LIVE
+      </span>
+      <span className="pointer-events-none absolute bottom-6 right-7 z-10 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
+        REAL-TIME XR · CAMERA TRACKING
       </span>
 
-      {/* copy (non-interactive so pointer passes to the field; button re-enables) */}
-      <div className="pointer-events-none relative z-10 mx-auto flex min-h-[88vh] max-w-[1280px] flex-col justify-center px-6 py-24 lg:px-20">
+      {/* copy */}
+      <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-[1280px] flex-col justify-center px-6 py-24 lg:px-20">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-[#a99bff]">
-            <span className="h-0.5 w-7 bg-[#a99bff]" aria-hidden="true" />
-            REAL-TIME XR CONTENT · EX
-          </span>
-          <h1 className="mt-7 text-6xl font-bold leading-none tracking-tight text-[#f4f3ff] sm:text-7xl lg:text-8xl">
+          <SectionLabel>REAL-TIME XR CONTENT · EX</SectionLabel>
+          <h1 className="mt-7 text-6xl font-bold leading-none tracking-tight text-[#0F1129] sm:text-7xl lg:text-8xl">
             경험을
             <br />
-            <span className="bg-[linear-gradient(100deg,#a99bff,#6ff0ff)] bg-clip-text text-transparent">확장</span>하다
+            <span className="text-[#5E2EC0]">확장</span>하다
           </h1>
-          <p className="mt-7 max-w-md text-xl leading-relaxed text-[#bcb8da]">
+          <p className="mt-7 max-w-md text-xl leading-relaxed text-[#51545E]">
             실시간 XR · 버추얼 프로덕션 스튜디오와 솔루션.
             <br className="hidden sm:block" />
             콘텐츠 제작의 처음과 끝을 하나로 연결합니다.
@@ -92,12 +85,12 @@ function Hero() {
           <div className="mt-9">
             <Link
               href="/contact"
-              className="pointer-events-auto inline-flex items-center justify-center rounded-full bg-[linear-gradient(100deg,#a99bff,#6ff0ff)] px-7 py-3.5 text-sm font-bold text-[#0a0913] transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center rounded-full bg-[#0F1129] px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#23264a]"
             >
               프로젝트 시작 →
             </Link>
           </div>
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-wider text-[#8b86b0]">
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-wider text-[#6b7280]">
             EXLINK · 파트너 제품 유통 · 하남 XR 스튜디오
           </p>
         </div>
