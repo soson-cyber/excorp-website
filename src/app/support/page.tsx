@@ -52,7 +52,7 @@ const downloads = [
   { name: "도입 케이스 스터디", fmt: "PDF" },
 ];
 
-const inquiryTypes = ["솔루션 도입", "제품 정보", "기술 지원", "자료 요청", "기타"];
+const inquiryTypes = ["솔루션 도입", "제품 도입", "스튜디오 제작", "기술 지원", "일반 문의"];
 
 export default function SupportPage() {
   return (

@@ -184,7 +184,7 @@ export default function XrSolutionPage() {
       {/* §05 System build (turnkey) */}
       <section className="container-ex py-section">
         <SectionLabel index="05">System Build</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">EX-LINK 시스템 구성 (턴키)</h2>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">EXLINK 시스템 구성 (턴키)</h2>
         <p className="mt-4 max-w-2xl text-muted">
           하드웨어·소프트웨어·시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키(Turn-key)로 공급합니다.
         </p>

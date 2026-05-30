@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | EX Corporation",
   },
   description:
-    "이엑스(EX Corp.)는 AI와 XR 기술을 연결하여 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다. All-in-One, Real-time XR Content Production Solution.",
+    "이엑스 주식회사(EX Corporation)는 AI와 XR 기술을 연결하여 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다. All-in-One, Real-time XR Content Production Solution.",
   keywords: [
     "버추얼 프로덕션",
     "XR",

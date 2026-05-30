@@ -12,9 +12,11 @@ export const metadata: Metadata = {
 };
 
 const inquiries = [
-  { tag: "Solution", title: "솔루션 도입", desc: "EXLINK·제품 도입 검토 및 견적 상담" },
+  { tag: "Solution", title: "솔루션 도입", desc: "EXLINK 도입 검토 및 견적 상담" },
+  { tag: "Product", title: "제품 도입", desc: "Aximmetry · Moverse · RETracker 도입 문의" },
   { tag: "Studio", title: "스튜디오 제작", desc: "EX XR Studio 콘텐츠 제작 협의" },
-  { tag: "General", title: "일반 문의", desc: "채용·취재·파트너십 등 기타 문의" },
+  { tag: "Support", title: "기술 지원", desc: "도입 이후 운영 · 기술 지원 문의" },
+  { tag: "General", title: "일반 문의", desc: "채용 · 취재 · 파트너십 등 기타 문의" },
 ];
 
 export default function ContactPage() {

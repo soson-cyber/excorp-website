@@ -557,8 +557,8 @@ function XrStudio() {
 const stats = [
   { value: 6, suffix: "+", label: "기술 특허" },
   { value: 3, suffix: "", label: "글로벌 파트너" },
-  { value: 4, suffix: "", label: "제품 인증" },
   { value: 3, suffix: "", label: "대학 MOU" },
+  { value: 4, suffix: "", label: "제품 인증" },
 ];
 
 function Numbers() {
@@ -594,19 +594,13 @@ function QuoteBand() {
         <Reveal>
           <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-[#5E2EC0]">
             <span className="h-0.5 w-7 bg-[#5E2EC0]" aria-hidden="true" />
-            CUSTOMER VOICE
+            WHAT YOU GET
           </span>
-          <div
-            aria-hidden="true"
-            className="mt-4 text-5xl leading-none text-[#5E2EC0]"
-          >
-            &ldquo;
-          </div>
-          <blockquote className="mt-2 text-2xl font-semibold leading-relaxed text-[#0F1129] lg:text-3xl">
-            촬영과 동시에 결과물이 나오니, 후반 일정에 쫓기지 않았습니다.
-            현장에서 바로 확인하고 끝낼 수 있었어요.
-          </blockquote>
-          <p className="mt-6 text-sm text-[#6b7280]">○○방송 · 제작 PD</p>
+          <p className="mt-6 text-2xl font-semibold leading-relaxed text-[#0F1129] lg:text-3xl">
+            촬영과 동시에 결과물이 완성됩니다. 후반 일정에 쫓기지 않고,
+            현장에서 바로 확인하고 끝낼 수 있습니다.
+          </p>
+          <p className="mt-6 text-sm text-[#6b7280]">실시간 XR 제작이 만드는 차이</p>
         </Reveal>
       </div>
     </section>

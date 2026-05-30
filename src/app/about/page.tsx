@@ -57,7 +57,7 @@ export default function AboutPage() {
         breadcrumb={[{ label: "About EX", href: "/about" }]}
         tag="About EX · EXpand EXperiences"
         title="현실과 가상의 융합, 새로운 경험을 창조하는 세상."
-        lead="이엑스(EX Corp.)는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다."
+        lead="이엑스 주식회사(EX Corporation)는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다."
       />
 
       {/* §01 Vision & Mission */}

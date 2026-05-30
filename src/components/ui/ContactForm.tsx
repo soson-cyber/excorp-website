@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const types = ["솔루션 도입", "스튜디오 제작", "일반 문의"] as const;
+const types = ["솔루션 도입", "제품 도입", "스튜디오 제작", "기술 지원", "일반 문의"] as const;
 
 type Status = "idle" | "submitting" | "success" | "error";
 
