@@ -198,9 +198,9 @@ body {
   top: 0;
   left: 0;
   z-index: 200;
-  width: 36px;
-  height: 36px;
-  margin: -18px 0 0 -18px;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
   pointer-events: none;
   color: rgba(94, 46, 192, 0.7);
   transform: translate(-100px, -100px);
@@ -229,12 +229,12 @@ body {
   color: rgba(94, 46, 192, 0.95);
 }
 .ex-cursor-ring.is-hover .ex-cursor-hex polygon {
-  fill: rgba(94, 46, 192, 0.08);
+  fill: rgba(94, 46, 192, 0.14);
 }
 .ex-cursor-ring.is-down {
-  width: 28px;
-  height: 28px;
-  margin: -14px 0 0 -14px;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
 }
 /* reduced-motion: keep the ring but drop trailing/scale transitions */
 html.cursor-reduce .ex-cursor-ring {

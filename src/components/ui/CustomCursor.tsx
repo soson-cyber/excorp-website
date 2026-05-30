@@ -47,8 +47,8 @@ export function CustomCursor() {
       }
     };
     const tick = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
+      rx += (mx - rx) * 0.28;
+      ry += (my - ry) * 0.28;
       ring.style.transform = `translate(${rx}px, ${ry}px)`;
       raf = requestAnimationFrame(tick);
     };
@@ -83,11 +83,11 @@ export function CustomCursor() {
     <div ref={ringRef} className="ex-cursor-ring" aria-hidden="true">
       <svg className="ex-cursor-hex" viewBox="0 0 100 100">
         <polygon
-          points="25,5 75,5 97,50 75,95 25,95 3,50"
+          points="50,3 95,27 95,73 50,97 5,73 5,27"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
-          strokeLinejoin="round"
+          strokeWidth="1.25"
+          strokeLinejoin="miter"
           vectorEffect="non-scaling-stroke"
         />
       </svg>
