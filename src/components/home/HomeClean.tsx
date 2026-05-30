@@ -75,7 +75,7 @@ function Hero() {
           <h1 className="mt-7 text-6xl font-bold leading-none tracking-tight text-[#0F1129] sm:text-7xl lg:text-8xl">
             경험을
             <br />
-            <span className="text-[#5E2EC0]">확장</span>하다
+            <span className="text-gradient-ex">확장</span>하다
           </h1>
           <p className="mt-7 max-w-md text-xl leading-relaxed text-[#51545E]">
             실시간 XR · 버추얼 프로덕션 스튜디오와 솔루션.

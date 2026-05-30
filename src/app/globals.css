@@ -246,12 +246,18 @@ html.cursor-reduce .ex-cursor-ring {
   }
 }
 
-/* EX brand gradient text — light theme: Purple → Deep Purple (reads on white) */
+/*
+  EX brand gradient text — Deep Purple → Purple → Pink (Evervault-style vivid
+  sweep, recolored to the EX triad). All three stops stay legible on white for
+  display-size headings. Mint is intentionally excluded from TEXT (≈1.2:1 on
+  white = unreadable) — it lives in `.gradient-ex-mesh` surfaces instead.
+*/
 @utility text-gradient-ex {
   background-image: linear-gradient(
-    120deg,
-    var(--color-primary) 0%,
-    var(--color-deep-purple) 100%
+    115deg,
+    var(--color-deep-purple) 0%,
+    var(--color-primary) 42%,
+    var(--color-pink) 100%
   );
   background-size: 220% auto;
   -webkit-background-clip: text;
@@ -273,6 +279,44 @@ html.cursor-reduce .ex-cursor-ring {
 @media (prefers-reduced-motion: no-preference) {
   .text-gradient-ex {
     animation: ex-gradient-drift 9s ease-in-out infinite alternate;
+  }
+}
+
+/*
+  ────────────────────────────────────────────────────────────────────────
+  EX brand gradient MESH — Evervault-style soft aurora, recolored to the EX
+  triad (Mint → Pink → Purple radial blends on a deep-purple base). White text
+  reads clearly on it, with a slow living drift. Used by the GNB mega-menu
+  featured card and rich accent surfaces.
+  NOTE: no inline SVG-grain data-URI here — Turbopack (dev) silently DROPS any
+  rule whose url() it can't parse, taking the whole block with it. Film grain,
+  if wanted, is layered via a real raster asset instead.
+  ────────────────────────────────────────────────────────────────────────
+*/
+.gradient-ex-mesh {
+  position: relative;
+  background-color: #2a0e63;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(69, 241, 224, 0.5), transparent 45%),
+    radial-gradient(circle at 92% 14%, rgba(210, 6, 238, 0.55), transparent 52%),
+    radial-gradient(circle at 55% 112%, rgba(94, 46, 192, 0.95), transparent 60%);
+}
+@keyframes ex-mesh-drift {
+  from {
+    background-position: 0% 0%, 100% 0%, 50% 100%;
+  }
+  to {
+    background-position: 18% 12%, 82% 22%, 60% 88%;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gradient-ex-mesh {
+    background-size:
+      200% 200%,
+      200% 200%,
+      200% 200%;
+    animation: ex-mesh-drift 18s ease-in-out infinite alternate;
   }
 }
 

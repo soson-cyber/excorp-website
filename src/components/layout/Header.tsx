@@ -60,47 +60,69 @@ export function Header() {
               </Link>
 
               {item.children && openMenu === item.label && (
-                <div className="animate-dropdown absolute left-0 top-full w-80 pt-2">
-                  <div
-                    className={
-                      light
-                        ? "overflow-hidden rounded-xl border border-[#E5E7EB] bg-white shadow-2xl"
-                        : "overflow-hidden rounded-xl border border-border bg-surface shadow-2xl"
-                    }
-                  >
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={
-                          light
-                            ? "block border-b border-[#E5E7EB] px-4 py-3.5 transition-colors last:border-0 hover:bg-[#F7F8FA]"
-                            : "block border-b border-border/60 px-4 py-3.5 transition-colors last:border-0 hover:bg-surface-2"
-                        }
-                      >
-                        <span className="flex items-center gap-2">
-                          <span className={light ? "font-medium text-[#0F1129]" : "font-medium text-fg"}>
-                            {child.label}
-                          </span>
-                          {child.tag && (
-                            <span
-                              className={
-                                light
-                                  ? "rounded-full bg-[#5E2EC0]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#5E2EC0]"
-                                  : "rounded-full bg-primary-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary"
-                              }
-                            >
-                              {child.tag}
+                <div
+                  className={`animate-dropdown absolute top-full pt-3 ${
+                    item.label === "Company" ? "right-0" : "left-0"
+                  }`}
+                >
+                  <div className="flex w-[600px] overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white shadow-[0_24px_60px_-20px_rgba(15,17,41,0.28)]">
+                    {/* link column */}
+                    <div className="flex-1 p-3">
+                      <p className="px-3 pb-1 pt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#9aa0aa]">
+                        {item.label}
+                      </p>
+                      <div className="flex flex-col">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpenMenu(null)}
+                            className="group/row rounded-xl px-3 py-2.5 transition-colors hover:bg-[#F7F8FA]"
+                          >
+                            <span className="flex items-center gap-2">
+                              <span className="text-sm font-semibold text-[#0F1129] transition-colors group-hover/row:text-[#5E2EC0]">
+                                {child.label}
+                              </span>
+                              {child.tag && (
+                                <span className="rounded-full bg-[#5E2EC0]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#5E2EC0]">
+                                  {child.tag}
+                                </span>
+                              )}
                             </span>
-                          )}
+                            {child.desc && (
+                              <span className="mt-0.5 block text-xs leading-relaxed text-[#6b7280]">
+                                {child.desc}
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* featured card — EX gradient mesh */}
+                    {item.featured && (
+                      <Link
+                        href={item.featured.href}
+                        onClick={() => setOpenMenu(null)}
+                        className="gradient-ex-mesh group/feat relative flex w-[210px] shrink-0 flex-col justify-between overflow-hidden p-5 text-white"
+                      >
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/70">
+                          {item.featured.eyebrow}
                         </span>
-                        {child.desc && (
-                          <span className={light ? "mt-1 block text-xs text-[#6b7280]" : "mt-1 block text-xs text-muted"}>
-                            {child.desc}
+                        <span className="mt-4 block">
+                          <span className="block text-[15px] font-bold leading-snug">
+                            {item.featured.title}
                           </span>
-                        )}
+                          <span className="mt-1.5 block text-xs leading-relaxed text-white/75">
+                            {item.featured.desc}
+                          </span>
+                        </span>
+                        <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-white">
+                          {item.featured.cta}
+                          <span className="transition-transform group-hover/feat:translate-x-0.5">→</span>
+                        </span>
                       </Link>
-                    ))}
+                    )}
                   </div>
                 </div>
               )}

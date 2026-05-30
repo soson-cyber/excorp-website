@@ -19,7 +19,19 @@ export const site = {
 } as const;
 
 export type NavChild = { label: string; href: string; tag?: string; desc?: string };
-export type NavItem = { label: string; href: string; children?: NavChild[] };
+export type NavFeatured = {
+  eyebrow: string;
+  title: string;
+  desc: string;
+  cta: string;
+  href: string;
+};
+export type NavItem = {
+  label: string;
+  href: string;
+  children?: NavChild[];
+  featured?: NavFeatured;
+};
 
 export const nav: NavItem[] = [
   {
@@ -39,6 +51,13 @@ export const nav: NavItem[] = [
         desc: "카메라·배경 합성·라이브 연출이 동시에 일어나는 영상 제작 기법",
       },
     ],
+    featured: {
+      eyebrow: "EX ORIGINAL",
+      title: "EXLINK",
+      desc: "현실과 가상을 실시간으로 잇는 올인원 XR 솔루션",
+      cta: "솔루션 보기",
+      href: "/solution/xr-solution",
+    },
   },
   {
     label: "Product",
@@ -63,6 +82,13 @@ export const nav: NavItem[] = [
         desc: "실시간 6DoF 고정밀 광학 트래킹 — Bliss / Fizz",
       },
     ],
+    featured: {
+      eyebrow: "PARTNER PRODUCTS",
+      title: "검증된 글로벌 XR 도구",
+      desc: "EX가 직접 연결·조율하는 파트너 제품군",
+      cta: "제품 전체 보기",
+      href: "/product",
+    },
   },
   { label: "XR Studio", href: "/xr-studio" },
   { label: "Work", href: "/work" },
@@ -74,6 +100,13 @@ export const nav: NavItem[] = [
       { label: "News & Insight", href: "/news", desc: "EX의 소식과 인사이트" },
       { label: "Career", href: "/careers", desc: "함께할 동료를 찾습니다" },
     ],
+    featured: {
+      eyebrow: "ABOUT EX",
+      title: "경험을 확장하다",
+      desc: "기술의 연결로 새로운 콘텐츠 경험을 만드는 사람들",
+      cta: "회사 소개",
+      href: "/about",
+    },
   },
 ];
 
