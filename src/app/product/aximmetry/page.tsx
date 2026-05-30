@@ -9,14 +9,14 @@ import { Gauge } from "@/components/motion/Gauge";
 export const metadata: Metadata = {
   title: "Aximmetry — 실시간 버추얼 프로덕션 플랫폼",
   description:
-    "Unreal Engine 통합 + 자체 노드 기반 엔진으로 방송급 실시간 가상 스튜디오·XR·AR를 만드는 Aximmetry. EX 공식 인증 리셀러.",
+    "Unreal Engine 완벽 호환 + 자체 노드 기반 엔진으로 최대 8K 실시간 가상 스튜디오·XR·AR를 만드는 Aximmetry (Broadcast & Film Edition). 무제한 SDI/NDI/SMPTE 2110, Free-D·MOS. EX 공식 인증 리셀러.",
 };
 
 const quickSpecs = [
-  { v: "2", l: "Render Engines (자체+Unreal)" },
-  { v: "Node", l: "기반 워크플로우" },
-  { v: "Broadcast", l: "실시간 고급 키어" },
-  { v: "Free", l: "Studio Limited 체험" },
+  { v: "8K", l: "실시간 렌더링" },
+  { v: "Node", l: "기반 그래픽 UI" },
+  { v: "Unlimited", l: "SDI/NDI/2110 I/O" },
+  { v: "Unreal", l: "완벽 호환" },
 ];
 
 const editions = [
@@ -32,25 +32,37 @@ const editions = [
   },
   {
     name: "Broadcast & Film",
-    for: "전문 스튜디오",
-    points: ["프로 카메라 트래킹", "무제한 SDI/NDI 입출력", "단일/멀티 PC 구성", "방송 제작 대응"],
+    for: "전문 스튜디오 (EX 공급)",
+    points: ["최대 8K 실시간", "무제한 SDI/NDI/2110", "Free-D·MOS 프로토콜", "분산 렌더링"],
   },
 ];
 
 const features = [
-  { t: "듀얼 엔진", d: "자체 렌더 엔진 + Unreal Engine을 함께 사용(DE), 또는 자체 엔진만(SE)." },
-  { t: "노드 기반 커스텀 로직", d: "노드 UI로 사용자 정의 로직을 직관적으로 구성." },
-  { t: "방송급 고급 키어", d: "머리카락·투명·접지 그림자까지 GPU 실시간 키잉." },
-  { t: "무제한 SDI/NDI", d: "Broadcast 에디션에서 무제한 입출력 포트 지원." },
-  { t: "프로 카메라 트래킹 연동", d: "RETracker 등 전문 트래킹 시스템과 연동." },
-  { t: "MIDI · DMX · OSC", d: "외부 장비 제어 및 가상 카메라·인터랙션." },
+  { t: "최대 8K 실시간 렌더링", d: "DLSS · Ray Tracing · RTXGI(실시간 전역 조명)로 8K까지 실시간 렌더." },
+  { t: "Unreal Engine 완벽 호환", d: "네이티브 Aximmetry 3D 엔진 + Unreal Engine 플러그인 내장." },
+  { t: "방송급 자체 크로마키어", d: "최고급 내장 크로마키어 + 3D Clean Plate, Light Wrap·실시간 그림자/반사/굴절." },
+  { t: "노드 기반 그래픽 UI", d: "복잡한 코딩 없이 시각적 노드(Node)로 그래픽 로직을 직관적으로 구성." },
+  { t: "무제한 방송 I/O", d: "SDI·NDI·SMPTE 2110(NMOS)·SRT 무제한, 타임코드·하드웨어 젠록 지원." },
+  { t: "방송 프로토콜 · 분산 렌더링", d: "Free-D·MOS(뉴스룸) 지원, 다중 PC 분산 렌더링·멀티 GPU 동기화." },
 ];
 
 const editionMatrix = [
   { label: "워터마크", values: ["없음", "없음", "없음"] },
-  { label: "입출력", values: ["NDI 1", "확장", "무제한 SDI/NDI"] },
+  { label: "입출력", values: ["NDI 1", "확장", "무제한 SDI/NDI/2110"] },
   { label: "카메라 트래킹", values: ["기본", "확장", "프로페셔널"] },
   { label: "엔진", values: ["DE / SE", "DE / SE", "DE / SE"] },
+];
+
+const bfSpecs = [
+  ["렌더링 / 엔진", "네이티브 Aximmetry 3D 엔진 + Unreal Engine 완벽 호환 (플러그인 내장)"],
+  ["해상도", "최대 8K 해상도 실시간 렌더링"],
+  ["그래픽", "DLSS · Ray Tracing · RTXGI (실시간 전역 조명)"],
+  ["컬러", "10-bit · HDR 입출력 · 색 공간(Color Space)·감마 처리"],
+  ["크로마키", "최고급 자체 내장 크로마키어 + 3D Clean Plate · Light Wrap"],
+  ["입출력", "무제한 SDI · NDI · SMPTE 2110(NMOS) · SRT I/O"],
+  ["동기화", "SDI 타임코드(Timecode) · 하드웨어 젠록(Genlock)"],
+  ["프로토콜", "Free-D 네이티브 · MOS(뉴스룸 통합)"],
+  ["확장성", "다중 PC 분산 렌더링(Renderer Node) · 멀티 GPU 동기화"],
 ];
 
 const useCases = ["방송 가상 스튜디오", "뉴스", "XR", "AR", "라이브"];
@@ -58,8 +70,8 @@ const useCases = ["방송 가상 스튜디오", "뉴스", "XR", "AR", "라이브
 const faqs = [
   { q: "DE와 SE의 차이는 무엇인가요?", a: "DE(Dual Engine)는 Aximmetry 자체 엔진과 Unreal Engine을 함께 사용하고, SE(Single Engine)는 자체 엔진만 사용합니다. Unreal 콘텐츠가 필요하면 DE를 선택합니다." },
   { q: "무료로 먼저 써볼 수 있나요?", a: "네. Studio Limited 에디션은 무료이며 워터마크가 없고 NDI 1포트·기본 트래킹을 제공합니다." },
-  { q: "카메라 트래킹을 연동할 수 있나요?", a: "Broadcast & Film 에디션에서 RETracker 등 전문 카메라 트래킹 시스템을 연동할 수 있습니다." },
-  { q: "단일/멀티 PC 구성이 가능한가요?", a: "Broadcast 환경은 단일 PC(무제한 SDI/NDI) 또는 멀티 PC 구성 모두 지원합니다." },
+  { q: "어느 정도 해상도까지 실시간으로 가능한가요?", a: "Broadcast & Film 에디션은 DLSS·Ray Tracing·RTXGI를 활용해 최대 8K 해상도 실시간 렌더링을 지원하며, 10-bit·HDR 입출력을 처리합니다." },
+  { q: "방송 시스템과 어떻게 연동되나요?", a: "무제한 SDI·NDI·SMPTE 2110(NMOS)·SRT 입출력과 타임코드·하드웨어 젠록을 지원하고, Free-D·MOS(뉴스룸) 프로토콜로 방송 환경에 통합됩니다." },
 ];
 
 export default function AximmetryPage() {
@@ -72,7 +84,7 @@ export default function AximmetryPage() {
         ]}
         tag="Authorised Reseller"
         title="Unreal Engine의 힘, 합리적인 가격에."
-        lead="자체 노드 기반 엔진과 Unreal Engine을 결합해 방송급 실시간 가상 스튜디오·XR·AR를 제작하는 버추얼 프로덕션 플랫폼."
+        lead="자체 노드 기반 엔진과 Unreal Engine을 결합해 최대 8K 실시간 가상 스튜디오·XR·AR를 제작하는 버추얼 프로덕션 컴포저."
       />
 
       {/* Quick spec bar */}
@@ -128,7 +140,8 @@ export default function AximmetryPage() {
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-muted">
-            모든 에디션은 <span className="text-fg">DE(자체+Unreal)</span> 또는 <span className="text-fg">SE(자체 엔진)</span> 중 선택할 수 있습니다.
+            EX는 전문 스튜디오용 <span className="text-fg">Broadcast &amp; Film Edition</span>을 공급하며, 모든 에디션은{" "}
+            <span className="text-fg">DE(자체+Unreal)</span> 또는 <span className="text-fg">SE(자체 엔진)</span> 중 선택할 수 있습니다.
           </p>
         </div>
       </section>
@@ -181,82 +194,102 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* Use Cases */}
+      {/* Broadcast & Film specifications */}
       <section className="container-ex py-section">
-        <SectionLabel index="04">Use Cases</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">활용 분야</h2>
-        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-5">
-          {useCases.map((u) => (
-            <div key={u} className="bg-surface p-6 text-center font-medium">
-              {u}
-            </div>
-          ))}
+        <div className="text-center">
+          <SectionLabel index="04">Specifications</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">Broadcast &amp; Film Edition 사양</h2>
+        </div>
+        <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
+          <dl>
+            {bfSpecs.map(([k, v]) => (
+              <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
+                <dt className="w-40 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">{k}</dt>
+                <dd className="text-sm text-fg">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Use Cases */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
-            <SectionLabel index="05">FAQ</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 전 자주 묻는 질문</h2>
-          </div>
-          <div className="mx-auto mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
-            {faqs.map((f) => (
-              <details key={f.q} className="group p-6">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
-                  {f.q}
-                  <span className="font-mono text-primary transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
-              </details>
+          <SectionLabel index="05">Use Cases</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">활용 분야</h2>
+          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-5">
+            {useCases.map((u) => (
+              <div key={u} className="bg-surface p-6 text-center font-medium">
+                {u}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* EX × Aximmetry */}
+      {/* FAQ */}
       <section className="container-ex py-section">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <SectionLabel index="06">EX × Aximmetry</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
-              EX는 Aximmetry <span className="text-gradient-ex">공식 인증 리셀러</span>입니다.
-            </h2>
-            <p className="mt-5 text-pretty text-muted">
-              Aximmetry Technologies의 공식 인증 리셀러로서 에디션 선택 컨설팅부터 셋업·교육·유지보수까지
-              도입 전 과정을 지원합니다.
-            </p>
-            <ul className="mt-7 flex flex-wrap gap-2">
-              {["도입 컨설팅", "셋업", "교육", "유지보수"].map((x) => (
-                <li key={x} className="rounded-full border border-border bg-surface px-3 py-1.5 text-sm text-fg">
-                  {x}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/contact" variant="accent">
-                제품 도입 문의 →
-              </Button>
-              <Button href="/contact" variant="secondary">
-                데모 영상 요청 →
-              </Button>
+        <div className="text-center">
+          <SectionLabel index="06">FAQ</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 전 자주 묻는 질문</h2>
+        </div>
+        <div className="mx-auto mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+          {faqs.map((f) => (
+            <details key={f.q} className="group p-6">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
+                {f.q}
+                <span className="font-mono text-primary transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* EX × Aximmetry */}
+      <section className="bg-surface/40">
+        <div className="container-ex py-section">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <SectionLabel index="07">EX × Aximmetry</SectionLabel>
+              <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
+                EX는 Aximmetry <span className="text-gradient-ex">공식 인증 리셀러</span>입니다.
+              </h2>
+              <p className="mt-5 text-pretty text-muted">
+                에디션 선택 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전
+                과정을 지원합니다.
+              </p>
+              <ul className="mt-7 flex flex-wrap gap-2">
+                {["도입 컨설팅", "셋업", "교육", "유지보수"].map((x) => (
+                  <li key={x} className="rounded-full border border-border bg-surface px-3 py-1.5 text-sm text-fg">
+                    {x}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button href="/contact" variant="accent">
+                  제품 도입 문의 →
+                </Button>
+                <Button href="/contact" variant="secondary">
+                  데모 영상 요청 →
+                </Button>
+              </div>
             </div>
+            <figure>
+              <div className="overflow-hidden rounded-2xl border border-border">
+                <Image
+                  src="/cert-aximmetry.png"
+                  alt="Aximmetry Certified Reseller 인증서 (Authorization Certificate — EX Corporation)"
+                  width={957}
+                  height={677}
+                  className="h-auto w-full"
+                />
+              </div>
+              <figcaption className="mt-3 text-center font-mono text-xs text-faint">
+                Aximmetry Authorization Certificate — EX Corporation
+              </figcaption>
+            </figure>
           </div>
-          <figure>
-            <div className="overflow-hidden rounded-2xl border border-border">
-              <Image
-                src="/cert-aximmetry.png"
-                alt="Aximmetry Certified Reseller 인증서 (Authorization Certificate — EX Corporation)"
-                width={957}
-                height={677}
-                className="h-auto w-full"
-              />
-            </div>
-            <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-              Aximmetry Authorization Certificate — EX Corporation
-            </figcaption>
-          </figure>
         </div>
       </section>
 

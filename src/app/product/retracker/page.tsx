@@ -7,32 +7,32 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
 
 export const metadata: Metadata = {
-  title: "RETracker — 6DoF 광학 카메라 트래킹",
+  title: "RETracker — 6-DOF 마커리스 카메라 트래킹",
   description:
-    "VR·AR·LED(ICVFX) 프로덕션을 위한 정밀 6DoF 광학 카메라 트래킹 RETracker (Bliss / Fizz). 오차 <1cm/10m, 500fps, 평생 라이선스. EX 공식 한국 총판.",
+    "천장 마커 없이 동작하는 6-DOF 마커리스 카메라 트래킹 RETracker. Bliss G2 센서 + Fizz 2 Pro 렌즈 인코더. 오차 <1cm/10m, 500fps IMU 퓨전, Unreal·Aximmetry 연동. EX 공식 한국 총판.",
 };
 
-// 한눈 사양 (buyers가 가장 먼저 보는 수치)
+// 한눈 사양 (buyers가 가장 먼저 보는 수치, 모두 1차 규격서 기준)
 const quickSpecs = [
   { v: "<1cm/10m", l: "트래킹 정확도" },
-  { v: "500fps", l: "핸드헬드 대응" },
-  { v: "6DoF", l: "광학 트래킹" },
-  { v: "Lifetime", l: "평생 라이선스" },
+  { v: "500fps", l: "IMU 센서 퓨전" },
+  { v: "6-DOF", l: "마커리스 트래킹" },
+  { v: "Marker-less", l: "천장 마커 불필요" },
 ];
 
 const lineup = [
   {
-    name: "RETracker Bliss",
+    name: "RETracker Bliss G2",
     role: "Tracking Sensor",
-    desc: "고정밀 6DoF 카메라 위치 추적 센서. vSLAM 3D 매핑과 스테레오 뎁스 엔진으로 카메라의 위치·방향을 실시간 추적합니다.",
+    desc: "Intel Movidius Myriad X VPU로 자체 vSLAM을 독립 연산하는 6-DOF 마커리스 카메라 트래킹 센서. 천장 마커 없이 카메라의 위치·방향을 실시간 추적합니다.",
     img: "/retracker-bliss.png",
     w: 409,
     h: 152,
   },
   {
-    name: "RETracker Fizz / Fizz II",
-    role: "Lens FIZ Reader",
-    desc: "렌즈의 포커스·아이리스·줌(FIZ) 데이터를 수집하는 고정밀 리더. 가상 카메라의 렌즈 왜곡·심도를 실사와 정합합니다.",
+    name: "RETracker Fizz 2 Pro",
+    role: "Lens FIZ Encoder",
+    desc: "렌즈의 Focus·Iris·Zoom(FIZ) 값을 물리적으로 추출하는 인코더. 가상 스튜디오의 심도·시야각에 실시간 반영해 실사와 정합합니다.",
     img: "/retracker-fizz.png",
     w: 297,
     h: 226,
@@ -40,38 +40,57 @@ const lineup = [
 ];
 
 const features = [
-  { t: "정밀 6DoF 트래킹", d: "오차 1cm/10m 미만의 위치 정확도로 카메라 이동을 실시간 추적." },
-  { t: "실내외 + 핸드헬드", d: "500fps 트래킹으로 야외·핸드헬드 촬영에서도 안정적." },
-  { t: "ICVFX 최적화", d: "LED 월·가상 배경과의 정밀 렌즈 매칭으로 자연스러운 합성." },
-  { t: "빠른 캘리브레이션", d: "World Pose 기능으로 반복 세팅 시간을 최소화." },
-  { t: "Unreal · Aximmetry 연동", d: "주요 VP 렌더 엔진과 실시간 호환." },
-  { t: "Genlock · Zero-jitter", d: "9축 IMU·칼만 필터 기반 안정적 동기화." },
+  { t: "100% 마커리스", d: "천장 마커가 필요 없는 마커리스 매핑. 공간 이동 범위 무제한." },
+  { t: "초정밀 6-DOF", d: "10m 이동 시 1cm 미만(<1cm) 오차, 초당 500fps IMU 센서 퓨전." },
+  { t: "자체 vSLAM 독립 연산", d: "Intel Movidius Myriad X VPU가 디바이스에서 직접 공간을 매핑." },
+  { t: "Jitter 제로 · 환경 적응", d: "Noise Rejection AI로 움직이는 물체를 필터링, 급격한 조명 변화에도 대응." },
+  { t: "FIZ 렌즈 데이터 정합", d: "Fizz 2 Pro가 렌즈 메타데이터를 추출해 가상 환경 심도를 실시간 반영." },
+  { t: "단일 USB-C · 핫슈 장착", d: "케이블 하나로 전원·데이터를 해결, 표준 카메라 핫슈로 간편 장착." },
 ];
 
-const specs = {
-  bliss: [
-    ["프로세서", "Intel Movidius Myriad X VPU"],
-    ["센서", "9축 IMU · 피시아이 스테레오 뎁스 · 13MP RGB"],
-    ["트래킹", "임베디드 vSLAM(3D 매핑) · 6DoF"],
-    ["정확도 / 속도", "오차 <1cm/10m · 최대 500fps"],
-    ["기능", "Genlock · World Pose · Zero-jitter · Kalman"],
-  ],
-  fizz: [
-    ["지원 렌즈", "Canon · Fujinon 서보(20핀) · LEMO · Cooke/Zeiss /i"],
-    ["인코더", "16-bit 고정밀 FIZ 인코더"],
-    ["데이터", "포커스 · 아이리스 · 줌 실시간 수집"],
-    ["연결", "UART · USB-C 인터페이스"],
-    ["옵션", "Genlock 애드온"],
-  ],
-};
+const specGroups = [
+  {
+    title: "Bliss G2 — Tracking Sensor",
+    rows: [
+      ["프로세서", "Intel Movidius Myriad X VPU (자체 vSLAM 독립 연산)"],
+      ["AI 엔진", "High-Speed CNN Engine + SGBM 뎁스 엔진"],
+      ["RGB 센서", "13MP (H.265·JPEG 하드웨어 압축, HDR)"],
+      ["IMU", "9축 고속 IMU (가속도·자이로·지자계, Low-drift)"],
+      ["정확도 / 속도", "10m당 <1cm 오차 · 500fps IMU 퓨전"],
+      ["연결 / 마운트", "단일 USB Type-C(전원+데이터)·UART · 표준 핫슈"],
+      ["프로토콜", "LiveLink Bliss · Free-D · OSC · FBX(with LTC)"],
+      ["연동 엔진", "Unreal 4.27~5.x · Aximmetry · Blender · Ventuz"],
+      ["부가", "HW Genlock 모듈 · WorldPose 자동 캘리브레이션"],
+    ],
+  },
+  {
+    title: "Fizz 2 Pro — Lens FIZ Encoder",
+    rows: [
+      ["FIZ 데이터", "렌즈 Focus·Iris·Zoom 물리 추출 → 심도·시야각 반영"],
+      ["프로토콜", "Unreal LiveLink · Free-D"],
+      ["디스플레이", "1.3″ OLED 스크린"],
+      ["규격 / 무게", "155 × 80 × 42 mm · 0.353 kg"],
+      ["전원", "5V DC (USB Type-C)"],
+      ["I/O", "12-pin LEMO · BNC(Genlock) · RJ45 LAN · USB-C · USB-A"],
+    ],
+  },
+  {
+    title: "Bliss Software — Data Link",
+    rows: [
+      ["역할", "Bliss G2 원시 공간 데이터를 엔진으로 송출"],
+      ["연동", "Aximmetry · Unreal Engine"],
+      ["전송", "방송 표준 Free-D 기반 실시간 로우 레이턴시"],
+    ],
+  },
+];
 
-const useCases = ["방송 · 라이브", "Virtual Production", "ICVFX (LED 월)", "야외 프로덕션"];
+const useCases = ["방송 가상 스튜디오", "Virtual Production", "ICVFX (LED 월)", "라이브 · 중계"];
 
 const faqs = [
-  { q: "어떤 렌즈를 지원하나요?", a: "Fizz/Fizz II가 Canon·Fujinon 서보 렌즈(20핀), LEMO, Cooke·Zeiss /i 데이터 렌즈를 지원합니다. 보유 렌즈 호환은 사전 확인해 드립니다." },
-  { q: "Bliss만으로 트래킹이 가능한가요?", a: "카메라 위치·방향(6DoF)은 Bliss로 추적합니다. 렌즈 FIZ 데이터(가상 배경 정합)가 필요하면 Fizz를 함께 구성합니다." },
-  { q: "Genlock이 꼭 필요한가요?", a: "방송·LED 환경의 정밀 동기화에는 Genlock 애드온을 권장하며, 용도에 따라 선택 구성합니다." },
-  { q: "어떤 엔진과 연동되나요?", a: "Unreal Engine, Aximmetry 등 주요 VP 렌더 엔진과 실시간 연동됩니다." },
+  { q: "마커나 트래킹 설비가 필요한가요?", a: "필요 없습니다. Bliss G2는 천장 마커가 필요 없는 100% 마커리스 방식으로, 별도 설비 없이 카메라에 장착해 공간을 직접 매핑합니다. 이동 범위 제한도 없습니다." },
+  { q: "트래킹 정확도는 어느 정도인가요?", a: "10m 이동 시 1cm 미만(<1cm)의 초정밀 오차이며, 초당 500fps IMU 센서 퓨전으로 핸드헬드·빠른 무빙에서도 안정적입니다." },
+  { q: "Bliss와 Fizz는 어떻게 함께 쓰나요?", a: "Bliss G2가 카메라의 위치·방향(6-DOF)을 추적하고, Fizz 2 Pro가 렌즈의 Focus·Iris·Zoom 값을 추출해 가상 배경의 심도·시야각을 실사와 정합합니다." },
+  { q: "어떤 엔진과 연동되나요?", a: "Unreal Engine(4.27~5.x), Aximmetry, Blender, Ventuz와 호환되며 LiveLink Bliss·Free-D·OSC·FBX(with LTC) 프로토콜을 지원합니다." },
 ];
 
 export default function RetrackerPage() {
@@ -82,9 +101,9 @@ export default function RetrackerPage() {
           { label: "Product", href: "/product" },
           { label: "RETracker", href: "/product/retracker" },
         ]}
-        tag="Korea Distributor · Rassi Engineering"
-        title="모든 카메라, 모든 환경에 대응하는 정밀 광학 트래커."
-        lead="VR·AR·LED(ICVFX) 프로덕션을 위한 실시간 6DoF 광학 카메라 트래킹. 평생 라이선스로 제공되며 고사양 VPU 기반으로 동작합니다."
+        tag="Korea Distributor"
+        title="천장 마커 없이, 카메라가 공간을 읽습니다."
+        lead="자체 vSLAM을 독립 연산하는 6-DOF 마커리스 카메라 트래킹. Bliss G2 센서와 Fizz 2 Pro 렌즈 인코더로 실사와 가상을 프레임 단위로 정합합니다."
       />
 
       {/* Quick spec bar */}
@@ -118,6 +137,9 @@ export default function RetrackerPage() {
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-6 max-w-4xl text-center text-sm text-muted">
+          여기에 <span className="text-fg">Bliss Software</span>가 더해져, 센서의 원시 공간 데이터를 Aximmetry·Unreal로 실시간 송출합니다.
+        </p>
       </section>
 
       {/* Key Features */}
@@ -144,16 +166,14 @@ export default function RetrackerPage() {
           <SectionLabel index="03">Specifications</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">상세 사양</h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
-          {(["bliss", "fizz"] as const).map((key) => (
-            <div key={key} className="overflow-hidden rounded-2xl border border-border bg-surface">
-              <div className="border-b border-border px-6 py-4 font-semibold">
-                {key === "bliss" ? "Bliss — Tracking Sensor" : "Fizz — Lens FIZ Reader"}
-              </div>
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 lg:grid-cols-3">
+          {specGroups.map((g) => (
+            <div key={g.title} className="overflow-hidden rounded-2xl border border-border bg-surface">
+              <div className="border-b border-border px-6 py-4 font-semibold">{g.title}</div>
               <dl>
-                {specs[key].map(([k, v]) => (
-                  <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-3.5 last:border-0 sm:flex-row sm:gap-4">
-                    <dt className="w-32 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">{k}</dt>
+                {g.rows.map(([k, v]) => (
+                  <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-3.5 last:border-0">
+                    <dt className="font-mono text-[11px] uppercase tracking-wider text-faint">{k}</dt>
                     <dd className="text-sm text-fg">{v}</dd>
                   </div>
                 ))}
@@ -207,8 +227,8 @@ export default function RetrackerPage() {
                 EX는 RETracker의 <span className="text-gradient-ex">공식 한국 총판</span>입니다.
               </h2>
               <p className="mt-5 text-pretty text-muted">
-                Rassi Engineering LTD와의 공식 파트너십을 바탕으로, 국내 최고 수준의 카메라 캘리브레이션
-                노하우와 기술 특허를 보유하고 도입·교육·기술 지원을 책임집니다.
+                하드웨어·소프트웨어 공급은 물론, 시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키로
+                도입 전 과정을 책임집니다.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["도입 컨설팅", "캘리브레이션", "교육", "기술 지원"].map((x) => (
@@ -237,7 +257,7 @@ export default function RetrackerPage() {
                 />
               </div>
               <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-                RETracker Certificate of Excellence — Rassi Engineering LTD
+                RETracker Certificate of Excellence — EX Corporation
               </figcaption>
             </figure>
           </div>

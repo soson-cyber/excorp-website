@@ -7,55 +7,85 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
 
 export const metadata: Metadata = {
-  title: "Moverse AI — 마커리스 모션캡처",
+  title: "Moverse AI — 마커리스 AI 모션캡처",
   description:
-    "마커·슈트 없이 AI 비전으로 실시간 캡처하는 마커리스 모션캡처 Moverse. 4대로 시작해 16대+로 확장. EX 공식 한국 대표·총판.",
+    "전용 수트·마커 없이 AI 비전 카메라와 로컬 네트워크만으로 다수 인원을 캡처하는 Moverse. 100% On-Premise(망분리 대응), 4~16대+ 확장, 대형 캡처 볼륨. EX 공식 한국 총판.",
 };
 
 const quickSpecs = [
-  { v: "Markerless", l: "마커·슈트 없음" },
-  { v: "Real-time", l: "실시간 캡처" },
-  { v: "4→16+", l: "카메라 스케일링" },
-  { v: "0", l: "캘리브레이션·슈트업 시간" },
+  { v: "Markerless", l: "마커·수트 불필요" },
+  { v: "On-Premise", l: "100% 로컬 · 망분리" },
+  { v: "4→16+", l: "카메라 확장" },
+  { v: "Low-Latency", l: "실시간 스트리밍" },
 ];
 
 const system = [
   {
-    name: "AI Motion Processor",
-    role: "Server",
-    desc: "AI 비전 알고리즘으로 카메라 영상에서 움직임을 추출·정합하는 처리 서버.",
+    name: "Moverse AI Software",
+    role: "Software",
+    desc: "AI 비전으로 스켈레톤을 추출하고 모션 데이터로 변환하는 엔진. 클라우드 통신을 전면 차단한 100% 로컬 연산(On-Premise) 방식.",
   },
   {
-    name: "Camera Array",
-    role: "4 → 16+ Units",
-    desc: "4대 린 셋업으로 시작해 더 큰 볼륨·다인원·고품질이 필요하면 16대 이상으로 확장.",
+    name: "Luxonis OAK-D W PoE",
+    role: "AI Depth Camera",
+    desc: "150° 초광각 산업용 AI 뎁스 카메라. 4 TOPS 온디바이스 연산과 IP65 방수·방진으로 4~16대까지 확장합니다.",
+  },
+  {
+    name: "AI 연산 서버 · PoE 허브",
+    role: "Compute & Network",
+    desc: "다중 카메라 비전 데이터를 취합해 3D 좌표를 병합 연산하는 로컬 서버와, 전원·데이터를 함께 공급하는 기가비트 PoE+ 스위치 허브.",
   },
 ];
 
 const features = [
-  { t: "마커리스", d: "웨어러블·마커·슈트 없이 그대로 캡처." },
-  { t: "실시간 캡처", d: "AI가 움직임을 실시간으로 읽어 즉시 활용." },
-  { t: "확장형 카메라 어레이", d: "4대→16대+ 확장으로 볼륨·인원·품질을 조절." },
-  { t: "셋업 시간 제거", d: "캘리브레이션·슈트업 시간을 없애 제작 시간 단축." },
-  { t: "프로덕션급 데이터", d: "정제된 고품질 모션 데이터를 즉시 산출." },
-  { t: "AI 기반 정밀 처리", d: "AI 알고리즘으로 정확도와 사용 편의성 확보." },
+  { t: "마커리스 · 수트 불필요", d: "전용 수트·마커 부착 없이 일반인도 즉시 캡처, 캘리브레이션 시간 제로화." },
+  { t: "100% 로컬 (On-Premise)", d: "클라우드 통신을 전면 차단해 공공·국방 망분리 환경에 완벽 대응." },
+  { t: "다중 카메라 확장", d: "최소 4대에서 최대 16대 이상의 다중 카메라 환경으로 확장." },
+  { t: "대형 캡처 볼륨", d: "4m×4m에서 10m×10m 이상의 대형 공간을 커버." },
+  { t: "초저지연 다이렉트 스트리밍", d: "Unreal Engine 등 주요 3D 솔루션으로 Low-Latency 스트리밍." },
+  { t: "산업용 AI 뎁스 비전", d: "4 TOPS 온디바이스 연산·12MP·150° 초광각·IP65 방수방진 카메라." },
 ];
 
-const specs = [
-  ["구성", "AI Motion Processor + 카메라 어레이"],
-  ["카메라", "4대(린 셋업) ~ 16대+ (확장 시 볼륨·인원·품질 ↑)"],
-  ["캡처 방식", "마커리스 · 슈트 불필요 · 실시간"],
-  ["셋업", "캘리브레이션·슈트업 시간 제거"],
-  ["출력", "프로덕션급 모션 데이터 (FBX 등) · 재가공 가능"],
+const specGroups = [
+  {
+    title: "Moverse AI Software",
+    rows: [
+      ["보안 / 구동", "클라우드 차단 100% 로컬 연산(On-Premise) · 망분리 대응"],
+      ["편의성", "마커·수트 불필요 · 캘리브레이션 제로화"],
+      ["확장성", "최소 4대 ~ 최대 16대+ 다중 카메라"],
+      ["캡처 볼륨", "4m×4m ~ 10m×10m 이상"],
+      ["엔진 연동", "Unreal Engine 등 Low-Latency 다이렉트 스트리밍"],
+    ],
+  },
+  {
+    title: "Luxonis OAK-D W PoE",
+    rows: [
+      ["연산 / 메모리", "4 TOPS 온디바이스(1.4 TOPS RVC2 NN) · 16GB eMMC"],
+      ["Color 센서", "12MP(4032×3040) SONY IMX378 · AF 8cm~∞"],
+      ["Depth 센서", "1MP×2 OmniVision OV9282 · 150° DFOV 초광각"],
+      ["깊이 / 프레임", "75mm Baseline 40cm~6m(<2%) · 60~120 FPS"],
+      ["내구 / 연결", "IP65 방수방진 · 산업용 M12 PoE 기가비트"],
+      ["규격", "111 × 40 × 31.3 mm · 184g (1/4″·VESA)"],
+    ],
+  },
+  {
+    title: "AI 연산 서버",
+    rows: [
+      ["역할", "다중 카메라 비전 데이터 취합 → 3D 좌표 병합 연산"],
+      ["CPU", "Intel Core i5 / i7 / i9 이상"],
+      ["GPU", "NVIDIA RTX 3000 ~ 5000 시리즈 이상"],
+      ["네트워크", "기가비트 PoE+ 스위치 허브 (전원+데이터)"],
+    ],
+  },
 ];
 
-const useCases = ["게임 개발", "XR / VP", "메타버스", "교육", "스포츠·재활"];
+const useCases = ["게임 · 애니메이션", "XR / VP", "행동 분석 · 연구", "스포츠 · 재활", "공공 · 국방"];
 
 const faqs = [
-  { q: "카메라가 몇 대 필요한가요?", a: "4대 린 셋업으로 시작할 수 있고, 더 큰 볼륨·다인원·고품질이 필요하면 16대 이상으로 확장합니다." },
-  { q: "실시간 라이브 연동이 되나요?", a: "실시간 캡처를 지원하여 라이브 연동과 배치(후처리) 워크플로우 모두 가능합니다." },
-  { q: "마커나 슈트가 필요한가요?", a: "필요 없습니다. 마커·슈트 착용과 캘리브레이션 시간을 없애 셋업을 대폭 단축합니다." },
-  { q: "어떤 데이터로 출력되나요?", a: "프로덕션에 바로 쓸 수 있는 정제된 모션 데이터(FBX 등)로 추출되며 재가공도 지원합니다." },
+  { q: "마커나 슈트가 필요한가요?", a: "필요 없습니다. 전용 수트·마커 부착 없이 AI 비전 카메라만으로 캡처하며, 일반인도 별도 착용·캘리브레이션 없이 즉시 사용할 수 있습니다." },
+  { q: "외부망 없이 폐쇄 환경에서 쓸 수 있나요?", a: "네. 클라우드 통신을 전면 차단한 100% 로컬 연산(On-Premise) 방식이라, 공공·국방 등 망분리 환경에 완벽히 대응합니다." },
+  { q: "카메라는 몇 대가 필요한가요?", a: "최소 4대로 시작해 최대 16대 이상까지 확장할 수 있으며, 캡처 볼륨은 4m×4m에서 10m×10m 이상까지 커버합니다." },
+  { q: "실시간 라이브 연동이 되나요?", a: "Unreal Engine 등 주요 3D 솔루션으로 초저지연(Low-Latency) 다이렉트 스트리밍을 지원해 라이브 연동과 후처리 워크플로우 모두 가능합니다." },
 ];
 
 export default function MoversePage() {
@@ -67,8 +97,8 @@ export default function MoversePage() {
           { label: "Moverse AI", href: "/product/moverse" },
         ]}
         tag="Korea Distributor"
-        title="센서 없이, 마커 없이. AI가 움직임을 읽습니다."
-        lead="웨어러블이 사라진 마커리스 모션캡처. AI 비전 기반으로 셋업 시간을 0에 가깝게 줄여 물리 퍼포먼스에서 디지털 에셋까지 최단 경로로 연결합니다."
+        title="수트도, 마커도 없이. AI가 움직임을 읽습니다."
+        lead="AI 비전 카메라와 로컬 네트워크만으로 다수 인원을 캡처하는 차세대 마커리스 모션캡처. 클라우드 없이 100% 로컬로 동작해 폐쇄 환경에서도 안전합니다."
       />
 
       {/* Quick spec bar */}
@@ -84,13 +114,13 @@ export default function MoversePage() {
         </div>
       </section>
 
-      {/* System & Scaling */}
+      {/* System */}
       <section className="container-ex py-section">
         <div className="text-center">
           <SectionLabel index="01">System</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">구성과 확장</h2>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">구성</h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
           {system.map((s) => (
             <div key={s.name} className="rounded-2xl border border-border bg-surface p-7">
               <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{s.role}</span>
@@ -108,7 +138,7 @@ export default function MoversePage() {
             <SectionLabel index="02">Key Features</SectionLabel>
             <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">주요 기능</h2>
           </div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.t} className="rounded-2xl border border-border bg-surface p-6">
                 <h3 className="font-semibold">{f.t}</h3>
@@ -125,15 +155,20 @@ export default function MoversePage() {
           <SectionLabel index="03">Specifications</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">상세 사양</h2>
         </div>
-        <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
-          <dl>
-            {specs.map(([k, v]) => (
-              <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
-                <dt className="w-32 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">{k}</dt>
-                <dd className="text-sm text-fg">{v}</dd>
-              </div>
-            ))}
-          </dl>
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 lg:grid-cols-3">
+          {specGroups.map((g) => (
+            <div key={g.title} className="overflow-hidden rounded-2xl border border-border bg-surface">
+              <div className="border-b border-border px-6 py-4 font-semibold">{g.title}</div>
+              <dl>
+                {g.rows.map(([k, v]) => (
+                  <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-3.5 last:border-0">
+                    <dt className="font-mono text-[11px] uppercase tracking-wider text-faint">{k}</dt>
+                    <dd className="text-sm text-fg">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -178,14 +213,14 @@ export default function MoversePage() {
             <div>
               <SectionLabel index="06">EX × Moverse</SectionLabel>
               <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
-                EX는 Moverse Capture의 <span className="text-gradient-ex">공식 한국 대표·총판</span>입니다.
+                EX는 Moverse의 <span className="text-gradient-ex">공식 한국 대표·총판</span>입니다.
               </h2>
               <p className="mt-5 text-pretty text-muted">
-                Moverse Private Company와의 공식 파트너십을 바탕으로, 도입 검토부터 시스템 셋업·교육·기술
-                지원까지 국내 도입 전 과정을 책임집니다.
+                하드웨어·소프트웨어 공급은 물론, 시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키로
+                국내 도입 전 과정을 책임집니다.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
-                {["도입 컨설팅", "시스템 셋업", "교육", "기술 지원"].map((x) => (
+                {["도입 컨설팅", "시스템 셋업", "보안 세팅", "교육·기술 지원"].map((x) => (
                   <li key={x} className="rounded-full border border-border bg-surface px-3 py-1.5 text-sm text-fg">
                     {x}
                   </li>
