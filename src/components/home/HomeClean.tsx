@@ -153,10 +153,10 @@ const whatWeDo = [
 function WhatWeDo() {
   return (
     <section className="bg-[#F7F8FA]">
-      <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
+      <div className="mx-auto max-w-[1280px] px-6 py-28 lg:px-20 lg:py-36">
         <Reveal>
           <SectionLabel>— [ 01 ] WHAT WE DO</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-[#0F1129] lg:text-4xl">
+          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
             솔루션부터 스튜디오까지, 하나의 흐름으로
           </h2>
           <p className="mt-4 max-w-2xl text-base text-[#51545E] lg:text-lg">
@@ -165,11 +165,12 @@ function WhatWeDo() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-12 flex flex-col gap-6 lg:flex-row">
-          {whatWeDo.map((card) => (
-            <div
+        <div className="mt-12 flex flex-col gap-6 lg:flex-row">
+          {whatWeDo.map((card, i) => (
+            <Reveal
               key={card.index}
-              className="flex flex-1 flex-col rounded-2xl border border-[#E5E7EB] bg-white p-7"
+              delay={i * 90}
+              className="flex flex-1 flex-col rounded-2xl border border-[#E5E7EB] bg-white p-7 shadow-soft"
             >
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-[#5E2EC0]">
@@ -188,9 +189,9 @@ function WhatWeDo() {
               <ArrowLink href={card.href} className="mt-6">
                 자세히
               </ArrowLink>
-            </div>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -291,7 +292,7 @@ function Exlink() {
       <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-28">
         <Reveal>
           <SectionLabel>— [ 02 ] CORE SOLUTION</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F1129] lg:text-4xl">
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
             EXLINK — 흩어진 XR을 하나로 묶다
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-[#51545E] lg:text-lg">
@@ -324,7 +325,7 @@ function Exlink() {
 function FeaturedCase() {
   return (
     <section className="bg-[#F7F8FA]">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-[55fr_45fr] lg:gap-16 lg:px-20 lg:py-28">
+      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-28 lg:grid-cols-[55fr_45fr] lg:gap-16 lg:px-20 lg:py-36">
         {/* image (first on mobile) */}
         <Reveal>
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#E5E7EB]">
@@ -344,7 +345,7 @@ function FeaturedCase() {
         {/* copy */}
         <Reveal>
           <SectionLabel>— [ CASE ] EXLINK 구축사례</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F1129] lg:text-4xl">
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
             실시간 XR 방송 시스템을 하나로 통합
           </h2>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -424,7 +425,7 @@ function PartnerProducts() {
       <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
         <Reveal>
           <SectionLabel>— [ 03 ] PARTNER PRODUCTS</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-[#0F1129] lg:text-4xl">
+          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
             검증된 글로벌 XR 기술, 국내에 연결합니다
           </h2>
           <p className="mt-4 max-w-2xl text-base text-[#51545E] lg:text-lg">
@@ -451,11 +452,12 @@ function PartnerProducts() {
           </div>
         </Reveal>
 
-        <Reveal className="mt-12 flex flex-col gap-6 lg:flex-row">
-          {partnerProducts.map((p) => (
-            <div
+        <div className="mt-12 flex flex-col gap-6 lg:flex-row">
+          {partnerProducts.map((p, i) => (
+            <Reveal
               key={p.name}
-              className="flex flex-1 flex-col rounded-2xl border border-[#E5E7EB] bg-white p-7"
+              delay={i * 90}
+              className="flex flex-1 flex-col rounded-2xl border border-[#E5E7EB] bg-white p-7 shadow-soft"
             >
               <div className="flex items-center justify-between gap-4">
                 <MediaBlank
@@ -475,9 +477,9 @@ function PartnerProducts() {
               <ArrowLink href={p.href} className="mt-6">
                 자세히
               </ArrowLink>
-            </div>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -526,7 +528,7 @@ function XrStudio() {
 
         <Reveal>
           <SectionLabel>— [ 04 ] XR STUDIO</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-[#0F1129] lg:text-4xl">
+          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-[#0F1129] lg:text-5xl">
             촬영이 곧 완성이 되는
             <br />
             실시간 XR 스튜디오
@@ -619,7 +621,7 @@ function Cta() {
               <span className="h-0.5 w-7 bg-[#A78BF0]" aria-hidden="true" />
               START A PROJECT
             </span>
-            <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white lg:text-4xl">
+            <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
               당신의 다음 콘텐츠를
               <br />
               실시간 XR로 시작하세요
