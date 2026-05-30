@@ -11,7 +11,7 @@ type Payload = {
 // 유형별 수신자 라우팅 (도메인 메일 확정 시 교체)
 const ROUTING: Record<string, string> = {
   "솔루션 도입": "sales@excorp.kr",
-  "스튜디오 대관": "booking@excorp.kr",
+  "스튜디오 제작": "booking@excorp.kr",
   "일반 문의": "info@excorp.kr",
 };
 

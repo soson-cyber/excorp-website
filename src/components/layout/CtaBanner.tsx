@@ -17,7 +17,7 @@ export function CtaBanner() {
             할지 모르시겠다면?
           </h2>
           <p className="mt-4 max-w-xl text-muted">
-            지금 바로 EX 전문가와 상담해보세요. 솔루션 도입부터 스튜디오 대관까지, 콘텐츠 제작의
+            지금 바로 EX 전문가와 상담해보세요. 솔루션 도입부터 스튜디오 제작까지, 콘텐츠 제작의
             모든 여정을 함께 설계합니다.
           </p>
         </div>
@@ -25,8 +25,8 @@ export function CtaBanner() {
           <Button href="/contact" variant="accent">
             전문가 상담 신청 →
           </Button>
-          <Button href="/xr-studio#apply" variant="secondary">
-            스튜디오 대관 →
+          <Button href="/xr-studio" variant="secondary">
+            스튜디오 둘러보기 →
           </Button>
           <Button href="/support" variant="secondary">
             자료 다운로드 →

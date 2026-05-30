@@ -8,12 +8,12 @@ import { locations, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "함께 만들어 갈 이야기를 들려주세요. 솔루션 도입·스튜디오 대관·일반 문의 — EX에 문의하기.",
+    "함께 만들어 갈 이야기를 들려주세요. 솔루션 도입·스튜디오 제작·일반 문의 — EX에 문의하기.",
 };
 
 const inquiries = [
   { tag: "Solution", title: "솔루션 도입", desc: "EXLINK·제품 도입 검토 및 견적 상담" },
-  { tag: "Studio", title: "스튜디오 대관", desc: "EX XR Studio 대관 및 제작 협의" },
+  { tag: "Studio", title: "스튜디오 제작", desc: "EX XR Studio 콘텐츠 제작 협의" },
   { tag: "General", title: "일반 문의", desc: "채용·취재·파트너십 등 기타 문의" },
 ];
 

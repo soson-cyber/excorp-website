@@ -29,22 +29,22 @@ const lineup = [
   {
     badge: "Korea Distributor",
     title: "Moverse AI",
-    copy: "센서 없이 동작하는 AI 기반 마커리스 모션 인식 솔루션",
+    copy: "전용 수트·마커 없이 동작하는 AI 마커리스 모션캡처 (100% On-Premise)",
     meta: "Markerless MoCap",
     href: "/product/moverse",
   },
   {
     badge: "Korea Distributor",
     title: "RETracker",
-    copy: "실시간 6DoF 기반 고정밀 광학 트래킹 — Bliss / Fizz",
-    meta: "6DoF Optical Tracker",
+    copy: "천장 마커 없는 6-DOF 마커리스 카메라 트래킹 — Bliss G2 / Fizz 2 Pro",
+    meta: "6-DOF Marker-less",
     href: "/product/retracker",
   },
 ];
 
 const compare = [
-  { label: "역할", values: ["실시간 합성·렌더", "마커리스 모션캡처", "6DoF 카메라 트래킹"] },
-  { label: "핵심", values: ["Unreal 기반 노드", "AI 비전 · 150ms 미만", "평생 라이선스 · VPU"] },
+  { label: "역할", values: ["실시간 합성·렌더", "마커리스 모션캡처", "6-DOF 카메라 트래킹"] },
+  { label: "핵심", values: ["Unreal 호환 · 최대 8K", "마커리스 · On-Premise", "6-DOF · <1cm/10m"] },
   { label: "EX 자격", values: ["공식 인증 리셀러", "공식 한국 총판", "공식 한국 총판"] },
 ];
 
@@ -66,11 +66,9 @@ export default function ProductPage() {
 
       {/* §01 Why EX as partner */}
       <section className="container-ex py-section">
-        <div className="text-center">
-          <SectionLabel index="01">Why EX</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 EX를 통해 도입하나요</h2>
-        </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
+        <SectionLabel index="01">Why EX</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 EX를 통해 도입하나요</h2>
+        <div className="mt-12 grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
           {whyEx.map((c, i) => (
             <div key={c.t} className="flex gap-5 border-t border-border pt-6">
               <span className="font-mono text-2xl font-bold text-faint">0{i + 1}</span>
@@ -147,11 +145,9 @@ export default function ProductPage() {
       {/* §04 Certifications strip */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
-            <SectionLabel index="04">Authorisation</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">공식 총판·리셀러 인증</h2>
-            <p className="mt-4 text-muted">공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다.</p>
-          </div>
+          <SectionLabel index="04">Authorisation</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">공식 총판·리셀러 인증</h2>
+          <p className="mt-4 text-muted">공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다.</p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {certs.map((c) => (
               <Link

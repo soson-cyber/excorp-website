@@ -86,11 +86,9 @@ export default function SupportPage() {
       {/* §02 FAQ */}
       <section id="faq" className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
-            <SectionLabel index="01">FAQ</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">자주 묻는 질문</h2>
-          </div>
-          <div className="mx-auto mt-12 max-w-3xl space-y-10">
+          <SectionLabel index="01">FAQ</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">자주 묻는 질문</h2>
+          <div className="mt-12 max-w-3xl space-y-10">
             {faqGroups.map((g) => (
               <div key={g.cat}>
                 <h3 className="font-mono text-xs uppercase tracking-wider text-primary">{g.cat}</h3>
@@ -178,10 +176,10 @@ export default function SupportPage() {
       </section>
 
       {/* §05 Quick Inquiry */}
-      <section className="container-ex py-section text-center">
+      <section className="container-ex py-section">
         <SectionLabel index="04">Quick Inquiry</SectionLabel>
         <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">무엇을 도와드릴까요?</h2>
-        <div className="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-2">
+        <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
           {inquiryTypes.map((t) => (
             <span key={t} className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-fg">
               {t}
