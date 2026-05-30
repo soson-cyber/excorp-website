@@ -109,8 +109,6 @@ export const footerColumns: { title: string; links: { label: string; href: strin
     links: [
       { label: "Contact", href: "/contact" },
       { label: "Support", href: "/support" },
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Use", href: "/terms" },
     ],
   },
 ];
