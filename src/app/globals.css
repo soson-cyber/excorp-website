@@ -190,66 +190,57 @@ body {
 }
 
 /*
-  Custom pointer follower (CustomCursor.tsx). Active only when JS adds
-  `.has-custom-cursor` to <html> (fine pointer + motion allowed).
+  Trailing hexagon ring (CustomCursor.tsx) — added ON TOP of the native cursor.
+  Active only when JS adds `.has-custom-cursor` to <html> (fine pointer).
 */
-.ex-cursor-dot,
 .ex-cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 200;
-  pointer-events: none;
-  border-radius: 9999px;
-  transform: translate(-100px, -100px);
-  will-change: transform;
-}
-.ex-cursor-dot {
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  background: var(--color-primary);
-}
-.ex-cursor-ring {
   width: 36px;
   height: 36px;
   margin: -18px 0 0 -18px;
-  border: 2px solid rgba(94, 46, 192, 0.7);
+  pointer-events: none;
+  color: rgba(94, 46, 192, 0.7);
+  transform: translate(-100px, -100px);
+  will-change: transform;
   transition:
     width 0.2s var(--ease-ex),
     height 0.2s var(--ease-ex),
     margin 0.2s var(--ease-ex),
-    background-color 0.2s var(--ease-ex),
-    border-color 0.2s var(--ease-ex),
+    color 0.2s var(--ease-ex),
     opacity 0.25s ease;
+}
+.ex-cursor-hex {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.ex-cursor-hex polygon {
+  fill: none;
+  transition: fill 0.2s var(--ease-ex);
 }
 .ex-cursor-ring.is-hover {
   width: 56px;
   height: 56px;
   margin: -28px 0 0 -28px;
-  background: rgba(94, 46, 192, 0.08);
-  border-color: rgba(94, 46, 192, 0.9);
+  color: rgba(94, 46, 192, 0.95);
+}
+.ex-cursor-ring.is-hover .ex-cursor-hex polygon {
+  fill: rgba(94, 46, 192, 0.08);
 }
 .ex-cursor-ring.is-down {
-  width: 26px;
-  height: 26px;
-  margin: -13px 0 0 -13px;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
 }
-/* reduced-motion: keep the cursor but drop trailing/scale transitions */
+/* reduced-motion: keep the ring but drop trailing/scale transitions */
 html.cursor-reduce .ex-cursor-ring {
   transition: opacity 0.2s ease;
 }
-/* hide native cursor while custom is active — but keep it on form fields */
-html.has-custom-cursor * {
-  cursor: none !important;
-}
-html.has-custom-cursor input,
-html.has-custom-cursor textarea,
-html.has-custom-cursor select {
-  cursor: auto !important;
-}
 @media (pointer: coarse) {
-  .ex-cursor-dot,
   .ex-cursor-ring {
     display: none;
   }
