@@ -44,7 +44,7 @@ function Glyph({ kind, small }: { kind: "image" | "play"; small?: boolean }) {
         height={size}
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#7c8090"
+        stroke="#6b7280"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -61,7 +61,7 @@ function Glyph({ kind, small }: { kind: "image" | "play"; small?: boolean }) {
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#7c8090"
+      stroke="#6b7280"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -88,7 +88,7 @@ export function MediaBlank({
       className={`relative overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#F2F4F7] ${className}`}
     >
       {tag && (
-        <span className="absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-wider text-[#7C8090]">
+        <span className="absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
           {tag}
         </span>
       )}
@@ -107,7 +107,7 @@ export function MediaBlank({
           </span>
         )}
         {sublabel && (
-          <span className="font-mono text-[10px] tracking-wide text-[#7C8090]">
+          <span className="font-mono text-[10px] tracking-wide text-[#6b7280]">
             {sublabel}
           </span>
         )}

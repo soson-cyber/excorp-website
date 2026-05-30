@@ -118,7 +118,7 @@ function EmptyState({ onReset }: { onReset: () => void }) {
         height="40"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#7C8090"
+        stroke="#6b7280"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -128,7 +128,7 @@ function EmptyState({ onReset }: { onReset: () => void }) {
         <path d="M3 9h18" />
         <path d="M9 21V9" />
       </svg>
-      <p className="mt-4 text-sm text-[#7C8090]">준비 중인 카테고리입니다</p>
+      <p className="mt-4 text-sm text-[#6b7280]">준비 중인 카테고리입니다</p>
       <button
         type="button"
         onClick={onReset}
@@ -175,7 +175,7 @@ export function WorkGallery() {
         })}
       </div>
 
-      <p className="mt-4 font-mono text-xs uppercase tracking-wider text-[#7C8090]">
+      <p className="mt-4 font-mono text-xs uppercase tracking-wider text-[#6b7280]">
         {filtered.length}개 프로젝트
       </p>
 

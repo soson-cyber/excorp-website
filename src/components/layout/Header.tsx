@@ -55,7 +55,7 @@ export function Header() {
               >
                 {item.label}
                 {item.children && (
-                  <span className={light ? "text-[10px] text-[#7C8090]" : "text-[10px] text-faint"}>▾</span>
+                  <span className={light ? "text-[10px] text-[#6b7280]" : "text-[10px] text-faint"}>▾</span>
                 )}
               </Link>
 
@@ -95,7 +95,7 @@ export function Header() {
                           )}
                         </span>
                         {child.desc && (
-                          <span className={light ? "mt-1 block text-xs text-[#7C8090]" : "mt-1 block text-xs text-muted"}>
+                          <span className={light ? "mt-1 block text-xs text-[#6b7280]" : "mt-1 block text-xs text-muted"}>
                             {child.desc}
                           </span>
                         )}
@@ -109,7 +109,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <span className={light ? "font-mono text-xs text-[#7C8090]" : "font-mono text-xs text-faint"}>
+          <span className={light ? "font-mono text-xs text-[#6b7280]" : "font-mono text-xs text-faint"}>
             KO / EN
           </span>
           {light ? (

@@ -226,7 +226,7 @@ body {
   --ex-pale: #f2f4f7; /* placeholder fill */
   --ex-ink: #0f1129; /* headings + primary text */
   --ex-body: #51545e; /* paragraph text */
-  --ex-muted: #7c8090; /* labels, captions */
+  --ex-muted: #6b7280; /* labels, captions */
   --ex-line: #e5e7eb; /* borders */
   --ex-accent: #5e2ec0; /* the ONLY brand color — use sparingly */
   --ex-green: #16a34a; /* live / chroma dot */

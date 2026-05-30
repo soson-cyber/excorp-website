@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { SectionLabel } from "@/components/home/SectionLabel";
+import { CountUp } from "@/components/motion/CountUp";
 import Hero3DStage from "@/components/three/Hero3DStage";
 
 /*
@@ -85,12 +86,17 @@ function Hero() {
             <br />
             <span className="text-[#5E2EC0]">확장</span>하다
           </h1>
-          <p className="mt-7 text-lg text-[#51545E]">
-            실시간 XR 콘텐츠 제작의 모든 것을 하나로.
+          <p className="mt-7 max-w-md text-xl leading-relaxed text-[#51545E]">
+            실시간 XR · 버추얼 프로덕션 스튜디오와 솔루션.
+            <br className="hidden sm:block" />
+            콘텐츠 제작의 처음과 끝을 하나로 연결합니다.
           </p>
           <div className="mt-9">
             <PrimaryButton href="/contact">프로젝트 시작 →</PrimaryButton>
           </div>
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-wider text-[#6b7280]">
+            EXLINK · 파트너 제품 유통 · 하남 XR 스튜디오
+          </p>
         </div>
 
         {/* right — 3D stage */}
@@ -100,7 +106,7 @@ function Hero() {
           </div>
 
           {/* HUD framing */}
-          <span className="absolute left-5 top-4 z-10 font-mono text-[10px] uppercase tracking-wider text-[#7C8090]">
+          <span className="absolute left-5 top-4 z-10 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
             MEDIA · 3D / WebGL
           </span>
           <CornerTicks />
@@ -108,7 +114,7 @@ function Hero() {
             <span className="font-mono text-xs tracking-wide text-[#0F1129]">
               3D ANIMATION
             </span>
-            <span className="font-mono text-[10px] tracking-wide text-[#7C8090]">
+            <span className="font-mono text-[10px] tracking-wide text-[#6b7280]">
               WebGL · Realtime XR
             </span>
           </div>
@@ -169,7 +175,7 @@ function WhatWeDo() {
                 <span className="text-sm font-bold text-[#5E2EC0]">
                   {card.index}
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#7C8090]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
                   {card.tag}
                 </span>
               </div>
@@ -215,7 +221,7 @@ function DiagramNode({
       <div className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#0F1129]">
         {title}
       </div>
-      <div className="mt-0.5 text-[11px] text-[#7C8090]">{sub}</div>
+      <div className="mt-0.5 text-[11px] text-[#6b7280]">{sub}</div>
     </div>
   );
 }
@@ -224,7 +230,7 @@ function ExlinkDiagram() {
   return (
     <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5 lg:p-7">
       <div className="mb-4 flex items-center justify-between border-b border-[#E5E7EB] pb-3">
-        <span className="font-mono text-[10px] uppercase tracking-wider text-[#7C8090]">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
           EXLINK ARCHITECTURE
         </span>
         <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[#16A34A]">
@@ -400,10 +406,10 @@ function CredentialChip({ name, role }: { name: string; role?: string }) {
       <span className="font-medium text-[#0F1129]">{name}</span>
       {role ? (
         <>
-          <span aria-hidden="true" className="text-[#7C8090]">
+          <span aria-hidden="true" className="text-[#6b7280]">
             ·
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-wider text-[#7C8090]">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
             {role}
           </span>
         </>
@@ -429,7 +435,7 @@ function PartnerProducts() {
 
         {/* credential strip */}
         <Reveal className="mt-10">
-          <p className="text-[11px] uppercase tracking-wider text-[#7C8090]">
+          <p className="text-[11px] uppercase tracking-wider text-[#6b7280]">
             공식 파트너 · OFFICIAL PARTNERS
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -458,7 +464,7 @@ function PartnerProducts() {
                   compact
                   className="h-14 w-14 flex-none"
                 />
-                <span className="rounded-full bg-[#F2F4F7] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-[#7C8090]">
+                <span className="rounded-full bg-[#F2F4F7] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
                   {p.role}
                 </span>
               </div>
@@ -549,10 +555,10 @@ function XrStudio() {
 /* ── §05 BY THE NUMBERS ──────────────────────────────────────────────── */
 
 const stats = [
-  { value: "6+", label: "기술 특허" },
-  { value: "3", label: "글로벌 파트너" },
-  { value: "4", label: "제품 인증" },
-  { value: "3", label: "대학 MOU" },
+  { value: 6, suffix: "+", label: "기술 특허" },
+  { value: 3, suffix: "", label: "글로벌 파트너" },
+  { value: 4, suffix: "", label: "제품 인증" },
+  { value: 3, suffix: "", label: "대학 MOU" },
 ];
 
 function Numbers() {
@@ -565,10 +571,12 @@ function Numbers() {
         <Reveal className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 lg:divide-x lg:divide-[#E5E7EB]">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col lg:items-center lg:px-4">
-              <span className="text-5xl font-bold tracking-tight text-[#0F1129] lg:text-6xl">
-                {s.value}
-              </span>
-              <span className="mt-2 text-sm text-[#7C8090]">{s.label}</span>
+              <CountUp
+                value={s.value}
+                suffix={s.suffix}
+                className="text-5xl font-bold tracking-tight text-[#0F1129] lg:text-6xl"
+              />
+              <span className="mt-2 text-sm text-[#6b7280]">{s.label}</span>
             </div>
           ))}
         </Reveal>
@@ -598,7 +606,7 @@ function QuoteBand() {
             촬영과 동시에 결과물이 나오니, 후반 일정에 쫓기지 않았습니다.
             현장에서 바로 확인하고 끝낼 수 있었어요.
           </blockquote>
-          <p className="mt-6 text-sm text-[#7C8090]">○○방송 · 제작 PD</p>
+          <p className="mt-6 text-sm text-[#6b7280]">○○방송 · 제작 PD</p>
         </Reveal>
       </div>
     </section>
