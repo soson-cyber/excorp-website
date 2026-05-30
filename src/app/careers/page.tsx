@@ -3,14 +3,31 @@ import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
+import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Career — 함께 성장할 동료를 찾습니다",
   description:
-    "이엑스는 일하는 사람이 행복한 회사를 지향합니다. 모두의 창작 가능성을 넓히는 기술을 함께 만들 동료를 찾습니다.",
+    "이엑스는 일하는 사람이 행복한 회사를 지향합니다. 핵심 가치 3가지, 일하는 방식, 일하는 공간, 함께하고 싶은 동료 — 모두의 창작 가능성을 넓히는 기술을 함께 만들 분을 찾습니다.",
 };
+
+// 3 핵심 가치 (실제 '일하는 10가지 방식'에서 distill)
+const values = [
+  {
+    h: "간결하게, 본질에 집중합니다",
+    d: "기술은 문제 해결의 도구입니다. 요청보다 문제를 먼저 보고, 빠르게 움직이되 방향을 잃지 않습니다.",
+  },
+  {
+    h: "기록하고, 함께 더 잘합니다",
+    d: "모든 일을 기록으로 남기고, 반대할 때는 대안을 함께 가져옵니다. 혼자 잘하기보다 함께 더 잘하게 만듭니다.",
+  },
+  {
+    h: "삶을 지키며, 오래 함께합니다",
+    d: "회사는 삶 전체를 가져가지 않습니다. 좋은 성과는 좋은 사람이 오래 함께할 때 만들어집니다.",
+  },
+];
 
 const culture = [
   "기술은 문제 해결의 도구입니다.",
@@ -25,12 +42,25 @@ const culture = [
   "좋은 성과는 좋은 사람이 오래 함께할 때 만들어집니다.",
 ];
 
+const spaces = [
+  { img: "/studio.png", label: "하남 XR 스튜디오", caption: "촬영이 곧 콘텐츠가 되는 공간", real: true },
+  { img: "", label: "판교 HQ", caption: "아이디어가 제품이 되는 공간", real: false },
+  { img: "", label: "라운지", caption: "구성원이 한데 모여 어울리는 공간", real: false },
+];
+
+const whoWeWant = [
+  "문제를 스스로 정의하고 끝까지 파고드는 분",
+  "기록과 공유로 동료를 더 빠르게 만드는 분",
+  "새로운 기술을 두려워하지 않고 먼저 시도하는 분",
+  "솔직하게 말하고, 대안으로 책임지는 분",
+];
+
 const env = [
   { k: "자율과 책임", v: "역할·일정·우선순위를 분명히, 프로세스는 일을 돕는 도구로" },
-  { k: "기록 기반 협업", v: "기록은 다음 실행을 더 빠르게 만드는 자산" },
   { k: "수평적 의사결정", v: "반대는 더 나은 방향을 찾는 제안" },
   { k: "워라밸 존중", v: "가족 같은 회사보다 가족을 지킬 수 있는 회사" },
   { k: "최신 제작 인프라", v: "XR 스튜디오·실시간 엔진·모션캡처 환경" },
+  { k: "기록 기반 협업", v: "기록은 다음 실행을 더 빠르게 만드는 자산" },
   { k: "성장 기회", v: "개인의 성장이 조직의 성장으로 이어지는 구조" },
 ];
 
@@ -65,10 +95,38 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* §01 Culture */}
+      {/* §01 Core values (big editorial) */}
+      <section className="bg-surface/40">
+        <div className="container-ex py-section-lg">
+          <SectionLabel index="01">Our Values</SectionLabel>
+          <h2 className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            우리가 일하는 세 가지 방식
+          </h2>
+          <p className="mt-5 max-w-2xl text-pretty text-muted">
+            이 세 가지 가치는 우리가 일하는 방식, 일하는 공간, 커뮤니케이션 곳곳에 녹아 있습니다.
+          </p>
+          <div className="mt-16 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
+            {values.map((v, i) => (
+              <div key={v.h} className="grid gap-4 bg-surface p-8 md:grid-cols-[5rem_1fr] md:p-10">
+                <span className="font-mono text-3xl font-bold text-primary md:text-4xl">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="text-balance text-2xl font-bold leading-snug text-fg md:text-3xl">{v.h}</h3>
+                  <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-muted">{v.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* §02 Culture — 10 ways (detail) */}
       <section className="container-ex py-section">
-        <SectionLabel index="01">Culture</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">이엑스가 일하는 10가지 방식</h2>
+        <SectionLabel index="02">Culture</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">
+          구체적으로, 이렇게 일합니다
+        </h2>
         <div className="mt-12 grid gap-x-12 gap-y-7 sm:grid-cols-2">
           {culture.map((c, i) => (
             <div key={c} className="flex gap-4 border-t border-border pt-5">
@@ -79,26 +137,66 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* §02 Environment */}
+      {/* §03 Spaces — photo storytelling */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <SectionLabel index="02">Environment</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">일하는 환경</h2>
-          <dl className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {env.map((e) => (
-              <div key={e.k} className="bg-surface p-6">
-                <dt className="font-semibold text-fg">{e.k}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-muted">{e.v}</dd>
-              </div>
-            ))}
-          </dl>
+          <SectionLabel index="03">Spaces</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">기술이 만들어지는 공간</h2>
+          <p className="mt-5 max-w-2xl text-muted">판교 본사와 하남 스튜디오 — 우리가 매일 만들고 어울리는 곳입니다.</p>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {spaces.map((s) =>
+              s.real ? (
+                <figure key={s.label} className="overflow-hidden rounded-2xl border border-border bg-surface">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image src={s.img} alt={`${s.label} — ${s.caption}`} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover" />
+                  </div>
+                  <figcaption className="p-5">
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{s.label}</span>
+                    <p className="mt-1 text-sm text-muted">{s.caption}</p>
+                  </figcaption>
+                </figure>
+              ) : (
+                <MediaBlank key={s.label} tag={s.label} label={s.caption} sublabel="사진 준비 중" className="aspect-[4/3]" />
+              ),
+            )}
+          </div>
         </div>
       </section>
 
-      {/* §03 Open Positions */}
+      {/* §04 Environment */}
       <section className="container-ex py-section">
-        <SectionLabel index="03">Open Positions</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">채용 중인 포지션</h2>
+        <SectionLabel index="04">Environment</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">일하는 환경</h2>
+        <dl className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {env.map((e) => (
+            <div key={e.k} className="bg-surface p-6">
+              <dt className="font-semibold text-fg">{e.k}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-muted">{e.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* §05 Who we want */}
+      <section className="bg-surface/40">
+        <div className="container-ex py-section">
+          <SectionLabel index="05">Who We Want</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">이런 분과 함께하고 싶어요</h2>
+          <ul className="mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
+            {whoWeWant.map((w) => (
+              <li key={w} className="flex items-start gap-3 rounded-2xl border border-border bg-surface p-6">
+                <span className="mt-1 font-mono text-primary" aria-hidden="true">✓</span>
+                <span className="leading-relaxed text-fg">{w}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* §06 Open Positions */}
+      <section className="container-ex py-section">
+        <SectionLabel index="06">Open Positions</SectionLabel>
+        <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">채용 중인 포지션</h2>
         <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
           <div className="flex flex-col gap-2 border-b border-border p-6 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div>
@@ -115,11 +213,11 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* §04 How to Apply */}
+      {/* §07 How to Apply */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <SectionLabel index="04">How to Apply</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">지원 절차</h2>
+          <SectionLabel index="07">How to Apply</SectionLabel>
+          <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">지원 절차</h2>
           <ol className="mt-12 max-w-3xl space-y-4">
             {steps.map((s, i) => (
               <li
