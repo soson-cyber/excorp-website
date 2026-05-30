@@ -26,7 +26,7 @@
   --color-border: #e5e7eb; /* hairline */
   --color-fg: #0f1129; /* ink — primary text / headings */
   --color-muted: #51545e; /* body / secondary text — AA on white */
-  --color-faint: #6b7280; /* captions / least-emphasis */
+  --color-faint: #5f636d; /* captions / least-emphasis — AA on white + tinted surfaces */
 
   /* Primary — brand Purple (works on white) */
   --color-primary: #5e2ec0;
@@ -96,6 +96,12 @@ html {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Focus ring for elements sitting on DARK surfaces (over-hero header, dark CTA
+   card, footer) — white reads where purple would not (WCAG 1.4.11 / 2.4.11). */
+.focus-on-dark:focus-visible {
+  outline-color: #ffffff;
 }
 
 /* Skip-to-content link */
@@ -262,8 +268,7 @@ html.cursor-reduce .ex-cursor-ring {
   background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
-  /* keep a readable fallback if background-clip unsupported */
+  color: #5e2ec0; /* visible fallback if background-clip:text unsupported */
   -webkit-text-fill-color: transparent;
 }
 
@@ -282,7 +287,7 @@ html.cursor-reduce .ex-cursor-ring {
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: #8b5cf6; /* visible fallback if background-clip:text unsupported */
   -webkit-text-fill-color: transparent;
 }
 
@@ -353,7 +358,7 @@ html.cursor-reduce .ex-cursor-ring {
   --ex-pale: #f2f4f7; /* placeholder fill */
   --ex-ink: #0f1129; /* headings + primary text */
   --ex-body: #51545e; /* paragraph text */
-  --ex-muted: #6b7280; /* labels, captions */
+  --ex-muted: #5f636d; /* labels, captions — AA on white + tinted surfaces */
   --ex-line: #e5e7eb; /* borders */
   --ex-accent: #5e2ec0; /* the ONLY brand color — use sparingly */
   --ex-green: #16a34a; /* live / chroma dot */

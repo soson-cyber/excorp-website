@@ -253,7 +253,7 @@ export default function AximmetryPage() {
             <div>
               <SectionLabel index="07">EX × Aximmetry</SectionLabel>
               <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
-                EX는 Aximmetry <span className="text-gradient-ex">공식 인증 리셀러</span>입니다.
+                EX는 Aximmetry <span className="font-semibold text-primary">공식 인증 리셀러</span>입니다.
               </h2>
               <p className="mt-5 text-pretty text-muted">
                 에디션 선택 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전

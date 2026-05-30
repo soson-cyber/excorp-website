@@ -224,7 +224,7 @@ export default function RetrackerPage() {
             <div>
               <SectionLabel index="06">EX × RETracker</SectionLabel>
               <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
-                EX는 RETracker의 <span className="text-gradient-ex">공식 한국 총판</span>입니다.
+                EX는 RETracker의 <span className="font-semibold text-primary">공식 한국 총판</span>입니다.
               </h2>
               <p className="mt-5 text-pretty text-muted">
                 하드웨어·소프트웨어 공급은 물론, 시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키로
@@ -250,7 +250,7 @@ export default function RetrackerPage() {
               <div className="overflow-hidden rounded-2xl border border-border">
                 <Image
                   src="/cert-retracker.png"
-                  alt="RETracker 공식 한국 대표·총판·기술지원 인증서 (Certificate of Excellence — EX Corporation)"
+                  alt="RETracker 공식 한국 총판 인증서 (Certificate of Excellence — EX Corporation)"
                   width={958}
                   height={740}
                   className="h-auto w-full"

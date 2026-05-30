@@ -39,6 +39,7 @@ export default function HeroAurora() {
     }
 
     let raf = 0;
+    let running = true;
     let t = 0;
     let tx = 0; // pointer offset from hero centre (px)
     let ty = 0;
@@ -63,13 +64,30 @@ export default function HeroAurora() {
       cx += (gx - cx) * 0.06;
       cy += (gy - cy) * 0.06;
       place(cx, cy);
-      raf = requestAnimationFrame(frame);
+      raf = running ? requestAnimationFrame(frame) : 0;
     };
+
+    // Pause the rAF loop while the hero is scrolled offscreen (saves GPU/battery).
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!running) {
+            running = true;
+            if (!raf) raf = requestAnimationFrame(frame);
+          }
+        } else {
+          running = false;
+        }
+      },
+      { threshold: 0 },
+    );
+    io.observe(wrap);
 
     if (fine) window.addEventListener("pointermove", onMove, { passive: true });
     raf = requestAnimationFrame(frame);
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       window.removeEventListener("pointermove", onMove);
     };
   }, []);

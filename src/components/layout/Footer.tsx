@@ -57,7 +57,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {footerColumns.map((col) => (
               <div key={col.title}>
-                <h3 className="font-mono text-xs uppercase tracking-wider text-[#6f7490]">{col.title}</h3>
+                <h3 className="font-mono text-xs uppercase tracking-wider text-[#8489a8]">{col.title}</h3>
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
@@ -79,7 +79,7 @@ export function Footer() {
               <span className="font-mono text-xs uppercase tracking-wider text-[#a78bf0]">{loc.kind}</span>
               <p className="mt-1.5 text-sm font-medium text-white">{loc.name}</p>
               <p className="text-sm text-[#9ba0b8]">
-                {loc.address} <span className="text-[#6f7490]">({loc.zip})</span>
+                {loc.address} <span className="text-[#8489a8]">({loc.zip})</span>
               </p>
               {loc.tel && (
                 <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-[#8186a3]">
@@ -111,7 +111,7 @@ export function Footer() {
         </div>
 
         {/* Bottom line */}
-        <div className="mt-10 flex flex-col gap-3 border-t border-[#23264a] pt-6 text-xs text-[#6f7490] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-[#23264a] pt-6 text-xs text-[#8489a8] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} EX Corporation. All rights reserved.</p>
           <p className="flex gap-4">
             <Link href="/privacy" className="hover:text-white">

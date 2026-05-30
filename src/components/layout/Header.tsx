@@ -48,7 +48,7 @@ export function Header() {
       }`}
     >
       <div className="container-ex flex h-16 items-center justify-between gap-6">
-        <Link href="/" className="flex items-center" aria-label="EX Corporation 홈">
+        <Link href="/" className={`flex items-center ${overHero ? "focus-on-dark" : ""}`} aria-label="EX Corporation 홈">
           <Image
             src="/ex-logo.png"
             alt="EX Corporation"
@@ -67,12 +67,22 @@ export function Header() {
               key={item.label}
               className="relative"
               onMouseEnter={() => setOpenMenu(item.children ? item.label : null)}
+              onFocus={() => item.children && setOpenMenu(item.label)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node))
+                  setOpenMenu((m) => (m === item.label ? null : m));
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setOpenMenu(null);
+              }}
             >
               <Link
                 href={item.href}
+                aria-haspopup={item.children ? "true" : undefined}
+                aria-expanded={item.children ? openMenu === item.label : undefined}
                 className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm transition-colors ${
                   overHero
-                    ? "text-white/80 hover:text-white"
+                    ? "text-white/80 hover:text-white focus-on-dark"
                     : "text-[#51545E] hover:text-[#0F1129]"
                 }`}
               >
@@ -93,7 +103,7 @@ export function Header() {
                   <div className="flex w-[600px] overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white shadow-[0_24px_60px_-20px_rgba(15,17,41,0.28)]">
                     {/* link column */}
                     <div className="flex-1 p-3">
-                      <p className="px-3 pb-1 pt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#9aa0aa]">
+                      <p className="px-3 pb-1 pt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#5f636d]">
                         {item.label}
                       </p>
                       <div className="flex flex-col">
@@ -177,7 +187,7 @@ export function Header() {
           aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={mobileOpen}
           className={`flex h-11 w-11 items-center justify-center rounded-md transition-colors lg:hidden ${
-            overHero ? "text-white hover:bg-white/10" : "text-[#0F1129] hover:bg-[#F7F8FA]"
+            overHero ? "text-white hover:bg-white/10 focus-on-dark" : "text-[#0F1129] hover:bg-[#F7F8FA]"
           }`}
           onClick={() => setMobileOpen((v) => !v)}
         >

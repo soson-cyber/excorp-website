@@ -82,29 +82,44 @@ export function NewsList() {
 
       {list.length > 0 ? (
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {list.map((n) => (
-            <Link
-              key={n.title}
-              href={n.href ?? "#"}
-              className={`group flex flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/50 ${
-                n.featured && active === "전체" ? "md:col-span-2 lg:col-span-2" : ""
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${catClass(n.cat)}`}>
-                  {n.cat}
-                </span>
-                <span className="font-mono text-xs text-faint">{n.year}</span>
+          {list.map((n) => {
+            const span2 = n.featured && active === "전체" ? "md:col-span-2 lg:col-span-2" : "";
+            const body = (
+              <>
+                <div className="flex items-center gap-2">
+                  <span className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${catClass(n.cat)}`}>
+                    {n.cat}
+                  </span>
+                  <span className="font-mono text-xs text-faint">{n.year}</span>
+                </div>
+                <h3 className="mt-3 flex-1 text-base font-semibold leading-relaxed text-fg">{n.title}</h3>
+                {n.excerpt && active === "전체" && (
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{n.excerpt}</p>
+                )}
+                {n.href && (
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                    자세히 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+                  </span>
+                )}
+              </>
+            );
+            return n.href ? (
+              <Link
+                key={n.title}
+                href={n.href}
+                className={`group flex flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/50 ${span2}`}
+              >
+                {body}
+              </Link>
+            ) : (
+              <div
+                key={n.title}
+                className={`flex flex-col rounded-2xl border border-border bg-surface p-6 ${span2}`}
+              >
+                {body}
               </div>
-              <h3 className="mt-3 flex-1 text-base font-semibold leading-relaxed text-fg">{n.title}</h3>
-              {n.excerpt && active === "전체" && (
-                <p className="mt-2 text-sm leading-relaxed text-muted">{n.excerpt}</p>
-              )}
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                자세히 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
-              </span>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       ) : (
         <div className="mt-10 flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-surface px-6 py-20 text-center">

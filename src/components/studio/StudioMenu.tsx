@@ -134,7 +134,7 @@ export function StudioMenu() {
 
       {/* category tabs */}
       <div
-        role="tablist"
+        role="group"
         aria-label="콘텐츠 카테고리"
         className="mt-6 flex flex-wrap gap-2 overflow-x-auto"
       >
@@ -143,9 +143,8 @@ export function StudioMenu() {
           return (
             <button
               key={c.id}
-              role="tab"
-              aria-selected={on}
               type="button"
+              aria-pressed={on}
               onClick={() => setActive(c.id)}
               className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                 on

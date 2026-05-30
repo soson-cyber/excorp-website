@@ -29,19 +29,20 @@ export function WorkGallery() {
               onClick={() => setActive(c)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 on
-                  ? "bg-[#0F1129] text-white"
-                  : "border border-[#E5E7EB] bg-white text-[#51545E] hover:border-[#0F1129]"
+                  ? "bg-[#5E2EC0] text-white"
+                  : "border border-[#E5E7EB] bg-white text-[#51545E] hover:border-[#5E2EC0]/50 hover:text-[#0F1129]"
               }`}
             >
               {c}
             </button>
           );
         })}
-        <span className="ml-1 font-mono text-xs text-[#6b7280]">{list.length}개 프로젝트</span>
+        <span className="ml-1 font-mono text-xs text-[#5f636d]">{list.length}개 프로젝트</span>
       </div>
 
-      {/* grid */}
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* grid (or empty state) */}
+      {list.length > 0 ? (
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((w) => {
           const wide = w.featured && active === "전체";
           return (
@@ -72,9 +73,21 @@ export function WorkGallery() {
             </Link>
           );
         })}
-      </div>
+        </div>
+      ) : (
+        <div className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#E5E7EB] bg-white px-6 py-20 text-center">
+          <p className="text-sm text-[#51545E]">{active} 시나리오는 준비 중입니다.</p>
+          <button
+            type="button"
+            onClick={() => setActive("전체")}
+            className="mt-4 text-sm font-medium text-[#5E2EC0] transition-colors hover:text-[#4a23a0]"
+          >
+            전체 보기 →
+          </button>
+        </div>
+      )}
 
-      <p className="mt-8 font-mono text-xs text-[#6b7280]">
+      <p className="mt-8 font-mono text-xs text-[#5f636d]">
         현재 항목은 활용 시나리오입니다 · 실제 도입 사례는 순차 업데이트됩니다.
       </p>
     </div>

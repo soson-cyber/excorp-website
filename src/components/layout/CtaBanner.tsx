@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/Button";
 export function CtaBanner() {
   return (
     <section className="relative overflow-hidden border-y border-border bg-surface">
-      <div className="absolute -right-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-accent/10 blur-[120px]" />
       <div className="container-ex relative flex flex-col items-start gap-8 py-section md:flex-row md:items-center md:justify-between">
         <div>
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
