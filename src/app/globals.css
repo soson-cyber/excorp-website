@@ -267,6 +267,25 @@ html.cursor-reduce .ex-cursor-ring {
   -webkit-text-fill-color: transparent;
 }
 
+/*
+  Bright brand gradient text for DARK surfaces — Mint → bright Purple → Pink.
+  All three stops pop on a near-black/deep-purple background (the deep-purple of
+  text-gradient-ex would vanish there). Used by the dark hero headline accent.
+*/
+@utility text-gradient-ex-bright {
+  background-image: linear-gradient(
+    105deg,
+    var(--color-mint) 0%,
+    #8b5cf6 50%,
+    var(--color-pink) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Subtle gradient drift on brand H1s (motion only) */
 @keyframes ex-gradient-drift {
   from {

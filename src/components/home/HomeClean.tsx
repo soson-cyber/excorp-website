@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { SectionLabel } from "@/components/home/SectionLabel";
 import { CountUp } from "@/components/motion/CountUp";
-import HeroTracking from "@/components/home/HeroTracking";
+import HeroAurora from "@/components/home/HeroAurora";
 
 /*
   HomeClean — the redesigned WHITE, clean "creative-tech startup" Home.
@@ -47,53 +47,53 @@ function ArrowLink({
 
 function Hero() {
   return (
-    <section className="relative min-h-[88vh] overflow-hidden bg-white">
-      {/* faint tracking grid */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
+    <section className="relative flex min-h-[94vh] items-center justify-center overflow-hidden bg-[#120733]">
+      {/* full-bleed pointer-reactive aurora */}
+      <HeroAurora />
 
-      {/* cursor-following camera-tracking reticle + live coordinates */}
-      <HeroTracking />
+      {/* aurora → white fade, eases into the §01 section below */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-32 bg-gradient-to-b from-transparent to-white"
+      />
 
-      {/* framed-viewport corner ticks */}
-      <span aria-hidden="true" className="pointer-events-none absolute left-5 top-5 z-10 h-4 w-4 border-l border-t border-[#5E2EC0]/40" />
-      <span aria-hidden="true" className="pointer-events-none absolute right-5 top-5 z-10 h-4 w-4 border-r border-t border-[#5E2EC0]/40" />
-      <span aria-hidden="true" className="pointer-events-none absolute bottom-5 left-5 z-10 h-4 w-4 border-b border-l border-[#5E2EC0]/40" />
-      <span aria-hidden="true" className="pointer-events-none absolute bottom-5 right-5 z-10 h-4 w-4 border-b border-r border-[#5E2EC0]/40" />
+      {/* centered copy (Highnote-style stack) */}
+      <div className="relative z-10 mx-auto flex max-w-[1040px] flex-col items-center px-6 py-28 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] text-white/70 backdrop-blur">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#45F1E0]" />
+          Real-time XR Content · EX
+        </span>
 
-      {/* HUD */}
-      <span className="pointer-events-none absolute left-6 top-6 z-10 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
-        <span className="h-1.5 w-1.5 rounded-full bg-[#16A34A]" /> TRACKING · LIVE
-      </span>
-      <span className="pointer-events-none absolute bottom-6 right-7 z-10 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
-        REAL-TIME XR · CAMERA TRACKING
-      </span>
+        <h1 className="mt-8 text-6xl font-medium leading-[0.98] tracking-tight text-white sm:text-7xl lg:text-[6.75rem]">
+          경험을
+          <br />
+          <span className="text-gradient-ex-bright">확장하다</span>
+        </h1>
 
-      {/* copy */}
-      <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-[1280px] flex-col justify-center px-6 py-24 lg:px-20">
-        <div className="max-w-2xl">
-          <SectionLabel>REAL-TIME XR CONTENT · EX</SectionLabel>
-          <h1 className="mt-7 text-6xl font-bold leading-none tracking-tight text-[#0F1129] sm:text-7xl lg:text-8xl">
-            경험을
-            <br />
-            <span className="text-gradient-ex">확장</span>하다
-          </h1>
-          <p className="mt-7 max-w-md text-xl leading-relaxed text-[#51545E]">
-            실시간 XR · 버추얼 프로덕션 스튜디오와 솔루션.
-            <br className="hidden sm:block" />
-            콘텐츠 제작의 처음과 끝을 하나로 연결합니다.
-          </p>
-          <div className="mt-9">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#0F1129] px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#23264a]"
-            >
-              프로젝트 시작 →
-            </Link>
-          </div>
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-wider text-[#6b7280]">
-            EXLINK · 파트너 제품 유통 · 하남 XR 스튜디오
-          </p>
+        <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl">
+          실시간 XR · 버추얼 프로덕션 스튜디오와 솔루션.
+          <br className="hidden sm:block" />
+          콘텐츠 제작의 처음과 끝을 하나로 연결합니다.
+        </p>
+
+        <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0F1129] transition-colors hover:bg-white/90"
+          >
+            프로젝트 시작 →
+          </Link>
+          <Link
+            href="/solution"
+            className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+          >
+            솔루션 둘러보기
+          </Link>
         </div>
+
+        <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+          EXLINK · 파트너 제품 유통 · 하남 XR 스튜디오
+        </p>
       </div>
     </section>
   );
