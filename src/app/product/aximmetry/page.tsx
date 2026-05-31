@@ -5,6 +5,8 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
+import { SpecTable } from "@/components/product/SpecTable";
+import { CompareTable } from "@/components/product/CompareTable";
 
 export const metadata: Metadata = {
   title: "Aximmetry — 실시간 버추얼 프로덕션 플랫폼",
@@ -53,7 +55,7 @@ const editionMatrix = [
   { label: "엔진", values: ["DE / SE", "DE / SE", "DE / SE"] },
 ];
 
-const bfSpecs = [
+const bfSpecs: [string, string][] = [
   ["렌더링 / 엔진", "네이티브 Aximmetry 3D 엔진 + Unreal Engine 완벽 호환 (플러그인 내장)"],
   ["해상도", "최대 8K 해상도 실시간 렌더링"],
   ["그래픽", "DLSS · Ray Tracing · RTXGI (실시간 전역 조명)"],
@@ -169,27 +171,8 @@ export default function AximmetryPage() {
             <SectionLabel index="03">Compare</SectionLabel>
             <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">에디션 비교</h2>
           </div>
-          <div className="mt-12 overflow-x-auto">
-            <div className="grid min-w-[40rem] grid-cols-4 gap-px overflow-hidden rounded-2xl border border-border bg-border">
-              <div className="bg-surface-2 p-4" />
-              {editions.map((e) => (
-                <div key={e.name} className="bg-surface-2 p-4 text-center text-sm font-semibold">
-                  {e.name}
-                </div>
-              ))}
-              {editionMatrix.map((row) => (
-                <div key={row.label} className="contents">
-                  <div className="bg-surface p-4 font-mono text-xs uppercase tracking-wider text-faint">
-                    {row.label}
-                  </div>
-                  {row.values.map((v, i) => (
-                    <div key={i} className="bg-surface p-4 text-center text-sm text-muted">
-                      {v}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+          <div className="mt-12">
+            <CompareTable columns={editions.map((e) => e.name)} rows={editionMatrix} />
           </div>
         </div>
       </section>
@@ -200,15 +183,8 @@ export default function AximmetryPage() {
           <SectionLabel index="04">Specifications</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">Broadcast &amp; Film Edition 사양</h2>
         </div>
-        <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
-          <dl>
-            {bfSpecs.map(([k, v]) => (
-              <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
-                <dt className="w-40 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">{k}</dt>
-                <dd className="text-sm text-fg">{v}</dd>
-              </div>
-            ))}
-          </dl>
+        <div className="mt-12 max-w-3xl">
+          <SpecTable groups={[{ rows: bfSpecs }]} />
         </div>
       </section>
 

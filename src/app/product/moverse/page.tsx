@@ -5,6 +5,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
+import { SpecTable } from "@/components/product/SpecTable";
 
 export const metadata: Metadata = {
   title: "Moverse AI — 마커리스 AI 모션캡처",
@@ -46,7 +47,7 @@ const features = [
   { t: "산업용 AI 뎁스 비전", d: "4 TOPS 온디바이스 연산·12MP·150° 초광각·IP65 방수방진 카메라." },
 ];
 
-const specGroups = [
+const specGroups: { title: string; rows: [string, string][] }[] = [
   {
     title: "Moverse AI Software",
     rows: [
@@ -155,20 +156,8 @@ export default function MoversePage() {
           <SectionLabel index="03">Specifications</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">상세 사양</h2>
         </div>
-        <div className="mt-12 grid max-w-5xl gap-5 lg:grid-cols-3">
-          {specGroups.map((g) => (
-            <div key={g.title} className="overflow-hidden rounded-2xl border border-border bg-surface">
-              <div className="border-b border-border px-6 py-4 font-semibold">{g.title}</div>
-              <dl>
-                {g.rows.map(([k, v]) => (
-                  <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-3.5 last:border-0">
-                    <dt className="font-mono text-[11px] uppercase tracking-wider text-faint">{k}</dt>
-                    <dd className="text-sm text-fg">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          ))}
+        <div className="mt-12 max-w-3xl">
+          <SpecTable groups={specGroups} />
         </div>
       </section>
 

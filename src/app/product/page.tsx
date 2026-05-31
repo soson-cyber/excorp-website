@@ -4,6 +4,7 @@ import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { CompareTable } from "@/components/product/CompareTable";
 
 export const metadata: Metadata = {
   title: "Product — Aximmetry · Moverse AI · RETracker",
@@ -118,27 +119,8 @@ export default function ProductPage() {
       <section className="container-ex py-section">
         <SectionLabel index="03">Compare</SectionLabel>
         <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">한눈에 비교</h2>
-        <div className="mt-12 overflow-x-auto">
-          <div className="grid min-w-[40rem] grid-cols-4 gap-px overflow-hidden rounded-2xl border border-border bg-border">
-            <div className="bg-surface-2 p-4" />
-            {lineup.map((p) => (
-              <div key={p.title} className="bg-surface-2 p-4 text-center font-semibold">
-                {p.title}
-              </div>
-            ))}
-            {compare.map((row) => (
-              <div key={row.label} className="contents">
-                <div className="bg-surface p-4 font-mono text-xs uppercase tracking-wider text-faint">
-                  {row.label}
-                </div>
-                {row.values.map((v, i) => (
-                  <div key={i} className="bg-surface p-4 text-center text-sm text-muted">
-                    {v}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+        <div className="mt-12">
+          <CompareTable columns={lineup.map((p) => p.title)} rows={compare} />
         </div>
       </section>
 
