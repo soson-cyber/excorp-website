@@ -108,7 +108,7 @@ export default function RetrackerPage() {
       />
 
       {/* Quick spec bar */}
-      <section className="border-b border-border bg-surface/40">
+      <section className="border-b border-border bg-surface">
         <div className="container-ex grid grid-cols-2 gap-6 py-10 lg:grid-cols-4">
           {quickSpecs.map((s) => (
             <div key={s.l} className="text-center">
@@ -128,7 +128,7 @@ export default function RetrackerPage() {
         </div>
         <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
           {lineup.map((p) => (
-            <div key={p.name} className="rounded-2xl border border-border bg-surface p-6">
+            <div key={p.name} className="rounded-2xl border border-border bg-white p-6">
               <div className="flex h-44 items-center justify-center rounded-xl bg-bg/60">
                 <Image src={p.img} alt={p.name} width={p.w} height={p.h} className="max-h-36 w-auto" />
               </div>
@@ -144,7 +144,7 @@ export default function RetrackerPage() {
       </section>
 
       {/* Key Features */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <div>
             <SectionLabel index="02">Key Features</SectionLabel>
@@ -152,7 +152,7 @@ export default function RetrackerPage() {
           </div>
           <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <div key={f.t} className="rounded-2xl border border-border bg-surface p-6">
+              <div key={f.t} className="rounded-2xl border border-border bg-white p-6">
                 <h3 className="font-semibold">{f.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
               </div>
@@ -173,7 +173,7 @@ export default function RetrackerPage() {
       </section>
 
       {/* Use Cases */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="04">Use Cases</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
@@ -193,7 +193,7 @@ export default function RetrackerPage() {
           <SectionLabel index="05">FAQ</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 전 자주 묻는 질문</h2>
         </div>
-        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-white">
           {faqs.map((f) => (
             <details key={f.q} className="group p-6">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
@@ -207,7 +207,7 @@ export default function RetrackerPage() {
       </section>
 
       {/* EX × RETracker — official distributor + certificate */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
@@ -221,7 +221,7 @@ export default function RetrackerPage() {
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["도입 컨설팅", "캘리브레이션", "교육", "기술 지원"].map((x) => (
-                  <li key={x} className="rounded-full border border-border bg-surface px-3 py-1.5 text-sm text-fg">
+                  <li key={x} className="rounded-full border border-border bg-white px-3 py-1.5 text-sm text-fg">
                     {x}
                   </li>
                 ))}

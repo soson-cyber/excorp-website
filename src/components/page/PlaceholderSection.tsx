@@ -20,11 +20,11 @@ export function PlaceholderSection({
 }) {
   const { index, label, title, desc, blocks = 0, id } = spec;
   return (
-    <section id={id} className={surface ? "bg-surface/40" : ""}>
+    <section id={id} className={surface ? "bg-surface" : ""}>
       <div className="container-ex py-section text-center">
         <div className="flex items-center justify-center gap-3">
           <SectionLabel index={index}>{label}</SectionLabel>
-          <span className="rounded border border-border bg-surface px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-faint">
+          <span className="rounded border border-border bg-white px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-faint">
             준비 중
           </span>
         </div>
@@ -42,7 +42,7 @@ export function PlaceholderSection({
             {Array.from({ length: blocks }).map((_, i) => (
               <div
                 key={i}
-                className="rounded-2xl border border-border bg-surface p-6"
+                className="rounded-2xl border border-border bg-white p-6"
                 aria-hidden="true"
               >
                 <div className="h-8 w-8 rounded-lg bg-surface-2" />

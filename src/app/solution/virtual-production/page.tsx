@@ -91,13 +91,13 @@ export default function VirtualProductionPage() {
       </section>
 
       {/* §02 Why VP */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="02">Why VP</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 지금 버추얼 프로덕션인가</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map((c) => (
-              <div key={c.t} className="rounded-2xl border border-border bg-surface p-6">
+              <div key={c.t} className="rounded-2xl border border-border bg-white p-6">
                 <h3 className="font-semibold text-fg">{c.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
               </div>
@@ -116,7 +116,7 @@ export default function VirtualProductionPage() {
         </p>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {methods.map((m) => (
-            <div key={m.t} className="rounded-2xl border border-border bg-surface p-6">
+            <div key={m.t} className="rounded-2xl border border-border bg-white p-6">
               <div className="flex items-center justify-between gap-3">
                 <h3 className="font-semibold text-fg">{m.t}</h3>
                 {m.tag && (
@@ -132,7 +132,7 @@ export default function VirtualProductionPage() {
       </section>
 
       {/* §04 EX Virtual Production */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
@@ -177,7 +177,7 @@ export default function VirtualProductionPage() {
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 프로세스</h2>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p, i) => (
-            <div key={p.step} className="rounded-2xl border border-border bg-surface p-6">
+            <div key={p.step} className="rounded-2xl border border-border bg-white p-6">
               <span className="font-mono text-3xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-3 font-semibold text-fg">{p.step}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
@@ -187,13 +187,13 @@ export default function VirtualProductionPage() {
       </section>
 
       {/* §06 Use Cases */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="06">Use Cases</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
-              <div key={u.t} className="rounded-2xl border border-border bg-surface p-6">
+              <div key={u.t} className="rounded-2xl border border-border bg-white p-6">
                 <h3 className="font-semibold text-fg">{u.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
               </div>

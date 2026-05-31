@@ -149,7 +149,7 @@ function WhatWeDo() {
             <Reveal
               key={card.index}
               delay={i * 90}
-              className="flex flex-1 flex-col rounded-2xl border border-border bg-white p-7 shadow-soft"
+              className="flex flex-1 flex-col rounded-2xl border border-border bg-white p-7"
             >
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-primary">
@@ -436,7 +436,7 @@ function PartnerProducts() {
             <Reveal
               key={p.name}
               delay={i * 90}
-              className="flex flex-1 flex-col rounded-2xl border border-border bg-white p-7 shadow-soft"
+              className="flex flex-1 flex-col rounded-2xl border border-border bg-white p-7"
             >
               <div className="flex items-center justify-between gap-4">
                 <MediaBlank

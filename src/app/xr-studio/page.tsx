@@ -88,13 +88,13 @@ export default function XrStudioPage() {
       </section>
 
       {/* §01 Why EX Studio */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="01">Why EX Studio</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">EX Studio가 다른 이유</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (
-              <div key={r.t} className="rounded-2xl border border-border bg-surface p-7">
+              <div key={r.t} className="rounded-2xl border border-border bg-white p-7">
                 <h3 className="text-lg font-semibold text-fg">{r.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{r.d}</p>
               </div>
@@ -116,7 +116,7 @@ export default function XrStudioPage() {
       </section>
 
       {/* §03 Background presets */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="03">Backgrounds</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">배경 프리셋</h2>
@@ -148,7 +148,7 @@ export default function XrStudioPage() {
       </section>
 
       {/* §05 Guide */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="05">Guide</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">이용 안내</h2>
@@ -187,7 +187,7 @@ export default function XrStudioPage() {
         </div>
 
         {/* specs */}
-        <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-white">
           <dl>
             {facilitySpecs.map(([k, v]) => (
               <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
@@ -200,7 +200,7 @@ export default function XrStudioPage() {
       </section>
 
       {/* CTA — quote & booking */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <div className="rounded-3xl border border-border bg-bg px-8 py-14 text-center">
             <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-primary">

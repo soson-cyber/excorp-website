@@ -67,7 +67,7 @@ export default function SolutionPage() {
       </section>
 
       {/* §02 Two Routes (asymmetric) */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section-lg">
           <SectionLabel index="02">Two Routes</SectionLabel>
           <h2 className="mt-5 max-w-3xl text-balance text-4xl font-semibold leading-snug md:text-5xl">
@@ -96,7 +96,7 @@ export default function SolutionPage() {
             </Link>
             <Link
               href="/solution/virtual-production"
-              className="group flex flex-col justify-between rounded-2xl border border-border bg-surface p-8 transition-colors hover:border-primary/60"
+              className="group flex flex-col justify-between rounded-2xl border border-border bg-white p-8 transition-colors hover:border-primary/50"
             >
               <div>
                 <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
@@ -119,7 +119,7 @@ export default function SolutionPage() {
       <section className="container-ex py-section">
         <SectionLabel index="03">Capability</SectionLabel>
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 전 단계를 커버합니다</h2>
-        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
           {capability.map((c) => (
             <div
               key={c.step}
@@ -133,7 +133,7 @@ export default function SolutionPage() {
       </section>
 
       {/* §04 Proof */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section-sm">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {proof.map((p) => (

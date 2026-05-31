@@ -15,7 +15,7 @@ export default function TermsPage() {
         lead="이엑스 주식회사 웹사이트 이용약관입니다."
       />
       <section className="container-ex py-section">
-        <div className="rounded-2xl border border-border bg-surface p-8 text-muted">
+        <div className="rounded-2xl border border-border bg-white p-8 text-muted">
           <p className="font-mono text-xs uppercase tracking-wider text-faint">준비 중</p>
           <p className="mt-4 max-w-2xl text-pretty">
             이용약관 전문은 법무 검토 후 게시될 예정입니다. 문의 사항은{" "}

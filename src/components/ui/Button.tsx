@@ -8,7 +8,7 @@ const styles: Record<Variant, string> = {
   // Pink = Action — reserved for the highest-intent conversion CTAs
   accent: "bg-accent text-white hover:bg-accent/85",
   secondary:
-    "border border-border bg-surface/60 text-fg hover:border-primary/60 hover:text-primary",
+    "border border-border bg-surface/60 text-fg hover:border-primary/50 hover:text-primary",
   ghost: "text-muted hover:text-fg",
 };
 

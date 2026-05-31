@@ -81,7 +81,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
   }
 
   const field =
-    "w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm text-fg placeholder:text-faint focus:border-primary aria-[invalid=true]:border-error";
+    "w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-fg placeholder:text-faint focus:border-primary aria-[invalid=true]:border-error";
   const describedBy = (n: string) => (invalid.includes(n) && error ? "cf-error" : undefined);
 
   return (

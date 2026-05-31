@@ -94,7 +94,7 @@ export function Hero() {
 /* ── §02 Trust Bar ──────────────────────────────────────── */
 export function TrustBar() {
   return (
-    <section className="border-b border-border bg-surface/40">
+    <section className="border-b border-border bg-surface">
       <div className="container-ex py-10">
         <p className="text-center font-mono text-xs uppercase tracking-[0.2em] text-faint">
           Authorised Reseller &amp; Official Partner
@@ -210,7 +210,7 @@ export function SolutionEntry() {
         {/* Virtual Production — methodology */}
         <a
           href="/solution/virtual-production"
-          className="group flex flex-col justify-between rounded-2xl border border-border bg-surface p-8 transition-colors hover:border-primary/60"
+          className="group flex flex-col justify-between rounded-2xl border border-border bg-white p-8 transition-colors hover:border-primary/50"
         >
           <div>
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
@@ -263,14 +263,14 @@ const products = [
 
 export function Products() {
   return (
-    <section className="bg-surface/40">
+    <section className="bg-surface">
       <div className="container-ex py-section">
         <SectionLabel index="03">Product</SectionLabel>
         <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
           검증된 글로벌 파트너 제품, EX가 한국에서 책임집니다.
         </h2>
 
-        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
           {products.map((p) => (
             <a
               key={p.title}
@@ -345,7 +345,7 @@ export function XrStudio() {
         </div>
 
         {/* HUD visual — low parallax */}
-        <Parallax speed={28} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-surface">
+        <Parallax speed={28} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-white">
           <div className="bg-grid absolute inset-0 opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
           <div className="absolute inset-0 p-5 font-mono text-[11px] uppercase tracking-wider text-muted">
@@ -394,7 +394,7 @@ const whyCards = [
 
 export function WhyEx() {
   return (
-    <section className="bg-surface/40">
+    <section className="bg-surface">
       <div className="container-ex py-section">
         <SectionLabel index="05">Why EX</SectionLabel>
         <h2 className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-snug md:text-4xl">
@@ -465,7 +465,7 @@ const numbers = [
 
 export function Numbers() {
   return (
-    <section className="relative overflow-hidden bg-surface/40">
+    <section className="relative overflow-hidden bg-surface">
       {/* oversized ghost wordmark backdrop */}
       <span
         aria-hidden="true"
@@ -541,7 +541,7 @@ export function NewsInsight() {
         {/* featured */}
         <a
           href="/news"
-          className="group relative flex min-h-[20rem] flex-col justify-between overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-colors hover:border-primary/60 lg:col-span-2"
+          className="group relative flex min-h-[20rem] flex-col justify-between overflow-hidden rounded-2xl border border-border bg-white p-8 transition-colors hover:border-primary/50 lg:col-span-2"
         >
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10" />
           <div className="relative flex items-center gap-2">
@@ -564,7 +564,7 @@ export function NewsInsight() {
             <a
               key={n.title}
               href="/news"
-              className="group flex flex-1 flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/60"
+              className="group flex flex-1 flex-col rounded-2xl border border-border bg-white p-6 transition-colors hover:border-primary/50"
             >
               <div className="flex items-center gap-2">
                 <span className="rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">

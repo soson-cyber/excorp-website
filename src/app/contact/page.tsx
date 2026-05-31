@@ -33,7 +33,7 @@ export default function ContactPage() {
         <SectionLabel index="01">Inquiry Type</SectionLabel>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {inquiries.map((q) => (
-            <div key={q.tag} className="rounded-2xl border border-border bg-surface p-6">
+            <div key={q.tag} className="rounded-2xl border border-border bg-white p-6">
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
                 {q.tag}
               </span>
@@ -44,7 +44,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex grid gap-12 py-section lg:grid-cols-2">
           {/* Form skeleton */}
           <div>
@@ -93,7 +93,7 @@ export default function ContactPage() {
             </dl>
             <div className="mt-6 space-y-6">
               {locations.map((loc) => (
-                <div key={loc.kind} className="rounded-2xl border border-border bg-surface p-6">
+                <div key={loc.kind} className="rounded-2xl border border-border bg-white p-6">
                   <span className="font-mono text-xs uppercase tracking-wider text-primary">
                     {loc.kind}
                   </span>

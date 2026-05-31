@@ -71,7 +71,7 @@ export default function SupportPage() {
             <Link
               key={q.t}
               href={q.href}
-              className="group rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/60"
+              className="group rounded-2xl border border-border bg-white p-6 transition-colors hover:border-primary/50"
             >
               <h3 className="text-lg font-semibold">{q.t}</h3>
               <p className="mt-2 text-sm text-muted">{q.d}</p>
@@ -84,7 +84,7 @@ export default function SupportPage() {
       </section>
 
       {/* §02 FAQ */}
-      <section id="faq" className="bg-surface/40">
+      <section id="faq" className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="01">FAQ</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">자주 묻는 질문</h2>
@@ -92,7 +92,7 @@ export default function SupportPage() {
             {faqGroups.map((g) => (
               <div key={g.cat}>
                 <h3 className="font-mono text-xs uppercase tracking-wider text-primary">{g.cat}</h3>
-                <div className="mt-4 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+                <div className="mt-4 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-white">
                   {g.items.map((it) => (
                     <details key={it.q} className="group p-6">
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
@@ -112,7 +112,7 @@ export default function SupportPage() {
       {/* §03 Technical Support */}
       <section id="tech" className="container-ex py-section">
         <div className="grid items-stretch gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-surface p-8">
+          <div className="rounded-2xl border border-border bg-white p-8">
             <SectionLabel index="02">Technical Support</SectionLabel>
             <h3 className="mt-5 text-2xl font-bold">지원 범위 &amp; 방법</h3>
             <ul className="mt-5 space-y-2.5 text-sm text-muted">
@@ -152,11 +152,11 @@ export default function SupportPage() {
       </section>
 
       {/* §04 Downloads */}
-      <section id="downloads" className="bg-surface/40">
+      <section id="downloads" className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="03">Downloads</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">자료실</h2>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
             {downloads.map((d) => (
               <div
                 key={d.name}
@@ -181,7 +181,7 @@ export default function SupportPage() {
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">무엇을 도와드릴까요?</h2>
         <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
           {inquiryTypes.map((t) => (
-            <span key={t} className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-fg">
+            <span key={t} className="rounded-full border border-border bg-white px-4 py-2 text-sm text-fg">
               {t}
             </span>
           ))}

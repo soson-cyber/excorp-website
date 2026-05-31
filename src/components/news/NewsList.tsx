@@ -70,7 +70,7 @@ export function NewsList() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 on
                   ? "bg-primary text-white"
-                  : "border border-border bg-surface text-muted hover:border-primary/50 hover:text-fg"
+                  : "border border-border bg-white text-muted hover:border-primary/50 hover:text-fg"
               }`}
             >
               {c}
@@ -107,14 +107,14 @@ export function NewsList() {
               <Link
                 key={n.title}
                 href={n.href}
-                className={`group flex flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/50 ${span2}`}
+                className={`group flex flex-col rounded-2xl border border-border bg-white p-6 transition-colors hover:border-primary/50 ${span2}`}
               >
                 {body}
               </Link>
             ) : (
               <div
                 key={n.title}
-                className={`flex flex-col rounded-2xl border border-border bg-surface p-6 ${span2}`}
+                className={`flex flex-col rounded-2xl border border-border bg-white p-6 ${span2}`}
               >
                 {body}
               </div>

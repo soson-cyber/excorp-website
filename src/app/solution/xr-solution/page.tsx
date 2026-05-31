@@ -112,7 +112,7 @@ export default function XrSolutionPage() {
       </section>
 
       {/* §02 Why integrated */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="02">Why Integrated</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 통합 솔루션인가</h2>
@@ -122,7 +122,7 @@ export default function XrSolutionPage() {
           </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {contrast.map((c) => (
-              <div key={c.s} className="rounded-2xl border border-border bg-surface p-6">
+              <div key={c.s} className="rounded-2xl border border-border bg-white p-6">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-faint">분산형 구성</span>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{c.p}</p>
                 <div className="my-4 text-primary">↓</div>
@@ -166,13 +166,13 @@ export default function XrSolutionPage() {
       </section>
 
       {/* §04 Features */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="04">Key Features</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">핵심 기능</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <div key={f.t} className="rounded-2xl border border-border bg-surface p-6">
+              <div key={f.t} className="rounded-2xl border border-border bg-white p-6">
                 <h3 className="font-semibold text-fg">{f.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
               </div>
@@ -189,7 +189,7 @@ export default function XrSolutionPage() {
           하드웨어·소프트웨어·시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키(Turn-key)로 공급합니다.
         </p>
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-surface p-7">
+          <div className="rounded-2xl border border-border bg-white p-7">
             <span className="font-mono text-[11px] uppercase tracking-wider text-primary">Software</span>
             <ul className="mt-4 space-y-4">
               {build.software.map((s) => (
@@ -200,7 +200,7 @@ export default function XrSolutionPage() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border border-border bg-surface p-7">
+          <div className="rounded-2xl border border-border bg-white p-7">
             <span className="font-mono text-[11px] uppercase tracking-wider text-primary">Hardware</span>
             <ul className="mt-4 space-y-4">
               {build.hardware.map((h) => (
@@ -218,7 +218,7 @@ export default function XrSolutionPage() {
       </section>
 
       {/* §06 Connected tech */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="06">Connected Tech</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">연결하는 기술</h2>
@@ -228,7 +228,7 @@ export default function XrSolutionPage() {
           </p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {connected.map((c) => (
-              <div key={c.t} className="rounded-2xl border border-border bg-surface p-6">
+              <div key={c.t} className="rounded-2xl border border-border bg-white p-6">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="font-semibold text-fg">{c.t}</h3>
                   <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
@@ -252,7 +252,7 @@ export default function XrSolutionPage() {
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 방식 — 컨설팅부터 운영까지</h2>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {adoption.map((a, i) => (
-            <div key={a.step} className="rounded-2xl border border-border bg-surface p-6">
+            <div key={a.step} className="rounded-2xl border border-border bg-white p-6">
               <span className="font-mono text-3xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-3 font-semibold text-fg">{a.step}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{a.desc}</p>
@@ -268,13 +268,13 @@ export default function XrSolutionPage() {
       </section>
 
       {/* §08 Use cases */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="08">Use Cases</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
-              <div key={u.t} className="rounded-2xl border border-border bg-surface p-6">
+              <div key={u.t} className="rounded-2xl border border-border bg-white p-6">
                 <h3 className="font-semibold text-fg">{u.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
               </div>

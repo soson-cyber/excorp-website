@@ -78,7 +78,7 @@ export default async function WorkDetailPage({
       </section>
 
       {/* challenge / solution / result */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex grid gap-12 py-section lg:grid-cols-2">
           <div>
             <SectionLabel index="01">Challenge</SectionLabel>
@@ -106,7 +106,7 @@ export default async function WorkDetailPage({
         <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">기대 효과</h2>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {w.result.map((r) => (
-            <div key={r.l} className="rounded-2xl border border-border bg-surface p-7">
+            <div key={r.l} className="rounded-2xl border border-border bg-white p-7">
               <p className="font-mono text-4xl font-bold text-gradient-ex">{r.v}</p>
               <p className="mt-2 text-sm text-muted">{r.l}</p>
             </div>
@@ -118,7 +118,7 @@ export default async function WorkDetailPage({
       </section>
 
       {/* other work */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="04">More Work</SectionLabel>
           <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">다른 사례</h2>
@@ -127,7 +127,7 @@ export default async function WorkDetailPage({
               <Link
                 key={o.slug}
                 href={`/work/${o.slug}`}
-                className="group overflow-hidden rounded-2xl border border-border bg-surface transition-colors hover:border-primary/50"
+                className="group overflow-hidden rounded-2xl border border-border bg-white transition-colors hover:border-primary/50"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image

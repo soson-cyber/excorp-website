@@ -83,11 +83,11 @@ export default function ProductPage() {
       </section>
 
       {/* §02 Lineup (directory rows) */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="02">Lineup</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제품 라인업</h2>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
             {lineup.map((p) => (
               <Link
                 key={p.title}
@@ -125,7 +125,7 @@ export default function ProductPage() {
       </section>
 
       {/* §04 Certifications strip */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="04">Authorisation</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">공식 총판·리셀러 인증</h2>
@@ -135,7 +135,7 @@ export default function ProductPage() {
               <Link
                 key={c.name}
                 href={c.href}
-                className="group overflow-hidden rounded-2xl border border-border transition-colors hover:border-primary/60"
+                className="group overflow-hidden rounded-2xl border border-border transition-colors hover:border-primary/50"
               >
                 <Image src={c.src} alt={c.name} width={957} height={700} className="h-auto w-full" />
               </Link>

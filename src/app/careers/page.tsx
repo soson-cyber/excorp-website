@@ -96,7 +96,7 @@ export default function CareersPage() {
       </section>
 
       {/* §01 Core values (big editorial) */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section-lg">
           <SectionLabel index="01">Our Values</SectionLabel>
           <h2 className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight md:text-5xl">
@@ -138,7 +138,7 @@ export default function CareersPage() {
       </section>
 
       {/* §03 Spaces — photo storytelling */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="03">Spaces</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">기술이 만들어지는 공간</h2>
@@ -146,7 +146,7 @@ export default function CareersPage() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {spaces.map((s) =>
               s.real ? (
-                <figure key={s.label} className="overflow-hidden rounded-2xl border border-border bg-surface">
+                <figure key={s.label} className="overflow-hidden rounded-2xl border border-border bg-white">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image src={s.img} alt={`${s.label} — ${s.caption}`} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover" />
                   </div>
@@ -178,13 +178,13 @@ export default function CareersPage() {
       </section>
 
       {/* §05 Who we want */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="05">Who We Want</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">이런 분과 함께하고 싶어요</h2>
           <ul className="mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
             {whoWeWant.map((w) => (
-              <li key={w} className="flex items-start gap-3 rounded-2xl border border-border bg-surface p-6">
+              <li key={w} className="flex items-start gap-3 rounded-2xl border border-border bg-white p-6">
                 <span className="mt-1 font-mono text-primary" aria-hidden="true">✓</span>
                 <span className="leading-relaxed text-fg">{w}</span>
               </li>
@@ -197,7 +197,7 @@ export default function CareersPage() {
       <section className="container-ex py-section">
         <SectionLabel index="06">Open Positions</SectionLabel>
         <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">채용 중인 포지션</h2>
-        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
           <div className="flex flex-col gap-2 border-b border-border p-6 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div>
               <span className="text-lg font-semibold text-fg">상시 지원</span>
@@ -214,7 +214,7 @@ export default function CareersPage() {
       </section>
 
       {/* §07 How to Apply */}
-      <section className="bg-surface/40">
+      <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="07">How to Apply</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">지원 절차</h2>
@@ -222,7 +222,7 @@ export default function CareersPage() {
             {steps.map((s, i) => (
               <li
                 key={s.t}
-                className="relative flex items-center gap-5 overflow-hidden rounded-2xl border border-border bg-surface p-6"
+                className="relative flex items-center gap-5 overflow-hidden rounded-2xl border border-border bg-white p-6"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary font-mono text-sm font-bold text-white">
                   {String(i + 1).padStart(2, "0")}

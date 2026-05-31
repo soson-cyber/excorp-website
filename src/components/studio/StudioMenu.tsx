@@ -149,7 +149,7 @@ export function StudioMenu() {
               className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                 on
                   ? "bg-primary text-white"
-                  : "border border-border bg-surface text-muted hover:border-primary/50 hover:text-fg"
+                  : "border border-border bg-white text-muted hover:border-primary/50 hover:text-fg"
               }`}
             >
               {c.label}
