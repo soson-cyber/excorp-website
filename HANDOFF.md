@@ -1,7 +1,20 @@
 # EX Corporation Website — Handoff Brief
 
 > 다른 Claude 세션/환경(또는 협업자)이 이 프로젝트를 이어받기 위한 단일 인수인계 문서.
-> 이 파일 + `CLAUDE.md` + Figma 파일만 있으면 맥락 복원이 가능합니다.
+> 이 파일 + `CLAUDE.md` + `DESIGN.md` + Figma 파일만 있으면 맥락 복원이 가능합니다.
+
+## 0. 최근 세션 업데이트 (2026-05 — 이 블록이 아래 본문보다 우선)
+
+> **디자인 시스템 단일 기준은 이제 루트 [`DESIGN.md`](./DESIGN.md)** (9섹션, web-design 스킬 적용본). 코드와 충돌 시 DESIGN.md 기준.
+
+- **Hero 교체**: three.js `Hero3D` 폐기·삭제 → **`components/home/HeroAurora.tsx`** (다크 Highnote식 풀블리드 동심원 컬러밴드 오로라 + **포인터 반응**·이징, 중앙 초대형 스택 헤드라인 "경험을/확장하다"). `three`/`@types/three` 의존성 및 `components/three/*`·`HeroTracking.tsx` **삭제됨**. (남은 고아: `components/sections/home.tsx`·`ui/ParticleField.tsx` — 정리 후보)
+- **GNB**: Evervault식 **메가메뉴**(좌 컬럼+설명+태그, 우 `gradient-ex-mesh` 피처드 카드) + **히어로 위 투명 → 스크롤 시 라이트** 전환(`Header.tsx`, `usePathname`+scroll, 로고 filter 화이트, `.focus-on-dark` 흰 포커스 링). 키보드 접근성(aria-haspopup/expanded·Esc).
+- **디자인 토큰 변경**(globals.css): `--color-faint` → **`#5F636D`**(AA), 신규 `--color-{ink-hover,hero,pale,footer-muted,footer-link,footer-accent}`, `--spacing-section` **8.5rem**. `text-gradient-ex` = deep-purple→purple→pink(+가시 폴백), `text-gradient-ex-bright`(다크용 민트→퍼플→핑크), `.gradient-ex-mesh`(오로라). **muted #7C8090 표기는 폐기** — 실제 body `#51545E`·faint `#5F636D`.
+- **UI/UX 프로 패스**(전 사이트): WCAG AA(캡션 토큰·메가메뉴 키보드·ContactForm `role=alert`/`aria-invalid`/포커스·다크 흰 포커스 링), 리터럴 hex→**시맨틱 토큰** 일괄(라이브 코드 매핑가능 0), **카드=플랫 화이트 보더**(`shadow-soft` 제거), 섹션 배경 `bg-surface/40`→**`bg-surface`**(경계 크리스프), 모바일 다이어그램 **세로 스택**, CTA 문구 **"도입 상담 →"** 통일, 섹션 헤딩 **`text-4xl font-semibold md:text-5xl`**(크게/가볍게)·여백↑, **PageHero 글로우 블롭 제거**, 제품 상세 섹션 **좌측 정렬** 통일.
+- **신규 컴포넌트**: `components/product/SpecTable.tsx`(그룹 `<dl>`)·`CompareTable.tsx`(시맨틱 `<table>`) — 제품 스펙/비교표 통일.
+- **정직성**: Moverse/RETracker "공식 한국 **총판**"(대표 표현 제거).
+- **코드베이스 지식 그래프**: `.understand-anything/knowledge-graph.json` (understand-anything 플러그인, 137노드/288엣지/8레이어/투어10, 한국어) + 자체 뷰어 `.understand-anything/dashboard.html`. 보기: `cd .understand-anything && python3 -m http.server 8099` → `http://localhost:8099/dashboard.html`. (플러그인 정식 대시보드는 Astro 빌드가 보안 차단됨)
+- **다음 작업 후보**: ① **색 절제 패스**(모노톤+퍼플 단일 시그니처, Highnote 완성도 마지막 레버) ② Sanity CMS 연결(Work/News/Career) ③ 실제 자산(케이스·인터뷰·로고·자기소개 PDF) ④ Vercel 배포 ⑤ 고아 파일(`sections/home.tsx`·`ParticleField`) 정리.
 
 ## 1. 개요
 - **프로젝트**: 이엑스코퍼레이션(EX Corporation) 공식 웹사이트. 실시간 XR / 버추얼 프로덕션 콘텐츠 기업. (HQ 판교, Studio 하남)

@@ -1,0 +1,4492 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "excorp-website",
+    "languages": [
+      "typescript",
+      "javascript",
+      "css",
+      "json",
+      "markdown"
+    ],
+    "frameworks": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "ESLint"
+    ],
+    "description": "이엑스 주식회사(EX Corporation)의 B2B 실시간 XR / Virtual Production 마케팅 웹사이트 (Next.js 16 App Router · React 19 · TypeScript · Tailwind v4).",
+    "analyzedAt": "2026-05-31T04:39:07.535Z",
+    "gitCommitHash": "00fdd31654cdd2187417f80259518356a58e4e42"
+  },
+  "nodes": [
+    {
+      "id": "file:src/app/careers/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/careers/page.tsx",
+      "summary": "채용(Career) 페이지의 Server Component로, 핵심 가치·문화·근무 공간·복지·인재상·채용 절차 섹션을 정적 데이터로 렌더링한다.",
+      "tags": [
+        "page",
+        "app-router",
+        "careers",
+        "server-component",
+        "marketing"
+      ],
+      "complexity": "complex",
+      "languageNotes": "App Router 페이지 컨벤션(metadata + default export)을 따르며, 페이지 상단에 정의한 정적 배열을 .map()으로 반복 렌더링한다."
+    },
+    {
+      "id": "function:src/app/careers/page.tsx:CareersPage",
+      "type": "function",
+      "name": "CareersPage",
+      "filePath": "src/app/careers/page.tsx",
+      "lineRange": [
+        75,
+        252
+      ],
+      "summary": "채용 페이지 본문을 구성하는 default export 컴포넌트로, PageHero·MediaBlank·CtaBanner를 조합해 채용 관련 다중 섹션을 출력한다.",
+      "tags": [
+        "page-component",
+        "careers",
+        "composition",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app/news/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/news/page.tsx",
+      "summary": "News & Insight 목록 페이지로, PageHero와 NewsList를 결합해 인사이트 글 목록을 보여주는 App Router 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "news",
+        "server-component",
+        "listing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/news/page.tsx:NewsPage",
+      "type": "function",
+      "name": "NewsPage",
+      "filePath": "src/app/news/page.tsx",
+      "lineRange": [
+        14,
+        51
+      ],
+      "summary": "뉴스 목록 페이지의 default export 컴포넌트로, NewsList를 렌더링하고 하단 CtaBanner를 배치한다.",
+      "tags": [
+        "page-component",
+        "news",
+        "listing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/product/aximmetry/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/product/aximmetry/page.tsx",
+      "summary": "파트너 제품 Aximmetry(리셀러) 상세 페이지로, 사양·에디션 비교·기능·활용 사례·FAQ를 포함한 제품 마케팅 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "product",
+        "server-component",
+        "marketing"
+      ],
+      "complexity": "complex",
+      "languageNotes": "CompareTable·SpecTable·Gauge를 함께 활용해 제품 사양과 에디션 차이를 시각화한다."
+    },
+    {
+      "id": "function:src/app/product/aximmetry/page.tsx:AximmetryPage",
+      "type": "function",
+      "name": "AximmetryPage",
+      "filePath": "src/app/product/aximmetry/page.tsx",
+      "lineRange": [
+        79,
+        275
+      ],
+      "summary": "Aximmetry 제품 페이지의 default export 컴포넌트로, 정적 데이터 기반의 사양·에디션·FAQ 섹션을 조합 렌더링한다.",
+      "tags": [
+        "page-component",
+        "product",
+        "composition",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app/product/moverse/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/product/moverse/page.tsx",
+      "summary": "파트너 제품 Moverse AI(디스트리뷰터) 상세 페이지로, 사양·시스템 구성·기능·활용 사례·FAQ를 다루는 제품 마케팅 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "product",
+        "server-component",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/app/product/moverse/page.tsx:MoversePage",
+      "type": "function",
+      "name": "MoversePage",
+      "filePath": "src/app/product/moverse/page.tsx",
+      "lineRange": [
+        92,
+        248
+      ],
+      "summary": "Moverse 제품 페이지의 default export 컴포넌트로, SpecTable과 Gauge를 사용해 시스템 구성과 사양을 렌더링한다.",
+      "tags": [
+        "page-component",
+        "product",
+        "composition",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app/product/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/product/page.tsx",
+      "summary": "Product 허브(랜딩) 페이지로, 3종 파트너 제품 라인업을 소개하고 비교 표와 인증 정보를 제공하는 App Router 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "product",
+        "server-component",
+        "landing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/app/product/page.tsx:ProductPage",
+      "type": "function",
+      "name": "ProductPage",
+      "filePath": "src/app/product/page.tsx",
+      "lineRange": [
+        58,
+        150
+      ],
+      "summary": "제품 허브 페이지의 default export 컴포넌트로, 제품 라인업과 CompareTable을 통해 제품군 전반을 안내한다.",
+      "tags": [
+        "page-component",
+        "product",
+        "landing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app/product/retracker/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/product/retracker/page.tsx",
+      "summary": "파트너 제품 RETracker(디스트리뷰터) 상세 페이지로, 사양·라인업·기능·활용 사례·FAQ를 담은 제품 마케팅 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "product",
+        "server-component",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/app/product/retracker/page.tsx:RetrackerPage",
+      "type": "function",
+      "name": "RetrackerPage",
+      "filePath": "src/app/product/retracker/page.tsx",
+      "lineRange": [
+        97,
+        259
+      ],
+      "summary": "RETracker 제품 페이지의 default export 컴포넌트로, SpecTable·Gauge와 정적 데이터를 조합해 다중 섹션을 렌더링한다.",
+      "tags": [
+        "page-component",
+        "product",
+        "composition",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app/solution/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/solution/page.tsx",
+      "summary": "Solution 허브 페이지로, XR Solution과 Virtual Production 두 솔루션의 접근 방식·역량·성과를 소개하는 App Router 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "solution",
+        "server-component",
+        "landing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/app/solution/page.tsx:SolutionPage",
+      "type": "function",
+      "name": "SolutionPage",
+      "filePath": "src/app/solution/page.tsx",
+      "lineRange": [
+        35,
+        152
+      ],
+      "summary": "솔루션 허브 페이지의 default export 컴포넌트로, 접근 방식·역량·성과 섹션을 정적 데이터로 렌더링한다.",
+      "tags": [
+        "page-component",
+        "solution",
+        "landing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app/solution/virtual-production/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/solution/virtual-production/page.tsx",
+      "summary": "Virtual Production 솔루션 상세 페이지로, 도입 효과·제작 방식·EX 강점·진행 프로세스·활용 사례를 다루는 마케팅 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "solution",
+        "server-component",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/app/solution/virtual-production/page.tsx:VirtualProductionPage",
+      "type": "function",
+      "name": "VirtualProductionPage",
+      "filePath": "src/app/solution/virtual-production/page.tsx",
+      "lineRange": [
+        52,
+        208
+      ],
+      "summary": "Virtual Production 페이지의 default export 컴포넌트로, 도입 효과·프로세스·사례 섹션을 조합 렌더링한다.",
+      "tags": [
+        "page-component",
+        "solution",
+        "composition",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app/solution/xr-solution/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/solution/xr-solution/page.tsx",
+      "summary": "자체 통합 XR Solution(EXLINK) 상세 페이지로, 차별점·파이프라인·기능·구성(SW/HW)·연동·도입 절차·사례를 담은 핵심 마케팅 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "solution",
+        "server-component",
+        "marketing"
+      ],
+      "complexity": "complex",
+      "languageNotes": "소프트웨어/하드웨어 구성을 중첩 객체(build.software, build.hardware)로 분리해 각각 .map()으로 렌더링한다."
+    },
+    {
+      "id": "function:src/app/solution/xr-solution/page.tsx:XrSolutionPage",
+      "type": "function",
+      "name": "XrSolutionPage",
+      "filePath": "src/app/solution/xr-solution/page.tsx",
+      "lineRange": [
+        73,
+        289
+      ],
+      "summary": "XR Solution 페이지의 default export 컴포넌트로, 차별점·파이프라인·구성·도입 절차 등 다중 섹션을 정적 데이터로 렌더링한다.",
+      "tags": [
+        "page-component",
+        "solution",
+        "composition",
+        "marketing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app/support/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/support/page.tsx",
+      "summary": "고객 지원(Support) 페이지로, 빠른 문의 채널·FAQ 그룹·자료 다운로드·문의 유형 안내를 제공하는 App Router 페이지다.",
+      "tags": [
+        "page",
+        "app-router",
+        "support",
+        "server-component",
+        "faq"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/app/support/page.tsx:SupportPage",
+      "type": "function",
+      "name": "SupportPage",
+      "filePath": "src/app/support/page.tsx",
+      "lineRange": [
+        57,
+        199
+      ],
+      "summary": "지원 페이지의 default export 컴포넌트로, site 연락처 데이터와 Icon을 활용해 FAQ·다운로드·문의 채널 섹션을 렌더링한다.",
+      "tags": [
+        "page-component",
+        "support",
+        "faq",
+        "composition"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/layout/CtaBanner.tsx",
+      "type": "file",
+      "name": "CtaBanner.tsx",
+      "filePath": "src/components/layout/CtaBanner.tsx",
+      "summary": "여러 페이지 하단에서 재사용되는 CTA(문의·상담 유도) 배너 컴포넌트로, Button을 포함한 콜투액션 블록을 렌더링한다.",
+      "tags": [
+        "component",
+        "layout",
+        "cta",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/layout/CtaBanner.tsx:CtaBanner",
+      "type": "function",
+      "name": "CtaBanner",
+      "filePath": "src/components/layout/CtaBanner.tsx",
+      "lineRange": [
+        3,
+        37
+      ],
+      "summary": "CTA 배너의 named export 컴포넌트로, 제목·설명과 Button 액션을 묶어 페이지 전환 유도 영역을 구성한다.",
+      "tags": [
+        "component",
+        "cta",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/motion/Gauge.tsx",
+      "type": "file",
+      "name": "Gauge.tsx",
+      "filePath": "src/components/motion/Gauge.tsx",
+      "summary": "스크롤 진입 시 IntersectionObserver로 채워지는 게이지 바 애니메이션 클라이언트 컴포넌트로, prefers-reduced-motion을 고려한다.",
+      "tags": [
+        "component",
+        "motion",
+        "animation",
+        "client-component"
+      ],
+      "complexity": "simple",
+      "languageNotes": "useRef·useEffect와 IntersectionObserver를 조합한 클라이언트 사이드 진입 애니메이션이며, matchMedia로 모션 감소 설정을 확인한다."
+    },
+    {
+      "id": "function:src/components/motion/Gauge.tsx:Gauge",
+      "type": "function",
+      "name": "Gauge",
+      "filePath": "src/components/motion/Gauge.tsx",
+      "lineRange": [
+        9,
+        41
+      ],
+      "summary": "게이지 막대 컴포넌트로, 뷰포트 진입을 감지해 채움 비율을 애니메이션하고 모션 감소 환경에서는 즉시 표시한다.",
+      "tags": [
+        "component",
+        "motion",
+        "animation",
+        "hook-usage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/product/CompareTable.tsx",
+      "type": "file",
+      "name": "CompareTable.tsx",
+      "filePath": "src/components/product/CompareTable.tsx",
+      "summary": "제품 비교용 표 컴포넌트로, 컬럼·행 데이터를 받아 에디션/제품 간 사양 비교 테이블을 렌더링한다.",
+      "tags": [
+        "component",
+        "product",
+        "table",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/product/CompareTable.tsx:CompareTable",
+      "type": "function",
+      "name": "CompareTable",
+      "filePath": "src/components/product/CompareTable.tsx",
+      "lineRange": [
+        12,
+        58
+      ],
+      "summary": "columns·rows·cornerLabel props를 받아 비교 표 헤더와 셀을 .map()으로 렌더링하는 named export 컴포넌트다.",
+      "tags": [
+        "component",
+        "table",
+        "product",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/product/SpecTable.tsx",
+      "type": "file",
+      "name": "SpecTable.tsx",
+      "filePath": "src/components/product/SpecTable.tsx",
+      "summary": "제품 사양 표 컴포넌트로, 그룹별 사양 행 데이터를 받아 항목명-값 형태의 스펙 테이블을 렌더링한다.",
+      "tags": [
+        "component",
+        "product",
+        "table",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/product/SpecTable.tsx:SpecTable",
+      "type": "function",
+      "name": "SpecTable",
+      "filePath": "src/components/product/SpecTable.tsx",
+      "lineRange": [
+        10,
+        37
+      ],
+      "summary": "groups props를 받아 그룹과 행을 중첩 .map()으로 렌더링하는 사양 표 named export 컴포넌트다.",
+      "tags": [
+        "component",
+        "table",
+        "product",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/Button.tsx",
+      "type": "file",
+      "name": "Button.tsx",
+      "filePath": "src/components/ui/Button.tsx",
+      "summary": "프로젝트 전반에서 재사용되는 기본 Button UI 컴포넌트로, variant와 className으로 스타일 변형을 지원한다.",
+      "tags": [
+        "component",
+        "ui",
+        "button",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ui/Button.tsx:Button",
+      "type": "function",
+      "name": "Button",
+      "filePath": "src/components/ui/Button.tsx",
+      "lineRange": [
+        15,
+        26
+      ],
+      "summary": "variant(기본 primary)와 추가 props를 받아 스타일링된 버튼을 렌더링하는 named export UI 컴포넌트다.",
+      "tags": [
+        "component",
+        "ui",
+        "button",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/SectionLabel.tsx",
+      "type": "file",
+      "name": "SectionLabel.tsx",
+      "filePath": "src/components/ui/SectionLabel.tsx",
+      "summary": "섹션 머리에 인덱스 번호와 라벨 텍스트를 표시하는 작은 UI 컴포넌트로, 여러 페이지의 섹션 구분에 사용된다.",
+      "tags": [
+        "component",
+        "ui",
+        "label",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ui/SectionLabel.tsx:SectionLabel",
+      "type": "function",
+      "name": "SectionLabel",
+      "filePath": "src/components/ui/SectionLabel.tsx",
+      "lineRange": [
+        7,
+        14
+      ],
+      "summary": "index와 children을 받아 번호가 매겨진 섹션 라벨을 렌더링하는 named export UI 컴포넌트다.",
+      "tags": [
+        "component",
+        "ui",
+        "label",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/about/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/about/page.tsx",
+      "summary": "About EX 소개 페이지. 회사 미션·WhyEX·특허·연혁·거점 데이터를 정적 배열로 정의하고 PageHero·SectionLabel·CtaBanner로 렌더링하는 App Router 서버 페이지.",
+      "tags": [
+        "page",
+        "app-router",
+        "company",
+        "static-content",
+        "seo"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/app/about/page.tsx:AboutPage",
+      "type": "function",
+      "name": "AboutPage",
+      "filePath": "src/app/about/page.tsx",
+      "lineRange": [
+        53,
+        162
+      ],
+      "summary": "회사 소개 페이지를 구성하는 기본 export 서버 컴포넌트. WhyEX·특허·연혁·거점 섹션을 매핑 렌더링한다.",
+      "tags": [
+        "page-component",
+        "server-component",
+        "company"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app/contact/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/contact/page.tsx",
+      "summary": "문의하기 페이지. 문의 유형 안내, 연락처(전화/팩스/이메일), 거점 정보를 보여주고 ContactForm 클라이언트 폼을 임베드하는 App Router 서버 페이지.",
+      "tags": [
+        "page",
+        "app-router",
+        "contact",
+        "form",
+        "seo"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/app/contact/page.tsx:ContactPage",
+      "type": "function",
+      "name": "ContactPage",
+      "filePath": "src/app/contact/page.tsx",
+      "lineRange": [
+        22,
+        148
+      ],
+      "summary": "문의 안내·연락처·거점 정보를 렌더링하고 ContactForm을 포함하는 기본 export 서버 컴포넌트.",
+      "tags": [
+        "page-component",
+        "server-component",
+        "contact"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app/layout.tsx",
+      "type": "file",
+      "name": "layout.tsx",
+      "filePath": "src/app/layout.tsx",
+      "summary": "App Router 루트 레이아웃. 전역 metadata·폰트·globals.css를 설정하고 Header·Footer·CustomCursor와 JSON-LD 구조화 데이터로 모든 페이지를 감싼다.",
+      "tags": [
+        "entry-point",
+        "layout",
+        "app-router",
+        "seo",
+        "metadata"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Next.js App Router의 루트 RootLayout 규약 파일로, 전역 메타데이터와 JSON-LD 조직 스키마를 주입한다."
+    },
+    {
+      "id": "function:src/app/layout.tsx:RootLayout",
+      "type": "function",
+      "name": "RootLayout",
+      "filePath": "src/app/layout.tsx",
+      "lineRange": [
+        58,
+        120
+      ],
+      "summary": "children을 받아 html/body 구조와 Header·Footer·CustomCursor·JSON-LD를 렌더링하는 루트 레이아웃 컴포넌트.",
+      "tags": [
+        "layout-component",
+        "server-component",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/layout/Footer.tsx",
+      "type": "file",
+      "name": "Footer.tsx",
+      "filePath": "src/components/layout/Footer.tsx",
+      "summary": "다크 네이비 사이트 푸터. site.ts의 footerColumns·locations 데이터를 매핑해 링크 컬럼·거점·연락처·저작권을 렌더링하는 공용 레이아웃 컴포넌트.",
+      "tags": [
+        "component",
+        "layout",
+        "footer",
+        "navigation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Footer.tsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "src/components/layout/Footer.tsx",
+      "lineRange": [
+        11,
+        128
+      ],
+      "summary": "푸터 링크 컬럼·거점·연락처·저작권 연도를 렌더링하는 export 컴포넌트.",
+      "tags": [
+        "layout-component",
+        "footer",
+        "navigation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/layout/Header.tsx",
+      "type": "file",
+      "name": "Header.tsx",
+      "filePath": "src/components/layout/Header.tsx",
+      "summary": "스크롤 반응형 글로벌 내비게이션 헤더. 데스크톱 드롭다운 메가메뉴와 모바일 메뉴를 useState/useEffect로 제어하는 클라이언트 컴포넌트.",
+      "tags": [
+        "component",
+        "layout",
+        "navigation",
+        "client-component",
+        "header"
+      ],
+      "complexity": "complex",
+      "languageNotes": "use client 컴포넌트로 usePathname·스크롤 리스너·드롭다운/모바일 메뉴 상태를 다수 useState/useEffect로 관리한다."
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:Header",
+      "type": "function",
+      "name": "Header",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [
+        9,
+        252
+      ],
+      "summary": "스크롤 상태·드롭다운 메뉴·모바일 메뉴를 제어하며 nav 데이터를 렌더링하는 클라이언트 내비게이션 컴포넌트.",
+      "tags": [
+        "layout-component",
+        "navigation",
+        "client-component",
+        "event-handler"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ui/ContactForm.tsx",
+      "type": "file",
+      "name": "ContactForm.tsx",
+      "filePath": "src/components/ui/ContactForm.tsx",
+      "summary": "클라이언트 문의 폼 컴포넌트. 필드 검증·이메일 정규식 체크 후 /api/contact로 fetch 전송하고 성공/오류 상태와 접근성 피드백을 처리한다.",
+      "tags": [
+        "component",
+        "form",
+        "client-component",
+        "validation",
+        "api-handler"
+      ],
+      "complexity": "complex",
+      "languageNotes": "클라이언트 측 폼 검증(필수값·이메일 정규식)과 fetch 제출, aria-describedby 기반 접근성 피드백을 구현한다."
+    },
+    {
+      "id": "function:src/components/ui/ContactForm.tsx:ContactForm",
+      "type": "function",
+      "name": "ContactForm",
+      "filePath": "src/components/ui/ContactForm.tsx",
+      "lineRange": [
+        9,
+        175
+      ],
+      "summary": "문의 폼 입력을 검증하고 /api/contact에 POST 전송하며 전송 상태를 관리하는 클라이언트 컴포넌트.",
+      "tags": [
+        "form-component",
+        "client-component",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ui/CustomCursor.tsx",
+      "type": "file",
+      "name": "CustomCursor.tsx",
+      "filePath": "src/components/ui/CustomCursor.tsx",
+      "summary": "커스텀 마우스 커서 클라이언트 컴포넌트. requestAnimationFrame으로 커서 링을 추적하고 포인터/모션 환경설정을 감지해 호버·클릭 상태를 토글한다.",
+      "tags": [
+        "component",
+        "client-component",
+        "animation",
+        "ui-effect",
+        "accessibility"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "matchMedia로 포인터/prefers-reduced-motion을 감지하고 rAF 루프로 커서 위치를 보간한다."
+    },
+    {
+      "id": "function:src/components/ui/CustomCursor.tsx:CustomCursor",
+      "type": "function",
+      "name": "CustomCursor",
+      "filePath": "src/components/ui/CustomCursor.tsx",
+      "lineRange": [
+        12,
+        96
+      ],
+      "summary": "rAF 루프로 커서 링을 추적하고 호버/클릭/모션 환경을 처리하는 클라이언트 컴포넌트.",
+      "tags": [
+        "client-component",
+        "animation",
+        "ui-effect"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/Icon.tsx",
+      "type": "file",
+      "name": "Icon.tsx",
+      "filePath": "src/components/ui/Icon.tsx",
+      "summary": "인라인 SVG 아이콘 레지스트리. 24x24 라인 스타일 아이콘 패스 맵과 name prop으로 해당 아이콘을 렌더링하는 공용 Icon 컴포넌트를 제공한다.",
+      "tags": [
+        "component",
+        "ui",
+        "icon",
+        "svg",
+        "type-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ui/Icon.tsx:Icon",
+      "type": "function",
+      "name": "Icon",
+      "filePath": "src/components/ui/Icon.tsx",
+      "lineRange": [
+        72,
+        92
+      ],
+      "summary": "name prop으로 SVG 패스 맵에서 아이콘을 선택해 currentColor 스트로크로 렌더링하는 export 컴포넌트.",
+      "tags": [
+        "ui-component",
+        "icon",
+        "svg"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lib/site.ts",
+      "type": "file",
+      "name": "site.ts",
+      "filePath": "src/lib/site.ts",
+      "summary": "사이트 전역 데이터 모듈. 브랜드 정보·연락처·GNB 내비게이션(nav)·푸터 컬럼·거점(locations)·파트너 상수와 관련 타입을 중앙에서 정의해 전역 공유한다.",
+      "tags": [
+        "data-model",
+        "configuration",
+        "navigation",
+        "single-source-of-truth",
+        "type-definition"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "as const 단언으로 불변 상수를 정의하고 NavItem/NavChild/NavFeatured 타입을 함께 export하는 중앙 데이터 소스."
+    },
+    {
+      "id": "file:src/app/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/page.tsx",
+      "summary": "App Router 루트 라우트(`/`)로, 실제 홈 구현인 HomeClean 컴포넌트를 렌더링하는 얇은 진입점이다.",
+      "tags": [
+        "entry-point",
+        "page",
+        "nextjs-app-router",
+        "home"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Next.js App Router의 page.tsx 규약 파일 — 라우트 세그먼트의 기본 export가 페이지가 된다."
+    },
+    {
+      "id": "function:src/app/page.tsx:HomePage",
+      "type": "function",
+      "name": "HomePage",
+      "filePath": "src/app/page.tsx",
+      "lineRange": [
+        3,
+        5
+      ],
+      "summary": "홈 라우트의 페이지 컴포넌트로, HomeClean을 그대로 반환한다.",
+      "tags": [
+        "page-component",
+        "home",
+        "nextjs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/home/HeroAurora.tsx",
+      "type": "file",
+      "name": "HeroAurora.tsx",
+      "filePath": "src/components/home/HeroAurora.tsx",
+      "summary": "홈 히어로 배경용 오로라 비주얼 컴포넌트로, requestAnimationFrame 루프와 마우스 무브·IntersectionObserver로 부드러운 그라데이션 블롭 모션을 그린다.",
+      "tags": [
+        "component",
+        "animation",
+        "hero",
+        "client-component",
+        "home"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "prefers-reduced-motion(matchMedia)와 IntersectionObserver로 접근성·성능을 모두 고려한 RAF 애니메이션 패턴."
+    },
+    {
+      "id": "function:src/components/home/HeroAurora.tsx:HeroAurora",
+      "type": "function",
+      "name": "HeroAurora",
+      "filePath": "src/components/home/HeroAurora.tsx",
+      "lineRange": [
+        20,
+        132
+      ],
+      "summary": "오로라 모션을 구동하는 클라이언트 컴포넌트로, ref 기반 DOM 조작과 RAF/관찰자 정리(cleanup) 로직을 포함한다.",
+      "tags": [
+        "component",
+        "animation",
+        "hooks",
+        "client-component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/home/HomeClean.tsx",
+      "type": "file",
+      "name": "HomeClean.tsx",
+      "filePath": "src/components/home/HomeClean.tsx",
+      "summary": "현재 활성화된 홈 페이지 본문 구현으로, Hero·WhatWeDo·EXLINK 다이어그램·파트너 제품·XR Studio·Numbers·CTA 등 다수의 섹션을 하나의 화이트 테마 레이아웃으로 조립한다.",
+      "tags": [
+        "component",
+        "home",
+        "page-section",
+        "composition",
+        "client-component"
+      ],
+      "complexity": "complex",
+      "languageNotes": "한 파일에 15개의 섹션 컴포넌트를 모듈 로컬로 정의하고 HomeClean이 이를 순서대로 합성하는 단일 파일 페이지 패턴."
+    },
+    {
+      "id": "function:src/components/home/HomeClean.tsx:HomeClean",
+      "type": "function",
+      "name": "HomeClean",
+      "filePath": "src/components/home/HomeClean.tsx",
+      "lineRange": [
+        634,
+        648
+      ],
+      "summary": "홈 섹션들을 순서대로 합성해 전체 홈 페이지 레이아웃을 구성하는 export 컴포넌트다.",
+      "tags": [
+        "component",
+        "home",
+        "composition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/home/HomeClean.tsx:Hero",
+      "type": "function",
+      "name": "Hero",
+      "filePath": "src/components/home/HomeClean.tsx",
+      "lineRange": [
+        48,
+        104
+      ],
+      "summary": "홈 최상단 히어로 섹션으로, 슬로건·CTA·HeroAurora 배경을 결합한다.",
+      "tags": [
+        "component",
+        "hero",
+        "home"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/home/HomeClean.tsx:ExlinkDiagram",
+      "type": "function",
+      "name": "ExlinkDiagram",
+      "filePath": "src/components/home/HomeClean.tsx",
+      "lineRange": [
+        209,
+        266
+      ],
+      "summary": "EXLINK 통합 솔루션의 구성요소 관계를 노드 형태로 시각화하는 다이어그램 섹션이다.",
+      "tags": [
+        "component",
+        "diagram",
+        "solution"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/home/HomeClean.tsx:PartnerProducts",
+      "type": "function",
+      "name": "PartnerProducts",
+      "filePath": "src/components/home/HomeClean.tsx",
+      "lineRange": [
+        401,
+        465
+      ],
+      "summary": "Aximmetry·Moverse·RETracker 등 파트너 제품을 카드 그리드로 나열하는 섹션이다.",
+      "tags": [
+        "component",
+        "product",
+        "home"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/home/HomeClean.tsx:XrStudio",
+      "type": "function",
+      "name": "XrStudio",
+      "filePath": "src/components/home/HomeClean.tsx",
+      "lineRange": [
+        500,
+        534
+      ],
+      "summary": "XR Studio 대관·상품화 섹션으로, 스튜디오 스테이지 비주얼과 핵심 불릿을 보여준다.",
+      "tags": [
+        "component",
+        "home",
+        "xr-studio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/home/HomeClean.tsx:Cta",
+      "type": "function",
+      "name": "Cta",
+      "filePath": "src/components/home/HomeClean.tsx",
+      "lineRange": [
+        593,
+        630
+      ],
+      "summary": "페이지 하단 전환 유도(CTA) 밴드 섹션으로, 상담·문의 액션을 노출한다.",
+      "tags": [
+        "component",
+        "cta",
+        "home"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/home/SectionLabel.tsx",
+      "type": "file",
+      "name": "SectionLabel.tsx",
+      "filePath": "src/components/home/SectionLabel.tsx",
+      "summary": "홈 전용 섹션 상단의 작은 라벨(eyebrow) 텍스트를 렌더링하는 소형 프레젠테이션 컴포넌트다.",
+      "tags": [
+        "component",
+        "ui",
+        "label",
+        "home"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/motion/CountUp.tsx",
+      "type": "file",
+      "name": "CountUp.tsx",
+      "filePath": "src/components/motion/CountUp.tsx",
+      "summary": "뷰포트 진입 시 0에서 목표 수치까지 ease-out 곡선으로 카운트업 애니메이션을 수행하는 모션 유틸리티 컴포넌트다.",
+      "tags": [
+        "component",
+        "animation",
+        "motion",
+        "client-component"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "IntersectionObserver로 가시성 트리거 + RAF로 프레임 보간, prefers-reduced-motion 시 즉시 최종값 표시."
+    },
+    {
+      "id": "function:src/components/motion/CountUp.tsx:CountUp",
+      "type": "function",
+      "name": "CountUp",
+      "filePath": "src/components/motion/CountUp.tsx",
+      "lineRange": [
+        9,
+        62
+      ],
+      "summary": "value·suffix·duration을 받아 가시성 진입 시 숫자를 애니메이션으로 증가시키는 컴포넌트다.",
+      "tags": [
+        "component",
+        "animation",
+        "hooks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/motion/Parallax.tsx",
+      "type": "file",
+      "name": "Parallax.tsx",
+      "filePath": "src/components/motion/Parallax.tsx",
+      "summary": "스크롤 진행률에 따라 자식 요소를 translateY로 이동시켜 패럴랙스 효과를 주는 모션 래퍼 컴포넌트다.",
+      "tags": [
+        "component",
+        "animation",
+        "motion",
+        "parallax",
+        "client-component"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "scroll/resize 이벤트를 RAF로 스로틀링하고 prefers-reduced-motion을 존중하는 패턴."
+    },
+    {
+      "id": "function:src/components/motion/Parallax.tsx:Parallax",
+      "type": "function",
+      "name": "Parallax",
+      "filePath": "src/components/motion/Parallax.tsx",
+      "lineRange": [
+        10,
+        53
+      ],
+      "summary": "speed 프롭에 비례해 스크롤 기반 수직 이동을 적용하는 패럴랙스 래퍼다.",
+      "tags": [
+        "component",
+        "animation",
+        "parallax",
+        "hooks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/motion/Reveal.tsx",
+      "type": "file",
+      "name": "Reveal.tsx",
+      "filePath": "src/components/motion/Reveal.tsx",
+      "summary": "요소가 뷰포트에 들어올 때 CSS 클래스를 부여해 페이드/슬라이드 인 등 등장 애니메이션을 트리거하는 모션 래퍼 컴포넌트다.",
+      "tags": [
+        "component",
+        "animation",
+        "motion",
+        "reveal",
+        "client-component"
+      ],
+      "complexity": "simple",
+      "languageNotes": "IntersectionObserver 1회 트리거 후 disconnect, reduced-motion 속성 검사로 애니메이션 생략."
+    },
+    {
+      "id": "function:src/components/motion/Reveal.tsx:Reveal",
+      "type": "function",
+      "name": "Reveal",
+      "filePath": "src/components/motion/Reveal.tsx",
+      "lineRange": [
+        11,
+        50
+      ],
+      "summary": "delay 프롭을 받아 가시성 진입 시 등장 애니메이션 클래스를 추가하는 래퍼 컴포넌트다.",
+      "tags": [
+        "component",
+        "animation",
+        "reveal",
+        "hooks"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/sections/home.tsx",
+      "type": "file",
+      "name": "home.tsx",
+      "filePath": "src/components/sections/home.tsx",
+      "summary": "홈 페이지를 구성하는 10개의 개별 섹션 컴포넌트(Hero·TrustBar·AboutSummary·SolutionEntry·Products·XrStudio·WhyEx·Industries·Numbers·NewsInsight)를 named export로 모아둔 섹션 모음 모듈이다.",
+      "tags": [
+        "component",
+        "page-section",
+        "home",
+        "barrel",
+        "client-component"
+      ],
+      "complexity": "complex",
+      "languageNotes": "site.ts 데이터를 주입받아 섹션을 데이터-드리븐으로 렌더링하고, CountUp·Parallax·ParticleField·Button 등을 조합한다."
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:Hero",
+      "type": "function",
+      "name": "Hero",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        17,
+        92
+      ],
+      "summary": "ParticleField 배경과 슬로건·CTA를 결합한 홈 히어로 섹션이다.",
+      "tags": [
+        "component",
+        "hero",
+        "home"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:TrustBar",
+      "type": "function",
+      "name": "TrustBar",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        95,
+        119
+      ],
+      "summary": "파트너/고객 로고를 나열해 신뢰도를 보여주는 트러스트 바 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "trust-bar"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:AboutSummary",
+      "type": "function",
+      "name": "AboutSummary",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        129,
+        169
+      ],
+      "summary": "회사 소개 요약과 핵심 지표 메타를 보여주는 About 요약 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "about"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:SolutionEntry",
+      "type": "function",
+      "name": "SolutionEntry",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        172,
+        237
+      ],
+      "summary": "XR Solution·Virtual Production 등 솔루션으로 진입하는 카드/링크 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "solution"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:Products",
+      "type": "function",
+      "name": "Products",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        264,
+        301
+      ],
+      "summary": "파트너 제품 라인업을 데이터 기반 카드 그리드로 표시하는 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "product"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:XrStudio",
+      "type": "function",
+      "name": "XrStudio",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        311,
+        369
+      ],
+      "summary": "XR Studio 대관·상품화 소개와 스튜디오 지표를 보여주는 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "xr-studio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:WhyEx",
+      "type": "function",
+      "name": "WhyEx",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        395,
+        420
+      ],
+      "summary": "EX 코퍼레이션 선택 이유를 카드로 정리한 차별점 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "value-proposition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:Industries",
+      "type": "function",
+      "name": "Industries",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        434,
+        456
+      ],
+      "summary": "적용 산업 영역을 데이터 기반 목록으로 나열하는 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "industries"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:Numbers",
+      "type": "function",
+      "name": "Numbers",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        466,
+        498
+      ],
+      "summary": "CountUp을 활용해 회사 핵심 수치를 애니메이션으로 강조하는 통계 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "stats",
+        "animation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/sections/home.tsx:NewsInsight",
+      "type": "function",
+      "name": "NewsInsight",
+      "filePath": "src/components/sections/home.tsx",
+      "lineRange": [
+        522,
+        585
+      ],
+      "summary": "최신 뉴스·인사이트 항목을 피처드+리스트 형태로 보여주는 홈 섹션이다.",
+      "tags": [
+        "component",
+        "home",
+        "news"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/ParticleField.tsx",
+      "type": "file",
+      "name": "ParticleField.tsx",
+      "filePath": "src/components/ui/ParticleField.tsx",
+      "summary": "Canvas 2D에 흐름장(flow field) 기반 파티클과 연결선을 그리고 마우스 인터랙션·가시성 제어를 적용하는 인터랙티브 배경 컴포넌트다.",
+      "tags": [
+        "component",
+        "animation",
+        "canvas",
+        "particle",
+        "client-component"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Canvas 2D + DPR 스케일링, sin/cos 기반 flow field, prefers-reduced-motion 시 정적 렌더, visibilitychange/IntersectionObserver로 RAF 절전."
+    },
+    {
+      "id": "function:src/components/ui/ParticleField.tsx:ParticleField",
+      "type": "function",
+      "name": "ParticleField",
+      "filePath": "src/components/ui/ParticleField.tsx",
+      "lineRange": [
+        27,
+        249
+      ],
+      "summary": "캔버스 리사이즈·파티클 스폰·프레임 루프·이벤트 정리를 모두 포함하는 파티클 배경 클라이언트 컴포넌트다.",
+      "tags": [
+        "component",
+        "canvas",
+        "animation",
+        "hooks"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app/privacy/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/privacy/page.tsx",
+      "summary": "개인정보 처리방침 라우트 페이지로, PageHero와 '준비 중' 안내 섹션만 렌더링하는 법무 검토 대기 플레이스홀더다.",
+      "tags": [
+        "entry-point",
+        "legal",
+        "placeholder",
+        "static-page"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/terms/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/terms/page.tsx",
+      "summary": "이용약관 라우트 페이지로, PageHero와 '준비 중' 안내 섹션만 렌더링하는 법무 검토 대기 플레이스홀더다.",
+      "tags": [
+        "entry-point",
+        "legal",
+        "placeholder",
+        "static-page"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/work/[slug]/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/work/[slug]/page.tsx",
+      "summary": "도입 사례 상세 동적 라우트로, slug로 work 데이터를 조회해 챌린지·솔루션·결과·관련 사례를 정적 생성(SSG)으로 렌더링한다.",
+      "tags": [
+        "entry-point",
+        "dynamic-route",
+        "ssg",
+        "work-detail",
+        "seo"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "generateStaticParams + generateMetadata로 빌드 타임 정적 생성 및 페이지별 메타데이터를 구성하는 Next.js App Router 패턴."
+    },
+    {
+      "id": "file:src/app/work/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/work/page.tsx",
+      "summary": "Work(도입 사례) 목록 페이지로, PageHero와 클라이언트 필터 갤러리(WorkGallery), 하단 CTA 배너를 조합한다.",
+      "tags": [
+        "entry-point",
+        "work-gallery",
+        "static-page",
+        "seo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/page/InnerPage.tsx",
+      "type": "file",
+      "name": "InnerPage.tsx",
+      "filePath": "src/components/page/InnerPage.tsx",
+      "summary": "내부 페이지 공통 레이아웃 컴포넌트로, PageHero·번갈아 표면 처리되는 PlaceholderSection 목록·선택적 CtaBanner를 조립한다.",
+      "tags": [
+        "component",
+        "layout",
+        "page-scaffold",
+        "composition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/page/PageHero.tsx",
+      "type": "file",
+      "name": "PageHero.tsx",
+      "filePath": "src/components/page/PageHero.tsx",
+      "summary": "내부 페이지 상단 히어로 컴포넌트로, breadcrumb 내비게이션·태그·제목·리드 문구를 일관된 스타일로 렌더링한다. 다수 페이지에서 공유된다.",
+      "tags": [
+        "component",
+        "hero",
+        "breadcrumb",
+        "shared",
+        "type-definition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/page/PlaceholderSection.tsx",
+      "type": "file",
+      "name": "PlaceholderSection.tsx",
+      "filePath": "src/components/page/PlaceholderSection.tsx",
+      "summary": "마스터플랜 기준의 실제 라벨·제목과 스켈레톤 본문(blocks)을 조합한 스캐폴드 섹션 컴포넌트로, 최종 카피·에셋 확정 전까지 '준비 중' 상태를 표시한다.",
+      "tags": [
+        "component",
+        "placeholder",
+        "skeleton",
+        "section",
+        "type-definition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/work/WorkGallery.tsx",
+      "type": "file",
+      "name": "WorkGallery.tsx",
+      "filePath": "src/components/work/WorkGallery.tsx",
+      "summary": "클라이언트 컴포넌트 Work 갤러리로, useState 기반 카테고리 필터와 카드 그리드를 제공하고 각 카드는 /work/[slug] 상세로 연결한다.",
+      "tags": [
+        "component",
+        "client-component",
+        "filter",
+        "gallery",
+        "work-gallery"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "'use client' 지시어 + useState로 카테고리 필터링을 처리하는 클라이언트 인터랙션 컴포넌트. Sanity 연동 시 데이터 소스 교체 예정(TODO)."
+    },
+    {
+      "id": "file:src/lib/work.ts",
+      "type": "file",
+      "name": "work.ts",
+      "filePath": "src/lib/work.ts",
+      "summary": "도입 사례(활용 시나리오) 데이터 소스로, WorkCase 타입·카테고리 상수·works 배열·slug 조회 헬퍼를 제공하며 향후 Sanity CMS 스키마의 기준이 된다.",
+      "tags": [
+        "data-model",
+        "data-source",
+        "type-definition",
+        "content",
+        "work-gallery"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "scenario 데이터를 인라인 상수로 정의하고 WorkCase 타입으로 형상을 고정 — CMS 이관 전 단일 진실 공급원 역할."
+    },
+    {
+      "id": "function:src/app/work/[slug]/page.tsx:WorkDetailPage",
+      "type": "function",
+      "name": "WorkDetailPage",
+      "filePath": "src/app/work/[slug]/page.tsx",
+      "lineRange": [
+        25,
+        154
+      ],
+      "summary": "slug 파라미터로 work 사례를 조회하고(없으면 notFound) 챌린지·솔루션·결과 지표·관련 사례 그리드를 구성하는 비동기 서버 컴포넌트다.",
+      "tags": [
+        "component",
+        "server-component",
+        "work-detail",
+        "dynamic-route"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/app/work/page.tsx:WorkPage",
+      "type": "function",
+      "name": "WorkPage",
+      "filePath": "src/app/work/page.tsx",
+      "lineRange": [
+        12,
+        27
+      ],
+      "summary": "Work 목록 페이지의 루트 컴포넌트로, PageHero·WorkGallery·CtaBanner를 순서대로 배치한다.",
+      "tags": [
+        "component",
+        "page-component",
+        "work-gallery",
+        "composition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/page/InnerPage.tsx:InnerPage",
+      "type": "function",
+      "name": "InnerPage",
+      "filePath": "src/components/page/InnerPage.tsx",
+      "lineRange": [
+        5,
+        29
+      ],
+      "summary": "breadcrumb·tag·title·lead·sections props를 받아 PageHero와 교차 표면의 PlaceholderSection 목록, 선택적 CTA를 렌더링하는 공통 페이지 셸이다.",
+      "tags": [
+        "component",
+        "layout",
+        "page-scaffold",
+        "composition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/page/PageHero.tsx:PageHero",
+      "type": "function",
+      "name": "PageHero",
+      "filePath": "src/components/page/PageHero.tsx",
+      "lineRange": [
+        6,
+        57
+      ],
+      "summary": "breadcrumb 목록을 맵핑해 경로 내비게이션을 그리고 태그·제목·리드 문구를 표시하는 재사용 히어로 섹션 컴포넌트다.",
+      "tags": [
+        "component",
+        "hero",
+        "breadcrumb",
+        "shared"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/page/PlaceholderSection.tsx:PlaceholderSection",
+      "type": "function",
+      "name": "PlaceholderSection",
+      "filePath": "src/components/page/PlaceholderSection.tsx",
+      "lineRange": [
+        14,
+        59
+      ],
+      "summary": "SectionSpec(index·label·title·blocks)을 받아 실제 라벨과 '준비 중' 배지, 지정 개수의 스켈레톤 카드 그리드를 렌더링한다.",
+      "tags": [
+        "component",
+        "placeholder",
+        "skeleton",
+        "section"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/work/WorkGallery.tsx:WorkGallery",
+      "type": "function",
+      "name": "WorkGallery",
+      "filePath": "src/components/work/WorkGallery.tsx",
+      "lineRange": [
+        14,
+        95
+      ],
+      "summary": "useState로 선택된 카테고리에 따라 works를 필터링하고 필터 바와 카드 그리드를 렌더링하는 클라이언트 갤러리 컴포넌트다.",
+      "tags": [
+        "component",
+        "client-component",
+        "filter",
+        "gallery"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/app/privacy/page.tsx:PrivacyPage",
+      "type": "function",
+      "name": "PrivacyPage",
+      "filePath": "src/app/privacy/page.tsx",
+      "lineRange": [
+        9,
+        28
+      ],
+      "summary": "개인정보 처리방침 페이지 루트 컴포넌트로, PageHero와 법무 검토 대기 '준비 중' 안내 카드를 렌더링한다.",
+      "tags": [
+        "component",
+        "page-component",
+        "legal",
+        "placeholder"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/terms/page.tsx:TermsPage",
+      "type": "function",
+      "name": "TermsPage",
+      "filePath": "src/app/terms/page.tsx",
+      "lineRange": [
+        9,
+        28
+      ],
+      "summary": "이용약관 페이지 루트 컴포넌트로, PageHero와 법무 검토 대기 '준비 중' 안내 카드를 렌더링한다.",
+      "tags": [
+        "component",
+        "page-component",
+        "legal",
+        "placeholder"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/xr-studio/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/xr-studio/page.tsx",
+      "summary": "EX Studio(하남 버추얼 프로덕션 스튜디오) 대관·상품화 랜딩 페이지. App Router server component로 metadata(SEO)를 내보내고 PageHero·StudioMenu·StudioOptions·MediaBlank를 조합해 강점·프리셋·시설 스펙·문의 CTA 섹션을 구성한다.",
+      "tags": [
+        "entry-point",
+        "app-router",
+        "marketing-page",
+        "xr-studio",
+        "seo"
+      ],
+      "complexity": "complex",
+      "languageNotes": "server component(‘use client’ 없음)이며 데이터(reasons·presets·guide·facilitySpecs)를 모듈 상수로 정의해 JSX에서 map 렌더링한다."
+    },
+    {
+      "id": "function:src/app/xr-studio/page.tsx:XrStudioPage",
+      "type": "function",
+      "name": "XrStudioPage",
+      "filePath": "src/app/xr-studio/page.tsx",
+      "lineRange": [
+        66,
+        234
+      ],
+      "summary": "XR Studio 페이지의 기본 export 컴포넌트. 강점 4종·배경 프리셋·콘텐츠 메뉴·옵션·갤러리·시설 스펙·연락처 CTA를 순서대로 렌더링하는 페이지 본문이다.",
+      "tags": [
+        "page-component",
+        "app-router",
+        "composition",
+        "marketing-page"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/studio/StudioMenu.tsx",
+      "type": "file",
+      "name": "StudioMenu.tsx",
+      "filePath": "src/components/studio/StudioMenu.tsx",
+      "summary": "EX Studio 콘텐츠 제작 메뉴 client component. IR·웨비나·대담 3개 카테고리를 탭으로 전환하고 카테고리별 S/M/L 티어 카드를 렌더링하며, 가격 비공개 정책에 따라 모든 CTA를 ‘견적 문의’(/contact)로 통일한다.",
+      "tags": [
+        "client-component",
+        "interactive",
+        "pricing-tiers",
+        "tabs",
+        "studio"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "useState로 활성 탭을 관리하는 client component이며, Tier/Category 타입과 9개 SKU 데이터를 모듈 상수로 정의한다."
+    },
+    {
+      "id": "function:src/components/studio/StudioMenu.tsx:StudioMenu",
+      "type": "function",
+      "name": "StudioMenu",
+      "filePath": "src/components/studio/StudioMenu.tsx",
+      "lineRange": [
+        123,
+        195
+      ],
+      "summary": "활성 카테고리 상태(useState)에 따라 카테고리 탭 버튼과 해당 티어 카드 그리드를 렌더링하는 export 컴포넌트. 추천 티어를 강조하고 각 카드에 견적 문의 링크를 단다.",
+      "tags": [
+        "client-component",
+        "interactive",
+        "tabs",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/studio/StudioOptions.tsx",
+      "type": "file",
+      "name": "StudioOptions.tsx",
+      "filePath": "src/components/studio/StudioOptions.tsx",
+      "summary": "EX Studio 옵션 서비스 목록 client component. 영상·그래픽·배경·라이브 송출·현장 지원 5개 그룹의 옵션을 기본 3개씩만 노출하고 ‘전체 옵션 보기’ 토글로 전체 리스트를 펼친다.",
+      "tags": [
+        "client-component",
+        "interactive",
+        "toggle",
+        "studio",
+        "options-list"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "useState 토글로 compact(3개) 노출과 전체 노출을 전환하는 client component."
+    },
+    {
+      "id": "function:src/components/studio/StudioOptions.tsx:StudioOptions",
+      "type": "function",
+      "name": "StudioOptions",
+      "filePath": "src/components/studio/StudioOptions.tsx",
+      "lineRange": [
+        58,
+        103
+      ],
+      "summary": "open 상태(useState)로 그룹별 옵션을 일부/전체로 펼치는 export 컴포넌트. 숨겨진 옵션 개수를 표시하고 펼침/접기 버튼을 제공한다.",
+      "tags": [
+        "client-component",
+        "interactive",
+        "toggle",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/MediaBlank.tsx",
+      "type": "file",
+      "name": "MediaBlank.tsx",
+      "filePath": "src/components/ui/MediaBlank.tsx",
+      "summary": "의도적으로 디자인된 미디어 플레이스홀더 UI 컴포넌트. 모서리 레티클 틱·모노 태그·중앙 라인 글리프와 라벨로 ‘사진/영상/로고 자리’를 깨져 보이지 않게 표현하며, 라이트 테마 Home과 제품 로고 슬롯 전반에서 재사용된다.",
+      "tags": [
+        "ui-component",
+        "placeholder",
+        "reusable",
+        "presentational",
+        "design-system"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "props 기반 순수 presentational 컴포넌트로, glyph 종류(image/play)와 compact 여부에 따라 인라인 SVG를 분기 렌더링한다."
+    },
+    {
+      "id": "function:src/components/ui/MediaBlank.tsx:MediaBlank",
+      "type": "function",
+      "name": "MediaBlank",
+      "filePath": "src/components/ui/MediaBlank.tsx",
+      "lineRange": [
+        77,
+        119
+      ],
+      "summary": "label·tag·glyph·compact 등 props를 받아 테두리 박스·코너 틱·글리프·라벨·sublabel과 선택적 children 오버레이를 렌더링하는 export 플레이스홀더 컴포넌트.",
+      "tags": [
+        "ui-component",
+        "placeholder",
+        "presentational",
+        "reusable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ui/MediaBlank.tsx:Glyph",
+      "type": "function",
+      "name": "Glyph",
+      "filePath": "src/components/ui/MediaBlank.tsx",
+      "lineRange": [
+        38,
+        75
+      ],
+      "summary": "kind(image/play)와 small 여부에 따라 이미지 또는 재생 아이콘 인라인 SVG를 그리는 내부 헬퍼 컴포넌트.",
+      "tags": [
+        "ui-component",
+        "icon",
+        "svg",
+        "presentational"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/news/[slug]/page.tsx",
+      "type": "file",
+      "name": "page.tsx",
+      "filePath": "src/app/news/[slug]/page.tsx",
+      "summary": "News & Insight 인사이트 상세 페이지의 동적 라우트. slug로 인사이트를 조회해 본문 섹션을 렌더링하고, generateStaticParams로 SSG 정적 경로를 생성하며 generateMetadata로 SEO 메타데이터를 설정한다.",
+      "tags": [
+        "entry-point",
+        "api-handler",
+        "ssg",
+        "seo",
+        "dynamic-route"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Next.js 16 App Router 동적 세그먼트([slug]) 페이지. params가 Promise로 전달되어 await로 해제하며, 존재하지 않는 slug는 notFound()로 404 처리한다."
+    },
+    {
+      "id": "function:src/app/news/[slug]/page.tsx:InsightPage",
+      "type": "function",
+      "name": "InsightPage",
+      "filePath": "src/app/news/[slug]/page.tsx",
+      "lineRange": [
+        23,
+        93
+      ],
+      "summary": "인사이트 상세 페이지 기본 컴포넌트. slug로 글을 조회해 PageHero·본문 섹션·다른 인사이트 목록·CtaBanner를 렌더링하며, 글이 없으면 notFound()를 호출한다.",
+      "tags": [
+        "page-component",
+        "ssg",
+        "async-component",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/app/news/[slug]/page.tsx:generateMetadata",
+      "type": "function",
+      "name": "generateMetadata",
+      "filePath": "src/app/news/[slug]/page.tsx",
+      "lineRange": [
+        12,
+        21
+      ],
+      "summary": "slug에 해당하는 인사이트의 제목·요약을 읽어 페이지별 SEO 메타데이터(title, description)를 생성한다. 글이 없으면 기본 제목을 반환한다.",
+      "tags": [
+        "seo",
+        "metadata",
+        "async"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/news/[slug]/page.tsx:generateStaticParams",
+      "type": "function",
+      "name": "generateStaticParams",
+      "filePath": "src/app/news/[slug]/page.tsx",
+      "lineRange": [
+        8,
+        10
+      ],
+      "summary": "전체 인사이트의 slug 목록을 반환해 빌드 시점에 정적 페이지(SSG) 경로를 사전 생성한다.",
+      "tags": [
+        "ssg",
+        "static-generation",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/news/NewsList.tsx",
+      "type": "file",
+      "name": "NewsList.tsx",
+      "filePath": "src/components/news/NewsList.tsx",
+      "summary": "News & Insight 목록의 클라이언트 컴포넌트. 보도자료와 인사이트 항목을 카테고리(보도자료·케이스·인사이트·자료실)별 필터 칩으로 거르고 카드 그리드로 렌더링하며, 항목이 없으면 빈 상태 안내를 표시한다.",
+      "tags": [
+        "component",
+        "client-component",
+        "event-handler",
+        "list-view"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "\"use client\" 지시어를 사용하는 React 19 클라이언트 컴포넌트. useState로 활성 카테고리를 관리하고 const assertion(as const)으로 카테고리 유니온 타입을 도출한다."
+    },
+    {
+      "id": "function:src/components/news/NewsList.tsx:NewsList",
+      "type": "function",
+      "name": "NewsList",
+      "filePath": "src/components/news/NewsList.tsx",
+      "lineRange": [
+        53,
+        144
+      ],
+      "summary": "카테고리 필터 칩과 카드 그리드를 렌더링하는 클라이언트 컴포넌트. useState로 선택된 카테고리를 추적하고 항목을 필터링하며, 결과가 없으면 빈 상태 UI와 전체 보기 버튼을 노출한다.",
+      "tags": [
+        "component",
+        "client-component",
+        "filtering",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lib/insights.ts",
+      "type": "file",
+      "name": "insights.ts",
+      "filePath": "src/lib/insights.ts",
+      "summary": "News & Insight의 인사이트(기술 설명형) 아티클 데이터 소스. Insight 타입과 인사이트 배열, slug로 단건을 조회하는 getInsight 헬퍼를 제공하며 추후 Sanity CMS로 이관 예정이다.",
+      "tags": [
+        "data-model",
+        "data-source",
+        "type-definition",
+        "content"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "정적 콘텐츠를 모듈 상수(insights 배열)로 보유하는 인메모리 데이터 레이어. Insight 타입은 중첩 본문 구조(body: { h, p[] }[])를 정의한다."
+    },
+    {
+      "id": "function:src/lib/insights.ts:getInsight",
+      "type": "function",
+      "name": "getInsight",
+      "filePath": "src/lib/insights.ts",
+      "lineRange": [
+        92,
+        94
+      ],
+      "summary": "slug와 일치하는 인사이트 단건을 insights 배열에서 찾아 반환하는 조회 헬퍼. 일치 항목이 없으면 undefined를 반환한다.",
+      "tags": [
+        "utility",
+        "data-access",
+        "lookup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "AI 에이전트용 경고 노트로, 이 프로젝트의 Next.js 16은 학습 데이터와 다른 breaking change가 있으니 코드 작성 전 node_modules의 공식 가이드를 먼저 읽으라고 지시한다.",
+      "tags": [
+        "documentation",
+        "ai-agent",
+        "nextjs",
+        "guardrail"
+      ],
+      "complexity": "simple",
+      "languageNotes": "nextjs-agent-rules 주석 마커로 감싼 자동 주입형 에이전트 규칙 블록."
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Claude 세션용 프로젝트 운영 가이드로, 현재 상태·기준 문서(HANDOFF.md/DESIGN.md)·기술 스택·AI 팀 에이전트 구성·브랜드 자산 위치를 한곳에 정리한 진입 문서다.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "ai-agent",
+        "project-guide"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:DESIGN.md",
+      "type": "document",
+      "name": "DESIGN.md",
+      "filePath": "DESIGN.md",
+      "summary": "라이트/화이트 테마 디자인 시스템의 단일 기준 문서로, 컬러·타이포·컴포넌트·레이아웃·깊이·모션·가이드라인·반응형을 다루는 9개 섹션 스펙을 담는다.",
+      "tags": [
+        "documentation",
+        "design-system",
+        "style-guide",
+        "specification"
+      ],
+      "complexity": "complex",
+      "languageNotes": "코드보다 스펙을 우선하는 \"스펙 먼저, 코드 나중\" 방법론을 적용한 디자인 명세."
+    },
+    {
+      "id": "document:HANDOFF.md",
+      "type": "document",
+      "name": "HANDOFF.md",
+      "filePath": "HANDOFF.md",
+      "summary": "프로젝트 인수인계 단일 기준 문서로, 개요·스택·디자인 시스템·IA/GNB·핵심 컴포넌트·페이지 현황·콘텐츠 정직성 규칙·자산·백로그를 정리해 새 세션의 맥락 복원을 돕는다.",
+      "tags": [
+        "documentation",
+        "handoff",
+        "project-status",
+        "source-of-truth"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "create-next-app 기본 템플릿 기반의 프로젝트 소개 문서로, 개발 서버 실행·학습 자료·Vercel 배포 방법을 안내한다.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "getting-started",
+        "nextjs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "프로젝트 매니페스트로 Next.js 16·React 19 런타임 의존성과 Tailwind v4·TypeScript·ESLint 개발 의존성, dev/build/start/lint 스크립트를 정의한다.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "dependencies",
+        "nextjs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "TypeScript 컴파일러 설정으로 strict 모드·bundler 모듈 해석·next 플러그인·jsx(react-jsx)를 활성화하고 @/* 경로 별칭을 ./src/* 로 매핑한다.",
+      "tags": [
+        "configuration",
+        "typescript",
+        "build-system",
+        "path-alias"
+      ],
+      "complexity": "simple",
+      "languageNotes": "@/* → ./src/* 경로 별칭과 next 플러그인을 결합한 App Router용 TS 설정."
+    },
+    {
+      "id": "config:.claude/launch.json",
+      "type": "config",
+      "name": "launch.json",
+      "filePath": ".claude/launch.json",
+      "summary": "Claude Code 로컬 실행 설정으로, `npm run dev`를 3000 포트에서 구동하는 'ex-web' 런치 구성을 정의한다.",
+      "tags": [
+        "configuration",
+        "tooling",
+        "dev-server",
+        "claude-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "Understand-Anything 코드 분석에서 제외할 파일·디렉터리 패턴을 .gitignore 문법으로 지정하는 무시 목록으로, 현재 모든 항목이 주석 처리되어 기본값만 적용된다.",
+      "tags": [
+        "configuration",
+        "tooling",
+        "ignore-list"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.understand-anything/config.json",
+      "type": "config",
+      "name": "config.json",
+      "filePath": ".understand-anything/config.json",
+      "summary": "Understand-Anything 플러그인의 출력 언어를 한국어(ko)로 지정하는 최소 설정 파일이다.",
+      "tags": [
+        "configuration",
+        "tooling",
+        "i18n"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/sales-products.md",
+      "type": "document",
+      "name": "sales-products.md",
+      "filePath": "docs/sales-products.md",
+      "summary": "EX-LINK 솔루션과 Moverse 솔루션의 SW/HW 규격을 정리한 사내 1차 자료로, 제품·솔루션 페이지 사양의 source of truth 역할을 하며 각 제품을 라우트 경로에 매핑한다.",
+      "tags": [
+        "documentation",
+        "product-spec",
+        "source-of-truth",
+        "sales"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:eslint.config.mjs",
+      "type": "config",
+      "name": "eslint.config.mjs",
+      "filePath": "eslint.config.mjs",
+      "summary": "eslint-config-next의 core-web-vitals 및 TypeScript 프리셋을 합성한 flat ESLint 설정으로, 빌드 산출물 디렉터리를 글로벌 무시 대상으로 지정한다.",
+      "tags": [
+        "configuration",
+        "linting",
+        "build-system",
+        "code-quality"
+      ],
+      "complexity": "simple",
+      "languageNotes": "ESLint flat config(defineConfig) 형식과 스프레드 기반 프리셋 합성을 사용한다."
+    },
+    {
+      "id": "config:next.config.ts",
+      "type": "config",
+      "name": "next.config.ts",
+      "filePath": "next.config.ts",
+      "summary": "Next.js 프로젝트의 루트 설정 파일로, 현재는 기본값만 사용하는 빈 NextConfig 객체를 export한다.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "nextjs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:postcss.config.mjs",
+      "type": "config",
+      "name": "postcss.config.mjs",
+      "filePath": "postcss.config.mjs",
+      "summary": "@tailwindcss/postcss 플러그인을 등록하는 PostCSS 설정으로, Tailwind CSS v4의 CSS 변환 파이프라인을 활성화한다.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "tailwind",
+        "css"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/api/contact/route.ts",
+      "type": "file",
+      "name": "route.ts",
+      "filePath": "src/app/api/contact/route.ts",
+      "summary": "문의 폼 제출을 처리하는 Next.js API Route로, 필드·이메일 형식을 검증하고 문의 유형별 수신자를 라우팅하며 현재는 서버 로그 기록만 수행하는 스캐폴드 상태다.",
+      "tags": [
+        "api-handler",
+        "route-handler",
+        "validation",
+        "contact-form"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "이메일 발송(Resend)과 Notion 리드 적재는 주석으로 남긴 미가동 스캐폴드다."
+    },
+    {
+      "id": "function:src/app/api/contact/route.ts:POST",
+      "type": "function",
+      "name": "POST",
+      "filePath": "src/app/api/contact/route.ts",
+      "lineRange": [
+        20,
+        55
+      ],
+      "summary": "문의 요청 본문을 파싱·검증한 뒤 유형별 수신자를 결정하고 접수 결과를 JSON으로 응답하는 POST 핸들러다.",
+      "tags": [
+        "api-handler",
+        "validation",
+        "post-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app/globals.css",
+      "type": "file",
+      "name": "globals.css",
+      "filePath": "src/app/globals.css",
+      "summary": "Tailwind v4 @theme 토큰으로 EX 브랜드 팔레트와 라이트 테마 표면·타이포 변수를 정의하는 전역 스타일시트로, 디자인 시스템의 색상·간격 기준을 코드화한다.",
+      "tags": [
+        "stylesheet",
+        "design-system",
+        "tailwind",
+        "theming"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Tailwind CSS v4의 @import 'tailwindcss' + @theme 토큰 방식을 사용하며, Home은 리터럴 hex로 토큰과 독립적이다."
+    },
+    {
+      "id": "file:src/app/opengraph-image.tsx",
+      "type": "file",
+      "name": "opengraph-image.tsx",
+      "filePath": "src/app/opengraph-image.tsx",
+      "summary": "Next.js OG 이미지 규약 파일로, ImageResponse를 사용해 EX 브랜드 그래디언트와 슬로건이 담긴 1200x630 소셜 공유 이미지를 동적으로 생성한다.",
+      "tags": [
+        "seo",
+        "opengraph",
+        "metadata",
+        "image-generation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "next/og의 ImageResponse + JSX/인라인 스타일로 정적 OG 이미지를 빌드한다."
+    },
+    {
+      "id": "function:src/app/opengraph-image.tsx:OgImage",
+      "type": "function",
+      "name": "OgImage",
+      "filePath": "src/app/opengraph-image.tsx",
+      "lineRange": [
+        7,
+        57
+      ],
+      "summary": "브랜드 로고·슬로건·서브카피를 그래디언트 배경 위에 배치한 OpenGraph 이미지를 ImageResponse로 반환하는 기본 export 함수다.",
+      "tags": [
+        "seo",
+        "opengraph",
+        "image-generation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app/robots.ts",
+      "type": "file",
+      "name": "robots.ts",
+      "filePath": "src/app/robots.ts",
+      "summary": "Next.js Metadata Route로 robots.txt를 생성하며, 전체 크롤링을 허용하되 /api/ 경로를 차단하고 사이트맵·호스트 URL을 명시한다.",
+      "tags": [
+        "seo",
+        "robots",
+        "metadata",
+        "crawling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/robots.ts:robots",
+      "type": "function",
+      "name": "robots",
+      "filePath": "src/app/robots.ts",
+      "lineRange": [
+        3,
+        13
+      ],
+      "summary": "크롤러 허용/차단 규칙과 사이트맵·호스트 정보를 담은 MetadataRoute.Robots 객체를 반환하는 기본 export 함수다.",
+      "tags": [
+        "seo",
+        "robots",
+        "crawling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/sitemap.ts",
+      "type": "file",
+      "name": "sitemap.ts",
+      "filePath": "src/app/sitemap.ts",
+      "summary": "Next.js Metadata Route로 사이트맵을 생성하며, 16개 주요 경로를 순회하여 경로 깊이에 따라 변경 주기·우선순위를 부여한 XML 항목을 만든다.",
+      "tags": [
+        "seo",
+        "sitemap",
+        "metadata",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/sitemap.ts:sitemap",
+      "type": "function",
+      "name": "sitemap",
+      "filePath": "src/app/sitemap.ts",
+      "lineRange": [
+        24,
+        32
+      ],
+      "summary": "정의된 라우트 목록을 매핑해 URL·최종 수정일·변경 빈도·우선순위를 가진 MetadataRoute.Sitemap 항목 배열을 반환하는 기본 export 함수다.",
+      "tags": [
+        "seo",
+        "sitemap",
+        "routing"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "function:src/app/careers/page.tsx:CareersPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "function:src/app/careers/page.tsx:CareersPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/news/page.tsx",
+      "target": "function:src/app/news/page.tsx:NewsPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/news/page.tsx",
+      "target": "function:src/app/news/page.tsx:NewsPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "function:src/app/product/aximmetry/page.tsx:AximmetryPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "function:src/app/product/aximmetry/page.tsx:AximmetryPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "function:src/app/product/moverse/page.tsx:MoversePage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "function:src/app/product/moverse/page.tsx:MoversePage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/product/page.tsx",
+      "target": "function:src/app/product/page.tsx:ProductPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/product/page.tsx",
+      "target": "function:src/app/product/page.tsx:ProductPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "function:src/app/product/retracker/page.tsx:RetrackerPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "function:src/app/product/retracker/page.tsx:RetrackerPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/solution/page.tsx",
+      "target": "function:src/app/solution/page.tsx:SolutionPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/solution/page.tsx",
+      "target": "function:src/app/solution/page.tsx:SolutionPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/solution/virtual-production/page.tsx",
+      "target": "function:src/app/solution/virtual-production/page.tsx:VirtualProductionPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/solution/virtual-production/page.tsx",
+      "target": "function:src/app/solution/virtual-production/page.tsx:VirtualProductionPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/solution/xr-solution/page.tsx",
+      "target": "function:src/app/solution/xr-solution/page.tsx:XrSolutionPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/solution/xr-solution/page.tsx",
+      "target": "function:src/app/solution/xr-solution/page.tsx:XrSolutionPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "function:src/app/support/page.tsx:SupportPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "function:src/app/support/page.tsx:SupportPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/CtaBanner.tsx",
+      "target": "function:src/components/layout/CtaBanner.tsx:CtaBanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/CtaBanner.tsx",
+      "target": "function:src/components/layout/CtaBanner.tsx:CtaBanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/motion/Gauge.tsx",
+      "target": "function:src/components/motion/Gauge.tsx:Gauge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/motion/Gauge.tsx",
+      "target": "function:src/components/motion/Gauge.tsx:Gauge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/product/CompareTable.tsx",
+      "target": "function:src/components/product/CompareTable.tsx:CompareTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/product/CompareTable.tsx",
+      "target": "function:src/components/product/CompareTable.tsx:CompareTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/product/SpecTable.tsx",
+      "target": "function:src/components/product/SpecTable.tsx:SpecTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/product/SpecTable.tsx",
+      "target": "function:src/components/product/SpecTable.tsx:SpecTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/Button.tsx",
+      "target": "function:src/components/ui/Button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/Button.tsx",
+      "target": "function:src/components/ui/Button.tsx:Button",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/SectionLabel.tsx",
+      "target": "function:src/components/ui/SectionLabel.tsx:SectionLabel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/SectionLabel.tsx",
+      "target": "function:src/components/ui/SectionLabel.tsx:SectionLabel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "file:src/components/ui/MediaBlank.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/careers/page.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/page.tsx",
+      "target": "file:src/components/news/NewsList.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "file:src/components/motion/Gauge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "file:src/components/product/CompareTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "file:src/components/product/SpecTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/aximmetry/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "file:src/components/motion/Gauge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "file:src/components/product/SpecTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/moverse/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/page.tsx",
+      "target": "file:src/components/product/CompareTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "file:src/components/motion/Gauge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "file:src/components/product/SpecTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/product/retracker/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/virtual-production/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/virtual-production/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/virtual-production/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/virtual-production/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/xr-solution/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/xr-solution/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/xr-solution/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/solution/xr-solution/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "file:src/components/ui/Icon.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/support/page.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/layout/CtaBanner.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/about/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/about/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/about/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/about/page.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/about/page.tsx",
+      "target": "function:src/app/about/page.tsx:AboutPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/about/page.tsx",
+      "target": "function:src/app/about/page.tsx:AboutPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "file:src/components/ui/ContactForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "file:src/components/ui/Icon.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "function:src/app/contact/page.tsx:ContactPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "function:src/app/contact/page.tsx:ContactPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/contact/page.tsx",
+      "target": "function:src/components/ui/ContactForm.tsx:ContactForm",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/app/globals.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/components/layout/Footer.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/components/layout/Header.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "file:src/components/ui/CustomCursor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "function:src/app/layout.tsx:RootLayout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "function:src/app/layout.tsx:RootLayout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "function:src/components/layout/Header.tsx:Header",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "function:src/components/layout/Footer.tsx:Footer",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/app/layout.tsx",
+      "target": "function:src/components/ui/CustomCursor.tsx:CustomCursor",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/layout/Footer.tsx",
+      "target": "file:src/components/ui/Icon.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/layout/Footer.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/layout/Footer.tsx",
+      "target": "function:src/components/layout/Footer.tsx:Footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/Footer.tsx",
+      "target": "function:src/components/layout/Footer.tsx:Footer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/Footer.tsx",
+      "target": "function:src/components/ui/Icon.tsx:Icon",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/layout/Header.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/layout/Header.tsx",
+      "target": "function:src/components/layout/Header.tsx:Header",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/Header.tsx",
+      "target": "function:src/components/layout/Header.tsx:Header",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/ContactForm.tsx",
+      "target": "function:src/components/ui/ContactForm.tsx:ContactForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/ContactForm.tsx",
+      "target": "function:src/components/ui/ContactForm.tsx:ContactForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/CustomCursor.tsx",
+      "target": "function:src/components/ui/CustomCursor.tsx:CustomCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/CustomCursor.tsx",
+      "target": "function:src/components/ui/CustomCursor.tsx:CustomCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/Icon.tsx",
+      "target": "function:src/components/ui/Icon.tsx:Icon",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/Icon.tsx",
+      "target": "function:src/components/ui/Icon.tsx:Icon",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "file:src/components/home/HomeClean.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "function:src/app/page.tsx:HomePage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/page.tsx",
+      "target": "function:src/app/page.tsx:HomePage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/app/page.tsx:HomePage",
+      "target": "function:src/components/home/HomeClean.tsx:HomeClean",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/home/HeroAurora.tsx",
+      "target": "function:src/components/home/HeroAurora.tsx:HeroAurora",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/home/HeroAurora.tsx",
+      "target": "function:src/components/home/HeroAurora.tsx:HeroAurora",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "file:src/components/home/HeroAurora.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "file:src/components/home/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "file:src/components/motion/CountUp.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "file:src/components/motion/Reveal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "file:src/components/ui/MediaBlank.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "function:src/components/home/HomeClean.tsx:HomeClean",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "function:src/components/home/HomeClean.tsx:HomeClean",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "function:src/components/home/HomeClean.tsx:Hero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "function:src/components/home/HomeClean.tsx:ExlinkDiagram",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "function:src/components/home/HomeClean.tsx:PartnerProducts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "function:src/components/home/HomeClean.tsx:XrStudio",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/home/HomeClean.tsx",
+      "target": "function:src/components/home/HomeClean.tsx:Cta",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:src/components/home/HomeClean.tsx:Hero",
+      "target": "function:src/components/home/HeroAurora.tsx:HeroAurora",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/motion/CountUp.tsx",
+      "target": "function:src/components/motion/CountUp.tsx:CountUp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/motion/CountUp.tsx",
+      "target": "function:src/components/motion/CountUp.tsx:CountUp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/motion/Parallax.tsx",
+      "target": "function:src/components/motion/Parallax.tsx:Parallax",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/motion/Parallax.tsx",
+      "target": "function:src/components/motion/Parallax.tsx:Parallax",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/motion/Reveal.tsx",
+      "target": "function:src/components/motion/Reveal.tsx:Reveal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/motion/Reveal.tsx",
+      "target": "function:src/components/motion/Reveal.tsx:Reveal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "file:src/components/motion/CountUp.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "file:src/components/motion/Parallax.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "file:src/components/ui/ParticleField.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Hero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Hero",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:TrustBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:TrustBar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:AboutSummary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:AboutSummary",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:SolutionEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:SolutionEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Products",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Products",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:XrStudio",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:XrStudio",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:WhyEx",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:WhyEx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Industries",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Industries",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Numbers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:Numbers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:NewsInsight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/sections/home.tsx",
+      "target": "function:src/components/sections/home.tsx:NewsInsight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/sections/home.tsx:Hero",
+      "target": "function:src/components/ui/ParticleField.tsx:ParticleField",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/sections/home.tsx:Numbers",
+      "target": "function:src/components/motion/CountUp.tsx:CountUp",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/ParticleField.tsx",
+      "target": "function:src/components/ui/ParticleField.tsx:ParticleField",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/ParticleField.tsx",
+      "target": "function:src/components/ui/ParticleField.tsx:ParticleField",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/privacy/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/terms/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/[slug]/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/[slug]/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/[slug]/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/[slug]/page.tsx",
+      "target": "file:src/lib/work.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/page.tsx",
+      "target": "file:src/components/work/WorkGallery.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/page/InnerPage.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/page/InnerPage.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/page/InnerPage.tsx",
+      "target": "file:src/components/page/PlaceholderSection.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/page/PlaceholderSection.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/work/WorkGallery.tsx",
+      "target": "file:src/lib/work.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/work/[slug]/page.tsx",
+      "target": "function:src/app/work/[slug]/page.tsx:WorkDetailPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/work/[slug]/page.tsx",
+      "target": "function:src/app/work/[slug]/page.tsx:WorkDetailPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/work/page.tsx",
+      "target": "function:src/app/work/page.tsx:WorkPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/work/page.tsx",
+      "target": "function:src/app/work/page.tsx:WorkPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/page/InnerPage.tsx",
+      "target": "function:src/components/page/InnerPage.tsx:InnerPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/page/InnerPage.tsx",
+      "target": "function:src/components/page/InnerPage.tsx:InnerPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/page/PageHero.tsx",
+      "target": "function:src/components/page/PageHero.tsx:PageHero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/page/PageHero.tsx",
+      "target": "function:src/components/page/PageHero.tsx:PageHero",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/page/PlaceholderSection.tsx",
+      "target": "function:src/components/page/PlaceholderSection.tsx:PlaceholderSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/page/PlaceholderSection.tsx",
+      "target": "function:src/components/page/PlaceholderSection.tsx:PlaceholderSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/work/WorkGallery.tsx",
+      "target": "function:src/components/work/WorkGallery.tsx:WorkGallery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/work/WorkGallery.tsx",
+      "target": "function:src/components/work/WorkGallery.tsx:WorkGallery",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/privacy/page.tsx",
+      "target": "function:src/app/privacy/page.tsx:PrivacyPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/privacy/page.tsx",
+      "target": "function:src/app/privacy/page.tsx:PrivacyPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/terms/page.tsx",
+      "target": "function:src/app/terms/page.tsx:TermsPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/terms/page.tsx",
+      "target": "function:src/app/terms/page.tsx:TermsPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/work/WorkGallery.tsx:WorkGallery",
+      "target": "file:src/lib/work.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:src/components/page/InnerPage.tsx:InnerPage",
+      "target": "function:src/components/page/PageHero.tsx:PageHero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:src/components/page/InnerPage.tsx:InnerPage",
+      "target": "function:src/components/page/PlaceholderSection.tsx:PlaceholderSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:src/app/work/page.tsx:WorkPage",
+      "target": "function:src/components/work/WorkGallery.tsx:WorkGallery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "file:src/components/studio/StudioMenu.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "file:src/components/studio/StudioOptions.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "file:src/components/ui/MediaBlank.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "file:src/lib/site.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "function:src/app/xr-studio/page.tsx:XrStudioPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/xr-studio/page.tsx",
+      "target": "function:src/app/xr-studio/page.tsx:XrStudioPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/studio/StudioMenu.tsx",
+      "target": "function:src/components/studio/StudioMenu.tsx:StudioMenu",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/studio/StudioMenu.tsx",
+      "target": "function:src/components/studio/StudioMenu.tsx:StudioMenu",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/studio/StudioOptions.tsx",
+      "target": "function:src/components/studio/StudioOptions.tsx:StudioOptions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/studio/StudioOptions.tsx",
+      "target": "function:src/components/studio/StudioOptions.tsx:StudioOptions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/MediaBlank.tsx",
+      "target": "function:src/components/ui/MediaBlank.tsx:MediaBlank",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/MediaBlank.tsx",
+      "target": "function:src/components/ui/MediaBlank.tsx:MediaBlank",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/MediaBlank.tsx",
+      "target": "function:src/components/ui/MediaBlank.tsx:Glyph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:src/components/ui/MediaBlank.tsx:MediaBlank",
+      "target": "function:src/components/ui/MediaBlank.tsx:Glyph",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "file:src/lib/insights.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/news/NewsList.tsx",
+      "target": "file:src/lib/insights.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "function:src/app/news/[slug]/page.tsx:InsightPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "function:src/app/news/[slug]/page.tsx:generateMetadata",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "function:src/app/news/[slug]/page.tsx:generateStaticParams",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "function:src/app/news/[slug]/page.tsx:InsightPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "function:src/app/news/[slug]/page.tsx:generateMetadata",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/news/[slug]/page.tsx",
+      "target": "function:src/app/news/[slug]/page.tsx:generateStaticParams",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/news/NewsList.tsx",
+      "target": "function:src/components/news/NewsList.tsx:NewsList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/news/NewsList.tsx",
+      "target": "function:src/components/news/NewsList.tsx:NewsList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib/insights.ts",
+      "target": "function:src/lib/insights.ts:getInsight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lib/insights.ts",
+      "target": "function:src/lib/insights.ts:getInsight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/app/news/[slug]/page.tsx:generateMetadata",
+      "target": "function:src/lib/insights.ts:getInsight",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/app/news/[slug]/page.tsx:InsightPage",
+      "target": "function:src/lib/insights.ts:getInsight",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "document:HANDOFF.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "document:DESIGN.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:src/lib/site.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:src/components/home/HomeClean.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:src/components/work/WorkGallery.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "file:src/app/globals.css",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/home/HomeClean.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/work/WorkGallery.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/ui/MediaBlank.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/lib/site.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/lib/work.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/lib/insights.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/news/NewsList.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/studio/StudioMenu.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/page/PageHero.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/ui/SectionLabel.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/layout/Header.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/layout/Footer.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/components/layout/CtaBanner.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:HANDOFF.md",
+      "target": "file:src/app/globals.css",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:DESIGN.md",
+      "target": "file:src/app/globals.css",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:DESIGN.md",
+      "target": "file:src/components/ui/Button.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:DESIGN.md",
+      "target": "file:src/components/ui/ContactForm.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:src/app/page.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:package.json",
+      "target": "file:src/app/layout.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:package.json",
+      "target": "file:src/app/page.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "file:src/app/layout.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "file:src/app/page.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/app/api/contact/route.ts",
+      "target": "function:src/app/api/contact/route.ts:POST",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/api/contact/route.ts",
+      "target": "function:src/app/api/contact/route.ts:POST",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/opengraph-image.tsx",
+      "target": "function:src/app/opengraph-image.tsx:OgImage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/opengraph-image.tsx",
+      "target": "function:src/app/opengraph-image.tsx:OgImage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/robots.ts",
+      "target": "function:src/app/robots.ts:robots",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/robots.ts",
+      "target": "function:src/app/robots.ts:robots",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/sitemap.ts",
+      "target": "function:src/app/sitemap.ts:sitemap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/sitemap.ts",
+      "target": "function:src/app/sitemap.ts:sitemap",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:next.config.ts",
+      "target": "file:src/app/layout.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:postcss.config.mjs",
+      "target": "file:src/app/globals.css",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/app/globals.css",
+      "target": "file:src/app/layout.tsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/sales-products.md",
+      "target": "file:src/app/product/aximmetry/page.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/sales-products.md",
+      "target": "file:src/app/product/retracker/page.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/sales-products.md",
+      "target": "file:src/app/product/moverse/page.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/sales-products.md",
+      "target": "file:src/app/solution/xr-solution/page.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:routing-pages",
+      "name": "라우팅 · 페이지 (App Router)",
+      "description": "Next.js App Router의 라우트 세그먼트로, 각 페이지(page.tsx)·루트 layout·동적 라우트가 정적 데이터와 컴포넌트를 조합해 마케팅 화면을 구성한다.",
+      "nodeIds": [
+        "file:src/app/careers/page.tsx",
+        "file:src/app/news/page.tsx",
+        "file:src/app/product/aximmetry/page.tsx",
+        "file:src/app/product/moverse/page.tsx",
+        "file:src/app/product/page.tsx",
+        "file:src/app/product/retracker/page.tsx",
+        "file:src/app/solution/page.tsx",
+        "file:src/app/solution/virtual-production/page.tsx",
+        "file:src/app/solution/xr-solution/page.tsx",
+        "file:src/app/support/page.tsx",
+        "file:src/app/about/page.tsx",
+        "file:src/app/contact/page.tsx",
+        "file:src/app/page.tsx",
+        "file:src/app/privacy/page.tsx",
+        "file:src/app/terms/page.tsx",
+        "file:src/app/work/[slug]/page.tsx",
+        "file:src/app/work/page.tsx",
+        "file:src/app/xr-studio/page.tsx",
+        "file:src/app/news/[slug]/page.tsx"
+      ]
+    },
+    {
+      "id": "layer:layout-navigation",
+      "name": "레이아웃 · 내비게이션",
+      "description": "전역 헤더·푸터·하단 CTA 배너 등 모든 페이지를 감싸는 공용 레이아웃과 GNB 내비게이션 컴포넌트를 담는다.",
+      "nodeIds": [
+        "file:src/components/layout/CtaBanner.tsx",
+        "file:src/app/layout.tsx",
+        "file:src/components/layout/Footer.tsx",
+        "file:src/components/layout/Header.tsx"
+      ]
+    },
+    {
+      "id": "layer:ui-components",
+      "name": "공용 UI 컴포넌트",
+      "description": "Button·SectionLabel·Icon·ContactForm·CustomCursor·ParticleField·MediaBlank 등 페이지 전반에서 재사용되는 프레젠테이션·인터랙션 UI 요소다.",
+      "nodeIds": [
+        "file:src/components/ui/Button.tsx",
+        "file:src/components/ui/SectionLabel.tsx",
+        "file:src/components/ui/ContactForm.tsx",
+        "file:src/components/ui/CustomCursor.tsx",
+        "file:src/components/ui/Icon.tsx",
+        "file:src/components/ui/ParticleField.tsx",
+        "file:src/components/ui/MediaBlank.tsx"
+      ]
+    },
+    {
+      "id": "layer:section-features",
+      "name": "섹션 · 기능 컴포넌트",
+      "description": "Home·제품·스튜디오·뉴스·Work·내부 페이지 스캐폴드 등 특정 화면을 채우는 도메인별 섹션·피처 컴포넌트를 모은다.",
+      "nodeIds": [
+        "file:src/components/product/CompareTable.tsx",
+        "file:src/components/product/SpecTable.tsx",
+        "file:src/components/home/HeroAurora.tsx",
+        "file:src/components/home/HomeClean.tsx",
+        "file:src/components/home/SectionLabel.tsx",
+        "file:src/components/sections/home.tsx",
+        "file:src/components/page/InnerPage.tsx",
+        "file:src/components/page/PageHero.tsx",
+        "file:src/components/page/PlaceholderSection.tsx",
+        "file:src/components/work/WorkGallery.tsx",
+        "file:src/components/studio/StudioMenu.tsx",
+        "file:src/components/studio/StudioOptions.tsx",
+        "file:src/components/news/NewsList.tsx"
+      ]
+    },
+    {
+      "id": "layer:motion",
+      "name": "모션 · 애니메이션",
+      "description": "IntersectionObserver·requestAnimationFrame 기반의 Reveal·Parallax·CountUp·Gauge 등 스크롤 진입 모션 래퍼와 prefers-reduced-motion 대응 컴포넌트다.",
+      "nodeIds": [
+        "file:src/components/motion/Gauge.tsx",
+        "file:src/components/motion/CountUp.tsx",
+        "file:src/components/motion/Parallax.tsx",
+        "file:src/components/motion/Reveal.tsx"
+      ]
+    },
+    {
+      "id": "layer:data-content",
+      "name": "데이터 · 콘텐츠 소스",
+      "description": "site·work·insights 등 사이트 전역 상수와 콘텐츠 데이터를 타입과 함께 정의하는 단일 진실 공급원으로, 추후 Sanity CMS 이관의 기준이 된다.",
+      "nodeIds": [
+        "file:src/lib/site.ts",
+        "file:src/lib/work.ts",
+        "file:src/lib/insights.ts"
+      ]
+    },
+    {
+      "id": "layer:api-seo-infra",
+      "name": "API · SEO · 메타데이터",
+      "description": "문의 폼 API Route, robots·sitemap·opengraph-image 메타데이터 라우트, 전역 globals.css 등 서버·SEO·스타일 기반 파일을 담는다.",
+      "nodeIds": [
+        "file:src/app/api/contact/route.ts",
+        "file:src/app/globals.css",
+        "file:src/app/opengraph-image.tsx",
+        "file:src/app/robots.ts",
+        "file:src/app/sitemap.ts"
+      ]
+    },
+    {
+      "id": "layer:config-docs",
+      "name": "설정 · 프로젝트 문서",
+      "description": "Next.js·TypeScript·ESLint·PostCSS·툴링 설정과 README·HANDOFF·DESIGN·AGENTS 등 프로젝트 운영·디자인 기준 문서를 묶는다.",
+      "nodeIds": [
+        "document:AGENTS.md",
+        "document:CLAUDE.md",
+        "document:DESIGN.md",
+        "document:HANDOFF.md",
+        "document:README.md",
+        "config:package.json",
+        "config:tsconfig.json",
+        "config:.claude/launch.json",
+        "file:.understand-anything/.understandignore",
+        "config:.understand-anything/config.json",
+        "document:docs/sales-products.md",
+        "config:eslint.config.mjs",
+        "config:next.config.ts",
+        "config:postcss.config.mjs"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "프로젝트 개요 — CLAUDE.md",
+      "description": "EX코퍼레이션 웹사이트는 실시간 XR·Virtual Production을 소개하는 B2B 마케팅 사이트로, Next.js 16 App Router·React 19·TypeScript·Tailwind v4 위에 세워져 있습니다. CLAUDE.md는 프로젝트의 현재 상태·기술 스택·라이트 테마 디자인 원칙·기준 문서(HANDOFF.md/DESIGN.md)·AI 팀 구성을 한곳에 정리한 진입 문서로, 코드를 보기 전에 '이 프로젝트가 무엇인지'를 잡아 줍니다. 이 투어는 여기서 출발해 진입점 → 홈 → 공용 레이아웃 → 디자인 시스템 → 컴포넌트 → 데이터 → API/SEO 순서로 아키텍처를 따라갑니다.",
+      "nodeIds": [
+        "document:CLAUDE.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "애플리케이션 진입점 — 루트 레이아웃",
+      "description": "Next.js App Router의 실질적 진입점은 src/app/layout.tsx입니다. 이 루트 레이아웃은 전역 metadata·폰트·globals.css를 설정하고, 모든 페이지를 Header·Footer·CustomCursor와 JSON-LD 구조화 데이터로 감쌉니다. 1단계에서 본 기술 스택이 코드에서 어떻게 부팅되는지를 보여 주는 최상위 골격이며, 이후 모든 페이지가 이 셸 안에서 렌더링됩니다.",
+      "nodeIds": [
+        "file:src/app/layout.tsx"
+      ],
+      "languageLesson": "App Router에서 app/layout.tsx의 default export(RootLayout)는 모든 라우트를 감싸는 루트 셸이 되며, 같은 폴더의 metadata 객체를 export하면 전역 SEO 메타데이터로 적용됩니다."
+    },
+    {
+      "order": 3,
+      "title": "홈 라우트와 본문 — page.tsx → HomeClean",
+      "description": "루트 라우트('/')인 src/app/page.tsx는 실제 홈 구현 HomeClean을 그대로 반환하는 얇은 진입점입니다. HomeClean.tsx는 Hero·EXLINK 다이어그램·파트너 제품·XR Studio·Numbers·CTA 등 15개 섹션을 한 파일 안에 모듈 로컬로 정의하고 순서대로 합성하는 단일 파일 페이지로, 사이트의 첫인상을 책임집니다. 2단계의 레이아웃 셸 '안쪽'에 채워지는 첫 화면이라고 보면 됩니다.",
+      "nodeIds": [
+        "file:src/app/page.tsx",
+        "file:src/components/home/HomeClean.tsx"
+      ],
+      "languageLesson": "page.tsx의 default export가 해당 라우트 세그먼트의 페이지가 됩니다. Next.js는 page를 layout 안에 자동으로 끼워 넣으므로 page가 layout을 직접 import하지 않습니다."
+    },
+    {
+      "order": 4,
+      "title": "히어로 모션 — HeroAurora",
+      "description": "홈 최상단 히어로의 배경을 채우는 HeroAurora는 requestAnimationFrame 루프·마우스 무브·IntersectionObserver로 부드러운 그라데이션 블롭 모션을 그리는 클라이언트 컴포넌트입니다. 3단계 HomeClean의 Hero 섹션이 호출하는 비주얼 엔진으로, 화려함과 성능·접근성을 동시에 잡는 이 프로젝트의 모션 철학을 잘 보여 줍니다.",
+      "nodeIds": [
+        "file:src/components/home/HeroAurora.tsx"
+      ],
+      "languageLesson": "'use client' 컴포넌트에서 matchMedia로 prefers-reduced-motion을 감지하고 IntersectionObserver로 화면 밖일 때 RAF 루프를 멈추면, 접근성과 배터리 성능을 함께 지킬 수 있습니다."
+    },
+    {
+      "order": 5,
+      "title": "공용 레이아웃 — Header·Footer·CTA 배너",
+      "description": "2단계 루트 레이아웃이 직접 끼워 넣는 전역 크롬입니다. Header는 스크롤에 따라 투명↔솔리드로 전환되는 GNB로, 데스크톱 메가메뉴와 모바일 메뉴를 useState/useEffect로 제어하는 클라이언트 컴포넌트입니다. 다크 네이비 Footer는 site.ts의 컬럼·거점 데이터를 매핑하고, CtaBanner는 거의 모든 페이지 하단에서 재사용되는 문의 유도 블록입니다(fan-in 16 — 매우 높음).",
+      "nodeIds": [
+        "file:src/components/layout/Header.tsx",
+        "file:src/components/layout/Footer.tsx",
+        "file:src/components/layout/CtaBanner.tsx"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "디자인 시스템 — globals.css 토큰과 DESIGN.md",
+      "description": "라이트/화이트 테마(kakaocorp 톤)의 시각 기준이 여기 모여 있습니다. globals.css는 Tailwind v4 @theme 토큰으로 EX 브랜드 팔레트(ink·paper·accent purple)와 표면·타이포 변수를 코드화하며(fan-in 5), DESIGN.md는 컬러·타이포·컴포넌트·레이아웃·모션·반응형을 다루는 9개 섹션 스펙으로 '스펙 먼저, 코드 나중' 방법론을 담은 단일 기준 문서입니다. 5단계까지의 컴포넌트가 왜 그렇게 보이는지를 설명해 줍니다.",
+      "nodeIds": [
+        "file:src/app/globals.css",
+        "document:DESIGN.md"
+      ],
+      "languageLesson": "Tailwind v4는 별도 config 파일 대신 CSS의 @theme 블록에서 디자인 토큰을 선언합니다. 토큰을 한곳에 모으면 디자인 시스템이 단일 진실 공급원이 되어 일관성을 유지하기 쉽습니다."
+    },
+    {
+      "order": 7,
+      "title": "공용 UI 컴포넌트 — Button·SectionLabel·MediaBlank",
+      "description": "디자인 토큰 위에 세워진 가장 작은 재사용 빌딩 블록입니다. Button(fan-in 14)은 variant로 스타일 변형을 지원하는 기본 버튼이고, SectionLabel(fan-in 17 — 전체 2위)은 섹션마다 번호와 라벨을 붙이는 소형 컴포넌트입니다. MediaBlank는 사진·영상·로고가 아직 없는 자리를 '깨져 보이지 않게' 표현하는 의도된 플레이스홀더로, 콘텐츠 정직성 규칙을 코드로 구현한 사례입니다. 모두 6단계의 토큰을 그대로 사용합니다.",
+      "nodeIds": [
+        "file:src/components/ui/Button.tsx",
+        "file:src/components/ui/SectionLabel.tsx",
+        "file:src/components/ui/MediaBlank.tsx"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "페이지 스캐폴드와 섹션 컴포넌트 — PageHero·제품 표·갤러리·스튜디오",
+      "description": "내부 페이지를 채우는 도메인 컴포넌트들입니다. PageHero는 breadcrumb·태그·제목을 일관되게 그리는 내부 페이지 상단 히어로로, 전체에서 가장 많이 import되는 모듈입니다(fan-in 20 — 1위). SpecTable·CompareTable은 제품 사양·에디션 비교 표를, WorkGallery는 useState 기반 카테고리 필터 갤러리를, StudioMenu는 탭으로 전환되는 XR Studio 콘텐츠 메뉴를 담당합니다. 7단계의 UI 블록을 조합해 실제 마케팅 화면을 구성하는 층입니다.",
+      "nodeIds": [
+        "file:src/components/page/PageHero.tsx",
+        "file:src/components/product/SpecTable.tsx",
+        "file:src/components/product/CompareTable.tsx",
+        "file:src/components/work/WorkGallery.tsx",
+        "file:src/components/studio/StudioMenu.tsx"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "데이터 · 콘텐츠 소스 — site.ts·work.ts·insights.ts",
+      "description": "앞선 컴포넌트들이 렌더링하는 콘텐츠의 단일 진실 공급원입니다. site.ts(fan-in 10)는 브랜드·연락처·GNB 내비게이션·푸터 컬럼·거점을 as const 상수로 중앙 정의해 Header·Footer 등 전역에 공급하고, work.ts는 도입 사례(8단계 WorkGallery가 소비), insights.ts는 News & Insight 아티클 데이터를 타입과 함께 정의합니다. 세 모듈 모두 추후 Sanity CMS 이관의 기준 스키마 역할을 합니다.",
+      "nodeIds": [
+        "file:src/lib/site.ts",
+        "file:src/lib/work.ts",
+        "file:src/lib/insights.ts"
+      ],
+      "languageLesson": "TypeScript의 as const 단언은 객체·배열을 깊은 readonly 리터럴 타입으로 고정합니다. 데이터를 코드 상수로 두면 CMS 연결 전까지 타입 안전한 단일 소스를 유지할 수 있습니다."
+    },
+    {
+      "order": 10,
+      "title": "API · SEO · 메타데이터 — contact API와 sitemap·robots·OG 이미지",
+      "description": "사용자 액션과 검색 노출을 마무리하는 서버·SEO 계층입니다. api/contact/route.ts는 문의 폼 제출을 검증하고 유형별 수신자를 라우팅하는 API Route(현재 로그 기록 스캐폴드, 이메일·Notion 적재는 주석 상태)입니다. sitemap.ts·robots.ts는 Metadata Route로 크롤링 규칙과 16개 경로의 사이트맵을 생성하고, opengraph-image.tsx는 ImageResponse로 브랜드 OG 이미지를 동적 생성합니다. 9단계 데이터와 앞선 모든 페이지를 검색엔진·소셜에 연결하는 캡스톤입니다.",
+      "nodeIds": [
+        "file:src/app/api/contact/route.ts",
+        "file:src/app/sitemap.ts",
+        "file:src/app/robots.ts",
+        "file:src/app/opengraph-image.tsx"
+      ],
+      "languageLesson": "App Router는 파일 컨벤션으로 SEO를 처리합니다. sitemap.ts·robots.ts·opengraph-image.tsx의 default export는 각각 sitemap.xml·robots.txt·OG 이미지로 빌드되어, 별도 설정 없이 메타데이터 라우트가 됩니다."
+    }
+  ]
+}
