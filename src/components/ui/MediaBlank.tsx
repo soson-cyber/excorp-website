@@ -24,7 +24,7 @@ type MediaBlankProps = {
 
 function CornerTicks() {
   // four absolutely-positioned L-shaped reticle ticks
-  const base = "pointer-events-none absolute h-3 w-3 border-[#5e2ec0]/45";
+  const base = "pointer-events-none absolute h-3 w-3 border-primary/45";
   return (
     <>
       <span className={`${base} left-2.5 top-2.5 border-l border-t`} />
@@ -85,10 +85,10 @@ export function MediaBlank({
 }: MediaBlankProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#F2F4F7] ${className}`}
+      className={`relative overflow-hidden rounded-2xl border border-border bg-pale ${className}`}
     >
       {tag && (
-        <span className="absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
+        <span className="absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-wider text-faint">
           {tag}
         </span>
       )}
@@ -101,13 +101,13 @@ export function MediaBlank({
           <span
             className={`font-mono ${
               compact ? "text-[11px]" : "text-xs"
-            } font-medium tracking-wide text-[#0F1129]`}
+            } font-medium tracking-wide text-fg`}
           >
             {label}
           </span>
         )}
         {sublabel && (
-          <span className="font-mono text-[10px] tracking-wide text-[#6b7280]">
+          <span className="font-mono text-[10px] tracking-wide text-faint">
             {sublabel}
           </span>
         )}

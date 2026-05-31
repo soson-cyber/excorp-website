@@ -95,7 +95,7 @@ export default function HeroAurora() {
   return (
     <div ref={wrapRef} aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       {/* deep base wash */}
-      <div className="absolute inset-0 bg-[#0E0626]" />
+      <div className="absolute inset-0 bg-hero" />
 
       {/* concentric colour bands — this whole layer's centre tracks the pointer */}
       <div

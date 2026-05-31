@@ -29,7 +29,7 @@ function ArrowLink({
     <Link
       href={href}
       className={`group inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
-        accent ? "text-[#5E2EC0] hover:text-[#4a23a0]" : "text-[#0F1129] hover:text-[#5E2EC0]"
+        accent ? "text-primary hover:text-primary-hover" : "text-fg hover:text-primary"
       } ${className}`}
     >
       {children}
@@ -47,7 +47,7 @@ function ArrowLink({
 
 function Hero() {
   return (
-    <section className="relative -mt-16 flex min-h-[100vh] items-center justify-center overflow-hidden bg-[#0E0626] pt-16">
+    <section className="relative -mt-16 flex min-h-[100vh] items-center justify-center overflow-hidden bg-hero pt-16">
       {/* full-bleed pointer-reactive aurora */}
       <HeroAurora />
 
@@ -64,7 +64,7 @@ function Hero() {
       {/* centered copy (Highnote-style stack) */}
       <div className="relative z-10 mx-auto flex max-w-[1040px] flex-col items-center px-6 py-28 text-center">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] text-white/70 backdrop-blur">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#45F1E0]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-mint" />
           Real-time XR Content · EX
         </span>
 
@@ -83,7 +83,7 @@ function Hero() {
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0F1129] transition-colors hover:bg-white/90"
+            className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-bold text-fg transition-colors hover:bg-white/90"
           >
             프로젝트 시작 →
           </Link>
@@ -131,14 +131,14 @@ const whatWeDo = [
 
 function WhatWeDo() {
   return (
-    <section className="bg-[#F7F8FA]">
+    <section className="bg-surface">
       <div className="mx-auto max-w-[1280px] px-6 py-28 lg:px-20 lg:py-36">
         <Reveal>
           <SectionLabel>— [ 01 ] WHAT WE DO</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
+          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-fg lg:text-5xl">
             솔루션부터 스튜디오까지, 하나의 흐름으로
           </h2>
-          <p className="mt-4 max-w-2xl text-base text-[#51545E] lg:text-lg">
+          <p className="mt-4 max-w-2xl text-base text-muted lg:text-lg">
             EX는 실시간 XR 콘텐츠 제작의 전 과정을 솔루션 · 장비 · 스튜디오로
             연결합니다.
           </p>
@@ -149,20 +149,20 @@ function WhatWeDo() {
             <Reveal
               key={card.index}
               delay={i * 90}
-              className="flex flex-1 flex-col rounded-2xl border border-[#E5E7EB] bg-white p-7 shadow-soft"
+              className="flex flex-1 flex-col rounded-2xl border border-border bg-white p-7 shadow-soft"
             >
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-[#5E2EC0]">
+                <span className="text-sm font-bold text-primary">
                   {card.index}
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-faint">
                   {card.tag}
                 </span>
               </div>
-              <h3 className="mt-6 text-xl font-bold text-[#0F1129]">
+              <h3 className="mt-6 text-xl font-bold text-fg">
                 {card.title}
               </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-[#51545E]">
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                 {card.desc}
               </p>
               <ArrowLink href={card.href} className="mt-6">
@@ -196,33 +196,33 @@ function DiagramNode({
 }) {
   return (
     <div
-      className={`rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-center shadow-sm ${className}`}
+      className={`rounded-xl border border-border bg-white px-4 py-3 text-center shadow-sm ${className}`}
     >
-      <div className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#0F1129]">
+      <div className="font-mono text-[11px] font-semibold uppercase tracking-wider text-fg">
         {title}
       </div>
-      <div className="mt-0.5 text-[11px] text-[#6b7280]">{sub}</div>
+      <div className="mt-0.5 text-[11px] text-faint">{sub}</div>
     </div>
   );
 }
 
 function ExlinkDiagram() {
   return (
-    <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5 lg:p-7">
-      <div className="mb-4 flex items-center justify-between border-b border-[#E5E7EB] pb-3">
-        <span className="font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
+    <div className="rounded-2xl border border-border bg-white p-5 lg:p-7">
+      <div className="mb-4 flex items-center justify-between border-b border-border pb-3">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-faint">
           EXLINK ARCHITECTURE
         </span>
-        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[#16A34A]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#16A34A]" />
+        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-success">
+          <span className="h-1.5 w-1.5 rounded-full bg-success" />
           LIVE
         </span>
       </div>
 
-      <div className="relative grid grid-cols-3 grid-rows-3 gap-3">
-        {/* connector lines behind the nodes */}
+      <div className="relative flex flex-col gap-3 sm:grid sm:grid-cols-3 sm:grid-rows-3">
+        {/* connector lines behind the nodes — cross layout, sm+ only */}
         <svg
-          className="pointer-events-none absolute inset-0 h-full w-full"
+          className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
           aria-hidden="true"
           preserveAspectRatio="none"
           viewBox="0 0 100 100"
@@ -236,28 +236,28 @@ function ExlinkDiagram() {
         </svg>
 
         {/* top */}
-        <div className="col-start-2 row-start-1 flex items-center justify-center">
+        <div className="flex items-center justify-center sm:col-start-2 sm:row-start-1">
           <DiagramNode title="CAPTURE" sub="멀티캠 입력" className="w-full" />
         </div>
         {/* left */}
-        <div className="col-start-1 row-start-2 flex items-center justify-center">
+        <div className="flex items-center justify-center sm:col-start-1 sm:row-start-2">
           <DiagramNode title="TRACKING" sub="좌표 동기화" className="w-full" />
         </div>
         {/* center */}
-        <div className="col-start-2 row-start-2 flex items-center justify-center">
-          <div className="w-full rounded-xl border border-[#5E2EC0] bg-[#5E2EC0]/[0.08] px-4 py-4 text-center">
-            <div className="font-mono text-sm font-bold uppercase tracking-wider text-[#5E2EC0]">
+        <div className="flex items-center justify-center sm:col-start-2 sm:row-start-2">
+          <div className="w-full rounded-xl border border-primary bg-primary/[0.08] px-4 py-4 text-center">
+            <div className="font-mono text-sm font-bold uppercase tracking-wider text-primary">
               EXLINK
             </div>
-            <div className="mt-0.5 text-[11px] text-[#5E2EC0]/80">통합 코어</div>
+            <div className="mt-0.5 text-[11px] text-primary/80">통합 코어</div>
           </div>
         </div>
         {/* right */}
-        <div className="col-start-3 row-start-2 flex items-center justify-center">
+        <div className="flex items-center justify-center sm:col-start-3 sm:row-start-2">
           <DiagramNode title="RENDER" sub="실시간 합성" className="w-full" />
         </div>
         {/* bottom */}
-        <div className="col-start-2 row-start-3 flex items-center justify-center">
+        <div className="flex items-center justify-center sm:col-start-2 sm:row-start-3">
           <DiagramNode title="BROADCAST" sub="송출 · 녹화" className="w-full" />
         </div>
       </div>
@@ -271,17 +271,17 @@ function Exlink() {
       <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-28">
         <Reveal>
           <SectionLabel>— [ 02 ] CORE SOLUTION</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-fg lg:text-5xl">
             EXLINK — 흩어진 XR을 하나로 묶다
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-[#51545E] lg:text-lg">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted lg:text-lg">
             촬영 · 트래킹 · 렌더 · 송출을 단일 파이프라인으로 통합한 EX의 자체
             개발 솔루션. 분산된 장비와 워크플로우를 하나로 연결합니다.
           </p>
           <ul className="mt-7 flex flex-col gap-3.5">
             {exlinkBullets.map((b) => (
-              <li key={b} className="flex items-center gap-3 text-[#0F1129]">
-                <span className="h-1.5 w-1.5 flex-none rounded-full bg-[#5E2EC0]" />
+              <li key={b} className="flex items-center gap-3 text-fg">
+                <span className="h-1.5 w-1.5 flex-none rounded-full bg-primary" />
                 <span className="text-sm lg:text-base">{b}</span>
               </li>
             ))}
@@ -303,11 +303,11 @@ function Exlink() {
 
 function FeaturedCase() {
   return (
-    <section className="bg-[#F7F8FA]">
+    <section className="bg-surface">
       <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-28 lg:grid-cols-[55fr_45fr] lg:gap-16 lg:px-20 lg:py-36">
         {/* image (first on mobile) */}
         <Reveal>
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#E5E7EB]">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border">
             <Image
               src="/uc-broadcast.png"
               alt="EXLINK 구축사례 — 실시간 XR 방송 시스템"
@@ -324,22 +324,22 @@ function FeaturedCase() {
         {/* copy */}
         <Reveal>
           <SectionLabel>— [ CASE ] EXLINK 구축사례</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-fg lg:text-5xl">
             실시간 XR 방송 시스템을 하나로 통합
           </h2>
           <div className="mt-7 flex flex-wrap gap-3">
-            <div className="rounded-xl border border-[#E5E7EB] bg-white px-4 py-3">
-              <div className="text-xl font-bold tracking-tight text-[#0F1129]">
+            <div className="rounded-xl border border-border bg-white px-4 py-3">
+              <div className="text-xl font-bold tracking-tight text-fg">
                 운영 인력 4 → 1
               </div>
             </div>
-            <div className="rounded-xl border border-[#E5E7EB] bg-white px-4 py-3">
-              <div className="text-xl font-bold tracking-tight text-[#0F1129]">
+            <div className="rounded-xl border border-border bg-white px-4 py-3">
+              <div className="text-xl font-bold tracking-tight text-fg">
                 셋업 시간 −70%
               </div>
             </div>
           </div>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-[#51545E] lg:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted lg:text-lg">
             분산된 촬영·트래킹·렌더·송출 장비를 EXLINK 하나로 묶어, 운영 부담은
             줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.
           </p>
@@ -382,14 +382,14 @@ const partnerProducts = [
    added later (e.g. an optional <Image> before the name). */
 function CredentialChip({ name, role }: { name: string; role?: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm">
-      <span className="font-medium text-[#0F1129]">{name}</span>
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-4 py-2 text-sm">
+      <span className="font-medium text-fg">{name}</span>
       {role ? (
         <>
-          <span aria-hidden="true" className="text-[#6b7280]">
+          <span aria-hidden="true" className="text-faint">
             ·
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-faint">
             {role}
           </span>
         </>
@@ -404,10 +404,10 @@ function PartnerProducts() {
       <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
         <Reveal>
           <SectionLabel>— [ 03 ] PARTNER PRODUCTS</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-[#0F1129] lg:text-5xl">
+          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-fg lg:text-5xl">
             검증된 글로벌 XR 기술, 국내에 연결합니다
           </h2>
-          <p className="mt-4 max-w-2xl text-base text-[#51545E] lg:text-lg">
+          <p className="mt-4 max-w-2xl text-base text-muted lg:text-lg">
             EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로 도입부터 기술지원까지
             책임집니다.
           </p>
@@ -415,7 +415,7 @@ function PartnerProducts() {
 
         {/* credential strip */}
         <Reveal className="mt-10">
-          <p className="text-[11px] uppercase tracking-wider text-[#6b7280]">
+          <p className="text-[11px] uppercase tracking-wider text-faint">
             공식 파트너 · OFFICIAL PARTNERS
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -424,7 +424,7 @@ function PartnerProducts() {
             <CredentialChip name="RETracker" role="DISTRIBUTOR" />
             <span
               aria-hidden="true"
-              className="mx-1 h-6 w-px flex-none bg-[#E5E7EB]"
+              className="mx-1 h-6 w-px flex-none bg-border"
             />
             <CredentialChip name="NVIDIA Inception" />
             <CredentialChip name="Epic Games · Unreal" />
@@ -436,7 +436,7 @@ function PartnerProducts() {
             <Reveal
               key={p.name}
               delay={i * 90}
-              className="flex flex-1 flex-col rounded-2xl border border-[#E5E7EB] bg-white p-7 shadow-soft"
+              className="flex flex-1 flex-col rounded-2xl border border-border bg-white p-7 shadow-soft"
             >
               <div className="flex items-center justify-between gap-4">
                 <MediaBlank
@@ -445,12 +445,12 @@ function PartnerProducts() {
                   compact
                   className="h-14 w-14 flex-none"
                 />
-                <span className="rounded-full bg-[#F2F4F7] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-[#6b7280]">
+                <span className="rounded-full bg-pale px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-faint">
                   {p.role}
                 </span>
               </div>
-              <h3 className="mt-6 text-xl font-bold text-[#0F1129]">{p.name}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-[#51545E]">
+              <h3 className="mt-6 text-xl font-bold text-fg">{p.name}</h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                 {p.desc}
               </p>
               <ArrowLink href={p.href} className="mt-6">
@@ -474,7 +474,7 @@ const studioBullets = [
 
 function StudioStage() {
   return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#0F1129]">
+    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-fg">
       <Image
         src="/studio.png"
         alt="EX XR Studio — 하남 그린 크로마 스튜디오"
@@ -499,7 +499,7 @@ function StudioStage() {
 
 function XrStudio() {
   return (
-    <section className="bg-[#F7F8FA]">
+    <section className="bg-surface">
       <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-28">
         <Reveal>
           <StudioStage />
@@ -507,19 +507,19 @@ function XrStudio() {
 
         <Reveal>
           <SectionLabel>— [ 04 ] XR STUDIO</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-[#0F1129] lg:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-fg lg:text-5xl">
             촬영이 곧 완성이 되는
             <br />
             실시간 XR 스튜디오
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-[#51545E] lg:text-lg">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted lg:text-lg">
             하남 70㎡ 그린 크로마에서 IR · 웨비나 · 대담을 실시간 XR로
             제작합니다.
           </p>
           <ul className="mt-7 flex flex-col gap-3.5">
             {studioBullets.map((b) => (
-              <li key={b} className="flex items-center gap-3 text-[#0F1129]">
-                <span className="h-1.5 w-1.5 flex-none rounded-full bg-[#5E2EC0]" />
+              <li key={b} className="flex items-center gap-3 text-fg">
+                <span className="h-1.5 w-1.5 flex-none rounded-full bg-primary" />
                 <span className="text-sm lg:text-base">{b}</span>
               </li>
             ))}
@@ -549,15 +549,15 @@ function Numbers() {
         <Reveal>
           <SectionLabel>— [ 05 ] BY THE NUMBERS</SectionLabel>
         </Reveal>
-        <Reveal className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 lg:divide-x lg:divide-[#E5E7EB]">
+        <Reveal className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 lg:divide-x lg:divide-border">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col lg:items-center lg:px-4">
               <CountUp
                 value={s.value}
                 suffix={s.suffix}
-                className="text-5xl font-bold tracking-tight text-[#0F1129] lg:text-6xl"
+                className="text-5xl font-bold tracking-tight text-fg lg:text-6xl"
               />
-              <span className="mt-2 text-sm text-[#6b7280]">{s.label}</span>
+              <span className="mt-2 text-sm text-faint">{s.label}</span>
             </div>
           ))}
         </Reveal>
@@ -570,18 +570,18 @@ function Numbers() {
 
 function QuoteBand() {
   return (
-    <section className="bg-[#F7F8FA]">
+    <section className="bg-surface">
       <div className="mx-auto max-w-[860px] px-6 py-24 text-center lg:px-20 lg:py-28">
         <Reveal>
-          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-[#5E2EC0]">
-            <span className="h-0.5 w-7 bg-[#5E2EC0]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-primary">
+            <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
             WHAT YOU GET
           </span>
-          <p className="mt-6 text-2xl font-semibold leading-relaxed text-[#0F1129] lg:text-3xl">
+          <p className="mt-6 text-2xl font-semibold leading-relaxed text-fg lg:text-3xl">
             촬영과 동시에 결과물이 완성됩니다. 후반 일정에 쫓기지 않고,
             현장에서 바로 확인하고 끝낼 수 있습니다.
           </p>
-          <p className="mt-6 text-sm text-[#6b7280]">실시간 XR 제작이 만드는 차이</p>
+          <p className="mt-6 text-sm text-faint">실시간 XR 제작이 만드는 차이</p>
         </Reveal>
       </div>
     </section>
@@ -595,9 +595,9 @@ function Cta() {
     <section className="bg-white">
       <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
         <Reveal>
-          <div className="rounded-3xl border border-[#0F1129] bg-[#0F1129] px-8 py-14 text-center">
-            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-[#A78BF0]">
-              <span className="h-0.5 w-7 bg-[#A78BF0]" aria-hidden="true" />
+          <div className="rounded-3xl border border-fg bg-fg px-8 py-14 text-center">
+            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-footer-accent">
+              <span className="h-0.5 w-7 bg-footer-accent" aria-hidden="true" />
               START A PROJECT
             </span>
             <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
@@ -605,13 +605,13 @@ function Cta() {
               <br />
               실시간 XR로 시작하세요
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-[#9BA0B8] lg:text-lg">
+            <p className="mx-auto mt-4 max-w-xl text-base text-footer-link lg:text-lg">
               솔루션 도입 · 제품 문의 · 스튜디오 제작 — 무엇이든 상담하세요.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#5E2EC0] px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#4a23a0]"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary-hover"
               >
                 프로젝트 상담 →
               </Link>

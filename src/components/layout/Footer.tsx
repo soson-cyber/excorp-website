@@ -10,7 +10,7 @@ import { Icon } from "@/components/ui/Icon";
 */
 export function Footer() {
   return (
-    <footer className="border-t border-[#23264a] bg-[#0F1129] text-white">
+    <footer className="border-t border-ink-hover bg-fg text-white">
       <div className="container-ex py-16">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_2.5fr]">
           {/* Brand */}
@@ -18,8 +18,8 @@ export function Footer() {
             <Link href="/" className="inline-block" aria-label="EX Corporation 홈">
               <Image src="/ex-logo.png" alt="EX Corporation" width={1001} height={201} className="h-7 w-auto" />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#9ba0b8]">{site.mission}</p>
-            <div className="mt-6 flex gap-5 text-[#9ba0b8]">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-footer-link">{site.mission}</p>
+            <div className="mt-6 flex gap-5 text-footer-link">
               <a
                 href={site.social.instagram}
                 className="transition-colors hover:text-[#b6a3f0]"
@@ -57,11 +57,11 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {footerColumns.map((col) => (
               <div key={col.title}>
-                <h3 className="font-mono text-xs uppercase tracking-wider text-[#8489a8]">{col.title}</h3>
+                <h3 className="font-mono text-xs uppercase tracking-wider text-footer-muted">{col.title}</h3>
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <Link href={link.href} className="text-sm text-[#9ba0b8] transition-colors hover:text-white">
+                      <Link href={link.href} className="text-sm text-footer-link transition-colors hover:text-white">
                         {link.label}
                       </Link>
                     </li>
@@ -73,13 +73,13 @@ export function Footer() {
         </div>
 
         {/* Locations */}
-        <div className="mt-14 grid gap-6 border-t border-[#23264a] pt-8 sm:grid-cols-2">
+        <div className="mt-14 grid gap-6 border-t border-ink-hover pt-8 sm:grid-cols-2">
           {locations.map((loc) => (
             <div key={loc.kind}>
-              <span className="font-mono text-xs uppercase tracking-wider text-[#a78bf0]">{loc.kind}</span>
+              <span className="font-mono text-xs uppercase tracking-wider text-footer-accent">{loc.kind}</span>
               <p className="mt-1.5 text-sm font-medium text-white">{loc.name}</p>
-              <p className="text-sm text-[#9ba0b8]">
-                {loc.address} <span className="text-[#8489a8]">({loc.zip})</span>
+              <p className="text-sm text-footer-link">
+                {loc.address} <span className="text-footer-muted">({loc.zip})</span>
               </p>
               {loc.tel && (
                 <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-[#8186a3]">
@@ -111,7 +111,7 @@ export function Footer() {
         </div>
 
         {/* Bottom line */}
-        <div className="mt-10 flex flex-col gap-3 border-t border-[#23264a] pt-6 text-xs text-[#8489a8] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-ink-hover pt-6 text-xs text-footer-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} EX Corporation. All rights reserved.</p>
           <p className="flex gap-4">
             <Link href="/privacy" className="hover:text-white">

@@ -5,8 +5,8 @@
 */
 export function SectionLabel({ children }: { children: string }) {
   return (
-    <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-[#5E2EC0]">
-      <span className="h-0.5 w-7 bg-[#5E2EC0]" aria-hidden="true" />
+    <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-primary">
+      <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
       {children}
     </span>
   );

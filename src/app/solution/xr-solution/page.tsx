@@ -141,11 +141,11 @@ export default function XrSolutionPage() {
         <p className="mt-4 font-mono text-xs uppercase tracking-wider text-faint">
           CAPTURE → TRACKING → EXLINK CORE → RENDER → BROADCAST
         </p>
-        <div className="mt-10 flex flex-wrap items-stretch gap-3">
+        <div className="mt-10 flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-stretch">
           {pipeline.map((n, i) => (
             <Fragment key={n.t}>
               <div
-                className={`flex-1 basis-[180px] rounded-2xl border p-5 ${
+                className={`flex-1 rounded-2xl border p-5 lg:basis-[180px] ${
                   n.core ? "border-primary bg-primary-soft" : "border-border bg-surface"
                 }`}
               >
@@ -156,7 +156,7 @@ export default function XrSolutionPage() {
                 <p className="mt-2 text-sm leading-relaxed text-muted">{n.d}</p>
               </div>
               {i < pipeline.length - 1 && (
-                <span className="hidden items-center self-center text-primary lg:flex" aria-hidden="true">
+                <span className="flex items-center justify-center self-center text-primary rotate-90 lg:rotate-0" aria-hidden="true">
                   →
                 </span>
               )}

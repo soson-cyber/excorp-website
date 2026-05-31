@@ -28,6 +28,14 @@
   --color-muted: #51545e; /* body / secondary text — AA on white */
   --color-faint: #5f636d; /* captions / least-emphasis — AA on white + tinted surfaces */
 
+  /* Extended surfaces & dark anchors (tokenized 2026-05 — were literal hex) */
+  --color-pale: #f2f4f7; /* placeholder fill */
+  --color-ink-hover: #23264a; /* ink button/link hover */
+  --color-hero: #0e0626; /* Home hero dark base */
+  --color-footer-muted: #8489a8; /* footer body — AA on dark */
+  --color-footer-link: #9ba0b8; /* footer links */
+  --color-footer-accent: #a78bf0; /* footer eyebrow purple */
+
   /* Primary — brand Purple (works on white) */
   --color-primary: #5e2ec0;
   --color-primary-hover: #4a23a0;
@@ -132,6 +140,10 @@ body {
   color: var(--color-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* Korean body legibility — base leading 1.7 + subtle tracking.
+     Headings and labels override via their own leading / tracking utilities. */
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
 /* GNB megamenu dropdown entrance */

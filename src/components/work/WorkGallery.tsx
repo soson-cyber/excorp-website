@@ -29,15 +29,15 @@ export function WorkGallery() {
               onClick={() => setActive(c)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 on
-                  ? "bg-[#5E2EC0] text-white"
-                  : "border border-[#E5E7EB] bg-white text-[#51545E] hover:border-[#5E2EC0]/50 hover:text-[#0F1129]"
+                  ? "bg-primary text-white"
+                  : "border border-border bg-white text-muted hover:border-primary/50 hover:text-fg"
               }`}
             >
               {c}
             </button>
           );
         })}
-        <span className="ml-1 font-mono text-xs text-[#5f636d]">{list.length}개 프로젝트</span>
+        <span className="ml-1 font-mono text-xs text-faint">{list.length}개 프로젝트</span>
       </div>
 
       {/* grid (or empty state) */}
@@ -49,7 +49,7 @@ export function WorkGallery() {
             <Link
               key={w.slug}
               href={`/work/${w.slug}`}
-              className={`group flex flex-col overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-colors hover:border-[#5E2EC0]/50 ${
+              className={`group flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition-colors hover:border-primary/50 ${
                 wide ? "sm:col-span-2 lg:col-span-2" : ""
               }`}
             >
@@ -63,10 +63,10 @@ export function WorkGallery() {
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-[#5E2EC0]">{w.category}</span>
-                <h3 className="mt-2 text-lg font-semibold text-[#0F1129]">{w.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-[#51545E]">{w.summary}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#0F1129]">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{w.category}</span>
+                <h3 className="mt-2 text-lg font-semibold text-fg">{w.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{w.summary}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg">
                   사례 보기 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>
               </div>
@@ -75,19 +75,19 @@ export function WorkGallery() {
         })}
         </div>
       ) : (
-        <div className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#E5E7EB] bg-white px-6 py-20 text-center">
-          <p className="text-sm text-[#51545E]">{active} 시나리오는 준비 중입니다.</p>
+        <div className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-white px-6 py-20 text-center">
+          <p className="text-sm text-muted">{active} 시나리오는 준비 중입니다.</p>
           <button
             type="button"
             onClick={() => setActive("전체")}
-            className="mt-4 text-sm font-medium text-[#5E2EC0] transition-colors hover:text-[#4a23a0]"
+            className="mt-4 text-sm font-medium text-primary transition-colors hover:text-primary-hover"
           >
             전체 보기 →
           </button>
         </div>
       )}
 
-      <p className="mt-8 font-mono text-xs text-[#5f636d]">
+      <p className="mt-8 font-mono text-xs text-faint">
         현재 항목은 활용 시나리오입니다 · 실제 도입 사례는 순차 업데이트됩니다.
       </p>
     </div>

@@ -44,7 +44,7 @@ export function Header() {
       className={`sticky top-0 z-50 transition-colors duration-300 ${
         overHero
           ? "border-b border-white/10 bg-transparent"
-          : "border-b border-[#E5E7EB] bg-white/80 backdrop-blur-xl"
+          : "border-b border-border bg-white/80 backdrop-blur-xl"
       }`}
     >
       <div className="container-ex flex h-16 items-center justify-between gap-6">
@@ -83,12 +83,12 @@ export function Header() {
                 className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm transition-colors ${
                   overHero
                     ? "text-white/80 hover:text-white focus-on-dark"
-                    : "text-[#51545E] hover:text-[#0F1129]"
+                    : "text-muted hover:text-fg"
                 }`}
               >
                 {item.label}
                 {item.children && (
-                  <span className={overHero ? "text-[10px] text-white/50" : "text-[10px] text-[#6b7280]"}>
+                  <span className={overHero ? "text-[10px] text-white/50" : "text-[10px] text-faint"}>
                     ▾
                   </span>
                 )}
@@ -100,10 +100,10 @@ export function Header() {
                     item.label === "Company" ? "right-0" : "left-0"
                   }`}
                 >
-                  <div className="flex w-[600px] overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white shadow-[0_24px_60px_-20px_rgba(15,17,41,0.28)]">
+                  <div className="flex w-[600px] overflow-hidden rounded-2xl border border-border bg-white shadow-[0_24px_60px_-20px_rgba(15,17,41,0.28)]">
                     {/* link column */}
                     <div className="flex-1 p-3">
-                      <p className="px-3 pb-1 pt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#5f636d]">
+                      <p className="px-3 pb-1 pt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
                         {item.label}
                       </p>
                       <div className="flex flex-col">
@@ -112,20 +112,20 @@ export function Header() {
                             key={child.href}
                             href={child.href}
                             onClick={() => setOpenMenu(null)}
-                            className="group/row rounded-xl px-3 py-2.5 transition-colors hover:bg-[#F7F8FA]"
+                            className="group/row rounded-xl px-3 py-2.5 transition-colors hover:bg-surface"
                           >
                             <span className="flex items-center gap-2">
-                              <span className="text-sm font-semibold text-[#0F1129] transition-colors group-hover/row:text-[#5E2EC0]">
+                              <span className="text-sm font-semibold text-fg transition-colors group-hover/row:text-primary">
                                 {child.label}
                               </span>
                               {child.tag && (
-                                <span className="rounded-full bg-[#5E2EC0]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#5E2EC0]">
+                                <span className="rounded-full bg-primary/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary">
                                   {child.tag}
                                 </span>
                               )}
                             </span>
                             {child.desc && (
-                              <span className="mt-0.5 block text-xs leading-relaxed text-[#6b7280]">
+                              <span className="mt-0.5 block text-xs leading-relaxed text-faint">
                                 {child.desc}
                               </span>
                             )}
@@ -166,15 +166,15 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <span className={overHero ? "font-mono text-xs text-white/60" : "font-mono text-xs text-[#6b7280]"}>
+          <span className={overHero ? "font-mono text-xs text-white/60" : "font-mono text-xs text-faint"}>
             KO / EN
           </span>
           <Link
             href="/contact"
             className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-bold transition-colors ${
               overHero
-                ? "bg-white text-[#0F1129] hover:bg-white/90"
-                : "bg-[#0F1129] text-white hover:bg-[#23264a]"
+                ? "bg-white text-fg hover:bg-white/90"
+                : "bg-fg text-white hover:bg-ink-hover"
             }`}
           >
             문의하기
@@ -187,7 +187,7 @@ export function Header() {
           aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={mobileOpen}
           className={`flex h-11 w-11 items-center justify-center rounded-md transition-colors lg:hidden ${
-            overHero ? "text-white hover:bg-white/10 focus-on-dark" : "text-[#0F1129] hover:bg-[#F7F8FA]"
+            overHero ? "text-white hover:bg-white/10 focus-on-dark" : "text-fg hover:bg-surface"
           }`}
           onClick={() => setMobileOpen((v) => !v)}
         >
@@ -210,24 +210,24 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-[#E5E7EB] bg-white lg:hidden">
+        <div className="border-t border-border bg-white lg:hidden">
           <nav className="container-ex flex flex-col py-4">
             {nav.map((item) => (
               <div key={item.label} className="py-1">
                 <Link
                   href={item.href}
-                  className="block py-2 text-base font-medium text-[#0F1129]"
+                  className="block py-2 text-base font-medium text-fg"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
                 </Link>
                 {item.children && (
-                  <div className="ml-3 flex flex-col border-l border-[#E5E7EB] pl-3">
+                  <div className="ml-3 flex flex-col border-l border-border pl-3">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="py-1.5 text-sm text-[#51545E]"
+                        className="py-1.5 text-sm text-muted"
                         onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
@@ -239,7 +239,7 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="mt-4 inline-flex items-center justify-center rounded-full bg-[#0F1129] px-5 py-2.5 text-sm font-bold text-white"
+              className="mt-4 inline-flex items-center justify-center rounded-full bg-fg px-5 py-2.5 text-sm font-bold text-white"
               onClick={() => setMobileOpen(false)}
             >
               문의하기

@@ -166,7 +166,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#0F1129] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[#23264a] disabled:opacity-60"
+        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-fg px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-ink-hover disabled:opacity-60"
       >
         {status === "submitting" ? "전송 중…" : "문의 보내기 →"}
       </button>
