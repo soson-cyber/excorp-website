@@ -116,11 +116,11 @@ export default function MoversePage() {
 
       {/* System */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="01">System</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">구성</h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+        <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
           {system.map((s) => (
             <div key={s.name} className="rounded-2xl border border-border bg-surface p-7">
               <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{s.role}</span>
@@ -134,11 +134,11 @@ export default function MoversePage() {
       {/* Key Features */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
+          <div>
             <SectionLabel index="02">Key Features</SectionLabel>
             <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">주요 기능</h2>
           </div>
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.t} className="rounded-2xl border border-border bg-surface p-6">
                 <h3 className="font-semibold">{f.t}</h3>
@@ -151,11 +151,11 @@ export default function MoversePage() {
 
       {/* Specifications */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="03">Specifications</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">상세 사양</h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-5xl gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid max-w-5xl gap-5 lg:grid-cols-3">
           {specGroups.map((g) => (
             <div key={g.title} className="overflow-hidden rounded-2xl border border-border bg-surface">
               <div className="border-b border-border px-6 py-4 font-semibold">{g.title}</div>
@@ -189,11 +189,11 @@ export default function MoversePage() {
 
       {/* FAQ */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="05">FAQ</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 전 자주 묻는 질문</h2>
         </div>
-        <div className="mx-auto mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {faqs.map((f) => (
             <details key={f.q} className="group p-6">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">

@@ -122,11 +122,11 @@ export default function AximmetryPage() {
       {/* Editions */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
+          <div>
             <SectionLabel index="01">Editions</SectionLabel>
             <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">용도에 맞는 에디션을 선택하세요</h2>
           </div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
+          <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
             {editions.map((e) => (
               <div key={e.name} className="flex flex-col rounded-2xl border border-border bg-surface p-6">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{e.for}</span>
@@ -139,7 +139,7 @@ export default function AximmetryPage() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-center text-sm text-muted">
+          <p className="mt-6 max-w-2xl text-sm text-muted">
             EX는 전문 스튜디오용 <span className="text-fg">Broadcast &amp; Film Edition</span>을 공급하며, 모든 에디션은{" "}
             <span className="text-fg">DE(자체+Unreal)</span> 또는 <span className="text-fg">SE(자체 엔진)</span> 중 선택할 수 있습니다.
           </p>
@@ -148,11 +148,11 @@ export default function AximmetryPage() {
 
       {/* Key Features */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="02">Key Features</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">주요 기능</h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
             <div key={f.t} className="rounded-2xl border border-border bg-surface p-6">
               <h3 className="font-semibold">{f.t}</h3>
@@ -165,7 +165,7 @@ export default function AximmetryPage() {
       {/* Edition comparison */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
+          <div>
             <SectionLabel index="03">Compare</SectionLabel>
             <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">에디션 비교</h2>
           </div>
@@ -196,11 +196,11 @@ export default function AximmetryPage() {
 
       {/* Broadcast & Film specifications */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="04">Specifications</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">Broadcast &amp; Film Edition 사양</h2>
         </div>
-        <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface">
           <dl>
             {bfSpecs.map(([k, v]) => (
               <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
@@ -229,11 +229,11 @@ export default function AximmetryPage() {
 
       {/* FAQ */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="06">FAQ</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 전 자주 묻는 질문</h2>
         </div>
-        <div className="mx-auto mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {faqs.map((f) => (
             <details key={f.q} className="group p-6">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">

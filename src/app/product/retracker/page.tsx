@@ -121,11 +121,11 @@ export default function RetrackerPage() {
 
       {/* Lineup */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="01">Lineup</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">두 가지 핵심 장치로 구성됩니다</h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
+        <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
           {lineup.map((p) => (
             <div key={p.name} className="rounded-2xl border border-border bg-surface p-6">
               <div className="flex h-44 items-center justify-center rounded-xl bg-bg/60">
@@ -137,7 +137,7 @@ export default function RetrackerPage() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-6 max-w-4xl text-center text-sm text-muted">
+        <p className="mt-6 max-w-2xl text-sm text-muted">
           여기에 <span className="text-fg">Bliss Software</span>가 더해져, 센서의 원시 공간 데이터를 Aximmetry·Unreal로 실시간 송출합니다.
         </p>
       </section>
@@ -145,11 +145,11 @@ export default function RetrackerPage() {
       {/* Key Features */}
       <section className="bg-surface/40">
         <div className="container-ex py-section">
-          <div className="text-center">
+          <div>
             <SectionLabel index="02">Key Features</SectionLabel>
             <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">주요 특징</h2>
           </div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.t} className="rounded-2xl border border-border bg-surface p-6">
                 <h3 className="font-semibold">{f.t}</h3>
@@ -162,11 +162,11 @@ export default function RetrackerPage() {
 
       {/* Specifications */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="03">Specifications</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">상세 사양</h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-5xl gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid max-w-5xl gap-5 lg:grid-cols-3">
           {specGroups.map((g) => (
             <div key={g.title} className="overflow-hidden rounded-2xl border border-border bg-surface">
               <div className="border-b border-border px-6 py-4 font-semibold">{g.title}</div>
@@ -200,11 +200,11 @@ export default function RetrackerPage() {
 
       {/* FAQ — 도입 고려 */}
       <section className="container-ex py-section">
-        <div className="text-center">
+        <div>
           <SectionLabel index="05">FAQ</SectionLabel>
           <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 전 자주 묻는 질문</h2>
         </div>
-        <div className="mx-auto mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {faqs.map((f) => (
             <details key={f.q} className="group p-6">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
