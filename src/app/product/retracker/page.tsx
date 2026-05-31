@@ -239,7 +239,7 @@ export default function RetrackerPage() {
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href="/contact" variant="accent">
-                  제품 도입 문의 →
+                  도입 상담 →
                 </Button>
                 <Button href="/support" variant="secondary">
                   기술 사양서 요청 →

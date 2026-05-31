@@ -22,7 +22,7 @@ export function CtaBanner() {
         </div>
         <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
           <Button href="/contact" variant="accent">
-            전문가 상담 신청 →
+            도입 상담 →
           </Button>
           <Button href="/xr-studio" variant="secondary">
             스튜디오 둘러보기 →

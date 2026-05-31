@@ -268,7 +268,7 @@ export default function AximmetryPage() {
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href="/contact" variant="accent">
-                  제품 도입 문의 →
+                  도입 상담 →
                 </Button>
                 <Button href="/contact" variant="secondary">
                   데모 영상 요청 →

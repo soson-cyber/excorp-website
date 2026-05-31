@@ -155,7 +155,7 @@ export default function VirtualProductionPage() {
                 <Button href="/solution/xr-solution" variant="secondary">
                   EXLINK 자세히 →
                 </Button>
-                <Button href="/contact">프로젝트 상담 →</Button>
+                <Button href="/contact">도입 상담 →</Button>
               </div>
             </div>
             <figure className="overflow-hidden rounded-2xl border border-border">

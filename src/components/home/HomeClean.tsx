@@ -132,7 +132,7 @@ const whatWeDo = [
 function WhatWeDo() {
   return (
     <section className="bg-surface">
-      <div className="mx-auto max-w-[1280px] px-6 py-28 lg:px-20 lg:py-36">
+      <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
         <Reveal>
           <SectionLabel>— [ 01 ] WHAT WE DO</SectionLabel>
           <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-fg lg:text-5xl">
@@ -304,7 +304,7 @@ function Exlink() {
 function FeaturedCase() {
   return (
     <section className="bg-surface">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-28 lg:grid-cols-[55fr_45fr] lg:gap-16 lg:px-20 lg:py-36">
+      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-[55fr_45fr] lg:gap-16 lg:px-20 lg:py-28">
         {/* image (first on mobile) */}
         <Reveal>
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border">
@@ -613,7 +613,7 @@ function Cta() {
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary-hover"
               >
-                프로젝트 상담 →
+                도입 상담 →
               </Link>
               <Link
                 href="/contact"
