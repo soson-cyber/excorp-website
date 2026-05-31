@@ -17,8 +17,7 @@ export function PageHero({
   return (
     <section className="relative overflow-hidden border-b border-border">
       <div className="bg-grid absolute inset-0 opacity-40" />
-      <div className="absolute -top-32 left-1/3 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-primary/20 blur-[130px]" />
-      <div className="container-ex relative py-20 text-center md:py-28">
+      <div className="container-ex relative py-24 text-center md:py-32">
         <nav className="flex flex-wrap items-center justify-center gap-1.5 font-mono text-xs text-faint">
           <Link href="/" className="hover:text-fg">
             Home
@@ -43,7 +42,7 @@ export function PageHero({
           </div>
         )}
 
-        <h1 className="mt-5 text-balance text-[clamp(2.75rem,6vw,5.25rem)] font-bold leading-[1.02] tracking-[-0.02em] text-gradient-ex">
+        <h1 className="mt-5 text-balance text-[clamp(2.75rem,6vw,5.25rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-gradient-ex">
           {title}
         </h1>
 

@@ -24,7 +24,7 @@ export default function NewsPage() {
       {/* §01 News list (filterable) */}
       <section className="container-ex py-section">
         <SectionLabel index="01">Archive</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">전체 소식</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">전체 소식</h2>
         <div className="mt-12">
           <NewsList />
         </div>

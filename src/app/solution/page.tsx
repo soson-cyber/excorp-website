@@ -47,7 +47,7 @@ export default function SolutionPage() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <SectionLabel index="01">Approach</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
+            <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">
               자체 기술과 글로벌 파트너, 양손 전략으로 모든 현장에 대응합니다.
             </h2>
             <p className="mt-5 text-pretty text-muted">
@@ -70,7 +70,7 @@ export default function SolutionPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section-lg">
           <SectionLabel index="02">Two Routes</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-snug md:text-4xl">
+          <h2 className="mt-5 max-w-3xl text-balance text-4xl font-semibold leading-snug md:text-5xl">
             자체 솔루션과 방법론, 두 갈래로 시작합니다.
           </h2>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -118,7 +118,7 @@ export default function SolutionPage() {
       {/* §03 Capability Matrix (directory rows) */}
       <section className="container-ex py-section">
         <SectionLabel index="03">Capability</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">제작 전 단계를 커버합니다</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 전 단계를 커버합니다</h2>
         <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
           {capability.map((c) => (
             <div

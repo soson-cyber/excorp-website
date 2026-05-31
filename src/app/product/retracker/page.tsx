@@ -124,7 +124,7 @@ export default function RetrackerPage() {
       <section className="container-ex py-section">
         <div>
           <SectionLabel index="01">Lineup</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">두 가지 핵심 장치로 구성됩니다</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">두 가지 핵심 장치로 구성됩니다</h2>
         </div>
         <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
           {lineup.map((p) => (
@@ -148,7 +148,7 @@ export default function RetrackerPage() {
         <div className="container-ex py-section">
           <div>
             <SectionLabel index="02">Key Features</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">주요 특징</h2>
+            <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">주요 특징</h2>
           </div>
           <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
@@ -165,7 +165,7 @@ export default function RetrackerPage() {
       <section className="container-ex py-section">
         <div>
           <SectionLabel index="03">Specifications</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">상세 사양</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">상세 사양</h2>
         </div>
         <div className="mt-12 max-w-3xl">
           <SpecTable groups={specGroups} />
@@ -176,7 +176,7 @@ export default function RetrackerPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="04">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">활용 분야</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
           <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
             {useCases.map((u) => (
               <div key={u} className="bg-surface p-6 text-center font-medium">
@@ -191,7 +191,7 @@ export default function RetrackerPage() {
       <section className="container-ex py-section">
         <div>
           <SectionLabel index="05">FAQ</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 전 자주 묻는 질문</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 전 자주 묻는 질문</h2>
         </div>
         <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {faqs.map((f) => (
@@ -212,7 +212,7 @@ export default function RetrackerPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionLabel index="06">EX × RETracker</SectionLabel>
-              <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
+              <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">
                 EX는 RETracker의 <span className="font-semibold text-primary">공식 한국 총판</span>입니다.
               </h2>
               <p className="mt-5 text-pretty text-muted">

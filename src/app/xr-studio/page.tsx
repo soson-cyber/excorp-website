@@ -91,7 +91,7 @@ export default function XrStudioPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="01">Why EX Studio</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">EX Studio가 다른 이유</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">EX Studio가 다른 이유</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (
               <div key={r.t} className="rounded-2xl border border-border bg-surface p-7">
@@ -106,7 +106,7 @@ export default function XrStudioPage() {
       {/* §02 Content menu (tabs + S/M/L) */}
       <section id="menu" className="container-ex py-section">
         <SectionLabel index="02">Content Menu</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">콘텐츠 메뉴</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">콘텐츠 메뉴</h2>
         <p className="mt-4 max-w-2xl text-muted">
           찌개를 고르듯, 목적에 맞는 콘텐츠 상품을 고르세요. 규모(S · M · L)만 정하면 나머지는 전담팀이 맞춥니다.
         </p>
@@ -119,7 +119,7 @@ export default function XrStudioPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="03">Backgrounds</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">배경 프리셋</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">배경 프리셋</h2>
           <p className="mt-4 max-w-2xl text-muted">
             콘텐츠 성격에 맞춰 가상 배경을 선택합니다. 기본 프리셋 외 브랜드 맞춤 배경도 제작합니다.
           </p>
@@ -140,7 +140,7 @@ export default function XrStudioPage() {
       {/* §04 Options (toggle) */}
       <section className="container-ex py-section">
         <SectionLabel index="04">Options</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">옵션 서비스</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">옵션 서비스</h2>
         <p className="mt-4 max-w-2xl text-muted">기본 구성에 필요한 옵션을 더할 수 있습니다.</p>
         <div className="mt-12">
           <StudioOptions />
@@ -151,7 +151,7 @@ export default function XrStudioPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="05">Guide</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">이용 안내</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">이용 안내</h2>
           <ul className="mt-12 max-w-3xl space-y-4">
             {guide.map((g) => (
               <li key={g} className="flex gap-3 text-fg">
@@ -166,7 +166,7 @@ export default function XrStudioPage() {
       {/* §06 Studio tour — sample video + gallery */}
       <section id="facilities" className="container-ex py-section">
         <SectionLabel index="06">Studio</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">스튜디오 둘러보기</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">스튜디오 둘러보기</h2>
 
         {/* sample video stage */}
         <div className="mt-12">
@@ -207,7 +207,7 @@ export default function XrStudioPage() {
               <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
               가격 및 예약 문의
             </span>
-            <h2 className="mx-auto mt-6 max-w-2xl text-balance text-3xl font-bold leading-snug md:text-4xl">
+            <h2 className="mx-auto mt-6 max-w-2xl text-balance text-4xl font-semibold leading-snug md:text-5xl">
               목적에 맞는 최적의 구성을 제안해 드립니다.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted">

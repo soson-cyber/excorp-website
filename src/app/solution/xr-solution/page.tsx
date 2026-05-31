@@ -88,7 +88,7 @@ export default function XrSolutionPage() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionLabel index="01">What is EXLINK</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">EXLINK이란?</h2>
+            <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">EXLINK이란?</h2>
             <p className="mt-5 text-pretty leading-relaxed text-muted">
               EXLINK은 실시간 XR 제작에 필요한 촬영·카메라 트래킹·가상 배경 렌더링·합성·미디어서버·송출 과정을
               하나의 제어 흐름으로 통합한 EX 자체 개발 올인원 솔루션입니다. 여러 장비와 소프트웨어를 따로 연동하는
@@ -115,7 +115,7 @@ export default function XrSolutionPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="02">Why Integrated</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 통합 솔루션인가</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 통합 솔루션인가</h2>
           <p className="mt-4 max-w-2xl text-muted">
             실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK은 이 과정을 하나의
             흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다.
@@ -137,7 +137,7 @@ export default function XrSolutionPage() {
       {/* §03 Architecture */}
       <section className="container-ex py-section">
         <SectionLabel index="03">Architecture</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">구성 / 아키텍처</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">구성 / 아키텍처</h2>
         <p className="mt-4 font-mono text-xs uppercase tracking-wider text-faint">
           CAPTURE → TRACKING → EXLINK CORE → RENDER → BROADCAST
         </p>
@@ -169,7 +169,7 @@ export default function XrSolutionPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="04">Key Features</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">핵심 기능</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">핵심 기능</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.t} className="rounded-2xl border border-border bg-surface p-6">
@@ -184,7 +184,7 @@ export default function XrSolutionPage() {
       {/* §05 System build (turnkey) */}
       <section className="container-ex py-section">
         <SectionLabel index="05">System Build</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">EXLINK 시스템 구성 (턴키)</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">EXLINK 시스템 구성 (턴키)</h2>
         <p className="mt-4 max-w-2xl text-muted">
           하드웨어·소프트웨어·시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키(Turn-key)로 공급합니다.
         </p>
@@ -221,7 +221,7 @@ export default function XrSolutionPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="06">Connected Tech</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">연결하는 기술</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">연결하는 기술</h2>
           <p className="mt-4 max-w-2xl text-muted">
             EXLINK은 검증된 전문 기술을 직접 만들지 않고, 한 흐름 안에서 조율합니다. 아래 파트너 제품은 EX가 국내
             공급하는 기술이며, EXLINK이 이를 연결·통합합니다.
@@ -249,7 +249,7 @@ export default function XrSolutionPage() {
       {/* §07 Adoption */}
       <section className="container-ex py-section">
         <SectionLabel index="07">Adoption</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 방식 — 컨설팅부터 운영까지</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 방식 — 컨설팅부터 운영까지</h2>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {adoption.map((a, i) => (
             <div key={a.step} className="rounded-2xl border border-border bg-surface p-6">
@@ -271,7 +271,7 @@ export default function XrSolutionPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="08">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">활용 분야</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.t} className="rounded-2xl border border-border bg-surface p-6">

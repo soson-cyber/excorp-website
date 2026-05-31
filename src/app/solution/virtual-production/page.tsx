@@ -77,7 +77,7 @@ export default function VirtualProductionPage() {
           </figure>
           <div>
             <SectionLabel index="01">What is VP</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">버추얼 프로덕션이란?</h2>
+            <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">버추얼 프로덕션이란?</h2>
             <p className="mt-5 text-pretty leading-relaxed text-muted">
               버추얼 프로덕션(Virtual Production)은 컴퓨터로 만든 가상의 배경·세트를 실제 촬영과 실시간으로
               합쳐 영상을 완성하는 제작 방식입니다. 현장에서 합성된 화면을 바로 보며 연출할 수 있어 긴 후반
@@ -94,7 +94,7 @@ export default function VirtualProductionPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="02">Why VP</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 지금 버추얼 프로덕션인가</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 지금 버추얼 프로덕션인가</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map((c) => (
               <div key={c.t} className="rounded-2xl border border-border bg-surface p-6">
@@ -109,7 +109,7 @@ export default function VirtualProductionPage() {
       {/* §03 Methods */}
       <section className="container-ex py-section">
         <SectionLabel index="03">Methods</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">제작 방식</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 방식</h2>
         <p className="mt-4 max-w-2xl text-muted">
           버추얼 프로덕션은 한 가지 방법만 있는 게 아닙니다. 목적과 예산에 따라 아래 방식을 선택하거나
           조합합니다.
@@ -137,7 +137,7 @@ export default function VirtualProductionPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionLabel index="04">EX Virtual Production</SectionLabel>
-              <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">EX의 버추얼 프로덕션</h2>
+              <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">EX의 버추얼 프로덕션</h2>
               <p className="mt-5 text-pretty leading-relaxed text-muted">
                 EX는 자체 솔루션 EXLINK, 검증된 파트너 기술, 그리고 하남 XR 스튜디오를 하나의 제작 파이프라인으로
                 연결합니다. 대형 그린 크로마(W10×D7×H4)와 시네마 카메라, 실시간 XR 트래킹을 기반으로 촬영과 합성을
@@ -174,7 +174,7 @@ export default function VirtualProductionPage() {
       {/* §05 Process */}
       <section className="container-ex py-section">
         <SectionLabel index="05">Process</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">제작 프로세스</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 프로세스</h2>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p, i) => (
             <div key={p.step} className="rounded-2xl border border-border bg-surface p-6">
@@ -190,7 +190,7 @@ export default function VirtualProductionPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="06">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">활용 분야</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.t} className="rounded-2xl border border-border bg-surface p-6">

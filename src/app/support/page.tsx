@@ -87,7 +87,7 @@ export default function SupportPage() {
       <section id="faq" className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="01">FAQ</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">자주 묻는 질문</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">자주 묻는 질문</h2>
           <div className="mt-12 max-w-3xl space-y-10">
             {faqGroups.map((g) => (
               <div key={g.cat}>
@@ -155,7 +155,7 @@ export default function SupportPage() {
       <section id="downloads" className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="03">Downloads</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">자료실</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">자료실</h2>
           <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
             {downloads.map((d) => (
               <div
@@ -178,7 +178,7 @@ export default function SupportPage() {
       {/* §05 Quick Inquiry */}
       <section className="container-ex py-section">
         <SectionLabel index="04">Quick Inquiry</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">무엇을 도와드릴까요?</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">무엇을 도와드릴까요?</h2>
         <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
           {inquiryTypes.map((t) => (
             <span key={t} className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-fg">

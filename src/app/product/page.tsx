@@ -68,7 +68,7 @@ export default function ProductPage() {
       {/* §01 Why EX as partner */}
       <section className="container-ex py-section">
         <SectionLabel index="01">Why EX</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 EX를 통해 도입하나요</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 EX를 통해 도입하나요</h2>
         <div className="mt-12 grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
           {whyEx.map((c, i) => (
             <div key={c.t} className="flex gap-5 border-t border-border pt-6">
@@ -86,7 +86,7 @@ export default function ProductPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="02">Lineup</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">제품 라인업</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제품 라인업</h2>
           <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-surface">
             {lineup.map((p) => (
               <Link
@@ -118,7 +118,7 @@ export default function ProductPage() {
       {/* §03 Compare matrix */}
       <section className="container-ex py-section">
         <SectionLabel index="03">Compare</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">한눈에 비교</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">한눈에 비교</h2>
         <div className="mt-12">
           <CompareTable columns={lineup.map((p) => p.title)} rows={compare} />
         </div>
@@ -128,7 +128,7 @@ export default function ProductPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="04">Authorisation</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">공식 총판·리셀러 인증</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">공식 총판·리셀러 인증</h2>
           <p className="mt-4 text-muted">공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다.</p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {certs.map((c) => (

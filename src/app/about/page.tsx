@@ -63,7 +63,7 @@ export default function AboutPage() {
       {/* §01 Vision & Mission */}
       <section className="container-ex py-section">
         <SectionLabel index="01">Vision &amp; Mission</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">우리가 그리는 세상</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">우리가 그리는 세상</h2>
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           <div className="rounded-2xl border border-border bg-surface p-8">
             <span className="font-mono text-xs uppercase tracking-wider text-primary">Vision</span>
@@ -84,7 +84,7 @@ export default function AboutPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="02">Why EX</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">왜 EX인가</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 EX인가</h2>
           <div className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
             {whyEx.map((c, i) => (
               <div key={c.t} className="flex gap-5 border-t border-border pt-6">
@@ -102,7 +102,7 @@ export default function AboutPage() {
       {/* §03 Patents */}
       <section className="container-ex py-section">
         <SectionLabel index="03">Patents &amp; Certifications</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">보유 특허 &amp; 인증</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">보유 특허 &amp; 인증</h2>
         <p className="mt-4 text-muted">기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증</p>
         <ol className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {patents.map((p) => (
@@ -118,7 +118,7 @@ export default function AboutPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="04">History</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">연혁</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">연혁</h2>
           <div className="mt-12 max-w-3xl">
             {history.map((h) => (
               <div key={h.year} className="flex gap-6 border-l border-border pl-6 pb-8 last:pb-0">
@@ -141,7 +141,7 @@ export default function AboutPage() {
       {/* §05 Locations */}
       <section className="container-ex py-section">
         <SectionLabel index="05">Location</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">오시는 길</h2>
+        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">오시는 길</h2>
         <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
           {locations.map((loc) => (
             <div key={loc.kind} className="rounded-2xl border border-border bg-surface p-6">

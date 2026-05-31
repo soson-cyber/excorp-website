@@ -126,7 +126,7 @@ export default function AximmetryPage() {
         <div className="container-ex py-section">
           <div>
             <SectionLabel index="01">Editions</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">용도에 맞는 에디션을 선택하세요</h2>
+            <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">용도에 맞는 에디션을 선택하세요</h2>
           </div>
           <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
             {editions.map((e) => (
@@ -152,7 +152,7 @@ export default function AximmetryPage() {
       <section className="container-ex py-section">
         <div>
           <SectionLabel index="02">Key Features</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">주요 기능</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">주요 기능</h2>
         </div>
         <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
@@ -169,7 +169,7 @@ export default function AximmetryPage() {
         <div className="container-ex py-section">
           <div>
             <SectionLabel index="03">Compare</SectionLabel>
-            <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">에디션 비교</h2>
+            <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">에디션 비교</h2>
           </div>
           <div className="mt-12">
             <CompareTable columns={editions.map((e) => e.name)} rows={editionMatrix} />
@@ -181,7 +181,7 @@ export default function AximmetryPage() {
       <section className="container-ex py-section">
         <div>
           <SectionLabel index="04">Specifications</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">Broadcast &amp; Film Edition 사양</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">Broadcast &amp; Film Edition 사양</h2>
         </div>
         <div className="mt-12 max-w-3xl">
           <SpecTable groups={[{ rows: bfSpecs }]} />
@@ -192,7 +192,7 @@ export default function AximmetryPage() {
       <section className="bg-surface/40">
         <div className="container-ex py-section">
           <SectionLabel index="05">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">활용 분야</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
           <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-5">
             {useCases.map((u) => (
               <div key={u} className="bg-surface p-6 text-center font-medium">
@@ -207,7 +207,7 @@ export default function AximmetryPage() {
       <section className="container-ex py-section">
         <div>
           <SectionLabel index="06">FAQ</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold md:text-4xl">도입 전 자주 묻는 질문</h2>
+          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 전 자주 묻는 질문</h2>
         </div>
         <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {faqs.map((f) => (
@@ -228,7 +228,7 @@ export default function AximmetryPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionLabel index="07">EX × Aximmetry</SectionLabel>
-              <h2 className="mt-5 text-balance text-3xl font-bold leading-snug md:text-4xl">
+              <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">
                 EX는 Aximmetry <span className="font-semibold text-primary">공식 인증 리셀러</span>입니다.
               </h2>
               <p className="mt-5 text-pretty text-muted">

@@ -57,7 +57,7 @@
 
   /* Layout — section rhythm scale (sm / base / lg) */
   --spacing-section-sm: 5rem;
-  --spacing-section: 7rem;
+  --spacing-section: 8.5rem;
   --spacing-section-lg: 10rem;
   --breakpoint-xs: 24rem;
 }
