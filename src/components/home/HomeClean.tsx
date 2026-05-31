@@ -132,19 +132,19 @@ const whatWeDo = [
 function WhatWeDo() {
   return (
     <section className="bg-surface">
-      <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
+      <div className="mx-auto max-w-[1280px] px-6 py-28 lg:px-20 lg:py-40">
         <Reveal>
-          <SectionLabel>— [ 01 ] WHAT WE DO</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-fg lg:text-5xl">
+          <SectionLabel>[ 01 ] WHAT WE DO</SectionLabel>
+          <h2 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-fg lg:text-[3.5rem] lg:leading-[1.05]">
             솔루션부터 스튜디오까지, 하나의 흐름으로
           </h2>
-          <p className="mt-4 max-w-2xl text-base text-muted lg:text-lg">
+          <p className="mt-4 max-w-2xl text-lg text-muted lg:text-xl">
             EX는 실시간 XR 콘텐츠 제작의 전 과정을 솔루션 · 장비 · 스튜디오로
             연결합니다.
           </p>
         </Reveal>
 
-        <div className="mt-12 flex flex-col gap-6 lg:flex-row">
+        <div className="mt-16 flex flex-col gap-6 lg:flex-row">
           {whatWeDo.map((card, i) => (
             <Reveal
               key={card.index}
@@ -268,13 +268,13 @@ function ExlinkDiagram() {
 function Exlink() {
   return (
     <section className="bg-white">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-28">
+      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-28 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-40">
         <Reveal>
-          <SectionLabel>— [ 02 ] CORE SOLUTION</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-fg lg:text-5xl">
+          <SectionLabel>[ 02 ] CORE SOLUTION</SectionLabel>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-fg lg:text-[3.5rem] lg:leading-[1.05]">
             EXLINK — 흩어진 XR을 하나로 묶다
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted lg:text-lg">
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted lg:text-xl">
             촬영 · 트래킹 · 렌더 · 송출을 단일 파이프라인으로 통합한 EX의 자체
             개발 솔루션. 분산된 장비와 워크플로우를 하나로 연결합니다.
           </p>
@@ -304,7 +304,7 @@ function Exlink() {
 function FeaturedCase() {
   return (
     <section className="bg-surface">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-[55fr_45fr] lg:gap-16 lg:px-20 lg:py-28">
+      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-28 lg:grid-cols-[55fr_45fr] lg:gap-16 lg:px-20 lg:py-40">
         {/* image (first on mobile) */}
         <Reveal>
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border">
@@ -323,8 +323,8 @@ function FeaturedCase() {
 
         {/* copy */}
         <Reveal>
-          <SectionLabel>— [ CASE ] EXLINK 구축사례</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-fg lg:text-5xl">
+          <SectionLabel>[ CASE ] EXLINK 구축사례</SectionLabel>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-fg lg:text-[3.5rem] lg:leading-[1.05]">
             실시간 XR 방송 시스템을 하나로 통합
           </h2>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -339,7 +339,7 @@ function FeaturedCase() {
               </div>
             </div>
           </div>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted lg:text-lg">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted lg:text-xl">
             분산된 촬영·트래킹·렌더·송출 장비를 EXLINK 하나로 묶어, 운영 부담은
             줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.
           </p>
@@ -401,13 +401,13 @@ function CredentialChip({ name, role }: { name: string; role?: string }) {
 function PartnerProducts() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
+      <div className="mx-auto max-w-[1280px] px-6 py-28 lg:px-20 lg:py-40">
         <Reveal>
-          <SectionLabel>— [ 03 ] PARTNER PRODUCTS</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-fg lg:text-5xl">
+          <SectionLabel>[ 03 ] PARTNER PRODUCTS</SectionLabel>
+          <h2 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-fg lg:text-[3.5rem] lg:leading-[1.05]">
             검증된 글로벌 XR 기술, 국내에 연결합니다
           </h2>
-          <p className="mt-4 max-w-2xl text-base text-muted lg:text-lg">
+          <p className="mt-4 max-w-2xl text-lg text-muted lg:text-xl">
             EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로 도입부터 기술지원까지
             책임집니다.
           </p>
@@ -431,7 +431,7 @@ function PartnerProducts() {
           </div>
         </Reveal>
 
-        <div className="mt-12 flex flex-col gap-6 lg:flex-row">
+        <div className="mt-16 flex flex-col gap-6 lg:flex-row">
           {partnerProducts.map((p, i) => (
             <Reveal
               key={p.name}
@@ -500,19 +500,19 @@ function StudioStage() {
 function XrStudio() {
   return (
     <section className="bg-surface">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-28">
+      <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-28 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-40">
         <Reveal>
           <StudioStage />
         </Reveal>
 
         <Reveal>
-          <SectionLabel>— [ 04 ] XR STUDIO</SectionLabel>
-          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-fg lg:text-5xl">
+          <SectionLabel>[ 04 ] XR STUDIO</SectionLabel>
+          <h2 className="mt-6 text-4xl font-semibold leading-tight tracking-tight text-fg lg:text-[3.5rem] lg:leading-[1.05]">
             촬영이 곧 완성이 되는
             <br />
             실시간 XR 스튜디오
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted lg:text-lg">
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted lg:text-xl">
             하남 70㎡ 그린 크로마에서 IR · 웨비나 · 대담을 실시간 XR로
             제작합니다.
           </p>
@@ -545,9 +545,9 @@ const stats = [
 function Numbers() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
+      <div className="mx-auto max-w-[1280px] px-6 py-28 lg:px-20 lg:py-40">
         <Reveal>
-          <SectionLabel>— [ 05 ] BY THE NUMBERS</SectionLabel>
+          <SectionLabel>[ 05 ] BY THE NUMBERS</SectionLabel>
         </Reveal>
         <Reveal className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 lg:divide-x lg:divide-border">
           {stats.map((s) => (
@@ -571,7 +571,7 @@ function Numbers() {
 function QuoteBand() {
   return (
     <section className="bg-surface">
-      <div className="mx-auto max-w-[860px] px-6 py-24 text-center lg:px-20 lg:py-28">
+      <div className="mx-auto max-w-[860px] px-6 py-28 text-center lg:px-20 lg:py-40">
         <Reveal>
           <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-primary">
             <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
@@ -593,14 +593,14 @@ function QuoteBand() {
 function Cta() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-[1280px] px-6 py-24 lg:px-20 lg:py-28">
+      <div className="mx-auto max-w-[1280px] px-6 py-28 lg:px-20 lg:py-40">
         <Reveal>
           <div className="rounded-3xl border border-fg bg-fg px-8 py-14 text-center">
             <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-footer-accent">
               <span className="h-0.5 w-7 bg-footer-accent" aria-hidden="true" />
               START A PROJECT
             </span>
-            <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
+            <h2 className="mx-auto mt-6 max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-white lg:text-[3.5rem] lg:leading-[1.05]">
               당신의 다음 콘텐츠를
               <br />
               실시간 XR로 시작하세요
