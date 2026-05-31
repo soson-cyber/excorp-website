@@ -1,6 +1,19 @@
 # DESIGN.md
 
-> EX Corporation — 화이트 크리에이티브-테크 스타트업 톤. 단 하나의 퍼플로 절제하되, 실시간 XR의 기술감을 깨끗한 다이어그램·동심원 오로라로 보여준다. **기술의 연결로 경험을 확장하다.**
+## 0. v3 — 전체 다크 전환 (2026-06, 이 섹션이 아래 라이트 스펙보다 우선)
+
+> **테마가 라이트/화이트 → 전체 다크 product-led로 전환됨** (Claude Design 핸드오프 `ui_kits/website` 구현본). 아래 §1~§9에서 "화이트/라이트/Glow 금지"로 쓰인 부분은 이 섹션이 **우선·대체**한다. 라이브 토큰의 단일 기준은 `src/app/globals.css` `@theme`(다크값).
+
+- **표면**: base `#0E0626`(=hero) ↔ raised `#14112C` 두 톤 교차, 카드 `#161232`, footer `#0F1129`. `color-scheme: dark`.
+- **텍스트**: fg `#FFFFFF` · muted `#C3C6D6` · faint `#9094A9` (모두 다크 AA). 다크에서 "퍼플 텍스트"는 **라벤더 `#C4B5FD`(lav)/violet `#8B5CF6`**, 항상-온 퍼플 `#5E2EC0`은 **채움(버튼·노드)** 용도.
+- **그라데이션 텍스트**: 다크에선 `text-gradient-ex-bright`(민트→violet→핑크)만. 라이트용 `text-gradient-ex`(딥퍼플 시작)는 다크에서 안 보이므로 금지.
+- **모션/Glow 규칙 반전**: 기존 "Glow 금지"를 **해제**. 허용: 버튼 **글로우-블리드 헤일로**(`.btn::after`, Wope), 콘솔/피처카드 **회전 conic 보더**(`edgeTurn`), **커서 spotlight**, 히어로 **파티클 캔버스·오로라 글로우·light ray**. 모든 모션은 `prefers-reduced-motion` 정적 경로 필수.
+- **히어로**: 동심원 오로라 → **product-led 다크 히어로 + 인터랙티브 EXLINK Live Console**(멀티캠 클릭→프로그램 피드, telemetry, pipeline, LIVE/REC). `components/home/Hero.tsx`.
+- **타이포 2-폰트 유지**: Poppins + Noto Sans KR. 라벨/eyebrow는 산스 스택(대문자+넓은 자간), 별도 mono 없음(`--font-mono`=산스).
+
+---
+
+> ~~EX Corporation — 화이트 크리에이티브-테크 스타트업 톤.~~ *(↑ §0 다크 전환으로 대체)* 단 하나의 퍼플로 절제하되, 실시간 XR의 기술감을 깨끗한 다이어그램·콘솔로 보여준다. **기술의 연결로 경험을 확장하다.**
 
 > 단일 기준(Source of Truth). 코드(`src/app/globals.css` `@theme`/`:root` + 컴포넌트)와 이 문서가 어긋나면 **이 문서를 기준**으로 맞춘다.
 > KAOPU-XiaoPu/web-design 스킬의 9-섹션 템플릿을 현 사이트에서 역추출·정합한 정식본. 최종 갱신: 2026-05 (UI/UX 프로 점검 + 스킬 정합 반영).

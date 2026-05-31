@@ -14,12 +14,10 @@ export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
-  // Transparent, white-on-dark header while sitting over the dark home hero;
-  // flips to the solid light header once scrolled past the hero (or off-home,
-  // or while the mobile sheet is open).
+  // Transparent over the dark hero; flips to dark-glass once scrolled past it
+  // (or off-home, or while the mobile sheet is open).
   const overHero = isHome && !scrolled && !mobileOpen;
 
-  // Track whether we've scrolled past (most of) the hero.
   useEffect(() => {
     if (!isHome) {
       setScrolled(true);
@@ -31,7 +29,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
 
-  // lock body scroll while the mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -40,143 +37,93 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-colors duration-300 ${
-        overHero
-          ? "border-b border-white/10 bg-transparent"
-          : "border-b border-border bg-white/80 backdrop-blur-xl"
-      }`}
-    >
-      <div className="container-ex flex h-16 items-center justify-between gap-6">
-        <Link href="/" className={`flex items-center ${overHero ? "focus-on-dark" : ""}`} aria-label="EX Corporation 홈">
-          <Image
-            src="/ex-logo.png"
-            alt="EX Corporation"
-            width={1001}
-            height={201}
-            priority
-            className="h-6 w-auto transition-[filter] duration-300"
-            style={{ filter: overHero ? "brightness(0) invert(1)" : "none" }}
-          />
+    <header className={`header ${overHero ? "header--overHero" : "header--solid"}`}>
+      <div className="container-ex header__inner">
+        <Link href="/" className="focus-on-dark flex items-center" aria-label="EX Corporation 홈">
+          <Image src="/ex-logo-dark.png" alt="EX Corporation" width={1372} height={274} priority className="logo" />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 lg:flex" onMouseLeave={() => setOpenMenu(null)}>
-          {nav.map((item) => (
-            <div
-              key={item.label}
-              className="relative"
-              onMouseEnter={() => setOpenMenu(item.children ? item.label : null)}
-              onFocus={() => item.children && setOpenMenu(item.label)}
-              onBlur={(e) => {
-                if (!e.currentTarget.contains(e.relatedTarget as Node))
-                  setOpenMenu((m) => (m === item.label ? null : m));
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Escape") setOpenMenu(null);
-              }}
-            >
-              <Link
-                href={item.href}
-                aria-haspopup={item.children ? "true" : undefined}
-                aria-expanded={item.children ? openMenu === item.label : undefined}
-                className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm transition-colors ${
-                  overHero
-                    ? "text-white/80 hover:text-white focus-on-dark"
-                    : "text-muted hover:text-fg"
-                }`}
+        <nav className="navbar" onMouseLeave={() => setOpenMenu(null)}>
+          {nav.map((item) => {
+            const alignRight = item.label === "Company";
+            return (
+              <div
+                key={item.label}
+                style={{ position: "relative" }}
+                onMouseEnter={() => setOpenMenu(item.children ? item.label : null)}
+                onFocus={() => item.children && setOpenMenu(item.label)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node))
+                    setOpenMenu((m) => (m === item.label ? null : m));
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") setOpenMenu(null);
+                }}
               >
-                {item.label}
-                {item.children && (
-                  <span className={overHero ? "text-[10px] text-white/50" : "text-[10px] text-faint"}>
-                    ▾
-                  </span>
-                )}
-              </Link>
-
-              {item.children && openMenu === item.label && (
-                <div
-                  className={`animate-dropdown absolute top-full pt-3 ${
-                    item.label === "Company" ? "right-0" : "left-0"
-                  }`}
+                <Link
+                  href={item.href}
+                  className="navlink focus-on-dark"
+                  aria-haspopup={item.children ? "true" : undefined}
+                  aria-expanded={item.children ? openMenu === item.label : undefined}
                 >
-                  <div className="flex w-[600px] overflow-hidden rounded-2xl border border-border bg-white shadow-[0_24px_60px_-20px_rgba(15,17,41,0.28)]">
-                    {/* link column */}
-                    <div className="flex-1 p-3">
-                      <p className="px-3 pb-1 pt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
-                        {item.label}
-                      </p>
-                      <div className="flex flex-col">
+                  {item.label}
+                  {item.children && <span className="caret">▾</span>}
+                </Link>
+
+                {item.children && openMenu === item.label && (
+                  <div className="mega" style={alignRight ? { right: 0, left: "auto" } : undefined}>
+                    <div className="mega__panel">
+                      <div className="mega__col">
+                        <p className="mega__ey">{item.label}</p>
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
+                            className="mega__row"
                             onClick={() => setOpenMenu(null)}
-                            className="group/row rounded-xl px-3 py-2.5 transition-colors hover:bg-surface"
                           >
-                            <span className="flex items-center gap-2">
-                              <span className="text-sm font-semibold text-fg transition-colors group-hover/row:text-primary">
-                                {child.label}
-                              </span>
-                              {child.tag && (
-                                <span className="rounded-full bg-primary/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary">
-                                  {child.tag}
-                                </span>
-                              )}
+                            <span className="mega__rowtop">
+                              <span className="mega__rowname">{child.label}</span>
+                              {child.tag && <span className="tag">{child.tag}</span>}
                             </span>
-                            {child.desc && (
-                              <span className="mt-0.5 block text-xs leading-relaxed text-faint">
-                                {child.desc}
-                              </span>
-                            )}
+                            {child.desc && <span className="mega__rowdesc">{child.desc}</span>}
                           </Link>
                         ))}
                       </div>
-                    </div>
 
-                    {/* featured card — EX gradient mesh */}
-                    {item.featured && (
-                      <Link
-                        href={item.featured.href}
-                        onClick={() => setOpenMenu(null)}
-                        className="gradient-ex-mesh group/feat relative flex w-[210px] shrink-0 flex-col justify-between overflow-hidden p-5 text-white"
-                      >
-                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/70">
-                          {item.featured.eyebrow}
-                        </span>
-                        <span className="mt-4 block">
-                          <span className="block text-[15px] font-bold leading-snug">
-                            {item.featured.title}
+                      {item.featured && (
+                        <Link
+                          href={item.featured.href}
+                          onClick={() => setOpenMenu(null)}
+                          className="mega__feat gradient-ex-mesh group/feat"
+                        >
+                          <span className="ey">{item.featured.eyebrow}</span>
+                          <span>
+                            <span className="ti">{item.featured.title}</span>
+                            <span className="de" style={{ display: "block" }}>
+                              {item.featured.desc}
+                            </span>
                           </span>
-                          <span className="mt-1.5 block text-xs leading-relaxed text-white/75">
-                            {item.featured.desc}
+                          <span className="cta">
+                            {item.featured.cta}
+                            <span aria-hidden="true" className="transition-transform group-hover/feat:translate-x-0.5">
+                              →
+                            </span>
                           </span>
-                        </span>
-                        <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-white">
-                          {item.featured.cta}
-                          <span className="transition-transform group-hover/feat:translate-x-0.5">→</span>
-                        </span>
-                      </Link>
-                    )}
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <span className={overHero ? "font-mono text-xs text-white/60" : "font-mono text-xs text-faint"}>
-            KO / EN
-          </span>
-          <Link
-            href="/contact"
-            className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-bold transition-colors ${
-              overHero
-                ? "bg-white text-fg hover:bg-white/90"
-                : "bg-fg text-white hover:bg-ink-hover"
-            }`}
-          >
+        <div className="desktop-cta">
+          <span className="kobadge">KO / EN</span>
+          <Link href="/contact" className="btn btn--onDark btn--sm focus-on-dark">
             문의하기
           </Link>
         </div>
@@ -186,9 +133,7 @@ export function Header() {
           type="button"
           aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={mobileOpen}
-          className={`flex h-11 w-11 items-center justify-center rounded-md transition-colors lg:hidden ${
-            overHero ? "text-white hover:bg-white/10 focus-on-dark" : "text-fg hover:bg-surface"
-          }`}
+          className="hamb focus-on-dark"
           onClick={() => setMobileOpen((v) => !v)}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -210,24 +155,20 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-border bg-white lg:hidden">
-          <nav className="container-ex flex flex-col py-4">
+        <div className="mobile">
+          <nav className="container-ex mobile__nav">
             {nav.map((item) => (
-              <div key={item.label} className="py-1">
-                <Link
-                  href={item.href}
-                  className="block py-2 text-base font-medium text-fg"
-                  onClick={() => setMobileOpen(false)}
-                >
+              <div key={item.label}>
+                <Link href={item.href} className="mobile__item" onClick={() => setMobileOpen(false)}>
                   {item.label}
                 </Link>
                 {item.children && (
-                  <div className="ml-3 flex flex-col border-l border-border pl-3">
+                  <div className="mobile__sub">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="py-1.5 text-sm text-muted"
+                        className="mobile__subitem"
                         onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
@@ -239,7 +180,8 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="mt-4 inline-flex items-center justify-center rounded-full bg-fg px-5 py-2.5 text-sm font-bold text-white"
+              className="btn btn--onDark"
+              style={{ marginTop: 16 }}
               onClick={() => setMobileOpen(false)}
             >
               문의하기

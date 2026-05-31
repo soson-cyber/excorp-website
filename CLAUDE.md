@@ -2,16 +2,16 @@
 
 이엑스코퍼레이션(EX Corporation) 공식 웹사이트 프로젝트입니다.
 
-## ⚑ 현재 상태 — 먼저 읽기 (2026-05, 리뉴얼 v2)
+## ⚑ 현재 상태 — 먼저 읽기 (2026-06, 리뉴얼 v3 — 전체 다크 product-led)
 
 **진행 상태·디자인 토큰·컴포넌트·페이지 현황·정직성 규칙·다음 작업의 단일 기준은 루트의 [`HANDOFF.md`](./HANDOFF.md) 다.** 새 세션은 이 파일을 먼저 확인할 것.
 
 **디자인 시스템(컬러·타이포·컴포넌트·레이아웃·모션·깊이·가이드라인·반응형·접근성)의 9-섹션 스펙은 [`DESIGN.md`](./DESIGN.md) 다.** (KAOPU-XiaoPu/web-design "스펙 먼저, 코드 나중" 방법론 적용본 — 코드와 어긋나면 DESIGN.md 기준으로 맞춘다.)
 
 요약:
-- **테마 = 라이트/화이트** (kakaocorp 톤). 팔레트: white#FFFFFF·paper#F7F8FA·ink#0F1129·body#51545E·faint#5F636D·line#E5E7EB·accent purple#5E2EC0. **Footer만 다크 네이비 앵커.** 버튼/섹션 **Glow 금지**.
-- `globals.css` `@theme` 토큰은 라이트로 리맵됨(내부 페이지 자동 라이트). Home·신규 페이지는 리터럴 hex 사용.
-- **Home**: `src/components/home/HomeClean.tsx` (3D 히어로=three.js `Hero3D`). **Work**: `src/components/work/WorkGallery.tsx` (필터 갤러리, Sanity 연결 예정 TODO).
+- **테마 = 전체 다크 product-led** (Claude Design 핸드오프 구현). 표면: base#0E0626 ↔ raised#14112C 교차·카드#161232·footer#0F1129. 텍스트: fg#FFFFFF·muted#C3C6D6·faint#9094A9. 퍼플 텍스트는 라벤더#C4B5FD/violet#8B5CF6, 퍼플#5E2EC0은 채움용. **Glow/모션 허용**(버튼 헤일로·회전 보더·파티클·오로라 — `prefers-reduced-motion` 안전). 단일 기준 = `DESIGN.md §0` + `globals.css @theme`.
+- `globals.css` `@theme` 토큰이 다크로 리맵됨 → 내부 페이지(시맨틱 토큰 사용)는 자동 다크. 키트 컴포넌트 CSS(`.hero/.console/.feat/.section/.btn` 등)도 globals.css에 포함.
+- **Home**: `src/components/home/HomeClean.tsx` (히어로=`Hero.tsx` — product-led 다크 + 인터랙티브 EXLINK Live Console). **Work**: `src/components/work/WorkGallery.tsx` (필터 갤러리, Sanity 연결 예정 TODO).
 - 다음 작업: 제품 3종 심층 재구성 → Sanity CMS 연결 → 실제 콘텐츠(케이스·인터뷰·로고). 자세한 건 HANDOFF.md §9.
 
 ## 기준 문서 (Source of Truth)

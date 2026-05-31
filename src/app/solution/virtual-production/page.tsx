@@ -97,7 +97,7 @@ export default function VirtualProductionPage() {
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 지금 버추얼 프로덕션인가</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map((c) => (
-              <div key={c.t} className="rounded-2xl border border-border bg-white p-6">
+              <div key={c.t} className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="font-semibold text-fg">{c.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
               </div>
@@ -116,11 +116,11 @@ export default function VirtualProductionPage() {
         </p>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {methods.map((m) => (
-            <div key={m.t} className="rounded-2xl border border-border bg-white p-6">
+            <div key={m.t} className="rounded-2xl border border-border bg-card p-6">
               <div className="flex items-center justify-between gap-3">
                 <h3 className="font-semibold text-fg">{m.t}</h3>
                 {m.tag && (
-                  <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
+                  <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
                     {m.tag}
                   </span>
                 )}
@@ -177,8 +177,8 @@ export default function VirtualProductionPage() {
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 프로세스</h2>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p, i) => (
-            <div key={p.step} className="rounded-2xl border border-border bg-white p-6">
-              <span className="font-mono text-3xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
+            <div key={p.step} className="rounded-2xl border border-border bg-card p-6">
+              <span className="font-mono text-3xl font-bold text-lav">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-3 font-semibold text-fg">{p.step}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
             </div>
@@ -193,7 +193,7 @@ export default function VirtualProductionPage() {
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
-              <div key={u.t} className="rounded-2xl border border-border bg-white p-6">
+              <div key={u.t} className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="font-semibold text-fg">{u.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
               </div>

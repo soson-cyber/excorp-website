@@ -33,8 +33,8 @@ export default function ContactPage() {
         <SectionLabel index="01">Inquiry Type</SectionLabel>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {inquiries.map((q) => (
-            <div key={q.tag} className="rounded-2xl border border-border bg-white p-6">
-              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
+            <div key={q.tag} className="rounded-2xl border border-border bg-card p-6">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">
                 {q.tag}
               </span>
               <h3 className="mt-3 text-lg font-semibold">{q.title}</h3>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                 <dd className="mt-1.5 text-sm font-medium text-fg">
                   <a
                     href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`}
-                    className="transition-colors hover:text-primary"
+                    className="transition-colors hover:text-lav"
                   >
                     {site.contact.tel}
                   </a>
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   <span className="font-mono text-xs uppercase tracking-wider text-faint">Email</span>
                 </dt>
                 <dd className="mt-1.5 text-sm font-medium text-fg">
-                  <a href={`mailto:${site.contact.email}`} className="transition-colors hover:text-primary">
+                  <a href={`mailto:${site.contact.email}`} className="transition-colors hover:text-lav">
                     {site.contact.email}
                   </a>
                 </dd>
@@ -93,8 +93,8 @@ export default function ContactPage() {
             </dl>
             <div className="mt-6 space-y-6">
               {locations.map((loc) => (
-                <div key={loc.kind} className="rounded-2xl border border-border bg-white p-6">
-                  <span className="font-mono text-xs uppercase tracking-wider text-primary">
+                <div key={loc.kind} className="rounded-2xl border border-border bg-card p-6">
+                  <span className="font-mono text-xs uppercase tracking-wider text-lav">
                     {loc.kind}
                   </span>
                   <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
@@ -110,7 +110,7 @@ export default function ContactPage() {
               <div className="flex gap-5 text-muted">
                 <a
                   href={site.social.instagram}
-                  className="transition-colors hover:text-primary"
+                  className="transition-colors hover:text-lav"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
@@ -120,7 +120,7 @@ export default function ContactPage() {
                 </a>
                 <a
                   href={site.social.linkedin}
-                  className="transition-colors hover:text-primary"
+                  className="transition-colors hover:text-lav"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
@@ -130,7 +130,7 @@ export default function ContactPage() {
                 </a>
                 <a
                   href={site.social.youtube}
-                  className="transition-colors hover:text-primary"
+                  className="transition-colors hover:text-lav"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="YouTube"

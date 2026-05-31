@@ -71,11 +71,11 @@ export default function SupportPage() {
             <Link
               key={q.t}
               href={q.href}
-              className="group rounded-2xl border border-border bg-white p-6 transition-colors hover:border-primary/50"
+              className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
             >
               <h3 className="text-lg font-semibold">{q.t}</h3>
               <p className="mt-2 text-sm text-muted">{q.d}</p>
-              <span className="mt-4 inline-block text-sm font-medium text-primary transition-transform group-hover:translate-x-1">
+              <span className="mt-4 inline-block text-sm font-medium text-lav transition-transform group-hover:translate-x-1">
                 바로가기 →
               </span>
             </Link>
@@ -91,13 +91,13 @@ export default function SupportPage() {
           <div className="mt-12 max-w-3xl space-y-10">
             {faqGroups.map((g) => (
               <div key={g.cat}>
-                <h3 className="font-mono text-xs uppercase tracking-wider text-primary">{g.cat}</h3>
-                <div className="mt-4 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-white">
+                <h3 className="font-mono text-xs uppercase tracking-wider text-lav">{g.cat}</h3>
+                <div className="mt-4 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
                   {g.items.map((it) => (
                     <details key={it.q} className="group p-6">
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
                         {it.q}
-                        <span className="font-mono text-primary transition-transform group-open:rotate-45">+</span>
+                        <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
                       </summary>
                       <p className="mt-3 text-sm leading-relaxed text-muted">{it.a}</p>
                     </details>
@@ -112,7 +112,7 @@ export default function SupportPage() {
       {/* §03 Technical Support */}
       <section id="tech" className="container-ex py-section">
         <div className="grid items-stretch gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-white p-8">
+          <div className="rounded-2xl border border-border bg-card p-8">
             <SectionLabel index="02">Technical Support</SectionLabel>
             <h3 className="mt-5 text-2xl font-bold">지원 범위 &amp; 방법</h3>
             <ul className="mt-5 space-y-2.5 text-sm text-muted">
@@ -140,7 +140,7 @@ export default function SupportPage() {
             <p className="mt-2 text-sm text-muted">
               <a
                 href={`mailto:${site.contact.email}`}
-                className="inline-flex items-center gap-2 transition-colors hover:text-primary"
+                className="inline-flex items-center gap-2 transition-colors hover:text-lav"
               >
                 <Icon name="mail" className="h-4 w-4" aria-hidden="true" />
                 <span className="sr-only">Email</span>
@@ -156,7 +156,7 @@ export default function SupportPage() {
         <div className="container-ex py-section">
           <SectionLabel index="03">Downloads</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">자료실</h2>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
             {downloads.map((d) => (
               <div
                 key={d.name}
@@ -170,7 +170,7 @@ export default function SupportPage() {
             ))}
           </div>
           <p className="mt-4 text-sm text-muted">
-            자료가 필요하시면 <Link href="/contact" className="text-primary hover:underline">문의</Link>로 요청해 주세요.
+            자료가 필요하시면 <Link href="/contact" className="text-lav hover:underline">문의</Link>로 요청해 주세요.
           </p>
         </div>
       </section>
@@ -181,7 +181,7 @@ export default function SupportPage() {
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">무엇을 도와드릴까요?</h2>
         <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
           {inquiryTypes.map((t) => (
-            <span key={t} className="rounded-full border border-border bg-white px-4 py-2 text-sm text-fg">
+            <span key={t} className="rounded-full border border-border bg-card px-4 py-2 text-sm text-fg">
               {t}
             </span>
           ))}

@@ -3,13 +3,14 @@ import type { ComponentProps } from "react";
 
 type Variant = "primary" | "accent" | "secondary" | "ghost";
 
+// Maps the project's semantic variants onto the kit's .btn classes (dark theme,
+// Wope glow-bleed halo on hover). primary = purple (always-on accent),
+// accent = pink (highest-intent action), secondary/ghost = outlined on dark.
 const styles: Record<Variant, string> = {
-  primary: "bg-primary text-white hover:bg-primary-hover",
-  // Pink = Action — reserved for the highest-intent conversion CTAs
-  accent: "bg-accent text-white hover:bg-accent/85",
-  secondary:
-    "border border-border bg-surface/60 text-fg hover:border-primary/50 hover:text-primary",
-  ghost: "text-muted hover:text-fg",
+  primary: "btn btn--accent",
+  accent: "btn btn--pink",
+  secondary: "btn btn--ghostDark",
+  ghost: "btn btn--ghostDark",
 };
 
 export function Button({
@@ -17,10 +18,5 @@ export function Button({
   className = "",
   ...props
 }: { variant?: Variant } & ComponentProps<typeof Link>) {
-  return (
-    <Link
-      className={`inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200 ${styles[variant]} ${className}`}
-      {...props}
-    />
-  );
+  return <Link className={`${styles[variant]} ${className}`} {...props} />;
 }

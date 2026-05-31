@@ -37,12 +37,12 @@ export function PageHero({
         </nav>
 
         {tag && (
-          <div className="mt-7 inline-flex rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-primary">
+          <div className="mt-7 inline-flex rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-lav">
             {tag}
           </div>
         )}
 
-        <h1 className="mt-5 text-balance text-[clamp(2.75rem,6vw,5.25rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-gradient-ex">
+        <h1 className="mt-5 text-balance text-[clamp(2.75rem,6vw,5.25rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-gradient-ex-bright">
           {title}
         </h1>
 

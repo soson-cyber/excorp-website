@@ -94,7 +94,7 @@ export default function XrStudioPage() {
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">EX Studio가 다른 이유</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (
-              <div key={r.t} className="rounded-2xl border border-border bg-white p-7">
+              <div key={r.t} className="rounded-2xl border border-border bg-card p-7">
                 <h3 className="text-lg font-semibold text-fg">{r.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{r.d}</p>
               </div>
@@ -187,7 +187,7 @@ export default function XrStudioPage() {
         </div>
 
         {/* specs */}
-        <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-white">
+        <div className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-border bg-card">
           <dl>
             {facilitySpecs.map(([k, v]) => (
               <div key={k} className="flex flex-col gap-1 border-b border-border/60 px-6 py-4 last:border-0 sm:flex-row sm:gap-6">
@@ -203,7 +203,7 @@ export default function XrStudioPage() {
       <section className="bg-surface">
         <div className="container-ex py-section">
           <div className="rounded-3xl border border-border bg-bg px-8 py-14 text-center">
-            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-primary">
+            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-lav">
               <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
               가격 및 예약 문의
             </span>

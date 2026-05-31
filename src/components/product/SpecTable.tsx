@@ -9,7 +9,7 @@ type SpecTableProps = {
 
 export function SpecTable({ groups }: SpecTableProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-white">
+    <div className="overflow-hidden rounded-2xl border border-border bg-card">
       {groups.map((group, gi) => (
         <div key={group.title ?? gi}>
           {group.title ? (

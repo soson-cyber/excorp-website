@@ -3,7 +3,19 @@
 > 다른 Claude 세션/환경(또는 협업자)이 이 프로젝트를 이어받기 위한 단일 인수인계 문서.
 > 이 파일 + `CLAUDE.md` + `DESIGN.md` + Figma 파일만 있으면 맥락 복원이 가능합니다.
 
-## 0. 최근 세션 업데이트 (2026-05 — 이 블록이 아래 본문보다 우선)
+## 0. v3 — 전체 다크 전환 (2026-06, 최우선)
+
+> **사이트 전체가 라이트/화이트 → 다크 product-led로 전환됨.** Claude Design 핸드오프(`EX Corporation Design System-handoff.zip` → `ui_kits/website`)의 디자인을 라이브 코드에 구현. 단일 기준 = [`DESIGN.md §0`](./DESIGN.md) + `src/app/globals.css @theme`(다크값).
+
+- **토큰(globals.css @theme = 다크)**: bg#0E0626 · surface#14112C · surface-2/card#161232 · footer#0F1129 · fg#FFFFFF · muted#C3C6D6 · faint#9094A9 · border rgba(255,255,255,.1) · lav#C4B5FD · violet#8B5CF6 · mint/pink/purple 유지. `--font-mono`=산스(Geist 드롭). `color-scheme:dark`.
+- **키트 컴포넌트 CSS를 globals.css에 포팅**: `.btn`(+글로우 헤일로)·`.hero/.console`·`.feat`(회전보더+spotlight)·`.section--ink/surface/white`·`.mega`·`.footer`·`.modal/.field`·`.card/.tag/.chip/.cred/.statgrid/.quote/.ctacard` 등. Home·헤더가 1:1 사용.
+- **새 컴포넌트**: `home/Hero.tsx`(product-led 다크 히어로 + 인터랙티브 EXLINK Live Console: 멀티캠 클릭→프로그램 피드·telemetry·pipeline·회전보더·커서 spotlight·파티클 캔버스·light ray, reduced-motion 안전), `home/FeatureCard.tsx`(Wope 카드). `HomeClean.tsx` 전면 다크 재구축(8섹션).
+- **공통 갱신**: `Header`(다크 글래스 + `ex-logo-dark.png` 화이트 로고 + 다크 메가메뉴, `.desktop-cta` 모바일 숨김 수정), `Footer`(bg-footer), `Button`(→`.btn` 변형: primary=퍼플·accent=핑크·secondary/ghost=ghostDark), `SectionLabel`(라벤더 `.seclabel`), `ContactForm`(다크 필드 + 퍼플 submit).
+- **내부 페이지 스윕**: `bg-white`→`bg-card`(24파일), `text-primary`→`text-lav`(21파일), `text-gradient-ex`→`-bright`(6파일). 하드코딩 라이트 hex 0. **빌드 32라우트 통과**.
+- **삭제된 죽은 라이트 코드**: `HeroAurora`·`home/SectionLabel`·`sections/home`·`ui/ParticleField`.
+- **Glow 규칙 반전**: 기존 "버튼/섹션 Glow 금지" → **허용**(Wope 헤일로·회전 보더·파티클). 이전 무광 규칙 폐기.
+
+## 0.1 이전 세션 (2026-05, 라이트/오로라 — 참고용, §0이 대체)
 
 > **디자인 시스템 단일 기준은 이제 루트 [`DESIGN.md`](./DESIGN.md)** (9섹션, web-design 스킬 적용본). 코드와 충돌 시 DESIGN.md 기준.
 

@@ -59,7 +59,7 @@ export default async function WorkDetailPage({
             </div>
           ))}
           <div className="ml-auto self-center">
-            <span className="rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
+            <span className="rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
               활용 시나리오
             </span>
           </div>
@@ -106,8 +106,8 @@ export default async function WorkDetailPage({
         <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">기대 효과</h2>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {w.result.map((r) => (
-            <div key={r.l} className="rounded-2xl border border-border bg-white p-7">
-              <p className="font-mono text-4xl font-bold text-gradient-ex">{r.v}</p>
+            <div key={r.l} className="rounded-2xl border border-border bg-card p-7">
+              <p className="font-mono text-4xl font-bold text-gradient-ex-bright">{r.v}</p>
               <p className="mt-2 text-sm text-muted">{r.l}</p>
             </div>
           ))}
@@ -127,7 +127,7 @@ export default async function WorkDetailPage({
               <Link
                 key={o.slug}
                 href={`/work/${o.slug}`}
-                className="group overflow-hidden rounded-2xl border border-border bg-white transition-colors hover:border-primary/50"
+                className="group overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/50"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image
@@ -139,7 +139,7 @@ export default async function WorkDetailPage({
                   />
                 </div>
                 <div className="p-5">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{o.category}</span>
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{o.category}</span>
                   <h3 className="mt-1.5 font-semibold text-fg">{o.title}</h3>
                 </div>
               </Link>

@@ -65,7 +65,7 @@ export function StudioOptions() {
           const shown = open ? g.items : g.items.slice(0, COMPACT);
           const hidden = g.items.length - shown.length;
           return (
-            <div key={g.t} className="rounded-2xl border border-border bg-white p-6">
+            <div key={g.t} className="rounded-2xl border border-border bg-card p-6">
               <h3 className="font-semibold text-fg">{g.t}</h3>
               <ul className="mt-4 space-y-2 text-sm text-muted">
                 {shown.map((it) => (
@@ -90,7 +90,7 @@ export function StudioOptions() {
           type="button"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-medium text-fg transition-colors hover:border-primary/50 hover:text-primary"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-fg transition-colors hover:border-primary/50 hover:text-lav"
         >
           {open ? "옵션 접기" : "전체 옵션 보기"}
           <span aria-hidden="true" className={`transition-transform ${open ? "rotate-180" : ""}`}>

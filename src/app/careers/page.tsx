@@ -108,7 +108,7 @@ export default function CareersPage() {
           <div className="mt-16 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
             {values.map((v, i) => (
               <div key={v.h} className="grid gap-4 bg-surface p-8 md:grid-cols-[5rem_1fr] md:p-10">
-                <span className="font-mono text-3xl font-bold text-primary md:text-4xl">
+                <span className="font-mono text-3xl font-bold text-lav md:text-4xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -146,12 +146,12 @@ export default function CareersPage() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {spaces.map((s) =>
               s.real ? (
-                <figure key={s.label} className="overflow-hidden rounded-2xl border border-border bg-white">
+                <figure key={s.label} className="overflow-hidden rounded-2xl border border-border bg-card">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image src={s.img} alt={`${s.label} — ${s.caption}`} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover" />
                   </div>
                   <figcaption className="p-5">
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{s.label}</span>
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{s.label}</span>
                     <p className="mt-1 text-sm text-muted">{s.caption}</p>
                   </figcaption>
                 </figure>
@@ -184,8 +184,8 @@ export default function CareersPage() {
           <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">이런 분과 함께하고 싶어요</h2>
           <ul className="mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
             {whoWeWant.map((w) => (
-              <li key={w} className="flex items-start gap-3 rounded-2xl border border-border bg-white p-6">
-                <span className="mt-1 font-mono text-primary" aria-hidden="true">✓</span>
+              <li key={w} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-6">
+                <span className="mt-1 font-mono text-lav" aria-hidden="true">✓</span>
                 <span className="leading-relaxed text-fg">{w}</span>
               </li>
             ))}
@@ -197,13 +197,13 @@ export default function CareersPage() {
       <section className="container-ex py-section">
         <SectionLabel index="06">Open Positions</SectionLabel>
         <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">채용 중인 포지션</h2>
-        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
           <div className="flex flex-col gap-2 border-b border-border p-6 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div>
               <span className="text-lg font-semibold text-fg">상시 지원</span>
               <p className="mt-1 text-sm text-muted">XR/실시간 콘텐츠 개발·기획·운영 — 직무 무관 상시 지원 환영</p>
             </div>
-            <span className="shrink-0 rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
+            <span className="shrink-0 rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
               Always Open
             </span>
           </div>
@@ -222,7 +222,7 @@ export default function CareersPage() {
             {steps.map((s, i) => (
               <li
                 key={s.t}
-                className="relative flex items-center gap-5 overflow-hidden rounded-2xl border border-border bg-white p-6"
+                className="relative flex items-center gap-5 overflow-hidden rounded-2xl border border-border bg-card p-6"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary font-mono text-sm font-bold text-white">
                   {String(i + 1).padStart(2, "0")}

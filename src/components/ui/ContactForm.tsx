@@ -72,7 +72,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-5 text-sm font-medium text-primary hover:underline"
+          className="mt-5 text-sm font-medium text-lav hover:underline"
         >
           새 문의 작성 →
         </button>
@@ -81,7 +81,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
   }
 
   const field =
-    "w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-fg placeholder:text-faint focus:border-primary aria-[invalid=true]:border-error";
+    "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-fg placeholder:text-faint focus:border-primary aria-[invalid=true]:border-error";
   const describedBy = (n: string) => (invalid.includes(n) && error ? "cf-error" : undefined);
 
   return (
@@ -89,7 +89,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="cf-name" className="mb-1.5 block text-xs font-medium text-muted">
-            이름 <span aria-hidden="true" className="text-primary">*</span>
+            이름 <span aria-hidden="true" className="text-lav">*</span>
             <span className="sr-only">(필수)</span>
           </label>
           <input
@@ -111,7 +111,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       </div>
       <div>
         <label htmlFor="cf-email" className="mb-1.5 block text-xs font-medium text-muted">
-          이메일 <span aria-hidden="true" className="text-primary">*</span>
+          이메일 <span aria-hidden="true" className="text-lav">*</span>
           <span className="sr-only">(필수)</span>
         </label>
         <input
@@ -139,7 +139,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       </div>
       <div>
         <label htmlFor="cf-message" className="mb-1.5 block text-xs font-medium text-muted">
-          문의 내용 <span aria-hidden="true" className="text-primary">*</span>
+          문의 내용 <span aria-hidden="true" className="text-lav">*</span>
           <span className="sr-only">(필수)</span>
         </label>
         <textarea
@@ -166,7 +166,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-fg px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-ink-hover disabled:opacity-60"
+        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-hover disabled:opacity-60"
       >
         {status === "submitting" ? "전송 중…" : "문의 보내기 →"}
       </button>

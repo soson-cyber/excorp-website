@@ -30,7 +30,7 @@ export function WorkGallery() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 on
                   ? "bg-primary text-white"
-                  : "border border-border bg-white text-muted hover:border-primary/50 hover:text-fg"
+                  : "border border-border bg-card text-muted hover:border-primary/50 hover:text-fg"
               }`}
             >
               {c}
@@ -49,7 +49,7 @@ export function WorkGallery() {
             <Link
               key={w.slug}
               href={`/work/${w.slug}`}
-              className={`group flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition-colors hover:border-primary/50 ${
+              className={`group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/50 ${
                 wide ? "sm:col-span-2 lg:col-span-2" : ""
               }`}
             >
@@ -63,7 +63,7 @@ export function WorkGallery() {
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{w.category}</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{w.category}</span>
                 <h3 className="mt-2 text-lg font-semibold text-fg">{w.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{w.summary}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg">
@@ -75,12 +75,12 @@ export function WorkGallery() {
         })}
         </div>
       ) : (
-        <div className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-white px-6 py-20 text-center">
+        <div className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card px-6 py-20 text-center">
           <p className="text-sm text-muted">{active} 시나리오는 준비 중입니다.</p>
           <button
             type="button"
             onClick={() => setActive("전체")}
-            className="mt-4 text-sm font-medium text-primary transition-colors hover:text-primary-hover"
+            className="mt-4 text-sm font-medium text-lav transition-colors hover:text-lav-hover"
           >
             전체 보기 →
           </button>

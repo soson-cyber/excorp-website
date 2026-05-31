@@ -59,7 +59,7 @@ export default async function InsightPage({
           ))}
 
           <div className="border-t border-border pt-8">
-            <Link href="/news" className="text-sm font-medium text-primary transition-colors hover:text-primary-hover">
+            <Link href="/news" className="text-sm font-medium text-lav transition-colors hover:text-lav-hover">
               ← News & Insight 전체 보기
             </Link>
           </div>
@@ -72,10 +72,10 @@ export default async function InsightPage({
                   <li key={o.slug}>
                     <Link
                       href={`/news/${o.slug}`}
-                      className="group flex items-baseline gap-2 text-fg transition-colors hover:text-primary"
+                      className="group flex items-baseline gap-2 text-fg transition-colors hover:text-lav"
                     >
                       <span className="font-medium">{o.title}</span>
-                      <span aria-hidden="true" className="text-primary transition-transform group-hover:translate-x-0.5">
+                      <span aria-hidden="true" className="text-lav transition-transform group-hover:translate-x-0.5">
                         →
                       </span>
                     </Link>

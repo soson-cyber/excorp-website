@@ -10,13 +10,13 @@ import { Icon } from "@/components/ui/Icon";
 */
 export function Footer() {
   return (
-    <footer className="border-t border-ink-hover bg-fg text-white">
+    <footer className="border-t border-ink-hover bg-footer text-white">
       <div className="container-ex py-16">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_2.5fr]">
           {/* Brand */}
           <div>
             <Link href="/" className="inline-block" aria-label="EX Corporation 홈">
-              <Image src="/ex-logo.png" alt="EX Corporation" width={1001} height={201} className="h-7 w-auto" />
+              <Image src="/ex-logo-dark.png" alt="EX Corporation" width={1372} height={274} className="h-7 w-auto" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-footer-link">{site.mission}</p>
             <div className="mt-6 flex gap-5 text-footer-link">

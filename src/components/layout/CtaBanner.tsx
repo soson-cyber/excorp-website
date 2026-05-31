@@ -5,7 +5,7 @@ export function CtaBanner() {
     <section className="relative overflow-hidden border-y border-border bg-surface">
       <div className="container-ex relative flex flex-col items-start gap-8 py-section md:flex-row md:items-center md:justify-between">
         <div>
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-lav">
             Get in Touch
           </span>
           <h2 className="mt-4 text-3xl font-bold leading-snug md:text-4xl">

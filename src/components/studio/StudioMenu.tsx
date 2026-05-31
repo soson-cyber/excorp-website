@@ -149,7 +149,7 @@ export function StudioMenu() {
               className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                 on
                   ? "bg-primary text-white"
-                  : "border border-border bg-white text-muted hover:border-primary/50 hover:text-fg"
+                  : "border border-border bg-card text-muted hover:border-primary/50 hover:text-fg"
               }`}
             >
               {c.label}
@@ -170,11 +170,11 @@ export function StudioMenu() {
             }`}
           >
             {t.recommended && (
-              <span className="absolute right-5 top-6 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
+              <span className="absolute right-5 top-6 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
                 추천
               </span>
             )}
-            <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{t.code}</span>
+            <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{t.code}</span>
             <h3 className="mt-1 text-xl font-semibold text-fg">{t.name}</h3>
             <dl className="mt-5 flex-1 space-y-4">
               <Field label="추천 대상">{t.for}</Field>
@@ -183,7 +183,7 @@ export function StudioMenu() {
             </dl>
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary-hover"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-lav transition-colors hover:text-lav-hover"
             >
               견적 문의 <span aria-hidden="true">→</span>
             </Link>

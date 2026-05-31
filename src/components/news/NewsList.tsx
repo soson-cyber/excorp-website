@@ -47,7 +47,7 @@ const items: Item[] = [...press, ...insightItems];
 const categories = ["전체", "보도자료", "케이스", "인사이트", "자료실"] as const;
 
 function catClass(cat: Item["cat"]) {
-  return cat === "보도자료" ? "bg-accent-soft text-accent" : "bg-primary-soft text-primary";
+  return cat === "보도자료" ? "bg-accent-soft text-accent" : "bg-primary-soft text-lav";
 }
 
 export function NewsList() {
@@ -70,7 +70,7 @@ export function NewsList() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 on
                   ? "bg-primary text-white"
-                  : "border border-border bg-white text-muted hover:border-primary/50 hover:text-fg"
+                  : "border border-border bg-card text-muted hover:border-primary/50 hover:text-fg"
               }`}
             >
               {c}
@@ -97,7 +97,7 @@ export function NewsList() {
                   <p className="mt-2 text-sm leading-relaxed text-muted">{n.excerpt}</p>
                 )}
                 {n.href && (
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-lav">
                     자세히 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
                   </span>
                 )}
@@ -107,14 +107,14 @@ export function NewsList() {
               <Link
                 key={n.title}
                 href={n.href}
-                className={`group flex flex-col rounded-2xl border border-border bg-white p-6 transition-colors hover:border-primary/50 ${span2}`}
+                className={`group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 ${span2}`}
               >
                 {body}
               </Link>
             ) : (
               <div
                 key={n.title}
-                className={`flex flex-col rounded-2xl border border-border bg-white p-6 ${span2}`}
+                className={`flex flex-col rounded-2xl border border-border bg-card p-6 ${span2}`}
               >
                 {body}
               </div>
@@ -131,7 +131,7 @@ export function NewsList() {
           <button
             type="button"
             onClick={() => setActive("전체")}
-            className="mt-4 text-sm font-medium text-primary transition-colors hover:text-primary-hover"
+            className="mt-4 text-sm font-medium text-lav transition-colors hover:text-lav-hover"
           >
             전체 보기 →
           </button>

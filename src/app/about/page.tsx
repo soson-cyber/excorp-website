@@ -65,14 +65,14 @@ export default function AboutPage() {
         <SectionLabel index="01">Vision &amp; Mission</SectionLabel>
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">우리가 그리는 세상</h2>
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-white p-8">
-            <span className="font-mono text-xs uppercase tracking-wider text-primary">Vision</span>
+          <div className="rounded-2xl border border-border bg-card p-8">
+            <span className="font-mono text-xs uppercase tracking-wider text-lav">Vision</span>
             <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
               모든 사람이 경계를 넘어 ‘새로운 경험(Experience)’을 창조하는 세상.
             </p>
           </div>
-          <div className="rounded-2xl border border-border bg-white p-8">
-            <span className="font-mono text-xs uppercase tracking-wider text-primary">Mission</span>
+          <div className="rounded-2xl border border-border bg-card p-8">
+            <span className="font-mono text-xs uppercase tracking-wider text-lav">Mission</span>
             <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
               AI + XR 융합 기술로 문화콘텐츠 제작의 문턱을 허물고, 몰입형 경험 혁신을 선도합니다.
             </p>
@@ -104,11 +104,11 @@ export default function AboutPage() {
         <SectionLabel index="03">Patents &amp; Certifications</SectionLabel>
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">보유 특허 &amp; 인증</h2>
         <p className="mt-4 text-muted">기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증</p>
-        <ol className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-white">
+        <ol className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
           {patents.map((p) => (
             <li key={p.no} className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-sm text-fg">{p.name}</span>
-              <span className="shrink-0 font-mono text-xs text-primary">{p.no}</span>
+              <span className="shrink-0 font-mono text-xs text-lav">{p.no}</span>
             </li>
           ))}
         </ol>
@@ -122,7 +122,7 @@ export default function AboutPage() {
           <div className="mt-12 max-w-3xl">
             {history.map((h) => (
               <div key={h.year} className="flex gap-6 border-l border-border pl-6 pb-8 last:pb-0">
-                <span className="-ml-[2.1rem] flex h-10 w-16 shrink-0 items-center justify-center rounded-full bg-surface font-mono text-sm font-bold text-primary ring-1 ring-border">
+                <span className="-ml-[2.1rem] flex h-10 w-16 shrink-0 items-center justify-center rounded-full bg-surface font-mono text-sm font-bold text-lav ring-1 ring-border">
                   {h.year}
                 </span>
                 <ul className="space-y-1.5 pt-1.5">
@@ -144,8 +144,8 @@ export default function AboutPage() {
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">오시는 길</h2>
         <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
           {locations.map((loc) => (
-            <div key={loc.kind} className="rounded-2xl border border-border bg-white p-6">
-              <span className="font-mono text-xs uppercase tracking-wider text-primary">{loc.kind}</span>
+            <div key={loc.kind} className="rounded-2xl border border-border bg-card p-6">
+              <span className="font-mono text-xs uppercase tracking-wider text-lav">{loc.kind}</span>
               <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
               <p className="text-sm text-muted">
                 {loc.address} <span className="text-faint">({loc.zip})</span>

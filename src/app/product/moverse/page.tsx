@@ -107,7 +107,7 @@ export default function MoversePage() {
         <div className="container-ex grid grid-cols-2 gap-6 py-10 lg:grid-cols-4">
           {quickSpecs.map((s) => (
             <div key={s.l} className="text-center">
-              <p className="font-mono text-3xl font-bold text-gradient-ex">{s.v}</p>
+              <p className="font-mono text-3xl font-bold text-gradient-ex-bright">{s.v}</p>
               <p className="mt-1.5 text-sm text-muted">{s.l}</p>
               <Gauge className="mx-auto mt-3 w-3/4" />
             </div>
@@ -123,8 +123,8 @@ export default function MoversePage() {
         </div>
         <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
           {system.map((s) => (
-            <div key={s.name} className="rounded-2xl border border-border bg-white p-7">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-primary">{s.role}</span>
+            <div key={s.name} className="rounded-2xl border border-border bg-card p-7">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{s.role}</span>
               <h3 className="mt-1 text-xl font-semibold">{s.name}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">{s.desc}</p>
             </div>
@@ -141,7 +141,7 @@ export default function MoversePage() {
           </div>
           <div className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <div key={f.t} className="rounded-2xl border border-border bg-white p-6">
+              <div key={f.t} className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="font-semibold">{f.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
               </div>
@@ -182,12 +182,12 @@ export default function MoversePage() {
           <SectionLabel index="05">FAQ</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 전 자주 묻는 질문</h2>
         </div>
-        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-white">
+        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
           {faqs.map((f) => (
             <details key={f.q} className="group p-6">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
                 {f.q}
-                <span className="font-mono text-primary transition-transform group-open:rotate-45">+</span>
+                <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
             </details>
@@ -202,7 +202,7 @@ export default function MoversePage() {
             <div>
               <SectionLabel index="06">EX × Moverse</SectionLabel>
               <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">
-                EX는 Moverse의 <span className="font-semibold text-primary">공식 한국 총판</span>입니다.
+                EX는 Moverse의 <span className="font-semibold text-lav">공식 한국 총판</span>입니다.
               </h2>
               <p className="mt-5 text-pretty text-muted">
                 하드웨어·소프트웨어 공급은 물론, 시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키로
@@ -210,7 +210,7 @@ export default function MoversePage() {
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["도입 컨설팅", "시스템 셋업", "보안 세팅", "교육·기술 지원"].map((x) => (
-                  <li key={x} className="rounded-full border border-border bg-white px-3 py-1.5 text-sm text-fg">
+                  <li key={x} className="rounded-full border border-border bg-card px-3 py-1.5 text-sm text-fg">
                     {x}
                   </li>
                 ))}

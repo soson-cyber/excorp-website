@@ -33,7 +33,7 @@ export default function NewsPage() {
       {/* §02 Newsletter */}
       <section className="bg-surface">
         <div className="container-ex py-section-sm">
-          <div className="flex flex-col items-center gap-5 rounded-2xl border border-border bg-white p-8 text-center md:flex-row md:justify-between md:text-left">
+          <div className="flex flex-col items-center gap-5 rounded-2xl border border-border bg-card p-8 text-center md:flex-row md:justify-between md:text-left">
             <div>
               <h3 className="text-xl font-bold text-fg">뉴스레터 구독</h3>
               <p className="mt-1.5 text-sm text-muted">EX의 새로운 소식과 인사이트를 메일로 받아보세요.</p>

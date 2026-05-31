@@ -87,7 +87,7 @@ export default function ProductPage() {
         <div className="container-ex py-section">
           <SectionLabel index="02">Lineup</SectionLabel>
           <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제품 라인업</h2>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
             {lineup.map((p) => (
               <Link
                 key={p.title}
@@ -95,7 +95,7 @@ export default function ProductPage() {
                 className="group flex flex-col gap-3 border-b border-border p-6 transition-colors last:border-0 hover:bg-surface-2 md:flex-row md:items-center md:gap-8 md:px-8"
               >
                 <span className="w-44 shrink-0">
-                  <span className="rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
+                  <span className="rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
                     {p.badge}
                   </span>
                 </span>
@@ -106,7 +106,7 @@ export default function ProductPage() {
                 <span className="hidden shrink-0 font-mono text-xs uppercase tracking-wider text-faint lg:block">
                   {p.meta}
                 </span>
-                <span className="shrink-0 font-medium text-primary transition-transform group-hover:translate-x-1">
+                <span className="shrink-0 font-medium text-lav transition-transform group-hover:translate-x-1">
                   Discover →
                 </span>
               </Link>

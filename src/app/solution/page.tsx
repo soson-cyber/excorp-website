@@ -58,7 +58,7 @@ export default function SolutionPage() {
           <dl className="grid grid-cols-2 gap-px self-center overflow-hidden rounded-2xl border border-border bg-border">
             {approach.map((a) => (
               <div key={a.k} className="bg-surface p-6">
-                <dt className="font-mono text-xs uppercase tracking-wider text-primary">{a.k}</dt>
+                <dt className="font-mono text-xs uppercase tracking-wider text-lav">{a.k}</dt>
                 <dd className="mt-1.5 text-sm font-medium text-fg">{a.v}</dd>
               </div>
             ))}
@@ -79,27 +79,27 @@ export default function SolutionPage() {
               className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-primary/40 bg-surface p-8 transition-colors hover:border-primary lg:col-span-2"
             >
               <div className="relative">
-                <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-primary">
+                <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-lav">
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
                   EX Original
                 </span>
                 <h3 className="mt-5 text-3xl font-bold">
-                  XR Solution <span className="text-primary">EXLINK</span>
+                  XR Solution <span className="text-lav">EXLINK</span>
                 </h3>
                 <p className="mt-4 max-w-xl text-muted">
                   카메라·트래커·모션센서·네트워크·미디어서버를 하나의 제어 흐름으로 묶는 EX의 통합 XR 솔루션.
                 </p>
               </div>
-              <span className="relative mt-8 font-medium text-primary transition-transform group-hover:translate-x-1">
+              <span className="relative mt-8 font-medium text-lav transition-transform group-hover:translate-x-1">
                 View Solution →
               </span>
             </Link>
             <Link
               href="/solution/virtual-production"
-              className="group flex flex-col justify-between rounded-2xl border border-border bg-white p-8 transition-colors hover:border-primary/50"
+              className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-8 transition-colors hover:border-primary/50"
             >
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">
                   Methodology
                 </span>
                 <h3 className="mt-3 text-2xl font-semibold">Virtual Production</h3>
@@ -107,7 +107,7 @@ export default function SolutionPage() {
                   촬영·합성·연출이 동시에 일어나는 신개념 영상 제작 기법. ICVFX·LED·크로마키·AR·XR.
                 </p>
               </div>
-              <span className="mt-8 font-medium text-primary transition-transform group-hover:translate-x-1">
+              <span className="mt-8 font-medium text-lav transition-transform group-hover:translate-x-1">
                 Learn VP →
               </span>
             </Link>
@@ -119,7 +119,7 @@ export default function SolutionPage() {
       <section className="container-ex py-section">
         <SectionLabel index="03">Capability</SectionLabel>
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 전 단계를 커버합니다</h2>
-        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
           {capability.map((c) => (
             <div
               key={c.step}
@@ -138,7 +138,7 @@ export default function SolutionPage() {
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {proof.map((p) => (
               <div key={p.l} className="text-center">
-                <p className="font-mono text-4xl font-bold text-primary">{p.n}</p>
+                <p className="font-mono text-4xl font-bold text-lav">{p.n}</p>
                 <p className="mt-2 text-sm text-muted">{p.l}</p>
               </div>
             ))}
