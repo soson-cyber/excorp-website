@@ -1,7 +1,7 @@
 export const site = {
   name: "EX Corporation",
   nameKo: "이엑스 주식회사",
-  slogan: "기술의 연결로 경험을 확장하다.",
+  slogan: "기술의 연결로 경험을 확장하다",
   brandSlogan: "EXpand EXperiences",
   subTitle: "All-in-One, Real-time XR Content Production Solution",
   mission:
@@ -14,7 +14,8 @@ export const site = {
   contact: {
     tel: "031-699-8228",
     fax: "031-624-4258",
-    email: "ax.excorp@gmail.com",
+    email: "contact@excorp.kr",
+    careersEmail: "careers@excorp.kr",
   },
 } as const;
 

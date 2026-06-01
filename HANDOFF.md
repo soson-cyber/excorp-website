@@ -3,7 +3,32 @@
 > 다른 Claude 세션/환경(또는 협업자)이 이 프로젝트를 이어받기 위한 단일 인수인계 문서.
 > 이 파일 + `CLAUDE.md` + `DESIGN.md` + Figma 파일만 있으면 맥락 복원이 가능합니다.
 
-## 0. v3 — 전체 다크 전환 (2026-06, 최우선)
+## 0. v3.1 — Wope 그리드·글래스 네브바·콘텐츠/SEO·브랜드 패스 (2026-06, 최신·최우선)
+
+> §0(다크 전환) **이후**의 변경. three.js **완전 제거**, 히어로 그리드는 정적 CSS 퍼스펙티브로, 네브바는 글래스 필+셰브론으로, 박스 회전보더는 버튼 conic 글로우-라인으로 이전. 콘텐츠/SEO 딥 패스 + 브랜드 감사 완료. 단일 기준은 `globals.css`·`DESIGN.md §0`.
+
+**디자인/모션 변경**
+- **히어로 그리드 = 정적 CSS 퍼스펙티브** (`.hero-grid` + `::before`, `perspective()/rotateX()` + mask 페이드). **three.js·GridBackground·CurvedGridBackground 전부 삭제**(의존성 `three` 제거). 콘솔 상단 핫퍼플 블룸(`.hero-glow` Wope식 radial) + `HeroStars` 파티클 캔버스 유지. 히어로 하단 그라데이션 ray 애니메이션 제거.
+- **네브바 = 투명 바 + 중앙 글래스 필**: 스크롤 시 바 자체 투명(`.header--solid{background:transparent}`), 중앙 메뉴를 감싸는 반투명 라운드 필(`.navbar` — `bg rgba(255,255,255,.05)`·`backdrop-filter blur(12px)`·`border-radius 9999px`). 서브메뉴 항목 셰브론(`.caret`/`.caret--open`), 메뉴 간격·시작/끝 패딩 확대(`.navlink padding 9px 20px`). ⚠ headless Chromium은 `backdrop-filter` 미렌더 → 실제 글래스는 실브라우저에서만 확인.
+- **글로우-라인 이전**: 박스(콘솔·피처카드)의 회전 conic 보더 **제거**(`.console-shell .edge, .feat .feat-edge{display:none}`). 대신 **버튼 테두리에 애니메이션 conic 글로우-라인**(`.btn::after` + `@property --ex-angle` + `btnBorderSpin 4.5s`).
+- **그레인 오버레이**: `layout.tsx`에 SVG `feTurbulence` 필름그레인(`.grain-overlay`, fixed z-60).
+- **레이아웃 추가**: §01 `featgrid--wope`(3번째 카드 `full`), §03 `partner-bento`, FAQ `<details class="faq-item">` 아코디언, CTA `ctacard`, Numbers/Quote `section--glow`.
+
+**콘텐츠/SEO 딥 패스 (Content Creator 에이전트)**
+- Hero NEW 배너의 가짜 "EXLINK 2.0 릴리스" 클레임 제거 → 사실 기반 EXLINK pill로 교체(정직성).
+- 홈 "WHAT YOU GET" 인용밴드 → "WHY REAL-TIME XR" 가치 진술로(고객 후기 오독 방지).
+- FAQ "데모/스튜디오 방문" 항목 추가, Work 인덱스 메타 title/desc 보강("포트폴리오" 검색의도).
+- 제품·솔루션·About·News 등은 이미 정직·SEO 양호로 판단 → 미변경.
+
+**브랜드 감사 (Brand Guardian 에이전트)**
+- 전반 양호: 명칭·EXLINK 대소문자·파트너 역할(리셀러·총판)·톤(합니다체·클리셰 0)·정직성 합격.
+- 슬로건 마침표 불일치 2건 수정(`site.ts`·`opengraph-image.tsx` — "확장하다." → "확장하다").
+- ⚠ **High(미해결): 공개 이메일 3종 분기** — 대표 `ax.excorp@gmail.com`(`site.ts`→Footer·Contact·Support·Careers·JSON-LD) vs 법무 `soson@excorp.kr`(privacy/terms) vs 폼 백엔드 `@excorp.kr` 부서계정. **`site.contact.email` 한 값만 결정하면 대부분 자동 정합** — 대표 이메일 통일 의사결정 대기.
+- (제안만) 비브랜드 회색 하드코딩(`MediaBlank`·`NewsList` SVG stroke), Footer hover 근사 hex → 토큰화. `work.ts` 주석-타입 드리프트(`scenario` 필드 부재).
+
+**빌드**: 변경 후 전 라우트 통과(에러 0).
+
+## 0. v3 — 전체 다크 전환 (2026-06)
 
 > **사이트 전체가 라이트/화이트 → 다크 product-led로 전환됨.** Claude Design 핸드오프(`EX Corporation Design System-handoff.zip` → `ui_kits/website`)의 디자인을 라이브 코드에 구현. 단일 기준 = [`DESIGN.md §0`](./DESIGN.md) + `src/app/globals.css @theme`(다크값).
 
@@ -35,11 +60,12 @@
 - **슬로건**: 기술의 연결로 경험을 확장하다 / All-in-One, Real-time XR Content Production
 
 ## 2. 스택
-- Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · three.js (히어로 3D)
+- Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4. **three.js 제거됨**(히어로 그리드는 정적 CSS 퍼스펙티브 + 캔버스 파티클 — §0 v3.1).
 - 폰트: Poppins(영문) + Noto Sans KR(국문) + Geist Mono. CMS 예정: Sanity(미연결).
 
-## 3. 디자인 시스템 (현재 = 라이트/화이트)
-참조 톤: kakaocorp.com — 화이트 배경, 여백, 잉크 타이포, **퍼플 1색 액센트**, 기술은 클린 다이어그램/UI로. **버튼·섹션 Glow 금지(플랫)**.
+## 3. 디자인 시스템 (⚠ 아래는 v1 라이트 — §0/§0.1로 대체됨, 히스토리 참고용)
+> **현재 테마는 전체 다크 product-led** + Wope 그리드/글래스 네브바(§0·§0.1·v3.1). 이 §3은 초기 라이트 시스템 기록이며 더는 라이브와 일치하지 않는다. 단일 기준 = `DESIGN.md §0` + `globals.css @theme`.
+참조 톤(v1): kakaocorp.com — 화이트 배경, 여백, 잉크 타이포, **퍼플 1색 액센트**, 기술은 클린 다이어그램/UI로.
 - 팔레트(리터럴 hex, Home·신규 페이지에서 사용): white `#FFFFFF` · paper `#F7F8FA` · pale `#F2F4F7` · ink `#0F1129` · body `#51545E` · muted `#7C8090` · line `#E5E7EB` · accent purple `#5E2EC0` · 다크 푸터/CTA `#0F1129`.
 - `globals.css`의 `@theme` 시맨틱 토큰(`bg-bg/surface/border/fg/muted/primary` 등)은 **라이트값으로 리맵**되어 내부 페이지가 자동 라이트. `text-gradient-ex` = 퍼플→딥퍼플. focus ring = 퍼플.
 - **Footer는 다크 네이비로 하드코딩**(라이트 사이트의 다크 앵커). Header는 항상 라이트(실제 로고 `ex-logo.png`).
@@ -54,8 +80,8 @@
 - 데이터 출처: `src/lib/site.ts` (`nav`, `footerColumns`, `locations`, `site.contact`, `partners`)
 
 ## 5. 핵심 컴포넌트
-- `src/components/home/HomeClean.tsx` — Home(9섹션): 3D 히어로 → §01 What We Do → §02 EXLINK 아키텍처 허브 → **FeaturedCase(EXLINK 구축사례)** → §03 Partner Products(+공식 파트너 크리덴셜 행) → §04 XR Studio(실사) → §05 Numbers → **QuoteBand(고객 인터뷰)** → **다크 CTA(푸터 브릿지)**. 배경 white/paper 교차.
-- `src/components/three/Hero3D.tsx` + `Hero3DStage.tsx` — three.js 와이어프레임 정이십면체(회전), `ssr:false`, prefers-reduced-motion 정지, 완전 cleanup.
+- `src/components/home/HomeClean.tsx` — Home(다크, 8섹션): **`Hero`**(product-led + EXLINK Live Console) → §01 What We Do(`featgrid--wope`) → §02 EXLINK 아키텍처 → **FeaturedCase** → §03 Partner Products(`partner-bento`) → §04 XR Studio → §05 Numbers(`section--glow`) → **QuoteBand(가치 진술)** → **FAQ 아코디언** → **다크 CTA(`ctacard`)**. 배경 ink/surface/white 다크 교차.
+- `src/components/home/Hero.tsx` — product-led 다크 히어로: 정적 CSS 퍼스펙티브 그리드(`.hero-grid`) + `HeroStars` 파티클 캔버스 + 인터랙티브 EXLINK Live Console(멀티캠 클릭→프로그램). ~~three.js Hero3D~~ **삭제됨**(§0 v3.1).
 - `src/components/ui/MediaBlank.tsx` — 블랭크 미디어 플레이스홀더(태그·코너틱·라벨). 사진/영상 자산 없을 때 사용.
 - `src/components/work/WorkGallery.tsx` — `"use client"` 필터형 갤러리(카테고리 pill, featured 2-col, empty state). **상단 TODO: Sanity 쿼리로 교체 + skeleton.**
 - 공유(라이트, 토큰 기반): `components/page/PageHero.tsx`, `components/ui/SectionLabel.tsx`, `components/ui/Button.tsx`(glow 제거됨), `components/layout/{Header,Footer,CtaBanner}.tsx`.
@@ -63,7 +89,7 @@
 ## 6. 페이지 현황
 | 경로 | 상태 |
 |------|------|
-| `/` (Home) | ✅ 클린 화이트 + 실제 3D + 신뢰/사례/인용/다크CTA |
+| `/` (Home) | ✅ 다크 product-led — Hero(CSS 그리드+콘솔) + Wope 그리드/bento/FAQ/CTA |
 | `/solution` | ✅ 라이트 |
 | `/solution/xr-solution` (EXLINK) | ✅ **심층 재구성**(7섹션, 정직성 가드레일) |
 | `/solution/virtual-production` | ✅ **심층 재구성**(8섹션, 교육형) |
@@ -93,4 +119,5 @@
 1. **제품 3종(Aximmetry/Moverse/RETracker) 심층 재구성** (Solution 페이지와 동일 깊이)
 2. **Sanity CMS 연결** — `project`/`caseStudy` 스키마(클라이언트·NDA플래그·3축 facet[콘텐츠형/분야/솔루션]·featured·status) + WorkGallery 바인딩 + skeleton 로딩
 3. **실제 콘텐츠** — EXLINK 구축사례 2~3건 · 고객 인터뷰 · 동의받은 고객 로고
-4. (선택) §01·§03 카드 차별화 강화, 고객 로고월, 다크 내부페이지의 추가 폴리시
+4. **공개 대표 이메일 통일**(브랜드 감사 H-1) — `ax.excorp@gmail.com`/`soson@excorp.kr`/`@excorp.kr` 분기. `site.contact.email` + privacy/terms + JSON-LD를 `excorp.kr` 도메인 한 주소로 통일.
+5. (선택) 토큰 우회 hex 정리(`MediaBlank`·`NewsList`·Footer hover), `work.ts` `scenario` 타입 정합, §01·§03 카드 차별화 강화

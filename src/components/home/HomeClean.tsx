@@ -53,6 +53,10 @@ const FAQS = [
     q: "견적은 어떻게 받나요?",
     a: "문의하기로 프로젝트 개요를 남겨주시면 담당자가 영업일 기준 1~2일 내 연락드려 상세 견적과 구성안을 안내합니다.",
   },
+  {
+    q: "데모나 스튜디오 방문이 가능한가요?",
+    a: "네. 솔루션 데모와 하남 XR 스튜디오 현장 확인을 안내해 드립니다. 문의 시 일정과 방식을 함께 조율합니다.",
+  },
 ];
 
 function SectionHead({ index, label, title, lead, narrow }: { index: string; label: string; title: string; lead?: string; narrow?: boolean }) {
@@ -322,19 +326,21 @@ export function HomeClean() {
         </div>
       </section>
 
-      {/* Quote band */}
+      {/* Value band */}
       <section className="section section--surface section--glow">
         <div className="container-ex" style={{ maxWidth: "54rem", textAlign: "center" }}>
           <Reveal>
             <span className="quote-ey">
               <span className="quote-bar" />
-              WHAT YOU GET
+              WHY REAL-TIME XR
             </span>
             <p className="quote-txt">
-              촬영과 동시에 결과물이 완성됩니다. 후반 일정에 쫓기지 않고, 현장에서 바로 확인하고 끝낼 수
+              촬영과 동시에 결과물이 완성됩니다. 긴 후반 일정에 쫓기지 않고, 현장에서 바로 확인하고 끝낼 수
               있습니다.
             </p>
-            <p style={{ marginTop: 24, fontSize: 14, color: "var(--color-faint)" }}>실시간 XR 제작이 만드는 차이</p>
+            <p style={{ marginTop: 24, fontSize: 14, color: "var(--color-faint)" }}>
+              실시간 XR 제작이 만드는 차이 — EXLINK · 파트너 기술 · 하남 스튜디오
+            </p>
           </Reveal>
         </div>
       </section>

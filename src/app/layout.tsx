@@ -90,7 +90,7 @@ export default function RootLayout({
               logo: "https://excorp.kr/ex-logo.png",
               description:
                 "AI와 XR 기술을 연결하는 All-in-One 실시간 XR 콘텐츠 제작 솔루션 기업",
-              email: "ax.excorp@gmail.com",
+              email: "contact@excorp.kr",
               telephone: "+82-31-699-8228",
               address: {
                 "@type": "PostalAddress",

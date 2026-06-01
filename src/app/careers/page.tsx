@@ -238,10 +238,10 @@ export default function CareersPage() {
             ))}
           </ol>
           <div className="mt-10">
-            <Button href={`mailto:${site.contact.email}`} variant="accent">
+            <Button href={`mailto:${site.contact.careersEmail}`} variant="accent">
               채용 지원하기 →
             </Button>
-            <p className="mt-3 font-mono text-xs text-faint">{site.contact.email}</p>
+            <p className="mt-3 font-mono text-xs text-faint">{site.contact.careersEmail}</p>
           </div>
         </div>
       </section>

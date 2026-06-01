@@ -45,7 +45,7 @@ export default function OgImage() {
             color: "transparent",
           }}
         >
-          기술의 연결로 경험을 확장하다.
+          기술의 연결로 경험을 확장하다
         </div>
         <div style={{ marginTop: 28, fontSize: 30, color: "#b6bad0" }}>
           All-in-One, Real-time XR Content Production Solution

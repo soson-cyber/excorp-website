@@ -247,9 +247,9 @@ export function Hero() {
 
       <div className="container-ex hero-in">
         <Link href="/solution/xr-solution" className="hero-pill focus-on-dark">
-          <span className="pchip">NEW</span>
+          <span className="pchip">EXLINK</span>
           <span>
-            <b style={{ color: "#fff", fontWeight: 600 }}>EXLINK 2.0</b> — 실시간 XR 통합 콘솔이 새로워졌습니다
+            <b style={{ color: "#fff", fontWeight: 600 }}>실시간 XR 통합 솔루션</b> — 촬영·트래킹·렌더·송출을 하나로
           </span>
           <span className="parr" aria-hidden="true">
             →
