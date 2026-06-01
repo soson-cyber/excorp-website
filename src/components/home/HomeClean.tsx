@@ -32,6 +32,28 @@ const STATS = [
   { v: 3, s: "", l: "대학 MOU" },
   { v: 4, s: "", l: "제품 인증" },
 ];
+const FAQS = [
+  {
+    q: "EXLINK은 어떤 솔루션인가요?",
+    a: "촬영 · 트래킹 · 렌더 · 송출을 단일 파이프라인으로 통합한 EX 자체 개발 실시간 XR 솔루션입니다. 분산된 장비와 워크플로우를 하나로 연결해 운영자 1인 중심으로 운용할 수 있습니다.",
+  },
+  {
+    q: "파트너 제품도 EX가 직접 개발하나요?",
+    a: "아닙니다. Aximmetry · Moverse · RETracker는 검증된 글로벌 XR 도구이며, EX는 공식 리셀러 · 총판으로서 도입 · 연결 · 기술지원을 담당합니다. EX의 자체 개발 솔루션은 EXLINK입니다.",
+  },
+  {
+    q: "XR 스튜디오에서는 무엇을 제작하나요?",
+    a: "하남 70㎡ 그린 크로마 스튜디오에서 IR · 웨비나 · 대담을 실시간 XR로 제작합니다. 촬영과 동시에 결과물이 완성되어 긴 후반 작업이 필요 없습니다.",
+  },
+  {
+    q: "도입까지 절차가 어떻게 되나요?",
+    a: "상담 → 요구사항 분석 → 솔루션 · 장비 구성 제안 → 셋업 · 현장 교육 → 운영 지원 순으로 진행합니다. 프로젝트 규모에 맞춰 솔루션 도입 · 제품 공급 · 스튜디오 제작을 조합할 수 있습니다.",
+  },
+  {
+    q: "견적은 어떻게 받나요?",
+    a: "문의하기로 프로젝트 개요를 남겨주시면 담당자가 영업일 기준 1~2일 내 연락드려 상세 견적과 구성안을 안내합니다.",
+  },
+];
 
 function SectionHead({ index, label, title, lead, narrow }: { index: string; label: string; title: string; lead?: string; narrow?: boolean }) {
   return (
@@ -54,8 +76,8 @@ export function HomeClean() {
     <>
       <Hero />
 
-      {/* §01 — What we do (Wope feature cards) */}
-      <section className="section section--ink">
+      {/* §01 — What we do (Wope asymmetric research-grid) */}
+      <section className="section section--ink section--glow">
         <div className="container-ex">
           <SectionHead
             index="01"
@@ -64,9 +86,18 @@ export function HomeClean() {
             lead="EX는 실시간 XR 콘텐츠 제작의 전 과정을 솔루션 · 장비 · 스튜디오로 연결합니다."
             narrow
           />
-          <div className="featgrid">
+          <div className="featgrid featgrid--wope">
             {WHAT.map((c, i) => (
-              <FeatureCard key={c.i} idx={c.i} tag={c.tag} title={c.title} desc={c.desc} href={c.href} delay={i * 90} />
+              <FeatureCard
+                key={c.i}
+                idx={c.i}
+                tag={c.tag}
+                title={c.title}
+                desc={c.desc}
+                href={c.href}
+                delay={i * 90}
+                full={i === WHAT.length - 1}
+              />
             ))}
           </div>
         </div>
@@ -205,7 +236,7 @@ export function HomeClean() {
               </span>
             </div>
           </Reveal>
-          <div className="cardrow" style={{ marginTop: 56 }}>
+          <div className="partner-bento">
             {PARTNERS.map((p, i) => (
               <Reveal key={p.name} delay={i * 90} className="card cardpad">
                 <div className="cardpad-head">
@@ -272,7 +303,7 @@ export function HomeClean() {
       </section>
 
       {/* §05 — Numbers */}
-      <section className="section section--white">
+      <section className="section section--white section--glow">
         <div className="container-ex">
           <Reveal>
             <SectionLabel index="05">BY THE NUMBERS</SectionLabel>
@@ -289,7 +320,7 @@ export function HomeClean() {
       </section>
 
       {/* Quote band */}
-      <section className="section section--surface">
+      <section className="section section--surface section--glow">
         <div className="container-ex" style={{ maxWidth: "54rem", textAlign: "center" }}>
           <Reveal>
             <span className="quote-ey">
@@ -301,6 +332,33 @@ export function HomeClean() {
               있습니다.
             </p>
             <p style={{ marginTop: 24, fontSize: 14, color: "var(--color-faint)" }}>실시간 XR 제작이 만드는 차이</p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ (Wope-style accordion) */}
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
+          <div style={{ textAlign: "center" }}>
+            <Reveal>
+              <SectionLabel index="FAQ">자주 묻는 질문</SectionLabel>
+              <h2 className="h2" style={{ marginTop: 22 }}>
+                도입 전 자주 묻는 질문
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal className="faq-list">
+            {FAQS.map((f) => (
+              <details key={f.q} className="faq-item">
+                <summary>
+                  {f.q}
+                  <span className="q-icon" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="faq-a">{f.a}</p>
+              </details>
+            ))}
           </Reveal>
         </div>
       </section>

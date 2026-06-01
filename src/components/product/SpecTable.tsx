@@ -26,7 +26,7 @@ export function SpecTable({ groups }: SpecTableProps) {
                 <dt className="w-40 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">
                   {k}
                 </dt>
-                <dd className="text-sm text-fg">{v}</dd>
+                <dd className="text-sm text-fg tabular-nums">{v}</dd>
               </div>
             ))}
           </dl>

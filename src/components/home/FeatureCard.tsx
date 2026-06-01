@@ -12,6 +12,7 @@ export function FeatureCard({
   desc,
   href,
   delay = 0,
+  full = false,
 }: {
   idx: string;
   tag: string;
@@ -19,6 +20,7 @@ export function FeatureCard({
   desc: string;
   href: string;
   delay?: number;
+  full?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -47,7 +49,7 @@ export function FeatureCard({
   };
 
   return (
-    <div ref={ref} data-reveal="" className="feat" style={delay ? { transitionDelay: `${delay}ms` } : undefined} onMouseMove={onMove}>
+    <div ref={ref} data-reveal="" className={`feat${full ? " feat--full" : ""}`} style={delay ? { transitionDelay: `${delay}ms` } : undefined} onMouseMove={onMove}>
       <span className="feat-edge" aria-hidden="true" />
       <span className="feat-spot" aria-hidden="true" />
       <div className="feat-in">

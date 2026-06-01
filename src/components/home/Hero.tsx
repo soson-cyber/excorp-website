@@ -240,6 +240,7 @@ export function Hero() {
   };
   return (
     <section className="hero">
+      <div className="hero-grid" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
       <HeroStars />
       <div className="hero-vig" aria-hidden="true" />
@@ -286,9 +287,6 @@ export function Hero() {
         <ExlinkConsole />
       </div>
 
-      <div className="hero-rays" aria-hidden="true">
-        <i />
-      </div>
       <div className="hero-fade" aria-hidden="true" />
     </section>
   );

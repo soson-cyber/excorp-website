@@ -108,6 +108,14 @@ export default function RootLayout({
             }),
           }}
         />
+        <div className="grain-overlay" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <filter id="ex-grain">
+              <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves={2} stitchTiles="stitch" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#ex-grain)" />
+          </svg>
+        </div>
         <CustomCursor />
         <Header />
         <main id="main" className="flex-1">

@@ -74,7 +74,7 @@ export default function AboutPage() {
           <div className="rounded-2xl border border-border bg-card p-8">
             <span className="font-mono text-xs uppercase tracking-wider text-lav">Mission</span>
             <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
-              AI + XR 융합 기술로 문화콘텐츠 제작의 문턱을 허물고, 몰입형 경험 혁신을 선도합니다.
+              AI + XR 융합 기술로 문화콘텐츠 제작의 문턱을 낮추고, 누구나 몰입형 경험을 만들 수 있게 합니다.
             </p>
           </div>
         </div>
