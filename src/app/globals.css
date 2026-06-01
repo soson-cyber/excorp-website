@@ -350,7 +350,13 @@ html.cursor-reduce .ex-cursor-ring {
   ════════════════════════════════════════════════════════════════════════════
 */
 
-/* ── Buttons (Wope glow-bleed halo) ──────────────────────────────────────── */
+@property --ex-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ── Buttons — rotating conic glow-line border (moved from the box edges) ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -384,21 +390,28 @@ html.cursor-reduce .ex-cursor-ring {
 .btn::after {
   content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 9999px;
-  opacity: 0;
-  transition: opacity 0.6s var(--ease-ex);
-  pointer-events: none;
+  inset: -1.5px;
+  border-radius: inherit;
   z-index: -1;
-  background: radial-gradient(
-    85% 130% at 50% 125%,
-    rgba(139, 92, 246, 0.6) 0%,
-    rgba(69, 241, 224, 0.3) 45%,
-    rgba(255, 255, 255, 0) 75%
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.3s var(--ease-ex);
+  background: conic-gradient(
+    from var(--ex-angle),
+    rgba(139, 92, 246, 0.9) 0deg,
+    rgba(69, 241, 224, 0) 70deg,
+    rgba(255, 255, 255, 0) 290deg,
+    rgba(69, 241, 224, 0.9) 360deg
   );
+  animation: btnBorderSpin 4.5s linear infinite;
 }
 .btn:hover::after {
-  opacity: 0.85;
+  opacity: 1;
+}
+@keyframes btnBorderSpin {
+  to {
+    --ex-angle: 360deg;
+  }
 }
 .btn::before {
   content: "";
@@ -468,6 +481,7 @@ html.cursor-reduce .ex-cursor-ring {
 @media (prefers-reduced-motion: reduce) {
   .btn::after {
     transition: none;
+    animation: none;
   }
 }
 
@@ -634,6 +648,11 @@ html.cursor-reduce .ex-cursor-ring {
 .feat:hover .feat-edge {
   opacity: 1;
 }
+/* 박스 회전 글로우-라인 보더 제거 — 효과는 버튼 테두리로 이동(.btn::after) */
+.console-shell .edge,
+.feat .feat-edge {
+  display: none;
+}
 .feat-spot {
   position: absolute;
   inset: 0;
@@ -771,8 +790,8 @@ html.cursor-reduce .ex-cursor-ring {
 .navbar {
   display: flex;
   align-items: center;
-  gap: 2px;
-  padding: 5px 8px;
+  gap: 10px;
+  padding: 7px 16px;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.05);
@@ -789,8 +808,8 @@ html.cursor-reduce .ex-cursor-ring {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  border-radius: 8px;
-  padding: 8px 12px;
+  border-radius: 9999px;
+  padding: 9px 20px;
   font-size: 14px;
   transition: color 0.2s;
   cursor: pointer;
@@ -808,8 +827,12 @@ html.cursor-reduce .ex-cursor-ring {
   color: #fff;
 }
 .caret {
-  font-size: 10px;
-  opacity: 0.6;
+  opacity: 0.55;
+  transition: transform 0.2s var(--ease-ex);
+}
+.caret--open {
+  transform: rotate(180deg);
+  opacity: 0.9;
 }
 .mega {
   position: absolute;
@@ -1370,23 +1393,7 @@ html.cursor-reduce .ex-cursor-ring {
   justify-content: center;
   gap: 12px;
 }
-.btn--glow::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 9999px;
-  opacity: 0;
-  transition: opacity 0.9s;
-  background: radial-gradient(
-    85% 130% at 50% 125%,
-    rgba(139, 92, 246, 0.6) 0%,
-    rgba(69, 241, 224, 0.3) 45%,
-    rgba(255, 255, 255, 0) 75%
-  );
-}
-.btn--glow:hover::after {
-  opacity: 0.85;
-}
+/* btn--glow shares the conic glow-line border (.btn::after) */
 .hero-trust {
   margin: 28px 0 0;
   display: flex;

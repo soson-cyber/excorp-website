@@ -68,7 +68,22 @@ export function Header() {
                   aria-expanded={item.children ? openMenu === item.label : undefined}
                 >
                   {item.label}
-                  {item.children && <span className="caret">▾</span>}
+                  {item.children && (
+                    <svg
+                      className={`caret${openMenu === item.label ? " caret--open" : ""}`}
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  )}
                 </Link>
 
                 {item.children && openMenu === item.label && (
