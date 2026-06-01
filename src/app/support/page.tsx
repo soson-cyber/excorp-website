@@ -8,9 +8,9 @@ import { Icon } from "@/components/ui/Icon";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Support — 자료실 & 기술 지원",
+  title: "고객 지원 — 자료실 & 기술 지원",
   description:
-    "솔루션 도입 이후에도 EX는 계속 함께합니다. FAQ, 자료실, 기술 지원, 고객 문의를 한 곳에서.",
+    "솔루션 도입 이후에도 EX는 계속 함께합니다. 자주 묻는 질문, 회사 소개서·제품 스펙시트 자료실, 원격·현장 기술 지원, 긴급 핫라인(031-699-8228)을 한 곳에서.",
 };
 
 const quickAccess = [

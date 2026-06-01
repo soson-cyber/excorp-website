@@ -166,7 +166,7 @@ export const locations = [
 export const partners = [
   { name: "Aximmetry", badge: "Reseller" },
   { name: "Moverse AI", badge: "Distributor" },
-  { name: "Rassi Engineering", badge: "Distributor" },
+  { name: "RETracker", badge: "Distributor" },
   { name: "NVIDIA", badge: "Inception" },
   { name: "Epic Games", badge: "Unreal" },
 ] as const;

@@ -8,9 +8,9 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Career — 함께 성장할 동료를 찾습니다",
+  title: "채용 — 함께 성장할 동료를 찾습니다",
   description:
-    "이엑스는 일하는 사람이 행복한 회사를 지향합니다. 핵심 가치 3가지, 일하는 방식, 일하는 공간, 함께하고 싶은 동료 — 모두의 창작 가능성을 넓히는 기술을 함께 만들 분을 찾습니다.",
+    "이엑스(EX) 채용. 일하는 사람이 행복한 회사를 지향합니다. 핵심 가치와 일하는 방식, 판교·하남의 일하는 공간, 지원 절차를 안내합니다. XR·실시간 콘텐츠를 함께 만들 분을 찾습니다.",
 };
 
 // 3 핵심 가치 (실제 '일하는 10가지 방식'에서 distill)
@@ -79,7 +79,7 @@ export default function CareersPage() {
         breadcrumb={[{ label: "Career", href: "/careers" }]}
         tag="Career"
         title="일하는 사람이 행복한 회사."
-        lead="모두의 창작 가능성을 넓히는 기술을 함께 만들 동료를 찾습니다. EX의 결과 일하는 방식에 공감한다면."
+        lead="모두의 창작 가능성을 넓히는 기술을 함께 만들 동료를 찾습니다. EX의 가치와 일하는 방식에 공감한다면."
       />
 
       {/* ambiance image */}

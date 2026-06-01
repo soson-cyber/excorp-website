@@ -9,9 +9,9 @@ import { StudioOptions } from "@/components/studio/StudioOptions";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "EX Studio — 버추얼 프로덕션 콘텐츠 스튜디오",
+  title: "하남 XR 스튜디오 — 버추얼 프로덕션 콘텐츠 제작",
   description:
-    "하남 EX Studio. 대형 그린 크로마(W10×D7×H4)와 XR·리얼타임 기술로 IR·웨비나·토크 콘텐츠를 기획부터 촬영·송출까지 한 번에. 메뉴형 콘텐츠 제작 상품.",
+    "하남 EX XR 스튜디오. 대형 그린 크로마(W10×D7×H4, 약 70㎡)와 실시간 XR 기술로 IR·웨비나·토크 콘텐츠를 기획부터 촬영·송출까지 한 번에 제작합니다. 목적별 메뉴(S·M·L) 구성과 맞춤 견적 안내.",
 };
 
 const reasons = [
@@ -108,7 +108,7 @@ export default function XrStudioPage() {
         <SectionLabel index="02">Content Menu</SectionLabel>
         <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">콘텐츠 메뉴</h2>
         <p className="mt-4 max-w-2xl text-muted">
-          찌개를 고르듯, 목적에 맞는 콘텐츠 상품을 고르세요. 규모(S · M · L)만 정하면 나머지는 전담팀이 맞춥니다.
+          목적에 맞는 콘텐츠 상품을 고르세요. 규모(S · M · L)만 정하면 카메라 구성·배경·연출은 전담팀이 맞춰 드립니다.
         </p>
         <div className="mt-12">
           <StudioMenu />

@@ -6,9 +6,9 @@ import { NewsList } from "@/components/news/NewsList";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
-  title: "News & Insight",
+  title: "뉴스 & 인사이트",
   description:
-    "이엑스의 보도자료·도입 사례·기술 인사이트·자료실. 실시간으로 확장되는 콘텐츠 제작의 새로운 기준.",
+    "이엑스(EX)의 보도자료와 기술 인사이트. 버추얼 프로덕션·마커리스 카메라 트래킹 등 실시간 XR 콘텐츠 제작을 쉽게 풀어 설명하고, EX의 파트너십·스튜디오 소식을 전합니다.",
 };
 
 export default function NewsPage() {

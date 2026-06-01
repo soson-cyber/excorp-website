@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
-  title: "Solution — XR Solution & Virtual Production",
+  title: "XR 솔루션 · 버추얼 프로덕션",
   description:
-    "EX의 자체 통합 XR 솔루션 EXLINK와 버추얼 프로덕션 방법론. 현장에 맞는 최적의 실시간 XR 환경을 구성합니다.",
+    "EX 자체 통합 XR 솔루션 EXLINK와 버추얼 프로덕션. 촬영·트래킹·렌더·송출을 하나로 묶어 현장에 맞는 실시간 XR 환경을 구성하고, 도입 상담부터 운영까지 지원합니다.",
 };
 
 const approach = [
@@ -26,10 +25,10 @@ const capability = [
 ];
 
 const proof = [
-  { n: "6+", l: "Tech Patents" },
-  { n: "3", l: "Global Partners" },
-  { n: "3", l: "University MOU" },
-  { n: "4", l: "Certifications" },
+  { n: "6+", l: "기술 특허" },
+  { n: "3", l: "글로벌 파트너" },
+  { n: "3", l: "대학 MOU" },
+  { n: "4", l: "제품 인증" },
 ];
 
 export default function SolutionPage() {
@@ -87,11 +86,11 @@ export default function SolutionPage() {
                   XR Solution <span className="text-lav">EXLINK</span>
                 </h3>
                 <p className="mt-4 max-w-xl text-muted">
-                  카메라·트래커·모션센서·네트워크·미디어서버를 하나의 제어 흐름으로 묶는 EX의 통합 XR 솔루션.
+                  카메라·트래커·모션센서·네트워크·미디어서버를 하나의 제어 흐름으로 묶는 EX 자체 개발 통합 XR 솔루션. 운영자 1인 중심으로 운용합니다.
                 </p>
               </div>
               <span className="relative mt-8 font-medium text-lav transition-transform group-hover:translate-x-1">
-                View Solution →
+                EXLINK 자세히 보기 →
               </span>
             </Link>
             <Link
@@ -104,11 +103,11 @@ export default function SolutionPage() {
                 </span>
                 <h3 className="mt-3 text-2xl font-semibold">Virtual Production</h3>
                 <p className="mt-3 text-muted">
-                  촬영·합성·연출이 동시에 일어나는 신개념 영상 제작 기법. ICVFX·LED·크로마키·AR·XR.
+                  촬영·합성·연출이 동시에 일어나는 영상 제작 기법. 크로마키·실시간 XR 트래킹·AR·ICVFX·LED Wall.
                 </p>
               </div>
               <span className="mt-8 font-medium text-lav transition-transform group-hover:translate-x-1">
-                Learn VP →
+                제작 방식 알아보기 →
               </span>
             </Link>
           </div>

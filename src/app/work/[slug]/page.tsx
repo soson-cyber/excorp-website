@@ -18,8 +18,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const w = getWork(slug);
-  if (!w) return { title: "Work" };
-  return { title: `${w.title} — Work`, description: w.summary };
+  if (!w) return { title: "활용 사례" };
+  return { title: `${w.title} — 활용 사례`, description: w.summary };
 }
 
 export default async function WorkDetailPage({
@@ -121,7 +121,7 @@ export default async function WorkDetailPage({
       <section className="bg-surface">
         <div className="container-ex py-section">
           <SectionLabel index="04">More Work</SectionLabel>
-          <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">다른 사례</h2>
+          <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">다른 활용 시나리오</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-3">
             {others.map((o) => (
               <Link

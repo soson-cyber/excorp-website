@@ -6,9 +6,9 @@ import { Icon } from "@/components/ui/Icon";
 import { locations, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "문의하기",
   description:
-    "함께 만들어 갈 이야기를 들려주세요. 솔루션 도입·스튜디오 제작·일반 문의 — EX에 문의하기.",
+    "EXLINK 솔루션 도입, 파트너 제품 도입, 하남 XR 스튜디오 제작 문의를 받습니다. 문의를 남기시면 담당자가 영업일 기준 1~2일 내 회신드립니다. 전화 031-699-8228.",
 };
 
 const inquiries = [

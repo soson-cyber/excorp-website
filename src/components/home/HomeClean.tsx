@@ -187,8 +187,11 @@ export function HomeClean() {
               분산된 촬영·트래킹·렌더·송출 장비를 EXLINK 하나로 묶어, 운영 부담은 줄이고 실시간 합성 품질은
               끌어올리는 대표 활용 시나리오입니다.
             </p>
+            <p style={{ marginTop: 12, fontSize: 13, color: "var(--color-faint)", maxWidth: "36rem" }}>
+              ※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
+            </p>
             <Link href="/work" className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
-              사례 자세히{" "}
+              활용 시나리오 보기{" "}
               <span className="ar" aria-hidden="true">
                 →
               </span>

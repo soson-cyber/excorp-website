@@ -5,9 +5,9 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 import { locations } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About EX",
+  title: "회사 소개 — 이엑스(EX Corporation)",
   description:
-    "현실과 가상의 융합, 새로운 경험을 창조하는 세상. 이엑스(EX Corporation) — 미션·비전, 연혁(2020~2024), 보유 특허 6건.",
+    "AI·XR 기술로 콘텐츠 제작의 문턱을 낮추는 이엑스 주식회사(EX Corporation). 미션·비전, 연혁(2020~), 보유 특허 6건과 벤처기업 인증, 판교 본사·하남 XR 스튜디오를 소개합니다.",
 };
 
 const whyEx = [
@@ -32,7 +32,7 @@ const history: { year: string; items: string[] }[] = [
     year: "2023",
     items: [
       "Aximmetry Technology 현지 파트너 및 리셀러 인증",
-      "Rassi Engineering LTD 공식 한국 총판 계약",
+      "RETracker(Rassi Engineering LTD) 공식 한국 총판 계약",
       "성균관대·중앙대·계원예술대 MOU 체결",
       "경기도 하남 XR 스튜디오 오픈",
     ],
