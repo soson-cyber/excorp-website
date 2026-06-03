@@ -24,6 +24,7 @@
   --color-dark-purple: #1a1d40;
   --color-grey: #9c9e9e;
   --color-lav: #c4b5fd; /* lavender — visible "purple" on dark */
+  --color-lav-hover: #d8ccff; /* lavender hover — one step brighter for link affordance */
   --color-violet: #8b5cf6; /* violet — gradient mid / borders on dark */
 
   /* Surfaces — DARK. Two alternating tones + card tone. */
@@ -55,6 +56,7 @@
   /* Accent — brand Pink (action) */
   --color-accent: #d206ee;
   --color-accent-soft: rgba(210, 6, 238, 0.16);
+  --color-accent-bright: #f0a8ec; /* light pink — legible label text on dark / soft-pink chip */
 
   /* Semantic — re-derived to harmonize with the brand (cool family) */
   --color-live: #ed1e64; /* vivid rose — REC / live */
@@ -618,6 +620,15 @@ html.cursor-reduce .ex-cursor-ring {
   position: relative;
   background: var(--color-hero);
 }
+/* News §01 archive — continue the PageHero aurora into the section top so the
+   background reads as one continuous field instead of hero-glow → flat dark.
+   Echoes the hero's lower violet/pink blobs, anchored at the top, fading to base. */
+.news-archive {
+  background:
+    radial-gradient(72% 44% at 50% 0%, rgba(139, 92, 246, 0.16) 0%, transparent 68%),
+    radial-gradient(40% 30% at 80% 2%, rgba(210, 6, 238, 0.08) 0%, transparent 70%),
+    var(--color-hero);
+}
 
 /* ── Feature cards (Wope rotating border + cursor spotlight) ──────────────── */
 .featgrid {
@@ -767,6 +778,8 @@ html.cursor-reduce .ex-cursor-ring {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   color: rgba(255, 255, 255, 0.64);
   margin: 16px 0 0;
+  /* 본문 줄바꿈은 브라우저에 위임 — 마지막 줄 고아 단어 방지(미지원 시 keep-all 폴백). */
+  text-wrap: pretty;
 }
 
 /* ── Header ──────────────────────────────────────────────────────────────── */
@@ -935,32 +948,130 @@ html.cursor-reduce .ex-cursor-ring {
   cursor: pointer;
   color: #fff;
 }
+/* Full-screen accordion sheet. Fixed below the 84px bar so it covers the page;
+   opaque hero hue so content behind never bleeds through. */
 .mobile {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  top: 84px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 49;
   background: var(--color-hero);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: mobileSheetIn 0.28s var(--ease-ex);
+}
+@keyframes mobileSheetIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* 내부 행 순차 등장(staggered) — transform/opacity만(컴포지터 친화).
+   delay는 nth-child 인덱스 기반이라 JSX 변경 불필요. */
+@keyframes mobileRowIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .mobile__nav {
   display: flex;
   flex-direction: column;
-  padding: 16px 0;
+  min-height: 100%;
+  padding: 8px 0 28px;
 }
+.mobile__group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.mobile__group,
+.mobile__foot {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: mobileRowIn 0.34s var(--ease-ex) forwards;
+}
+/* 첫 그룹은 거의 즉시 — 열리자마자 첫 항목에 포커스가 가므로 지연 최소화. */
+.mobile__nav > .mobile__group:nth-child(1) {
+  animation-delay: 0.03s;
+}
+.mobile__nav > .mobile__group:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.mobile__nav > .mobile__group:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.mobile__nav > .mobile__group:nth-child(4) {
+  animation-delay: 0.16s;
+}
+.mobile__nav > .mobile__group:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.mobile__nav > .mobile__group:nth-child(6) {
+  animation-delay: 0.24s;
+}
+.mobile__foot {
+  animation-delay: 0.28s;
+}
+/* Parent row — also a reset for the <button> toggle variant. */
 .mobile__item {
-  padding: 8px 0;
-  font-size: 16px;
-  font-weight: 500;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 14px 2px;
+  font-size: 17px;
+  font-weight: 600;
   color: #fff;
+  text-align: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
+.mobile__item .caret {
+  flex: none;
+}
+/* Expandable children region. */
 .mobile__sub {
-  margin-left: 12px;
-  padding-left: 12px;
-  border-left: 1px solid rgba(255, 255, 255, 0.14);
   display: flex;
   flex-direction: column;
+  padding: 2px 0 10px 2px;
 }
 .mobile__subitem {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
   padding: 6px 0;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  color: var(--color-muted);
+  text-align: center;
+  transition: color 0.18s;
+}
+.mobile__subitem:hover,
+.mobile__subitem:active {
+  color: #fff;
+}
+/* Footer: CTA + locale, pinned to the bottom of the sheet. */
+.mobile__foot {
+  margin-top: auto;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+}
+.mobile__foot .kobadge {
+  align-self: center;
+  color: rgba(255, 255, 255, 0.55);
 }
 @media (max-width: 1023px) {
   .navbar,
@@ -1345,6 +1456,8 @@ html.cursor-reduce .ex-cursor-ring {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
+  /* 짧은 리드 — 줄 길이 균형을 브라우저에 위임(데스크톱/모바일 모두 자연 줄나눔). */
+  text-wrap: balance;
 }
 .hero-cta {
   margin: 34px 0 0;
@@ -1554,6 +1667,18 @@ html.cursor-reduce .ex-cursor-ring {
   /* Flip the header state instantly — no cross-fade. */
   .header {
     transition: none;
+  }
+  /* Mobile sheet appears without the slide-in. */
+  .mobile {
+    animation: none;
+  }
+  /* Sheet rows: no staggered entrance — must reset initial opacity/transform,
+     otherwise rows stay invisible (opacity:0) for reduced-motion users. */
+  .mobile__group,
+  .mobile__foot {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 

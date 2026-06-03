@@ -9,10 +9,10 @@ export function CtaBanner() {
             Get in Touch
           </span>
           <h2 className="mt-4 text-3xl font-bold leading-snug md:text-4xl">
-            XR 제작,
-            <br />
-            어디서부터 시작해야
-            <br />
+            XR 제작,{" "}
+            <br className="hidden sm:block" />
+            어디서부터 시작해야{" "}
+            <br className="hidden sm:block" />
             할지 모르시겠다면?
           </h2>
           <p className="mt-4 max-w-xl text-muted">
@@ -28,7 +28,7 @@ export function CtaBanner() {
             스튜디오 둘러보기 →
           </Button>
           <Button href="/support" variant="secondary">
-            자료 다운로드 →
+            자료 요청 →
           </Button>
         </div>
       </div>

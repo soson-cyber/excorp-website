@@ -72,8 +72,8 @@ export function HomeClean() {
             label="WHAT WE DO"
             title={
               <>
-                솔루션부터 스튜디오까지,
-                <br />
+                솔루션부터 스튜디오까지,{" "}
+                <br className="hidden sm:block" />
                 하나의 흐름으로
               </>
             }
@@ -110,10 +110,10 @@ export function HomeClean() {
           <Reveal>
             <SectionLabel index="CASE">EXLINK 구축사례</SectionLabel>
             <h2 className="h2" style={{ marginTop: 22 }}>
-              실시간
-              <br />
-              XR 방송 시스템을
-              <br />
+              실시간{" "}
+              <br className="hidden lg:block" />
+              XR 방송 시스템을{" "}
+              <br className="hidden lg:block" />
               하나로 통합
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 28 }}>
@@ -125,11 +125,7 @@ export function HomeClean() {
               </div>
             </div>
             <p className="lead" style={{ maxWidth: "36rem" }}>
-              분산된 촬영·트래킹·렌더·송출 장비를
-              <br />
-              EXLINK 로 통합하여, 운영 부담은 줄이고 실시간 합성
-              <br />
-              품질은 끌어올리는 대표 활용 시나리오입니다.
+              분산된 촬영·트래킹·렌더·송출 장비를 EXLINK로 통합하여, 운영 부담은 줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.
             </p>
             <p style={{ marginTop: 12, fontSize: 13, color: "var(--color-faint)", maxWidth: "36rem" }}>
               ※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
@@ -152,18 +148,12 @@ export function HomeClean() {
             label="PARTNER PRODUCTS"
             title={
               <>
-                검증된 글로벌 XR 기술,
-                <br />
+                검증된 글로벌 XR 기술,{" "}
+                <br className="hidden sm:block" />
                 국내에 연결합니다
               </>
             }
-            lead={
-              <>
-                EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로
-                <br />
-                도입부터 기술지원과 운영교육까지 전 주기를 책임집니다.
-              </>
-            }
+            lead="EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로 도입부터 기술지원과 운영교육까지 전 주기를 책임집니다."
             narrow
           />
           <Reveal>
@@ -242,8 +232,8 @@ export function HomeClean() {
           <Reveal>
             <SectionLabel index="04">XR STUDIO</SectionLabel>
             <h2 className="h2" style={{ marginTop: 22 }}>
-              촬영이 곧 완성이 되는
-              <br />
+              촬영이 곧 완성이 되는{" "}
+              <br className="hidden sm:block" />
               실시간 XR 스튜디오
             </h2>
             <p className="lead" style={{ maxWidth: "36rem" }}>
@@ -313,8 +303,8 @@ export function HomeClean() {
                 START A PROJECT
               </span>
               <h2 className="h2" style={{ marginTop: 22 }}>
-                당신의 다음 콘텐츠를
-                <br />
+                당신의 다음 콘텐츠를{" "}
+                <br className="hidden sm:block" />
                 실시간 XR로 시작하세요
               </h2>
               <p style={{ margin: "16px auto 0", maxWidth: "34rem", fontSize: 17, color: "var(--color-footer-link)" }}>
@@ -325,7 +315,7 @@ export function HomeClean() {
                   도입 상담 →
                 </Link>
                 <Link href="/support" className="btn btn--ghostDark">
-                  회사 소개서 받기
+                  회사 소개서 요청
                 </Link>
               </div>
             </div>

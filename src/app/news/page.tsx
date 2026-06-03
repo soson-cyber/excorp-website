@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
   title: "뉴스 & 인사이트",
+  alternates: { canonical: "/news" },
   description:
     "이엑스(EX)의 보도자료와 기술 인사이트. 버추얼 프로덕션·마커리스 카메라 트래킹 등 실시간 XR 콘텐츠 제작을 쉽게 풀어 설명하고, EX의 파트너십·스튜디오 소식을 전합니다.",
 };
@@ -21,8 +22,8 @@ export default function NewsPage() {
         lead="보도자료 · 도입 사례 · 기술 인사이트 · 자료실 — 실시간 XR 콘텐츠 제작의 흐름을 전합니다."
       />
 
-      {/* §01 News list (filterable) */}
-      <section className="section section--ink section--glow">
+      {/* §01 News list (filterable) — top glow bridges the hero aurora down */}
+      <section className="section section--ink news-archive">
         <div className="container-ex">
           <SectionLabel index="01">Archive</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>

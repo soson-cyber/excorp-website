@@ -280,9 +280,7 @@ export function Hero() {
           경험을 <span className="grad">확장하다</span>
         </h1>
         <p className="hero-lead">
-          이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을
-          <br />
-          하나의 흐름으로 연결합니다.
+          이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을 하나의 흐름으로 연결합니다.
         </p>
         <div className="hero-cta">
           <Link href="/contact" className="btn btn--onDark focus-on-dark">

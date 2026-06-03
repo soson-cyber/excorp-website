@@ -3,12 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nav } from "@/lib/site";
 
 export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Which accordion group is expanded inside the mobile sheet (one at a time).
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   // `true` while the top of the page (inside the hero region) is in view.
   // Starts `true` so the first paint is transparent over the hero — no flash.
   const [atHeroTop, setAtHeroTop] = useState(true);
@@ -51,6 +54,47 @@ export function Header() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  // When the sheet opens, move focus into it (first row); when it closes,
+  // collapse any expanded accordion group so it reopens clean next time.
+  useEffect(() => {
+    if (mobileOpen) {
+      const first = panelRef.current?.querySelector<HTMLElement>("a[href], button");
+      first?.focus();
+      return;
+    }
+    // Collapse any expanded group after close — deferred a frame so this isn't a
+    // synchronous setState in the effect body (react-hooks/set-state-in-effect).
+    const raf = requestAnimationFrame(() => setOpenGroup(null));
+    return () => cancelAnimationFrame(raf);
+  }, [mobileOpen]);
+
+  const closeMobile = () => setMobileOpen(false);
+
+  // Esc closes the sheet; Tab is trapped within the panel for keyboard users.
+  const onPanelKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Escape") {
+      setMobileOpen(false);
+      return;
+    }
+    if (e.key === "Tab" && panelRef.current) {
+      // Only visible focusables — collapsed groups are `hidden` (display:none) and
+      // would otherwise skew the trap boundary (offsetParent is null when hidden).
+      const f = [...panelRef.current.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")].filter(
+        (el) => el.offsetParent !== null,
+      );
+      if (f.length === 0) return;
+      const first = f[0];
+      const last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  };
 
   return (
     <header className={`header ${overHero ? "header--overHero" : "header--solid"}`}>
@@ -128,7 +172,6 @@ export function Header() {
         </nav>
 
         <div className="desktop-cta">
-          <span className="kobadge">KO / EN</span>
           <Link href="/contact" className="btn btn--onDark btn--sm focus-on-dark">
             문의하기
           </Link>
@@ -159,39 +202,69 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — full-screen accordion sheet */}
       {mobileOpen && (
-        <div className="mobile">
-          <nav className="container-ex mobile__nav">
-            {nav.map((item) => (
-              <div key={item.label}>
-                <Link href={item.href} className="mobile__item" onClick={() => setMobileOpen(false)}>
-                  {item.label}
-                </Link>
-                {item.children && (
-                  <div className="mobile__sub">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="mobile__subitem"
-                        onClick={() => setMobileOpen(false)}
+        <div className="mobile" ref={panelRef} onKeyDown={onPanelKeyDown}>
+          <nav className="container-ex mobile__nav" aria-label="모바일 메뉴">
+            {nav.map((item) => {
+              const expanded = openGroup === item.label;
+              return (
+                <div key={item.label} className="mobile__group">
+                  {item.children ? (
+                    <>
+                      <button
+                        type="button"
+                        className="mobile__item mobile__item--toggle focus-on-dark"
+                        aria-expanded={expanded}
+                        aria-controls={`m-sub-${item.label}`}
+                        onClick={() => setOpenGroup((g) => (g === item.label ? null : item.label))}
                       >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <Link
-              href="/contact"
-              className="btn btn--onDark"
-              style={{ marginTop: 16 }}
-              onClick={() => setMobileOpen(false)}
-            >
-              문의하기
-            </Link>
+                        <span>{item.label}</span>
+                        <svg
+                          className={`caret${expanded ? " caret--open" : ""}`}
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </button>
+                      <div
+                        id={`m-sub-${item.label}`}
+                        className={`mobile__sub${expanded ? " mobile__sub--open" : ""}`}
+                        hidden={!expanded}
+                      >
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="mobile__subitem focus-on-dark"
+                            onClick={closeMobile}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <Link href={item.href} className="mobile__item focus-on-dark" onClick={closeMobile}>
+                      <span>{item.label}</span>
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
+            <div className="mobile__foot">
+              <Link href="/contact" className="btn btn--onDark focus-on-dark" onClick={closeMobile}>
+                문의하기
+              </Link>
+            </div>
           </nav>
         </div>
       )}
