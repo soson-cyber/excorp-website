@@ -65,36 +65,39 @@ export default function SupportPage() {
       />
 
       {/* §01 Quick Access */}
-      <section className="container-ex py-section">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {quickAccess.map((q) => (
-            <Link
-              key={q.t}
-              href={q.href}
-              className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
-            >
-              <h3 className="text-lg font-semibold">{q.t}</h3>
-              <p className="mt-2 text-sm text-muted">{q.d}</p>
-              <span className="mt-4 inline-block text-sm font-medium text-lav transition-transform group-hover:translate-x-1">
-                바로가기 →
-              </span>
-            </Link>
-          ))}
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {quickAccess.map((q) => (
+              <Link key={q.t} href={q.href} className="card group" style={{ padding: 24 }}>
+                <h3 className="text-lg font-semibold text-fg">{q.t}</h3>
+                <p className="mt-2 text-sm text-muted">{q.d}</p>
+                <span className="arrowlink mt-4 inline-flex">
+                  바로가기{" "}
+                  <span className="ar" aria-hidden="true">
+                    →
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* §02 FAQ */}
-      <section id="faq" className="bg-surface">
-        <div className="container-ex py-section">
+      <section id="faq" className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="01">FAQ</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">자주 묻는 질문</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            자주 묻는 질문
+          </h2>
           <div className="mt-12 max-w-3xl space-y-10">
             {faqGroups.map((g) => (
               <div key={g.cat}>
                 <h3 className="font-mono text-xs uppercase tracking-wider text-lav">{g.cat}</h3>
-                <div className="mt-4 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-                  {g.items.map((it) => (
-                    <details key={it.q} className="group p-6">
+                <div className="card mt-4" style={{ overflow: "hidden", padding: 0 }}>
+                  {g.items.map((it, i) => (
+                    <details key={it.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
                         {it.q}
                         <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
@@ -110,57 +113,56 @@ export default function SupportPage() {
       </section>
 
       {/* §03 Technical Support */}
-      <section id="tech" className="container-ex py-section">
-        <div className="grid items-stretch gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-card p-8">
-            <SectionLabel index="02">Technical Support</SectionLabel>
-            <h3 className="mt-5 text-2xl font-bold">지원 범위 &amp; 방법</h3>
-            <ul className="mt-5 space-y-2.5 text-sm text-muted">
-              <li>• 원격 진단 및 시스템 점검</li>
-              <li>• 현장 출동 기술 지원</li>
-              <li>• 정기 업데이트 및 운영 컨설팅</li>
-              <li>• 캘리브레이션·연동 트러블슈팅</li>
-            </ul>
-          </div>
-          <div className="flex flex-col justify-center rounded-2xl border border-accent/40 bg-surface p-8">
-            <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-accent">
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
-              긴급 기술 지원
-            </span>
-            <p className="mt-4 text-2xl font-bold">
-              <a
-                href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`}
-                className="inline-flex items-center gap-2.5 transition-colors hover:text-accent"
-              >
-                <Icon name="phone" className="h-6 w-6 text-accent" aria-hidden="true" />
-                <span className="sr-only">Phone</span>
-                {site.contact.tel}
-              </a>
-            </p>
-            <p className="mt-2 text-sm text-muted">
-              <a
-                href={`mailto:${site.contact.email}`}
-                className="inline-flex items-center gap-2 transition-colors hover:text-lav"
-              >
-                <Icon name="mail" className="h-4 w-4" aria-hidden="true" />
-                <span className="sr-only">Email</span>
-                {site.contact.email}
-              </a>
-            </p>
+      <section id="tech" className="section section--white">
+        <div className="container-ex">
+          <div className="grid items-stretch gap-5 lg:grid-cols-2">
+            <div className="card" style={{ padding: 32 }}>
+              <SectionLabel index="02">Technical Support</SectionLabel>
+              <h3 className="mt-5 text-2xl font-bold text-fg">지원 범위 &amp; 방법</h3>
+              <ul className="mt-5 space-y-2.5 text-sm text-muted">
+                <li>• 원격 진단 및 시스템 점검</li>
+                <li>• 현장 출동 기술 지원</li>
+                <li>• 정기 업데이트 및 운영 컨설팅</li>
+                <li>• 캘리브레이션·연동 트러블슈팅</li>
+              </ul>
+            </div>
+            <div className="card flex flex-col justify-center" style={{ padding: 32, borderColor: "rgba(210,6,238,.4)" }}>
+              <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-accent">
+                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
+                긴급 기술 지원
+              </span>
+              <p className="mt-4 text-2xl font-bold text-fg">
+                <a href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} className="inline-flex items-center gap-2.5 transition-colors hover:text-accent">
+                  <Icon name="phone" className="h-6 w-6 text-accent" aria-hidden="true" />
+                  <span className="sr-only">Phone</span>
+                  {site.contact.tel}
+                </a>
+              </p>
+              <p className="mt-2 text-sm text-muted">
+                <a href={`mailto:${site.contact.email}`} className="inline-flex items-center gap-2 transition-colors hover:text-lav">
+                  <Icon name="mail" className="h-4 w-4" aria-hidden="true" />
+                  <span className="sr-only">Email</span>
+                  {site.contact.email}
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* §04 Downloads */}
-      <section id="downloads" className="bg-surface">
-        <div className="container-ex py-section">
+      <section id="downloads" className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="03">Downloads</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">자료실</h2>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
-            {downloads.map((d) => (
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            자료실
+          </h2>
+          <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
+            {downloads.map((d, i) => (
               <div
                 key={d.name}
-                className="flex items-center justify-between gap-4 border-b border-border p-6 last:border-0 md:px-8"
+                className="flex items-center justify-between gap-4 p-6 md:px-8"
+                style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
               >
                 <span className="text-sm font-medium text-fg">
                   {d.name} <span className="font-mono text-xs text-faint">· {d.fmt}</span>
@@ -170,26 +172,34 @@ export default function SupportPage() {
             ))}
           </div>
           <p className="mt-4 text-sm text-muted">
-            자료가 필요하시면 <Link href="/contact" className="text-lav hover:underline">문의</Link>로 요청해 주세요.
+            자료가 필요하시면{" "}
+            <Link href="/contact" className="text-lav hover:underline">
+              문의
+            </Link>
+            로 요청해 주세요.
           </p>
         </div>
       </section>
 
       {/* §05 Quick Inquiry */}
-      <section className="container-ex py-section">
-        <SectionLabel index="04">Quick Inquiry</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">무엇을 도와드릴까요?</h2>
-        <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
-          {inquiryTypes.map((t) => (
-            <span key={t} className="rounded-full border border-border bg-card px-4 py-2 text-sm text-fg">
-              {t}
-            </span>
-          ))}
-        </div>
-        <div className="mt-8">
-          <Button href="/contact" variant="accent">
-            문의하기 →
-          </Button>
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="04">Quick Inquiry</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            무엇을 도와드릴까요?
+          </h2>
+          <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
+            {inquiryTypes.map((t) => (
+              <span key={t} className="rounded-full border border-border bg-card px-4 py-2 text-sm text-fg">
+                {t}
+              </span>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Button href="/contact" variant="accent">
+              문의하기 →
+            </Button>
+          </div>
         </div>
       </section>
 

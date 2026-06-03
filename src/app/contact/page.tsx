@@ -29,24 +29,25 @@ export default function ContactPage() {
         lead="문의를 남겨주시면 담당자가 영업일 기준 1~2일 내에 회신드립니다."
       />
 
-      <section className="container-ex py-section">
-        <SectionLabel index="01">Inquiry Type</SectionLabel>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {inquiries.map((q) => (
-            <div key={q.tag} className="rounded-2xl border border-border bg-card p-6">
-              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">
-                {q.tag}
-              </span>
-              <h3 className="mt-3 text-lg font-semibold">{q.title}</h3>
-              <p className="mt-2 text-sm text-muted">{q.desc}</p>
-            </div>
-          ))}
+      {/* §01 Inquiry Type */}
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <SectionLabel index="01">Inquiry Type</SectionLabel>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {inquiries.map((q) => (
+              <div key={q.tag} className="card" style={{ padding: 24 }}>
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">{q.tag}</span>
+                <h3 className="mt-3 text-lg font-semibold text-fg">{q.title}</h3>
+                <p className="mt-2 text-sm text-muted">{q.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="bg-surface">
-        <div className="container-ex grid gap-12 py-section lg:grid-cols-2">
-          {/* Form skeleton */}
+      {/* §02 Form + channels */}
+      <section className="section section--surface">
+        <div className="container-ex grid gap-12 lg:grid-cols-2">
           <div>
             <SectionLabel index="02">Send a Message</SectionLabel>
             <div className="mt-8">
@@ -54,32 +55,28 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Locations & channels */}
           <div>
             <SectionLabel index="03">Visit / Reach</SectionLabel>
-            <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border">
-              <div className="bg-surface p-5">
+            <div className="mt-8 grid grid-cols-2 gap-4">
+              <div className="card" style={{ padding: 20 }}>
                 <dt className="flex items-center gap-2 text-muted">
                   <Icon name="phone" className="h-4 w-4" aria-hidden="true" />
                   <span className="font-mono text-xs uppercase tracking-wider text-faint">Phone</span>
                 </dt>
                 <dd className="mt-1.5 text-sm font-medium text-fg">
-                  <a
-                    href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`}
-                    className="transition-colors hover:text-lav"
-                  >
+                  <a href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} className="transition-colors hover:text-lav">
                     {site.contact.tel}
                   </a>
                 </dd>
               </div>
-              <div className="bg-surface p-5">
+              <div className="card" style={{ padding: 20 }}>
                 <dt className="flex items-center gap-2 text-muted">
                   <Icon name="fax" className="h-4 w-4" aria-hidden="true" />
                   <span className="font-mono text-xs uppercase tracking-wider text-faint">Fax</span>
                 </dt>
                 <dd className="mt-1.5 text-sm font-medium text-fg">{site.contact.fax}</dd>
               </div>
-              <div className="col-span-2 bg-surface p-5">
+              <div className="card col-span-2" style={{ padding: 20 }}>
                 <dt className="flex items-center gap-2 text-muted">
                   <Icon name="mail" className="h-4 w-4" aria-hidden="true" />
                   <span className="font-mono text-xs uppercase tracking-wider text-faint">Email</span>
@@ -90,13 +87,11 @@ export default function ContactPage() {
                   </a>
                 </dd>
               </div>
-            </dl>
-            <div className="mt-6 space-y-6">
+            </div>
+            <div className="mt-6 space-y-5">
               {locations.map((loc) => (
-                <div key={loc.kind} className="rounded-2xl border border-border bg-card p-6">
-                  <span className="font-mono text-xs uppercase tracking-wider text-lav">
-                    {loc.kind}
-                  </span>
+                <div key={loc.kind} className="card" style={{ padding: 24 }}>
+                  <span className="font-mono text-xs uppercase tracking-wider text-lav">{loc.kind}</span>
                   <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
                   <p className="flex items-start gap-2 text-sm text-muted">
                     <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-faint" aria-hidden="true" />
@@ -108,33 +103,15 @@ export default function ContactPage() {
                 </div>
               ))}
               <div className="flex gap-5 text-muted">
-                <a
-                  href={site.social.instagram}
-                  className="transition-colors hover:text-lav"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Instagram"
-                >
+                <a href={site.social.instagram} className="transition-colors hover:text-lav" target="_blank" rel="noreferrer" aria-label="Instagram">
                   <Icon name="instagram" />
                   <span className="sr-only">Instagram</span>
                 </a>
-                <a
-                  href={site.social.linkedin}
-                  className="transition-colors hover:text-lav"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                >
+                <a href={site.social.linkedin} className="transition-colors hover:text-lav" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <Icon name="linkedin" />
                   <span className="sr-only">LinkedIn</span>
                 </a>
-                <a
-                  href={site.social.youtube}
-                  className="transition-colors hover:text-lav"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="YouTube"
-                >
+                <a href={site.social.youtube} className="transition-colors hover:text-lav" target="_blank" rel="noreferrer" aria-label="YouTube">
                   <Icon name="youtube" />
                   <span className="sr-only">YouTube</span>
                 </a>

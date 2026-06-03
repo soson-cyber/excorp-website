@@ -65,34 +65,39 @@ export default function ProductPage() {
         lead="도입 컨설팅부터 셋업·교육·기술 지원까지, EX가 공식 리셀러·총판으로서 전 과정을 지원합니다."
       />
 
-      {/* §01 Why EX as partner */}
-      <section className="container-ex py-section">
-        <SectionLabel index="01">Why EX</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 EX를 통해 도입하나요</h2>
-        <div className="mt-12 grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
-          {whyEx.map((c, i) => (
-            <div key={c.t} className="flex gap-5 border-t border-border pt-6">
-              <span className="font-mono text-2xl font-bold text-faint">0{i + 1}</span>
-              <div>
-                <h3 className="text-lg font-semibold">{c.t}</h3>
+      {/* §01 Why EX */}
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <SectionLabel index="01">Why EX</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            왜 EX를 통해 도입하나요
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {whyEx.map((c, i) => (
+              <div key={c.t} className="card" style={{ padding: 24 }}>
+                <span className="font-mono text-2xl font-bold text-faint tabular-nums">0{i + 1}</span>
+                <h3 className="mt-3 text-lg font-semibold text-fg">{c.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* §02 Lineup (directory rows) */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      {/* §02 Lineup */}
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="02">Lineup</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제품 라인업</h2>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
-            {lineup.map((p) => (
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            제품 라인업
+          </h2>
+          <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
+            {lineup.map((p, i) => (
               <Link
                 key={p.title}
                 href={p.href}
-                className="group flex flex-col gap-3 border-b border-border p-6 transition-colors last:border-0 hover:bg-surface-2 md:flex-row md:items-center md:gap-8 md:px-8"
+                className="group flex flex-col gap-3 p-6 transition-colors hover:bg-surface-2 md:flex-row md:items-center md:gap-8 md:px-8"
+                style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
               >
                 <span className="w-44 shrink-0">
                   <span className="rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
@@ -100,14 +105,17 @@ export default function ProductPage() {
                   </span>
                 </span>
                 <span className="flex-1">
-                  <span className="block text-xl font-semibold">{p.title}</span>
+                  <span className="block text-xl font-semibold text-fg">{p.title}</span>
                   <span className="mt-1 block text-sm text-muted">{p.copy}</span>
                 </span>
                 <span className="hidden shrink-0 font-mono text-xs uppercase tracking-wider text-faint lg:block">
                   {p.meta}
                 </span>
-                <span className="shrink-0 font-medium text-lav transition-transform group-hover:translate-x-1">
-                  Discover →
+                <span className="arrowlink shrink-0">
+                  Discover{" "}
+                  <span className="ar" aria-hidden="true">
+                    →
+                  </span>
                 </span>
               </Link>
             ))}
@@ -115,28 +123,32 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* §03 Compare matrix */}
-      <section className="container-ex py-section">
-        <SectionLabel index="03">Compare</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">한눈에 비교</h2>
-        <div className="mt-12">
-          <CompareTable columns={lineup.map((p) => p.title)} rows={compare} />
+      {/* §03 Compare */}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="03">Compare</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            한눈에 비교
+          </h2>
+          <div className="mt-12">
+            <CompareTable columns={lineup.map((p) => p.title)} rows={compare} />
+          </div>
         </div>
       </section>
 
-      {/* §04 Certifications strip */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      {/* §04 Authorisation */}
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <SectionLabel index="04">Authorisation</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">공식 총판·리셀러 인증</h2>
-          <p className="mt-4 text-muted">공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다.</p>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            공식 총판·리셀러 인증
+          </h2>
+          <p className="lead" style={{ maxWidth: "40rem" }}>
+            공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다.
+          </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {certs.map((c) => (
-              <Link
-                key={c.name}
-                href={c.href}
-                className="group overflow-hidden rounded-2xl border border-border transition-colors hover:border-primary/50"
-              >
+              <Link key={c.name} href={c.href} className="card group" style={{ overflow: "hidden", padding: 0 }}>
                 <Image src={c.src} alt={c.name} width={957} height={700} className="h-auto w-full" />
               </Link>
             ))}

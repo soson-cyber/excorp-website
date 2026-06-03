@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Poppins, Noto_Sans_KR, Geist_Mono } from "next/font/google";
+import { Poppins, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -18,12 +18,6 @@ const notoSansKr = Noto_Sans_KR({
   variable: "--font-noto-kr",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -65,7 +59,7 @@ export default function RootLayout({
       lang="ko"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${poppins.variable} ${notoSansKr.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${poppins.variable} ${notoSansKr.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-fg">
         {/* Enable scroll-reveal only when motion is allowed (pre-hydration, no-flash, no-JS safe).

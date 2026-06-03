@@ -22,21 +22,9 @@ const quickSpecs = [
 ];
 
 const editions = [
-  {
-    name: "Studio Limited",
-    for: "체험 · 입문",
-    points: ["무료 제공", "워터마크 없음", "NDI 1포트", "기본 카메라 트래킹"],
-  },
-  {
-    name: "Studio",
-    for: "콘텐츠 제작자",
-    points: ["렌탈/구독", "확장 기능", "가상 스튜디오 제작", "유연한 라이선스"],
-  },
-  {
-    name: "Broadcast & Film",
-    for: "전문 스튜디오 (EX 공급)",
-    points: ["최대 8K 실시간", "무제한 SDI/NDI/2110", "Free-D·MOS 프로토콜", "분산 렌더링"],
-  },
+  { name: "Studio Limited", for: "체험 · 입문", points: ["무료 제공", "워터마크 없음", "NDI 1포트", "기본 카메라 트래킹"] },
+  { name: "Studio", for: "콘텐츠 제작자", points: ["렌탈/구독", "확장 기능", "가상 스튜디오 제작", "유연한 라이선스"] },
+  { name: "Broadcast & Film", for: "전문 스튜디오 (EX 공급)", points: ["최대 8K 실시간", "무제한 SDI/NDI/2110", "Free-D·MOS 프로토콜", "분산 렌더링"] },
 ];
 
 const features = [
@@ -90,7 +78,7 @@ export default function AximmetryPage() {
       />
 
       {/* Quick spec bar */}
-      <section className="border-b border-border bg-surface">
+      <section className="section--surface" style={{ borderBottom: "1px solid var(--color-border)" }}>
         <div className="container-ex grid grid-cols-2 gap-6 py-10 lg:grid-cols-4">
           {quickSpecs.map((s) => (
             <div key={s.l} className="text-center">
@@ -103,36 +91,38 @@ export default function AximmetryPage() {
       </section>
 
       {/* Product preview */}
-      <section className="container-ex py-section">
-        <figure className="mx-auto max-w-4xl">
-          <div className="overflow-hidden rounded-2xl border border-border">
-            <Image
-              src="/aximmetry-hero.png"
-              alt="Aximmetry — 크로마키 촬영을 실시간 가상 세트로 합성한 버추얼 프로덕션 예시"
-              width={1140}
-              height={641}
-              priority
-              className="h-auto w-full"
-            />
-          </div>
-          <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-            실시간 크로마키 합성 — Beauty &amp; Joy 가상 세트
-          </figcaption>
-        </figure>
+      <section className="section section--ink">
+        <div className="container-ex">
+          <figure className="mx-auto max-w-4xl">
+            <div className="card" style={{ overflow: "hidden", padding: 0 }}>
+              <Image
+                src="/aximmetry-hero.png"
+                alt="Aximmetry — 크로마키 촬영을 실시간 가상 세트로 합성한 버추얼 프로덕션 예시"
+                width={1140}
+                height={641}
+                priority
+                className="h-auto w-full"
+              />
+            </div>
+            <figcaption className="mt-3 text-center font-mono text-xs text-faint">
+              실시간 크로마키 합성 — Beauty &amp; Joy 가상 세트
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
-      {/* Editions */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
-          <div>
-            <SectionLabel index="01">Editions</SectionLabel>
-            <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">용도에 맞는 에디션을 선택하세요</h2>
-          </div>
+      {/* §01 Editions */}
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
+          <SectionLabel index="01">Editions</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            용도에 맞는 에디션을 선택하세요
+          </h2>
           <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
             {editions.map((e) => (
-              <div key={e.name} className="flex flex-col rounded-2xl border border-border bg-card p-6">
+              <div key={e.name} className="card flex flex-col" style={{ padding: 24 }}>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{e.for}</span>
-                <h3 className="mt-1 text-xl font-semibold">{e.name}</h3>
+                <h3 className="mt-1 text-xl font-semibold text-fg">{e.name}</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted">
                   {e.points.map((p) => (
                     <li key={p}>• {p}</li>
@@ -148,54 +138,60 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="container-ex py-section">
-        <div>
+      {/* §02 Key Features */}
+      <section className="section section--white">
+        <div className="container-ex">
           <SectionLabel index="02">Key Features</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">주요 기능</h2>
-        </div>
-        <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((f) => (
-            <div key={f.t} className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="font-semibold">{f.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
-            </div>
-          ))}
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            주요 기능
+          </h2>
+          <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((f) => (
+              <div key={f.t} className="card" style={{ padding: 24 }}>
+                <h3 className="font-semibold text-fg">{f.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Edition comparison */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
-          <div>
-            <SectionLabel index="03">Compare</SectionLabel>
-            <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">에디션 비교</h2>
-          </div>
+      {/* §03 Compare */}
+      <section className="section section--surface">
+        <div className="container-ex">
+          <SectionLabel index="03">Compare</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            에디션 비교
+          </h2>
           <div className="mt-12">
             <CompareTable columns={editions.map((e) => e.name)} rows={editionMatrix} />
           </div>
         </div>
       </section>
 
-      {/* Broadcast & Film specifications */}
-      <section className="container-ex py-section">
-        <div>
+      {/* §04 Specifications */}
+      <section className="section section--white">
+        <div className="container-ex">
           <SectionLabel index="04">Specifications</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">Broadcast &amp; Film Edition 사양</h2>
-        </div>
-        <div className="mt-12 max-w-3xl">
-          <SpecTable groups={[{ rows: bfSpecs }]} />
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            Broadcast &amp; Film Edition 사양
+          </h2>
+          <div className="mt-12 max-w-3xl">
+            <SpecTable groups={[{ rows: bfSpecs }]} />
+          </div>
         </div>
       </section>
 
-      {/* Use Cases */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      {/* §05 Use Cases */}
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="05">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-5">
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            활용 분야
+          </h2>
+          <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-5">
             {useCases.map((u) => (
-              <div key={u} className="bg-surface p-6 text-center font-medium">
+              <div key={u} className="card text-center font-medium text-fg" style={{ padding: 24 }}>
                 {u}
               </div>
             ))}
@@ -203,37 +199,38 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="container-ex py-section">
-        <div>
+      {/* §06 FAQ */}
+      <section className="section section--white">
+        <div className="container-ex">
           <SectionLabel index="06">FAQ</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 전 자주 묻는 질문</h2>
-        </div>
-        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-          {faqs.map((f) => (
-            <details key={f.q} className="group p-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
-                {f.q}
-                <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
-            </details>
-          ))}
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            도입 전 자주 묻는 질문
+          </h2>
+          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+            {faqs.map((f, i) => (
+              <details key={f.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
+                  {f.q}
+                  <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* EX × Aximmetry */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      {/* §07 EX × Aximmetry */}
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionLabel index="07">EX × Aximmetry</SectionLabel>
-              <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">
-                EX는 Aximmetry <span className="font-semibold text-lav">공식 인증 리셀러</span>입니다.
+              <h2 className="h2" style={{ marginTop: 22 }}>
+                EX는 Aximmetry <span className="text-lav">공식 인증 리셀러</span>입니다.
               </h2>
-              <p className="mt-5 text-pretty text-muted">
-                에디션 선택 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전
-                과정을 지원합니다.
+              <p className="lead" style={{ maxWidth: "36rem" }}>
+                에디션 선택 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전 과정을 지원합니다.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["도입 컨설팅", "셋업", "교육", "유지보수"].map((x) => (
@@ -252,7 +249,7 @@ export default function AximmetryPage() {
               </div>
             </div>
             <figure>
-              <div className="overflow-hidden rounded-2xl border border-border">
+              <div className="card" style={{ overflow: "hidden", padding: 0 }}>
                 <Image
                   src="/cert-aximmetry.png"
                   alt="Aximmetry Certified Reseller 인증서 (Authorization Certificate — EX Corporation)"

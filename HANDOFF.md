@@ -3,7 +3,31 @@
 > 다른 Claude 세션/환경(또는 협업자)이 이 프로젝트를 이어받기 위한 단일 인수인계 문서.
 > 이 파일 + `CLAUDE.md` + `DESIGN.md` + Figma 파일만 있으면 맥락 복원이 가능합니다.
 
-## 0. v3.1 — Wope 그리드·글래스 네브바·콘텐츠/SEO·브랜드 패스 (2026-06, 최신·최우선)
+## 0. v3.2 — 헤더/히어로 폴리시 · 파트너 미디어 카드 · 전 페이지 키트 통일 (2026-06, 최신·최우선)
+
+> §0.v3.1 이후 디자인 폴리시 + **내부 전 페이지를 홈 키트로 통일**.
+
+**헤더 (globals.css `.header*`/`.navbar`/Header.tsx)**
+- 로고 = **EX 큐브 심볼**(`ex-cube.png`, 60px, `alt=""`+링크 aria-label). 상단 패딩 `10px`.
+- 메뉴 **박스(글래스 pill) 제거** → 텍스트가 바 위에 직접. 스크롤 시 `.header--solid` **불투명**(`rgba(14,6,38,.92)`+blur14 + 다크 섀도, **흰 헤어라인 제거**).
+- 메가메뉴 → **심플 드롭다운**(`.dropdown`/`.dropdown__panel`/`__row`, hover 브리지 `padding-top`). 기존 `.mega*` CSS·`featured` 사용 안 함(site.ts featured 데이터는 잔존, 무해).
+
+**히어로 (Hero.tsx)**
+- pill 제거, 트러스트 텍스트 제거, 리드="이엑스는 …하나의 흐름으로 연결합니다", 흰 CTA→**퍼플**(`.btn--onDark`), 글래스 CTA=외곽 흰 라인+엣지 글로우링+안쪽 투명.
+- 콘솔: 멀티캠 **CAM01→CAM02→CAM03→PGM** 순, **PGM 기본 선택**, 이미지 `next/image` 전환(webp), **8초 자동 순환 + 1초 디졸브**(stacked feeds opacity, reduced-motion/hidden 정지).
+
+**홈 (HomeClean.tsx)**
+- §01 중앙정렬+제목 줄바꿈+대칭 3카드(번호 단색 violet), §02 CORE SOLUTION **삭제**, FAQ **삭제**, 최종 CTA **핑크**(`.btn--pink`).
+- §03 파트너 bento 3카드에 **배경 이미지+스크림**(`card--media`/`.pcard-bg`/`.pcard-scrim`): `aximmetry-vp.jpg`·`moverse-mocap.jpg`·`retracker-tracking.jpg`.
+- CASE 실사 `exlink-control-room.jpg`(16:9), §04 `xr-studio.jpg`(16:9, Hero studio.png와 분리).
+
+**전 내부 페이지 키트 통일** (Solution/Product 인덱스·솔루션2·제품3·xr-studio·work(+slug)·about·news·careers·contact·support)
+- `PageHero` + Tailwind 에디토리얼 → **`.section section--ink/surface/white` 톤 교차 + `.section--glow` + `.h2`/`.lead` + 더블베젤 `.card` + `.arrowlink`**.
+- 기능 컴포넌트(SpecTable·CompareTable·StudioMenu·StudioOptions·ContactForm·NewsList·WorkGallery·Gauge·MediaBlank)·정직성 표기 보존. **빌드 32p ✓ / ESLint 0**.
+
+**성능/정리**: 콘솔 이미지 next/image webp, `next.config` `images.formats:['avif','webp']`, Geist_Mono 제거, 데드 CSS(`.hero-pill*`·`.hero-trust` 등) 제거, Header set-state-in-effect 수정.
+
+## 0. v3.1 — Wope 그리드·글래스 네브바·콘텐츠/SEO·브랜드 패스 (2026-06)
 
 > §0(다크 전환) **이후**의 변경. three.js **완전 제거**, 히어로 그리드는 정적 CSS 퍼스펙티브로, 네브바는 글래스 필+셰브론으로, 박스 회전보더는 버튼 conic 글로우-라인으로 이전. 콘텐츠/SEO 딥 패스 + 브랜드 감사 완료. 단일 기준은 `globals.css`·`DESIGN.md §0`.
 

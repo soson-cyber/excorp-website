@@ -42,102 +42,110 @@ export default function SolutionPage() {
       />
 
       {/* §01 Approach */}
-      <section className="container-ex py-section">
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div>
-            <SectionLabel index="01">Approach</SectionLabel>
-            <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">
-              자체 기술과 글로벌 파트너, 양손 전략으로 모든 현장에 대응합니다.
-            </h2>
-            <p className="mt-5 text-pretty text-muted">
-              EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한
-              모든 자산을 보유하고 있습니다. 어떤 환경의 XR이라도 EX와 함께 시작할 수 있습니다.
-            </p>
-          </div>
-          <dl className="grid grid-cols-2 gap-px self-center overflow-hidden rounded-2xl border border-border bg-border">
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <SectionLabel index="01">Approach</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem" }}>
+            자체 기술과 글로벌 파트너, 양손 전략으로 모든 현장에 대응합니다.
+          </h2>
+          <p className="lead" style={{ maxWidth: "42rem" }}>
+            EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한 모든
+            자산을 보유하고 있습니다. 어떤 환경의 XR이라도 EX와 함께 시작할 수 있습니다.
+          </p>
+          <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {approach.map((a) => (
-              <div key={a.k} className="bg-surface p-6">
-                <dt className="font-mono text-xs uppercase tracking-wider text-lav">{a.k}</dt>
-                <dd className="mt-1.5 text-sm font-medium text-fg">{a.v}</dd>
+              <div key={a.k} className="card" style={{ padding: 22 }}>
+                <span className="cap" style={{ color: "var(--color-lav)" }}>
+                  {a.k}
+                </span>
+                <p className="mt-2 text-base font-semibold text-fg">{a.v}</p>
               </div>
             ))}
-          </dl>
+          </div>
         </div>
       </section>
 
-      {/* §02 Two Routes (asymmetric) */}
-      <section className="bg-surface">
-        <div className="container-ex py-section-lg">
+      {/* §02 Two Routes */}
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="02">Two Routes</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-4xl font-semibold leading-snug md:text-5xl">
+          <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem" }}>
             자체 솔루션과 방법론, 두 갈래로 시작합니다.
           </h2>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             <Link
               href="/solution/xr-solution"
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-primary/40 bg-surface p-8 transition-colors hover:border-primary lg:col-span-2"
+              className="card group relative flex flex-col justify-between lg:col-span-2"
+              style={{ padding: 32 }}
             >
-              <div className="relative">
+              <div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-lav">
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
                   EX Original
                 </span>
-                <h3 className="mt-5 text-3xl font-bold">
+                <h3 className="mt-5 text-3xl font-bold text-fg">
                   XR Solution <span className="text-lav">EXLINK</span>
                 </h3>
                 <p className="mt-4 max-w-xl text-muted">
-                  카메라·트래커·모션센서·네트워크·미디어서버를 하나의 제어 흐름으로 묶는 EX 자체 개발 통합 XR 솔루션. 운영자 1인 중심으로 운용합니다.
+                  카메라·트래커·모션센서·네트워크·미디어서버를 하나의 제어 흐름으로 묶는 EX 자체 개발 통합 XR
+                  솔루션. 운영자 1인 중심으로 운용합니다.
                 </p>
               </div>
-              <span className="relative mt-8 font-medium text-lav transition-transform group-hover:translate-x-1">
-                EXLINK 자세히 보기 →
+              <span className="arrowlink arrowlink--accent" style={{ marginTop: 32 }}>
+                EXLINK 자세히 보기{" "}
+                <span className="ar" aria-hidden="true">
+                  →
+                </span>
               </span>
             </Link>
-            <Link
-              href="/solution/virtual-production"
-              className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-8 transition-colors hover:border-primary/50"
-            >
+            <Link href="/solution/virtual-production" className="card group flex flex-col justify-between" style={{ padding: 32 }}>
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">
-                  Methodology
-                </span>
-                <h3 className="mt-3 text-2xl font-semibold">Virtual Production</h3>
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">Methodology</span>
+                <h3 className="mt-3 text-2xl font-semibold text-fg">Virtual Production</h3>
                 <p className="mt-3 text-muted">
                   촬영·합성·연출이 동시에 일어나는 영상 제작 기법. 크로마키·실시간 XR 트래킹·AR·ICVFX·LED Wall.
                 </p>
               </div>
-              <span className="mt-8 font-medium text-lav transition-transform group-hover:translate-x-1">
-                제작 방식 알아보기 →
+              <span className="arrowlink" style={{ marginTop: 32 }}>
+                제작 방식 알아보기{" "}
+                <span className="ar" aria-hidden="true">
+                  →
+                </span>
               </span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* §03 Capability Matrix (directory rows) */}
-      <section className="container-ex py-section">
-        <SectionLabel index="03">Capability</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 전 단계를 커버합니다</h2>
-        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
-          {capability.map((c) => (
-            <div
-              key={c.step}
-              className="flex flex-col gap-1 border-b border-border p-6 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:px-8"
-            >
-              <span className="text-lg font-semibold">{c.step}</span>
-              <span className="font-mono text-xs uppercase tracking-wider text-muted">{c.tech}</span>
-            </div>
-          ))}
+      {/* §03 Capability */}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="03">Capability</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            제작 전 단계를 커버합니다
+          </h2>
+          <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
+            {capability.map((c, i) => (
+              <div
+                key={c.step}
+                className="flex flex-col gap-1 p-6 sm:flex-row sm:items-center sm:justify-between sm:px-8"
+                style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
+              >
+                <span className="text-lg font-semibold text-fg">{c.step}</span>
+                <span className="font-mono text-xs uppercase tracking-wider text-muted">{c.tech}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* §04 Proof */}
-      <section className="bg-surface">
-        <div className="container-ex py-section-sm">
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {proof.map((p) => (
               <div key={p.l} className="text-center">
-                <p className="font-mono text-4xl font-bold text-lav">{p.n}</p>
+                <p className="font-mono text-4xl font-bold text-lav tabular-nums md:text-5xl">{p.n}</p>
                 <p className="mt-2 text-sm text-muted">{p.l}</p>
               </div>
             ))}

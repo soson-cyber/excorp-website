@@ -21,21 +21,9 @@ const quickSpecs = [
 ];
 
 const system = [
-  {
-    name: "Moverse AI Software",
-    role: "Software",
-    desc: "AI 비전으로 스켈레톤을 추출하고 모션 데이터로 변환하는 엔진. 클라우드 통신을 전면 차단한 100% 로컬 연산(On-Premise) 방식.",
-  },
-  {
-    name: "Luxonis OAK-D W PoE",
-    role: "AI Depth Camera",
-    desc: "150° 초광각 산업용 AI 뎁스 카메라. 4 TOPS 온디바이스 연산과 IP65 방수·방진으로 4~16대까지 확장합니다.",
-  },
-  {
-    name: "AI 연산 서버 · PoE 허브",
-    role: "Compute & Network",
-    desc: "다중 카메라 비전 데이터를 취합해 3D 좌표를 병합 연산하는 로컬 서버와, 전원·데이터를 함께 공급하는 기가비트 PoE+ 스위치 허브.",
-  },
+  { name: "Moverse AI Software", role: "Software", desc: "AI 비전으로 스켈레톤을 추출하고 모션 데이터로 변환하는 엔진. 클라우드 통신을 전면 차단한 100% 로컬 연산(On-Premise) 방식." },
+  { name: "Luxonis OAK-D W PoE", role: "AI Depth Camera", desc: "150° 초광각 산업용 AI 뎁스 카메라. 4 TOPS 온디바이스 연산과 IP65 방수·방진으로 4~16대까지 확장합니다." },
+  { name: "AI 연산 서버 · PoE 허브", role: "Compute & Network", desc: "다중 카메라 비전 데이터를 취합해 3D 좌표를 병합 연산하는 로컬 서버와, 전원·데이터를 함께 공급하는 기가비트 PoE+ 스위치 허브." },
 ];
 
 const features = [
@@ -103,7 +91,7 @@ export default function MoversePage() {
       />
 
       {/* Quick spec bar */}
-      <section className="border-b border-border bg-surface">
+      <section className="section--surface" style={{ borderBottom: "1px solid var(--color-border)" }}>
         <div className="container-ex grid grid-cols-2 gap-6 py-10 lg:grid-cols-4">
           {quickSpecs.map((s) => (
             <div key={s.l} className="text-center">
@@ -115,34 +103,36 @@ export default function MoversePage() {
         </div>
       </section>
 
-      {/* System */}
-      <section className="container-ex py-section">
-        <div>
+      {/* §01 System */}
+      <section className="section section--white section--glow">
+        <div className="container-ex">
           <SectionLabel index="01">System</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">구성</h2>
-        </div>
-        <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
-          {system.map((s) => (
-            <div key={s.name} className="rounded-2xl border border-border bg-card p-7">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{s.role}</span>
-              <h3 className="mt-1 text-xl font-semibold">{s.name}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{s.desc}</p>
-            </div>
-          ))}
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            구성
+          </h2>
+          <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+            {system.map((s) => (
+              <div key={s.name} className="card" style={{ padding: 28 }}>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{s.role}</span>
+                <h3 className="mt-1 text-xl font-semibold text-fg">{s.name}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
-          <div>
-            <SectionLabel index="02">Key Features</SectionLabel>
-            <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">주요 기능</h2>
-          </div>
+      {/* §02 Key Features */}
+      <section className="section section--surface">
+        <div className="container-ex">
+          <SectionLabel index="02">Key Features</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            주요 기능
+          </h2>
           <div className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <div key={f.t} className="rounded-2xl border border-border bg-card p-6">
-                <h3 className="font-semibold">{f.t}</h3>
+              <div key={f.t} className="card" style={{ padding: 24 }}>
+                <h3 className="font-semibold text-fg">{f.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
               </div>
             ))}
@@ -150,25 +140,29 @@ export default function MoversePage() {
         </div>
       </section>
 
-      {/* Specifications */}
-      <section className="container-ex py-section">
-        <div>
+      {/* §03 Specifications */}
+      <section className="section section--white">
+        <div className="container-ex">
           <SectionLabel index="03">Specifications</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">상세 사양</h2>
-        </div>
-        <div className="mt-12 max-w-3xl">
-          <SpecTable groups={specGroups} />
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            상세 사양
+          </h2>
+          <div className="mt-12 max-w-3xl">
+            <SpecTable groups={specGroups} />
+          </div>
         </div>
       </section>
 
-      {/* Use Cases */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      {/* §04 Use Cases */}
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="04">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-5">
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            활용 분야
+          </h2>
+          <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-5">
             {useCases.map((u) => (
-              <div key={u} className="bg-surface p-6 text-center font-medium">
+              <div key={u} className="card text-center font-medium text-fg" style={{ padding: 24 }}>
                 {u}
               </div>
             ))}
@@ -176,37 +170,38 @@ export default function MoversePage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="container-ex py-section">
-        <div>
+      {/* §05 FAQ */}
+      <section className="section section--white">
+        <div className="container-ex">
           <SectionLabel index="05">FAQ</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 전 자주 묻는 질문</h2>
-        </div>
-        <div className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-          {faqs.map((f) => (
-            <details key={f.q} className="group p-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
-                {f.q}
-                <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
-            </details>
-          ))}
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            도입 전 자주 묻는 질문
+          </h2>
+          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+            {faqs.map((f, i) => (
+              <details key={f.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
+                  {f.q}
+                  <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* EX × Moverse — official distributor + certificate */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      {/* §06 EX × Moverse */}
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionLabel index="06">EX × Moverse</SectionLabel>
-              <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">
-                EX는 Moverse의 <span className="font-semibold text-lav">공식 한국 총판</span>입니다.
+              <h2 className="h2" style={{ marginTop: 22 }}>
+                EX는 Moverse의 <span className="text-lav">공식 한국 총판</span>입니다.
               </h2>
-              <p className="mt-5 text-pretty text-muted">
-                하드웨어·소프트웨어 공급은 물론, 시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키로
-                국내 도입 전 과정을 책임집니다.
+              <p className="lead" style={{ maxWidth: "36rem" }}>
+                하드웨어·소프트웨어 공급은 물론, 시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키로 국내 도입 전 과정을 책임집니다.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["도입 컨설팅", "시스템 셋업", "보안 세팅", "교육·기술 지원"].map((x) => (
@@ -225,7 +220,7 @@ export default function MoversePage() {
               </div>
             </div>
             <figure>
-              <div className="overflow-hidden rounded-2xl border border-border">
+              <div className="card" style={{ overflow: "hidden", padding: 0 }}>
                 <Image
                   src="/cert-moverse.png"
                   alt="Moverse Capture 공식 한국 총판 인증서 (Certificate of Excellence — EX Corporation)"

@@ -46,48 +46,43 @@ export default async function WorkDetailPage({
       />
 
       {/* meta + hero image */}
-      <section className="container-ex py-section">
-        <div className="flex flex-wrap gap-x-10 gap-y-4 border-y border-border py-5">
-          {[
-            ["분야", w.sector],
-            ["콘텐츠 형태", w.format],
-            ["사용 솔루션", w.stack.join(" · ")],
-          ].map(([k, v]) => (
-            <div key={k}>
-              <dt className="font-mono text-[10px] uppercase tracking-wider text-faint">{k}</dt>
-              <dd className="mt-1 text-sm font-medium text-fg">{v}</dd>
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <div className="flex flex-wrap gap-x-10 gap-y-4 border-y border-border py-5">
+            {[
+              ["분야", w.sector],
+              ["콘텐츠 형태", w.format],
+              ["사용 솔루션", w.stack.join(" · ")],
+            ].map(([k, v]) => (
+              <div key={k}>
+                <dt className="font-mono text-[10px] uppercase tracking-wider text-faint">{k}</dt>
+                <dd className="mt-1 text-sm font-medium text-fg">{v}</dd>
+              </div>
+            ))}
+            <div className="ml-auto self-center">
+              <span className="rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
+                활용 시나리오
+              </span>
             </div>
-          ))}
-          <div className="ml-auto self-center">
-            <span className="rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
-              활용 시나리오
-            </span>
           </div>
-        </div>
 
-        <div className="mt-8 overflow-hidden rounded-2xl border border-border">
-          <Image
-            src={w.image}
-            alt={w.title}
-            width={1366}
-            height={769}
-            priority
-            className="h-auto w-full"
-          />
+          <div className="card mt-8" style={{ overflow: "hidden", padding: 0 }}>
+            <Image src={w.image} alt={w.title} width={1366} height={769} priority className="h-auto w-full" />
+          </div>
         </div>
       </section>
 
-      {/* challenge / solution / result */}
-      <section className="bg-surface">
-        <div className="container-ex grid gap-12 py-section lg:grid-cols-2">
+      {/* challenge / solution */}
+      <section className="section section--surface">
+        <div className="container-ex grid gap-12 lg:grid-cols-2">
           <div>
             <SectionLabel index="01">Challenge</SectionLabel>
-            <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">과제</h2>
+            <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">과제</h2>
             <p className="mt-5 leading-relaxed text-muted">{w.challenge}</p>
           </div>
           <div>
             <SectionLabel index="02">Solution</SectionLabel>
-            <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">EX의 해결</h2>
+            <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">EX의 해결</h2>
             <ul className="mt-5 space-y-3">
               {w.solution.map((s) => (
                 <li key={s} className="flex gap-3 text-fg">
@@ -101,34 +96,32 @@ export default async function WorkDetailPage({
       </section>
 
       {/* result */}
-      <section className="container-ex py-section">
-        <SectionLabel index="03">Result</SectionLabel>
-        <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">기대 효과</h2>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {w.result.map((r) => (
-            <div key={r.l} className="rounded-2xl border border-border bg-card p-7">
-              <p className="font-mono text-4xl font-bold text-gradient-ex-bright">{r.v}</p>
-              <p className="mt-2 text-sm text-muted">{r.l}</p>
-            </div>
-          ))}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="03">Result</SectionLabel>
+          <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">기대 효과</h2>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {w.result.map((r) => (
+              <div key={r.l} className="card" style={{ padding: 28 }}>
+                <p className="font-mono text-4xl font-bold text-gradient-ex-bright">{r.v}</p>
+                <p className="mt-2 text-sm text-muted">{r.l}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-xs leading-relaxed text-faint">
+            ※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
+          </p>
         </div>
-        <p className="mt-6 text-xs leading-relaxed text-faint">
-          ※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
-        </p>
       </section>
 
       {/* other work */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <SectionLabel index="04">More Work</SectionLabel>
-          <h2 className="mt-5 text-balance text-2xl font-bold md:text-3xl">다른 활용 시나리오</h2>
+          <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">다른 활용 시나리오</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-3">
             {others.map((o) => (
-              <Link
-                key={o.slug}
-                href={`/work/${o.slug}`}
-                className="group overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/50"
-              >
+              <Link key={o.slug} href={`/work/${o.slug}`} className="card group" style={{ overflow: "hidden", padding: 0 }}>
                 <div className="relative aspect-video overflow-hidden">
                   <Image
                     src={o.image}

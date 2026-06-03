@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "./Hero";
@@ -12,18 +13,10 @@ const WHAT = [
   { i: "02", tag: "PARTNER", title: "파트너 제품 유통", desc: "Aximmetry · Moverse · RETracker — 검증된 글로벌 XR 장비·SW 공급", href: "/product" },
   { i: "03", tag: "STUDIO", title: "XR 콘텐츠 스튜디오", desc: "IR · 웨비나 · 대담을 실시간 XR로 제작하는 하남 스튜디오", href: "/xr-studio" },
 ];
-const EXLINK_BULLETS = ["멀티캠 · 트래킹 자동 동기화", "가상 배경 · 그래픽 실시간 합성", "라이브 송출 · 동시 녹화", "운영자 1인 중심 워크플로우"];
-const NODES = [
-  { t: "CAPTURE", s: "멀티캠 입력" },
-  { t: "TRACKING", s: "좌표 동기화" },
-  { t: "EXLINK", s: "통합 코어", core: true },
-  { t: "RENDER", s: "실시간 합성" },
-  { t: "BROADCAST", s: "송출 · 녹화" },
-];
-const PARTNERS = [
-  { name: "Aximmetry", role: "RESELLER", desc: "리얼타임 버추얼 프로덕션 소프트웨어", initial: "A", href: "/product/aximmetry" },
-  { name: "Moverse AI", role: "DISTRIBUTOR", desc: "마커리스 AI 모션캡처 시스템", initial: "M", href: "/product/moverse" },
-  { name: "RETracker", role: "DISTRIBUTOR", desc: "정밀 카메라 트래킹 솔루션", initial: "R", href: "/product/retracker" },
+const PARTNERS: { name: string; role: string; desc: string; initial: string; href: string; img?: string; objPos?: string }[] = [
+  { name: "Aximmetry", role: "RESELLER", desc: "리얼타임 버추얼 프로덕션 소프트웨어", initial: "A", href: "/product/aximmetry", img: "/aximmetry-vp.jpg" },
+  { name: "Moverse AI", role: "DISTRIBUTOR", desc: "마커리스 AI 모션캡처 시스템", initial: "M", href: "/product/moverse", img: "/moverse-mocap.jpg" },
+  { name: "RETracker", role: "DISTRIBUTOR", desc: "정밀 카메라 트래킹 솔루션", initial: "R", href: "/product/retracker", img: "/retracker-tracking.jpg" },
 ];
 const STUDIO_BULLETS = ["메뉴형 콘텐츠 제작 — IR · 웨비나 · 대담", "후반 작업 없이 촬영과 동시에 완성", "대형 크로마 · 멀티캠 · XR 트래킹"];
 const STATS = [
@@ -32,42 +25,33 @@ const STATS = [
   { v: 3, s: "", l: "대학 MOU" },
   { v: 4, s: "", l: "제품 인증" },
 ];
-const FAQS = [
-  {
-    q: "EXLINK은 어떤 솔루션인가요?",
-    a: "촬영 · 트래킹 · 렌더 · 송출을 단일 파이프라인으로 통합한 EX 자체 개발 실시간 XR 솔루션입니다. 분산된 장비와 워크플로우를 하나로 연결해 운영자 1인 중심으로 운용할 수 있습니다.",
-  },
-  {
-    q: "파트너 제품도 EX가 직접 개발하나요?",
-    a: "아닙니다. Aximmetry · Moverse · RETracker는 검증된 글로벌 XR 도구이며, EX는 공식 리셀러 · 총판으로서 도입 · 연결 · 기술지원을 담당합니다. EX의 자체 개발 솔루션은 EXLINK입니다.",
-  },
-  {
-    q: "XR 스튜디오에서는 무엇을 제작하나요?",
-    a: "하남 70㎡ 그린 크로마 스튜디오에서 IR · 웨비나 · 대담을 실시간 XR로 제작합니다. 촬영과 동시에 결과물이 완성되어 긴 후반 작업이 필요 없습니다.",
-  },
-  {
-    q: "도입까지 절차가 어떻게 되나요?",
-    a: "상담 → 요구사항 분석 → 솔루션 · 장비 구성 제안 → 셋업 · 현장 교육 → 운영 지원 순으로 진행합니다. 프로젝트 규모에 맞춰 솔루션 도입 · 제품 공급 · 스튜디오 제작을 조합할 수 있습니다.",
-  },
-  {
-    q: "견적은 어떻게 받나요?",
-    a: "문의하기로 프로젝트 개요를 남겨주시면 담당자가 영업일 기준 1~2일 내 연락드려 상세 견적과 구성안을 안내합니다.",
-  },
-  {
-    q: "데모나 스튜디오 방문이 가능한가요?",
-    a: "네. 솔루션 데모와 하남 XR 스튜디오 현장 확인을 안내해 드립니다. 문의 시 일정과 방식을 함께 조율합니다.",
-  },
-];
 
-function SectionHead({ index, label, title, lead, narrow }: { index: string; label: string; title: string; lead?: string; narrow?: boolean }) {
+function SectionHead({
+  index,
+  label,
+  title,
+  lead,
+  narrow,
+  center,
+}: {
+  index: string;
+  label: string;
+  title: ReactNode;
+  lead?: ReactNode;
+  narrow?: boolean;
+  center?: boolean;
+}) {
   return (
-    <Reveal>
+    <Reveal className={center ? "text-center" : ""}>
       <SectionLabel index={index}>{label}</SectionLabel>
-      <h2 className="h2" style={{ marginTop: 22, maxWidth: narrow ? "48rem" : "none" }}>
+      <h2
+        className="h2"
+        style={{ marginTop: 22, maxWidth: narrow ? "48rem" : "none", marginInline: center ? "auto" : undefined }}
+      >
         {title}
       </h2>
       {lead && (
-        <p className="lead" style={{ maxWidth: "40rem" }}>
+        <p className="lead" style={{ maxWidth: center ? "none" : "40rem", marginInline: center ? "auto" : undefined }}>
           {lead}
         </p>
       )}
@@ -80,17 +64,23 @@ export function HomeClean() {
     <>
       <Hero />
 
-      {/* §01 — What we do (Wope asymmetric research-grid) */}
+      {/* §01 — What we do (centered header + symmetric 3-card grid) */}
       <section className="section section--ink section--glow">
         <div className="container-ex">
           <SectionHead
             index="01"
             label="WHAT WE DO"
-            title="솔루션부터 스튜디오까지, 하나의 흐름으로"
+            title={
+              <>
+                솔루션부터 스튜디오까지,
+                <br />
+                하나의 흐름으로
+              </>
+            }
             lead="EX는 실시간 XR 콘텐츠 제작의 전 과정을 솔루션 · 장비 · 스튜디오로 연결합니다."
-            narrow
+            center
           />
-          <div className="featgrid featgrid--wope">
+          <div className="featgrid">
             {WHAT.map((c, i) => (
               <FeatureCard
                 key={c.i}
@@ -100,66 +90,9 @@ export function HomeClean() {
                 desc={c.desc}
                 href={c.href}
                 delay={i * 90}
-                full={i === WHAT.length - 1}
               />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* §02 — EXLINK core solution */}
-      <section className="section section--white">
-        <div className="container-ex twocol">
-          <Reveal>
-            <SectionLabel index="02">CORE SOLUTION</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22 }}>
-              EXLINK — 흩어진 XR을 하나로 묶다
-            </h2>
-            <p className="lead" style={{ maxWidth: "36rem" }}>
-              촬영 · 트래킹 · 렌더 · 송출을 단일 파이프라인으로 통합한 EX의 자체 개발 솔루션. 분산된 장비와
-              워크플로우를 하나로 연결합니다.
-            </p>
-            <ul className="bullets">
-              {EXLINK_BULLETS.map((b) => (
-                <li key={b}>
-                  <span className="bdot" />
-                  {b}
-                </li>
-              ))}
-            </ul>
-            <Link href="/solution/xr-solution" className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
-              EXLINK 자세히{" "}
-              <span className="ar" aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </Reveal>
-          <Reveal>
-            <div className="card" style={{ padding: 22 }}>
-              <div className="diag-head">
-                <span className="cap">EXLINK ARCHITECTURE</span>
-                <span className="cap" style={{ color: "var(--color-success)", display: "inline-flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-success)" }} />
-                  LIVE
-                </span>
-              </div>
-              <div className="diag-row">
-                {NODES.map((n, i) => (
-                  <div key={n.t} style={{ display: "contents" }}>
-                    <div className={`node${n.core ? " node--core" : ""}`}>
-                      <div className="node-t">{n.t}</div>
-                      <div className="node-s">{n.s}</div>
-                    </div>
-                    {i < NODES.length - 1 && (
-                      <span className="diag-conn" aria-hidden="true">
-                        →
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -167,8 +100,8 @@ export function HomeClean() {
       <section className="section section--surface">
         <div className="container-ex twocol twocol--media">
           <Reveal>
-            <div className="photo" style={{ aspectRatio: "16 / 10" }}>
-              <Image src="/uc-broadcast.png" alt="EXLINK 구축사례 — 실시간 XR 방송 시스템" fill sizes="(min-width:1024px) 55vw, 100vw" className="object-cover" />
+            <div className="photo" style={{ aspectRatio: "16 / 9" }}>
+              <Image src="/exlink-control-room.jpg" alt="EXLINK 구축사례 — 실시간 XR 통합 제어실(멀티뷰·프로그램·트래킹)" fill sizes="(min-width:1024px) 55vw, 100vw" className="object-cover" />
               <span className="hud" style={{ left: 12, top: 12 }}>
                 EXLINK
               </span>
@@ -177,7 +110,11 @@ export function HomeClean() {
           <Reveal>
             <SectionLabel index="CASE">EXLINK 구축사례</SectionLabel>
             <h2 className="h2" style={{ marginTop: 22 }}>
-              실시간 XR 방송 시스템을 하나로 통합
+              실시간
+              <br />
+              XR 방송 시스템을
+              <br />
+              하나로 통합
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 28 }}>
               <div className="statchip">
@@ -188,8 +125,11 @@ export function HomeClean() {
               </div>
             </div>
             <p className="lead" style={{ maxWidth: "36rem" }}>
-              분산된 촬영·트래킹·렌더·송출 장비를 EXLINK 하나로 묶어, 운영 부담은 줄이고 실시간 합성 품질은
-              끌어올리는 대표 활용 시나리오입니다.
+              분산된 촬영·트래킹·렌더·송출 장비를
+              <br />
+              EXLINK 로 통합하여, 운영 부담은 줄이고 실시간 합성
+              <br />
+              품질은 끌어올리는 대표 활용 시나리오입니다.
             </p>
             <p style={{ marginTop: 12, fontSize: 13, color: "var(--color-faint)", maxWidth: "36rem" }}>
               ※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
@@ -210,8 +150,20 @@ export function HomeClean() {
           <SectionHead
             index="03"
             label="PARTNER PRODUCTS"
-            title="검증된 글로벌 XR 기술, 국내에 연결합니다"
-            lead="EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로 도입부터 기술지원까지 책임집니다."
+            title={
+              <>
+                검증된 글로벌 XR 기술,
+                <br />
+                국내에 연결합니다
+              </>
+            }
+            lead={
+              <>
+                EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로
+                <br />
+                도입부터 기술지원과 운영교육까지 전 주기를 책임집니다.
+              </>
+            }
             narrow
           />
           <Reveal>
@@ -245,7 +197,13 @@ export function HomeClean() {
           </Reveal>
           <div className="partner-bento">
             {PARTNERS.map((p, i) => (
-              <Reveal key={p.name} delay={i * 90} className="card cardpad">
+              <Reveal key={p.name} delay={i * 90} className={`card cardpad${p.img ? " card--media" : ""}`}>
+                {p.img && (
+                  <>
+                    <Image src={p.img} alt={`${p.name} 버추얼 프로덕션 합성 예시`} fill sizes="(min-width:768px) 60vw, 100vw" className="pcard-bg" style={p.objPos ? { objectPosition: p.objPos } : undefined} />
+                    <span className="pcard-scrim" aria-hidden="true" />
+                  </>
+                )}
                 <div className="cardpad-head">
                   <span className="initial">{p.initial}</span>
                   <span className="rolepill">{p.role}</span>
@@ -268,8 +226,8 @@ export function HomeClean() {
       <section className="section section--surface">
         <div className="container-ex twocol twocol--media">
           <Reveal>
-            <div className="photo" style={{ aspectRatio: "16 / 10" }}>
-              <Image src="/studio.png" alt="EX XR Studio — 하남 그린 크로마 스튜디오" fill sizes="(min-width:1024px) 55vw, 100vw" className="object-cover" />
+            <div className="photo" style={{ aspectRatio: "16 / 9" }}>
+              <Image src="/xr-studio.jpg" alt="EX XR Studio — 가상 세트 기반 콘텐츠 촬영" fill sizes="(min-width:1024px) 55vw, 100vw" className="object-cover" />
               <span className="hud" style={{ left: 14, top: 12 }}>
                 <span className="recdot" />
                 REC 00:14:22:08
@@ -345,33 +303,6 @@ export function HomeClean() {
         </div>
       </section>
 
-      {/* FAQ (Wope-style accordion) */}
-      <section className="section section--surface section--glow">
-        <div className="container-ex">
-          <div style={{ textAlign: "center" }}>
-            <Reveal>
-              <SectionLabel index="FAQ">자주 묻는 질문</SectionLabel>
-              <h2 className="h2" style={{ marginTop: 22 }}>
-                도입 전 자주 묻는 질문
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal className="faq-list">
-            {FAQS.map((f) => (
-              <details key={f.q} className="faq-item">
-                <summary>
-                  {f.q}
-                  <span className="q-icon" aria-hidden="true">
-                    +
-                  </span>
-                </summary>
-                <p className="faq-a">{f.a}</p>
-              </details>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="section section--white">
         <div className="container-ex">
@@ -390,7 +321,7 @@ export function HomeClean() {
                 솔루션 도입 · 제품 문의 · 스튜디오 제작 — 무엇이든 상담하세요.
               </p>
               <div className="hero-cta" style={{ justifyContent: "center" }}>
-                <Link href="/contact" className="btn btn--accent">
+                <Link href="/contact" className="btn btn--pink">
                   도입 상담 →
                 </Link>
                 <Link href="/support" className="btn btn--ghostDark">

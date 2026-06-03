@@ -22,18 +22,22 @@ export default function NewsPage() {
       />
 
       {/* §01 News list (filterable) */}
-      <section className="container-ex py-section">
-        <SectionLabel index="01">Archive</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">전체 소식</h2>
-        <div className="mt-12">
-          <NewsList />
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <SectionLabel index="01">Archive</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            전체 소식
+          </h2>
+          <div className="mt-12">
+            <NewsList />
+          </div>
         </div>
       </section>
 
       {/* §02 Newsletter */}
-      <section className="bg-surface">
-        <div className="container-ex py-section-sm">
-          <div className="flex flex-col items-center gap-5 rounded-2xl border border-border bg-card p-8 text-center md:flex-row md:justify-between md:text-left">
+      <section className="section section--surface">
+        <div className="container-ex">
+          <div className="card flex flex-col items-center gap-5 text-center md:flex-row md:justify-between md:text-left" style={{ padding: 32 }}>
             <div>
               <h3 className="text-xl font-bold text-fg">뉴스레터 구독</h3>
               <p className="mt-1.5 text-sm text-muted">EX의 새로운 소식과 인사이트를 메일로 받아보세요.</p>

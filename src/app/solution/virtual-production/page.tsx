@@ -63,41 +63,38 @@ export default function VirtualProductionPage() {
       />
 
       {/* §01 What is VP */}
-      <section className="container-ex py-section">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <figure className="overflow-hidden rounded-2xl border border-border">
-            <Image
-              src="/vp-chroma.png"
-              alt="크로마키 촬영을 실시간 가상 배경에 합성한 버추얼 프로덕션 결과"
-              width={891}
-              height={472}
-              priority
-              className="h-auto w-full"
-            />
-          </figure>
-          <div>
-            <SectionLabel index="01">What is VP</SectionLabel>
-            <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">버추얼 프로덕션이란?</h2>
-            <p className="mt-5 text-pretty leading-relaxed text-muted">
-              버추얼 프로덕션(Virtual Production)은 컴퓨터로 만든 가상의 배경·세트를 실제 촬영과 실시간으로
-              합쳐 영상을 완성하는 제작 방식입니다. 현장에서 합성된 화면을 바로 보며 연출할 수 있어 긴 후반
-              작업이 필요 없고, 카메라가 움직여도 배경이 자연스럽게 따라옵니다.
-            </p>
-            <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
-              가상 배경 위에서 실제로 촬영하고, 그 자리에서 완성하는 영상 제작 방식.
-            </p>
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
+              <Image src="/vp-chroma.png" alt="크로마키 촬영을 실시간 가상 배경에 합성한 버추얼 프로덕션 결과" width={891} height={472} priority className="h-auto w-full" />
+            </figure>
+            <div>
+              <SectionLabel index="01">What is VP</SectionLabel>
+              <h2 className="h2" style={{ marginTop: 22 }}>
+                버추얼 프로덕션이란?
+              </h2>
+              <p className="lead" style={{ maxWidth: "36rem" }}>
+                버추얼 프로덕션(Virtual Production)은 컴퓨터로 만든 가상의 배경·세트를 실제 촬영과 실시간으로 합쳐 영상을 완성하는 제작 방식입니다. 현장에서 합성된 화면을 바로 보며 연출할 수 있어 긴 후반 작업이 필요 없고, 카메라가 움직여도 배경이 자연스럽게 따라옵니다.
+              </p>
+              <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
+                가상 배경 위에서 실제로 촬영하고, 그 자리에서 완성하는 영상 제작 방식.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* §02 Why VP */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="02">Why VP</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 지금 버추얼 프로덕션인가</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            왜 지금 버추얼 프로덕션인가
+          </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map((c) => (
-              <div key={c.t} className="rounded-2xl border border-border bg-card p-6">
+              <div key={c.t} className="card" style={{ padding: 24 }}>
                 <h3 className="font-semibold text-fg">{c.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
               </div>
@@ -107,41 +104,44 @@ export default function VirtualProductionPage() {
       </section>
 
       {/* §03 Methods */}
-      <section className="container-ex py-section">
-        <SectionLabel index="03">Methods</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 방식</h2>
-        <p className="mt-4 max-w-2xl text-muted">
-          버추얼 프로덕션은 한 가지 방법만 있는 게 아닙니다. 목적과 예산에 따라 아래 방식을 선택하거나
-          조합합니다.
-        </p>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {methods.map((m) => (
-            <div key={m.t} className="rounded-2xl border border-border bg-card p-6">
-              <div className="flex items-center justify-between gap-3">
-                <h3 className="font-semibold text-fg">{m.t}</h3>
-                {m.tag && (
-                  <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
-                    {m.tag}
-                  </span>
-                )}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="03">Methods</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            제작 방식
+          </h2>
+          <p className="lead" style={{ maxWidth: "42rem" }}>
+            버추얼 프로덕션은 한 가지 방법만 있는 게 아닙니다. 목적과 예산에 따라 아래 방식을 선택하거나 조합합니다.
+          </p>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {methods.map((m) => (
+              <div key={m.t} className="card" style={{ padding: 24 }}>
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-semibold text-fg">{m.t}</h3>
+                  {m.tag && (
+                    <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
+                      {m.tag}
+                    </span>
+                  )}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{m.d}</p>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{m.d}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* §04 EX Virtual Production */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionLabel index="04">EX Virtual Production</SectionLabel>
-              <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">EX의 버추얼 프로덕션</h2>
-              <p className="mt-5 text-pretty leading-relaxed text-muted">
-                EX는 자체 솔루션 EXLINK, 검증된 파트너 기술, 그리고 하남 XR 스튜디오를 하나의 제작 파이프라인으로
-                연결합니다. 대형 그린 크로마(W10×D7×H4)와 시네마 카메라, 실시간 XR 트래킹을 기반으로 촬영과 합성을
-                동시에 진행해 현장에서 결과물을 완성합니다.
+              <h2 className="h2" style={{ marginTop: 22 }}>
+                EX의 버추얼 프로덕션
+              </h2>
+              <p className="lead" style={{ maxWidth: "36rem" }}>
+                EX는 자체 솔루션 EXLINK, 검증된 파트너 기술, 그리고 하남 XR 스튜디오를 하나의 제작 파이프라인으로 연결합니다. 대형 그린 크로마(W10×D7×H4)와 시네마 카메라, 실시간 XR 트래킹을 기반으로 촬영과 합성을 동시에 진행해 현장에서 결과물을 완성합니다.
               </p>
               <ul className="mt-7 space-y-3">
                 {exPoints.map((p) => (
@@ -158,42 +158,42 @@ export default function VirtualProductionPage() {
                 <Button href="/contact">도입 상담 →</Button>
               </div>
             </div>
-            <figure className="overflow-hidden rounded-2xl border border-border">
-              <Image
-                src="/vp-workflow.png"
-                alt="EX 버추얼 프로덕션 노드 기반 실시간 워크플로우"
-                width={891}
-                height={557}
-                className="h-auto w-full"
-              />
+            <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
+              <Image src="/vp-workflow.png" alt="EX 버추얼 프로덕션 노드 기반 실시간 워크플로우" width={891} height={557} className="h-auto w-full" />
             </figure>
           </div>
         </div>
       </section>
 
       {/* §05 Process */}
-      <section className="container-ex py-section">
-        <SectionLabel index="05">Process</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">제작 프로세스</h2>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {process.map((p, i) => (
-            <div key={p.step} className="rounded-2xl border border-border bg-card p-6">
-              <span className="font-mono text-3xl font-bold text-lav">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-3 font-semibold text-fg">{p.step}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
-            </div>
-          ))}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="05">Process</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            제작 프로세스
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {process.map((p, i) => (
+              <div key={p.step} className="card" style={{ padding: 24 }}>
+                <span className="font-mono text-3xl font-bold text-lav tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 font-semibold text-fg">{p.step}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* §06 Use Cases */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <SectionLabel index="06">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            활용 분야
+          </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
-              <div key={u.t} className="rounded-2xl border border-border bg-card p-6">
+              <div key={u.t} className="card" style={{ padding: 24 }}>
                 <h3 className="font-semibold text-fg">{u.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
               </div>

@@ -13,7 +13,6 @@ export const metadata: Metadata = {
     "이엑스(EX) 채용. 일하는 사람이 행복한 회사를 지향합니다. 핵심 가치와 일하는 방식, 판교·하남의 일하는 공간, 지원 절차를 안내합니다. XR·실시간 콘텐츠를 함께 만들 분을 찾습니다.",
 };
 
-// 3 핵심 가치 (실제 '일하는 10가지 방식'에서 distill)
 const values = [
   {
     h: "간결하게, 본질에 집중합니다",
@@ -83,34 +82,26 @@ export default function CareersPage() {
       />
 
       {/* ambiance image */}
-      <section className="container-ex pt-12">
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <Image
-            src="/studio.png"
-            alt="EX가 일하는 공간 — XR 스튜디오"
-            width={1366}
-            height={779}
-            className="h-auto w-full"
-          />
+      <section className="container-ex" style={{ paddingTop: 48 }}>
+        <div className="card" style={{ overflow: "hidden", padding: 0 }}>
+          <Image src="/studio.png" alt="EX가 일하는 공간 — XR 스튜디오" width={1366} height={779} className="h-auto w-full" />
         </div>
       </section>
 
-      {/* §01 Core values (big editorial) */}
-      <section className="bg-surface">
-        <div className="container-ex py-section-lg">
+      {/* §01 Core values */}
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <SectionLabel index="01">Our Values</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+          <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem" }}>
             우리가 일하는 세 가지 방식
           </h2>
-          <p className="mt-5 max-w-2xl text-pretty text-muted">
+          <p className="lead" style={{ maxWidth: "42rem" }}>
             이 세 가지 가치는 우리가 일하는 방식, 일하는 공간, 커뮤니케이션 곳곳에 녹아 있습니다.
           </p>
-          <div className="mt-16 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
+          <div className="mt-14 grid gap-5">
             {values.map((v, i) => (
-              <div key={v.h} className="grid gap-4 bg-surface p-8 md:grid-cols-[5rem_1fr] md:p-10">
-                <span className="font-mono text-3xl font-bold text-lav md:text-4xl">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+              <div key={v.h} className="card grid gap-4 md:grid-cols-[5rem_1fr]" style={{ padding: 36 }}>
+                <span className="font-mono text-3xl font-bold text-lav md:text-4xl">{String(i + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="text-balance text-2xl font-bold leading-snug text-fg md:text-3xl">{v.h}</h3>
                   <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-muted">{v.d}</p>
@@ -121,32 +112,38 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* §02 Culture — 10 ways (detail) */}
-      <section className="container-ex py-section">
-        <SectionLabel index="02">Culture</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">
-          구체적으로, 이렇게 일합니다
-        </h2>
-        <div className="mt-12 grid gap-x-12 gap-y-7 sm:grid-cols-2">
-          {culture.map((c, i) => (
-            <div key={c} className="flex gap-4 border-t border-border pt-5">
-              <span className="font-mono text-xl font-bold text-faint">{String(i + 1).padStart(2, "0")}</span>
-              <p className="pt-0.5 text-sm leading-relaxed text-fg">{c}</p>
-            </div>
-          ))}
+      {/* §02 Culture */}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="02">Culture</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            구체적으로, 이렇게 일합니다
+          </h2>
+          <div className="mt-12 grid gap-x-12 gap-y-7 sm:grid-cols-2">
+            {culture.map((c, i) => (
+              <div key={c} className="flex gap-4 border-t border-border pt-5">
+                <span className="font-mono text-xl font-bold text-faint">{String(i + 1).padStart(2, "0")}</span>
+                <p className="pt-0.5 text-sm leading-relaxed text-fg">{c}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* §03 Spaces — photo storytelling */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      {/* §03 Spaces */}
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="03">Spaces</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">기술이 만들어지는 공간</h2>
-          <p className="mt-5 max-w-2xl text-muted">판교 본사와 하남 스튜디오 — 우리가 매일 만들고 어울리는 곳입니다.</p>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            기술이 만들어지는 공간
+          </h2>
+          <p className="lead" style={{ maxWidth: "40rem" }}>
+            판교 본사와 하남 스튜디오 — 우리가 매일 만들고 어울리는 곳입니다.
+          </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {spaces.map((s) =>
               s.real ? (
-                <figure key={s.label} className="overflow-hidden rounded-2xl border border-border bg-card">
+                <figure key={s.label} className="card" style={{ overflow: "hidden", padding: 0 }}>
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image src={s.img} alt={`${s.label} — ${s.caption}`} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover" />
                   </div>
@@ -164,28 +161,36 @@ export default function CareersPage() {
       </section>
 
       {/* §04 Environment */}
-      <section className="container-ex py-section">
-        <SectionLabel index="04">Environment</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">일하는 환경</h2>
-        <dl className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {env.map((e) => (
-            <div key={e.k} className="bg-surface p-6">
-              <dt className="font-semibold text-fg">{e.k}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted">{e.v}</dd>
-            </div>
-          ))}
-        </dl>
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="04">Environment</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            일하는 환경
+          </h2>
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {env.map((e) => (
+              <div key={e.k} className="card" style={{ padding: 24 }}>
+                <p className="font-semibold text-fg">{e.k}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{e.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* §05 Who we want */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="05">Who We Want</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">이런 분과 함께하고 싶어요</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            이런 분과 함께하고 싶어요
+          </h2>
           <ul className="mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
             {whoWeWant.map((w) => (
-              <li key={w} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-6">
-                <span className="mt-1 font-mono text-lav" aria-hidden="true">✓</span>
+              <li key={w} className="card flex items-start gap-3" style={{ padding: 24 }}>
+                <span className="mt-1 font-mono text-lav" aria-hidden="true">
+                  ✓
+                </span>
                 <span className="leading-relaxed text-fg">{w}</span>
               </li>
             ))}
@@ -194,36 +199,39 @@ export default function CareersPage() {
       </section>
 
       {/* §06 Open Positions */}
-      <section className="container-ex py-section">
-        <SectionLabel index="06">Open Positions</SectionLabel>
-        <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">채용 중인 포지션</h2>
-        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
-          <div className="flex flex-col gap-2 border-b border-border p-6 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-            <div>
-              <span className="text-lg font-semibold text-fg">상시 지원</span>
-              <p className="mt-1 text-sm text-muted">XR/실시간 콘텐츠 개발·기획·운영 — 직무 무관 상시 지원 환영</p>
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="06">Open Positions</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            채용 중인 포지션
+          </h2>
+          <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
+            <div className="flex flex-col gap-2 p-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+              <div>
+                <span className="text-lg font-semibold text-fg">상시 지원</span>
+                <p className="mt-1 text-sm text-muted">XR/실시간 콘텐츠 개발·기획·운영 — 직무 무관 상시 지원 환영</p>
+              </div>
+              <span className="shrink-0 rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
+                Always Open
+              </span>
             </div>
-            <span className="shrink-0 rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
-              Always Open
-            </span>
-          </div>
-          <div className="p-6 text-sm text-muted md:px-8">
-            구체적인 모집 공고는 준비 중입니다. 관심 직무가 있다면 먼저 지원해 주세요. (CMS 연동 예정)
+            <div className="p-6 text-sm text-muted md:px-8" style={{ borderTop: "1px solid var(--color-border)" }}>
+              구체적인 모집 공고는 준비 중입니다. 관심 직무가 있다면 먼저 지원해 주세요. (CMS 연동 예정)
+            </div>
           </div>
         </div>
       </section>
 
       {/* §07 How to Apply */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <SectionLabel index="07">How to Apply</SectionLabel>
-          <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight md:text-5xl">지원 절차</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            지원 절차
+          </h2>
           <ol className="mt-12 max-w-3xl space-y-4">
             {steps.map((s, i) => (
-              <li
-                key={s.t}
-                className="relative flex items-center gap-5 overflow-hidden rounded-2xl border border-border bg-card p-6"
-              >
+              <li key={s.t} className="card relative flex items-center gap-5" style={{ overflow: "hidden", padding: 24 }}>
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary font-mono text-sm font-bold text-white">
                   {String(i + 1).padStart(2, "0")}
                 </span>

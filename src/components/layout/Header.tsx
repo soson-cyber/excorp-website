@@ -19,10 +19,8 @@ export function Header() {
   const overHero = isHome && !scrolled && !mobileOpen;
 
   useEffect(() => {
-    if (!isHome) {
-      setScrolled(true);
-      return;
-    }
+    // overHero already requires isHome, so non-home needs no scroll tracking.
+    if (!isHome) return;
     const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.82);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -40,7 +38,7 @@ export function Header() {
     <header className={`header ${overHero ? "header--overHero" : "header--solid"}`}>
       <div className="container-ex header__inner">
         <Link href="/" className="focus-on-dark flex items-center" aria-label="EX Corporation 홈">
-          <Image src="/ex-logo-dark.png" alt="EX Corporation" width={1372} height={274} priority className="logo" />
+          <Image src="/ex-cube.png" alt="" width={120} height={120} sizes="60px" priority className="logo logo--symbol" />
         </Link>
 
         {/* Desktop nav */}
@@ -87,47 +85,22 @@ export function Header() {
                 </Link>
 
                 {item.children && openMenu === item.label && (
-                  <div className="mega" style={alignRight ? { right: 0, left: "auto" } : undefined}>
-                    <div className="mega__panel">
-                      <div className="mega__col">
-                        <p className="mega__ey">{item.label}</p>
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="mega__row"
-                            onClick={() => setOpenMenu(null)}
-                          >
-                            <span className="mega__rowtop">
-                              <span className="mega__rowname">{child.label}</span>
-                              {child.tag && <span className="tag">{child.tag}</span>}
-                            </span>
-                            {child.desc && <span className="mega__rowdesc">{child.desc}</span>}
-                          </Link>
-                        ))}
-                      </div>
-
-                      {item.featured && (
+                  <div className="dropdown" style={alignRight ? { right: 0, left: "auto" } : undefined}>
+                    <div className="dropdown__panel">
+                      {item.children.map((child) => (
                         <Link
-                          href={item.featured.href}
+                          key={child.href}
+                          href={child.href}
+                          className="dropdown__row"
                           onClick={() => setOpenMenu(null)}
-                          className="mega__feat gradient-ex-mesh group/feat"
                         >
-                          <span className="ey">{item.featured.eyebrow}</span>
-                          <span>
-                            <span className="ti">{item.featured.title}</span>
-                            <span className="de" style={{ display: "block" }}>
-                              {item.featured.desc}
-                            </span>
+                          <span className="dropdown__top">
+                            <span className="dropdown__name">{child.label}</span>
+                            {child.tag && <span className="tag">{child.tag}</span>}
                           </span>
-                          <span className="cta">
-                            {item.featured.cta}
-                            <span aria-hidden="true" className="transition-transform group-hover/feat:translate-x-0.5">
-                              →
-                            </span>
-                          </span>
+                          {child.desc && <span className="dropdown__desc">{child.desc}</span>}
                         </Link>
-                      )}
+                      ))}
                     </div>
                   </div>
                 )}

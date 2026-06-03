@@ -84,45 +84,41 @@ export default function XrSolutionPage() {
       />
 
       {/* §01 What is EXLINK */}
-      <section className="container-ex py-section">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <SectionLabel index="01">What is EXLINK</SectionLabel>
-            <h2 className="mt-5 text-balance text-4xl font-semibold leading-snug md:text-5xl">EXLINK이란?</h2>
-            <p className="mt-5 text-pretty leading-relaxed text-muted">
-              EXLINK은 실시간 XR 제작에 필요한 촬영·카메라 트래킹·가상 배경 렌더링·합성·미디어서버·송출 과정을
-              하나의 제어 흐름으로 통합한 EX 자체 개발 올인원 솔루션입니다. 여러 장비와 소프트웨어를 따로 연동하는
-              대신, 검증된 기술들을 EXLINK이 한 자리에서 조율합니다.
-            </p>
-            <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
-              흩어진 실시간 XR 파이프라인을, 하나의 제어 흐름으로.
-            </p>
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <SectionLabel index="01">What is EXLINK</SectionLabel>
+              <h2 className="h2" style={{ marginTop: 22 }}>
+                EXLINK이란?
+              </h2>
+              <p className="lead" style={{ maxWidth: "36rem" }}>
+                EXLINK은 실시간 XR 제작에 필요한 촬영·카메라 트래킹·가상 배경 렌더링·합성·미디어서버·송출 과정을 하나의 제어 흐름으로 통합한 EX 자체 개발 올인원 솔루션입니다. 여러 장비와 소프트웨어를 따로 연동하는 대신, 검증된 기술들을 EXLINK이 한 자리에서 조율합니다.
+              </p>
+              <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
+                흩어진 실시간 XR 파이프라인을, 하나의 제어 흐름으로.
+              </p>
+            </div>
+            <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
+              <Image src="/vp-workflow.png" alt="EXLINK 노드 기반 실시간 XR 제어 흐름" width={891} height={557} priority className="h-auto w-full" />
+            </figure>
           </div>
-          <figure className="overflow-hidden rounded-2xl border border-border">
-            <Image
-              src="/vp-workflow.png"
-              alt="EXLINK 노드 기반 실시간 XR 제어 흐름"
-              width={891}
-              height={557}
-              priority
-              className="h-auto w-full"
-            />
-          </figure>
         </div>
       </section>
 
       {/* §02 Why integrated */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="02">Why Integrated</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 통합 솔루션인가</h2>
-          <p className="mt-4 max-w-2xl text-muted">
-            실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK은 이 과정을 하나의
-            흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다.
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            왜 통합 솔루션인가
+          </h2>
+          <p className="lead" style={{ maxWidth: "42rem" }}>
+            실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK은 이 과정을 하나의 흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다.
           </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {contrast.map((c) => (
-              <div key={c.s} className="rounded-2xl border border-border bg-card p-6">
+              <div key={c.s} className="card" style={{ padding: 24 }}>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-faint">분산형 구성</span>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{c.p}</p>
                 <div className="my-4 text-lav">↓</div>
@@ -135,44 +131,48 @@ export default function XrSolutionPage() {
       </section>
 
       {/* §03 Architecture */}
-      <section className="container-ex py-section">
-        <SectionLabel index="03">Architecture</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">구성 / 아키텍처</h2>
-        <p className="mt-4 font-mono text-xs uppercase tracking-wider text-faint">
-          CAPTURE → TRACKING → EXLINK CORE → RENDER → BROADCAST
-        </p>
-        <div className="mt-10 flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-stretch">
-          {pipeline.map((n, i) => (
-            <Fragment key={n.t}>
-              <div
-                className={`flex-1 rounded-2xl border p-5 lg:basis-[180px] ${
-                  n.core ? "border-primary bg-primary-soft" : "border-border bg-surface"
-                }`}
-              >
-                <span className={`font-mono text-xs uppercase tracking-wider ${n.core ? "text-lav" : "text-faint"}`}>
-                  {n.t}
-                </span>
-                <h3 className={`mt-2 font-semibold ${n.core ? "text-lav" : "text-fg"}`}>{n.k}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{n.d}</p>
-              </div>
-              {i < pipeline.length - 1 && (
-                <span className="flex items-center justify-center self-center text-lav rotate-90 lg:rotate-0" aria-hidden="true">
-                  →
-                </span>
-              )}
-            </Fragment>
-          ))}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="03">Architecture</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            구성 / 아키텍처
+          </h2>
+          <p className="mt-4 font-mono text-xs uppercase tracking-wider text-faint">
+            CAPTURE → TRACKING → EXLINK CORE → RENDER → BROADCAST
+          </p>
+          <div className="mt-10 flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-stretch">
+            {pipeline.map((n, i) => (
+              <Fragment key={n.t}>
+                <div
+                  className={`flex-1 rounded-2xl border p-5 lg:basis-[180px] ${
+                    n.core ? "border-primary bg-primary-soft" : "border-border bg-card"
+                  }`}
+                >
+                  <span className={`font-mono text-xs uppercase tracking-wider ${n.core ? "text-lav" : "text-faint"}`}>{n.t}</span>
+                  <h3 className={`mt-2 font-semibold ${n.core ? "text-lav" : "text-fg"}`}>{n.k}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{n.d}</p>
+                </div>
+                {i < pipeline.length - 1 && (
+                  <span className="flex items-center justify-center self-center rotate-90 text-lav lg:rotate-0" aria-hidden="true">
+                    →
+                  </span>
+                )}
+              </Fragment>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* §04 Features */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="04">Key Features</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">핵심 기능</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            핵심 기능
+          </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <div key={f.t} className="rounded-2xl border border-border bg-card p-6">
+              <div key={f.t} className="card" style={{ padding: 24 }}>
                 <h3 className="font-semibold text-fg">{f.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
               </div>
@@ -182,53 +182,58 @@ export default function XrSolutionPage() {
       </section>
 
       {/* §05 System build (turnkey) */}
-      <section className="container-ex py-section">
-        <SectionLabel index="05">System Build</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">EXLINK 시스템 구성 (턴키)</h2>
-        <p className="mt-4 max-w-2xl text-muted">
-          하드웨어·소프트웨어·시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키(Turn-key)로 공급합니다.
-        </p>
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-card p-7">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-lav">Software</span>
-            <ul className="mt-4 space-y-4">
-              {build.software.map((s) => (
-                <li key={s.t}>
-                  <p className="font-semibold text-fg">{s.t}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{s.d}</p>
-                </li>
-              ))}
-            </ul>
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="05">System Build</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            EXLINK 시스템 구성 (턴키)
+          </h2>
+          <p className="lead" style={{ maxWidth: "42rem" }}>
+            하드웨어·소프트웨어·시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키(Turn-key)로 공급합니다.
+          </p>
+          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+            <div className="card" style={{ padding: 28 }}>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-lav">Software</span>
+              <ul className="mt-4 space-y-4">
+                {build.software.map((s) => (
+                  <li key={s.t}>
+                    <p className="font-semibold text-fg">{s.t}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{s.d}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="card" style={{ padding: 28 }}>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-lav">Hardware</span>
+              <ul className="mt-4 space-y-4">
+                {build.hardware.map((h) => (
+                  <li key={h.t}>
+                    <p className="font-semibold text-fg">{h.t}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{h.d}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-7">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-lav">Hardware</span>
-            <ul className="mt-4 space-y-4">
-              {build.hardware.map((h) => (
-                <li key={h.t}>
-                  <p className="font-semibold text-fg">{h.t}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{h.d}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="mt-6 text-xs leading-relaxed text-faint">
+            ※ 구성·모델은 현장 요구와 공급 시점에 따라 달라질 수 있습니다. 상세 사양은 도입 상담 시 안내합니다.
+          </p>
         </div>
-        <p className="mt-6 text-xs leading-relaxed text-faint">
-          ※ 구성·모델은 현장 요구와 공급 시점에 따라 달라질 수 있습니다. 상세 사양은 도입 상담 시 안내합니다.
-        </p>
       </section>
 
       {/* §06 Connected tech */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="06">Connected Tech</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">연결하는 기술</h2>
-          <p className="mt-4 max-w-2xl text-muted">
-            EXLINK은 검증된 전문 기술을 직접 만들지 않고, 한 흐름 안에서 조율합니다. 아래 파트너 제품은 EX가 국내
-            공급하는 기술이며, EXLINK이 이를 연결·통합합니다.
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            연결하는 기술
+          </h2>
+          <p className="lead" style={{ maxWidth: "42rem" }}>
+            EXLINK은 검증된 전문 기술을 직접 만들지 않고, 한 흐름 안에서 조율합니다. 아래 파트너 제품은 EX가 국내 공급하는 기술이며, EXLINK이 이를 연결·통합합니다.
           </p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {connected.map((c) => (
-              <div key={c.t} className="rounded-2xl border border-border bg-card p-6">
+              <div key={c.t} className="card" style={{ padding: 24 }}>
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="font-semibold text-fg">{c.t}</h3>
                   <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
@@ -240,41 +245,46 @@ export default function XrSolutionPage() {
             ))}
           </div>
           <p className="mt-6 text-xs leading-relaxed text-faint">
-            ※ Aximmetry · Moverse AI · RETracker는 각 제조사의 제품으로, EXLINK은 이를 연결·조율합니다. 자체 개발
-            영역은 통합 코어(EXLINK)입니다.
+            ※ Aximmetry · Moverse AI · RETracker는 각 제조사의 제품으로, EXLINK은 이를 연결·조율합니다. 자체 개발 영역은 통합 코어(EXLINK)입니다.
           </p>
         </div>
       </section>
 
       {/* §07 Adoption */}
-      <section className="container-ex py-section">
-        <SectionLabel index="07">Adoption</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">도입 방식 — 컨설팅부터 운영까지</h2>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {adoption.map((a, i) => (
-            <div key={a.step} className="rounded-2xl border border-border bg-card p-6">
-              <span className="font-mono text-3xl font-bold text-lav">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-3 font-semibold text-fg">{a.step}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{a.desc}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button href="/contact">도입 상담 →</Button>
-          <Button href="/solution/virtual-production" variant="secondary">
-            버추얼 프로덕션 알아보기 →
-          </Button>
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="07">Adoption</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            도입 방식 — 컨설팅부터 운영까지
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {adoption.map((a, i) => (
+              <div key={a.step} className="card" style={{ padding: 24 }}>
+                <span className="font-mono text-3xl font-bold text-lav tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 font-semibold text-fg">{a.step}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{a.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href="/contact">도입 상담 →</Button>
+            <Button href="/solution/virtual-production" variant="secondary">
+              버추얼 프로덕션 알아보기 →
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* §08 Use cases */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface section--glow">
+        <div className="container-ex">
           <SectionLabel index="08">Use Cases</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">활용 분야</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            활용 분야
+          </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
-              <div key={u.t} className="rounded-2xl border border-border bg-card p-6">
+              <div key={u.t} className="card" style={{ padding: 24 }}>
                 <h3 className="font-semibold text-fg">{u.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
               </div>

@@ -1,11 +1,11 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 // Product-led dark hero — particle canvas, aurora glow, light ray, and the
 // interactive EXLINK Live Console (rotating border + cursor spotlight).
 // Ported from the Claude Design handoff (ui_kits/website). All motion is
 // prefers-reduced-motion safe; console images are swapped client-side.
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 
@@ -82,15 +82,31 @@ function HeroStars() {
 }
 
 const CAMS = [
-  { id: "CAM 02", img: "/uc-broadcast.png" },
   { id: "CAM 01", img: "/studio.png" },
+  { id: "CAM 02", img: "/uc-broadcast.png" },
   { id: "CAM 03", img: "/vp-chroma.png" },
   { id: "PGM", img: "/uc-event.png" },
 ];
 
 function ExlinkConsole() {
-  const [sel, setSel] = useState(1);
+  const [sel, setSel] = useState(3); // PGM 기본 선택 → 큰 Program 피드 = PGM 이미지
+  const [nonce, setNonce] = useState(0); // bump on manual pick to restart the auto-cycle window
   const program = CAMS[sel];
+
+  // Auto-cycle CAM 01 → … → PGM every 3s (paused for reduced-motion / hidden tab).
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => {
+      if (!document.hidden) setSel((s) => (s + 1) % CAMS.length);
+    }, 8000);
+    return () => clearInterval(id);
+  }, [nonce]);
+
+  const pick = (i: number) => {
+    setSel(i);
+    setNonce((n) => n + 1); // wait a fresh 3s after a manual selection
+  };
+
   return (
     <div className="console" role="img" aria-label="EXLINK 실시간 XR 운영 콘솔 미리보기">
       <div className="c-bar">
@@ -136,7 +152,19 @@ function ExlinkConsole() {
           </span>
         </div>
         <div className="c-stage">
-          <img src={program.img} alt="실시간 프로그램 피드" />
+          {/* stacked feeds — crossfade (dissolve) between cameras */}
+          {CAMS.map((c, i) => (
+            <Image
+              key={c.id}
+              src={c.img}
+              alt={i === sel ? "실시간 프로그램 피드" : ""}
+              fill
+              sizes="(min-width:1024px) 620px, 100vw"
+              priority={i === 3}
+              className="c-feed"
+              style={{ opacity: i === sel ? 1 : 0 }}
+            />
+          ))}
           <span className="c-hud" style={{ left: 12, top: 12 }}>
             <span className="c-rec" />
             PROGRAM · LIVE
@@ -170,11 +198,11 @@ function ExlinkConsole() {
                   key={c.id}
                   type="button"
                   className={`cam${i === sel ? " sel" : ""}`}
-                  onClick={() => setSel(i)}
+                  onClick={() => pick(i)}
                   aria-pressed={i === sel}
                   title={`${c.id} 프로그램으로 전환`}
                 >
-                  <img src={c.img} alt="" />
+                  <Image src={c.img} alt="" fill sizes="120px" />
                   <span>{c.id}</span>
                 </button>
               ))}
@@ -246,23 +274,15 @@ export function Hero() {
       <div className="hero-vig" aria-hidden="true" />
 
       <div className="container-ex hero-in">
-        <Link href="/solution/xr-solution" className="hero-pill focus-on-dark">
-          <span className="pchip">EXLINK</span>
-          <span>
-            <b style={{ color: "#fff", fontWeight: 600 }}>실시간 XR 통합 솔루션</b> — 촬영·트래킹·렌더·송출을 하나로
-          </span>
-          <span className="parr" aria-hidden="true">
-            →
-          </span>
-        </Link>
         <h1 className="hero-h1">
           기술의 연결로
           <br />
           경험을 <span className="grad">확장하다</span>
         </h1>
         <p className="hero-lead">
-          실시간 XR · 버추얼 프로덕션의 촬영 · 트래킹 · 렌더 · 송출을 EXLINK 하나로. 현장에서 바로 확인하고
-          끝냅니다.
+          이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을
+          <br />
+          하나의 흐름으로 연결합니다.
         </p>
         <div className="hero-cta">
           <Link href="/contact" className="btn btn--onDark focus-on-dark">
@@ -271,13 +291,6 @@ export function Hero() {
           <Link href="/solution/xr-solution" className="btn btn--glow focus-on-dark">
             EXLINK 둘러보기
           </Link>
-        </div>
-        <div className="hero-trust">
-          <span>EXLINK 자체 솔루션</span>
-          <span className="tdot" />
-          <span>Aximmetry · Moverse · RETracker 공식 파트너</span>
-          <span className="tdot" />
-          <span>하남 XR 스튜디오</span>
         </div>
       </div>
 

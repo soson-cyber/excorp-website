@@ -61,34 +61,40 @@ export default function AboutPage() {
       />
 
       {/* §01 Vision & Mission */}
-      <section className="container-ex py-section">
-        <SectionLabel index="01">Vision &amp; Mission</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">우리가 그리는 세상</h2>
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-card p-8">
-            <span className="font-mono text-xs uppercase tracking-wider text-lav">Vision</span>
-            <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
-              모든 사람이 경계를 넘어 ‘새로운 경험(Experience)’을 창조하는 세상.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-border bg-card p-8">
-            <span className="font-mono text-xs uppercase tracking-wider text-lav">Mission</span>
-            <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
-              AI + XR 융합 기술로 문화콘텐츠 제작의 문턱을 낮추고, 누구나 몰입형 경험을 만들 수 있게 합니다.
-            </p>
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <SectionLabel index="01">Vision &amp; Mission</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            우리가 그리는 세상
+          </h2>
+          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+            <div className="card" style={{ padding: 32 }}>
+              <span className="font-mono text-xs uppercase tracking-wider text-lav">Vision</span>
+              <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
+                모든 사람이 경계를 넘어 ‘새로운 경험(Experience)’을 창조하는 세상.
+              </p>
+            </div>
+            <div className="card" style={{ padding: 32 }}>
+              <span className="font-mono text-xs uppercase tracking-wider text-lav">Mission</span>
+              <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
+                AI + XR 융합 기술로 문화콘텐츠 제작의 문턱을 낮추고, 누구나 몰입형 경험을 만들 수 있게 합니다.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* §02 Why EX */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="02">Why EX</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">왜 EX인가</h2>
-          <div className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            왜 EX인가
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {whyEx.map((c, i) => (
-              <div key={c.t} className="flex gap-5 border-t border-border pt-6">
-                <span className="font-mono text-2xl font-bold text-faint">0{i + 1}</span>
+              <div key={c.t} className="card flex gap-5" style={{ padding: 28 }}>
+                <span className="font-mono text-2xl font-bold text-faint tabular-nums">0{i + 1}</span>
                 <div>
                   <h3 className="text-lg font-semibold text-fg">{c.t}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
@@ -100,29 +106,41 @@ export default function AboutPage() {
       </section>
 
       {/* §03 Patents */}
-      <section className="container-ex py-section">
-        <SectionLabel index="03">Patents &amp; Certifications</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">보유 특허 &amp; 인증</h2>
-        <p className="mt-4 text-muted">기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증</p>
-        <ol className="mt-12 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-          {patents.map((p) => (
-            <li key={p.no} className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between">
-              <span className="text-sm text-fg">{p.name}</span>
-              <span className="shrink-0 font-mono text-xs text-lav">{p.no}</span>
-            </li>
-          ))}
-        </ol>
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="03">Patents &amp; Certifications</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            보유 특허 &amp; 인증
+          </h2>
+          <p className="lead" style={{ maxWidth: "40rem" }}>
+            기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증
+          </p>
+          <ol className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+            {patents.map((p, i) => (
+              <li
+                key={p.no}
+                className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between"
+                style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
+              >
+                <span className="text-sm text-fg">{p.name}</span>
+                <span className="shrink-0 font-mono text-xs text-lav">{p.no}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       {/* §04 History */}
-      <section className="bg-surface">
-        <div className="container-ex py-section">
+      <section className="section section--surface">
+        <div className="container-ex">
           <SectionLabel index="04">History</SectionLabel>
-          <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">연혁</h2>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            연혁
+          </h2>
           <div className="mt-12 max-w-3xl">
             {history.map((h) => (
               <div key={h.year} className="flex gap-6 border-l border-border pl-6 pb-8 last:pb-0">
-                <span className="-ml-[2.1rem] flex h-10 w-16 shrink-0 items-center justify-center rounded-full bg-surface font-mono text-sm font-bold text-lav ring-1 ring-border">
+                <span className="-ml-[2.1rem] flex h-10 w-16 shrink-0 items-center justify-center rounded-full bg-card font-mono text-sm font-bold text-lav ring-1 ring-border">
                   {h.year}
                 </span>
                 <ul className="space-y-1.5 pt-1.5">
@@ -139,20 +157,24 @@ export default function AboutPage() {
       </section>
 
       {/* §05 Locations */}
-      <section className="container-ex py-section">
-        <SectionLabel index="05">Location</SectionLabel>
-        <h2 className="mt-5 text-balance text-4xl font-semibold md:text-5xl">오시는 길</h2>
-        <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
-          {locations.map((loc) => (
-            <div key={loc.kind} className="rounded-2xl border border-border bg-card p-6">
-              <span className="font-mono text-xs uppercase tracking-wider text-lav">{loc.kind}</span>
-              <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
-              <p className="text-sm text-muted">
-                {loc.address} <span className="text-faint">({loc.zip})</span>
-              </p>
-              {loc.tel && <p className="mt-1 font-mono text-xs text-faint">Tel {loc.tel}</p>}
-            </div>
-          ))}
+      <section className="section section--white">
+        <div className="container-ex">
+          <SectionLabel index="05">Location</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            오시는 길
+          </h2>
+          <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+            {locations.map((loc) => (
+              <div key={loc.kind} className="card" style={{ padding: 24 }}>
+                <span className="font-mono text-xs uppercase tracking-wider text-lav">{loc.kind}</span>
+                <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
+                <p className="text-sm text-muted">
+                  {loc.address} <span className="text-faint">({loc.zip})</span>
+                </p>
+                {loc.tel && <p className="mt-1 font-mono text-xs text-faint">Tel {loc.tel}</p>}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

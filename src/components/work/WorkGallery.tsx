@@ -49,9 +49,8 @@ export function WorkGallery() {
             <Link
               key={w.slug}
               href={`/work/${w.slug}`}
-              className={`group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/50 ${
-                wide ? "sm:col-span-2 lg:col-span-2" : ""
-              }`}
+              className={`card group flex flex-col ${wide ? "sm:col-span-2 lg:col-span-2" : ""}`}
+              style={{ overflow: "hidden", padding: 0 }}
             >
               <div className={`relative overflow-hidden ${wide ? "aspect-[16/9]" : "aspect-video"}`}>
                 <Image

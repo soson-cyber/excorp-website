@@ -19,7 +19,11 @@ export default function WorkPage() {
         lead="실시간 XR 솔루션과 파트너 제품, 하남 스튜디오로 구현하는 분야별 활용 시나리오입니다. 실제 도입 사례는 순차적으로 업데이트됩니다."
       />
 
-      <WorkGallery />
+      <section className="section section--ink section--glow">
+        <div className="container-ex">
+          <WorkGallery />
+        </div>
+      </section>
 
       <CtaBanner />
     </>
