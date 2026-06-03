@@ -8,6 +8,7 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
   title: "XR Solution — EXLINK",
+  alternates: { canonical: "/solution/xr-solution" },
   description:
     "EXLINK은 촬영·트래킹·렌더·송출을 단일 제어 흐름으로 묶는 EX 자체 개발 올인원 실시간 XR 솔루션입니다. 검증된 파트너 기술을 연결·조율해 운영자 1인 중심 워크플로우를 만듭니다.",
 };

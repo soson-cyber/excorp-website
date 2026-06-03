@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page/PageHero";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "이엑스 주식회사 개인정보 처리방침.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

@@ -17,7 +17,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const a = getInsight(slug);
   if (!a) return { title: "News & Insight" };
-  return { title: `${a.title} — Insight`, description: a.summary };
+  return {
+    title: `${a.title} — Insight`,
+    description: a.summary,
+    alternates: { canonical: `/news/${slug}` },
+  };
 }
 
 export default async function InsightPage({
@@ -33,6 +37,37 @@ export default async function InsightPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: a.title,
+              description: a.summary,
+              datePublished: String(a.year),
+              inLanguage: "ko-KR",
+              author: { "@type": "Organization", name: "EX Corporation" },
+              publisher: {
+                "@type": "Organization",
+                name: "EX Corporation",
+                logo: { "@type": "ImageObject", url: "https://excorp.kr/ex-logo.png" },
+              },
+              mainEntityOfPage: `https://excorp.kr/news/${a.slug}`,
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "홈", item: "https://excorp.kr/" },
+                { "@type": "ListItem", position: 2, name: "뉴스 & 인사이트", item: "https://excorp.kr/news" },
+                { "@type": "ListItem", position: 3, name: a.title, item: `https://excorp.kr/news/${a.slug}` },
+              ],
+            },
+          ]),
+        }}
+      />
       <PageHero
         breadcrumb={[
           { label: "News & Insight", href: "/news" },

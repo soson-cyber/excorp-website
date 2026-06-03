@@ -8,6 +8,7 @@ import { CompareTable } from "@/components/product/CompareTable";
 
 export const metadata: Metadata = {
   title: "버추얼 프로덕션 제품 — Aximmetry · Moverse AI · RETracker",
+  alternates: { canonical: "/product" },
   description:
     "버추얼 프로덕션 핵심 제품을 EX가 한국에서 공식 공급합니다. 실시간 합성 Aximmetry(공식 리셀러), AI 마커리스 모션캡처 Moverse·6-DOF 카메라 트래킹 RETracker(공식 총판). 도입 컨설팅·셋업·교육·기술 지원까지.",
 };

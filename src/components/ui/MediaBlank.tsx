@@ -44,7 +44,8 @@ function Glyph({ kind, small }: { kind: "image" | "play"; small?: boolean }) {
         height={size}
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#6b7280"
+        className="text-faint"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -61,7 +62,8 @@ function Glyph({ kind, small }: { kind: "image" | "play"; small?: boolean }) {
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#6b7280"
+      className="text-faint"
+      stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"

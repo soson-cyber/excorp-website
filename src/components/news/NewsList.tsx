@@ -47,7 +47,7 @@ const items: Item[] = [...press, ...insightItems];
 const categories = ["전체", "보도자료", "케이스", "인사이트", "자료실"] as const;
 
 function catClass(cat: Item["cat"]) {
-  return cat === "보도자료" ? "bg-accent-soft text-accent" : "bg-primary-soft text-lav";
+  return cat === "보도자료" ? "bg-accent-soft text-accent-bright" : "bg-primary-soft text-lav";
 }
 
 export function NewsList() {
@@ -123,7 +123,7 @@ export function NewsList() {
         </div>
       ) : (
         <div className="mt-10 flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-surface px-6 py-20 text-center">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7C8090" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-faint">
             <rect x="3" y="4.5" width="18" height="15" rx="2" />
             <path d="M3 9h18M8 4.5v15" />
           </svg>

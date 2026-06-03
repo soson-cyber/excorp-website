@@ -8,8 +8,6 @@ export const site = {
     "AI와 XR 기술을 연결하여, 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다.",
   social: {
     instagram: "https://instagram.com/ex.studio",
-    linkedin: "https://www.linkedin.com",
-    youtube: "https://www.youtube.com",
   },
   contact: {
     tel: "031-699-8228",

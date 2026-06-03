@@ -19,7 +19,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const w = getWork(slug);
   if (!w) return { title: "활용 사례" };
-  return { title: `${w.title} — 활용 사례`, description: w.summary };
+  return {
+    title: `${w.title} — 활용 사례`,
+    description: w.summary,
+    alternates: { canonical: `/work/${slug}` },
+  };
 }
 
 export default async function WorkDetailPage({
@@ -35,6 +39,20 @@ export default async function WorkDetailPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "홈", item: "https://excorp.kr/" },
+              { "@type": "ListItem", position: 2, name: "Work", item: "https://excorp.kr/work" },
+              { "@type": "ListItem", position: 3, name: w.title, item: `https://excorp.kr/work/${w.slug}` },
+            ],
+          }),
+        }}
+      />
       <PageHero
         breadcrumb={[
           { label: "Work", href: "/work" },

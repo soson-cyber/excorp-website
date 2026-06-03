@@ -9,6 +9,7 @@ import { SpecTable } from "@/components/product/SpecTable";
 
 export const metadata: Metadata = {
   title: "Moverse AI — 마커리스 AI 모션캡처",
+  alternates: { canonical: "/product/moverse" },
   description:
     "전용 수트·마커 없이 AI 비전 카메라와 로컬 네트워크만으로 다수 인원을 캡처하는 Moverse. 100% On-Premise(망분리 대응), 4~16대+ 확장, 대형 캡처 볼륨. EX 공식 한국 총판.",
 };

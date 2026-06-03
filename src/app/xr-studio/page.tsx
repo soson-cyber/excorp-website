@@ -10,6 +10,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "하남 XR 스튜디오 — 버추얼 프로덕션 콘텐츠 제작",
+  alternates: { canonical: "/xr-studio" },
   description:
     "하남 EX XR 스튜디오. 대형 그린 크로마(W10×D7×H4, 약 70㎡)와 실시간 XR 기술로 IR·웨비나·토크 콘텐츠를 기획부터 촬영·송출까지 한 번에 제작합니다. 목적별 메뉴(S·M·L) 구성과 맞춤 견적 안내.",
 };
@@ -175,7 +176,7 @@ export default function XrStudioPage() {
                 <div
                   key={k}
                   className="flex flex-col gap-1 px-6 py-4 sm:flex-row sm:gap-6"
-                  style={{ borderTop: i === 0 ? "none" : "1px solid rgba(255,255,255,.06)" }}
+                  style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
                 >
                   <dt className="w-44 shrink-0 font-mono text-xs uppercase tracking-wider text-faint">{k}</dt>
                   <dd className="text-sm text-fg">{v}</dd>

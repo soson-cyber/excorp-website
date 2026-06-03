@@ -9,6 +9,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "채용 — 함께 성장할 동료를 찾습니다",
+  alternates: { canonical: "/careers" },
   description:
     "이엑스(EX) 채용. 일하는 사람이 행복한 회사를 지향합니다. 핵심 가치와 일하는 방식, 판교·하남의 일하는 공간, 지원 절차를 안내합니다. XR·실시간 콘텐츠를 함께 만들 분을 찾습니다.",
 };
@@ -216,7 +217,7 @@ export default function CareersPage() {
               </span>
             </div>
             <div className="p-6 text-sm text-muted md:px-8" style={{ borderTop: "1px solid var(--color-border)" }}>
-              구체적인 모집 공고는 준비 중입니다. 관심 직무가 있다면 먼저 지원해 주세요. (CMS 연동 예정)
+              구체적인 모집 공고는 순차적으로 공개됩니다. 관심 직무가 있다면 먼저 지원해 주세요.
             </div>
           </div>
         </div>

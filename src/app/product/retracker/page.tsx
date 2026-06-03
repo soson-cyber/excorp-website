@@ -9,6 +9,7 @@ import { SpecTable } from "@/components/product/SpecTable";
 
 export const metadata: Metadata = {
   title: "RETracker — 6-DOF 마커리스 카메라 트래킹",
+  alternates: { canonical: "/product/retracker" },
   description:
     "천장 마커 없이 동작하는 6-DOF 마커리스 카메라 트래킹 RETracker. Bliss G2 센서 + Fizz 2 Pro 렌즈 인코더. 오차 <1cm/10m, 500fps IMU 퓨전, Unreal·Aximmetry 연동. EX 공식 한국 총판.",
 };

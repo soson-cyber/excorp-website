@@ -8,7 +8,8 @@ import { HistoryTimeline } from "@/components/about/HistoryTimeline";
 import { locations } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "회사 소개 — 이엑스(EX Corporation)",
+  title: "회사 소개",
+  alternates: { canonical: "/about" },
   description:
     "AI·XR 기술로 콘텐츠 제작의 문턱을 낮추는 이엑스 주식회사(EX Corporation). 미션·비전, 연혁(2020~), 보유 특허 6건과 벤처기업 인증, 판교 본사·하남 XR 스튜디오를 소개합니다.",
 };
@@ -35,8 +36,6 @@ const credentials: { tag: string; title: string; no?: string; img?: string }[] =
 ];
 
 const history: { year: string; items: string[] }[] = [
-  { year: "2026", items: ["(테스트) 마일스톤 준비 중"] },
-  { year: "2025", items: ["(테스트) 마일스톤 준비 중"] },
   { year: "2024", items: ["Moverse AI 공식 한국 총판 계약"] },
   {
     year: "2023",

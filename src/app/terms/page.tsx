@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page/PageHero";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description: "이엑스 주식회사 이용약관.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

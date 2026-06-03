@@ -42,10 +42,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
+    url: "https://excorp.kr",
     siteName: "EX Corporation",
     title: "EX Corporation — 기술의 연결로 경험을 확장하다",
     description:
       "AI와 XR 기술을 연결하여 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다.",
+    // OG 이미지는 app/opengraph-image.tsx(브랜드 1200×630 생성기)가 전 라우트에 자동 적용.
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EX Corporation — 기술의 연결로 경험을 확장하다",
+    description:
+      "AI와 XR 기술을 연결하여 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다.",
+    // 트위터 이미지는 og:image(생성된 opengraph-image)로 폴백된다.
   },
 };
 
@@ -94,11 +103,23 @@ export default function RootLayout({
                 postalCode: "13488",
                 addressCountry: "KR",
               },
-              sameAs: [
-                "https://instagram.com/ex.studio",
-                "https://www.linkedin.com",
-                "https://www.youtube.com",
-              ],
+              sameAs: ["https://instagram.com/ex.studio"],
+            }),
+          }}
+        />
+        <Script
+          id="website-jsonld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "EX Corporation",
+              alternateName: "이엑스 주식회사",
+              url: "https://excorp.kr",
+              inLanguage: "ko-KR",
+              publisher: { "@type": "Organization", name: "EX Corporation" },
             }),
           }}
         />

@@ -9,6 +9,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "고객 지원 — 자료실 & 기술 지원",
+  alternates: { canonical: "/support" },
   description:
     "솔루션 도입 이후에도 EX는 계속 함께합니다. 자주 묻는 질문, 회사 소개서·제품 스펙시트 자료실, 원격·현장 기술 지원, 긴급 핫라인(031-699-8228)을 한 곳에서.",
 };

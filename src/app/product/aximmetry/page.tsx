@@ -10,6 +10,7 @@ import { CompareTable } from "@/components/product/CompareTable";
 
 export const metadata: Metadata = {
   title: "Aximmetry — 실시간 버추얼 프로덕션 플랫폼",
+  alternates: { canonical: "/product/aximmetry" },
   description:
     "Unreal Engine 완벽 호환 + 자체 노드 기반 엔진으로 최대 8K 실시간 가상 스튜디오·XR·AR를 만드는 Aximmetry (Broadcast & Film Edition). 무제한 SDI/NDI/SMPTE 2110, Free-D·MOS. EX 공식 인증 리셀러.",
 };

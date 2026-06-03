@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Virtual Production — 촬영하는 순간 완성되는 영상 제작",
+  alternates: { canonical: "/solution/virtual-production" },
   description:
     "버추얼 프로덕션은 가상 배경과 실제 촬영을 실시간으로 합쳐 현장에서 완성하는 제작 방식입니다. EX는 EXLINK·파트너 기술·하남 XR 스튜디오를 연결해 크로마·실시간 트래킹 기반 VP를 제공합니다.",
 };

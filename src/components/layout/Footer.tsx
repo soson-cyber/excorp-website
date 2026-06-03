@@ -22,33 +22,13 @@ export function Footer() {
             <div className="mt-6 flex gap-5 text-footer-link">
               <a
                 href={site.social.instagram}
-                className="transition-colors hover:text-[#b6a3f0]"
+                className="transition-colors hover:text-footer-accent"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
               >
                 <Icon name="instagram" />
                 <span className="sr-only">Instagram</span>
-              </a>
-              <a
-                href={site.social.linkedin}
-                className="transition-colors hover:text-[#b6a3f0]"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Icon name="linkedin" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a
-                href={site.social.youtube}
-                className="transition-colors hover:text-[#b6a3f0]"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="YouTube"
-              >
-                <Icon name="youtube" />
-                <span className="sr-only">YouTube</span>
               </a>
             </div>
           </div>
@@ -82,7 +62,7 @@ export function Footer() {
                 {loc.address} <span className="text-footer-muted">({loc.zip})</span>
               </p>
               {loc.tel && (
-                <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-[#8186a3]">
+                <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-footer-muted">
                   <a
                     href={`tel:${loc.tel.replace(/[^0-9+]/g, "")}`}
                     className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
