@@ -39,12 +39,12 @@ const features = [
 const build = {
   software: [
     { t: "Aximmetry (Broadcast & Film)", d: "최대 8K 실시간 3D 그래픽 합성·버추얼 스튜디오 컴포저" },
-    { t: "REtracker Bliss Software", d: "Bliss G2 공간 데이터를 Free-D로 엔진에 실시간 송출" },
+    { t: "RETracker Bliss Software", d: "Bliss G2 공간 데이터를 Free-D로 엔진에 실시간 송출" },
   ],
   hardware: [
     { t: "Media Server", d: "RTX 5090 32GB · 라이젠9 9950X3D · 128GB · DeckLink 8K Pro G2 (4U)" },
-    { t: "REtracker Bliss G2", d: "Myriad X VPU 6-DOF 마커리스 트래킹 센서 (<1cm/10m)" },
-    { t: "REtracker Fizz 2 Pro", d: "렌즈 FIZ 인코더 — 심도·시야각 실시간 정합" },
+    { t: "RETracker Bliss G2", d: "Myriad X VPU 6-DOF 마커리스 트래킹 센서 (<1cm/10m)" },
+    { t: "RETracker Fizz 2 Pro", d: "렌즈 FIZ 인코더 — 심도·시야각 실시간 정합" },
   ],
 };
 
