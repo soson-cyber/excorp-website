@@ -36,6 +36,7 @@ const credentials: { tag: string; title: string; no?: string; img?: string }[] =
 ];
 
 const history: { year: string; items: string[] }[] = [
+  { year: "2026", items: ["중소벤처기업부 TIPS 선정 — AI 기반 XR 제작 솔루션 R&D"] },
   { year: "2024", items: ["Moverse AI 공식 한국 총판 계약"] },
   {
     year: "2023",

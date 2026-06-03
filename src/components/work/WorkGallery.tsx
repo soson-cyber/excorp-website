@@ -66,7 +66,7 @@ export function WorkGallery() {
                 <h3 className="mt-2 text-lg font-semibold text-fg">{w.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{w.summary}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg">
-                  사례 보기 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+                  시나리오 보기 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>
               </div>
             </Link>
