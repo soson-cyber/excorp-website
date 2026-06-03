@@ -14,6 +14,20 @@
 - **Home**: `src/components/home/HomeClean.tsx` (히어로=`Hero.tsx` — product-led 다크 + 인터랙티브 EXLINK Live Console). **Work**: `src/components/work/WorkGallery.tsx` (필터 갤러리, Sanity 연결 예정 TODO).
 - 다음 작업: 제품 3종 심층 재구성 → Sanity CMS 연결 → 실제 콘텐츠(케이스·인터뷰·로고). 자세한 건 HANDOFF.md §9.
 
+## 하네스: EX 웹사이트 제작·운영
+
+**목표:** excorp-website의 구현·디자인검토·카피·SEO·코드리뷰·검증·CMS를 7개 전문 에이전트 팀으로 조율해, DESIGN.md 정합·정직성·반응형·접근성을 지키며 빠르게 반복한다.
+
+**트리거:** EX 사이트 작업(페이지/컴포넌트 구현·수정, 디자인/UX 검토, 한글 카피, SEO, 코드 리뷰, 빌드·프리뷰 검증, Sanity 모델링)과 그 후속(재실행·수정·보완) 요청 시 `ex-web-orchestrator` 스킬을 사용하라. 단순 단일 질문은 직접 응답 가능. 하네스 자체의 재구성·확장·점검은 `harness:harness` 스킬로 처리한다. 에이전트(누가)·스킬(어떻게)의 단일 출처는 `.claude/agents/`·`.claude/skills/`다.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-06-03 | 초기 구성 (6인: frontend-builder·design-ux-reviewer·content-brand-writer·seo-specialist·qa-verifier·sanity-cms + ex-web-orchestrator) | 전체 | - |
+| 2026-06-03 | code-reviewer(+ex-code-review) 추가 → 7인 | agents/code-reviewer.md · skills/ex-code-review · 오케스트레이터 | 품질·보안 코드 리뷰 갭 보완 |
+| 2026-06-03 | 범용 "AI Team Configuration" 표 제거, 하네스로 일원화 | CLAUDE.md | 신규 하네스와 중복·혼선 제거 |
+| 2026-06-03 | 스킬 보강 — 컴포넌트·폴더 구조 관례 / OWASP Top 10 대조 | skills/ex-frontend-implementation · ex-code-review | harness-100(16·21·36) 패턴 참고 |
+
 ## 기준 문서 (Source of Truth)
 
 IA·사이트맵·콘텐츠·카피의 단일 기준은 Notion `CORP_PLAN` DB의 **"EX 홈페이지 리뉴얼 마스터플랜 V2"** 다.
@@ -39,28 +53,9 @@ IA/카피 작업 전 항상 Notion에서 최신본을 확인한다. (첨부: `EX
 - **Vercel** — 배포 / 호스팅
 - 문의/지원 폼 — Next.js API Route + 이메일 전송(추후 결정)
 
-## AI Team Configuration
+## AI 에이전트 팀
 
-작업 성격에 따라 아래 전문 에이전트를 우선 사용한다.
-
-| 역할 | 에이전트 | 담당 |
-|------|----------|------|
-| Next.js 개발 (리드) | `nextjs-developer` | App Router, 라우팅, SSR/SSG, 메타데이터/SEO, API Route, 페이지 구현 |
-| 컴포넌트 설계 | `react-component-architect` | 상단 메뉴바, 레이아웃, 카드 등 재사용 컴포넌트·훅 |
-| 스타일링 | `tailwind-frontend-expert` | Tailwind 유틸리티, 반응형, 다크모드 |
-| 디자인/UX | `ui-designer` | 디자인 시스템, 비주얼 위계, 색상·타이포 (브랜드 가이드 연동) |
-| SEO | `seo-specialist` | 메타 태그, 구조화 데이터, 사이트맵, 블로그 검색 노출 |
-| CMS 연동 | `sanity` 스킬 | 스키마 설계, Portable Text, 콘텐츠 모델링 |
-| 코드 리뷰 | `code-reviewer` | 품질·보안 리뷰 (병합 전) |
-| 배포 | `deployment-engineer` | Vercel 배포, CI/CD, 도메인 연결 |
-
-### 사용 규칙
-
-- 새 페이지/기능 구현 → `nextjs-developer`가 리드, 컴포넌트는 `react-component-architect`에 위임
-- 스타일 작업은 `tailwind-frontend-expert`, 디자인 방향은 `ui-designer`
-- 페이지 추가 시 항상 `seo-specialist`로 메타데이터·구조화 데이터 점검
-- 블로그/채용 콘텐츠 모델은 `sanity` 스킬로 스키마 작성
-- 기능 완료 후 병합 전 `code-reviewer` 검토
+작업은 위 **하네스**(`ex-web-orchestrator`)로 조율한다. 에이전트(누가)·스킬(어떻게)의 단일 출처는 `.claude/agents/`(7종: frontend-builder·design-ux-reviewer·content-brand-writer·seo-specialist·code-reviewer·qa-verifier·sanity-cms)와 `.claude/skills/`다. 배포(Vercel)는 사용자가 직접 수행하며, 배포 전 게이트는 qa-verifier PASS + code-reviewer 차단 이슈 없음.
 
 ## 브랜드 자산
 
