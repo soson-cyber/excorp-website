@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Reveal } from "@/components/motion/Reveal";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { HistoryTimeline } from "@/components/about/HistoryTimeline";
 import { locations } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -17,16 +20,23 @@ const whyEx = [
   { t: "문화기술과 엔터테인먼트를 연결하는 깊은 이해", d: "콘텐츠와 기술을 잇는 전문성." },
 ];
 
-const patents = [
-  { name: "다중 뷰포인트 생성 장치·방법", no: "KR 10-2762537" },
-  { name: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정 방법", no: "KR 10-2666600" },
-  { name: "복수의 스테레오 카메라 장치를 활용한 포지셔닝 정보 보정 방법", no: "KR 10-2549811" },
-  { name: "가상 스튜디오의 복합 센서 기반 다중 추적 카메라 시스템 동작 방법", no: "KR 10-2453561" },
-  { name: "전자 장치 및 전자 장치의 3차원 모델링을 위한 촬영방법", no: "KR 10-2078198" },
-  { name: "합성 영상의 왜곡을 결정하는 영상 처리 장치 및 방법", no: "KR 10-2029680" },
+// 인증 4종 + 특허 6건 (요청 순서). img 있는 항목은 인증서 이미지, 없으면 플레이스홀더.
+const credentials: { tag: string; title: string; no?: string; img?: string }[] = [
+  { tag: "인증", title: "사업자등록증" },
+  { tag: "인증", title: "벤처기업 인증" },
+  { tag: "인증", title: "연구개발전담부서" },
+  { tag: "인증", title: "창작전담부서" },
+  { tag: "특허", title: "다중 뷰포인트 생성 장치·방법", no: "KR 10-2762537" },
+  { tag: "특허", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정 방법", no: "KR 10-2666600" },
+  { tag: "특허", title: "복수의 스테레오 카메라 장치를 활용한 포지셔닝 정보 보정 방법", no: "KR 10-2549811" },
+  { tag: "특허", title: "가상 스튜디오의 복합 센서 기반 다중 추적 카메라 시스템 동작 방법", no: "KR 10-2453561", img: "/patent-2453561.jpg" },
+  { tag: "특허", title: "전자 장치 및 전자 장치의 3차원 모델링을 위한 촬영방법", no: "KR 10-2078198", img: "/patent-2078198.jpg" },
+  { tag: "특허", title: "합성 영상의 왜곡을 결정하는 영상 처리 장치 및 방법", no: "KR 10-2029680", img: "/patent-2029680.jpg" },
 ];
 
 const history: { year: string; items: string[] }[] = [
+  { year: "2026", items: ["(테스트) 마일스톤 준비 중"] },
+  { year: "2025", items: ["(테스트) 마일스톤 준비 중"] },
   { year: "2024", items: ["Moverse AI 공식 한국 총판 계약"] },
   {
     year: "2023",
@@ -55,31 +65,54 @@ export default function AboutPage() {
     <>
       <PageHero
         breadcrumb={[{ label: "About EX", href: "/about" }]}
-        tag="About EX · EXpand EXperiences"
-        title="현실과 가상의 융합, 새로운 경험을 창조하는 세상."
-        lead="이엑스 주식회사(EX Corporation)는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다."
+        eyebrow="모두의 창작 가능성을 넓히는 기술 스타트업"
+        title="EXpansion of EXperience."
+        lead="이엑스는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다."
       />
+
+      {/* Ambiance — EX의 실제 XR 운영 현장 */}
+      <section className="container-ex" style={{ paddingTop: 48 }}>
+        <Reveal>
+          <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
+            <div className="relative aspect-[16/7]">
+              <Image
+                src="/exlink-control-room.jpg"
+                alt="EX의 실시간 XR 통합 제어실 — 멀티뷰·프로그램·트래킹"
+                fill
+                priority
+                sizes="(min-width:1280px) 1216px, 100vw"
+                className="object-cover"
+              />
+              <span className="hud" style={{ left: 14, top: 12 }}>
+                EX · XR CONTROL ROOM
+              </span>
+            </div>
+          </figure>
+        </Reveal>
+      </section>
 
       {/* §01 Vision & Mission */}
       <section className="section section--ink section--glow">
         <div className="container-ex">
-          <SectionLabel index="01">Vision &amp; Mission</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            우리가 그리는 세상
-          </h2>
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            <div className="card" style={{ padding: 32 }}>
-              <span className="font-mono text-xs uppercase tracking-wider text-lav">Vision</span>
-              <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
-                모든 사람이 경계를 넘어 ‘새로운 경험(Experience)’을 창조하는 세상.
+          <Reveal className="text-center">
+            <SectionLabel index="01">Vision &amp; Mission</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22 }}>
+              우리가 그리는 세상
+            </h2>
+          </Reveal>
+          <div className="mt-16 grid gap-12 text-center lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <span className="font-mono text-xs uppercase tracking-[0.22em] text-lav">Vision</span>
+              <p className="mt-6 text-balance text-[1.65rem] font-medium leading-[1.45] tracking-[-0.01em] text-fg md:text-[2.15rem]">
+                모든 사람이 경계를 넘어 <span className="text-gradient-ex-bright">‘새로운 경험’</span>을 창조하는 세상.
               </p>
-            </div>
-            <div className="card" style={{ padding: 32 }}>
-              <span className="font-mono text-xs uppercase tracking-wider text-lav">Mission</span>
-              <p className="mt-4 text-pretty text-xl font-medium leading-relaxed text-fg">
+            </Reveal>
+            <Reveal delay={120}>
+              <span className="font-mono text-xs uppercase tracking-[0.22em] text-lav">Mission</span>
+              <p className="mt-6 text-balance text-[1.65rem] font-medium leading-[1.45] tracking-[-0.01em] text-fg md:text-[2.15rem]">
                 AI + XR 융합 기술로 문화콘텐츠 제작의 문턱을 낮추고, 누구나 몰입형 경험을 만들 수 있게 합니다.
               </p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -87,19 +120,21 @@ export default function AboutPage() {
       {/* §02 Why EX */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="02">Why EX</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            왜 EX인가
-          </h2>
+          <Reveal className="text-center">
+            <SectionLabel index="02">Why EX</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22 }}>
+              왜 EX인가
+            </h2>
+          </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {whyEx.map((c, i) => (
-              <div key={c.t} className="card flex gap-5" style={{ padding: 28 }}>
+              <Reveal key={c.t} className="card flex gap-5 p-7" delay={i * 80}>
                 <span className="font-mono text-2xl font-bold text-faint tabular-nums">0{i + 1}</span>
                 <div>
                   <h3 className="text-lg font-semibold text-fg">{c.t}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -108,23 +143,48 @@ export default function AboutPage() {
       {/* §03 Patents */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="03">Patents &amp; Certifications</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            보유 특허 &amp; 인증
-          </h2>
-          <p className="lead" style={{ maxWidth: "40rem" }}>
-            기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증
-          </p>
-          <ol className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
-            {patents.map((p, i) => (
-              <li
-                key={p.no}
-                className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between"
-                style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
-              >
-                <span className="text-sm text-fg">{p.name}</span>
-                <span className="shrink-0 font-mono text-xs text-lav">{p.no}</span>
-              </li>
+          <Reveal className="text-center">
+            <SectionLabel index="03">Patents &amp; Certifications</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22 }}>
+              보유 특허 &amp; 인증
+            </h2>
+            <p className="lead mx-auto" style={{ maxWidth: "40rem" }}>
+              기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증
+            </p>
+          </Reveal>
+          <ol className="mt-12 grid list-none gap-4 p-0 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+            {credentials.map((c, i) => (
+              <Reveal key={c.title} className="card patent-card" delay={(i % 5) * 50}>
+                <li className="patent-card__inner">
+                  <div className="patent-card__media">
+                    {c.img ? (
+                      <Image
+                        src={c.img}
+                        alt={`${c.tag} — ${c.title}${c.no ? ` (${c.no})` : ""}`}
+                        fill
+                        sizes="(min-width:1024px) 240px, (min-width:640px) 33vw, 50vw"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <div className="patent-card__ph">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">{c.tag === "특허" ? "Patent" : "Certified"}</span>
+                        {c.no ? (
+                          <span className="mt-1 font-mono text-xs text-faint">{c.no}</span>
+                        ) : (
+                          <span className="mt-1 px-3 text-center text-xs text-faint">{c.title}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <div className="patent-card__body">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-faint">{c.tag === "특허" ? "Patent" : "Cert"}</span>
+                      {c.no && <span className="font-mono text-[11px] font-semibold text-lav">{c.no}</span>}
+                    </div>
+                    <h3 className="mt-2 text-[13px] font-medium leading-snug text-fg">{c.title}</h3>
+                  </div>
+                </li>
+              </Reveal>
             ))}
           </ol>
         </div>
@@ -133,46 +193,40 @@ export default function AboutPage() {
       {/* §04 History */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="04">History</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            연혁
-          </h2>
-          <div className="mt-12 max-w-3xl">
-            {history.map((h) => (
-              <div key={h.year} className="flex gap-6 border-l border-border pl-6 pb-8 last:pb-0">
-                <span className="-ml-[2.1rem] flex h-10 w-16 shrink-0 items-center justify-center rounded-full bg-card font-mono text-sm font-bold text-lav ring-1 ring-border">
-                  {h.year}
-                </span>
-                <ul className="space-y-1.5 pt-1.5">
-                  {h.items.map((it) => (
-                    <li key={it} className="text-sm text-muted">
-                      • {it}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <Reveal className="text-center">
+            <SectionLabel index="04">History</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22 }}>
+              연혁
+            </h2>
+            <p className="lead mx-auto" style={{ maxWidth: "40rem" }}>
+              2020년 설립 이후, EX가 걸어온 길.
+            </p>
+          </Reveal>
+          <Reveal>
+            <HistoryTimeline items={history} />
+          </Reveal>
         </div>
       </section>
 
       {/* §05 Locations */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="05">Location</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            오시는 길
-          </h2>
+          <Reveal className="text-center">
+            <SectionLabel index="05">Location</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22 }}>
+              오시는 길
+            </h2>
+          </Reveal>
           <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
-            {locations.map((loc) => (
-              <div key={loc.kind} className="card" style={{ padding: 24 }}>
+            {locations.map((loc, i) => (
+              <Reveal key={loc.kind} className="card p-6" delay={i * 90}>
                 <span className="font-mono text-xs uppercase tracking-wider text-lav">{loc.kind}</span>
                 <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
                 <p className="text-sm text-muted">
                   {loc.address} <span className="text-faint">({loc.zip})</span>
                 </p>
                 {loc.tel && <p className="mt-1 font-mono text-xs text-faint">Tel {loc.tel}</p>}
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

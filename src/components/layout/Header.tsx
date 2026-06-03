@@ -9,23 +9,41 @@ import { nav } from "@/lib/site";
 export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  // `true` while the top of the page (inside the hero region) is in view.
+  // Starts `true` so the first paint is transparent over the hero — no flash.
+  const [atHeroTop, setAtHeroTop] = useState(true);
 
   const pathname = usePathname();
-  const isHome = pathname === "/";
 
-  // Transparent over the dark hero; flips to dark-glass once scrolled past it
-  // (or off-home, or while the mobile sheet is open).
-  const overHero = isHome && !scrolled && !mobileOpen;
+  // Transparent over the dark hero so its aurora/colour bleeds behind the bar;
+  // flips to dark-glass once the hero scrolls away (or the mobile sheet opens).
+  const overHero = atHeroTop && !mobileOpen;
 
   useEffect(() => {
-    // overHero already requires isHome, so non-home needs no scroll tracking.
-    if (!isHome) return;
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.82);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
+    // Every routed page that wants a connected header renders a zero-height
+    // sentinel at the bottom of its hero ([data-hero-sentinel]). While that
+    // sentinel sits below the header the page is "at hero top"; once it scrolls
+    // up past the bar the header turns solid. IntersectionObserver keeps this
+    // off the scroll thread (no rAF/scroll listener, no layout thrash).
+    const sentinel = document.querySelector<HTMLElement>("[data-hero-sentinel]");
+
+    // No hero on this route (e.g. a bare content page) → header is always solid.
+    // Defer to a frame so this isn't a synchronous setState in the effect body
+    // (react-hooks/set-state-in-effect); avoids cascading renders.
+    if (!sentinel) {
+      const raf = requestAnimationFrame(() => setAtHeroTop(false));
+      return () => cancelAnimationFrame(raf);
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => setAtHeroTop(entry.isIntersecting),
+      // The bar is ~84px tall; trip the flip the moment the sentinel crosses
+      // beneath it rather than at the very top of the viewport.
+      { rootMargin: "-84px 0px 0px 0px", threshold: 0 },
+    );
+    io.observe(sentinel);
+    return () => io.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";

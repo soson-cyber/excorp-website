@@ -774,15 +774,27 @@ html.cursor-reduce .ex-cursor-ring {
   position: sticky;
   top: 0;
   z-index: 50;
+  /* Only cheap, compositor/paint-light props animate — no layout. */
   transition:
-    background-color 0.3s,
-    border-color 0.3s;
+    background-color 0.3s var(--ease-ex),
+    box-shadow 0.3s var(--ease-ex);
 }
+/* Transparent over the hero so its aurora/colour bleeds behind the bar. A faint
+   top-down scrim keeps logo/nav/CTA legible over bright aurora without reading
+   as a separate surface (so the colour still feels continuous). */
 .header--overHero {
-  background: transparent;
+  /* darker at the very top to tame the bright aurora band, fading down so the
+     aurora still glows behind the lower half of the bar (connected colour) */
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 6, 38, 0.72) 0%,
+    rgba(14, 6, 38, 0.32) 48%,
+    rgba(14, 6, 38, 0) 100%
+  );
+  box-shadow: none;
 }
-/* scrolled state stays fully transparent — the glass surface lives on the
-   center nav pill (below), not the bar */
+/* Past the hero: dark glass. Same base hue as --color-hero (#0E0626) so the
+   colour tone doesn't jump when it flips. */
 .header--solid {
   background: rgba(14, 6, 38, 0.92);
   backdrop-filter: blur(14px);
@@ -1283,6 +1295,15 @@ html.cursor-reduce .ex-cursor-ring {
   pointer-events: none;
   background: radial-gradient(72% 58% at 50% 28%, transparent 0%, rgba(14, 6, 38, 0.5) 76%, var(--color-hero) 100%);
 }
+/* Header IntersectionObserver marker — ~82vh down preserves the old flip point. */
+.hero-sentinel {
+  position: absolute;
+  top: 82vh;
+  left: 0;
+  height: 1px;
+  width: 1px;
+  pointer-events: none;
+}
 .hero-fade {
   position: absolute;
   inset-inline: 0;
@@ -1331,6 +1352,209 @@ html.cursor-reduce .ex-cursor-ring {
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
+}
+
+/* ── PageHero — pulled up under the (transparent-at-top) header so the aurora
+   bleeds behind the bar and the colour connects seamlessly, mirroring the home
+   `.hero` (-64px margin / padded content). No bottom hairline — the section
+   fades into the body via its own base colour instead of a border. ─────────── */
+.pagehero {
+  margin-top: -64px; /* matches header inner height → hero starts at viewport top */
+  padding-top: 64px; /* clear the bar before content begins */
+  background: var(--color-hero);
+  border-bottom: 0;
+}
+.pagehero__inner {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 768px) {
+  .pagehero__inner {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+/* Zero-footprint marker the Header's IntersectionObserver tracks. */
+.pagehero__sentinel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 1px;
+}
+
+/* ── PageHero aurora — brand-color blurred blobs, slow drift ─────────────── */
+.pagehero-aurora {
+  position: absolute;
+  /* extend above the section top so the blobs fill behind the header bar too */
+  inset: -25% -10% -25% -10%;
+  top: -64px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 55% at 22% 28%, rgba(139, 92, 246, 0.4), transparent 70%),
+    radial-gradient(34% 50% at 80% 22%, rgba(210, 6, 238, 0.3), transparent 70%),
+    radial-gradient(46% 60% at 62% 82%, rgba(69, 241, 224, 0.2), transparent 72%),
+    radial-gradient(42% 52% at 32% 75%, rgba(94, 46, 192, 0.34), transparent 72%);
+  filter: blur(44px);
+  opacity: 0.55;
+  /* promote to its own compositor layer; only transform animates (no repaint) */
+  will-change: transform;
+  transform: translateZ(0);
+  animation: pageheroAurora 20s var(--ease-ex) infinite alternate;
+}
+@keyframes pageheroAurora {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(1.05) rotate(-1deg);
+  }
+  100% {
+    transform: translate3d(3%, 2%, 0) scale(1.14) rotate(1.5deg);
+  }
+}
+/* ── About 특허 카드 — 인증서 이미지 + 정보 통합 그리드 ───────────────────── */
+.patent-card {
+  padding: 0;
+  overflow: hidden;
+}
+.patent-card__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.patent-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0b0820;
+  border-bottom: 1px solid var(--color-border);
+}
+.patent-card__ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(139, 92, 246, 0.18), transparent 70%),
+    var(--color-surface-2);
+}
+.patent-card__body {
+  padding: 16px 20px 20px;
+}
+
+/* ── About 연혁 — 중앙 세로줄 + 좌우 교차 타임라인 ───────────────────────── */
+.tl {
+  position: relative;
+  padding: 4px 0;
+}
+/* center spine */
+.tl::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(var(--color-mint), #8b5cf6, var(--color-pink));
+  opacity: 0.45;
+}
+.tl-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 24px;
+}
+.tl-row:last-child {
+  margin-bottom: 0;
+}
+.tl-dot {
+  position: absolute;
+  left: 50%;
+  top: 26px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg);
+  border: 2px solid #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.16);
+  z-index: 1;
+}
+.tl-card {
+  padding: 22px 24px;
+}
+.tl-row--left .tl-card {
+  grid-column: 1;
+  margin-right: 44px;
+}
+.tl-row--right .tl-card {
+  grid-column: 2;
+  margin-left: 44px;
+}
+.tl-year {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-lav);
+}
+.tl-items {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tl-items li {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+/* mobile: single column, spine on the left */
+@media (max-width: 767px) {
+  .tl::before {
+    left: 7px;
+  }
+  .tl-row {
+    grid-template-columns: 1fr;
+  }
+  .tl-dot {
+    left: 7px;
+  }
+  .tl-row--left .tl-card,
+  .tl-row--right .tl-card {
+    grid-column: 1;
+    margin: 0 0 0 32px;
+  }
+}
+
+/* dissolve the aurora into the page base (#0E0626) at the hero bottom so it
+   connects seamlessly into the next section */
+.pagehero-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--color-hero));
+}
+@media (prefers-reduced-motion: reduce) {
+  .pagehero-aurora {
+    animation: none;
+    will-change: auto;
+  }
+  /* Flip the header state instantly — no cross-fade. */
+  .header {
+    transition: none;
+  }
 }
 
 /* ── EXLINK Live Console — rotating border + cursor spotlight ─────────────── */

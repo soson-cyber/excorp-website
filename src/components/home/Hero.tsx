@@ -301,6 +301,10 @@ export function Hero() {
       </div>
 
       <div className="hero-fade" aria-hidden="true" />
+      {/* Header watches this: while it sits below the bar the header stays
+          transparent over the hero; scrolling past it → solid glass. Placed
+          ~82vh down to preserve the previous home flip point. */}
+      <span className="hero-sentinel" data-hero-sentinel aria-hidden="true" />
     </section>
   );
 }
