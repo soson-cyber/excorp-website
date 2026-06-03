@@ -27,7 +27,8 @@ export default async function NewsPage() {
           year: n.date ? n.date.slice(0, 4) : "",
           title: n.title,
           excerpt: n.summary || undefined,
-          href: n.sourceUrl || undefined,
+          href: `/news/${n.slug}`, // 사이트 내 요약 랜딩 → 거기서 원문 보기
+          thumbnail: n.thumbnail || undefined,
           featured: i === 0,
         }))
       : pressFallback;

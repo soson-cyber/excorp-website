@@ -18,6 +18,7 @@ type Item = {
   excerpt?: string;
   href?: string;
   featured?: boolean;
+  thumbnail?: string;
 };
 
 const insightItems: Item[] = insights.map((i) => ({
@@ -71,6 +72,13 @@ export function NewsList({ press }: { press: Item[] }) {
             const span2 = n.featured && active === "전체" ? "md:col-span-2 lg:col-span-2" : "";
             const body = (
               <>
+                <div className="-mx-6 -mt-6 mb-4 aspect-[16/9] overflow-hidden rounded-t-2xl border-b border-border bg-gradient-to-br from-primary/25 via-surface to-card">
+                  {n.thumbnail && (
+                    // Notion 서명 URL은 만료·변경 → next/image 대신 단순 img (설정 불필요)
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={n.thumbnail} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  )}
+                </div>
                 <div className="flex items-center gap-2">
                   <span className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${catClass(n.cat)}`}>
                     {n.cat}

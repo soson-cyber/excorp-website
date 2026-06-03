@@ -55,11 +55,13 @@ const fileUrl = (p: any): string => {
 /* ── 타입 (사이트 렌더용 정규화 형태) ────────────────────────────── */
 export type NotionNews = {
   id: string;
+  slug: string;
   title: string;
   outlet: string;
   date: string;
   summary: string;
   sourceUrl: string;
+  thumbnail: string;
   category: string;
 };
 export type NotionWork = {
@@ -107,18 +109,28 @@ export async function getNews(): Promise<NotionNews[] | null> {
     .filter((r) => r.properties?.["게시여부"]?.checkbox === true)
     .map((r): NotionNews => {
       const p: Props = r.properties ?? {};
+      // slug 미설정 시 page id로 폴백 → 항상 라우팅 가능
+      const slug = txt(p["slug"]) || r.id.replace(/-/g, "");
       return {
         id: r.id,
+        slug,
         title: txt(p["제목"] ?? p["Title"]),
         outlet: txt(p["매체"]),
         date: dateStart(p["발행일"]),
         summary: txt(p["요약"]),
         sourceUrl: urlOf(p["원문URL"]),
+        thumbnail: fileUrl(p["썸네일"]),
         category: sel(p["카테고리"]) || "보도자료",
       };
     })
     .filter((n) => n.title)
     .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+}
+
+/** slug로 단일 보도자료 조회(요약 랜딩 페이지용). */
+export async function getNewsItem(slug: string): Promise<NotionNews | null> {
+  const all = await getNews();
+  return all?.find((n) => n.slug === slug) ?? null;
 }
 
 /** Work 활용 사례. */
