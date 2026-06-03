@@ -4,6 +4,11 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { NewsList } from "@/components/news/NewsList";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { getNews } from "@/lib/notion";
+import { pressFallback } from "@/lib/press-fallback";
+
+// ISR — Notion(WEBSITE_NEWS) 변경을 5분 주기로 반영. 미설정 시 fallback.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "뉴스 & 인사이트",
@@ -12,7 +17,21 @@ export const metadata: Metadata = {
     "이엑스(EX)의 보도자료와 기술 인사이트. 버추얼 프로덕션·마커리스 카메라 트래킹 등 실시간 XR 콘텐츠 제작을 쉽게 풀어 설명하고, EX의 파트너십·스튜디오 소식을 전합니다.",
 };
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  // Notion(WEBSITE_NEWS) 보도자료 → 없거나 비면 하드코딩 fallback 사용(사이트 안 깨짐)
+  const notion = await getNews();
+  const press =
+    notion && notion.length > 0
+      ? notion.map((n, i) => ({
+          cat: "보도자료" as const,
+          year: n.date ? n.date.slice(0, 4) : "",
+          title: n.title,
+          excerpt: n.summary || undefined,
+          href: n.sourceUrl || undefined,
+          featured: i === 0,
+        }))
+      : pressFallback;
+
   return (
     <>
       <PageHero
@@ -30,7 +49,7 @@ export default function NewsPage() {
             전체 소식
           </h2>
           <div className="mt-12">
-            <NewsList />
+            <NewsList press={press} />
           </div>
         </div>
       </section>

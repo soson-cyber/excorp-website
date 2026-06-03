@@ -1,14 +1,17 @@
 import { NextResponse } from "next/server";
+import { createInquiry, isNotionEnabled } from "@/lib/notion";
 
 type Payload = {
   name?: string;
   company?: string;
   email?: string;
+  phone?: string;
   type?: string;
   message?: string;
+  website?: string; // 허니팟(봇 차단용 — 사람은 비워둠)
 };
 
-// 유형별 수신자 라우팅 (도메인 메일 확정 시 교체)
+// 유형별 수신자 라우팅 (이메일 알림 가동 시 사용)
 const ROUTING: Record<string, string> = {
   "솔루션 도입": "sales@excorp.kr",
   "제품 도입": "sales@excorp.kr",
@@ -25,6 +28,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "invalid body" }, { status: 400 });
   }
 
+  // 허니팟: 숨김 필드가 채워져 있으면 봇 → 조용히 성공 처리(저장 안 함)
+  if (body.website) return NextResponse.json({ ok: true });
+
   const { name, email, message, type } = body;
   if (!name || !email || !message) {
     return NextResponse.json({ ok: false, error: "missing fields" }, { status: 400 });
@@ -35,21 +41,32 @@ export async function POST(req: Request) {
 
   const to = ROUTING[type ?? "일반 문의"] ?? "info@excorp.kr";
 
-  // ── 스캐폴드: 현재는 서버 로그에 접수만 기록 ──────────────────
-  // 실제 가동 시(아래 한 번만 작업):
-  //   1) `npm i resend` 후 RESEND_API_KEY 환경변수 설정
-  //   2) 아래 블록 주석 해제 — 유형별 `to`로 발송 + replyTo=문의자
-  //   3) (선택) Notion DB(NOTION_TOKEN/NOTION_DB_ID)에 리드 행 생성
-  //
-  // import { Resend } from "resend";
-  // const resend = new Resend(process.env.RESEND_API_KEY!);
-  // await resend.emails.send({
-  //   from: "EX Website <noreply@excorp.kr>",
-  //   to, replyTo: email,
-  //   subject: `[웹문의·${type ?? "일반 문의"}] ${name}`,
-  //   text: `이름: ${name}\n회사: ${body.company ?? "-"}\n이메일: ${email}\n유형: ${type ?? "-"}\n\n${message}`,
-  // });
-  console.info("[contact] received lead →", { to, name, email, type });
+  // ── 1) Notion WEBSITE_INQUIRY 에 접수 저장 (관리자 = Notion) ──────────
+  // NOTION_TOKEN + NOTION_DS_INQUIRY 설정 시 동작. 실패해도 사용자 응답은 성공 유지.
+  let stored = false;
+  if (isNotionEnabled()) {
+    stored = await createInquiry({
+      name,
+      company: body.company,
+      email,
+      phone: body.phone,
+      type,
+      message,
+    });
+  }
+  if (!stored) {
+    // Notion 미설정/실패 시 최소한 서버 로그로 유실 방지
+    console.info("[contact] lead (Notion 미저장) →", { to, name, email, type });
+  }
+
+  // ── 2) (선택) 이메일 알림 ────────────────────────────────────────
+  //   `npm i resend` + RESEND_API_KEY 후 아래 활성화 — 유형별 `to`로 발송, replyTo=문의자
+  //   import { Resend } from "resend";
+  //   await new Resend(process.env.RESEND_API_KEY!).emails.send({
+  //     from: "EX Website <noreply@excorp.kr>", to, replyTo: email,
+  //     subject: `[웹문의·${type ?? "일반 문의"}] ${name}`,
+  //     text: `이름:${name}\n회사:${body.company ?? "-"}\n이메일:${email}\n유형:${type ?? "-"}\n\n${message}`,
+  //   });
 
   return NextResponse.json({ ok: true });
 }
