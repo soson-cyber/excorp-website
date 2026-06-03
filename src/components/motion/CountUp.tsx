@@ -24,8 +24,8 @@ export function CountUp({
     const el = ref.current;
     if (!el) return;
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setN(value);
-      return;
+      const raf0 = requestAnimationFrame(() => setN(value));
+      return () => cancelAnimationFrame(raf0);
     }
     let raf = 0;
     let started = false;

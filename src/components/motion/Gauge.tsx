@@ -14,8 +14,8 @@ export function Gauge({ className = "" }: { className?: string }) {
     const el = ref.current;
     if (!el) return;
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setFill(true);
-      return;
+      const raf0 = requestAnimationFrame(() => setFill(true));
+      return () => cancelAnimationFrame(raf0);
     }
     const io = new IntersectionObserver(
       ([entry]) => {
