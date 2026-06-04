@@ -256,7 +256,8 @@ export default function XrSolutionPage() {
         <div className="container-ex">
           <SectionLabel index="07">Adoption</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            도입 방식 — 컨설팅부터 운영까지
+            <span className="inline-block">도입 방식 —</span>{" "}
+            <span className="inline-block">컨설팅부터 운영까지</span>
           </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {adoption.map((a, i) => (

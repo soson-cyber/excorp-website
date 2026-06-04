@@ -47,7 +47,8 @@ export default function SolutionPage() {
         <div className="container-ex">
           <SectionLabel index="01">Approach</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem" }}>
-            자체 기술과 글로벌 파트너, 양손 전략으로 모든 현장에 대응합니다.
+            <span className="inline-block">자체 기술과 글로벌 파트너,</span>{" "}
+            <span className="inline-block">양손 전략으로 모든 현장에 대응합니다.</span>
           </h2>
           <p className="lead" style={{ maxWidth: "42rem" }}>
             EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한 모든
@@ -71,7 +72,8 @@ export default function SolutionPage() {
         <div className="container-ex">
           <SectionLabel index="02">Two Routes</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem" }}>
-            자체 솔루션과 방법론, 두 갈래로 시작합니다.
+            <span className="inline-block">자체 솔루션과 방법론,</span>{" "}
+            <span className="inline-block">두 갈래로 시작합니다.</span>
           </h2>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             <Link

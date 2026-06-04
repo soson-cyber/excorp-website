@@ -161,7 +161,8 @@ export default function RetrackerPage() {
         <div className="container-ex">
           <SectionLabel index="01">Showcase</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            카메라가 움직이는 그대로, 공간이 따라옵니다
+            <span className="inline-block">카메라가 움직이는 그대로,</span>{" "}
+            <span className="inline-block">공간이 따라옵니다</span>
           </h2>
           <p className="lead" style={{ maxWidth: "40rem" }}>
             마커 없이 추적한 카메라의 6-DOF 위치·방향을 가상 배경에 실시간으로 정합한 트래킹 현장입니다.
@@ -208,7 +209,8 @@ export default function RetrackerPage() {
         <div className="container-ex">
           <SectionLabel index="03">Lineup</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            센서 · 인코더 · 소프트웨어, 세 요소로 구성됩니다
+            <span className="inline-block">센서 · 인코더 · 소프트웨어,</span>{" "}
+            <span className="inline-block">세 요소로 구성됩니다</span>
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {lineup.map((p) => (
