@@ -151,11 +151,12 @@ export default function MoversePage() {
           </h2>
           <figure className="mx-auto mt-12 max-w-4xl">
             <MediaBlank
+              ratio="16/9"
+              kind="video"
               tag="CAPTURE PREVIEW"
-              glyph="play"
               label="캡처 프리뷰 준비 중"
               sublabel="실측 자료 확보 후 교체 예정"
-              className="aspect-video"
+              className="w-full"
             />
             <figcaption className="mt-3 text-center font-mono text-xs text-faint">
               Moverse 마커리스 모션캡처 — 자료 준비 중

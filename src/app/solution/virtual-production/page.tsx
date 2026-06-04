@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
+import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
@@ -114,7 +115,15 @@ export default function VirtualProductionPage() {
           <p className="lead" style={{ maxWidth: "42rem" }}>
             버추얼 프로덕션은 한 가지 방법만 있는 게 아닙니다. 목적과 예산에 따라 아래 방식을 선택하거나 조합합니다.
           </p>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <MediaBlank
+            ratio="16/9"
+            kind="video"
+            tag="REAL-TIME COMPOSITING"
+            label="실시간 합성 데모"
+            sublabel="크로마 → 가상 배경 합성 루프 · 영상 준비 중"
+            className="mt-12 w-full"
+          />
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {methods.map((m) => (
               <div key={m.t} className="card" style={{ padding: 24 }}>
                 <div className="flex items-center justify-between gap-3">

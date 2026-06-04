@@ -115,7 +115,7 @@ export default function XrStudioPage() {
           </p>
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {presets.map((p) => (
-              <MediaBlank key={p.name} tag={p.cat} label={p.name} sublabel="프리뷰 준비 중" className="aspect-[4/3]" />
+              <MediaBlank key={p.name} ratio="4/3" kind="image" tag={p.cat} label={p.name} sublabel="프리뷰 준비 중" />
             ))}
           </div>
         </div>
@@ -163,11 +163,11 @@ export default function XrStudioPage() {
             스튜디오 둘러보기
           </h2>
           <div className="mt-12">
-            <MediaBlank tag="STUDIO · VIDEO" glyph="play" label="촬영 샘플 영상" sublabel="영상 에셋 추가 예정" className="aspect-[16/9] w-full" />
+            <MediaBlank ratio="16/9" kind="video" tag="STUDIO · VIDEO" label="촬영 샘플 영상" sublabel="영상 에셋 추가 예정" className="w-full" />
           </div>
           <div className="mt-5 grid gap-5 sm:grid-cols-3">
             {galleryBlanks.map((b) => (
-              <MediaBlank key={b.label} tag={b.tag} label={b.label} sublabel="이미지 준비 중" className="aspect-video" />
+              <MediaBlank key={b.label} ratio="16/9" kind="image" tag={b.tag} label={b.label} sublabel="이미지 준비 중" />
             ))}
           </div>
           <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>

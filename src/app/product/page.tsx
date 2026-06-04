@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { CompareTable } from "@/components/product/CompareTable";
+import { MediaBlank } from "@/components/ui/MediaBlank";
 
 export const metadata: Metadata = {
   title: "버추얼 프로덕션 제품 — Aximmetry · Moverse AI · RETracker",
@@ -65,6 +66,20 @@ export default function ProductPage() {
         title="검증된 글로벌 파트너 제품, EX가 한국에서 책임집니다."
         lead="도입 컨설팅부터 셋업·교육·기술 지원까지, EX가 공식 리셀러·총판으로서 전 과정을 지원합니다."
       />
+
+      {/* §00 Hero media band — 제품군 비주얼 밴드 자리 */}
+      <section className="section section--ink">
+        <div className="container-ex">
+          <MediaBlank
+            ratio="16/9"
+            kind="image"
+            tag="VIRTUAL PRODUCTION LINEUP"
+            label="버추얼 프로덕션 핵심 제품군"
+            sublabel="Aximmetry · Moverse AI · RETracker · 자산 준비 중"
+            className="w-full"
+          />
+        </div>
+      </section>
 
       {/* §01 Why EX */}
       <section className="section section--ink section--glow">

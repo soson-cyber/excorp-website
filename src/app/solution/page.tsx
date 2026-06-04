@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
@@ -46,6 +47,20 @@ export default function SolutionPage() {
           </>
         }
       />
+
+      {/* §00 Hero media band — 풀블리드 루프영상 자리 */}
+      <section className="section section--ink">
+        <div className="container-ex">
+          <MediaBlank
+            ratio="16/9"
+            kind="video"
+            tag="EX · INTEGRATED XR PIPELINE"
+            label="EX 통합 XR 파이프라인"
+            sublabel="촬영 → 트래킹 → 렌더 → 송출 · 영상 준비 중"
+            className="w-full"
+          />
+        </div>
+      </section>
 
       {/* §01 Approach */}
       <section className="section section--ink">

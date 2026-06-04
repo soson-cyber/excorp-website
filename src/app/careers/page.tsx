@@ -154,7 +154,7 @@ export default function CareersPage() {
                   </figcaption>
                 </figure>
               ) : (
-                <MediaBlank key={s.label} tag={s.label} label={s.caption} sublabel="사진 준비 중" className="aspect-[4/3]" />
+                <MediaBlank key={s.label} ratio="4/3" kind="image" tag={s.label} label={s.caption} sublabel="사진 준비 중" />
               ),
             )}
           </div>
