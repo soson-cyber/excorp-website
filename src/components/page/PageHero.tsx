@@ -38,7 +38,7 @@ export function PageHero({
         )}
 
         <h1
-          className={`text-balance text-[clamp(2.75rem,6vw,5.25rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-gradient-ex-bright ${
+          className={`text-balance break-keep [overflow-wrap:anywhere] text-[clamp(1.9rem,6vw,5.25rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-gradient-ex-bright sm:leading-[1.02] ${
             tag || eyebrow ? "mt-3" : ""
           }`}
         >
