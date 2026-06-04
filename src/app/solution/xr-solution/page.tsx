@@ -320,7 +320,7 @@ export default function XrSolutionPage() {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href="/contact">도입 상담 →</Button>
-            <Button href="/solution/virtual-production" variant="secondary">
+            <Button href="/solution/virtual-production" variant="glow">
               버추얼 프로덕션 알아보기 →
             </Button>
           </div>

@@ -18,7 +18,6 @@ export function PageHero({
   return (
     <section className="pagehero relative overflow-hidden">
       <div className="pagehero-aurora" aria-hidden="true" />
-      <div className="bg-grid absolute inset-0 opacity-40" />
       <div className="pagehero-fade" aria-hidden="true" />
       <div className="container-ex pagehero__inner relative text-center">
         {tag && (

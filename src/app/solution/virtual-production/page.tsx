@@ -162,7 +162,7 @@ export default function VirtualProductionPage() {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button href="/solution/xr-solution" variant="secondary">
+                <Button href="/solution/xr-solution" variant="glow">
                   EXLINK 자세히 →
                 </Button>
                 <Button href="/contact">도입 상담 →</Button>

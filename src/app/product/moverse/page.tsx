@@ -322,7 +322,7 @@ export default function MoversePage() {
                 <Button href="/contact" variant="accent">
                   도입 상담 →
                 </Button>
-                <Button href="/support" variant="secondary">
+                <Button href="/support" variant="glow">
                   기술 사양서 요청 →
                 </Button>
               </div>
