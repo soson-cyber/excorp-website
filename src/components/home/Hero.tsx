@@ -268,7 +268,6 @@ export function Hero() {
   };
   return (
     <section className="hero">
-      <div className="hero-grid" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
       <HeroStars />
       <div className="hero-vig" aria-hidden="true" />

@@ -48,7 +48,7 @@ IA/카피 작업 전 항상 Notion에서 최신본을 확인한다. (첨부: `EX
 
 - **Next.js 16 (App Router) + React 19 + TypeScript** — SSR/SSG 기반, SEO 최적화
 - **Tailwind CSS v4** — **전체 다크 product-led** 디자인 시스템 (토큰은 `src/app/globals.css @theme`, 단일 기준은 `DESIGN.md §0`)
-- **three.js 제거됨** — Home 히어로 배경은 정적 CSS 퍼스펙티브 그리드 + 캔버스 파티클(WebGL 미사용). 자세한 건 `HANDOFF.md §0 v3.1`
+- **three.js 제거됨** — Home 히어로 배경은 캔버스 파티클 + CSS 글로우/오로라(WebGL·퍼스펙티브 그리드 미사용). 자세한 건 `HANDOFF.md §0 v3.1`
 - **Sanity (Headless CMS)** — 블로그·채용·Work 갤러리 (스키마 예정, 미연결)
 - **Vercel** — 배포 / 호스팅
 - 문의/지원 폼 — Next.js API Route + 이메일 전송(추후 결정)

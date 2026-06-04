@@ -1350,38 +1350,6 @@ html.cursor-reduce .ex-cursor-ring {
     opacity: 1;
   }
 }
-/* Wope-style static CSS perspective grid — a faint floor receding to a top
-   vanishing point, masked so the lines dissolve at the edges/distance. Pure CSS
-   (no WebGL); flows slowly toward the viewer. */
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  -webkit-mask-image: radial-gradient(96% 78% at 50% 72%, #000 16%, transparent 78%);
-  mask-image: radial-gradient(96% 78% at 50% 72%, #000 16%, transparent 78%);
-}
-.hero-grid::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -8%;
-  width: 320%;
-  height: 150%;
-  transform: translateX(-50%) perspective(300px) rotateX(72deg);
-  transform-origin: 50% 100%;
-  background-image:
-    linear-gradient(rgba(139, 92, 246, 0.4) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.4) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: hero-grid-flow 8s linear infinite;
-}
-@keyframes hero-grid-flow {
-  to {
-    background-position: 0 80px;
-  }
-}
 .hero-stars {
   position: absolute;
   inset: 0;
@@ -1472,8 +1440,8 @@ html.cursor-reduce .ex-cursor-ring {
    `.hero` (-64px margin / padded content). No bottom hairline — the section
    fades into the body via its own base colour instead of a border. ─────────── */
 .pagehero {
-  margin-top: -64px; /* matches header inner height → hero starts at viewport top */
-  padding-top: 64px; /* clear the bar before content begins */
+  margin-top: -84px; /* full sticky header height (inner 64 + padding 10·10) → hero starts at viewport top, no base-color band under the bar */
+  padding-top: 84px; /* clear the bar before content begins */
   background: var(--color-hero);
   border-bottom: 0;
 }
@@ -2068,7 +2036,6 @@ html.cursor-reduce .ex-cursor-ring {
 @media (prefers-reduced-motion: reduce) {
   .hero-glow,
   .hero-stars,
-  .hero-grid::before,
   .console-shell .edge::before,
   .c-live .d,
   .c-rec {
