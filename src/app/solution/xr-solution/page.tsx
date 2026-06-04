@@ -85,7 +85,7 @@ export default function XrSolutionPage() {
       />
 
       {/* §01 What is EXLINK */}
-      <section className="section section--ink section--glow">
+      <section className="section section--ink">
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
