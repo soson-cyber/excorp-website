@@ -62,7 +62,7 @@ export function Footer() {
                 {loc.address} <span className="text-footer-muted">({loc.zip})</span>
               </p>
               {loc.tel && (
-                <p className="mt-2 flex flex-col items-start gap-1.5 font-mono text-xs text-footer-muted">
+                <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-footer-muted">
                   <a
                     href={`tel:${loc.tel.replace(/[^0-9+]/g, "")}`}
                     className="inline-flex items-center gap-1.5 transition-colors hover:text-white"

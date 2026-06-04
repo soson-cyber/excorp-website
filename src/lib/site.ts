@@ -147,8 +147,8 @@ export const footerColumns: { title: string; links: { label: string; href: strin
 
 export const locations = [
   {
-    kind: "HQ",
-    name: "본사 (Headquarters)",
+    kind: "Office",
+    name: "EX AI Office",
     address: "경기도 성남시 분당구 판교로 289번길 20, 스타트업캠퍼스 2동 5층",
     zip: "13488",
     tel: "",
