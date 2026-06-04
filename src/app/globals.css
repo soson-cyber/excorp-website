@@ -1564,6 +1564,23 @@ html.cursor-reduce .ex-cursor-ring {
   box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.16);
   z-index: 1;
 }
+/* 점 ↔ 카드 연결선(가로 틱) — 점이 카드에서 떨어져 보이지 않게 시각적으로 연결.
+   점 세로 중심(top 26 + 13/2 ≈ 32.5)에 맞춘다. */
+.tl-row::after {
+  content: "";
+  position: absolute;
+  top: 31px;
+  width: 44px;
+  height: 2px;
+  background: #8b5cf6;
+  opacity: 0.4;
+}
+.tl-row--left::after {
+  right: 50%;
+}
+.tl-row--right::after {
+  left: 50%;
+}
 .tl-card {
   padding: 22px 24px;
 }
@@ -1612,6 +1629,13 @@ html.cursor-reduce .ex-cursor-ring {
   .tl-row--right .tl-card {
     grid-column: 1;
     margin: 0 0 0 32px;
+  }
+  /* 모바일: 연결선은 스파인(7px) → 카드(좌측 32px) 사이로 고정 */
+  .tl-row--left::after,
+  .tl-row--right::after {
+    left: 7px;
+    right: auto;
+    width: 25px;
   }
 }
 
