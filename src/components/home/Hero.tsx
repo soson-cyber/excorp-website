@@ -161,6 +161,7 @@ function ExlinkConsole() {
               fill
               sizes="(min-width:1024px) 620px, 100vw"
               priority={i === 3}
+              unoptimized
               className="c-feed"
               style={{ opacity: i === sel ? 1 : 0 }}
             />
@@ -202,7 +203,7 @@ function ExlinkConsole() {
                   aria-pressed={i === sel}
                   title={`${c.id} 프로그램으로 전환`}
                 >
-                  <Image src={c.img} alt="" fill sizes="120px" />
+                  <Image src={c.img} alt="" fill sizes="120px" unoptimized />
                   <span>{c.id}</span>
                 </button>
               ))}
