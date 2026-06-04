@@ -773,6 +773,9 @@ html.cursor-reduce .ex-cursor-ring {
   line-height: 1.05;
   margin: 0;
   color: #fff;
+  /* 메인 히어로 제목처럼 줄 길이를 자동 균형 → 모든 페이지 섹션 제목이 자연스럽게
+     줄바꿈. (전역 word-break:keep-all로 어절 단위 보장. 수동 <br>는 하드 브레이크라 유지) */
+  text-wrap: balance;
 }
 .lead {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);

@@ -8,7 +8,7 @@ export function CtaBanner() {
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-lav">
             Get in Touch
           </span>
-          <h2 className="mt-4 text-3xl font-bold leading-snug md:text-4xl">
+          <h2 className="mt-4 text-balance text-3xl font-bold leading-snug md:text-4xl">
             XR 제작,{" "}
             <br className="hidden sm:block" />
             어디서부터 시작해야{" "}
