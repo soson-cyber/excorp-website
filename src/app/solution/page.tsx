@@ -43,7 +43,7 @@ export default function SolutionPage() {
       />
 
       {/* §01 Approach */}
-      <section className="section section--ink section--glow">
+      <section className="section section--ink">
         <div className="container-ex">
           <SectionLabel index="01">Approach</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem" }}>
