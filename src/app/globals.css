@@ -624,10 +624,7 @@ html.cursor-reduce .ex-cursor-ring {
    background reads as one continuous field instead of hero-glow → flat dark.
    Echoes the hero's lower violet/pink blobs, anchored at the top, fading to base. */
 .news-archive {
-  background:
-    radial-gradient(72% 44% at 50% 0%, rgba(139, 92, 246, 0.16) 0%, transparent 68%),
-    radial-gradient(40% 30% at 80% 2%, rgba(210, 6, 238, 0.08) 0%, transparent 70%),
-    var(--color-hero);
+  background: var(--color-hero);
 }
 
 /* ── Feature cards (Wope rotating border + cursor spotlight) ──────────────── */
@@ -2394,15 +2391,10 @@ html.cursor-reduce .ex-cursor-ring {
 .section--glow {
   position: relative;
 }
+/* 히어로 연결용 상단 그라데이션 제거 — 섹션 배경은 단색으로 통일.
+   (.section--glow 클래스는 남아 있어도 시각 효과 없음) */
 .section--glow::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(40% 26% at 50% 6%, rgba(139, 92, 246, 0.1) 0%, transparent 70%),
-    radial-gradient(26% 16% at 50% 0%, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  content: none;
 }
 .section--glow > * {
   position: relative;
