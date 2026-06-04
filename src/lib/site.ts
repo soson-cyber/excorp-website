@@ -153,7 +153,7 @@ export const locations = [
     zip: "13488",
     tel: "",
     mapEmbed:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.3218616774766!2d127.08546917640655!3d37.40586663332398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5900515b5a7b%3A0xa581001df5ab4b73!2z67Cw66-87Iqk7YOA7Yq47JeF7Iqk7YCY7Ja0!5e0!3m2!1sko!2skr!4v1780549095423!5m2!1sko!2skr",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d494.23887135524865!2d127.08808015886281!3d37.40626673180439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca7e58fc36133%3A0xe090d373b7efb886!2z7YyQ6rWQIOygnDPthYztgazrhbjrsLjrpqw!5e0!3m2!1sko!2skr!4v1780550418546!5m2!1sko!2skr",
   },
   {
     kind: "Studio",

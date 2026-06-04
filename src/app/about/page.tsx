@@ -226,7 +226,6 @@ export default function AboutPage() {
                   <p className="text-sm text-muted">
                     {loc.address} <span className="text-faint">({loc.zip})</span>
                   </p>
-                  {loc.tel && <p className="mt-1 font-mono text-xs text-faint">Tel {loc.tel}</p>}
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`}
                     target="_blank"
