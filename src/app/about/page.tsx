@@ -148,7 +148,7 @@ export default function AboutPage() {
             <h2 className="h2" style={{ marginTop: 22 }}>
               보유 특허 &amp; 인증
             </h2>
-            <p className="lead mx-auto" style={{ maxWidth: "40rem" }}>
+            <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
               기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증
             </p>
           </Reveal>
@@ -198,7 +198,7 @@ export default function AboutPage() {
             <h2 className="h2" style={{ marginTop: 22 }}>
               연혁
             </h2>
-            <p className="lead mx-auto" style={{ maxWidth: "40rem" }}>
+            <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
               2020년 설립 이후, EX가 걸어온 길.
             </p>
           </Reveal>
@@ -219,13 +219,31 @@ export default function AboutPage() {
           </Reveal>
           <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
             {locations.map((loc, i) => (
-              <Reveal key={loc.kind} className="card p-6" delay={i * 90}>
-                <span className="font-mono text-xs uppercase tracking-wider text-lav">{loc.kind}</span>
-                <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
-                <p className="text-sm text-muted">
-                  {loc.address} <span className="text-faint">({loc.zip})</span>
-                </p>
-                {loc.tel && <p className="mt-1 font-mono text-xs text-faint">Tel {loc.tel}</p>}
+              <Reveal key={loc.kind} className="card overflow-hidden p-0" delay={i * 90}>
+                <div className="p-6">
+                  <span className="font-mono text-xs uppercase tracking-wider text-lav">{loc.kind}</span>
+                  <p className="mt-1.5 font-medium text-fg">{loc.name}</p>
+                  <p className="text-sm text-muted">
+                    {loc.address} <span className="text-faint">({loc.zip})</span>
+                  </p>
+                  {loc.tel && <p className="mt-1 font-mono text-xs text-faint">Tel {loc.tel}</p>}
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-lav transition-colors hover:text-lav-hover"
+                  >
+                    구글 지도에서 길찾기 <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+                <iframe
+                  title={`${loc.name} 위치 지도`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(`${loc.address} (${loc.zip})`)}&hl=ko&z=16&output=embed`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block aspect-[16/10] w-full border-0"
+                  style={{ filter: "grayscale(0.1)" }}
+                />
               </Reveal>
             ))}
           </div>
