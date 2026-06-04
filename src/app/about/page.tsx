@@ -217,7 +217,7 @@ export default function AboutPage() {
               오시는 길
             </h2>
           </Reveal>
-          <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
             {locations.map((loc, i) => (
               <Reveal key={loc.kind} className="card overflow-hidden p-0" delay={i * 90}>
                 <div className="p-6">
