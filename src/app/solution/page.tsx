@@ -39,7 +39,12 @@ export default function SolutionPage() {
         breadcrumb={[{ label: "Solution", href: "/solution" }]}
         tag="Solution"
         title="현장에 맞는 최적의 XR 환경을 구성합니다."
-        lead="자체 통합 솔루션 EXLINK와 검증된 글로벌 파트너 기술, 그리고 실 운영 스튜디오까지 — 콘텐츠 제작의 처음과 끝을 지원합니다."
+        lead={
+          <>
+            <span className="inline-block">자체 통합 솔루션 EXLINK와 검증된 글로벌 파트너 기술, 그리고 실 운영 스튜디오까지</span>{" "}
+            <span className="inline-block">— 콘텐츠 제작의 처음과 끝을 지원합니다.</span>
+          </>
+        }
       />
 
       {/* §01 Approach */}

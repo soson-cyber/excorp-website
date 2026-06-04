@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type Crumb = { label: string; href: string };
 
 export function PageHero({
@@ -11,7 +13,7 @@ export function PageHero({
   tag?: string;
   eyebrow?: string;
   title: string;
-  lead?: string;
+  lead?: ReactNode;
 }) {
   return (
     <section className="pagehero relative overflow-hidden">
