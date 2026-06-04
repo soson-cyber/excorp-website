@@ -18,7 +18,7 @@ const PARTNERS: { name: string; role: string; desc: string; initial: string; hre
   { name: "Moverse AI", role: "DISTRIBUTOR", desc: "마커리스 AI 모션캡처 시스템", initial: "M", href: "/product/moverse", img: "/moverse-mocap.jpg" },
   { name: "RETracker", role: "DISTRIBUTOR", desc: "정밀 카메라 트래킹 솔루션", initial: "R", href: "/product/retracker", img: "/retracker-tracking.jpg" },
 ];
-const STUDIO_BULLETS = ["메뉴형 콘텐츠 제작 — IR · 웨비나 · 대담", "후반 작업 없이 촬영과 동시에 완성", "대형 크로마 · 멀티캠 · XR 트래킹"];
+const STUDIO_BULLETS = ["후반 작업 없이 촬영과 동시에 완성", "대형 크로마 · 멀티캠 · XR 트래킹"];
 const STATS = [
   { v: 6, s: "+", l: "기술 특허" },
   { v: 3, s: "", l: "글로벌 파트너" },
