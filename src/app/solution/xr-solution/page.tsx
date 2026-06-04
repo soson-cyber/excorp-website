@@ -37,18 +37,6 @@ const features = [
   { t: "확장성", d: "카메라 수·그래픽 소스·연결 기술을 현장 규모에 맞춰 확장합니다." },
 ];
 
-const build = {
-  software: [
-    { t: "Aximmetry (Broadcast & Film)", d: "최대 8K 실시간 3D 그래픽 합성·버추얼 스튜디오 컴포저" },
-    { t: "RETracker Bliss Software", d: "Bliss G2 공간 데이터를 Free-D로 엔진에 실시간 송출" },
-  ],
-  hardware: [
-    { t: "Media Server", d: "RTX 5090 32GB · 라이젠9 9950X3D · 128GB · DeckLink 8K Pro G2 (4U)" },
-    { t: "RETracker Bliss G2", d: "Myriad X VPU 6-DOF 마커리스 트래킹 센서 (<1cm/10m)" },
-    { t: "RETracker Fizz 2 Pro", d: "렌즈 FIZ 인코더 — 심도·시야각 실시간 정합" },
-  ],
-};
-
 const connected = [
   { t: "Aximmetry", role: "연결", d: "실시간 3D / 버추얼 프로덕션 렌더 엔진을 EXLINK이 연결합니다." },
   { t: "Moverse AI", role: "연결", d: "마커리스 AI 모션캡처를 EXLINK 흐름에 통합합니다." },
@@ -224,58 +212,10 @@ export default function XrSolutionPage() {
         </div>
       </section>
 
-      {/* §05 System build (turnkey) */}
-      <section className="section section--white">
-        <div className="container-ex">
-          <SectionLabel index="05">System Build</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            EXLINK 시스템 구성 (턴키)
-          </h2>
-          <p className="lead" style={{ maxWidth: "42rem" }}>
-            하드웨어·소프트웨어·시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키(Turn-key)로 공급합니다.
-          </p>
-          <MediaBlank
-            ratio="16/9"
-            kind="image"
-            tag="SYSTEM BUILD"
-            label="EXLINK 시스템 구성 실사"
-            sublabel="미디어서버·트래킹 구성 — 사진 준비 중"
-            className="mt-12 w-full"
-          />
-          <div className="mt-5 grid gap-5 lg:grid-cols-2">
-            <div className="card" style={{ padding: 28 }}>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-lav">Software</span>
-              <ul className="mt-4 space-y-4">
-                {build.software.map((s) => (
-                  <li key={s.t}>
-                    <p className="font-semibold text-fg">{s.t}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted">{s.d}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="card" style={{ padding: 28 }}>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-lav">Hardware</span>
-              <ul className="mt-4 space-y-4">
-                {build.hardware.map((h) => (
-                  <li key={h.t}>
-                    <p className="font-semibold text-fg">{h.t}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted">{h.d}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <p className="mt-6 text-xs leading-relaxed text-faint">
-            ※ 구성·모델은 현장 요구와 공급 시점에 따라 달라질 수 있습니다. 상세 사양은 도입 상담 시 안내합니다.
-          </p>
-        </div>
-      </section>
-
       {/* §06 Connected tech */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="06">Connected Tech</SectionLabel>
+          <SectionLabel index="05">Connected Tech</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             연결하는 기술
           </h2>
@@ -304,7 +244,7 @@ export default function XrSolutionPage() {
       {/* §07 Adoption */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="07">Adoption</SectionLabel>
+          <SectionLabel index="06">Adoption</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             <span className="inline-block">도입 방식 —</span>{" "}
             <span className="inline-block">컨설팅부터 운영까지</span>
@@ -330,7 +270,7 @@ export default function XrSolutionPage() {
       {/* §08 Use cases */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <SectionLabel index="08">Use Cases</SectionLabel>
+          <SectionLabel index="07">Use Cases</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             활용 분야
           </h2>
