@@ -52,42 +52,52 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Locations */}
-        <div className="mt-14 grid gap-6 border-t border-ink-hover pt-8 sm:grid-cols-2">
-          {locations.map((loc) => (
-            <div key={loc.kind}>
-              <span className="font-mono text-xs uppercase tracking-wider text-footer-accent">{loc.kind}</span>
-              <p className="mt-1.5 text-sm font-medium text-white">{loc.name}</p>
-              <p className="text-sm text-footer-link">
-                {loc.address} <span className="text-footer-muted">({loc.zip})</span>
-              </p>
-              {loc.tel && (
-                <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-footer-muted">
-                  <a
-                    href={`tel:${loc.tel.replace(/[^0-9+]/g, "")}`}
-                    className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
-                  >
-                    <Icon name="phone" className="h-3.5 w-3.5" />
-                    <span className="sr-only">Tel</span>
-                    {loc.tel}
-                  </a>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Icon name="fax" className="h-3.5 w-3.5" />
-                    <span className="sr-only">Fax</span>
-                    {site.contact.fax}
-                  </span>
-                  <a
-                    href={`mailto:${site.contact.email}`}
-                    className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
-                  >
-                    <Icon name="mail" className="h-3.5 w-3.5" />
-                    <span className="sr-only">Email</span>
-                    {site.contact.email}
-                  </a>
+        {/* Locations(좌) + 공용 연락처(우) — 연락처는 특정 거점이 아니라 회사 공용 */}
+        <div className="mt-14 grid gap-8 border-t border-ink-hover pt-8 lg:grid-cols-[2fr_1fr]">
+          {/* 주소 — Office · Studio */}
+          <div className="grid gap-6 sm:grid-cols-2">
+            {locations.map((loc) => (
+              <div key={loc.kind}>
+                <span className="font-mono text-xs uppercase tracking-wider text-footer-accent">{loc.kind}</span>
+                <p className="mt-1.5 text-sm font-medium text-white">{loc.name}</p>
+                <p className="text-sm text-footer-link">
+                  {loc.address} <span className="text-footer-muted">({loc.zip})</span>
                 </p>
-              )}
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
+
+          {/* 공용 연락처 */}
+          <div className="lg:border-l lg:border-ink-hover lg:pl-8">
+            <span className="font-mono text-xs uppercase tracking-wider text-footer-accent">Contact</span>
+            <ul className="mt-1.5 space-y-2 font-mono text-xs text-footer-muted">
+              <li>
+                <a
+                  href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`}
+                  className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
+                >
+                  <Icon name="phone" className="h-3.5 w-3.5 shrink-0" />
+                  <span className="sr-only">Tel</span>
+                  {site.contact.tel}
+                </a>
+              </li>
+              <li className="inline-flex items-center gap-1.5">
+                <Icon name="fax" className="h-3.5 w-3.5 shrink-0" />
+                <span className="sr-only">Fax</span>
+                {site.contact.fax}
+              </li>
+              <li>
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
+                >
+                  <Icon name="mail" className="h-3.5 w-3.5 shrink-0" />
+                  <span className="sr-only">Email</span>
+                  {site.contact.email}
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom line */}

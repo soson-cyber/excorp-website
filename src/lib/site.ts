@@ -149,8 +149,8 @@ export const locations = [
   {
     kind: "Office",
     name: "EX AI Office",
-    address: "경기도 성남시 분당구 판교로 289번길 20, 스타트업캠퍼스 2동 5층",
-    zip: "13488",
+    address: "경기 성남시 수정구 금토동 327, 스타트업스퀘어 B동 3층",
+    zip: "461380",
     tel: "",
     mapEmbed:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d494.23887135524865!2d127.08808015886281!3d37.40626673180439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca7e58fc36133%3A0xe090d373b7efb886!2z7YyQ6rWQIOygnDPthYztgazrhbjrsLjrpqw!5e0!3m2!1sko!2skr!4v1780550418546!5m2!1sko!2skr",
