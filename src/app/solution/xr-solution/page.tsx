@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
+import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
@@ -63,12 +64,12 @@ const adoption = [
 ];
 
 const useCases = [
-  { t: "방송 · 중계", d: "스튜디오 생방송, 스포츠·중계 등 실시간 방송 제작" },
-  { t: "기업 IR · 발표", d: "실적 발표·투자자 프레젠테이션의 가상 무대화" },
-  { t: "웨비나 · 컨퍼런스", d: "온라인 세미나·발표의 몰입형 가상 배경 연출" },
-  { t: "행사 · 이벤트", d: "런칭·시상·페스티벌 등 라이브 이벤트 연출" },
-  { t: "가상 스튜디오 구축", d: "XR/버추얼 프로덕션 스튜디오 설계·구축" },
-  { t: "교육", d: "실시간 XR을 활용한 강의·실습 환경 구성" },
+  { t: "방송 · 중계", mono: "BROADCAST", d: "스튜디오 생방송, 스포츠·중계 등 실시간 방송 제작" },
+  { t: "기업 IR · 발표", mono: "IR · KEYNOTE", d: "실적 발표·투자자 프레젠테이션의 가상 무대화" },
+  { t: "웨비나 · 컨퍼런스", mono: "WEBINAR", d: "온라인 세미나·발표의 몰입형 가상 배경 연출" },
+  { t: "행사 · 이벤트", mono: "LIVE EVENT", d: "런칭·시상·페스티벌 등 라이브 이벤트 연출" },
+  { t: "가상 스튜디오 구축", mono: "VIRTUAL STUDIO", d: "XR/버추얼 프로덕션 스튜디오 설계·구축" },
+  { t: "교육", mono: "TRAINING", d: "실시간 XR을 활용한 강의·실습 환경 구성" },
 ];
 
 export default function XrSolutionPage() {
@@ -83,6 +84,20 @@ export default function XrSolutionPage() {
         title="하나의 흐름으로 완성하는 실시간 XR 프로덕션"
         lead="촬영부터 트래킹, 가상 배경 렌더링, 송출까지 — 흩어진 XR 파이프라인을 EXLINK 하나의 제어 흐름으로 묶습니다. EX가 자체 개발한 올인원 실시간 XR 솔루션입니다."
       />
+
+      {/* §00 Hero media band — 풀블리드 루프영상 자리 */}
+      <section className="section section--ink">
+        <div className="container-ex">
+          <MediaBlank
+            ratio="16/9"
+            kind="video"
+            tag="EXLINK · REAL-TIME XR"
+            label="EXLINK 실시간 XR 워크플로우"
+            sublabel="촬영·트래킹·렌더·송출을 한 흐름으로 — 영상 준비 중"
+            className="w-full"
+          />
+        </div>
+      </section>
 
       {/* §01 What is EXLINK */}
       <section className="section section--ink">
@@ -117,7 +132,23 @@ export default function XrSolutionPage() {
           <p className="lead" style={{ maxWidth: "42rem" }}>
             실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK은 이 과정을 하나의 흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다.
           </p>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <MediaBlank
+              ratio="16/9"
+              kind="diagram"
+              tag="SCATTERED SETUP"
+              label="분산형 구성"
+              sublabel="구성 비교 이미지 준비 중"
+            />
+            <MediaBlank
+              ratio="16/9"
+              kind="diagram"
+              tag="EXLINK INTEGRATED"
+              label="EXLINK 통합"
+              sublabel="구성 비교 이미지 준비 중"
+            />
+          </div>
+          <div className="mt-5 grid gap-5 md:grid-cols-3">
             {contrast.map((c) => (
               <div key={c.s} className="card" style={{ padding: 24 }}>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-faint">분산형 구성</span>
@@ -161,6 +192,17 @@ export default function XrSolutionPage() {
               </Fragment>
             ))}
           </div>
+          <MediaBlank
+            ratio="21/9"
+            kind="diagram"
+            tag="EXLINK PIPELINE"
+            label="EXLINK 파이프라인 구성도"
+            sublabel="촬영부터 송출까지 제어 흐름 — 다이어그램 준비 중"
+            className="mt-10 w-full"
+          />
+          <p className="mt-3 text-xs leading-relaxed text-faint">
+            ※ 위 노드 흐름은 개념 구성이며, 실제 결선·신호 흐름 다이어그램은 준비 중입니다.
+          </p>
         </div>
       </section>
 
@@ -192,7 +234,15 @@ export default function XrSolutionPage() {
           <p className="lead" style={{ maxWidth: "42rem" }}>
             하드웨어·소프트웨어·시스템 설치·보안 세팅·현장 교육을 포함한 통합 턴키(Turn-key)로 공급합니다.
           </p>
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          <MediaBlank
+            ratio="16/9"
+            kind="image"
+            tag="SYSTEM BUILD"
+            label="EXLINK 시스템 구성 실사"
+            sublabel="미디어서버·트래킹 구성 — 사진 준비 중"
+            className="mt-12 w-full"
+          />
+          <div className="mt-5 grid gap-5 lg:grid-cols-2">
             <div className="card" style={{ padding: 28 }}>
               <span className="font-mono text-[11px] uppercase tracking-wider text-lav">Software</span>
               <ul className="mt-4 space-y-4">
@@ -284,10 +334,14 @@ export default function XrSolutionPage() {
           <h2 className="h2" style={{ marginTop: 22 }}>
             활용 분야
           </h2>
+          <p className="mt-4 font-mono text-xs leading-relaxed text-faint">
+            실제 사례가 아닌 활용 시나리오입니다 · 이미지 준비 중
+          </p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.t} className="card" style={{ padding: 24 }}>
-                <h3 className="font-semibold text-fg">{u.t}</h3>
+                <MediaBlank ratio="16/10" kind="image" tag={u.mono} label={u.t} className="w-full" />
+                <h3 className="mt-5 font-semibold text-fg">{u.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
               </div>
             ))}
