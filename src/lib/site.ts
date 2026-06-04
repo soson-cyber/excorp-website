@@ -152,6 +152,8 @@ export const locations = [
     address: "경기도 성남시 분당구 판교로 289번길 20, 스타트업캠퍼스 2동 5층",
     zip: "13488",
     tel: "",
+    mapEmbed:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.3218616774766!2d127.08546917640655!3d37.40586663332398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5900515b5a7b%3A0xa581001df5ab4b73!2z67Cw66-87Iqk7YOA7Yq47JeF7Iqk7YCY7Ja0!5e0!3m2!1sko!2skr!4v1780549095423!5m2!1sko!2skr",
   },
   {
     kind: "Studio",
@@ -159,6 +161,8 @@ export const locations = [
     address: "경기도 하남시 미사대로 540, 현대한강미사2차 B동 530호",
     zip: "12925",
     tel: "031-699-8228",
+    mapEmbed:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d447.62520046666424!2d127.20495414112324!3d37.55764676843624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cb164b0039633%3A0xc0297acc8ec1fec0!2z6rK96riw64-EIO2VmOuCqOyLnCDrr7jsgqzrjIDroZwgNTQw!5e0!3m2!1sko!2skr!4v1780549494747!5m2!1sko!2skr",
   },
 ] as const;
 

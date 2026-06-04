@@ -238,11 +238,11 @@ export default function AboutPage() {
                 </div>
                 <iframe
                   title={`${loc.name} 위치 지도`}
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(`${loc.address} (${loc.zip})`)}&hl=ko&z=16&output=embed`}
+                  src={loc.mapEmbed}
                   loading="lazy"
+                  allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
                   className="block aspect-[16/10] w-full border-0"
-                  style={{ filter: "grayscale(0.1)" }}
                 />
               </Reveal>
             ))}
