@@ -100,7 +100,9 @@ export function Header() {
     <header className={`header ${overHero ? "header--overHero" : "header--solid"}`}>
       <div className="container-ex header__inner">
         <Link href="/" className="focus-on-dark flex items-center" aria-label="EX Corporation 홈">
-          <Image src="/ex-cube.png" alt="" width={120} height={120} sizes="60px" priority className="logo logo--symbol" />
+          {/* 작은 고정 크기 브랜드 심볼 — 옵티마이저 우회(unoptimized)로 원본 PNG 직접 사용.
+              (dev 이미지 옵티마이저가 소형 PNG의 대형 변형에서 멈춰 로고가 안 뜨던 문제 회피) */}
+          <Image src="/ex-cube.png" alt="" width={120} height={120} priority unoptimized className="logo logo--symbol" />
         </Link>
 
         {/* Desktop nav */}
