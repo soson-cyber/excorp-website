@@ -109,18 +109,21 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <SectionLabel index="01">Showcase</SectionLabel>
           <figure className="mx-auto mt-12 max-w-4xl">
-            {/* 반응형 16:9 — 컨테이너 폭(max-w-4xl)에 맞춰 채우고 모바일에서 자동 축소.
-                youtube-nocookie + loading=lazy로 프라이버시·성능 최적화. */}
+            {/* 반응형 16:9 — 자체 호스팅 영상, 무음 자동재생·루프. poster로 로드 전 폴백.
+                웹 최적화본(720p30·무음·~20MB, faststart). */}
             <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?autoplay=1&mute=1&loop=1&playlist=vcuQegxG3dA&playsinline=1&rel=0"
-                title="Aximmetry 버추얼 프로덕션 소개 영상"
-                loading="lazy"
-                allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="h-full w-full border-0"
-              />
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/aximmetry-hero.png"
+                aria-label="Aximmetry 실시간 버추얼 프로덕션 데모 영상"
+                className="h-full w-full object-cover"
+              >
+                <source src="/aximmetry-showcase-web.mp4" type="video/mp4" />
+              </video>
             </div>
             <figcaption className="mt-3 text-center font-mono text-xs text-faint">
               Aximmetry 실시간 버추얼 프로덕션 데모
