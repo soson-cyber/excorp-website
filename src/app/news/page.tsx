@@ -45,10 +45,12 @@ export default async function NewsPage() {
       {/* §01 News list (filterable) — top glow bridges the hero aurora down */}
       <section className="section section--ink news-archive">
         <div className="container-ex">
-          <SectionLabel index="01">Archive</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            전체 소식
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="01">Archive</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              전체 소식
+            </h2>
+          </div>
           <div className="mt-12">
             <NewsList press={press} />
           </div>

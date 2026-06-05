@@ -159,14 +159,16 @@ export default function RetrackerPage() {
       {/* §01 Showcase */}
       <section className="section section--white section--glow">
         <div className="container-ex">
-          <SectionLabel index="01">Showcase</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            <span className="inline-block">카메라가 움직이는 그대로,</span>{" "}
-            <span className="inline-block">공간이 따라옵니다</span>
-          </h2>
-          <p className="lead" style={{ maxWidth: "40rem" }}>
-            마커 없이 추적한 카메라의 6-DOF 위치·방향을 가상 배경에 실시간으로 정합한 트래킹 현장입니다.
-          </p>
+          <div className="text-center">
+            <SectionLabel index="01">Showcase</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              <span className="inline-block">카메라가 움직이는 그대로,</span>{" "}
+              <span className="inline-block">공간이 따라옵니다</span>
+            </h2>
+            <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
+              마커 없이 추적한 카메라의 6-DOF 위치·방향을 가상 배경에 실시간으로 정합한 트래킹 현장입니다.
+            </p>
+          </div>
           <figure className="mt-12">
             <div className="card" style={{ overflow: "hidden", padding: 0 }}>
               <Image
@@ -188,10 +190,12 @@ export default function RetrackerPage() {
       {/* §02 Why RETracker */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="02">Why RETracker</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            RETracker가 다른 점
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="02">Why RETracker</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              RETracker가 다른 점
+            </h2>
+          </div>
           <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
             {whyPoints.map((p, i) => (
               <div key={p.t} className="card" style={{ padding: 24 }}>
@@ -207,11 +211,13 @@ export default function RetrackerPage() {
       {/* §03 Lineup (구성) */}
       <section className="section section--white section--glow">
         <div className="container-ex">
-          <SectionLabel index="03">Lineup</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            <span className="inline-block">센서 · 인코더 · 소프트웨어,</span>{" "}
-            <span className="inline-block">세 요소로 구성됩니다</span>
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="03">Lineup</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              <span className="inline-block">센서 · 인코더 · 소프트웨어,</span>{" "}
+              <span className="inline-block">세 요소로 구성됩니다</span>
+            </h2>
+          </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {lineup.map((p) => (
               <div key={p.name} className="card flex flex-col" style={{ padding: 24 }}>
@@ -234,10 +240,12 @@ export default function RetrackerPage() {
       {/* §04 Features */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="04">Features</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            주요 특징
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="04">Features</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              주요 특징
+            </h2>
+          </div>
           <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.t} className="card" style={{ padding: 24 }}>
@@ -252,13 +260,15 @@ export default function RetrackerPage() {
       {/* §05 Specifications */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="05">Specifications</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            상세 사양
-          </h2>
-          <p className="lead" style={{ maxWidth: "44rem" }}>
-            아래 사양은 RETracker 제품 사양이며, EX는 공식 한국 총판으로서 도입·기술지원을 담당합니다.
-          </p>
+          <div className="text-center">
+            <SectionLabel index="05">Specifications</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              상세 사양
+            </h2>
+            <p className="lead" style={{ maxWidth: "44rem", marginInline: "auto" }}>
+              아래 사양은 RETracker 제품 사양이며, EX는 공식 한국 총판으로서 도입·기술지원을 담당합니다.
+            </p>
+          </div>
           <div className="mt-12 max-w-3xl">
             <SpecTable groups={specGroups} />
           </div>
@@ -268,10 +278,12 @@ export default function RetrackerPage() {
       {/* §06 Use Cases */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="06">Use Cases</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            활용 분야
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="06">Use Cases</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              활용 분야
+            </h2>
+          </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {useCases.map((u) => (
               <div key={u.t} className="card" style={{ padding: 24 }}>
@@ -286,13 +298,15 @@ export default function RetrackerPage() {
       {/* §07 도입 절차 */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="07">Process</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            도입 절차
-          </h2>
-          <p className="lead" style={{ maxWidth: "40rem" }}>
-            상담부터 설치·운영까지, EX가 공식 한국 총판으로서 도입 전 과정을 함께합니다.
-          </p>
+          <div className="text-center">
+            <SectionLabel index="07">Process</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              도입 절차
+            </h2>
+            <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
+              상담부터 설치·운영까지, EX가 공식 한국 총판으로서 도입 전 과정을 함께합니다.
+            </p>
+          </div>
           <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p) => (
               <li key={p.n} className="card" style={{ padding: 24 }}>
@@ -308,10 +322,12 @@ export default function RetrackerPage() {
       {/* §08 FAQ */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="08">FAQ</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            도입 전 자주 묻는 질문
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="08">FAQ</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              도입 전 자주 묻는 질문
+            </h2>
+          </div>
           <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
             {faqs.map((f, i) => (
               <details key={f.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>

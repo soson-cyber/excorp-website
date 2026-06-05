@@ -107,7 +107,9 @@ export default function AximmetryPage() {
       {/* §01 Showcase */}
       <section className="section section--ink">
         <div className="container-ex">
-          <SectionLabel index="01">Showcase</SectionLabel>
+          <div className="text-center">
+            <SectionLabel index="01">Showcase</SectionLabel>
+          </div>
           <figure className="mt-12">
             {/* 반응형 16:9 — 자체 호스팅 영상, 무음 자동재생·루프. poster로 로드 전 폴백.
                 웹 최적화본(720p30·무음·~20MB, faststart). */}
@@ -135,13 +137,15 @@ export default function AximmetryPage() {
       {/* §02 Why Aximmetry */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="02">Why Aximmetry</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            왜 Aximmetry인가
-          </h2>
-          <p className="lead" style={{ maxWidth: "40rem" }}>
-            언리얼의 비주얼, 노드 기반 워크플로, 그리고 방송·필름 현장 대응력 — 세 가지가 한 플랫폼에 모였습니다.
-          </p>
+          <div className="text-center">
+            <SectionLabel index="02">Why Aximmetry</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              왜 Aximmetry인가
+            </h2>
+            <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
+              언리얼의 비주얼, 노드 기반 워크플로, 그리고 방송·필름 현장 대응력 — 세 가지가 한 플랫폼에 모였습니다.
+            </p>
+          </div>
           <MediaBlank
             ratio="16/9"
             kind="image"
@@ -165,13 +169,15 @@ export default function AximmetryPage() {
       {/* §03 Edition — EX는 Broadcast & Film Edition만 공급 */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="03">Edition</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            EX가 공급하는 Broadcast &amp; Film Edition
-          </h2>
-          <p className="lead" style={{ maxWidth: "42rem" }}>
-            EX는 Aximmetry의 전문 스튜디오용 <span className="text-fg">Broadcast &amp; Film Edition</span>을 공식 공급합니다. 무제한 방송 I/O와 분산 렌더링으로 방송·필름 현장에 대응하는 최상위 구성입니다.
-          </p>
+          <div className="text-center">
+            <SectionLabel index="03">Edition</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              EX가 공급하는 Broadcast &amp; Film Edition
+            </h2>
+            <p className="lead" style={{ maxWidth: "42rem", marginInline: "auto" }}>
+              EX는 Aximmetry의 전문 스튜디오용 <span className="text-fg">Broadcast &amp; Film Edition</span>을 공식 공급합니다. 무제한 방송 I/O와 분산 렌더링으로 방송·필름 현장에 대응하는 최상위 구성입니다.
+            </p>
+          </div>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {["최대 8K 실시간 렌더링", "무제한 SDI/NDI/SMPTE 2110", "Free-D · MOS(뉴스룸) 프로토콜", "다중 PC 분산 렌더링"].map((p) => (
               <div key={p} className="card" style={{ padding: 22 }}>
@@ -188,10 +194,12 @@ export default function AximmetryPage() {
       {/* §04 Features */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="04">Features</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            주요 기능
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="04">Features</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              주요 기능
+            </h2>
+          </div>
           <MediaBlank
             ratio="16/9"
             kind="image"
@@ -215,13 +223,15 @@ export default function AximmetryPage() {
       {/* §06 Specifications */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="05">Specifications</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            Broadcast &amp; Film Edition 사양
-          </h2>
-          <p className="lead" style={{ maxWidth: "44rem" }}>
-            아래 사양은 Aximmetry 제품 사양이며, EX는 공식 인증 리셀러로서 도입·기술지원을 담당합니다.
-          </p>
+          <div className="text-center">
+            <SectionLabel index="05">Specifications</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              Broadcast &amp; Film Edition 사양
+            </h2>
+            <p className="lead" style={{ maxWidth: "44rem", marginInline: "auto" }}>
+              아래 사양은 Aximmetry 제품 사양이며, EX는 공식 인증 리셀러로서 도입·기술지원을 담당합니다.
+            </p>
+          </div>
           <div className="mt-12 max-w-3xl">
             <SpecTable groups={[{ rows: bfSpecs }]} />
           </div>
@@ -231,10 +241,12 @@ export default function AximmetryPage() {
       {/* §06 도입 절차 */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="06">Process</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            도입 절차
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="06">Process</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              도입 절차
+            </h2>
+          </div>
           <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
               <li key={s.t} className="card flex flex-col" style={{ padding: 24 }}>
@@ -250,10 +262,12 @@ export default function AximmetryPage() {
       {/* §09 FAQ */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="07">FAQ</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            도입 전 자주 묻는 질문
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="07">FAQ</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              도입 전 자주 묻는 질문
+            </h2>
+          </div>
           <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
             {faqs.map((f, i) => (
               <details key={f.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>

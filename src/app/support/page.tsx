@@ -88,10 +88,12 @@ export default function SupportPage() {
       {/* §02 FAQ */}
       <section id="faq" className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="01">FAQ</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            자주 묻는 질문
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="01">FAQ</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              자주 묻는 질문
+            </h2>
+          </div>
           <div className="mt-12 max-w-3xl space-y-10">
             {faqGroups.map((g) => (
               <div key={g.cat}>
@@ -154,10 +156,12 @@ export default function SupportPage() {
       {/* §04 Downloads */}
       <section id="downloads" className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="03">Downloads</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            자료실
-          </h2>
+          <div className="text-center">
+            <SectionLabel index="03">Downloads</SectionLabel>
+            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
+              자료실
+            </h2>
+          </div>
           <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
             {downloads.map((d, i) => (
               <div
