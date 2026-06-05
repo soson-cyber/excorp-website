@@ -27,6 +27,8 @@
 | 2026-06-03 | code-reviewer(+ex-code-review) 추가 → 7인 | agents/code-reviewer.md · skills/ex-code-review · 오케스트레이터 | 품질·보안 코드 리뷰 갭 보완 |
 | 2026-06-03 | 범용 "AI Team Configuration" 표 제거, 하네스로 일원화 | CLAUDE.md | 신규 하네스와 중복·혼선 제거 |
 | 2026-06-03 | 스킬 보강 — 컴포넌트·폴더 구조 관례 / OWASP Top 10 대조 | skills/ex-frontend-implementation · ex-code-review | harness-100(16·21·36) 패턴 참고 |
+| 2026-06-05 | 이미지 생성팀 추가 (3인: figma-art-director·image-generator·image-qc-reviewer + ex-image-orchestrator) — Figma 연결 Nano Banana(Gemini) 이미지 생성·검증·납품 | agents/* · skills/ex-figma-image-bridge · ex-image-generation(+scripts) · ex-image-qc · ex-image-orchestrator | 홈페이지 이미지를 Figma와 연결해 생성하는 팀 필요 |
+| 2026-06-05 | 이미지 엔진 듀얼화 — **GPT 이미지(OpenAI gpt-image-1)를 기본 엔진으로 추가**, Nano Banana(Gemini) 보존. 동일 CLI 계약 | skills/ex-image-generation(+scripts/openai_generate.py) · agents/image-generator · ex-image-orchestrator | 사용자 요청: Figma에 GPT API 연결 |
 
 ## 기준 문서 (Source of Truth)
 
@@ -55,7 +57,11 @@ IA/카피 작업 전 항상 Notion에서 최신본을 확인한다. (첨부: `EX
 
 ## AI 에이전트 팀
 
-작업은 위 **하네스**(`ex-web-orchestrator`)로 조율한다. 에이전트(누가)·스킬(어떻게)의 단일 출처는 `.claude/agents/`(7종: frontend-builder·design-ux-reviewer·content-brand-writer·seo-specialist·code-reviewer·qa-verifier·sanity-cms)와 `.claude/skills/`다. 배포(Vercel)는 사용자가 직접 수행하며, 배포 전 게이트는 qa-verifier PASS + code-reviewer 차단 이슈 없음.
+작업은 위 **하네스**로 조율한다. 두 오케스트레이터가 도메인별로 나뉜다:
+- **웹 제작·운영** → `ex-web-orchestrator` (7종: frontend-builder·design-ux-reviewer·content-brand-writer·seo-specialist·code-reviewer·qa-verifier·sanity-cms).
+- **이미지 자산 생성(Figma 연결)** → `ex-image-orchestrator` (3종: figma-art-director·image-generator·image-qc-reviewer). Figma 원본에서 사양을 읽어 생성·QC 후 `public/`+Figma에 납품. 엔진은 듀얼: **기본 GPT 이미지(OpenAI gpt-image-1) / 대안 Nano Banana(Gemini)**. **1회 셋업 필요(둘 중 택1): GPT=`OPENAI_API_KEY`+`pip install openai pillow`, Gemini=`GEMINI_API_KEY`+`pip install google-genai pillow`.**
+
+에이전트(누가)·스킬(어떻게)의 단일 출처는 `.claude/agents/`·`.claude/skills/`다. 배포(Vercel)는 사용자가 직접 수행하며, 배포 전 게이트는 qa-verifier PASS + code-reviewer 차단 이슈 없음.
 
 ## 브랜드 자산
 

@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 하네스 작업 스크래치(이미지 생성 실험·작업 메모)
+_workspace/
+_workspace_img/
