@@ -129,7 +129,7 @@ export default function AximmetryPage() {
           { label: "Product", href: "/product" },
           { label: "Aximmetry", href: "/product/aximmetry" },
         ]}
-        tag="Authorised Reseller"
+        tag="Certified Reseller"
         title="Unreal Engine의 힘, 합리적인 가격에."
         lead="자체 노드 기반 엔진과 Unreal Engine을 결합해 최대 8K 실시간 가상 스튜디오·XR·AR를 제작하는 버추얼 프로덕션 컴포저."
       />

@@ -65,7 +65,7 @@ export const nav: NavItem[] = [
       {
         label: "Aximmetry",
         href: "/product/aximmetry",
-        tag: "Reseller",
+        tag: "Certified Reseller",
         desc: "실시간 3D 그래픽 & 버추얼 프로덕션 플랫폼",
       },
       {
@@ -167,7 +167,7 @@ export const locations = [
 ] as const;
 
 export const partners = [
-  { name: "Aximmetry", badge: "Reseller" },
+  { name: "Aximmetry", badge: "Certified Reseller" },
   { name: "Moverse AI", badge: "Distributor" },
   { name: "RETracker", badge: "Distributor" },
   { name: "NVIDIA", badge: "Inception" },

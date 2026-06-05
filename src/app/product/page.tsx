@@ -23,7 +23,7 @@ const whyEx = [
 
 const lineup = [
   {
-    badge: "Authorised Reseller",
+    badge: "Certified Reseller",
     title: "Aximmetry",
     copy: "방송·엔터테인먼트를 위한 실시간 3D 그래픽 & 버추얼 프로덕션 플랫폼",
     meta: "Real-time Compositing",

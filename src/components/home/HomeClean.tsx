@@ -14,7 +14,7 @@ const WHAT = [
   { i: "03", tag: "STUDIO", title: "XR 콘텐츠 스튜디오", desc: "IR · 웨비나 · 대담을 실시간 XR로 제작하는 하남 스튜디오", href: "/xr-studio" },
 ];
 const PARTNERS: { name: string; role: string; desc: string; initial: string; href: string; img?: string; objPos?: string }[] = [
-  { name: "Aximmetry", role: "RESELLER", desc: "리얼타임 버추얼 프로덕션 소프트웨어", initial: "A", href: "/product/aximmetry", img: "/aximmetry-vp.jpg" },
+  { name: "Aximmetry", role: "Certified Reseller", desc: "리얼타임 버추얼 프로덕션 소프트웨어", initial: "A", href: "/product/aximmetry", img: "/aximmetry-vp.jpg" },
   { name: "Moverse AI", role: "DISTRIBUTOR", desc: "마커리스 AI 모션캡처 시스템", initial: "M", href: "/product/moverse", img: "/moverse-mocap.jpg" },
   { name: "RETracker", role: "DISTRIBUTOR", desc: "정밀 카메라 트래킹 솔루션", initial: "R", href: "/product/retracker", img: "/retracker-tracking.jpg" },
 ];
@@ -164,7 +164,7 @@ export function HomeClean() {
               <span className="cred">
                 <span className="cred-nm">Aximmetry</span>
                 <span style={{ color: "var(--color-faint)" }}>·</span>
-                <span className="cap">RESELLER</span>
+                <span className="cap">Certified Reseller</span>
               </span>
               <span className="cred">
                 <span className="cred-nm">Moverse AI</span>
