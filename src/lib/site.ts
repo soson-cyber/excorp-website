@@ -113,7 +113,7 @@ export const footerColumns: { title: string; links: { label: string; href: strin
   {
     title: "Solution",
     links: [
-      { label: "XR Solution", href: "/solution/xr-solution" },
+      { label: "XR Solution", href: "/solution" },
       { label: "Virtual Production", href: "/solution/virtual-production" },
       { label: "EXLINK", href: "/solution/xr-solution" },
     ],
