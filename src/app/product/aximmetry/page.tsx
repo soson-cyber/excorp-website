@@ -108,7 +108,7 @@ export default function AximmetryPage() {
       <section className="section section--ink">
         <div className="container-ex">
           <SectionLabel index="01">Showcase</SectionLabel>
-          <figure className="mx-auto mt-12 max-w-4xl">
+          <figure className="mt-12">
             {/* 반응형 16:9 — 자체 호스팅 영상, 무음 자동재생·루프. poster로 로드 전 폴백.
                 웹 최적화본(720p30·무음·~20MB, faststart). */}
             <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
