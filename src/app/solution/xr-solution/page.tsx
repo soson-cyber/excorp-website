@@ -180,16 +180,18 @@ export default function XrSolutionPage() {
               </Fragment>
             ))}
           </div>
-          <MediaBlank
-            ratio="21/9"
-            kind="diagram"
-            tag="EXLINK PIPELINE"
-            label="EXLINK 파이프라인 구성도"
-            sublabel="촬영부터 송출까지 제어 흐름 — 다이어그램 준비 중"
-            className="mt-10 w-full"
-          />
+          <div className="mt-10 overflow-hidden rounded-2xl border border-border">
+            <Image
+              src="/exlink-vp-core.png"
+              alt="EX-LINK VP Production Core 통합 신호 흐름 — 카메라·트래킹 시스템, 미디어 서버, 브로드캐스트 시스템, 플랫폼 스트리밍을 하나로 연결하는 아이소메트릭 다이어그램"
+              width={1672}
+              height={941}
+              sizes="(max-width: 768px) 100vw, 960px"
+              className="h-auto w-full"
+            />
+          </div>
           <p className="mt-3 text-xs leading-relaxed text-faint">
-            ※ 위 노드 흐름은 개념 구성이며, 실제 결선·신호 흐름 다이어그램은 준비 중입니다.
+            ※ 위 노드 흐름은 개념 구성이며, EX-LINK 통합 신호 흐름을 아이소메트릭 다이어그램으로 표현했습니다.
           </p>
         </div>
       </section>
