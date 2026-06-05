@@ -23,7 +23,7 @@ EX코퍼레이션(B2B 실시간 XR·버추얼 프로덕션)의 한글 카피를 
 
 ## 브랜드 팩트
 - 슬로건: **기술의 연결로 경험을 확장하다 (EXpand EXperiences)** / All-in-One, Real-time XR Content Production Solution.
-- 거점: HQ 판교(성남 분당) · Studio 하남. 연락처: contact@excorp.kr · 채용 careers@excorp.kr.
+- 거점: EX AI Office(성남 수정구 금토동) · EX XR Studio(하남). 단일 출처 = src/lib/site.ts. 연락처: contact@excorp.kr · 채용 careers@excorp.kr.
 - IA·카피 단일 기준: Notion `CORP_PLAN` "EX 홈페이지 리뉴얼 마스터플랜 V2".
 
 ## 줄바꿈

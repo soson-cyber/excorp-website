@@ -30,14 +30,14 @@ const lineup = [
     href: "/product/aximmetry",
   },
   {
-    badge: "Korea Distributor",
+    badge: "Distributor",
     title: "Moverse AI",
     copy: "전용 수트·마커 없이 동작하는 AI 마커리스 모션캡처 (100% On-Premise)",
     meta: "Markerless MoCap",
     href: "/product/moverse",
   },
   {
-    badge: "Korea Distributor",
+    badge: "Distributor",
     title: "RETracker",
     copy: "천장 마커 없는 6-DOF 마커리스 카메라 트래킹 — Bliss G2 / Fizz 2 Pro",
     meta: "6-DOF Marker-less",
@@ -157,7 +157,7 @@ export default function ProductPage() {
         <div className="container-ex">
           <SectionLabel index="04">Authorisation</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            공식 총판·리셀러 인증
+            공식 리셀러·총판 인증
           </h2>
           <p className="lead" style={{ maxWidth: "40rem" }}>
             공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다.

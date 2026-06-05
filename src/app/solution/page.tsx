@@ -39,7 +39,7 @@ export default function SolutionPage() {
       <PageHero
         breadcrumb={[{ label: "Solution", href: "/solution" }]}
         tag="Solution"
-        title="현장에 맞는 최적의 XR 환경을 구성합니다."
+        title="현장에 맞는 XR 환경을 구성합니다."
         lead={
           <>
             <span className="inline-block">자체 통합 솔루션 EXLINK와 검증된 글로벌 파트너 기술, 그리고 실 운영 스튜디오까지</span>{" "}
@@ -68,10 +68,10 @@ export default function SolutionPage() {
           <SectionLabel index="01">Approach</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem" }}>
             <span className="inline-block">자체 기술과 글로벌 파트너,</span>{" "}
-            <span className="inline-block">양손 전략으로 모든 현장에 대응합니다.</span>
+            <span className="inline-block">두 축으로 모든 현장에 대응합니다.</span>
           </h2>
           <p className="lead" style={{ maxWidth: "42rem" }}>
-            EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한 모든
+            EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한
             자산을 보유하고 있습니다. 어떤 환경의 XR이라도 EX와 함께 시작할 수 있습니다.
           </p>
           <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">

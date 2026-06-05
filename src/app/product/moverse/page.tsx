@@ -124,7 +124,7 @@ export default function MoversePage() {
           { label: "Product", href: "/product" },
           { label: "Moverse AI", href: "/product/moverse" },
         ]}
-        tag="Korea Distributor"
+        tag="Distributor"
         title="수트도, 마커도 없이. AI가 움직임을 읽습니다."
         lead="AI 비전 카메라와 로컬 네트워크만으로 다수 인원을 동시에 캡처하는 마커리스 AI 모션캡처. 클라우드 없이 100% 로컬로 동작해 폐쇄 환경에서도 안전합니다."
       />

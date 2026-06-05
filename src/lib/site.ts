@@ -78,7 +78,7 @@ export const nav: NavItem[] = [
         label: "RETracker",
         href: "/product/retracker",
         tag: "Distributor",
-        desc: "실시간 6DoF 고정밀 광학 트래킹 — Bliss / Fizz",
+        desc: "6-DOF 마커리스 카메라 트래킹 — Bliss / Fizz",
       },
     ],
     featured: {

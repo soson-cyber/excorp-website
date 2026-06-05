@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "채용 — 함께 성장할 동료를 찾습니다",
   alternates: { canonical: "/careers" },
   description:
-    "이엑스(EX) 채용. 일하는 사람이 행복한 회사를 지향합니다. 핵심 가치와 일하는 방식, 판교·하남의 일하는 공간, 지원 절차를 안내합니다. XR·실시간 콘텐츠를 함께 만들 분을 찾습니다.",
+    "이엑스(EX) 채용. 일하는 사람이 행복한 회사를 지향합니다. 핵심 가치와 일하는 방식, 성남·하남의 일하는 공간, 지원 절차를 안내합니다. XR·실시간 콘텐츠를 함께 만들 분을 찾습니다.",
 };
 
 const values = [
@@ -44,7 +44,7 @@ const culture = [
 
 const spaces = [
   { img: "/studio.png", label: "하남 XR 스튜디오", caption: "촬영이 곧 콘텐츠가 되는 공간", real: true },
-  { img: "", label: "판교 HQ", caption: "아이디어가 제품이 되는 공간", real: false },
+  { img: "", label: "성남 오피스", caption: "아이디어가 제품이 되는 공간", real: false },
   { img: "", label: "라운지", caption: "구성원이 한데 모여 어울리는 공간", real: false },
 ];
 
@@ -139,7 +139,7 @@ export default function CareersPage() {
             기술이 만들어지는 공간
           </h2>
           <p className="lead" style={{ maxWidth: "40rem" }}>
-            판교 본사와 하남 스튜디오 — 우리가 매일 만들고 어울리는 곳입니다.
+            성남 오피스와 하남 스튜디오 — 우리가 매일 만들고 어울리는 곳입니다.
           </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {spaces.map((s) =>

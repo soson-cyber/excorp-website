@@ -97,10 +97,10 @@ export default function RootLayout({
               telephone: "+82-31-699-8228",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "판교로 289번길 20, 스타트업캠퍼스 2동 5층",
-                addressLocality: "성남시 분당구",
+                streetAddress: "금토동 327, 스타트업스퀘어 B동 3층",
+                addressLocality: "성남시 수정구",
                 addressRegion: "경기도",
-                postalCode: "13488",
+                postalCode: "461380",
                 addressCountry: "KR",
               },
               sameAs: ["https://instagram.com/ex.studio"],

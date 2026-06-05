@@ -59,22 +59,22 @@ export default function XrStudioPage() {
         breadcrumb={[{ label: "XR Studio", href: "/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
         title="가상 배경 위에서 완성되는 IR · 웨비나 · 토크 콘텐츠"
-        lead="하남 EX Studio는 대형 그린 크로마와 XR·리얼타임 기술로, 기획부터 촬영·송출까지 한 번에 완성하는 버추얼 프로덕션 스튜디오입니다."
+        lead="하남 EX XR Studio는 대형 그린 크로마와 XR·리얼타임 기술로, 기획부터 촬영·송출까지 한 번에 완성하는 버추얼 프로덕션 스튜디오입니다."
       />
 
       {/* Studio photo */}
       <section className="container-ex" style={{ paddingTop: 48 }}>
         <div className="card" style={{ overflow: "hidden", padding: 0 }}>
-          <Image src="/studio.png" alt="EX Studio — 하남 그린 크로마 버추얼 프로덕션 스튜디오 전경" width={1366} height={779} priority className="h-auto w-full" />
+          <Image src="/studio.png" alt="EX XR Studio — 하남 그린 크로마 버추얼 프로덕션 스튜디오 전경" width={1366} height={779} priority className="h-auto w-full" />
         </div>
       </section>
 
       {/* §01 Why EX Studio */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <SectionLabel index="01">Why EX Studio</SectionLabel>
+          <SectionLabel index="01">Why EX XR Studio</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            EX Studio가 다른 이유
+            EX XR Studio가 다른 이유
           </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (
@@ -196,7 +196,7 @@ export default function XrStudioPage() {
               가격 및 예약 문의
             </span>
             <h2 className="mx-auto mt-6 max-w-2xl text-balance text-4xl font-semibold leading-snug text-fg md:text-5xl">
-              목적에 맞는 최적의 구성을 제안해 드립니다.
+              목적에 맞는 구성을 제안해 드립니다.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted">
               콘텐츠 형태 · 규모 · 옵션에 따라 견적을 맞춤 안내합니다. 부담 없이 문의 주세요.

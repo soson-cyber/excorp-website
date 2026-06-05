@@ -138,7 +138,7 @@ export default function RetrackerPage() {
           { label: "Product", href: "/product" },
           { label: "RETracker", href: "/product/retracker" },
         ]}
-        tag="Korea Distributor"
+        tag="Distributor"
         title="천장 마커 없이, 카메라가 공간을 읽습니다."
         lead="자체 vSLAM을 독립 연산하는 6-DOF 마커리스 카메라 트래킹. Bliss G2 센서와 Fizz 2 Pro 렌즈 인코더로 실사와 가상을 프레임 단위로 정합합니다."
       />
