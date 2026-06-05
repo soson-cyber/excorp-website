@@ -79,14 +79,14 @@ const useCases: { t: string; mono: string; d: string; src?: string; alt?: string
 
 // §08 — 도입 절차 (공통 4스텝)
 const steps = [
-  { t: "상담 · 요구 분석", d: "현장 환경과 제작 목표를 진단해 필요한 엔진(DE/SE)·하드웨어 구성을 함께 정합니다." },
+  { t: "상담 · 요구 분석", d: "현장 환경과 제작 목표를 진단해 필요한 하드웨어·I/O 구성을 함께 정합니다." },
   { t: "구성 제안 · 견적", d: "라이선스·하드웨어·I/O 구성을 설계하고 투명한 견적을 제시합니다." },
   { t: "설치 · 셋업 · 교육", d: "시스템 설치와 트래킹·키잉 셋업, 운영자 현장 교육을 진행합니다." },
   { t: "운영 · 기술지원", d: "공식 인증 리셀러로서 운영 중 발생하는 이슈를 지속 기술지원합니다." },
 ];
 
 const faqs = [
-  { q: "DE와 SE의 차이는 무엇인가요?", a: "DE(Dual Engine)는 Aximmetry 자체 엔진과 Unreal Engine을 함께 사용하고, SE(Single Engine)는 자체 엔진만 사용합니다. Unreal 콘텐츠가 필요하면 DE를 선택합니다." },
+  { q: "DE(Dual Engine)는 무엇인가요?", a: "DE는 Aximmetry 자체 엔진과 Unreal Engine을 함께 사용하는 구성입니다. EX는 DE 구성으로 공급하여, Unreal로 만든 씬을 그대로 가상 스튜디오 파이프라인에 활용할 수 있습니다." },
   { q: "EX는 어떤 에디션을 공급하나요?", a: "EX는 전문 방송·필름 현장을 위한 Broadcast & Film Edition을 공식 공급합니다. 라이선스·하드웨어·I/O 구성을 현장에 맞춰 제안하고 설치·교육·기술지원까지 공식 인증 리셀러로서 지원합니다." },
   { q: "어느 정도 해상도까지 실시간으로 가능한가요?", a: "Broadcast & Film Edition은 DLSS·Ray Tracing·RTXGI를 활용해 최대 8K 해상도 실시간 렌더링을 지원하며, 10-bit·HDR 입출력을 처리합니다." },
   { q: "방송 시스템과 어떻게 연동되나요?", a: "무제한 SDI·NDI·SMPTE 2110(NMOS)·SRT 입출력과 타임코드·하드웨어 젠록을 지원하고, Free-D·MOS(뉴스룸) 프로토콜로 방송 환경에 통합됩니다." },
@@ -187,7 +187,7 @@ export default function AximmetryPage() {
             ))}
           </div>
           <p className="mt-6 max-w-2xl text-sm text-muted">
-            엔진은 <span className="text-fg">DE(자체 엔진 + Unreal Engine)</span> 또는 <span className="text-fg">SE(자체 엔진)</span> 중 선택할 수 있습니다. Unreal 콘텐츠가 필요하면 DE를 선택합니다.
+            EX는 자체 엔진과 Unreal Engine을 함께 쓰는 <span className="text-fg">DE(Dual Engine)</span> 구성으로 공급합니다. Unreal로 제작한 씬을 그대로 가져와 활용할 수 있습니다.
           </p>
         </div>
       </section>
