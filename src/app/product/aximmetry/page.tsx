@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { MediaBlank } from "@/components/ui/MediaBlank";
 import { SpecTable } from "@/components/product/SpecTable";
 import { CompareTable } from "@/components/product/CompareTable";
 
@@ -91,12 +92,18 @@ const bfSpecs: [string, string][] = [
   ["확장성", "다중 PC 분산 렌더링(Renderer Node) · 멀티 GPU 동기화"],
 ];
 
-const useCases = [
-  { t: "방송 가상 스튜디오", d: "크로마키 배경을 실시간 3D 세트로 합성해 한 공간에서 다양한 무대를 연출합니다." },
-  { t: "뉴스", d: "Free-D·MOS(뉴스룸) 연동으로 데이터·그래픽을 실시간 반영하는 뉴스 스튜디오를 구성합니다." },
-  { t: "XR", d: "LED 월과 카메라 트래킹을 결합해 화면 밖까지 확장되는 XR 무대를 제작합니다." },
-  { t: "AR", d: "실사 영상 위에 3D 그래픽을 정합해 띄우는 증강현실 그래픽을 연출합니다." },
-  { t: "라이브", d: "무제한 방송 I/O와 분산 렌더링으로 대규모 라이브 중계를 실시간 송출합니다." },
+const useCases: { t: string; mono: string; d: string; src?: string; alt?: string }[] = [
+  {
+    t: "방송 가상 스튜디오",
+    mono: "VIRTUAL STUDIO",
+    d: "크로마키 배경을 실시간 3D 세트로 합성해 한 공간에서 다양한 무대를 연출합니다.",
+    src: "/aximmetry-vp.jpg",
+    alt: "그린스크린 가상 스튜디오 촬영 예시",
+  },
+  { t: "뉴스", mono: "NEWS", d: "Free-D·MOS(뉴스룸) 연동으로 데이터·그래픽을 실시간 반영하는 뉴스 스튜디오를 구성합니다." },
+  { t: "XR", mono: "XR", d: "LED 월과 카메라 트래킹을 결합해 화면 밖까지 확장되는 XR 무대를 제작합니다." },
+  { t: "AR", mono: "AR", d: "실사 영상 위에 3D 그래픽을 정합해 띄우는 증강현실 그래픽을 연출합니다." },
+  { t: "라이브", mono: "LIVE", d: "무제한 방송 I/O와 분산 렌더링으로 대규모 라이브 중계를 실시간 송출합니다." },
 ];
 
 // §08 — 도입 절차 (공통 4스텝)
@@ -162,7 +169,7 @@ export default function AximmetryPage() {
       </section>
 
       {/* §02 Why Aximmetry */}
-      <section className="section section--surface section--glow">
+      <section className="section section--surface">
         <div className="container-ex">
           <SectionLabel index="02">Why Aximmetry</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
@@ -171,6 +178,15 @@ export default function AximmetryPage() {
           <p className="lead" style={{ maxWidth: "40rem" }}>
             언리얼의 비주얼, 노드 기반 워크플로, 그리고 무료부터 시작하는 라이선스 — 세 가지가 한 플랫폼에 모였습니다.
           </p>
+          <MediaBlank
+            ratio="16/9"
+            kind="image"
+            src="/vp-workflow.png"
+            alt="Aximmetry 노드 기반 그래픽 편집 화면"
+            tag="AXIMMETRY NODE EDITOR"
+            label="노드 기반 자체 엔진 — 실제 그래프 편집 화면"
+            className="mt-12 w-full"
+          />
           <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
             {whyPoints.map((p) => (
               <div key={p.t} className="card" style={{ padding: 24 }}>
@@ -211,13 +227,35 @@ export default function AximmetryPage() {
         </div>
       </section>
 
+      {/* §05 Compare */}
+      <section className="section section--ink">
+        <div className="container-ex">
+          <SectionLabel index="04">Compare</SectionLabel>
+          <h2 className="h2" style={{ marginTop: 22 }}>
+            에디션 비교
+          </h2>
+          <div className="mt-12">
+            <CompareTable columns={editions.map((e) => e.name)} rows={editionMatrix} />
+          </div>
+        </div>
+      </section>
+
       {/* §04 Features */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="04">Features</SectionLabel>
+          <SectionLabel index="05">Features</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             주요 기능
           </h2>
+          <MediaBlank
+            ratio="16/9"
+            kind="image"
+            src="/vp-chroma.png"
+            alt="크로마키 촬영을 실시간 합성하는 버추얼 프로덕션 현장"
+            tag="REAL-TIME CHROMA KEY"
+            label="방송급 자체 크로마키 — 실시간 합성 현장"
+            className="mt-12 w-full"
+          />
           <div className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.t} className="card" style={{ padding: 24 }}>
@@ -229,21 +267,8 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* §05 Compare */}
-      <section className="section section--white">
-        <div className="container-ex">
-          <SectionLabel index="05">Compare</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            에디션 비교
-          </h2>
-          <div className="mt-12">
-            <CompareTable columns={editions.map((e) => e.name)} rows={editionMatrix} />
-          </div>
-        </div>
-      </section>
-
       {/* §06 Specifications */}
-      <section className="section section--surface">
+      <section className="section section--white">
         <div className="container-ex">
           <SectionLabel index="06">Specifications</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
@@ -259,16 +284,28 @@ export default function AximmetryPage() {
       </section>
 
       {/* §07 Use Cases */}
-      <section className="section section--white">
+      <section className="section section--ink">
         <div className="container-ex">
           <SectionLabel index="07">Use Cases</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             활용 분야
           </h2>
+          <p className="mt-4 font-mono text-xs leading-relaxed text-faint">
+            실제 사례가 아닌 활용 시나리오입니다 · 일부 이미지 준비 중
+          </p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.t} className="card" style={{ padding: 24 }}>
-                <h3 className="font-semibold text-fg">{u.t}</h3>
+                <MediaBlank
+                  ratio="16/10"
+                  kind="image"
+                  src={u.src}
+                  alt={u.alt}
+                  tag="활용 시나리오"
+                  label={u.t}
+                  className="w-full"
+                />
+                <h3 className="mt-5 font-semibold text-fg">{u.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
               </div>
             ))}
@@ -317,7 +354,7 @@ export default function AximmetryPage() {
       </section>
 
       {/* §10 EX × Aximmetry */}
-      <section className="section section--surface section--glow">
+      <section className="section section--ink">
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
