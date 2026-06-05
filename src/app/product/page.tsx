@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { CompareTable } from "@/components/product/CompareTable";
 import { MediaBlank } from "@/components/ui/MediaBlank";
@@ -84,12 +84,7 @@ export default function ProductPage() {
       {/* §01 Why EX */}
       <section className="section section--ink section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="01">Why EX</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              왜 EX를 통해 도입하나요
-            </h2>
-          </div>
+          <SectionHead index="01" label="Why EX" title="왜 EX를 통해 도입하나요" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {whyEx.map((c, i) => (
               <div key={c.t} className="card" style={{ padding: 24 }}>
@@ -105,12 +100,7 @@ export default function ProductPage() {
       {/* §02 Lineup */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="02">Lineup</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              제품 라인업
-            </h2>
-          </div>
+          <SectionHead index="02" label="Lineup" title="제품 라인업" />
           <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
             {lineup.map((p, i) => (
               <Link
@@ -146,12 +136,7 @@ export default function ProductPage() {
       {/* §03 Compare */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="03">Compare</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              한눈에 비교
-            </h2>
-          </div>
+          <SectionHead index="03" label="Compare" title="한눈에 비교" />
           <div className="mt-12">
             <CompareTable columns={lineup.map((p) => p.title)} rows={compare} />
           </div>
@@ -161,15 +146,13 @@ export default function ProductPage() {
       {/* §04 Authorisation */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="04">Authorisation</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              공식 리셀러·총판 인증
-            </h2>
-            <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
-              공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다.
-            </p>
-          </div>
+          <SectionHead
+            index="04"
+            label="Authorisation"
+            title="공식 리셀러·총판 인증"
+            lead="공식 파트너십을 통해 국내 도입과 기술 지원을 책임집니다."
+            leadMaxWidth="40rem"
+          />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {certs.map((c) => (
               <Link key={c.name} href={c.href} className="card group" style={{ overflow: "hidden", padding: 0 }}>

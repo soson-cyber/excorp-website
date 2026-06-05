@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page/PageHero";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { NewsList } from "@/components/news/NewsList";
 import { CtaBanner } from "@/components/layout/CtaBanner";
@@ -45,12 +45,7 @@ export default async function NewsPage() {
       {/* §01 News list (filterable) — top glow bridges the hero aurora down */}
       <section className="section section--ink news-archive">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="01">Archive</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              전체 소식
-            </h2>
-          </div>
+          <SectionHead index="01" label="Archive" title="전체 소식" />
           <div className="mt-12">
             <NewsList press={press} />
           </div>

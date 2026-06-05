@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { StudioMenu } from "@/components/studio/StudioMenu";
@@ -72,12 +72,7 @@ export default function XrStudioPage() {
       {/* §01 Why EX Studio */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="01">Why EX XR Studio</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              EX XR Studio가 다른 이유
-            </h2>
-          </div>
+          <SectionHead index="01" label="Why EX XR Studio" title="EX XR Studio가 다른 이유" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (
               <div key={r.t} className="card" style={{ padding: 28 }}>
@@ -92,15 +87,12 @@ export default function XrStudioPage() {
       {/* §02 Content menu */}
       <section id="menu" className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="02">Content Menu</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              콘텐츠 메뉴
-            </h2>
-            <p className="lead" style={{ maxWidth: "42rem", marginInline: "auto" }}>
-              목적에 맞는 콘텐츠 상품을 고르세요. 규모(S · M · L)만 정하면 카메라 구성·배경·연출은 전담팀이 맞춰 드립니다.
-            </p>
-          </div>
+          <SectionHead
+            index="02"
+            label="Content Menu"
+            title="콘텐츠 메뉴"
+            lead="목적에 맞는 콘텐츠 상품을 고르세요. 규모(S · M · L)만 정하면 카메라 구성·배경·연출은 전담팀이 맞춰 드립니다."
+          />
           <div className="mt-12">
             <StudioMenu />
           </div>
@@ -110,15 +102,12 @@ export default function XrStudioPage() {
       {/* §03 Background presets */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="03">Backgrounds</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              배경 프리셋
-            </h2>
-            <p className="lead" style={{ maxWidth: "42rem", marginInline: "auto" }}>
-              콘텐츠 성격에 맞춰 가상 배경을 선택합니다. 기본 프리셋 외 브랜드 맞춤 배경도 제작합니다.
-            </p>
-          </div>
+          <SectionHead
+            index="03"
+            label="Backgrounds"
+            title="배경 프리셋"
+            lead="콘텐츠 성격에 맞춰 가상 배경을 선택합니다. 기본 프리셋 외 브랜드 맞춤 배경도 제작합니다."
+          />
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {presets.map((p) => (
               <MediaBlank key={p.name} ratio="4/3" src={p.img} alt={`${p.name} 가상 배경 프리셋`} tag={p.cat} label={p.name} />
@@ -130,15 +119,12 @@ export default function XrStudioPage() {
       {/* §04 Options */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="04">Options</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              옵션 서비스
-            </h2>
-            <p className="lead" style={{ maxWidth: "42rem", marginInline: "auto" }}>
-              기본 구성에 필요한 옵션을 더할 수 있습니다.
-            </p>
-          </div>
+          <SectionHead
+            index="04"
+            label="Options"
+            title="옵션 서비스"
+            lead="기본 구성에 필요한 옵션을 더할 수 있습니다."
+          />
           <div className="mt-12">
             <StudioOptions />
           </div>
@@ -148,12 +134,7 @@ export default function XrStudioPage() {
       {/* §05 Guide */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="05">Guide</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              이용 안내
-            </h2>
-          </div>
+          <SectionHead index="05" label="Guide" title="이용 안내" />
           <ul className="mt-12 max-w-3xl space-y-4">
             {guide.map((g) => (
               <li key={g} className="flex gap-3 text-fg">
@@ -168,12 +149,7 @@ export default function XrStudioPage() {
       {/* §06 Studio tour */}
       <section id="facilities" className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="06">Studio</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              스튜디오 둘러보기
-            </h2>
-          </div>
+          <SectionHead index="06" label="Studio" title="스튜디오 둘러보기" />
           <div className="mt-12">
             <MediaBlank ratio="16/9" kind="video" tag="STUDIO · VIDEO" label="촬영 샘플 영상" sublabel="영상 에셋 추가 예정" className="w-full" />
           </div>

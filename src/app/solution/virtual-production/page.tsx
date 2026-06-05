@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
@@ -90,12 +91,7 @@ export default function VirtualProductionPage() {
       {/* §02 Why VP */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="02">Why VP</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              왜 지금 버추얼 프로덕션인가
-            </h2>
-          </div>
+          <SectionHead index="02" label="Why VP" title="왜 지금 버추얼 프로덕션인가" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map((c) => (
               <div key={c.t} className="card" style={{ padding: 24 }}>
@@ -110,15 +106,12 @@ export default function VirtualProductionPage() {
       {/* §03 Methods */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="03">Methods</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              제작 방식
-            </h2>
-            <p className="lead" style={{ maxWidth: "42rem", marginInline: "auto" }}>
-              버추얼 프로덕션은 한 가지 방법만 있는 게 아닙니다. 목적과 예산에 따라 아래 방식을 선택하거나 조합합니다.
-            </p>
-          </div>
+          <SectionHead
+            index="03"
+            label="Methods"
+            title="제작 방식"
+            lead="버추얼 프로덕션은 한 가지 방법만 있는 게 아닙니다. 목적과 예산에 따라 아래 방식을 선택하거나 조합합니다."
+          />
           <MediaBlank
             ratio="16/9"
             kind="video"
@@ -182,12 +175,7 @@ export default function VirtualProductionPage() {
       {/* §05 Process */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="05">Process</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              제작 프로세스
-            </h2>
-          </div>
+          <SectionHead index="05" label="Process" title="제작 프로세스" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p, i) => (
               <div key={p.step} className="card" style={{ padding: 24 }}>
@@ -203,12 +191,7 @@ export default function VirtualProductionPage() {
       {/* §06 Use Cases */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="06">Use Cases</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              활용 분야
-            </h2>
-          </div>
+          <SectionHead index="06" label="Use Cases" title="활용 분야" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.t} className="card" style={{ padding: 24 }}>

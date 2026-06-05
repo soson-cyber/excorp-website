@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
@@ -92,15 +92,13 @@ export default function CareersPage() {
       {/* §01 Core values */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="01">Our Values</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem", marginInline: "auto" }}>
-              우리가 일하는 세 가지 방식
-            </h2>
-            <p className="lead" style={{ maxWidth: "42rem", marginInline: "auto" }}>
-              이 세 가지 가치는 우리가 일하는 방식, 일하는 공간, 커뮤니케이션 곳곳에 녹아 있습니다.
-            </p>
-          </div>
+          <SectionHead
+            index="01"
+            label="Our Values"
+            titleMaxWidth="48rem"
+            title="우리가 일하는 세 가지 방식"
+            lead="이 세 가지 가치는 우리가 일하는 방식, 일하는 공간, 커뮤니케이션 곳곳에 녹아 있습니다."
+          />
           <div className="mt-14 grid gap-5">
             {values.map((v, i) => (
               <div key={v.h} className="card grid gap-4 md:grid-cols-[5rem_1fr]" style={{ padding: 36 }}>
@@ -118,12 +116,7 @@ export default function CareersPage() {
       {/* §02 Culture */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="02">Culture</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              구체적으로, 이렇게 일합니다
-            </h2>
-          </div>
+          <SectionHead index="02" label="Culture" title="구체적으로, 이렇게 일합니다" />
           <div className="mt-12 grid gap-x-12 gap-y-7 sm:grid-cols-2">
             {culture.map((c, i) => (
               <div key={c} className="flex gap-4 border-t border-border pt-5">
@@ -138,15 +131,13 @@ export default function CareersPage() {
       {/* §03 Spaces */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="03">Spaces</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              기술이 만들어지는 공간
-            </h2>
-            <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
-              성남 오피스와 하남 스튜디오 — 우리가 매일 만들고 어울리는 곳입니다.
-            </p>
-          </div>
+          <SectionHead
+            index="03"
+            label="Spaces"
+            title="기술이 만들어지는 공간"
+            lead="성남 오피스와 하남 스튜디오 — 우리가 매일 만들고 어울리는 곳입니다."
+            leadMaxWidth="40rem"
+          />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {spaces.map((s) =>
               s.real ? (
@@ -170,12 +161,7 @@ export default function CareersPage() {
       {/* §04 Environment */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="04">Environment</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              일하는 환경
-            </h2>
-          </div>
+          <SectionHead index="04" label="Environment" title="일하는 환경" />
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {env.map((e) => (
               <div key={e.k} className="card" style={{ padding: 24 }}>
@@ -190,12 +176,7 @@ export default function CareersPage() {
       {/* §05 Who we want */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="05">Who We Want</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              이런 분과 함께하고 싶어요
-            </h2>
-          </div>
+          <SectionHead index="05" label="Who We Want" title="이런 분과 함께하고 싶어요" />
           <ul className="mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
             {whoWeWant.map((w) => (
               <li key={w} className="card flex items-start gap-3" style={{ padding: 24 }}>
@@ -212,12 +193,7 @@ export default function CareersPage() {
       {/* §06 Open Positions */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="06">Open Positions</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              채용 중인 포지션
-            </h2>
-          </div>
+          <SectionHead index="06" label="Open Positions" title="채용 중인 포지션" />
           <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
             <div className="flex flex-col gap-2 p-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
               <div>
@@ -238,12 +214,7 @@ export default function CareersPage() {
       {/* §07 How to Apply */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="07">How to Apply</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              지원 절차
-            </h2>
-          </div>
+          <SectionHead index="07" label="How to Apply" title="지원 절차" />
           <ol className="mt-12 max-w-3xl space-y-4">
             {steps.map((s, i) => (
               <li key={s.t} className="card relative flex items-center gap-5" style={{ overflow: "hidden", padding: 24 }}>

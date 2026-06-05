@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
@@ -145,12 +146,7 @@ export default function MoversePage() {
       {/* §01 Showcase */}
       <section className="section section--ink">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="01">Showcase</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              캡처 프리뷰
-            </h2>
-          </div>
+          <SectionHead index="01" label="Showcase" title="캡처 프리뷰" />
           <figure className="mx-auto mt-12 max-w-4xl">
             <MediaBlank
               ratio="16/9"
@@ -170,12 +166,7 @@ export default function MoversePage() {
       {/* §02 Why Moverse */}
       <section className="section section--white section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="02">Why Moverse</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              왜 Moverse인가
-            </h2>
-          </div>
+          <SectionHead index="02" label="Why Moverse" title="왜 Moverse인가" />
           <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
             {why.map((w) => (
               <div key={w.t} className="card" style={{ padding: 28 }}>
@@ -190,12 +181,7 @@ export default function MoversePage() {
       {/* §03 System */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="03">System</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              구성 한눈에
-            </h2>
-          </div>
+          <SectionHead index="03" label="System" title="구성 한눈에" />
           <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
             {system.map((s) => (
               <div key={s.name} className="card" style={{ padding: 28 }}>
@@ -214,12 +200,7 @@ export default function MoversePage() {
       {/* §04 Key Features */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="04">Key Features</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              주요 기능
-            </h2>
-          </div>
+          <SectionHead index="04" label="Key Features" title="주요 기능" />
           <div className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.t} className="card" style={{ padding: 24 }}>
@@ -234,12 +215,7 @@ export default function MoversePage() {
       {/* §05 Specifications */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="05">Specifications</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              상세 사양
-            </h2>
-          </div>
+          <SectionHead index="05" label="Specifications" title="상세 사양" />
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
             아래 사양은 Moverse 제품 사양이며, EX는 공식 한국 총판으로서 도입·기술지원을 담당합니다.
           </p>
@@ -252,12 +228,7 @@ export default function MoversePage() {
       {/* §06 Use Cases */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="06">Use Cases</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              활용 분야
-            </h2>
-          </div>
+          <SectionHead index="06" label="Use Cases" title="활용 분야" />
           <div className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.t} className="card" style={{ padding: 24 }}>
@@ -274,12 +245,7 @@ export default function MoversePage() {
       {/* §07 도입 절차 */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="07">Process</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              도입 절차
-            </h2>
-          </div>
+          <SectionHead index="07" label="Process" title="도입 절차" />
           <ol className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p) => (
               <li key={p.step} className="card" style={{ padding: 24 }}>
@@ -295,12 +261,7 @@ export default function MoversePage() {
       {/* §08 FAQ */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="08">FAQ</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              도입 전 자주 묻는 질문
-            </h2>
-          </div>
+          <SectionHead index="08" label="FAQ" title="도입 전 자주 묻는 질문" />
           <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
             {faqs.map((f, i) => (
               <details key={f.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>

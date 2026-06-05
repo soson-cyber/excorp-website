@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page/PageHero";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
@@ -65,17 +65,23 @@ export default function SolutionPage() {
       {/* §01 Approach */}
       <section className="section section--ink">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="01">Approach</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem", marginInline: "auto" }}>
-              <span className="inline-block">자체 기술과 글로벌 파트너,</span>{" "}
-              <span className="inline-block">두 축으로 모든 현장에 대응합니다.</span>
-            </h2>
-            <p className="lead" style={{ maxWidth: "42rem", marginInline: "auto" }}>
-              EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한
-              자산을 보유하고 있습니다. 어떤 환경의 XR이라도 EX와 함께 시작할 수 있습니다.
-            </p>
-          </div>
+          <SectionHead
+            index="01"
+            label="Approach"
+            titleMaxWidth="48rem"
+            title={
+              <>
+                <span className="inline-block">자체 기술과 글로벌 파트너,</span>{" "}
+                <span className="inline-block">두 축으로 모든 현장에 대응합니다.</span>
+              </>
+            }
+            lead={
+              <>
+                EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한
+                자산을 보유하고 있습니다. 어떤 환경의 XR이라도 EX와 함께 시작할 수 있습니다.
+              </>
+            }
+          />
           <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {approach.map((a) => (
               <div key={a.k} className="card" style={{ padding: 22 }}>
@@ -92,13 +98,17 @@ export default function SolutionPage() {
       {/* §02 Two Routes */}
       <section className="section section--surface">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="02">Two Routes</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, maxWidth: "48rem", marginInline: "auto" }}>
-              <span className="inline-block">자체 솔루션과 방법론,</span>{" "}
-              <span className="inline-block">두 갈래로 시작합니다.</span>
-            </h2>
-          </div>
+          <SectionHead
+            index="02"
+            label="Two Routes"
+            titleMaxWidth="48rem"
+            title={
+              <>
+                <span className="inline-block">자체 솔루션과 방법론,</span>{" "}
+                <span className="inline-block">두 갈래로 시작합니다.</span>
+              </>
+            }
+          />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             <Link
               href="/solution/xr-solution"
@@ -147,12 +157,7 @@ export default function SolutionPage() {
       {/* §03 Capability */}
       <section className="section section--white">
         <div className="container-ex">
-          <div className="text-center">
-            <SectionLabel index="03">Capability</SectionLabel>
-            <h2 className="h2" style={{ marginTop: 22, marginInline: "auto" }}>
-              제작 전 단계를 커버합니다
-            </h2>
-          </div>
+          <SectionHead index="03" label="Capability" title="제작 전 단계를 커버합니다" />
           <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
             {capability.map((c, i) => (
               <div
