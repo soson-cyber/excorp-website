@@ -38,6 +38,10 @@ type MediaBlankProps = {
   ratio?: string;
   /** 미디어 종류 — 중앙 아이콘 분기. ratio 방식에서 권장. */
   kind?: MediaKind;
+  /** 실제 이미지 경로. 지정 시 플레이스홀더 대신 이미지를 채워 렌더(object-cover) + 하단 라벨 캡션. */
+  src?: string;
+  /** 이미지 대체 텍스트(src 사용 시). 미지정 시 label 사용. */
+  alt?: string;
   /** 좌상단 모노 태그. `null`이면 숨김(작은 로고 슬롯 등). */
   tag?: string | null;
   /** 중앙 글리프 직접 지정. 레거시 방식. 미지정 시 image. */
@@ -108,6 +112,8 @@ export function MediaBlank({
   className = "",
   ratio,
   kind,
+  src,
+  alt,
   tag = "MEDIA",
   glyph = "image",
   children,
@@ -115,6 +121,7 @@ export function MediaBlank({
 }: MediaBlankProps) {
   // ratio가 주어진 새 방식인지 판별
   const hasRatio = typeof ratio === "string" && ratio.length > 0;
+  const hasSrc = typeof src === "string" && src.length > 0;
 
   // 중앙 글리프 결정 — kind가 있으면 우선(video→play), 없으면 레거시 glyph
   const resolvedGlyph: "image" | "play" | "diagram" =
@@ -123,57 +130,78 @@ export function MediaBlank({
   // ratio 방식이면 컨테이너에 aspect-ratio 고정 + 카드 톤 + 상단 한정 미세 그라데이션,
   // 그리고 role="img" + aria-label("… 준비 중")로 접근성 부여.
   const aspectRatio = hasRatio ? ratio!.replace("/", " / ") : undefined;
-  const ariaLabel = hasRatio
-    ? sublabel
-      ? `${label ?? ""} — ${sublabel} (자산 준비 중)`.trim()
-      : `${label ?? ""} (자산 준비 중)`.trim()
-    : undefined;
+  const ariaLabel = hasSrc
+    ? alt ?? label ?? undefined
+    : hasRatio
+      ? sublabel
+        ? `${label ?? ""} — ${sublabel} (자산 준비 중)`.trim()
+        : `${label ?? ""} (자산 준비 중)`.trim()
+      : undefined;
 
   return (
     <div
-      role={hasRatio ? "img" : undefined}
+      role={hasRatio || hasSrc ? "img" : undefined}
       aria-label={ariaLabel}
-      className={`relative overflow-hidden rounded-2xl border border-border ${hasRatio ? "" : "bg-pale"} ${className}`}
+      className={`relative overflow-hidden rounded-2xl border border-border ${hasRatio || hasSrc ? "" : "bg-pale"} ${className}`}
       style={
         hasRatio
-          ? {
-              aspectRatio,
-              // 카드 표면 위 상단 한정 미세 핫퍼플 그라데이션
-              // (섹션 배경이 아니라 자산 자리이므로 단색 배경 정책과 무관)
-              backgroundImage:
-                "radial-gradient(120% 90% at 50% 0%, rgba(94, 46, 192, 0.18), transparent 60%)",
-              backgroundColor: "var(--color-card)",
-            }
+          ? hasSrc
+            ? { aspectRatio, backgroundColor: "var(--color-card)" }
+            : {
+                aspectRatio,
+                // 카드 표면 위 상단 한정 미세 핫퍼플 그라데이션
+                // (섹션 배경이 아니라 자산 자리이므로 단색 배경 정책과 무관)
+                backgroundImage:
+                  "radial-gradient(120% 90% at 50% 0%, rgba(94, 46, 192, 0.18), transparent 60%)",
+                backgroundColor: "var(--color-card)",
+              }
           : undefined
       }
     >
-      {tag && (
-        <span className="absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-wider text-faint">
-          {tag}
-        </span>
+      {hasSrc ? (
+        <>
+          {/* 실제 이미지 — 옵티마이저 우회(원본 직접) 안정 로딩. 동일 비율 컨테이너라 CLS 0. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt ?? label ?? ""} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          {/* 하단 가독성 스크림 + 라벨 캡션 */}
+          {(tag || label) && (
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-4 pb-3 pt-10">
+              {tag && <span className="font-mono text-[10px] uppercase tracking-wider text-white/70">{tag}</span>}
+              {label && <p className="mt-0.5 text-sm font-semibold text-white">{label}</p>}
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          {tag && (
+            <span className="absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-wider text-faint">
+              {tag}
+            </span>
+          )}
+
+          <CornerTicks />
+
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 px-4 py-8 text-center">
+            <Glyph kind={resolvedGlyph} small={compact} />
+            {label && (
+              <span
+                className={`font-mono ${
+                  compact ? "text-[11px]" : "text-xs"
+                } font-medium tracking-wide ${hasRatio ? "lowercase text-faint" : "text-fg"}`}
+              >
+                {label}
+              </span>
+            )}
+            {sublabel && (
+              <span className="font-mono text-[10px] leading-relaxed tracking-wide text-faint">
+                {sublabel}
+              </span>
+            )}
+          </div>
+
+          {children}
+        </>
       )}
-
-      <CornerTicks />
-
-      <div className="flex h-full w-full flex-col items-center justify-center gap-2 px-4 py-8 text-center">
-        <Glyph kind={resolvedGlyph} small={compact} />
-        {label && (
-          <span
-            className={`font-mono ${
-              compact ? "text-[11px]" : "text-xs"
-            } font-medium tracking-wide ${hasRatio ? "lowercase text-faint" : "text-fg"}`}
-          >
-            {label}
-          </span>
-        )}
-        {sublabel && (
-          <span className="font-mono text-[10px] leading-relaxed tracking-wide text-faint">
-            {sublabel}
-          </span>
-        )}
-      </div>
-
-      {children}
     </div>
   );
 }

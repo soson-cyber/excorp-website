@@ -23,14 +23,14 @@ const reasons = [
 ];
 
 const presets = [
-  { name: "IR 기본", cat: "IR" },
-  { name: "강의실", cat: "WEBI" },
-  { name: "라운지", cat: "TALK" },
-  { name: "미니멀 스튜디오", cat: "WEBI" },
-  { name: "카페 스타일", cat: "TALK" },
-  { name: "다크 토크", cat: "TALK" },
-  { name: "컨퍼런스홀", cat: "WEBI" },
-  { name: "키노트 무대", cat: "IR" },
+  { name: "가든 라운지", cat: "TALK", img: "/studio-bg-01.jpg" },
+  { name: "임원 집무실", cat: "IR", img: "/studio-bg-02.jpg" },
+  { name: "세미나실", cat: "WEBI", img: "/studio-bg-03.jpg" },
+  { name: "이머시브 미디어아트", cat: "TALK", img: "/studio-bg-04.jpg" },
+  { name: "카페 키친", cat: "TALK", img: "/studio-bg-05.jpg" },
+  { name: "키노트 홀", cat: "IR", img: "/studio-bg-06.jpg" },
+  { name: "이머시브 갤러리", cat: "TALK", img: "/studio-bg-07.jpg" },
+  { name: "LED 큐브 스테이지", cat: "IR", img: "/studio-bg-08.jpg" },
 ];
 
 const galleryBlanks = [
@@ -115,7 +115,7 @@ export default function XrStudioPage() {
           </p>
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {presets.map((p) => (
-              <MediaBlank key={p.name} ratio="4/3" kind="image" tag={p.cat} label={p.name} sublabel="프리뷰 준비 중" />
+              <MediaBlank key={p.name} ratio="4/3" src={p.img} alt={`${p.name} 가상 배경 프리셋`} tag={p.cat} label={p.name} />
             ))}
           </div>
         </div>
