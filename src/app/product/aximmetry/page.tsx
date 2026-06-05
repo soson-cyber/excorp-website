@@ -68,13 +68,44 @@ const useCases: { t: string; mono: string; d: string; src?: string; alt?: string
     t: "방송 가상 스튜디오",
     mono: "VIRTUAL STUDIO",
     d: "크로마키 배경을 실시간 3D 세트로 합성해 한 공간에서 다양한 무대를 연출합니다.",
-    src: "/aximmetry-vp.jpg",
-    alt: "그린스크린 가상 스튜디오 촬영 예시",
+    src: "/aximmetry-fig-showcase.jpg",
+    alt: "그린스크린 원본과 합성된 가상 스튜디오 비교 예시",
   },
-  { t: "뉴스", mono: "NEWS", d: "Free-D·MOS(뉴스룸) 연동으로 데이터·그래픽을 실시간 반영하는 뉴스 스튜디오를 구성합니다." },
-  { t: "XR", mono: "XR", d: "LED 월과 카메라 트래킹을 결합해 화면 밖까지 확장되는 XR 무대를 제작합니다." },
-  { t: "AR", mono: "AR", d: "실사 영상 위에 3D 그래픽을 정합해 띄우는 증강현실 그래픽을 연출합니다." },
-  { t: "라이브", mono: "LIVE", d: "무제한 방송 I/O와 분산 렌더링으로 대규모 라이브 중계를 실시간 송출합니다." },
+  {
+    t: "뉴스",
+    mono: "NEWS",
+    d: "Free-D·MOS(뉴스룸) 연동으로 데이터·그래픽을 실시간 반영하는 뉴스 스튜디오를 구성합니다.",
+    src: "/aximmetry-fig-news.jpg",
+    alt: "가상 배경 위 진행자 — 뉴스·날씨형 합성 예시",
+  },
+  {
+    t: "XR",
+    mono: "XR",
+    d: "LED 월과 카메라 트래킹을 결합해 화면 밖까지 확장되는 XR 무대를 제작합니다.",
+    src: "/aximmetry-fig-xr.jpg",
+    alt: "가상 토크쇼 스튜디오 XR 세트 예시",
+  },
+  {
+    t: "AR",
+    mono: "AR",
+    d: "실사 영상 위에 3D 그래픽을 정합해 띄우는 증강현실 그래픽을 연출합니다.",
+    src: "/aximmetry-fig-ar-car.jpg",
+    alt: "실내 공간에 배치된 3D 차량 AR 예시",
+  },
+  {
+    t: "라이브 · 이벤트",
+    mono: "LIVE",
+    d: "무제한 방송 I/O와 분산 렌더링으로 컨퍼런스·이벤트 라이브를 실시간 송출합니다.",
+    src: "/aximmetry-fig-live-conference.jpg",
+    alt: "LED 배경 컨퍼런스 라이브 무대 예시",
+  },
+  {
+    t: "패션 · 룩북",
+    mono: "FASHION",
+    d: "가상 배경 합성으로 룩북·캠페인 비주얼을 한 스튜디오에서 다양하게 연출합니다.",
+    src: "/aximmetry-fig-fashion.jpg",
+    alt: "가상 배경 합성 패션 룩북 예시",
+  },
 ];
 
 // §08 — 도입 절차 (공통 4스텝)
@@ -152,8 +183,8 @@ export default function AximmetryPage() {
           <MediaBlank
             ratio="16/9"
             kind="image"
-            src="/vp-workflow.png"
-            alt="Aximmetry 노드 기반 그래픽 편집 화면"
+            src="/aximmetry-fig-node-editor.jpg"
+            alt="Aximmetry 노드 에디터 — 노드 그래프 작업 화면"
             tag="AXIMMETRY NODE EDITOR"
             label="노드 기반 자체 엔진 — 실제 그래프 편집 화면"
             className="mt-12 w-full"
@@ -202,8 +233,8 @@ export default function AximmetryPage() {
           <MediaBlank
             ratio="16/9"
             kind="image"
-            src="/vp-chroma.png"
-            alt="크로마키 촬영을 실시간 합성하는 버추얼 프로덕션 현장"
+            src="/aximmetry-fig-chroma.jpg"
+            alt="그린스크린 앞 방송 카메라 — 크로마키 촬영 현장"
             tag="REAL-TIME CHROMA KEY"
             label="방송급 자체 크로마키 — 실시간 합성 현장"
             className="mt-12 w-full"
@@ -243,7 +274,7 @@ export default function AximmetryPage() {
             활용 분야
           </h2>
           <p className="mt-4 font-mono text-xs leading-relaxed text-faint">
-            실제 사례가 아닌 활용 시나리오입니다 · 일부 이미지 준비 중
+Aximmetry로 제작 가능한 활용 시나리오입니다.
           </p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
