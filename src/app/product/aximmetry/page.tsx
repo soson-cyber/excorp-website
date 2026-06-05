@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { SpecTable } from "@/components/product/SpecTable";
-import { CompareTable } from "@/components/product/CompareTable";
 
 export const metadata: Metadata = {
   title: "Aximmetry — 실시간 버추얼 프로덕션 플랫폼",
@@ -33,29 +32,8 @@ const whyPoints = [
     d: "복잡한 코딩 없이 시각적 노드(Node)로 그래픽 로직을 구성하는 자체 3D 엔진. DLSS·Ray Tracing·RTXGI로 최대 8K 실시간 렌더링을 지원합니다.",
   },
   {
-    t: "무료부터 시작하는 라이선스",
-    d: "워터마크 없는 Studio Limited를 무료로 사용해보고, 제작 규모가 커지면 Studio·Broadcast & Film로 단계적으로 확장하는 합리적 라이선스 체계입니다.",
-  },
-];
-
-const editions = [
-  {
-    name: "Studio Limited",
-    for: "체험 · 입문",
-    points: ["무료 제공", "워터마크 없음", "NDI 1포트", "기본 카메라 트래킹"],
-    pick: "무료로 노드 워크플로를 먼저 경험하고 싶다면",
-  },
-  {
-    name: "Studio",
-    for: "콘텐츠 제작자",
-    points: ["렌탈/구독", "확장 기능", "가상 스튜디오 제작", "유연한 라이선스"],
-    pick: "1인·소규모로 가상 스튜디오를 제작한다면",
-  },
-  {
-    name: "Broadcast & Film",
-    for: "전문 스튜디오 (EX 공급)",
-    points: ["최대 8K 실시간", "무제한 SDI/NDI/2110", "Free-D·MOS 프로토콜", "분산 렌더링"],
-    pick: "무제한 방송 I/O와 분산 렌더링이 필요한 방송·필름 현장이라면",
+    t: "방송·필름 현장 전용 구성",
+    d: "EX는 전문 스튜디오용 Broadcast & Film Edition을 공급합니다. 무제한 SDI/NDI/SMPTE 2110 방송 I/O와 분산 렌더링으로 방송·필름 현장에 바로 대응합니다.",
   },
 ];
 
@@ -70,13 +48,6 @@ const features = [
   { t: "무제한 방송 I/O", d: "SDI·NDI·SMPTE 2110(NMOS)·SRT 무제한, 타임코드·하드웨어 젠록 지원." },
   { t: "방송 프로토콜 · 분산 렌더링", d: "Free-D·MOS(뉴스룸) 지원, 다중 PC 분산 렌더링·멀티 GPU 동기화." },
   { t: "외부 제어 · 다중 출력", d: "GPIO·OSC·MIDI·DMX·ArtNet 디바이스 제어, 모니터·프로젝터·LED 월로 다중 동시 출력." },
-];
-
-const editionMatrix = [
-  { label: "워터마크", values: ["없음", "없음", "없음"] },
-  { label: "입출력", values: ["NDI 1", "확장", "무제한 SDI/NDI/2110"] },
-  { label: "카메라 트래킹", values: ["기본", "확장", "프로페셔널"] },
-  { label: "엔진", values: ["DE / SE", "DE / SE", "DE / SE"] },
 ];
 
 const bfSpecs: [string, string][] = [
@@ -108,7 +79,7 @@ const useCases: { t: string; mono: string; d: string; src?: string; alt?: string
 
 // §08 — 도입 절차 (공통 4스텝)
 const steps = [
-  { t: "상담 · 요구 분석", d: "현장 환경과 제작 목표를 진단해 필요한 에디션·엔진(DE/SE)을 함께 정합니다." },
+  { t: "상담 · 요구 분석", d: "현장 환경과 제작 목표를 진단해 필요한 엔진(DE/SE)·하드웨어 구성을 함께 정합니다." },
   { t: "구성 제안 · 견적", d: "라이선스·하드웨어·I/O 구성을 설계하고 투명한 견적을 제시합니다." },
   { t: "설치 · 셋업 · 교육", d: "시스템 설치와 트래킹·키잉 셋업, 운영자 현장 교육을 진행합니다." },
   { t: "운영 · 기술지원", d: "공식 인증 리셀러로서 운영 중 발생하는 이슈를 지속 기술지원합니다." },
@@ -116,8 +87,8 @@ const steps = [
 
 const faqs = [
   { q: "DE와 SE의 차이는 무엇인가요?", a: "DE(Dual Engine)는 Aximmetry 자체 엔진과 Unreal Engine을 함께 사용하고, SE(Single Engine)는 자체 엔진만 사용합니다. Unreal 콘텐츠가 필요하면 DE를 선택합니다." },
-  { q: "무료로 먼저 써볼 수 있나요?", a: "네. Studio Limited 에디션은 무료이며 워터마크가 없고 NDI 1포트·기본 트래킹을 제공합니다." },
-  { q: "어느 정도 해상도까지 실시간으로 가능한가요?", a: "Broadcast & Film 에디션은 DLSS·Ray Tracing·RTXGI를 활용해 최대 8K 해상도 실시간 렌더링을 지원하며, 10-bit·HDR 입출력을 처리합니다." },
+  { q: "EX는 어떤 에디션을 공급하나요?", a: "EX는 전문 방송·필름 현장을 위한 Broadcast & Film Edition을 공식 공급합니다. 라이선스·하드웨어·I/O 구성을 현장에 맞춰 제안하고 설치·교육·기술지원까지 공식 인증 리셀러로서 지원합니다." },
+  { q: "어느 정도 해상도까지 실시간으로 가능한가요?", a: "Broadcast & Film Edition은 DLSS·Ray Tracing·RTXGI를 활용해 최대 8K 해상도 실시간 렌더링을 지원하며, 10-bit·HDR 입출력을 처리합니다." },
   { q: "방송 시스템과 어떻게 연동되나요?", a: "무제한 SDI·NDI·SMPTE 2110(NMOS)·SRT 입출력과 타임코드·하드웨어 젠록을 지원하고, Free-D·MOS(뉴스룸) 프로토콜로 방송 환경에 통합됩니다." },
 ];
 
@@ -176,7 +147,7 @@ export default function AximmetryPage() {
             왜 Aximmetry인가
           </h2>
           <p className="lead" style={{ maxWidth: "40rem" }}>
-            언리얼의 비주얼, 노드 기반 워크플로, 그리고 무료부터 시작하는 라이선스 — 세 가지가 한 플랫폼에 모였습니다.
+            언리얼의 비주얼, 노드 기반 워크플로, 그리고 방송·필름 현장 대응력 — 세 가지가 한 플랫폼에 모였습니다.
           </p>
           <MediaBlank
             ratio="16/9"
@@ -198,52 +169,33 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* §03 구성 (Editions) */}
+      {/* §03 Edition — EX는 Broadcast & Film Edition만 공급 */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="03">Editions</SectionLabel>
+          <SectionLabel index="03">Edition</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            용도에 맞는 에디션을 선택하세요
+            EX가 공급하는 Broadcast &amp; Film Edition
           </h2>
-          <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
-            {editions.map((e) => (
-              <div key={e.name} className="card flex flex-col" style={{ padding: 24 }}>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-lav">{e.for}</span>
-                <h3 className="mt-1 text-xl font-semibold text-fg">{e.name}</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted">
-                  {e.points.map((p) => (
-                    <li key={p}>• {p}</li>
-                  ))}
-                </ul>
-                <p className="mt-4 border-t border-border pt-4 text-sm text-lav">{e.pick}</p>
+          <p className="lead" style={{ maxWidth: "42rem" }}>
+            EX는 Aximmetry의 전문 스튜디오용 <span className="text-fg">Broadcast &amp; Film Edition</span>을 공식 공급합니다. 무제한 방송 I/O와 분산 렌더링으로 방송·필름 현장에 대응하는 최상위 구성입니다.
+          </p>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {["최대 8K 실시간 렌더링", "무제한 SDI/NDI/SMPTE 2110", "Free-D · MOS(뉴스룸) 프로토콜", "다중 PC 분산 렌더링"].map((p) => (
+              <div key={p} className="card" style={{ padding: 22 }}>
+                <p className="text-sm font-medium leading-relaxed text-fg">{p}</p>
               </div>
             ))}
           </div>
           <p className="mt-6 max-w-2xl text-sm text-muted">
-            EX는 전문 스튜디오용 <span className="text-fg">Broadcast &amp; Film Edition</span>을 공급하며, 모든 에디션은{" "}
-            <span className="text-fg">DE(자체+Unreal)</span> 또는 <span className="text-fg">SE(자체 엔진)</span> 중 선택할 수 있습니다.{" "}
-            <span className="text-fg">Unreal 콘텐츠가 필요하면 DE</span>를 선택하세요.
+            엔진은 <span className="text-fg">DE(자체 엔진 + Unreal Engine)</span> 또는 <span className="text-fg">SE(자체 엔진)</span> 중 선택할 수 있습니다. Unreal 콘텐츠가 필요하면 DE를 선택합니다.
           </p>
-        </div>
-      </section>
-
-      {/* §05 Compare */}
-      <section className="section section--ink">
-        <div className="container-ex">
-          <SectionLabel index="04">Compare</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            에디션 비교
-          </h2>
-          <div className="mt-12">
-            <CompareTable columns={editions.map((e) => e.name)} rows={editionMatrix} />
-          </div>
         </div>
       </section>
 
       {/* §04 Features */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="05">Features</SectionLabel>
+          <SectionLabel index="04">Features</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             주요 기능
           </h2>
@@ -270,7 +222,7 @@ export default function AximmetryPage() {
       {/* §06 Specifications */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="06">Specifications</SectionLabel>
+          <SectionLabel index="05">Specifications</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             Broadcast &amp; Film Edition 사양
           </h2>
@@ -286,7 +238,7 @@ export default function AximmetryPage() {
       {/* §07 Use Cases */}
       <section className="section section--ink">
         <div className="container-ex">
-          <SectionLabel index="07">Use Cases</SectionLabel>
+          <SectionLabel index="06">Use Cases</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             활용 분야
           </h2>
@@ -316,7 +268,7 @@ export default function AximmetryPage() {
       {/* §08 도입 절차 */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="08">Process</SectionLabel>
+          <SectionLabel index="07">Process</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             도입 절차
           </h2>
@@ -335,7 +287,7 @@ export default function AximmetryPage() {
       {/* §09 FAQ */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="09">FAQ</SectionLabel>
+          <SectionLabel index="08">FAQ</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             도입 전 자주 묻는 질문
           </h2>
@@ -358,7 +310,7 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <SectionLabel index="10">EX × Aximmetry</SectionLabel>
+              <SectionLabel index="09">EX × Aximmetry</SectionLabel>
               <h2 className="h2" style={{ marginTop: 22 }}>
                 EX는 Aximmetry <span className="text-lav">공식 인증 리셀러</span>입니다.
               </h2>
