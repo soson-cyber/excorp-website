@@ -153,18 +153,21 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <SectionLabel index="01">Showcase</SectionLabel>
           <figure className="mx-auto mt-12 max-w-4xl">
-            <div className="card" style={{ overflow: "hidden", padding: 0 }}>
-              <Image
-                src="/aximmetry-hero.png"
-                alt="Aximmetry — 크로마키 촬영을 실시간 가상 세트로 합성한 버추얼 프로덕션 예시"
-                width={1140}
-                height={641}
-                priority
-                className="h-auto w-full"
+            {/* 반응형 16:9 — 컨테이너 폭(max-w-4xl)에 맞춰 채우고 모바일에서 자동 축소.
+                youtube-nocookie + loading=lazy로 프라이버시·성능 최적화. */}
+            <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?rel=0"
+                title="Aximmetry 버추얼 프로덕션 소개 영상"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="h-full w-full border-0"
               />
             </div>
             <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-              실시간 크로마키 합성 — Beauty &amp; Joy 가상 세트
+              Aximmetry 실시간 버추얼 프로덕션 데모
             </figcaption>
           </figure>
         </div>
