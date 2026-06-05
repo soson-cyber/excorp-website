@@ -63,50 +63,6 @@ const bfSpecs: [string, string][] = [
   ["확장성", "다중 PC 분산 렌더링(Renderer Node) · 멀티 GPU 동기화"],
 ];
 
-const useCases: { t: string; mono: string; d: string; src?: string; alt?: string }[] = [
-  {
-    t: "방송 가상 스튜디오",
-    mono: "VIRTUAL STUDIO",
-    d: "크로마키 배경을 실시간 3D 세트로 합성해 한 공간에서 다양한 무대를 연출합니다.",
-    src: "/aximmetry-fig-showcase.jpg",
-    alt: "그린스크린 원본과 합성된 가상 스튜디오 비교 예시",
-  },
-  {
-    t: "뉴스",
-    mono: "NEWS",
-    d: "Free-D·MOS(뉴스룸) 연동으로 데이터·그래픽을 실시간 반영하는 뉴스 스튜디오를 구성합니다.",
-    src: "/aximmetry-fig-news.jpg",
-    alt: "가상 배경 위 진행자 — 뉴스·날씨형 합성 예시",
-  },
-  {
-    t: "XR",
-    mono: "XR",
-    d: "LED 월과 카메라 트래킹을 결합해 화면 밖까지 확장되는 XR 무대를 제작합니다.",
-    src: "/aximmetry-fig-xr.jpg",
-    alt: "가상 토크쇼 스튜디오 XR 세트 예시",
-  },
-  {
-    t: "AR",
-    mono: "AR",
-    d: "실사 영상 위에 3D 그래픽을 정합해 띄우는 증강현실 그래픽을 연출합니다.",
-    src: "/aximmetry-fig-ar-car.jpg",
-    alt: "실내 공간에 배치된 3D 차량 AR 예시",
-  },
-  {
-    t: "라이브 · 이벤트",
-    mono: "LIVE",
-    d: "무제한 방송 I/O와 분산 렌더링으로 컨퍼런스·이벤트 라이브를 실시간 송출합니다.",
-    src: "/aximmetry-fig-live-conference.jpg",
-    alt: "LED 배경 컨퍼런스 라이브 무대 예시",
-  },
-  {
-    t: "패션 · 룩북",
-    mono: "FASHION",
-    d: "가상 배경 합성으로 룩북·캠페인 비주얼을 한 스튜디오에서 다양하게 연출합니다.",
-    src: "/aximmetry-fig-fashion.jpg",
-    alt: "가상 배경 합성 패션 룩북 예시",
-  },
-];
 
 // §08 — 도입 절차 (공통 4스텝)
 const steps = [
@@ -157,10 +113,10 @@ export default function AximmetryPage() {
                 youtube-nocookie + loading=lazy로 프라이버시·성능 최적화. */}
             <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
               <iframe
-                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?rel=0"
+                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?autoplay=1&mute=1&loop=1&playlist=vcuQegxG3dA&playsinline=1&rel=0"
                 title="Aximmetry 버추얼 프로덕션 소개 영상"
                 loading="lazy"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
                 className="h-full w-full border-0"
@@ -269,40 +225,10 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* §07 Use Cases */}
-      <section className="section section--ink">
-        <div className="container-ex">
-          <SectionLabel index="06">Use Cases</SectionLabel>
-          <h2 className="h2" style={{ marginTop: 22 }}>
-            활용 분야
-          </h2>
-          <p className="mt-4 font-mono text-xs leading-relaxed text-faint">
-Aximmetry로 제작 가능한 활용 시나리오입니다.
-          </p>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {useCases.map((u) => (
-              <div key={u.t} className="card" style={{ padding: 24 }}>
-                <MediaBlank
-                  ratio="16/10"
-                  kind="image"
-                  src={u.src}
-                  alt={u.alt}
-                  tag="활용 시나리오"
-                  label={u.t}
-                  className="w-full"
-                />
-                <h3 className="mt-5 font-semibold text-fg">{u.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* §08 도입 절차 */}
+      {/* §06 도입 절차 */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="07">Process</SectionLabel>
+          <SectionLabel index="06">Process</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             도입 절차
           </h2>
@@ -321,7 +247,7 @@ Aximmetry로 제작 가능한 활용 시나리오입니다.
       {/* §09 FAQ */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionLabel index="08">FAQ</SectionLabel>
+          <SectionLabel index="07">FAQ</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
             도입 전 자주 묻는 질문
           </h2>
@@ -344,7 +270,7 @@ Aximmetry로 제작 가능한 활용 시나리오입니다.
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <SectionLabel index="09">EX × Aximmetry</SectionLabel>
+              <SectionLabel index="08">EX × Aximmetry</SectionLabel>
               <h2 className="h2" style={{ marginTop: 22 }}>
                 EX는 Aximmetry <span className="text-lav">공식 인증 리셀러</span>입니다.
               </h2>
