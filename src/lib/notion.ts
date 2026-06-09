@@ -20,6 +20,7 @@ const TOKEN = process.env.NOTION_TOKEN;
 /** 각 DB의 데이터 소스 ID (.env). 미설정 항목은 해당 read가 null을 반환. */
 export const NOTION_DS = {
   news: process.env.NOTION_DS_NEWS,
+  insights: process.env.NOTION_DS_INSIGHTS,
   work: process.env.NOTION_DS_WORK,
   career: process.env.NOTION_DS_CAREER,
   inquiry: process.env.NOTION_DS_INQUIRY,
@@ -131,6 +132,84 @@ export async function getNews(): Promise<NotionNews[] | null> {
 export async function getNewsItem(slug: string): Promise<NotionNews | null> {
   const all = await getNews();
   return all?.find((n) => n.slug === slug) ?? null;
+}
+
+/* ── Insight(기술 인사이트 글) ─────────────────────────────────────
+   WEBSITE_INSIGHTS 데이터 소스. 본문은 Notion 페이지 콘텐츠(heading_2 + paragraph)로 작성하고,
+   상세 페이지에서 {h, p[]} 섹션 구조로 복원한다. 미설정/에러 시 null → lib/insights.ts fallback. */
+export type NotionInsightMeta = {
+  id: string;
+  slug: string;
+  year: string;
+  title: string;
+  summary: string;
+  thumbnail: string;
+};
+export type NotionInsight = NotionInsightMeta & { body: { h: string; p: string[] }[] };
+
+function mapInsightMeta(r: { id: string; properties?: Props }): NotionInsightMeta {
+  const p: Props = r.properties ?? {};
+  const slug = txt(p["slug"]) || r.id.replace(/-/g, "");
+  return {
+    id: r.id,
+    slug,
+    title: txt(p["제목"] ?? p["Title"]),
+    summary: txt(p["요약"]),
+    year: txt(p["연도"]) || dateStart(p["발행일"]).slice(0, 4),
+    // 썸네일: public 경로(예: /shell_vp.png)는 URL/텍스트 속성에, 업로드 파일은 files 속성에.
+    thumbnail: urlOf(p["썸네일경로"]) || txt(p["썸네일경로"]) || fileUrl(p["썸네일"]),
+  };
+}
+
+/** 인사이트 목록(카드용, 본문 제외) — 게시여부=true, 연도 최신순. 미설정/에러 → null. */
+export async function getInsights(): Promise<NotionInsightMeta[] | null> {
+  const rows = await queryPublished(NOTION_DS.insights);
+  if (!rows) return null;
+  return rows
+    .filter((r) => r.properties?.["게시여부"]?.checkbox === true)
+    .map(mapInsightMeta)
+    .filter((n) => n.title)
+    .sort((a, b) => (b.year || "").localeCompare(a.year || ""));
+}
+
+/** 페이지 블록(heading_2 + paragraph)을 {h, p[]} 섹션 배열로 복원. */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+async function readInsightBody(pageId: string): Promise<{ h: string; p: string[] }[]> {
+  const c = client();
+  if (!c) return [];
+  const sections: { h: string; p: string[] }[] = [];
+  let cursor: string | undefined;
+  try {
+    do {
+      const res = await c.blocks.children.list({ block_id: pageId, start_cursor: cursor, page_size: 100 });
+      for (const b of (res.results ?? []) as any[]) {
+        if (b.type === "heading_2") {
+          sections.push({ h: txt(b.heading_2), p: [] });
+        } else if (b.type === "heading_3") {
+          sections.push({ h: txt(b.heading_3), p: [] });
+        } else if (b.type === "paragraph") {
+          const t = txt(b.paragraph);
+          if (!t) continue;
+          if (sections.length === 0) sections.push({ h: "", p: [] });
+          sections[sections.length - 1].p.push(t);
+        }
+      }
+      cursor = (res as any).has_more ? (res as any).next_cursor : undefined;
+    } while (cursor);
+  } catch (e) {
+    console.warn("[notion] insight body 읽기 실패:", (e as Error).message);
+  }
+  return sections;
+}
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+/** slug로 단일 인사이트(본문 포함) 조회. 미설정/없음 → null(lib/insights.ts fallback). */
+export async function getInsightItem(slug: string): Promise<NotionInsight | null> {
+  const list = await getInsights();
+  const meta = list?.find((n) => n.slug === slug);
+  if (!meta) return null;
+  const body = await readInsightBody(meta.id);
+  return { ...meta, body };
 }
 
 /** Work 활용 사례. */

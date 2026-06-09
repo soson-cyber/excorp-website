@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page/PageHero";
-import { WorkGallery } from "@/components/work/WorkGallery";
+import { ComingSoon } from "@/components/page/ComingSoon";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
@@ -22,7 +22,10 @@ export default function WorkPage() {
 
       <section className="section section--ink section--glow">
         <div className="container-ex">
-          <WorkGallery />
+          <ComingSoon
+            title="도입 사례를 준비하고 있습니다"
+            description="EX의 실시간 XR 솔루션·파트너 제품·하남 스튜디오로 진행한 프로젝트를 정리해 순차적으로 공개합니다. 먼저 상담이 필요하시면 언제든 문의해 주세요."
+          />
         </div>
       </section>
 

@@ -5,7 +5,6 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
-import { MediaBlank } from "@/components/ui/MediaBlank";
 import { SpecTable } from "@/components/product/SpecTable";
 
 export const metadata: Metadata = {
@@ -22,33 +21,43 @@ const quickSpecs = [
   { v: "Unreal", l: "네이티브 연동" },
 ];
 
-// §02 — 왜 Aximmetry인가: 핵심 차별점 3
-const whyPoints = [
+// §02 — 기능 및 기술. 우선순위 순(첫 항목은 영상 배너로 표시).
+// img가 있으면 카드 상단에 16:9 이미지 영역을 추가한다.
+const featureTech: { t: string; d: string; img?: string }[] = [
   {
-    t: "Unreal Engine 5 통합",
-    d: "Unreal Engine 5를 통합해, 언리얼로 만든 UE5 씬을 Aximmetry에서 바로 열어 실행하고 가상 스튜디오 파이프라인에 그대로 활용할 수 있습니다.",
+    t: "최첨단 크로마 키어",
+    d: "3D 클린 플레이트를 지원하는 내장 크로마 키어로 정밀한 키잉을 구현합니다. (BaM Awards 2023 Create 수상)",
   },
   {
-    t: "노드 기반 자체 엔진",
-    d: "복잡한 코딩 없이 시각적 노드(Node)로 그래픽 로직을 구성하는 자체 3D 엔진. DLSS·Ray Tracing·RTXGI로 최대 8K 실시간 렌더링을 지원합니다.",
+    t: "노드 기반 편집 시스템",
+    d: "복잡한 설정을 노드로 쉽게 관리하고, 사용자 정의 로직을 직접 구성합니다.",
+    img: "/aximmetry-node-editor.jpg",
   },
   {
-    t: "방송·필름 현장 전용 구성",
-    d: "EX는 전문 스튜디오용 Broadcast & Film Edition을 공급합니다. 무제한 SDI/NDI/SMPTE 2110 방송 I/O와 분산 렌더링으로 방송·필름 현장에 바로 대응합니다.",
+    t: "실시간 증강현실(AR)",
+    d: "실사 영상 위에 고품질 AR 그래픽을 실시간으로 오버레이합니다.",
+    img: "/aximmetry-ar.jpg",
   },
-];
-
-const features = [
-  { t: "최대 8K 실시간 렌더링", d: "DLSS · Ray Tracing · RTXGI(실시간 전역 조명)로 8K까지 실시간 렌더." },
-  { t: "Unreal Engine 5 통합", d: "네이티브 Aximmetry 3D 엔진 + Unreal Engine 5 통합 — UE5 씬을 바로 열어 실행." },
   {
-    t: "방송급 자체 크로마키어",
-    d: "3D Clean Plate·Light Wrap을 지원하는 내장 크로마키어(BAM Award 2023 Create 수상) + 실시간 그림자/반사/굴절.",
+    t: "ICVFX · LED 공간 확장",
+    d: "LED 월 버추얼 프로덕션을 확장하는 고품질 설정을 제공합니다.",
+    img: "/aximmetry-icvfx-led.jpg",
   },
-  { t: "노드 기반 그래픽 UI", d: "복잡한 코딩 없이 시각적 노드(Node)로 그래픽 로직을 직관적으로 구성." },
-  { t: "무제한 방송 I/O", d: "SDI·NDI·SMPTE 2110(NMOS)·SRT 무제한, 타임코드·하드웨어 젠록 지원." },
-  { t: "방송 프로토콜 · 분산 렌더링", d: "Free-D·MOS(뉴스룸) 지원, 다중 PC 분산 렌더링·멀티 GPU 동기화." },
-  { t: "외부 제어 · 다중 출력", d: "GPIO·OSC·MIDI·DMX·ArtNet 디바이스 제어, 모니터·프로젝터·LED 월로 다중 동시 출력." },
+  {
+    t: "카메라 추적 · 렌즈 보정",
+    d: "카메라와 렌즈 데이터를 동기화해 정밀한 카메라 연출을 구현합니다.",
+    img: "/aximmetry-camera-tracking.gif",
+  },
+  {
+    t: "단일 제어 인터페이스",
+    d: "직관적인 단일 인터페이스에서 영상·연출을 유연하게 운영합니다.",
+    img: "/aximmetry-virtual-production.jpg",
+  },
+  {
+    t: "외부 컨트롤러 연동",
+    d: "MIDI·DMX·OSC 등 다양한 외부 컨트롤러와 연결해 제어합니다.",
+    img: "/aximmetry-external-control.png",
+  },
 ];
 
 const bfSpecs: [string, string][] = [
@@ -74,7 +83,6 @@ const steps = [
 ];
 
 const faqs = [
-  { q: "DE(Dual Engine)는 무엇인가요?", a: "DE는 Aximmetry 자체 엔진과 Unreal Engine을 함께 사용하는 구성입니다. EX는 DE 구성으로 공급하여, Unreal로 만든 씬을 그대로 가상 스튜디오 파이프라인에 활용할 수 있습니다." },
   { q: "EX는 어떤 에디션을 공급하나요?", a: "EX는 전문 방송·필름 현장을 위한 Broadcast & Film Edition을 공식 공급합니다. 라이선스·하드웨어·I/O 구성을 현장에 맞춰 제안하고 설치·교육·기술지원까지 공식 인증 리셀러로서 지원합니다." },
   { q: "어느 정도 해상도까지 실시간으로 가능한가요?", a: "Broadcast & Film Edition은 DLSS·Ray Tracing·RTXGI를 활용해 최대 8K 해상도 실시간 렌더링을 지원하며, 10-bit·HDR 입출력을 처리합니다." },
   { q: "방송 시스템과 어떻게 연동되나요?", a: "무제한 SDI·NDI·SMPTE 2110(NMOS)·SRT 입출력과 타임코드·하드웨어 젠록을 지원하고, Free-D·MOS(뉴스룸) 프로토콜로 방송 환경에 통합됩니다." },
@@ -89,8 +97,8 @@ export default function AximmetryPage() {
           { label: "Aximmetry", href: "/product/aximmetry" },
         ]}
         tag="Certified Reseller"
-        title="Unreal Engine의 비주얼을, 방송 현장에서."
-        lead="자체 노드 기반 엔진과 Unreal Engine을 결합해 최대 8K 실시간 가상 스튜디오·XR·AR를 제작하는 버추얼 프로덕션 컴포저."
+        title="All-In-One Virtual Production Platform"
+        lead="자체 노드 기반 엔진과 Unreal Engine을 결합해, 실시간 가상 스튜디오·XR·AR를 제작하는 버추얼 프로덕션 컴포저입니다."
       />
 
       {/* Quick spec bar */}
@@ -126,37 +134,79 @@ export default function AximmetryPage() {
                 <source src="/aximmetry-showcase-web.mp4" type="video/mp4" />
               </video>
             </div>
-            <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-              Aximmetry 실시간 버추얼 프로덕션 데모
-            </figcaption>
           </figure>
         </div>
       </section>
 
-      {/* §02 Why Aximmetry */}
+      {/* §02 Features & Technology */}
       <section className="section section--surface">
         <div className="container-ex">
           <SectionHead
             index="02"
-            label="Why Aximmetry"
-            title="왜 Aximmetry인가"
-            lead="언리얼의 비주얼, 노드 기반 워크플로, 그리고 방송·필름 현장 대응력 — 세 가지가 한 플랫폼에 모였습니다."
-            leadMaxWidth="40rem"
+            label="Features & Technology"
+            title="기능 및 기술"
+            lead="Aximmetry의 노드 기반 편집기는 방송 제작·가상 이벤트·사전 시각화·LED 월 버추얼 프로덕션은 물론, 복잡한 3D 그래픽 작업까지 프로젝트 성격에 맞게 그래프를 구성해 유연하게 구현합니다."
+            leadMaxWidth="48rem"
           />
-          <MediaBlank
-            ratio="16/9"
-            kind="image"
-            src="/aximmetry-fig-node-editor.jpg"
-            alt="Aximmetry 노드 에디터 — 노드 그래프 작업 화면"
-            tag="AXIMMETRY NODE EDITOR"
-            label="노드 기반 자체 엔진 — 실제 그래프 편집 화면"
-            className="mt-12 w-full"
-          />
-          <div className="mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
-            {whyPoints.map((p) => (
-              <div key={p.t} className="card" style={{ padding: 24 }}>
-                <h3 className="text-lg font-semibold text-fg">{p.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{p.d}</p>
+          {/* 기능 카드 — 우선순위 순: 상위 4개(2열) + 하위 3개(3열) */}
+          {/* 최첨단 크로마 키어 — 영상 배너 (텍스트·배지 오버레이, BaM Awards 2023 수상) */}
+          <figure className="mt-12">
+            <div className="card relative aspect-video" style={{ overflow: "hidden", padding: 0 }}>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/aximmetry-fig-chroma.jpg"
+                aria-label="Aximmetry 최첨단 크로마 키어 실시간 키잉 데모 영상"
+                className="h-full w-full object-cover"
+              >
+                <source src="/aximmetry-chroma-web.mp4" type="video/mp4" />
+              </video>
+
+              {/* 우상단 — BaM Awards 2023 Create 수상 배지 */}
+              <Image
+                src="/aximmetry-bam-award-2023.png"
+                alt="BaM Awards 2023 Winner — NAB Show CREATE (Aximmetry)"
+                width={200}
+                height={200}
+                className="absolute right-4 top-4 z-10 h-16 w-16 drop-shadow-lg sm:h-24 sm:w-24"
+              />
+
+              {/* 좌하단 — 텍스트 레이어 (가독성용 스크림) */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 sm:p-8">
+                <h3 className="text-lg font-semibold text-white sm:text-xl">{featureTech[0].t}</h3>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/80">{featureTech[0].d}</p>
+              </div>
+            </div>
+          </figure>
+
+          {/* 나머지 기능 카드 6개 — 모든 카드 상단에 16:9 이미지 영역 고정(object-cover로 채움, 여백 없음).
+              이미지 미지정 카드는 동일 비율 플레이스홀더로 레이아웃을 맞춘다. */}
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {featureTech.slice(1).map((p) => (
+              <div key={p.t} className="card flex flex-col" style={{ padding: 0, overflow: "hidden" }}>
+                <div className="aspect-video w-full overflow-hidden bg-bg/60">
+                  {p.img ? (
+                    <Image
+                      src={p.img}
+                      alt={p.t}
+                      width={1280}
+                      height={720}
+                      unoptimized={p.img.endsWith(".gif")}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <span className="font-mono text-[11px] uppercase tracking-wider text-faint">이미지 준비 중</span>
+                    </div>
+                  )}
+                </div>
+                <div style={{ padding: 24 }}>
+                  <h3 className="font-semibold text-fg">{p.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.d}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -169,70 +219,22 @@ export default function AximmetryPage() {
           <SectionHead
             index="03"
             label="Edition"
-            title="EX가 공급하는 Broadcast & Film Edition"
-            lead={
-              <>
-                EX는 Aximmetry의 전문 스튜디오용 <span className="text-fg">Broadcast &amp; Film Edition</span>을 공식 공급합니다. 무제한 방송 I/O와 분산 렌더링으로 방송·필름 현장에 대응하는 최상위 구성입니다.
-              </>
-            }
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {["최대 8K 실시간 렌더링", "무제한 SDI/NDI/SMPTE 2110", "Free-D · MOS(뉴스룸) 프로토콜", "다중 PC 분산 렌더링"].map((p) => (
-              <div key={p} className="card" style={{ padding: 22 }}>
-                <p className="text-sm font-medium leading-relaxed text-fg">{p}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 max-w-2xl text-sm text-muted">
-            EX는 자체 엔진과 Unreal Engine을 함께 쓰는 <span className="text-fg">DE(Dual Engine)</span> 구성으로 공급합니다. Unreal로 제작한 씬을 그대로 가져와 활용할 수 있습니다.
-          </p>
-        </div>
-      </section>
-
-      {/* §04 Features */}
-      <section className="section section--surface">
-        <div className="container-ex">
-          <SectionHead index="04" label="Features" title="주요 기능" />
-          <MediaBlank
-            ratio="16/9"
-            kind="image"
-            src="/aximmetry-fig-chroma.jpg"
-            alt="그린스크린 앞 방송 카메라 — 크로마키 촬영 현장"
-            tag="REAL-TIME CHROMA KEY"
-            label="방송급 자체 크로마키 — 실시간 합성 현장"
-            className="mt-12 w-full"
-          />
-          <div className="mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f) => (
-              <div key={f.t} className="card" style={{ padding: 24 }}>
-                <h3 className="font-semibold text-fg">{f.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* §06 Specifications */}
-      <section className="section section--white">
-        <div className="container-ex">
-          <SectionHead
-            index="05"
-            label="Specifications"
-            title="Broadcast & Film Edition 사양"
-            lead="아래 사양은 Aximmetry 제품 사양이며, EX는 공식 인증 리셀러로서 도입·기술지원을 담당합니다."
+            title="Aximmetry Broadcast & Film Edition"
+            lead="전문 스튜디오용 Broadcast & Film Edition은 무제한 방송 I/O와 분산 렌더링으로 방송·필름 현장에 대응하는 최상위 구성입니다."
             leadMaxWidth="44rem"
           />
-          <div className="mt-12 max-w-3xl">
+
+          {/* 상세 사양 */}
+          <div className="mx-auto mt-12 max-w-3xl">
             <SpecTable groups={[{ rows: bfSpecs }]} />
           </div>
         </div>
       </section>
 
-      {/* §06 도입 절차 */}
+      {/* §04 도입 절차 */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionHead index="06" label="Process" title="도입 절차" />
+          <SectionHead index="04" label="Process" title="도입 절차" />
           <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
               <li key={s.t} className="card flex flex-col" style={{ padding: 24 }}>
@@ -245,11 +247,11 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* §09 FAQ */}
+      {/* §05 FAQ */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="07" label="FAQ" title="도입 전 자주 묻는 질문" />
-          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+          <SectionHead index="05" label="FAQ" title="도입 전 자주 묻는 질문" />
+          <div className="card mx-auto mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
             {faqs.map((f, i) => (
               <details key={f.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
@@ -263,12 +265,12 @@ export default function AximmetryPage() {
         </div>
       </section>
 
-      {/* §10 EX × Aximmetry */}
+      {/* §06 EX × Aximmetry */}
       <section className="section section--ink">
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <SectionLabel index="08">EX × Aximmetry</SectionLabel>
+              <SectionLabel index="06">EX × Aximmetry</SectionLabel>
               <h2 className="h2" style={{ marginTop: 22 }}>
                 EX는 Aximmetry <span className="text-lav">공식 인증 리셀러</span>입니다.
               </h2>

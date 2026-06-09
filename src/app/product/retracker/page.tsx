@@ -6,7 +6,6 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
-import { SpecTable } from "@/components/product/SpecTable";
 
 export const metadata: Metadata = {
   title: "RETracker — 6-DOF 마커리스 카메라 트래킹",
@@ -19,8 +18,8 @@ export const metadata: Metadata = {
 const quickSpecs: { v: string; l: string; gauge?: boolean }[] = [
   { v: "<1cm/10m", l: "트래킹 정확도", gauge: true },
   { v: "500fps", l: "IMU 센서 퓨전", gauge: true },
-  { v: "6-DOF", l: "마커리스 트래킹" },
-  { v: "Marker-less", l: "천장 마커 불필요" },
+  { v: "6-DOF", l: "위치·방향 추적" },
+  { v: "Unreal·Aximmetry", l: "실시간 연동" },
 ];
 
 const whyPoints = [
@@ -38,44 +37,23 @@ const whyPoints = [
   },
 ];
 
-const lineup = [
+const lineup: {
+  name: string;
+  role: string;
+  desc: string;
+  img: string;
+  w: number;
+  h: number;
+  specs: [string, string][];
+}[] = [
   {
     name: "RETracker Bliss G2",
     role: "Tracking Sensor",
     desc: "Intel Movidius Myriad X VPU로 자체 vSLAM을 독립 연산하는 6-DOF 마커리스 카메라 트래킹 센서. 천장 마커 없이 카메라의 위치·방향을 실시간 추적합니다.",
     img: "/retracker-bliss.png",
-    w: 409,
-    h: 152,
-  },
-  {
-    name: "RETracker Fizz 2 Pro",
-    role: "Lens FIZ Encoder",
-    desc: "렌즈의 Focus·Iris·Zoom(FIZ) 값을 물리적으로 추출하는 인코더. 가상 스튜디오의 심도·시야각에 실시간 반영해 실사와 정합합니다.",
-    img: "/retracker-fizz.png",
-    w: 297,
-    h: 226,
-  },
-  {
-    name: "RETracker Bliss Software",
-    role: "Data Link",
-    desc: "Bliss G2의 원시 공간 데이터를 방송 표준 Free-D 기반으로 Aximmetry·Unreal에 실시간 송출하는 데이터 링크 소프트웨어.",
-    img: null,
-  },
-];
-
-const features = [
-  { t: "100% 마커리스", d: "천장 마커가 필요 없는 마커리스 매핑. 공간 이동 범위 무제한." },
-  { t: "초정밀 6-DOF", d: "10m 이동 시 1cm 미만(<1cm) 오차, 초당 500fps IMU 센서 퓨전. (제조사 사양 기준)" },
-  { t: "자체 vSLAM 독립 연산", d: "Intel Movidius Myriad X VPU가 디바이스에서 직접 공간을 매핑." },
-  { t: "Kalman 필터링 · AI 추론 엔진", d: "내장 AI 추론 엔진과 Kalman 필터링으로 움직이는 물체를 걸러 흔들림(Jitter)을 억제하고, 급격한 조명 변화에도 대응." },
-  { t: "FIZ 렌즈 데이터 정합", d: "Fizz 2 Pro가 렌즈 메타데이터를 추출해 가상 환경 심도를 실시간 반영." },
-  { t: "카메라 비종속 · 핫슈 장착", d: "모든 종류의 카메라 상단에 표준 핫슈로 장착하고 LAN/USB로 PC에 전송. 전용 3D 프린팅 마운트 기본 제공." },
-];
-
-const specGroups: { title: string; rows: [string, string][] }[] = [
-  {
-    title: "Bliss G2 — Tracking Sensor",
-    rows: [
+    w: 1672,
+    h: 941,
+    specs: [
       ["프로세서", "Intel Movidius Myriad X VPU (자체 vSLAM 독립 연산)"],
       ["AI 엔진", "High-Speed CNN Engine + SGBM 뎁스 엔진"],
       ["RGB 센서", "13MP (H.265·JPEG 하드웨어 압축, HDR)"],
@@ -88,8 +66,13 @@ const specGroups: { title: string; rows: [string, string][] }[] = [
     ],
   },
   {
-    title: "Fizz 2 Pro — Lens FIZ Encoder",
-    rows: [
+    name: "RETracker Fizz 2 Pro",
+    role: "Lens FIZ Encoder",
+    desc: "렌즈의 Focus·Iris·Zoom(FIZ) 값을 물리적으로 추출하는 인코더. 가상 스튜디오의 심도·시야각에 실시간 반영해 실사와 정합합니다.",
+    img: "/retracker-fizz.png",
+    w: 1672,
+    h: 941,
+    specs: [
       ["FIZ 데이터", "렌즈 Focus·Iris·Zoom 물리 추출 → 심도·시야각 반영"],
       ["프로토콜", "Unreal LiveLink · Free-D"],
       ["디스플레이", "1.3″ OLED 스크린"],
@@ -98,22 +81,6 @@ const specGroups: { title: string; rows: [string, string][] }[] = [
       ["I/O", "12-pin LEMO · BNC(Genlock) · RJ45 LAN · USB-C · USB-A"],
     ],
   },
-  {
-    title: "Bliss Software — Data Link",
-    rows: [
-      ["역할", "Bliss G2 원시 공간 데이터를 엔진으로 송출"],
-      ["연동", "Aximmetry · Unreal Engine"],
-      ["전송", "방송 표준 Free-D 기반 실시간 로우 레이턴시"],
-      ["라이선스", "영구(Lifetime) 라이선스 — 센서 + 소프트웨어"],
-    ],
-  },
-];
-
-const useCases = [
-  { t: "방송 가상 스튜디오", d: "뉴스·예능 세트를 가상 배경으로 대체, 카메라 무빙에 배경이 실시간으로 따라옵니다." },
-  { t: "Virtual Production", d: "사전 시각화부터 본 촬영까지, 실사 카메라 동선을 그대로 가상 환경에 반영합니다." },
-  { t: "ICVFX (LED 월)", d: "LED 월 위 배경의 시점이 카메라 위치에 맞춰 변해 자연스러운 패럴랙스를 만듭니다." },
-  { t: "라이브 · 중계", d: "핸드헬드·빠른 무빙에서도 안정적인 트래킹으로 실시간 송출 환경에 대응합니다." },
 ];
 
 const process = [
@@ -166,16 +133,21 @@ export default function RetrackerPage() {
             title={
               <>
                 <span className="inline-block">카메라가 움직이는 그대로,</span>{" "}
-                <span className="inline-block">공간이 따라옵니다</span>
+                <span className="inline-block">가상 공간이 따라옵니다</span>
               </>
             }
-            lead="마커 없이 추적한 카메라의 6-DOF 위치·방향을 가상 배경에 실시간으로 정합한 트래킹 현장입니다."
+            lead={
+              <>
+                <span className="inline-block">마커 없이 추적하는 실시간 6-DoF 기반의 고정밀 광학 트래킹 시스템으로,</span>{" "}
+                <span className="inline-block">XR·버추얼 프로덕션 제작을 위한 완전한 카메라 추적 솔루션입니다.</span>
+              </>
+            }
             leadMaxWidth="40rem"
           />
           <figure className="mt-12">
             <div className="card" style={{ overflow: "hidden", padding: 0 }}>
               <Image
-                src="/retracker-tracking.jpg"
+                src="/retracker-tracking.png"
                 alt="RETracker 마커리스 카메라 트래킹 현장 — 카메라 무빙에 맞춰 정합되는 가상 공간"
                 width={1280}
                 height={720}
@@ -183,9 +155,6 @@ export default function RetrackerPage() {
                 className="h-auto w-full"
               />
             </div>
-            <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-              RETracker 6-DOF 마커리스 트래킹 — 실사 카메라 × 가상 배경 정합
-            </figcaption>
           </figure>
         </div>
       </section>
@@ -194,7 +163,7 @@ export default function RetrackerPage() {
       <section className="section section--surface">
         <div className="container-ex">
           <SectionHead index="02" label="Why RETracker" title="RETracker가 다른 점" />
-          <div className="mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {whyPoints.map((p, i) => (
               <div key={p.t} className="card" style={{ padding: 24 }}>
                 <span className="font-mono text-sm text-lav">{String(i + 1).padStart(2, "0")}</span>
@@ -214,81 +183,39 @@ export default function RetrackerPage() {
             label="Lineup"
             title={
               <>
-                <span className="inline-block">센서 · 인코더 · 소프트웨어,</span>{" "}
-                <span className="inline-block">세 요소로 구성됩니다</span>
+                <span className="inline-block">트래킹 센서 · 렌즈 인코더로</span>{" "}
+                <span className="inline-block">구성됩니다</span>
               </>
             }
           />
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {lineup.map((p) => (
               <div key={p.name} className="card flex flex-col" style={{ padding: 24 }}>
-                <div className="flex h-44 items-center justify-center rounded-xl bg-bg/60">
-                  {p.img ? (
-                    <Image src={p.img} alt={p.name} width={p.w} height={p.h} className="max-h-36 w-auto" />
-                  ) : (
-                    <span className="font-mono text-xs uppercase tracking-wider text-faint">Software</span>
-                  )}
+                <div className="aspect-[16/9] w-full overflow-hidden rounded-xl bg-bg/60">
+                  <Image src={p.img} alt={p.name} width={p.w} height={p.h} className="h-full w-full object-cover" />
                 </div>
                 <span className="mt-5 font-mono text-[11px] uppercase tracking-wider text-lav">{p.role}</span>
                 <h3 className="mt-1 text-xl font-semibold text-fg">{p.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
+                <dl className="mt-5 border-t border-border/60 pt-5">
+                  {p.specs.map(([k, v]) => (
+                    <div key={k} className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:gap-4">
+                      <dt className="w-32 shrink-0 font-mono text-[11px] uppercase tracking-wider text-faint">{k}</dt>
+                      <dd className="text-sm text-fg">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* §04 Features */}
+      {/* §04 도입 절차 */}
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionHead index="04" label="Features" title="주요 특징" />
-          <div className="mt-12 grid max-w-4xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f) => (
-              <div key={f.t} className="card" style={{ padding: 24 }}>
-                <h3 className="font-semibold text-fg">{f.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{f.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* §05 Specifications */}
-      <section className="section section--white">
-        <div className="container-ex">
           <SectionHead
-            index="05"
-            label="Specifications"
-            title="상세 사양"
-            lead="아래 사양은 RETracker 제품 사양이며, EX는 공식 한국 총판으로서 도입·기술지원을 담당합니다."
-            leadMaxWidth="44rem"
-          />
-          <div className="mt-12 max-w-3xl">
-            <SpecTable groups={specGroups} />
-          </div>
-        </div>
-      </section>
-
-      {/* §06 Use Cases */}
-      <section className="section section--surface">
-        <div className="container-ex">
-          <SectionHead index="06" label="Use Cases" title="활용 분야" />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {useCases.map((u) => (
-              <div key={u.t} className="card" style={{ padding: 24 }}>
-                <h3 className="font-semibold text-fg">{u.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{u.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* §07 도입 절차 */}
-      <section className="section section--white">
-        <div className="container-ex">
-          <SectionHead
-            index="07"
+            index="04"
             label="Process"
             title="도입 절차"
             lead="상담부터 설치·운영까지, EX가 공식 한국 총판으로서 도입 전 과정을 함께합니다."
@@ -306,11 +233,11 @@ export default function RetrackerPage() {
         </div>
       </section>
 
-      {/* §08 FAQ */}
-      <section className="section section--surface">
+      {/* §05 FAQ */}
+      <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="08" label="FAQ" title="도입 전 자주 묻는 질문" />
-          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+          <SectionHead index="05" label="FAQ" title="도입 전 자주 묻는 질문" />
+          <div className="card mx-auto mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
             {faqs.map((f, i) => (
               <details key={f.q} className="group p-6" style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
@@ -324,12 +251,12 @@ export default function RetrackerPage() {
         </div>
       </section>
 
-      {/* §09 EX × RETracker */}
-      <section className="section section--white section--glow">
+      {/* §06 EX × RETracker */}
+      <section className="section section--surface section--glow">
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <SectionLabel index="09">EX × RETracker</SectionLabel>
+              <SectionLabel index="06">EX × RETracker</SectionLabel>
               <h2 className="h2" style={{ marginTop: 22 }}>
                 EX는 RETracker의 <span className="text-lav">공식 한국 총판</span>입니다.
               </h2>

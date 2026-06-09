@@ -7,6 +7,7 @@ export function PageHero({
   eyebrow,
   title,
   lead,
+  bgImage,
 }: {
   /** Accepted for back-compat but no longer rendered — the top nav covers it. */
   breadcrumb?: Crumb[];
@@ -14,10 +15,28 @@ export function PageHero({
   eyebrow?: string;
   title: string;
   lead?: ReactNode;
+  /** Optional full-bleed background image (key visual). When set, the aurora is suppressed and a scrim keeps text legible. */
+  bgImage?: string;
 }) {
   return (
-    <section className="pagehero relative overflow-hidden">
-      <div className="pagehero-aurora" aria-hidden="true" />
+    <section
+      className={`pagehero relative overflow-hidden ${
+        bgImage ? "flex items-center min-h-[max(440px,min(56.25vw,820px))]" : ""
+      }`}
+    >
+      {bgImage ? (
+        <>
+          {/* 데코 배경 — 가로폭 기준 16:9로 채움(섹션 높이=폭×9/16). next/image 최적화 우회(풀블리드), alt 비움 */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={bgImage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover object-center" />
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"
+            aria-hidden="true"
+          />
+        </>
+      ) : (
+        <div className="pagehero-aurora" aria-hidden="true" />
+      )}
       <div className="pagehero-fade" aria-hidden="true" />
       <div className="container-ex pagehero__inner relative text-center">
         {tag && (

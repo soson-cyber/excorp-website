@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
-import { NewsList } from "@/components/news/NewsList";
+import { NewsList, type NewsItem } from "@/components/news/NewsList";
 import { CtaBanner } from "@/components/layout/CtaBanner";
-import { getNews } from "@/lib/notion";
+import { getNews, getInsights } from "@/lib/notion";
 import { pressFallback } from "@/lib/press-fallback";
+import { insights as localInsights } from "@/lib/insights";
 
 // ISR — Notion(WEBSITE_NEWS) 변경을 5분 주기로 반영. 미설정 시 fallback.
 export const revalidate = 300;
@@ -33,6 +34,27 @@ export default async function NewsPage() {
         }))
       : pressFallback;
 
+  // 인사이트: Notion(WEBSITE_INSIGHTS) 우선 → 미연결/빈 경우 lib/insights.ts fallback
+  const notionInsights = await getInsights();
+  const insightItems: NewsItem[] =
+    notionInsights && notionInsights.length > 0
+      ? notionInsights.map((i) => ({
+          cat: "인사이트" as const,
+          year: i.year,
+          title: i.title,
+          excerpt: i.summary || undefined,
+          href: `/news/${i.slug}`,
+          thumbnail: i.thumbnail || undefined,
+        }))
+      : localInsights.map((i) => ({
+          cat: "인사이트" as const,
+          year: i.year,
+          title: i.title,
+          excerpt: i.summary,
+          href: `/news/${i.slug}`,
+          thumbnail: i.thumbnail,
+        }));
+
   return (
     <>
       <PageHero
@@ -47,7 +69,7 @@ export default async function NewsPage() {
         <div className="container-ex">
           <SectionHead index="01" label="Archive" title="전체 소식" />
           <div className="mt-12">
-            <NewsList press={press} />
+            <NewsList press={press} insights={insightItems} />
           </div>
         </div>
       </section>

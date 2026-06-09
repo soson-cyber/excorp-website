@@ -1,38 +1,31 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
-import { MediaBlank } from "@/components/ui/MediaBlank";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Virtual Production — 촬영하는 순간 완성되는 영상 제작",
   alternates: { canonical: "/solution/virtual-production" },
   description:
-    "버추얼 프로덕션은 가상 배경과 실제 촬영을 실시간으로 합쳐 현장에서 완성하는 제작 방식입니다. EX는 EXLINK·파트너 기술·하남 XR 스튜디오를 연결해 크로마·실시간 트래킹 기반 VP를 제공합니다.",
+    "버추얼 프로덕션은 디지털 배경과 실제 촬영을 실시간으로 결합해 현장에서 완성하는 제작 방식입니다. 크로마키·Simulcam·ICVFX·AR까지, EX는 RETracker·Moverse·Aximmetry·EXLINK와 하남 XR 스튜디오를 하나의 파이프라인으로 연결합니다.",
 };
 
-const benefits = [
-  { t: "촬영이 곧 완성", d: "현장에서 합성 화면을 보며 촬영해, 후반 작업 기간을 대폭 줄입니다." },
-  { t: "무한한 배경 · 세트비 절감", d: "세트 제작·로케이션 이동 없이 어떤 공간이든 가상으로 구현합니다." },
-  { t: "실시간 연출 · 즉시 확인", d: "배경·조명·구도를 그 자리에서 바꾸고 결과를 바로 확인합니다." },
-  { t: "라이브 송출까지", d: "완성된 화면을 실시간 그대로 방송·중계·스트리밍으로 내보냅니다." },
-];
-
-const methods = [
-  { t: "크로마키 (그린스크린)", d: "초록 배경 앞에서 촬영해 인물만 따내 가상 배경과 합성합니다.", tag: "EX 강점" },
-  { t: "실시간 XR 트래킹", d: "카메라 움직임을 정밀 추적해 배경이 어긋나지 않고 따라옵니다.", tag: "EX 강점" },
-  { t: "ICVFX (인카메라 VFX)", d: "카메라 안에서 가상 배경을 그대로 완성, 보이는 그대로가 결과물." },
-  { t: "LED Wall", d: "대형 LED에 배경을 띄워 그 앞에서 촬영하는 업계 방식." },
-  { t: "AR 그래픽", d: "실제 영상 위에 가상 그래픽·오브젝트를 실시간으로 합성합니다." },
-  { t: "XR 확장", d: "크로마·AR·가상 배경을 결합해 무대를 화면 밖까지 확장합니다." },
+// UE 워크플로우(World Capture → Performance Capture → Simulcam → ICVFX)를 EX 실보유·총판 자산에 매핑
+const pipeline: { stage: string; t: string; tech: string; d: string; href?: string }[] = [
+  { stage: "01", t: "카메라 트래킹", tech: "RETracker", d: "카메라의 6-DOF 위치·방향을 실시간 추적해 배경 정합의 기준을 만듭니다.", href: "/product/retracker" },
+  { stage: "02", t: "퍼포먼스 캡처", tech: "Moverse", d: "배우 동작을 마커리스로 캡처해 CG 캐릭터를 구동합니다.", href: "/product/moverse" },
+  { stage: "03", t: "실시간 렌더 · 합성", tech: "Aximmetry · Unreal", d: "가상 배경을 실시간 렌더해 실사와 프레임 단위로 정합·합성합니다.", href: "/product/aximmetry" },
+  { stage: "04", t: "통합 · 송출", tech: "EXLINK", d: "촬영·트래킹·렌더·송출을 하나의 제어 흐름으로 운영합니다.", href: "/solution/xr-solution" },
+  { stage: "05", t: "촬영 스테이지", tech: "하남 XR Studio", d: "대형 그린 크로마(W10×D7×H4)에서 촬영을 진행합니다.", href: "/xr-studio" },
 ];
 
 const exPoints = [
   "올인원 실시간 솔루션 EXLINK — 가상 배경 제작부터 실시간 합성·운영까지 하나로",
-  "검증된 파트너 기술 연결 — Aximmetry · Moverse AI · RETracker를 프로젝트에 맞게 결합",
+  "검증된 파트너 기술 연결 — Aximmetry · Moverse · RETracker를 프로젝트에 맞게 결합",
   "촬영과 동시에 완성 — 대형 그린 크로마 + 실시간 트래킹으로 후반 작업 최소화",
 ];
 
@@ -62,7 +55,7 @@ export default function VirtualProductionPage() {
         ]}
         tag="Methodology"
         title="촬영하는 순간, 콘텐츠가 완성됩니다."
-        lead="가상 배경과 실제 촬영을 실시간으로 하나로 합칩니다. 길고 복잡한 후반 작업 없이, 현장에서 결과물을 바로 확인하세요."
+        lead="디지털 배경과 실제 촬영을 실시간으로 결합해, 제작자가 라이브 액션처럼 현장에서 직접 연출하고 완성합니다. 길고 복잡한 후반 작업이 필요 없습니다."
       />
 
       {/* §01 What is VP */}
@@ -78,7 +71,7 @@ export default function VirtualProductionPage() {
                 버추얼 프로덕션이란?
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                버추얼 프로덕션(Virtual Production)은 컴퓨터로 만든 가상의 배경·세트를 실제 촬영과 실시간으로 합쳐 영상을 완성하는 제작 방식입니다. 현장에서 합성된 화면을 바로 보며 연출할 수 있어 긴 후반 작업이 필요 없고, 카메라가 움직여도 배경이 자연스럽게 따라옵니다.
+                버추얼 프로덕션(Virtual Production)은 디지털 세계와 물리 세계를 실시간으로 결합하는 제작 방식입니다. 컴퓨터로 만든 가상 배경·세트를 실제 촬영과 그 자리에서 합쳐, 제작자가 라이브 액션을 다루듯 디지털 과정을 직접 연출합니다. 카메라가 움직여도 배경이 자연스럽게 따라오고, 긴 후반 작업 없이 현장에서 결과를 확인합니다.
               </p>
               <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
                 가상 배경 위에서 실제로 촬영하고, 그 자리에서 완성하는 영상 제작 방식.
@@ -88,62 +81,70 @@ export default function VirtualProductionPage() {
         </div>
       </section>
 
-      {/* §02 Why VP */}
+      {/* §02 VP Pipeline — EX 자산 매핑 */}
       <section className="section section--surface">
-        <div className="container-ex">
-          <SectionHead index="02" label="Why VP" title="왜 지금 버추얼 프로덕션인가" />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((c) => (
-              <div key={c.t} className="card" style={{ padding: 24 }}>
-                <h3 className="font-semibold text-fg">{c.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{c.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* §03 Methods */}
-      <section className="section section--white">
         <div className="container-ex">
           <SectionHead
-            index="03"
-            label="Methods"
-            title="제작 방식"
-            lead="버추얼 프로덕션은 한 가지 방법만 있는 게 아닙니다. 목적과 예산에 따라 아래 방식을 선택하거나 조합합니다."
+            index="02"
+            label="VP Pipeline"
+            title="VP 전 단계를 EX 자산으로 잇습니다"
+            lead="카메라 트래킹부터 퍼포먼스 캡처·실시간 렌더·송출까지, 버추얼 프로덕션의 각 단계를 EX의 솔루션과 파트너 기술로 연결합니다."
+            leadMaxWidth="46rem"
           />
-          <MediaBlank
-            ratio="16/9"
-            kind="video"
-            tag="REAL-TIME COMPOSITING"
-            label="실시간 합성 데모"
-            sublabel="크로마 → 가상 배경 합성 루프 · 영상 준비 중"
-            className="mt-12 w-full"
-          />
-          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {methods.map((m) => (
-              <div key={m.t} className="card" style={{ padding: 24 }}>
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="font-semibold text-fg">{m.t}</h3>
-                  {m.tag && (
-                    <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
-                      {m.tag}
+          <figure className="card mt-10 overflow-hidden" style={{ padding: 0 }}>
+            <Image
+              src="/vp-workflow-diagram.png"
+              alt="버추얼 프로덕션 제작 흐름 — Preproduction(Story·Physical Art·Virtual Art·Visual Effects) → Production(Filming·Visualization·Hybrid Camera·Motion Capture·LED Live Action) → Postproduction(Editing·Post VFX) → Showtime"
+              width={1672}
+              height={941}
+              sizes="(max-width: 768px) 100vw, 1100px"
+              className="h-auto w-full"
+            />
+          </figure>
+          <ol className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {pipeline.map((p) => {
+              const inner = (
+                <>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-mono text-sm font-bold text-lav tabular-nums">{p.stage}</span>
+                    <span className="rounded-full border border-border bg-card px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted">
+                      {p.tech}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 font-semibold text-fg">{p.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.d}</p>
+                  {p.href && (
+                    <span className="arrowlink mt-4 text-sm">
+                      자세히 보기{" "}
+                      <span className="ar" aria-hidden="true">
+                        →
+                      </span>
                     </span>
                   )}
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{m.d}</p>
-              </div>
-            ))}
-          </div>
+                </>
+              );
+              return p.href ? (
+                <li key={p.stage}>
+                  <Link href={p.href} className="card group flex h-full flex-col" style={{ padding: 24 }}>
+                    {inner}
+                  </Link>
+                </li>
+              ) : (
+                <li key={p.stage} className="card flex flex-col" style={{ padding: 24 }}>
+                  {inner}
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </section>
 
-      {/* §04 EX Virtual Production */}
-      <section className="section section--surface">
+      {/* §05 EX Virtual Production */}
+      <section className="section section--white">
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <SectionLabel index="04">EX Virtual Production</SectionLabel>
+              <SectionLabel index="03">EX Virtual Production</SectionLabel>
               <h2 className="h2" style={{ marginTop: 22 }}>
                 EX의 버추얼 프로덕션
               </h2>
@@ -172,10 +173,10 @@ export default function VirtualProductionPage() {
         </div>
       </section>
 
-      {/* §05 Process */}
-      <section className="section section--white">
+      {/* §06 Process */}
+      <section className="section section--surface">
         <div className="container-ex">
-          <SectionHead index="05" label="Process" title="제작 프로세스" />
+          <SectionHead index="04" label="Process" title="제작 프로세스" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p, i) => (
               <div key={p.step} className="card" style={{ padding: 24 }}>
@@ -188,10 +189,10 @@ export default function VirtualProductionPage() {
         </div>
       </section>
 
-      {/* §06 Use Cases */}
-      <section className="section section--surface section--glow">
+      {/* §07 Use Cases */}
+      <section className="section section--white section--glow">
         <div className="container-ex">
-          <SectionHead index="06" label="Use Cases" title="활용 분야" />
+          <SectionHead index="05" label="Use Cases" title="활용 분야" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.t} className="card" style={{ padding: 24 }}>

@@ -9,6 +9,8 @@ export type Insight = {
   year: string;
   title: string;
   summary: string;
+  /** 카드·상세 상단 썸네일(16:9 권장). public/ 경로. */
+  thumbnail?: string;
   body: { h: string; p: string[] }[];
 };
 
@@ -19,6 +21,7 @@ export const insights: Insight[] = [
     title: "버추얼 프로덕션이란? 촬영과 동시에 완성되는 제작 방식",
     summary:
       "가상 배경과 실제 촬영을 실시간으로 합쳐 현장에서 완성하는 버추얼 프로덕션(VP)의 개념과 제작 방식을 정리합니다.",
+    thumbnail: "/shell_vp.png",
     body: [
       {
         h: "한 줄 정의",
@@ -56,6 +59,7 @@ export const insights: Insight[] = [
     title: "마커리스 카메라 트래킹의 원리",
     summary:
       "천장 마커 없이 카메라의 위치를 읽는 마커리스 트래킹(vSLAM)이 어떻게 동작하는지, 왜 버추얼 프로덕션에 필수인지 설명합니다.",
+    thumbnail: "/retracker-tracking.png",
     body: [
       {
         h: "왜 카메라 트래킹이 필요한가",

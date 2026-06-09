@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { insights } from "@/lib/insights";
 
 /*
   News & Insight — 카테고리 필터(클라이언트) + 카드 그리드.
   정직성: 보도자료는 실제 마일스톤만 노출(연도 기준). 인사이트는 기술 설명 글
   (/news/[slug] 상세). 케이스/자료실은 준비 전이므로 빈 상태로 안내 — CMS 연동 시 자동 노출.
+  데이터는 서버(news/page.tsx)에서 주입 — 보도자료·인사이트 모두 Notion 우선, 미연결 시 fallback.
   Light theme: 시맨틱 토큰 사용.
 */
 
-type Item = {
+export type NewsItem = {
   cat: "보도자료" | "케이스" | "인사이트" | "자료실";
   year: string;
   title: string;
@@ -20,14 +20,7 @@ type Item = {
   featured?: boolean;
   thumbnail?: string;
 };
-
-const insightItems: Item[] = insights.map((i) => ({
-  cat: "인사이트",
-  year: i.year,
-  title: i.title,
-  excerpt: i.summary,
-  href: `/news/${i.slug}`,
-}));
+type Item = NewsItem;
 
 const categories = ["전체", "보도자료", "케이스", "인사이트", "자료실"] as const;
 
@@ -35,8 +28,8 @@ function catClass(cat: Item["cat"]) {
   return cat === "보도자료" ? "bg-accent-soft text-accent-bright" : "bg-primary-soft text-lav";
 }
 
-export function NewsList({ press }: { press: Item[] }) {
-  const items: Item[] = [...press, ...insightItems];
+export function NewsList({ press, insights = [] }: { press: Item[]; insights?: Item[] }) {
+  const items: Item[] = [...press, ...insights];
   const [active, setActive] = useState<(typeof categories)[number]>("전체");
   const list = active === "전체" ? items : items.filter((i) => i.cat === active);
 

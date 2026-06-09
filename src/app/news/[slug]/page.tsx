@@ -4,13 +4,14 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page/PageHero";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { insights, getInsight } from "@/lib/insights";
-import { getNews, getNewsItem, type NotionNews } from "@/lib/notion";
+import { getNews, getNewsItem, getInsights, getInsightItem, type NotionNews } from "@/lib/notion";
 
-export const revalidate = 300; // 보도자료(Notion) ISR
+export const revalidate = 300; // 보도자료·인사이트(Notion) ISR
 
 export async function generateStaticParams() {
   const press = (await getNews()) ?? [];
-  return [...insights.map((i) => ({ slug: i.slug })), ...press.map((p) => ({ slug: p.slug }))];
+  const ins = (await getInsights()) ?? insights;
+  return [...ins.map((i) => ({ slug: i.slug })), ...press.map((p) => ({ slug: p.slug }))];
 }
 
 export async function generateMetadata({
@@ -19,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const a = getInsight(slug);
+  const a = (await getInsightItem(slug)) ?? getInsight(slug);
   if (a) {
     return {
       title: `${a.title} — Insight`,
@@ -44,7 +45,7 @@ export default async function InsightPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const a = getInsight(slug);
+  const a = (await getInsightItem(slug)) ?? getInsight(slug);
 
   // 인사이트가 아니면 → 보도자료 요약 랜딩(원문은 외부 링크)
   if (!a) {
@@ -53,7 +54,7 @@ export default async function InsightPage({
     return <PressLanding p={p} />;
   }
 
-  const others = insights.filter((x) => x.slug !== a.slug);
+  const others = ((await getInsights()) ?? insights).filter((x) => x.slug !== a.slug);
 
   return (
     <>
@@ -97,6 +98,15 @@ export default async function InsightPage({
         title={a.title}
         lead={a.summary}
       />
+
+      {a.thumbnail && (
+        <figure className="container-ex mt-2">
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-border">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={a.thumbnail} alt={a.title} className="h-auto w-full" />
+          </div>
+        </figure>
+      )}
 
       <article className="container-ex py-section">
         <div className="mx-auto max-w-3xl space-y-12">
