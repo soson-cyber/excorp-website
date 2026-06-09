@@ -1585,6 +1585,19 @@ html.cursor-reduce .ex-cursor-ring {
   flex-direction: column;
   height: 100%;
 }
+/* 인증서 PDF 링크 카드 — 카드 전체를 클릭 영역으로, 호버 시 살짝 강조 */
+.patent-card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: opacity 0.18s ease;
+}
+.patent-card__link:hover {
+  opacity: 0.92;
+}
+.patent-card:has(.patent-card__link:hover) {
+  border-color: color-mix(in srgb, var(--color-lav) 45%, var(--color-border));
+}
 .patent-card__media {
   position: relative;
   aspect-ratio: 4 / 3;
