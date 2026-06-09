@@ -237,7 +237,7 @@ export function HomeClean() {
               실시간 XR 스튜디오
             </h2>
             <p className="lead" style={{ maxWidth: "36rem" }}>
-              하남 70㎡ 그린 크로마에서 IR · 웨비나 · 대담을 실시간 XR로 제작합니다.
+              하남 70㎡ 그린 크로마에서 실시간 XR 콘텐츠를 제작합니다.
             </p>
             <ul className="bullets">
               {STUDIO_BULLETS.map((b) => (

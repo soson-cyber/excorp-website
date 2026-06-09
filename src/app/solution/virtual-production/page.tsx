@@ -63,7 +63,7 @@ export default function VirtualProductionPage() {
         <div className="container-ex">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
-              <Image src="/vp-chroma.png" alt="크로마키 촬영을 실시간 가상 배경에 합성한 버추얼 프로덕션 결과" width={891} height={472} priority className="h-auto w-full" />
+              <Image src="/xr-studio.jpg" alt="가상 배경 위에서 완성되는 XR 콘텐츠 — 하남 XR 스튜디오 버추얼 프로덕션" width={1672} height={941} priority className="h-auto w-full" />
             </figure>
             <div>
               <SectionLabel index="01">What is VP</SectionLabel>

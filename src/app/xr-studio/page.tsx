@@ -4,7 +4,6 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { MediaBlank } from "@/components/ui/MediaBlank";
-import { StudioMenu } from "@/components/studio/StudioMenu";
 import { StudioOptions } from "@/components/studio/StudioOptions";
 import { site } from "@/lib/site";
 
@@ -34,9 +33,9 @@ const presets = [
 ];
 
 const galleryBlanks = [
-  { label: "무대 와이드", tag: "STUDIO" },
-  { label: "조명 · 장비", tag: "STUDIO" },
-  { label: "스튜디오 도면", tag: "FLOORPLAN" },
+  { label: "그린 크로마 무대", tag: "STAGE", img: "/studio_01.jpeg", alt: "하남 XR 스튜디오 그린 크로마 무대 — 천장 조명 그리드와 카메라·지미집" },
+  { label: "실시간 송출 · 제어", tag: "CONTROL", img: "/studio_02.jpeg", alt: "Aximmetry Composer 실시간 송출 모니터와 Blackmagic DeckLink 8K 카메라 구성" },
+  { label: "메이크업 · 대기 공간", tag: "PREP", img: "/studio_03.jpeg", alt: "링라이트 메이크업 거울, 의류 행거, 탈의 부스를 갖춘 대기 공간" },
 ];
 
 const guide = [
@@ -58,7 +57,7 @@ export default function XrStudioPage() {
       <PageHero
         breadcrumb={[{ label: "XR Studio", href: "/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
-        title="가상 배경 위에서 완성되는 IR · 웨비나 · 토크 콘텐츠"
+        title="가상 배경 위에서 완성되는 XR 콘텐츠"
         lead="하남 EX XR Studio는 대형 그린 크로마와 XR·리얼타임 기술로, 기획부터 촬영·송출까지 한 번에 완성하는 버추얼 프로덕션 스튜디오입니다."
       />
 
@@ -84,26 +83,11 @@ export default function XrStudioPage() {
         </div>
       </section>
 
-      {/* §02 Content menu */}
-      <section id="menu" className="section section--white">
+      {/* §02 Background presets */}
+      <section className="section section--white">
         <div className="container-ex">
           <SectionHead
             index="02"
-            label="Content Menu"
-            title="콘텐츠 메뉴"
-            lead="목적에 맞는 콘텐츠 상품을 고르세요. 규모(S · M · L)만 정하면 카메라 구성·배경·연출은 전담팀이 맞춰 드립니다."
-          />
-          <div className="mt-12">
-            <StudioMenu />
-          </div>
-        </div>
-      </section>
-
-      {/* §03 Background presets */}
-      <section className="section section--surface">
-        <div className="container-ex">
-          <SectionHead
-            index="03"
             label="Backgrounds"
             title="배경 프리셋"
             lead="콘텐츠 성격에 맞춰 가상 배경을 선택합니다. 기본 프리셋 외 브랜드 맞춤 배경도 제작합니다."
@@ -116,11 +100,11 @@ export default function XrStudioPage() {
         </div>
       </section>
 
-      {/* §04 Options */}
-      <section className="section section--white">
+      {/* §03 Options */}
+      <section className="section section--surface">
         <div className="container-ex">
           <SectionHead
-            index="04"
+            index="03"
             label="Options"
             title="옵션 서비스"
             lead="기본 구성에 필요한 옵션을 더할 수 있습니다."
@@ -131,10 +115,10 @@ export default function XrStudioPage() {
         </div>
       </section>
 
-      {/* §05 Guide */}
-      <section className="section section--surface">
+      {/* §04 Guide */}
+      <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="05" label="Guide" title="이용 안내" />
+          <SectionHead index="04" label="Guide" title="이용 안내" />
           <ul className="mt-12 max-w-3xl space-y-4">
             {guide.map((g) => (
               <li key={g} className="flex gap-3 text-fg">
@@ -146,16 +130,13 @@ export default function XrStudioPage() {
         </div>
       </section>
 
-      {/* §06 Studio tour */}
-      <section id="facilities" className="section section--white">
+      {/* §05 Studio tour */}
+      <section id="facilities" className="section section--surface">
         <div className="container-ex">
-          <SectionHead index="06" label="Studio" title="스튜디오 둘러보기" />
-          <div className="mt-12">
-            <MediaBlank ratio="16/9" kind="video" tag="STUDIO · VIDEO" label="촬영 샘플 영상" sublabel="영상 에셋 추가 예정" className="w-full" />
-          </div>
-          <div className="mt-5 grid gap-5 sm:grid-cols-3">
+          <SectionHead index="05" label="Studio" title="스튜디오 둘러보기" />
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
             {galleryBlanks.map((b) => (
-              <MediaBlank key={b.label} ratio="16/9" kind="image" tag={b.tag} label={b.label} sublabel="이미지 준비 중" />
+              <MediaBlank key={b.label} ratio="16/9" kind="image" src={b.img} alt={b.alt} tag={b.tag} label={b.label} />
             ))}
           </div>
           <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
@@ -176,7 +157,7 @@ export default function XrStudioPage() {
       </section>
 
       {/* CTA — quote & booking */}
-      <section className="section section--surface section--glow">
+      <section className="section section--white section--glow">
         <div className="container-ex">
           <div className="card px-8 py-14 text-center" style={{ borderRadius: 24 }}>
             <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-lav">
