@@ -167,7 +167,7 @@ export default function VirtualProductionPage() {
               </div>
             </div>
             <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
-              <Image src="/vp-workflow.png" alt="EX 버추얼 프로덕션 노드 기반 실시간 워크플로우" width={891} height={557} className="h-auto w-full" />
+              <Image src="/exlink-vp-core.png" alt="EXLINK 버추얼 프로덕션 코어 — 노드 기반 실시간 워크플로우" width={1672} height={941} className="h-auto w-full" />
             </figure>
           </div>
         </div>

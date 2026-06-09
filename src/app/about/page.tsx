@@ -70,24 +70,20 @@ export default function AboutPage() {
         lead="이엑스는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다."
       />
 
-      {/* Ambiance — EX의 실제 XR 운영 현장 */}
+      {/* Brand mark — EX 로고 */}
       <section className="container-ex" style={{ paddingTop: 48 }}>
         <Reveal>
-          <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
-            <div className="relative aspect-[16/7]">
-              <Image
-                src="/exlink-control-room.jpg"
-                alt="EX의 실시간 XR 통합 제어실 — 멀티뷰·프로그램·트래킹"
-                fill
-                priority
-                sizes="(min-width:1280px) 1216px, 100vw"
-                className="object-cover"
-              />
-              <span className="hud" style={{ left: 14, top: 12 }}>
-                EX · XR CONTROL ROOM
-              </span>
-            </div>
-          </figure>
+          <div className="flex items-center justify-center py-10 sm:py-14">
+            <Image
+              src="/ex-logo.png"
+              alt="EX Corporation 로고"
+              width={1001}
+              height={201}
+              priority
+              sizes="(min-width:640px) 460px, 80vw"
+              className="h-auto w-full max-w-[280px] sm:max-w-[460px]"
+            />
+          </div>
         </Reveal>
       </section>
 
