@@ -8,6 +8,8 @@ export const site = {
     "AI와 XR 기술을 연결하여, 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다.",
   social: {
     instagram: "https://www.instagram.com/excorp_kr",
+    facebook: "https://www.facebook.com/EXCorp.Story",
+    youtube: "https://www.youtube.com/@excorp_kr",
   },
   contact: {
     tel: "031-699-8228",

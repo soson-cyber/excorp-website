@@ -20,16 +20,25 @@ export function Footer() {
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-footer-link">{site.mission}</p>
             <div className="mt-6 flex gap-5 text-footer-link">
-              <a
-                href={site.social.instagram}
-                className="transition-colors hover:text-footer-accent"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-              >
-                <Icon name="instagram" />
-                <span className="sr-only">Instagram</span>
-              </a>
+              {(
+                [
+                  { name: "instagram", label: "Instagram", href: site.social.instagram },
+                  { name: "facebook", label: "Facebook", href: site.social.facebook },
+                  { name: "youtube", label: "YouTube", href: site.social.youtube },
+                ] as const
+              ).map((sns) => (
+                <a
+                  key={sns.name}
+                  href={sns.href}
+                  className="transition-colors hover:text-footer-accent"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={sns.label}
+                >
+                  <Icon name={sns.name} />
+                  <span className="sr-only">{sns.label}</span>
+                </a>
+              ))}
             </div>
           </div>
 

@@ -64,7 +64,7 @@ export default function XrStudioPage() {
       {/* Studio photo */}
       <section className="container-ex" style={{ paddingTop: 48 }}>
         <div className="card" style={{ overflow: "hidden", padding: 0 }}>
-          <Image src="/studio.png" alt="EX XR Studio — 하남 그린 크로마 버추얼 프로덕션 스튜디오 전경" width={1366} height={779} priority className="h-auto w-full" />
+          <Image src="/xr-studio.jpg" alt="EX XR Studio — 하남 그린 크로마 버추얼 프로덕션 스튜디오 전경" width={1672} height={941} priority className="h-auto w-full" />
         </div>
       </section>
 
