@@ -118,16 +118,18 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <SectionHead index="01" label="Showcase" />
           <figure className="mt-12">
-            {/* 반응형 16:9 — 자체 호스팅 영상, 무음 자동재생·루프. poster로 로드 전 폴백.
-                웹 최적화본(720p30·무음·~20MB, faststart). */}
+            {/* 반응형 16:9 — 자체 호스팅 영상, 무음 자동재생·루프.
+                poster는 영상 첫 프레임(aximmetry-showcase-poster.jpg)을 써서 로딩 중에도
+                동일 화면이 보이게 한다 → 버퍼링 후 재생으로 자연스럽게 이어짐(이미지→영상 점프 없음).
+                preload="auto"로 진입 즉시 버퍼링 시작. 웹 최적화본(720p30·무음·~20MB, faststart). */}
             <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
-                preload="metadata"
-                poster="/aximmetry-hero.png"
+                preload="auto"
+                poster="/aximmetry-showcase-poster.jpg"
                 aria-label="Aximmetry 실시간 버추얼 프로덕션 데모 영상"
                 className="h-full w-full object-cover"
               >
