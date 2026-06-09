@@ -118,23 +118,19 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <SectionHead index="01" label="Showcase" />
           <figure className="mt-12">
-            {/* 반응형 16:9 — 자체 호스팅 영상, 무음 자동재생·루프.
-                poster는 영상 첫 프레임(aximmetry-showcase-poster.jpg)을 써서 로딩 중에도
-                동일 화면이 보이게 한다 → 버퍼링 후 재생으로 자연스럽게 이어짐(이미지→영상 점프 없음).
-                preload="auto"로 진입 즉시 버퍼링 시작. 웹 최적화본(720p30·무음·~20MB, faststart). */}
+            {/* 반응형 16:9 — YouTube 임베드. 자동재생 + 무음(브라우저 자동재생 정책상 mute 필수)
+                + 루프(loop=1 + playlist=영상ID 필요). controls=0·modestbranding으로 쇼케이스용 정리,
+                privacy 강화를 위해 youtube-nocookie 도메인 사용. */}
             <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                poster="/aximmetry-showcase-poster.jpg"
-                aria-label="Aximmetry 실시간 버추얼 프로덕션 데모 영상"
-                className="h-full w-full object-cover"
-              >
-                <source src="/aximmetry-showcase-web.mp4" type="video/mp4" />
-              </video>
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?autoplay=1&mute=1&loop=1&playlist=vcuQegxG3dA&controls=0&playsinline=1&rel=0&modestbranding=1"
+                title="Aximmetry 실시간 버추얼 프로덕션 데모"
+                allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                style={{ border: 0 }}
+              />
             </div>
           </figure>
         </div>
