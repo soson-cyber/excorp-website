@@ -118,19 +118,22 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <SectionHead index="01" label="Showcase" />
           <figure className="mt-12">
-            {/* 반응형 16:9 — YouTube 임베드. 자동재생 + 무음(브라우저 자동재생 정책상 mute 필수)
-                + 루프(loop=1 + playlist=영상ID 필요). controls=0·modestbranding으로 쇼케이스용 정리,
-                privacy 강화를 위해 youtube-nocookie 도메인 사용. */}
-            <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
+            {/* 반응형 16:9 — YouTube 임베드를 "배경 영상" 방식으로. 자동재생 + 무음(자동재생 정책상
+                mute 필수) + 루프(loop=1 + playlist=영상ID). controls=0·modestbranding으로 UI 최소화,
+                privacy 강화를 위해 youtube-nocookie 도메인 사용.
+                투명 오버레이가 클릭/일시정지를 막아 영상이 계속 재생되도록 → 고정 재생버튼·호버 UI가
+                뜨지 않는다(YouTube iframe은 교차 출처라 내부 버튼을 CSS로 직접 제어할 수 없어 오버레이로 해결). */}
+            <div className="card relative aspect-video" style={{ overflow: "hidden", padding: 0 }}>
               <iframe
-                className="h-full w-full"
-                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?autoplay=1&mute=1&loop=1&playlist=vcuQegxG3dA&controls=0&playsinline=1&rel=0&modestbranding=1"
+                className="pointer-events-none h-full w-full"
+                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?autoplay=1&mute=1&loop=1&playlist=vcuQegxG3dA&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
                 title="Aximmetry 실시간 버추얼 프로덕션 데모"
                 allow="autoplay; encrypted-media; picture-in-picture; web-share"
-                allowFullScreen
                 referrerPolicy="strict-origin-when-cross-origin"
                 style={{ border: 0 }}
               />
+              {/* 투명 오버레이: 마우스 이벤트를 흡수해 영상 일시정지/호버 UI를 차단 */}
+              <span className="absolute inset-0" aria-hidden="true" />
             </div>
           </figure>
         </div>
