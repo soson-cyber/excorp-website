@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBanner } from "@/components/layout/CtaBanner";
@@ -63,28 +62,40 @@ const history: { year: string; items: string[] }[] = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        breadcrumb={[{ label: "About EX", href: "/about" }]}
-        eyebrow="모두의 창작 가능성을 넓히는 기술 스타트업"
-        title="EXpansion of EXperience."
-        lead="이엑스는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다."
-      />
-
-      {/* Brand mark — EX 로고 */}
-      <section className="container-ex" style={{ paddingTop: 48 }}>
-        <Reveal>
-          <div className="flex items-center justify-center py-10 sm:py-14">
+      {/* About hero — 로고·타이틀 통합 + 동심원 확산 배경(EXpansion of EXperience) */}
+      <section className="pagehero relative overflow-hidden">
+        <div className="pagehero-aurora" aria-hidden="true" />
+        <div className="exrings" aria-hidden="true">
+          <span className="exring exring--1" />
+          <span className="exring exring--2" />
+          <span className="exring exring--3" />
+          <span className="exring exring--4" />
+          <span className="exring exring--5" />
+        </div>
+        <div className="pagehero-fade" aria-hidden="true" />
+        <div className="container-ex pagehero__inner relative text-center">
+          <div className="inline-flex rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-lav">
+            About EX
+          </div>
+          <div className="mt-8 flex justify-center">
             <Image
               src="/ex-logo.png"
-              alt="EX Corporation 로고"
+              alt="EX Corporation"
               width={1001}
               height={201}
               priority
-              sizes="(min-width:640px) 460px, 80vw"
-              className="h-auto w-full max-w-[280px] sm:max-w-[460px]"
+              sizes="(min-width:640px) 440px, 78vw"
+              className="h-auto w-full max-w-[300px] drop-shadow-[0_0_40px_rgba(139,92,246,0.35)] sm:max-w-[440px]"
             />
           </div>
-        </Reveal>
+          <h1 className="mt-7 text-balance break-keep text-[clamp(1.9rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-[-0.02em] text-gradient-ex-bright">
+            EXpansion of EXperience.
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted">
+            이엑스는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다.
+          </p>
+        </div>
+        <span className="pagehero__sentinel" data-hero-sentinel aria-hidden="true" />
       </section>
 
       {/* §01 Vision & Mission */}

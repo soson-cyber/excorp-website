@@ -1464,6 +1464,89 @@ html.cursor-reduce .ex-cursor-ring {
   width: 1px;
 }
 
+/* ── About hero — concentric expansion rings (브랜드 슬로건 'EXpansion of EXperience' 시각화).
+   중심(로고)에서 퍼플·라벤더·민트 동심원이 천천히 확대·페이드 → 경험의 '확장'을 은유. ── */
+.exrings {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.exring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1240px;
+  height: 1240px;
+  margin: -620px 0 0 -620px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-violet);
+  opacity: 0;
+  transform: scale(0.12);
+  will-change: transform, opacity;
+}
+.exring--3 {
+  border-color: var(--color-lav);
+}
+.exring--5 {
+  border-color: var(--color-mint);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .exring {
+    animation: exRipple 8s linear infinite;
+  }
+  .exring--2 {
+    animation-delay: 1.6s;
+  }
+  .exring--3 {
+    animation-delay: 3.2s;
+  }
+  .exring--4 {
+    animation-delay: 4.8s;
+  }
+  .exring--5 {
+    animation-delay: 6.4s;
+  }
+}
+@keyframes exRipple {
+  0% {
+    transform: scale(0.12);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+}
+/* prefers-reduced-motion: 정적 동심원으로 '확장' 뉘앙스만 유지 */
+@media (prefers-reduced-motion: reduce) {
+  .exring {
+    opacity: 0.13;
+  }
+  .exring--1 {
+    transform: scale(0.32);
+  }
+  .exring--2 {
+    transform: scale(0.5);
+  }
+  .exring--3 {
+    transform: scale(0.68);
+  }
+  .exring--4 {
+    transform: scale(0.86);
+  }
+  .exring--5 {
+    transform: scale(1.04);
+  }
+}
+
 /* ── PageHero aurora — brand-color blurred blobs, slow drift ─────────────── */
 .pagehero-aurora {
   position: absolute;
