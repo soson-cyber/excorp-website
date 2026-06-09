@@ -15,45 +15,39 @@
  */
 import { Client } from "@notionhq/client";
 
-// ⚠️ Cloudflare Workers(OpenNext)에서는 env(시크릿)가 "요청 시점"에 process.env로 주입된다.
-// 모듈 최상위에서 한 번만 읽으면 cold start 시 undefined로 고정되어 런타임 Notion 호출이
-// 전부 실패(→ fallback) 한다. 따라서 토큰/DS ID는 항상 호출 시점에 process.env에서 읽는다.
-const TOKEN = (): string | undefined => process.env.NOTION_TOKEN;
+type EnvMap = Record<string, string | undefined>;
 
-/** 각 DB의 데이터 소스 ID (.env). 접근 시점에 평가(getter) → Workers 런타임 안전. */
-export const NOTION_DS = {
-  get news() {
-    return process.env.NOTION_DS_NEWS;
-  },
-  get insights() {
-    return process.env.NOTION_DS_INSIGHTS;
-  },
-  get work() {
-    return process.env.NOTION_DS_WORK;
-  },
-  get career() {
-    return process.env.NOTION_DS_CAREER;
-  },
-  get inquiry() {
-    return process.env.NOTION_DS_INQUIRY;
-  },
-} as const;
-
-export function isNotionEnabled(): boolean {
-  return Boolean(TOKEN());
+/**
+ * 런타임 env 해석 — Notion 시크릿/DS ID를 어디서 읽을지 결정한다.
+ *
+ * ⚠️ Cloudflare Workers(OpenNext)에서는 시크릿이 `process.env`가 아니라
+ * `getCloudflareContext().env`에 들어온다. process.env로 읽으면 런타임에 전부 undefined가 되어
+ * Notion 호출이 모두 실패한다(= 뉴스가 fallback으로 표시되고, 문의가 DB에 저장 안 되던 원인).
+ * - Workers 런타임: ctx.env 사용
+ * - Node(빌드/`next dev`): process.env(.dev.vars/.env.local) 사용
+ */
+async function resolveEnv(): Promise<EnvMap> {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const ctx = await getCloudflareContext({ async: true });
+    const cfEnv = ctx?.env as unknown as EnvMap | undefined;
+    if (cfEnv && cfEnv.NOTION_TOKEN) return { ...(process.env as EnvMap), ...cfEnv };
+  } catch {
+    // 워커 컨텍스트가 아님(빌드/Node) → process.env 사용
+  }
+  return process.env as EnvMap;
 }
 
-let _client: Client | null = null;
-let _clientToken: string | undefined;
-function client(): Client | null {
-  const t = TOKEN();
-  if (!t) return null;
-  // 토큰이 바뀌면(재주입) 클라이언트 재생성
-  if (!_client || _clientToken !== t) {
-    _client = new Client({ auth: t });
-    _clientToken = t;
-  }
-  return _client;
+/** Notion 클라이언트 + 해석된 env. 토큰 없으면 null(호출부는 fallback). */
+async function notion(): Promise<{ c: Client; env: EnvMap } | null> {
+  const env = await resolveEnv();
+  const token = env.NOTION_TOKEN;
+  if (!token) return null;
+  return { c: new Client({ auth: token }), env };
+}
+
+export async function isNotionEnabled(): Promise<boolean> {
+  return Boolean((await resolveEnv()).NOTION_TOKEN);
 }
 
 /* ── 속성 안전 추출 헬퍼 (속성 부재·타입 불일치에도 안전) ─────────────── */
@@ -103,11 +97,13 @@ export type NotionCareer = {
 
 /* ── 공통 쿼리 (게시여부=true만, 미설정/에러 → null) ───────────────── */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-async function queryPublished(dataSourceId: string | undefined): Promise<any[] | null> {
-  const c = client();
-  if (!c || !dataSourceId) return null;
+async function queryPublished(dsEnvKey: string): Promise<any[] | null> {
+  const n = await notion();
+  if (!n) return null;
+  const dataSourceId = n.env[dsEnvKey];
+  if (!dataSourceId) return null;
   try {
-    const res = await c.dataSources.query({
+    const res = await n.c.dataSources.query({
       data_source_id: dataSourceId,
       // "게시여부" 체크박스가 true인 행만. 속성이 없으면 Notion이 무시하지 않고 에러낼 수 있어
       // 실제 속성명 확정 후 필터를 활성화한다. 지금은 전체 조회 후 코드에서 거른다.
@@ -123,7 +119,7 @@ async function queryPublished(dataSourceId: string | undefined): Promise<any[] |
 
 /** 보도자료/인사이트 — 게시여부=true만, 발행일 최신순. 미설정/에러 시 null(호출부 fallback). */
 export async function getNews(): Promise<NotionNews[] | null> {
-  const rows = await queryPublished(NOTION_DS.news);
+  const rows = await queryPublished("NOTION_DS_NEWS");
   if (!rows) return null;
   return rows
     .filter((r) => r.properties?.["게시여부"]?.checkbox === true)
@@ -182,7 +178,7 @@ function mapInsightMeta(r: { id: string; properties?: Props }): NotionInsightMet
 
 /** 인사이트 목록(카드용, 본문 제외) — 게시여부=true, 연도 최신순. 미설정/에러 → null. */
 export async function getInsights(): Promise<NotionInsightMeta[] | null> {
-  const rows = await queryPublished(NOTION_DS.insights);
+  const rows = await queryPublished("NOTION_DS_INSIGHTS");
   if (!rows) return null;
   return rows
     .filter((r) => r.properties?.["게시여부"]?.checkbox === true)
@@ -194,8 +190,9 @@ export async function getInsights(): Promise<NotionInsightMeta[] | null> {
 /** 페이지 블록(heading_2 + paragraph)을 {h, p[]} 섹션 배열로 복원. */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 async function readInsightBody(pageId: string): Promise<{ h: string; p: string[] }[]> {
-  const c = client();
-  if (!c) return [];
+  const n = await notion();
+  if (!n) return [];
+  const c = n.c;
   const sections: { h: string; p: string[] }[] = [];
   let cursor: string | undefined;
   try {
@@ -233,7 +230,7 @@ export async function getInsightItem(slug: string): Promise<NotionInsight | null
 
 /** Work 활용 사례. */
 export async function getWork(): Promise<NotionWork[] | null> {
-  const rows = await queryPublished(NOTION_DS.work);
+  const rows = await queryPublished("NOTION_DS_WORK");
   if (!rows) return null;
   return rows
     .map((r): NotionWork => {
@@ -253,7 +250,7 @@ export async function getWork(): Promise<NotionWork[] | null> {
 
 /** Career 공고. */
 export async function getCareers(): Promise<NotionCareer[] | null> {
-  const rows = await queryPublished(NOTION_DS.career);
+  const rows = await queryPublished("NOTION_DS_CAREER");
   if (!rows) return null;
   return rows
     .map((r): NotionCareer => {
@@ -281,17 +278,18 @@ export type InquiryInput = {
 
 /** Notion 미설정이면 false(호출부는 다른 경로로 처리). 성공 시 true. */
 export async function createInquiry(input: InquiryInput): Promise<boolean> {
-  const c = client();
-  if (!c || !NOTION_DS.inquiry) return false;
+  const n = await notion();
+  const dsId = n?.env.NOTION_DS_INQUIRY;
+  if (!n || !dsId) return false;
   try {
-    await c.pages.create({
-      parent: { type: "data_source_id", data_source_id: NOTION_DS.inquiry },
+    await n.c.pages.create({
+      parent: { type: "data_source_id", data_source_id: dsId },
+      // 속성명은 실제 WEBSITE_INQUIRY DB와 1:1 확인됨(이름·회사·이메일·연락처·유형·메시지·상태).
       properties: {
-        // 속성명은 설계 기준(가칭) — 실제 DB 속성명과 대조 후 확정.
         이름: { title: [{ text: { content: input.name } }] },
         회사: { rich_text: [{ text: { content: input.company ?? "" } }] },
         이메일: { email: input.email },
-        연락처: { phone_number: input.phone ?? "" },
+        연락처: { phone_number: input.phone || null },
         유형: input.type ? { select: { name: input.type } } : { select: null },
         메시지: { rich_text: [{ text: { content: input.message.slice(0, 1900) } }] },
         상태: { select: { name: "신규" } },

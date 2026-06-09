@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createInquiry, isNotionEnabled } from "@/lib/notion";
+import { createInquiry } from "@/lib/notion";
 
 type Payload = {
   name?: string;
@@ -43,17 +43,15 @@ export async function POST(req: Request) {
 
   // ── 1) Notion WEBSITE_INQUIRY 에 접수 저장 (관리자 = Notion) ──────────
   // NOTION_TOKEN + NOTION_DS_INQUIRY 설정 시 동작. 실패해도 사용자 응답은 성공 유지.
-  let stored = false;
-  if (isNotionEnabled()) {
-    stored = await createInquiry({
-      name,
-      company: body.company,
-      email,
-      phone: body.phone,
-      type,
-      message,
-    });
-  }
+  // createInquiry가 토큰/DS 미설정 시 false 반환(예외 없음) — 별도 게이트 불필요.
+  const stored = await createInquiry({
+    name,
+    company: body.company,
+    email,
+    phone: body.phone,
+    type,
+    message,
+  });
   if (!stored) {
     // Notion 미설정/실패 시 최소한 서버 로그로 유실 방지
     console.info("[contact] lead (Notion 미저장) →", { to, name, email, type });
