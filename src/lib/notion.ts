@@ -15,25 +15,44 @@
  */
 import { Client } from "@notionhq/client";
 
-const TOKEN = process.env.NOTION_TOKEN;
+// ⚠️ Cloudflare Workers(OpenNext)에서는 env(시크릿)가 "요청 시점"에 process.env로 주입된다.
+// 모듈 최상위에서 한 번만 읽으면 cold start 시 undefined로 고정되어 런타임 Notion 호출이
+// 전부 실패(→ fallback) 한다. 따라서 토큰/DS ID는 항상 호출 시점에 process.env에서 읽는다.
+const TOKEN = (): string | undefined => process.env.NOTION_TOKEN;
 
-/** 각 DB의 데이터 소스 ID (.env). 미설정 항목은 해당 read가 null을 반환. */
+/** 각 DB의 데이터 소스 ID (.env). 접근 시점에 평가(getter) → Workers 런타임 안전. */
 export const NOTION_DS = {
-  news: process.env.NOTION_DS_NEWS,
-  insights: process.env.NOTION_DS_INSIGHTS,
-  work: process.env.NOTION_DS_WORK,
-  career: process.env.NOTION_DS_CAREER,
-  inquiry: process.env.NOTION_DS_INQUIRY,
+  get news() {
+    return process.env.NOTION_DS_NEWS;
+  },
+  get insights() {
+    return process.env.NOTION_DS_INSIGHTS;
+  },
+  get work() {
+    return process.env.NOTION_DS_WORK;
+  },
+  get career() {
+    return process.env.NOTION_DS_CAREER;
+  },
+  get inquiry() {
+    return process.env.NOTION_DS_INQUIRY;
+  },
 } as const;
 
 export function isNotionEnabled(): boolean {
-  return Boolean(TOKEN);
+  return Boolean(TOKEN());
 }
 
 let _client: Client | null = null;
+let _clientToken: string | undefined;
 function client(): Client | null {
-  if (!TOKEN) return null;
-  if (!_client) _client = new Client({ auth: TOKEN });
+  const t = TOKEN();
+  if (!t) return null;
+  // 토큰이 바뀌면(재주입) 클라이언트 재생성
+  if (!_client || _clientToken !== t) {
+    _client = new Client({ auth: t });
+    _clientToken = t;
+  }
   return _client;
 }
 

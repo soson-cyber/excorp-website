@@ -15,5 +15,13 @@
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
       "bucket_name": "excorp-website-cache"
     }
+  ],
+  // ISR 재검증 큐(memory-queue)가 자기 자신을 호출해 stale 페이지를 백그라운드 재생성하는 데 필요.
+  // 이 바인딩이 없으면 "Dummy queue is not implemented"로 재검증이 실패한다.
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "excorp-website"
+    }
   ]
 }

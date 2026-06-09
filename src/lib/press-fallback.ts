@@ -8,6 +8,7 @@ export type PressItem = {
   title: string;
   excerpt?: string;
   href?: string;
+  thumbnail?: string;
   featured?: boolean;
 };
 
@@ -19,6 +20,7 @@ export const pressFallback: PressItem[] = [
     excerpt:
       "중소벤처기업부 TIPS에 선정되어 2년간 R&D를 통해 XR·버추얼 프로덕션의 셋업·운영·합성 과정을 자동화·표준화하는 기술 고도화에 나섭니다. (VentureSquare)",
     href: "https://www.venturesquare.net/1082328/",
+    thumbnail: "https://www.venturesquare.net/wp-content/uploads/2026/05/KakaoTalk_20260514_105312028.jpg",
     featured: true,
   },
   {
@@ -28,6 +30,7 @@ export const pressFallback: PressItem[] = [
     excerpt:
       "17년 방송 경력의 손승오 대표가 분산된 XR 장비를 하나로 통합해 버추얼 프로덕션의 문턱을 낮추는 ‘XR 대중화’ 비전을 밝혔습니다. (VentureSquare 인터뷰)",
     href: "https://www.venturesquare.net/1080286/",
+    thumbnail: "https://www.venturesquare.net/wp-content/uploads/2026/05/%EC%86%90%EC%8A%B9%EC%98%A4-%EB%8C%80%ED%91%9C-1.png",
   },
   {
     cat: "보도자료",
@@ -36,6 +39,7 @@ export const pressFallback: PressItem[] = [
     excerpt:
       "특수 수트·마커 없이 카메라 비전과 AI로 움직임을 추출하는 마커리스 모션캡처를 실시간 렌더링과 결합해 시연했습니다. (산업일보)",
     href: "https://kidd.co.kr/news/244207",
+    thumbnail: "https://pimg3.daara.co.kr/kidd/photo/2025/12/05/thumbs/thumb_520390_1764925933_81.jpg",
   },
   {
     cat: "보도자료",
@@ -43,6 +47,7 @@ export const pressFallback: PressItem[] = [
     title: "Moverse AI 공식 한국 총판 계약 체결",
     excerpt: "마커리스 AI 모션캡처 Moverse의 국내 공식 총판으로서 도입·기술 지원을 본격화합니다.",
     href: "https://www.getnews.co.kr/news/articleView.html?idxno=705765",
+    thumbnail: "https://cdn.getnews.co.kr/news/photo/202412/705765_433027_5857.jpg",
   },
   {
     cat: "보도자료",
@@ -51,12 +56,14 @@ export const pressFallback: PressItem[] = [
     excerpt:
       "자체 EXLINK 플랫폼을 중심으로 VR·AR·MR 콘텐츠 제작을 혁신하는 XR 스타트업으로 이엑스를 조명했습니다. (아이뉴스24)",
     href: "https://www.inews24.com/view/1785934",
+    thumbnail: "https://image.inews24.com/v1/5edfe1029e16f7.jpg",
   },
   {
     cat: "보도자료",
     year: "2023",
     title: "성균관대 · 중앙대 · 계원예술대 산학 MOU 체결",
     href: "https://www.kgnews.co.kr/news/article.html?no=766073",
+    thumbnail: "https://www.kgnews.co.kr/data/photos/20231041/art_16971645802933_3c4e5f.jpg",
   },
   { cat: "보도자료", year: "2023", title: "Rassi Engineering(RETracker) 공식 한국 총판 계약" },
   { cat: "보도자료", year: "2023", title: "Aximmetry 공식 인증 리셀러 선정" },
@@ -68,5 +75,6 @@ export const pressFallback: PressItem[] = [
     excerpt:
       "역대 최대 규모 메타버스 전시회(COEX)에서 AR 스튜디오·아바타 변환 등 실시간 XR 콘텐츠 제작 솔루션을 선보였습니다. (정보통신신문)",
     href: "https://www.koit.co.kr/news/articleView.html?idxno=104368",
+    thumbnail: "https://cdn.koit.co.kr/news/photo/202210/104368_56391_2310.jpg",
   },
 ];
