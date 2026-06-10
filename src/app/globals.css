@@ -814,6 +814,16 @@ html.cursor-reduce .ex-cursor-ring {
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
 }
+/* While the mobile sheet is open the header must NOT carry any filter:
+   filter/backdrop-filter turns the header into the containing block for the
+   fixed-position .mobile sheet inside it (WebKit/iOS Safari), collapsing the
+   sheet to top:84/bottom:0 of an 84px box = 0 height. Opaque bg replaces the
+   glass — the sheet below is opaque anyway, so the look stays seamless. */
+.header--sheet {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--color-hero);
+}
 .header__inner {
   display: flex;
   height: 64px;

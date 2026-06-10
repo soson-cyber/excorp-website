@@ -97,7 +97,7 @@ export function Header() {
   };
 
   return (
-    <header className={`header ${overHero ? "header--overHero" : "header--solid"}`}>
+    <header className={`header ${overHero ? "header--overHero" : "header--solid"}${mobileOpen ? " header--sheet" : ""}`}>
       <div className="container-ex header__inner">
         <Link href="/" className="focus-on-dark flex items-center" aria-label="EX Corporation 홈">
           {/* 작은 고정 크기 브랜드 심볼 — 옵티마이저 우회(unoptimized)로 원본 PNG 직접 사용.
