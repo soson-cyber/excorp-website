@@ -5,7 +5,6 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { CompareTable } from "@/components/product/CompareTable";
-import { MediaBlank } from "@/components/ui/MediaBlank";
 import { ProblemTrio } from "@/components/page/ProblemTrio";
 import { JsonLd, breadcrumbLd, abs } from "@/components/seo/JsonLd";
 
@@ -99,20 +98,6 @@ export default function ProductPage() {
         problems={problems}
         note="EX는 공식 리셀러·총판으로서 도입 견적부터 운영까지 한국어로 함께합니다."
       />
-
-      {/* §00 Hero media band — 제품군 비주얼 밴드 자리 */}
-      <section className="section section--ink">
-        <div className="container-ex">
-          <MediaBlank
-            ratio="16/9"
-            kind="image"
-            tag="VIRTUAL PRODUCTION LINEUP"
-            label="버추얼 프로덕션 핵심 제품군"
-            sublabel="Aximmetry · Moverse AI · RETracker · 자산 준비 중"
-            className="w-full"
-          />
-        </div>
-      </section>
 
       {/* §01 Why EX */}
       <section className="section section--white">
