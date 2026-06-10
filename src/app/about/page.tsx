@@ -29,7 +29,7 @@ const credentials: { tag: string; title: string; no?: string; img?: string }[] =
   { tag: "인증", title: "창작전담부서" },
   { tag: "특허", title: "다중 뷰포인트 생성 장치·방법", no: "KR 10-2762537", img: "/patent-2762537.jpg" },
   { tag: "특허", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정 방법", no: "KR 10-2666600", img: "/patent-2666600.jpg" },
-  { tag: "특허", title: "복수의 스테레오 카메라 장치를 활용한 포지셔닝 정보 보정 방법", no: "KR 10-2549811" },
+  { tag: "특허", title: "복수의 스테레오 카메라 장치를 활용한 포지셔닝 정보 보정 방법", no: "KR 10-2549811", img: "/patent-2549811.jpg" },
   { tag: "특허", title: "가상 스튜디오의 복합 센서 기반 다중 추적 카메라 시스템 동작 방법", no: "KR 10-2453561", img: "/patent-2453561.jpg" },
   { tag: "특허", title: "전자 장치 및 전자 장치의 3차원 모델링을 위한 촬영방법", no: "KR 10-2078198", img: "/patent-2078198.jpg" },
   { tag: "특허", title: "합성 영상의 왜곡을 결정하는 영상 처리 장치 및 방법", no: "KR 10-2029680", img: "/patent-2029680.jpg" },
