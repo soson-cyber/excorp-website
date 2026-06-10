@@ -8,6 +8,7 @@ type Payload = {
   phone?: string;
   type?: string;
   message?: string;
+  consent?: boolean; // 개인정보 수집·이용 동의(필수)
   website?: string; // 허니팟(봇 차단용 — 사람은 비워둠)
 };
 
@@ -37,6 +38,9 @@ export async function POST(req: Request) {
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ ok: false, error: "invalid email" }, { status: 400 });
+  }
+  if (body.consent !== true) {
+    return NextResponse.json({ ok: false, error: "consent required" }, { status: 400 });
   }
 
   const to = ROUTING[type ?? "일반 문의"] ?? "info@excorp.kr";

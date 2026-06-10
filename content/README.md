@@ -56,15 +56,15 @@
 | `/contact` | [`contact.md`](./contact.md) | 문의 유형·폼 필드·연락처·거점 |
 | `/support` | [`support.md`](./support.md) | Quick Access·FAQ·기술지원·자료실 |
 
-## Legal (준비 중)
+## Legal
 | 라우트 | 파일 | 내용 |
 |--------|------|------|
-| `/privacy` | [`privacy.md`](./privacy.md) | 개인정보처리방침 — *현재 "준비 중" 안내만* |
-| `/terms` | [`terms.md`](./terms.md) | 이용약관 — *현재 "준비 중" 안내만* |
+| `/privacy` | [`privacy.md`](./privacy.md) | 개인정보 처리방침 전문(13개 조 + 부칙, 시행일 2026-06-11) |
+| `/terms` | [`terms.md`](./terms.md) | 이용약관 전문(11개 조 + 부칙, 시행일 2026-06-11) |
 
 ---
 
 ### 참고 (콘텐츠 점검 메모)
 - **노출 이메일 불일치**: `contact`·`support`엔 `ax.excorp@gmail.com`(= `site.contact.email`)가, `privacy`/`terms` 안내문엔 `soson@excorp.kr`이 표기됨 — 공개용 대표 이메일 통일 검토 필요.
-- **법무 문서 미작성**: `/privacy`·`/terms`는 본문 없이 "준비 중"만 렌더 → 법무 검토 후 게시 예정.
+- **법무 문서 작성 완료(2026-06-11 시행)**: `/privacy`(13개 조)·`/terms`(11개 조) 전문 게시. 위탁·국외 이전(Notion·Cloudflare) 표 포함. 보호책임자 성명은 보류(직책=대표이사로 기재).
 - **Work·Numbers 수치**: 검증된 실적이 아닌 활용 시나리오·기대 효과(정직성 규칙).

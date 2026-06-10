@@ -43,6 +43,13 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       focusField("email");
       return;
     }
+    if (data.consent !== "on") {
+      setInvalid(["consent"]);
+      setError("개인정보 수집·이용에 동의해 주세요.");
+      setStatus("error");
+      focusField("consent");
+      return;
+    }
 
     setInvalid([]);
     setStatus("submitting");
@@ -51,7 +58,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, consent: data.consent === "on" }),
       });
       if (!res.ok) throw new Error("request failed");
       setStatus("success");
@@ -162,6 +169,29 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       <p className="text-xs text-faint">
         <span aria-hidden="true">*</span> 표시는 필수 항목입니다.
       </p>
+
+      <div className="flex items-start gap-2.5">
+        <input
+          id="cf-consent"
+          name="consent"
+          type="checkbox"
+          required
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-border bg-card text-primary accent-primary focus:ring-primary aria-[invalid=true]:border-error"
+          aria-invalid={invalid.includes("consent") || undefined}
+          aria-describedby={describedBy("consent")}
+        />
+        <label htmlFor="cf-consent" className="text-xs leading-relaxed text-muted">
+          개인정보 수집·이용에 동의합니다. <span className="text-lav">(필수)</span>{" "}
+          <a
+            href="/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-lav underline-offset-4 hover:underline"
+          >
+            자세히 보기
+          </a>
+        </label>
+      </div>
 
       <button
         type="submit"
