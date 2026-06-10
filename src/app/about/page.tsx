@@ -21,10 +21,10 @@ const whyEx = [
 ];
 
 // 인증 4종 + 특허 6건 (요청 순서). img 있는 항목은 인증서 이미지, 없으면 플레이스홀더.
-const credentials: { tag: string; title: string; no?: string; img?: string; href?: string }[] = [
-  { tag: "인증", title: "사업자등록증", img: "/cert-business-registration.jpg", href: "/docs/business-registration.pdf" },
-  { tag: "인증", title: "벤처기업 인증", img: "/cert-venture.jpg", href: "/docs/venture-certificate.pdf" },
-  { tag: "인증", title: "연구개발전담부서", img: "/cert-rnd.jpg", href: "/docs/rnd-department.pdf" },
+const credentials: { tag: string; title: string; no?: string; img?: string }[] = [
+  { tag: "인증", title: "사업자등록증", img: "/cert-business-registration.jpg" },
+  { tag: "인증", title: "벤처기업 인증", img: "/cert-venture.jpg" },
+  { tag: "인증", title: "연구개발전담부서", img: "/cert-rnd.jpg" },
   { tag: "인증", title: "창작전담부서" },
   { tag: "특허", title: "다중 뷰포인트 생성 장치·방법", no: "KR 10-2762537" },
   { tag: "특허", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정 방법", no: "KR 10-2666600" },
@@ -160,62 +160,39 @@ export default function AboutPage() {
             </p>
           </Reveal>
           <ol className="mt-12 grid list-none gap-4 p-0 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
-            {credentials.map((c, i) => {
-              const media = (
-                <div className="patent-card__media">
-                  {c.img ? (
-                    <Image
-                      src={c.img}
-                      alt={`${c.tag} — ${c.title}${c.no ? ` (${c.no})` : ""}`}
-                      fill
-                      sizes="(min-width:1024px) 240px, (min-width:640px) 33vw, 50vw"
-                      className="object-cover object-top"
-                    />
-                  ) : (
-                    <div className="patent-card__ph">
-                      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">{c.tag === "특허" ? "Patent" : "Certified"}</span>
-                      {c.no ? (
-                        <span className="mt-1 font-mono text-xs text-faint">{c.no}</span>
-                      ) : (
-                        <span className="mt-1 px-3 text-center text-xs text-faint">{c.title}</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-              const body = (
-                <div className="patent-card__body">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-faint">{c.tag === "특허" ? "Patent" : "Cert"}</span>
-                    {c.no && <span className="font-mono text-[11px] font-semibold text-lav">{c.no}</span>}
-                  </div>
-                  <h3 className="mt-2 text-[13px] font-medium leading-snug text-fg">{c.title}</h3>
-                </div>
-              );
-              return (
-                <Reveal key={c.title} className="card patent-card" delay={(i % 5) * 50}>
-                  <li className="patent-card__inner">
-                    {c.href ? (
-                      <a
-                        href={c.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="patent-card__link"
-                        aria-label={`${c.title} 증빙 PDF 새 탭으로 열기`}
-                      >
-                        {media}
-                        {body}
-                      </a>
+            {credentials.map((c, i) => (
+              <Reveal key={c.title} className="card patent-card" delay={(i % 5) * 50}>
+                <li className="patent-card__inner">
+                  <div className="patent-card__media">
+                    {c.img ? (
+                      <Image
+                        src={c.img}
+                        alt={`${c.tag} — ${c.title}${c.no ? ` (${c.no})` : ""}`}
+                        fill
+                        sizes="(min-width:1024px) 240px, (min-width:640px) 33vw, 50vw"
+                        className="object-cover object-top"
+                      />
                     ) : (
-                      <>
-                        {media}
-                        {body}
-                      </>
+                      <div className="patent-card__ph">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">{c.tag === "특허" ? "Patent" : "Certified"}</span>
+                        {c.no ? (
+                          <span className="mt-1 font-mono text-xs text-faint">{c.no}</span>
+                        ) : (
+                          <span className="mt-1 px-3 text-center text-xs text-faint">{c.title}</span>
+                        )}
+                      </div>
                     )}
-                  </li>
-                </Reveal>
-              );
-            })}
+                  </div>
+                  <div className="patent-card__body">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-faint">{c.tag === "특허" ? "Patent" : "Cert"}</span>
+                      {c.no && <span className="font-mono text-[11px] font-semibold text-lav">{c.no}</span>}
+                    </div>
+                    <h3 className="mt-2 text-[13px] font-medium leading-snug text-fg">{c.title}</h3>
+                  </div>
+                </li>
+              </Reveal>
+            ))}
           </ol>
         </div>
       </section>
