@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { site, sameAs, SITE_URL } from "@/lib/site";
 
 // 국내 전화번호(031-699-8228) → E.164(+82-31-699-8228). JSON-LD telephone 단일 변환.
@@ -75,6 +76,7 @@ export default function RootLayout({
       className={`${poppins.variable} ${notoSansKr.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-fg">
+        <GoogleAnalytics />
         {/* Enable scroll-reveal only when motion is allowed (pre-hydration, no-flash, no-JS safe).
             Sets a data attribute (not className) to avoid hydration mismatch on <html>. */}
         <Script id="anim-gate" strategy="beforeInteractive">

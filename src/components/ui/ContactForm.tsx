@@ -58,7 +58,11 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, consent: data.consent === "on" }),
+        body: JSON.stringify({
+          ...data,
+          consent: data.consent === "on",
+          marketing: data.marketing === "on",
+        }),
       });
       if (!res.ok) throw new Error("request failed");
       setStatus("success");
@@ -190,6 +194,18 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
           >
             자세히 보기
           </a>
+        </label>
+      </div>
+
+      <div className="flex items-start gap-2.5">
+        <input
+          id="cf-marketing"
+          name="marketing"
+          type="checkbox"
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-border bg-card text-primary accent-primary focus:ring-primary"
+        />
+        <label htmlFor="cf-marketing" className="text-xs leading-relaxed text-muted">
+          (선택) EX의 소식·제품 정보 수신에 동의합니다.
         </label>
       </div>
 

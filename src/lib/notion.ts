@@ -274,6 +274,7 @@ export type InquiryInput = {
   phone?: string;
   type?: string;
   message: string;
+  marketing?: boolean;
 };
 
 /** Notion 미설정이면 false(호출부는 다른 경로로 처리). 성공 시 true. */
@@ -293,6 +294,7 @@ export async function createInquiry(input: InquiryInput): Promise<boolean> {
         유형: input.type ? { select: { name: input.type } } : { select: null },
         메시지: { rich_text: [{ text: { content: input.message.slice(0, 1900) } }] },
         상태: { select: { name: "신규" } },
+        "마케팅 수신동의": { checkbox: input.marketing ?? false },
       },
     });
     return true;

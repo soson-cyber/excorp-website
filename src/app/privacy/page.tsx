@@ -39,8 +39,8 @@ export default function PrivacyPage() {
           <article className="space-y-3">
             <h2 className="text-xl font-bold text-fg">제2조 (개인정보의 수집 항목 및 방법)</h2>
             <p className="text-pretty">
-              회사는 사이트의 문의 폼(/contact)을 통해 다음의 개인정보를 수집합니다. 회사는 회원가입·결제·뉴스레터
-              구독 등 별도의 개인정보 수집 절차를 운영하지 않습니다.
+              회사는 사이트의 문의 폼(/contact)을 통해 다음의 개인정보를 수집합니다. 회사는 회원가입·결제 등 별도의
+              개인정보 수집 절차를 운영하지 않습니다.
             </p>
             <ul className="list-disc space-y-1.5 pl-5 marker:text-lav">
               <li>
@@ -50,13 +50,22 @@ export default function PrivacyPage() {
                 <span className="font-medium text-fg">선택 항목:</span> 회사명, 연락처(전화번호), 문의 유형
               </li>
               <li>
+                <span className="font-medium text-fg">마케팅 수신동의(선택) 항목:</span> 이메일 주소, 이름 (정보주체가
+                별도로 동의한 경우에 한함 — 자세한 사항은 제5조 참조)
+              </li>
+              <li>
+                <span className="font-medium text-fg">채용 지원 항목:</span> 지원자가 이메일로 제출하는 이력서 등 지원
+                서류에 포함된 개인정보 (자세한 사항은 제6조 참조)
+              </li>
+              <li>
                 <span className="font-medium text-fg">자동 수집 항목:</span> 접속 IP 주소, 브라우저 정보, 접속 기록
-                (보안 목적, 웹 인프라 사업자를 통해 자동 생성·수집)
+                (보안 목적, 웹 인프라 사업자를 통해 자동 생성·수집), 쿠키 기반 행태정보 (분석 도구를 통해 수집 — 자세한
+                사항은 제12조 참조)
               </li>
             </ul>
             <p className="text-pretty">
-              수집 방법은 정보주체가 사이트의 문의 폼에 직접 입력하는 방식과, 사이트 이용 과정에서 자동으로 생성되어
-              수집되는 방식(보안 로그)으로 구분됩니다.
+              수집 방법은 정보주체가 사이트의 문의 폼에 직접 입력하는 방식, 이메일로 지원 서류를 제출하는 방식, 그리고
+              사이트 이용 과정에서 자동으로 생성되어 수집되는 방식(보안 로그·분석 쿠키)으로 구분됩니다.
             </p>
           </article>
 
@@ -84,9 +93,61 @@ export default function PrivacyPage() {
             </p>
           </article>
 
-          {/* 제5조 제3자 제공 */}
+          {/* 제5조 마케팅 정보 수신 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제5조 (개인정보의 제3자 제공)</h2>
+            <h2 className="text-xl font-bold text-fg">제5조 (마케팅 정보 수신에 관한 사항)</h2>
+            <p className="text-pretty">
+              회사는 정보주체가 마케팅 정보 수신에 별도로 동의한 경우에 한하여 다음과 같이 개인정보를 처리합니다.
+            </p>
+            <ul className="list-disc space-y-1.5 pl-5 marker:text-lav">
+              <li>
+                <span className="font-medium text-fg">수집 항목:</span> 이메일 주소, 이름
+              </li>
+              <li>
+                <span className="font-medium text-fg">이용 목적:</span> EX의 소식·인사이트 및 제품·행사 정보의 발송
+              </li>
+              <li>
+                <span className="font-medium text-fg">보유 기간:</span> 동의를 철회할 때까지
+              </li>
+              <li>
+                <span className="font-medium text-fg">철회 방법:</span> 발송 메일 내 수신거부(구독 해지) 링크를
+                이용하거나, soson@excorp.kr 로 철회를 요청하시면 지체 없이 처리합니다.
+              </li>
+            </ul>
+            <p className="text-pretty">
+              마케팅 정보 수신 동의는 <span className="font-medium text-fg">선택 사항</span>이며, 동의하지 않으셔도
+              문의 등 사이트의 기본 서비스 이용에는 어떠한 제한도 없습니다.
+            </p>
+          </article>
+
+          {/* 제6조 채용 개인정보 */}
+          <article className="space-y-3">
+            <h2 className="text-xl font-bold text-fg">제6조 (채용 지원자의 개인정보 처리)</h2>
+            <p className="text-pretty">
+              회사는 채용 절차와 관련하여 다음과 같이 지원자의 개인정보를 처리합니다.
+            </p>
+            <ul className="list-disc space-y-1.5 pl-5 marker:text-lav">
+              <li>
+                <span className="font-medium text-fg">수집 항목:</span> 지원자가 채용 담당 이메일(careers@excorp.kr)로
+                제출하는 이력서 등 지원 서류에 포함된 개인정보. 지원자는 채용 평가에 필요한 최소한의 정보만 기재하시기를
+                권장하며, 주민등록번호 등 민감정보의 기재는 삼가 주시기 바랍니다.
+              </li>
+              <li>
+                <span className="font-medium text-fg">이용 목적:</span> 채용 전형의 진행 및 지원자와의 연락
+              </li>
+              <li>
+                <span className="font-medium text-fg">보유 기간:</span> 전형 종료 후 1년간 보관한 뒤 파기합니다. 다만
+                지원자 본인이 파기를 요청하는 경우 지체 없이 파기합니다.
+              </li>
+              <li>
+                <span className="font-medium text-fg">접수 채널:</span> 이메일(careers@excorp.kr) 접수
+              </li>
+            </ul>
+          </article>
+
+          {/* 제7조 제3자 제공 */}
+          <article className="space-y-3">
+            <h2 className="text-xl font-bold text-fg">제7조 (개인정보의 제3자 제공)</h2>
             <p className="text-pretty">
               회사는 정보주체의 개인정보를 제3자에게 제공하지 않습니다. 다만 다음의 경우에는 예외로 합니다.
             </p>
@@ -96,9 +157,9 @@ export default function PrivacyPage() {
             </ul>
           </article>
 
-          {/* 제6조 처리 위탁 및 국외 이전 */}
+          {/* 제8조 처리 위탁 및 국외 이전 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제6조 (개인정보 처리의 위탁 및 국외 이전)</h2>
+            <h2 className="text-xl font-bold text-fg">제8조 (개인정보 처리의 위탁 및 국외 이전)</h2>
             <p className="text-pretty">
               회사는 원활한 서비스 제공을 위해 다음과 같이 개인정보 처리를 위탁하고 있으며, 해당 수탁자의 서버가
               국외에 위치함에 따라 개인정보가 국외로 이전됩니다. 위탁 계약 시 「개인정보 보호법」에 따라 개인정보가
@@ -123,12 +184,19 @@ export default function PrivacyPage() {
                     <td className="px-4 py-3">문의 데이터의 저장 및 상담 이력 관리</td>
                     <td className="px-4 py-3">제4조의 보유 기간에 따름(처리 완료 후 3년)</td>
                   </tr>
-                  <tr className="align-top">
+                  <tr className="border-b border-border align-top">
                     <td className="px-4 py-3 text-fg">Cloudflare, Inc.</td>
                     <td className="px-4 py-3">미국</td>
                     <td className="px-4 py-3">접속 IP 주소, 브라우저 정보, 접속 기록</td>
                     <td className="px-4 py-3">웹 인프라의 전송 처리 및 보안 로그 관리</td>
                     <td className="px-4 py-3">인프라 사업자의 정책에 따름</td>
+                  </tr>
+                  <tr className="align-top">
+                    <td className="px-4 py-3 text-fg">Google LLC</td>
+                    <td className="px-4 py-3">미국</td>
+                    <td className="px-4 py-3">쿠키 기반 행태정보</td>
+                    <td className="px-4 py-3">이용 통계 분석</td>
+                    <td className="px-4 py-3">Google 정책에 따름</td>
                   </tr>
                 </tbody>
               </table>
@@ -138,9 +206,9 @@ export default function PrivacyPage() {
             </p>
           </article>
 
-          {/* 제7조 파기 절차 및 방법 */}
+          {/* 제9조 파기 절차 및 방법 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제7조 (개인정보의 파기 절차 및 방법)</h2>
+            <h2 className="text-xl font-bold text-fg">제9조 (개인정보의 파기 절차 및 방법)</h2>
             <p className="text-pretty">
               회사는 개인정보의 보유 기간이 경과하거나 처리 목적이 달성되어 개인정보가 불필요하게 되었을 때에는
               지체 없이 해당 개인정보를 파기합니다.
@@ -157,9 +225,9 @@ export default function PrivacyPage() {
             </ul>
           </article>
 
-          {/* 제8조 정보주체의 권리 */}
+          {/* 제10조 정보주체의 권리 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제8조 (정보주체의 권리와 그 행사 방법)</h2>
+            <h2 className="text-xl font-bold text-fg">제10조 (정보주체의 권리와 그 행사 방법)</h2>
             <p className="text-pretty">
               정보주체는 언제든지 자신의 개인정보에 대하여 다음의 권리를 행사할 수 있습니다.
             </p>
@@ -170,15 +238,15 @@ export default function PrivacyPage() {
               <li>처리 정지 요구</li>
             </ul>
             <p className="text-pretty">
-              권리 행사는 제11조의 개인정보 보호책임자에게 서면, 전화 또는 이메일로 요청하실 수 있으며, 회사는 이에
+              권리 행사는 제13조의 개인정보 보호책임자에게 서면, 전화 또는 이메일로 요청하실 수 있으며, 회사는 이에
               대해 지체 없이 조치합니다. 정보주체가 개인정보의 오류에 대한 정정을 요청한 경우, 회사는 정정을 완료할
               때까지 해당 개인정보를 이용하거나 제공하지 않습니다.
             </p>
           </article>
 
-          {/* 제9조 안전성 확보 조치 */}
+          {/* 제11조 안전성 확보 조치 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제9조 (개인정보의 안전성 확보 조치)</h2>
+            <h2 className="text-xl font-bold text-fg">제11조 (개인정보의 안전성 확보 조치)</h2>
             <p className="text-pretty">
               회사는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.
             </p>
@@ -189,28 +257,48 @@ export default function PrivacyPage() {
             </ul>
           </article>
 
-          {/* 제10조 쿠키 */}
+          {/* 제12조 쿠키 및 행태정보 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제10조 (쿠키의 설치·운영 및 거부)</h2>
+            <h2 className="text-xl font-bold text-fg">제12조 (쿠키 및 행태정보의 수집·이용·거부)</h2>
             <p className="text-pretty">
-              회사는 사이트의 보안 및 안정적 운영을 위해 웹 인프라 사업자가 제공하는 보안용 기능성 쿠키만을
-              사용합니다. 회사는 이용자 분석 또는 광고 목적의 쿠키를 사용하지 않습니다.
+              회사는 사이트의 보안 및 안정적 운영을 위해 웹 인프라 사업자가 제공하는 보안용 기능성 쿠키를 사용하며,
+              이용 통계 분석을 위해 분석용 쿠키를 사용합니다. 회사는 광고 목적의 쿠키는 사용하지 않습니다.
             </p>
             <p className="text-pretty">
-              이용자는 웹 브라우저의 설정을 통해 쿠키 저장을 거부할 수 있습니다. 다만 보안용 쿠키를 거부하는 경우
-              사이트 일부 기능의 이용에 제한이 있을 수 있습니다.
+              회사는 사이트 이용 현황의 분석을 위해 Google LLC(미국)가 제공하는 Google Analytics를 사용합니다. 이를
+              통해 쿠키를 기반으로 방문 페이지, 접속 환경 등 이용 통계 정보를 수집하며, 이 정보는 개인을 식별하는
+              목적으로 이용하지 않습니다.
+            </p>
+            <p className="text-pretty">
+              이용자는 웹 브라우저의 설정을 통해 쿠키 저장을 거부할 수 있습니다. 또한 Google Analytics를 통한 정보
+              수집을 원하지 않는 경우, Google Analytics 차단 브라우저 부가기능
+              (
+              <a
+                href="https://tools.google.com/dlpage/gaoptout"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-lav underline-offset-4 hover:underline"
+              >
+                https://tools.google.com/dlpage/gaoptout
+              </a>
+              )을 설치하여 수집을 거부할 수 있습니다. 다만 보안용 쿠키를 거부하는 경우 사이트 일부 기능의 이용에
+              제한이 있을 수 있습니다.
             </p>
           </article>
 
-          {/* 제11조 개인정보 보호책임자 */}
+          {/* 제13조 개인정보 보호책임자 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제11조 (개인정보 보호책임자)</h2>
+            <h2 className="text-xl font-bold text-fg">제13조 (개인정보 보호책임자)</h2>
             <p className="text-pretty">
               회사는 개인정보 처리에 관한 업무를 총괄하여 책임지고, 개인정보 처리와 관련한 정보주체의 문의·불만·피해
               구제 등을 처리하기 위하여 다음과 같이 개인정보 보호책임자를 지정하고 있습니다.
             </p>
             <div className="rounded-2xl border border-border bg-card p-6">
               <dl className="space-y-2 text-sm">
+                <div className="flex gap-3">
+                  <dt className="w-20 shrink-0 text-faint">성명</dt>
+                  <dd className="text-fg">손승오</dd>
+                </div>
                 <div className="flex gap-3">
                   <dt className="w-20 shrink-0 text-faint">직책</dt>
                   <dd className="text-fg">대표이사</dd>
@@ -227,9 +315,9 @@ export default function PrivacyPage() {
             </div>
           </article>
 
-          {/* 제12조 권익침해 구제 방법 */}
+          {/* 제14조 권익침해 구제 방법 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제12조 (권익침해 구제 방법)</h2>
+            <h2 className="text-xl font-bold text-fg">제14조 (권익침해 구제 방법)</h2>
             <p className="text-pretty">
               정보주체는 개인정보 침해로 인한 구제를 받기 위하여 다음의 기관에 분쟁 해결, 상담 등을 신청할 수 있습니다.
             </p>
@@ -241,9 +329,9 @@ export default function PrivacyPage() {
             </ul>
           </article>
 
-          {/* 제13조 고지 의무 */}
+          {/* 제15조 고지 의무 */}
           <article className="space-y-3">
-            <h2 className="text-xl font-bold text-fg">제13조 (개인정보 처리방침의 변경)</h2>
+            <h2 className="text-xl font-bold text-fg">제15조 (개인정보 처리방침의 변경)</h2>
             <p className="text-pretty">
               본 개인정보 처리방침은 법령·정책 또는 보안 기술의 변경에 따라 내용의 추가·삭제 및 수정이 있을 수
               있으며, 개정 시에는 시행 7일 전부터 사이트의 공지를 통해 변경 사항을 안내합니다.

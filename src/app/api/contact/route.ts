@@ -9,6 +9,7 @@ type Payload = {
   type?: string;
   message?: string;
   consent?: boolean; // 개인정보 수집·이용 동의(필수)
+  marketing?: boolean; // 마케팅 정보 수신 동의(선택)
   website?: string; // 허니팟(봇 차단용 — 사람은 비워둠)
 };
 
@@ -55,6 +56,7 @@ export async function POST(req: Request) {
     phone: body.phone,
     type,
     message,
+    marketing: body.marketing === true,
   });
   if (!stored) {
     // Notion 미설정/실패 시 최소한 서버 로그로 유실 방지
