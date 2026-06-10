@@ -2,28 +2,61 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionHead } from "@/components/ui/SectionHead";
-import { MediaBlank } from "@/components/ui/MediaBlank";
+import Image from "next/image";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { ProblemTrio } from "@/components/page/ProblemTrio";
+import { SegmentGrid } from "@/components/page/SegmentGrid";
+import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "XR 솔루션 · 버추얼 프로덕션",
+  title: "XR 솔루션 구축 · 버추얼 프로덕션",
   alternates: { canonical: "/solution" },
   description:
-    "EX 자체 통합 XR 솔루션 EXLINK와 버추얼 프로덕션. 촬영·트래킹·렌더·송출을 하나로 묶어 현장에 맞는 실시간 XR 환경을 구성하고, 도입 상담부터 운영까지 지원합니다.",
+    "EX 자체 통합 XR 솔루션 EXLINK와 버추얼 프로덕션 구축. 촬영·트래킹·렌더·송출을 하나로 묶어 현장에 맞는 실시간 XR 환경을 구성하고, 도입 상담·견적부터 운영까지 지원합니다.",
 };
 
 const approach = [
   { k: "All-in-One", v: "통합 시스템" },
-  { k: "Real-time", v: "1프레임 미만" },
+  { k: "Real-time", v: "1프레임 지연 목표" },
   { k: "Integrated", v: "단일 제어 UI" },
   { k: "End-to-End", v: "셋업·교육·운영" },
 ];
 
-const capability = [
-  { step: "촬영 · 트래킹", tech: "RETracker · Moverse AI" },
-  { step: "합성 · 렌더", tech: "Unreal Engine · Aximmetry" },
-  { step: "미디어서버 · 송출", tech: "EXLINK" },
-  { step: "라이브 연출 · 운영", tech: "EXLINK · 전문 인력" },
+// Problem Quote Trio (§0-A) — XR 직접 구성 시 막히는 지점(고객 언어).
+const problems = [
+  { id: "PAIN 01", quote: "장비마다 규격이 달라 연동에서 막힙니다.", desc: "카메라·트래커·렌더·송출이 제각각이라 연동·동기화에 매번 시간이 듭니다." },
+  { id: "PAIN 02", quote: "해외 솔루션은 영어 매뉴얼뿐, 문제가 생기면 대응이 늦습니다.", desc: "현장에서 문제가 터지면 본사 시차·언어 장벽으로 대응이 지연됩니다." },
+  { id: "PAIN 03", quote: "구축은 됐는데 운영할 사람이 없습니다.", desc: "설치로 끝나면 장비가 창고에 잠깁니다. 직접 운영할 교육과 지원이 필요합니다." },
+];
+
+// 세그먼트 슬롯 (§0-C) — XR 솔루션이 맞는 곳.
+const segments = [
+  { tag: "방송 · 중계", d: "생중계에 실시간 XR·AR 그래픽을 더해야 하는 방송사·중계 프로덕션." },
+  { tag: "기업 · 커머스", d: "세트 교체 없이 IR·웨비나·라이브커머스를 자체 무대에서 반복 운영하려는 기업." },
+  { tag: "대학 · 교육", d: "버추얼 프로덕션을 직접 가르치고 실습 환경을 갖추려는 교육기관." },
+];
+
+// tech 항목 중 자체 페이지가 있는 것은 href로 바로가기 연결.
+const capability: { step: string; parts: { label: string; href?: string }[] }[] = [
+  {
+    step: "촬영 · 트래킹",
+    parts: [
+      { label: "RETracker", href: "/product/retracker" },
+      { label: "Moverse AI", href: "/product/moverse" },
+    ],
+  },
+  {
+    step: "합성 · 렌더",
+    parts: [{ label: "Unreal Engine" }, { label: "Aximmetry", href: "/product/aximmetry" }],
+  },
+  {
+    step: "미디어서버 · 송출",
+    parts: [{ label: "EXLINK", href: "/solution/xr-solution" }],
+  },
+  {
+    step: "라이브 연출 · 운영",
+    parts: [{ label: "EXLINK", href: "/solution/xr-solution" }, { label: "전문 인력", href: "/xr-studio" }],
+  },
 ];
 
 const proof = [
@@ -36,6 +69,7 @@ const proof = [
 export default function SolutionPage() {
   return (
     <>
+      <JsonLd schema={breadcrumbLd([{ name: "Solution", path: "/solution" }])} />
       <PageHero
         breadcrumb={[{ label: "Solution", href: "/solution" }]}
         tag="Solution"
@@ -48,22 +82,31 @@ export default function SolutionPage() {
         }
       />
 
-      {/* §00 Hero media band — 풀블리드 루프영상 자리 */}
+      {/* Problem Quote Trio — XR을 직접 꾸리려다 멈추는 지점(§0-A) */}
+      <ProblemTrio
+        index="00"
+        label="Before EX"
+        title="XR을 직접 꾸리려다 멈춘 적, 있으십니까."
+        problems={problems}
+        note="EX는 자체 솔루션 EXLINK와 한국어 기술지원으로 이 지점을 메웁니다."
+      />
+
+      {/* §00 Hero media band — EXLINK 통합 솔루션 다이어그램 */}
       <section className="section section--ink">
         <div className="container-ex">
-          <MediaBlank
-            ratio="16/9"
-            kind="video"
-            tag="EX · INTEGRATED XR PIPELINE"
-            label="EX 통합 XR 파이프라인"
-            sublabel="촬영 → 트래킹 → 렌더 → 송출 · 영상 준비 중"
-            className="w-full"
+          <Image
+            src="/exlink_solution.png"
+            alt="EXLINK 통합 XR 솔루션 — 촬영·트래킹·렌더·송출을 하나로 연결하는 파이프라인 다이어그램"
+            width={1672}
+            height={941}
+            sizes="(max-width: 1280px) 100vw, 1216px"
+            className="h-auto w-full rounded-2xl border border-border"
           />
         </div>
       </section>
 
       {/* §01 Approach */}
-      <section className="section section--ink">
+      <section className="section section--white">
         <div className="container-ex">
           <SectionHead
             index="01"
@@ -166,7 +209,23 @@ export default function SolutionPage() {
                 style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
               >
                 <span className="text-lg font-semibold text-fg">{c.step}</span>
-                <span className="font-mono text-xs uppercase tracking-wider text-muted">{c.tech}</span>
+                <span className="font-mono text-xs uppercase tracking-wider text-muted">
+                  {c.parts.map((p, j) => (
+                    <span key={p.label + j}>
+                      {j > 0 && <span aria-hidden="true"> · </span>}
+                      {p.href ? (
+                        <Link
+                          href={p.href}
+                          className="underline-offset-4 transition-colors hover:text-lav hover:underline"
+                        >
+                          {p.label} ↗
+                        </Link>
+                      ) : (
+                        p.label
+                      )}
+                    </span>
+                  ))}
+                </span>
               </div>
             ))}
           </div>
@@ -186,6 +245,9 @@ export default function SolutionPage() {
           </div>
         </div>
       </section>
+
+      {/* Segment slot — 이런 곳에 맞습니다 (§0-C) */}
+      <SegmentGrid index="05" segments={segments} />
 
       <CtaBanner />
     </>

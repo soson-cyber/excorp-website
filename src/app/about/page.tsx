@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { HistoryTimeline } from "@/components/about/HistoryTimeline";
 import { locations } from "@/lib/site";
+import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "회사 소개",
@@ -62,6 +63,7 @@ const history: { year: string; items: string[] }[] = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd schema={breadcrumbLd([{ name: "회사 소개", path: "/about" }])} />
       {/* About hero — 로고·타이틀 통합 + 동심원 확산 배경(EXpansion of EXperience) */}
       <section className="pagehero relative overflow-hidden">
         <div className="pagehero-aurora" aria-hidden="true" />

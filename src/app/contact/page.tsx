@@ -4,6 +4,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { Icon } from "@/components/ui/Icon";
 import { locations, site } from "@/lib/site";
+import { JsonLd, breadcrumbLd, abs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "문의하기",
@@ -16,6 +17,7 @@ const inquiries = [
   { tag: "Solution", title: "솔루션 도입", desc: "EXLINK 도입 검토 및 견적 상담" },
   { tag: "Product", title: "제품 도입", desc: "Aximmetry · Moverse · RETracker 도입 문의" },
   { tag: "Studio", title: "스튜디오 제작", desc: "EX XR Studio 콘텐츠 제작 협의" },
+  { tag: "Demo", title: "데모 · 쇼룸 체험", desc: "하남 스튜디오에서 직접 시연(무료) · 원거리는 화상 데모" },
   { tag: "Support", title: "기술 지원", desc: "도입 이후 운영 · 기술 지원 문의" },
   { tag: "General", title: "일반 문의", desc: "채용 · 취재 · 파트너십 등 기타 문의" },
 ];
@@ -23,6 +25,18 @@ const inquiries = [
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        schema={[
+          breadcrumbLd([{ name: "Contact", path: "/contact" }]),
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "문의하기 | EX Corporation",
+            url: abs("/contact"),
+            inLanguage: "ko-KR",
+          },
+        ]}
+      />
       <PageHero
         breadcrumb={[{ label: "Contact", href: "/contact" }]}
         tag="Contact"
@@ -51,7 +65,18 @@ export default function ContactPage() {
         <div className="container-ex grid gap-12 lg:grid-cols-2">
           <div>
             <SectionLabel index="02">Send a Message</SectionLabel>
-            <div className="mt-8">
+            <div className="card mt-8" style={{ padding: 20 }}>
+              <p className="flex items-center gap-2 text-sm font-medium text-fg">
+                <Icon name="pin" className="h-4 w-4 shrink-0 text-lav" aria-hidden="true" />
+                하남 스튜디오 쇼룸 체험 예약
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Aximmetry·RETracker·Moverse를 직접 작동해보는 무료 시연입니다(약 60분, 하남 스튜디오).
+                원거리시면 화상 데모로 진행합니다. 아래 폼에서 문의 유형을 <strong className="font-medium text-fg">스튜디오 제작</strong>으로 선택하고
+                희망 일정을 적어 주세요.
+              </p>
+            </div>
+            <div className="mt-6">
               <ContactForm />
             </div>
           </div>

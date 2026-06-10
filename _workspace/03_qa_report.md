@@ -1,51 +1,52 @@
-# QA 검증 리포트 — 미디어 6개 페이지 (A그룹 신규 §00 / B그룹 API 통일)
+# QA 검증 리포트 — 전체 사이트 콘텐츠·레이아웃 재빌드
 
-검증일: 2026-06-04 · 검증자: qa-verifier · 도구: 헤드리스 Chrome(`--headless --disable-gpu --hide-scrollbars --force-prefers-reduced-motion --virtual-time-budget=7000`)
+- 일자: 2026-06-10
+- 검증자: qa-verifier
+- 대상: 전체 사이트 콘텐츠·레이아웃 재빌드 직후 (Home/Hero/CtaBanner/site.ts/layout.tsx + 내부 페이지 전체 + src/components/seo/JsonLd.tsx 신규)
+- 작업 폴더: /Users/ex_ceo/Documents/Claude/Projects/excorp-website-rebuild
+- **전체 판정: PASS**
 
-## 1. 빌드·타입·린트 (전부 PASS)
-| 항목 | 명령 | 결과 |
-|------|------|------|
-| Build | `rm -rf .next && npm run build` | PASS — 전 라우트 prerender 성공, 에러 0 |
-| Types | `npx tsc --noEmit` | PASS — exit 0 |
-| Lint | `npx eslint <6 페이지 + MediaBlank.tsx>` | PASS — exit 0, 경고 0 |
+---
 
-dev 서버: 6개 경로 모두 HTTP 200 확인 후 스크린샷, 종료(`pkill -f "next dev"` + port 3000 clear).
+## 1. 빌드 — `npm run build` — PASS
+- `✓ Compiled successfully in 3.1s`, TypeScript 통과, 정적 페이지 41/41 생성.
+- 전 라우트 정상 등록(/, /solution, /solution/xr-solution, /solution/virtual-production, /product, /product/{aximmetry,moverse,retracker}, /xr-studio, /work, /work/[slug]×6, /news, /news/[slug]×11, /about, /careers, /contact, /support, /privacy, /terms, sitemap, robots).
+- 에러·경고 없음.
 
-## 2. 경로별 렌더 판정
+## 2. 타입·린트 — PASS
+- `npx tsc --noEmit` → exit 0, 출력 없음.
+- `npx eslint src` → exit 0, 출력 없음.
 
-### A그룹 — 신규 §00 미디어 밴드
-| 경로 | 판정 | 근거 |
-|------|------|------|
-| `/solution` §00 16/9 video | **PASS** | 다크 플레이스홀더 정상. play 글리프 + 레티클 틱 + "촬영 → 트래킹 → 렌더 → 송출 · 영상 준비 중" 라벨. 비율 유지, 0높이·깨짐·오버플로 없음. 섹션 배경 단색(글로우 없음). 데스크톱·모바일 OK. |
-| `/product` §00 16/9 image | **PASS** | 다크 image 플레이스홀더. "버추얼 프로덕션 핵심 제품군" + "Aximmetry · Moverse AI · RETracker · 자산 준비 중" 라벨. 비율 유지, 단색 배경. 데스크톱·모바일 OK. |
-| `/solution/virtual-production` §03 16/9 video | **PASS** | "REAL-TIME COMPOSITING" 태그 + play 글리프 + "실시간 합성 데모" + "크로마 → 가상 배경 합성 루프 · 영상 준비 중". 비율 유지, 깨짐 없음. §02 기존 그린스크린 실사 이미지도 정상. |
+## 3. 렌더 정합성 (production `next start` @ :3100, curl) — PASS
+- 9개 핵심 페이지 전부 HTTP 200: /, /solution, /solution/xr-solution, /solution/virtual-production, /product, /product/aximmetry, /xr-studio, /work, /contact.
+- ① **Problem Quote Trio (Home)** — PASS. 3개 인용문 모두 렌더 확인: "세트 하나 바꾸는 데 수천만 원…", "버추얼 프로덕션, 어디서부터…", "라이브 방송 중에 시스템이 멈추면…". `quote-txt` 클래스 정상.
+- ② **Work 인덱스 = 갤러리 6건 (≠ ComingSoon)** — PASS. `src/lib/work.ts`의 6개 시나리오(실시간 XR 방송 시스템 통합 / 실시간 크로마 합성 컨퍼런스 / 기업 IR 발표 영상 / 기업 웨비나 라이브 / 버추얼 패션 필름 / 언리얼 기반 가상 세트) 전부 노출. ComingSoon류 배너 없음. 빌드 산출물의 work/[slug] 6경로와 일치.
+- ③ **JSON-LD head 주입 + 유효 JSON** — PASS.
+  - 페이지별 breadcrumb/Product/FAQ/LocalBusiness 스키마는 SSR로 `<script type="application/ld+json">` 주입. 예: /product/aximmetry는 1개 script에 `[BreadcrumbList, Product, FAQPage]` 배열 — `json.loads` 파싱 성공(유효 JSON).
+  - 전역 Organization/WebSite 스키마는 layout.tsx `next/script strategy="afterInteractive"`로 주입(payload에 존재 확인).
+- ④ **CtaBanner 쇼룸 CTA** — PASS(설계대로). 전 콘텐츠 페이지(solution·product·work·about·news·support·careers 계열)에 "Visit the Studio" / "하남 스튜디오 체험 예약" CTA 노출. **/xr-studio·/contact는 의도적 제외**(스튜디오 자기참조 회피·전환 종착 페이지). Home은 별도 인라인 스튜디오 체험 CTA 보유. 원본 레포(excorp-website)와 CtaBanner 적용 페이지 집합 동일 → 회귀 없음.
 
-### B그룹 — API 통일 회귀 점검 (기존 미디어 깨짐·소멸 없음)
-| 경로 | 판정 | 근거 |
-|------|------|------|
-| `/product/moverse` §01 | **PASS** | "CAPTURE PREVIEW" 태그 16/9 video 플레이스홀더 정상("캡처 프리뷰 준비 중" / "Moverse 마커리스 모션캡처 — 자료 준비 중"). 비율·라벨 유지, 깨짐·소멸 없음. 하위 섹션(왜 Moverse·구성·주요 기능·상세 사양·활용 분야) 단색 정상. |
-| `/xr-studio` §03 프리셋·§06 영상/갤러리 | **PASS** | §03 배경 프리셋 4/3 image 카드 8종 정상(각 태그·image 글리프·"프리뷰 준비 중"). §06 "촬영 샘플 영상" 16/9 video + 갤러리 16/9 image 정상. 히어로 그린스크린 실사 유지. 비율·라벨 유지. |
-| `/careers` §03 | **PASS** | "기술이 만들어지는 공간" 실사 1 + 4/3 image 플레이스홀더 2종("사진 준비 중") 정상. 히어로 실사·하위 섹션 모두 정상. 비율·라벨 유지. |
+## 4. 경계면 정합 (site.ts 단일 출처) — PASS
+- `src/lib/site.ts`가 sameAs / contact / locations의 단일 출처.
+- `layout.tsx` Organization 스키마: `email: site.contact.email`, `telephone: telE164`, `sameAs`(site.ts) 사용 → instagram/excorp_kr · facebook/EXCorp.Story · youtube/@excorp_kr 일치 확인.
+- `Footer.tsx`: `site`, `footerColumns`, `locations` import — social·tel·fax·email·거점 전부 site.ts 소비.
+- `contact/page.tsx`: `locations`, `site` import — tel·fax·email·거점·social 전부 site.ts 소비.
+- 3곳 모두 단일 출처 일관 반영.
 
-## 3. 정직성 라벨 / 배경 / 반응형
-- **정직성 라벨**: 전 페이지에서 "준비 중"·"준비 예정"·"활용 시나리오"류 라벨 노출 확인 (영상 준비 중 / 자산 준비 중 / 프리뷰 준비 중 / 사진 준비 중 등). PASS.
-- **섹션 배경 단색**: 신규/기존 미디어 밴드 모두 섹션 배경은 단색 다크 유지. 글로우 부활 없음. MediaBlank `ratio` 방식의 카드 상단 한정 미세 핫퍼플 radial은 자산 자리 한정(섹션 배경 아님)으로 정책 허용 범위. PASS.
-- **데스크톱(1280) 레이아웃·제목 줄바꿈**: 6개 페이지 전부 정상. 제목 줄바꿈·그리드·카드 정렬 OK. PASS.
-- **모바일(390) 미디어 밴드**: 신규/기존 MediaBlank 모두 full-width·비율 유지로 정상 스택. PASS.
+## 5. 배포 함정 (대문자 이미지 파일명 등) — PASS
+- `public/`에 대문자 확장자(.JPG/.PNG/.WEBP/.JPEG/.GIF/.SVG) 파일 0건.
+- xr-studio 이미지 참조(studio-bg-01~08.jpg, studio_01~03.jpeg) 11건 전부 실제 파일 존재.
+- 주의(비차단): `src/components/ui/MediaBlank.tsx`의 `/xr/hero-loop.mp4|.webm`, `/xr/hero-poster.jpg`, `/xr/studio.jpg` 참조는 **JSDoc 주석 내 향후 교체 예시일 뿐 실행 코드 아님**(컴포넌트는 src 미지정 시 디자인된 플레이스홀더 렌더). 원본 레포에도 동일하게 public/xr 없음. 회귀 아님.
 
-## 4. 발견 이슈 (비차단 · 변경 범위 밖)
-**[INFO] PageHero 대형 타이틀 모바일 우측 클리핑** — 변경 대상 아님, 회귀 아님.
-- 현상: `/product`·`/solution` 등 PageHero 사용 페이지에서 모바일(375·390) 히어로 H1·리드 텍스트 우측 끝이 잘림(예: "책임집니다"→"책임집니", 리드 우측 1~2자 컷).
-- 원인: 공용 `src/components/page/PageHero.tsx`의 H1 `text-[clamp(2.75rem,6vw,5.25rem)]` + `text-center` + 섹션 `overflow-hidden`. 좁은 폭에서 긴 한글 타이틀이 컨테이너 패딩을 초과하나 `break-keep`/word-break 미적용. 가로 스크롤바는 생기지 않음(문서 오버플로 아님, 시각적 클리핑).
-- 범위: frontend-builder가 이번에 변경한 §00 MediaBlank 밴드·B그룹 API 통일과 **무관**. git 워킹트리상 `PageHero.tsx` 미변경(6개 page.tsx만 수정). 직전 QA(`02_qa_report.md` L43)에도 동일 사항이 기존 동작·비차단으로 기록됨.
-- 권고: 별건으로 PageHero에 모바일 폰트 floor 하향 또는 `word-break`/`text-pretty` 보정 검토(이번 작업 차단 사유 아님).
+## 6. 메뉴/사이트맵 구조 무변경 — PASS
+- `diff src/lib/site.ts` (원본 excorp-website 대비): **유일한 차이는 `sameAs` export 추가(21a22~29)**. nav·footerColumns·locations 구조는 완전 동일.
+- `diff src/app/sitemap.ts`: **바이트 동일(IDENTICAL)**. staticRoutes 17개 + works·insights 동적 동일.
 
-## 5. 종합 판정: **PASS**
-대상 6개 페이지의 신규 §00 미디어 밴드·VP §03 데모·B그룹 기존 미디어 모두 빌드/타입/린트 통과 + 데스크톱·모바일에서 다크 플레이스홀더로 정상 렌더(비율·라벨·단색 배경 유지, 깨짐·소멸·오버플로 없음). MediaBlank 신규 API 통일 후 B그룹 회귀 없음.
+---
 
-## 6. 스크린샷 경로 (`_workspace/qa_shots/`)
-- A그룹 데스크톱: `solution_d.png` · `product_d.png` · `vp_d.png` · VP §03 크롭 `vp_s03_demo.png`
-- A그룹 모바일: `solution_m.png` · `product_m.png` · `vp_m.png`
-- B그룹 데스크톱(풀): `moverse_tall_d.png` · `xrstudio_tall_d.png` · `careers_tall_d.png` / 크롭 `moverse_s01.png` · `xrstudio_video.png` · `xrstudio_s06.png` · `careers_s03.png`
-- B그룹 모바일: `moverse_m.png` · `xrstudio_m.png` · `careers_m.png`
-- PageHero 클리핑 증거: `product_375_crop.png` · `solution_m_top.png`
+## FAIL 목록
+- 없음.
+
+## 비차단 메모
+- MediaBlank의 /xr/* 참조는 주석 예시(미실행) — 실제 영상/이미지 교체 시 소문자 파일명으로 public/xr에 배치 필요(컴포넌트 가이드대로).
+- _workspace의 기존 산출물(qa_shots 등)이 git상 deleted 상태 — 이번 검증과 무관(재빌드 정리 과정으로 추정).

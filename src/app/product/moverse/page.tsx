@@ -7,12 +7,13 @@ import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
 import { SpecTable } from "@/components/product/SpecTable";
+import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Moverse — 마커리스 AI 모션캡처",
+  title: "Moverse 한국 총판 — 마커리스 AI 모션캡처",
   alternates: { canonical: "/product/moverse" },
   description:
-    "마커·수트 없이 표준 RGB 카메라로 최대 4명을 실시간 캡처하는 마커리스 AI 모션캡처 Moverse. 로컬 실시간 캡처 + 클라우드 Portal의 AI Reprocessing(지터 제거·손가락 트래킹). Unreal 연동·표준 리그 익스포트. EX 공식 한국 총판.",
+    "마커·수트 없이 표준 RGB 카메라로 최대 4명을 실시간 캡처하는 마커리스 AI 모션캡처 Moverse. 로컬 실시간 캡처 + 클라우드 Portal의 AI Reprocessing(지터 제거·손가락 트래킹). Unreal 연동·표준 리그 익스포트. 버추얼 아이돌·VTuber full body tracking, 게임 모션캡처에 활용합니다. EX 공식 한국 총판.",
 };
 
 const quickSpecs: { v: string; l: string; numeric: boolean }[] = [
@@ -131,6 +132,7 @@ const specGroups: { title: string; rows: [string, string][] }[] = [
 ];
 
 const useCases = [
+  { t: "버추얼 아이돌 · VTuber", d: "마커리스 풀바디 캡처와 실시간 스트리밍으로 버추얼 아이돌·VTuber를 라이브로 구동합니다. 별도 수트·마커가 없어 준비가 빠릅니다." },
   { t: "라이브 음악 · 공연", d: "게임·라이브 음악 무대에 실시간 캡처로 캐릭터를 움직입니다." },
   { t: "버추얼 프로덕션", d: "로컬 저지연 스트리밍으로 가상 스튜디오·LED 월 제작에 라이브로 연동합니다." },
   { t: "게임 · 애니메이션", d: "마커리스 캡처 데이터를 Unreal·표준 리그로 보내 캐릭터 애니메이션에 활용합니다." },
@@ -148,6 +150,7 @@ const process = [
 ];
 
 const faqs = [
+  { q: "기존 광학식 모션캡처와 무엇이 다른가요?", a: "Moverse는 전용 수트·마커 없이 표준 RGB 카메라만으로 캡처하는 마커리스 방식입니다. 별도 착용·개인 캘리브레이션 없이 바로 시작할 수 있고, 로컬에서 60+ FPS로 최대 4명을 실시간 스트리밍합니다. 환경·정밀도 요구에 따라 적합 여부가 달라지므로, 캡처 목적을 알려주시면 구성을 함께 검토합니다." },
   { q: "마커나 슈트가 필요한가요?", a: "필요 없습니다. 표준 RGB/RGB-IR 카메라만으로 캡처하며, 일반인도 별도 착용·개인 캘리브레이션 없이 바로 사용할 수 있습니다." },
   { q: "실시간 라이브 연동이 되나요?", a: "됩니다. 로컬 Capture Studio에서 60+ FPS로 최대 4명을 캡처해 Unreal Engine 등으로 저지연 다이렉트 스트리밍합니다." },
   { q: "AI Reprocessing은 무엇인가요?", a: "클라우드 Portal에 녹화를 업로드하면 자동으로 클린업하는 후처리입니다. 지터·아티팩트를 줄이고 손가락까지 후처리하며, 특허 출원·동료심사 연구를 기반으로 합니다." },
@@ -159,6 +162,22 @@ const faqs = [
 export default function MoversePage() {
   return (
     <>
+      <JsonLd
+        schema={[
+          breadcrumbLd([
+            { name: "Product", path: "/product" },
+            { name: "Moverse", path: "/product/moverse" },
+          ]),
+          productLd({
+            name: "Moverse — 마커리스 AI 모션캡처",
+            brand: "Moverse",
+            category: "버추얼 프로덕션 · 모션캡처 소프트웨어",
+            description: metadata.description as string,
+            path: "/product/moverse",
+          }),
+          faqPageLd(faqs),
+        ]}
+      />
       <PageHero
         breadcrumb={[
           { label: "Product", href: "/product" },

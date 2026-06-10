@@ -6,9 +6,10 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { SpecTable } from "@/components/product/SpecTable";
+import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Aximmetry — 실시간 버추얼 프로덕션 플랫폼",
+  title: "Aximmetry 한국 공식 리셀러 — 버추얼 프로덕션",
   alternates: { canonical: "/product/aximmetry" },
   description:
     "Unreal Engine 네이티브 연동(플러그인 내장) + 자체 노드 기반 엔진으로 최대 8K 실시간 가상 스튜디오·XR·AR를 만드는 Aximmetry (Broadcast & Film Edition). 무제한 SDI/NDI/SMPTE 2110, Free-D·MOS. EX 공식 인증 리셀러.",
@@ -83,6 +84,7 @@ const steps = [
 ];
 
 const faqs = [
+  { q: "기존 방송 그래픽 솔루션과 무엇이 다른가요?", a: "Aximmetry는 Unreal Engine을 네이티브로 실행하고 무제한 SDI·NDI·SMPTE 2110(NMOS) 입출력과 Free-D·MOS를 지원하는 실시간 그래픽·버추얼 프로덕션 플랫폼입니다. 도입 비용·라이선스 구성은 현장 규모에 맞춰 상담 시 안내드리며, EX가 공식 인증 리셀러로 설치·교육·기술지원을 한국어로 제공합니다." },
   { q: "EX는 어떤 에디션을 공급하나요?", a: "EX는 전문 방송·필름 현장을 위한 Broadcast & Film Edition을 공식 공급합니다. 라이선스·하드웨어·I/O 구성을 현장에 맞춰 제안하고 설치·교육·기술지원까지 공식 인증 리셀러로서 지원합니다." },
   { q: "어느 정도 해상도까지 실시간으로 가능한가요?", a: "Broadcast & Film Edition은 DLSS·Ray Tracing·RTXGI를 활용해 최대 8K 해상도 실시간 렌더링을 지원하며, 10-bit·HDR 입출력을 처리합니다." },
   { q: "방송 시스템과 어떻게 연동되나요?", a: "무제한 SDI·NDI·SMPTE 2110(NMOS)·SRT 입출력과 타임코드·하드웨어 젠록을 지원하고, Free-D·MOS(뉴스룸) 프로토콜로 방송 환경에 통합됩니다." },
@@ -91,6 +93,22 @@ const faqs = [
 export default function AximmetryPage() {
   return (
     <>
+      <JsonLd
+        schema={[
+          breadcrumbLd([
+            { name: "Product", path: "/product" },
+            { name: "Aximmetry", path: "/product/aximmetry" },
+          ]),
+          productLd({
+            name: "Aximmetry Broadcast & Film Edition",
+            brand: "Aximmetry",
+            category: "버추얼 프로덕션 소프트웨어",
+            description: metadata.description as string,
+            path: "/product/aximmetry",
+          }),
+          faqPageLd(faqs),
+        ]}
+      />
       <PageHero
         breadcrumb={[
           { label: "Product", href: "/product" },
@@ -276,7 +294,7 @@ export default function AximmetryPage() {
                 EX는 Aximmetry <span className="text-lav">공식 인증 리셀러</span>입니다.
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                에디션 선택 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전 과정을 지원합니다.
+                에디션 선택 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전 과정을 지원합니다. Aximmetry 한국 공식 리셀러로서 도입 견적과 한국어 기술지원을 함께 제공합니다.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["도입 컨설팅", "셋업", "교육", "유지보수"].map((x) => (

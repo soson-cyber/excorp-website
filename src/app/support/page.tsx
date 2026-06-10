@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Icon } from "@/components/ui/Icon";
 import { site } from "@/lib/site";
+import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "고객 지원 — 자료실 & 기술 지원",
@@ -27,7 +28,7 @@ const faqGroups = [
     cat: "도입 · 견적",
     items: [
       { q: "도입 비용은 어떻게 산정되나요?", a: "구성·규모·운영 방식에 따라 맞춤 견적을 제공합니다. 문의 주시면 상담 후 산정해 드립니다." },
-      { q: "견적이나 데모는 어떻게 요청하나요?", a: "Contact의 ‘솔루션 도입’ 문의 또는 유선(031-699-8228)으로 요청하실 수 있습니다." },
+      { q: "견적이나 데모는 어떻게 요청하나요?", a: "Contact의 ‘데모·쇼룸 체험’ 또는 ‘솔루션 도입’ 문의, 유선(031-699-8228)으로 요청하실 수 있습니다. 하남 스튜디오 시연은 무료이며, 원거리 고객은 화상 데모로 진행합니다." },
       { q: "도입까지 기간은 얼마나 걸리나요?", a: "구성 규모에 따라 상이하며, 사전 미팅에서 일정과 범위를 함께 확정합니다." },
     ],
   },
@@ -59,6 +60,12 @@ const inquiryTypes = ["솔루션 도입", "제품 도입", "스튜디오 제작"
 export default function SupportPage() {
   return (
     <>
+      <JsonLd
+        schema={[
+          breadcrumbLd([{ name: "Support", path: "/support" }]),
+          faqPageLd(faqGroups.flatMap((g) => g.items)),
+        ]}
+      />
       <PageHero
         breadcrumb={[{ label: "Support", href: "/support" }]}
         tag="Support"

@@ -63,13 +63,14 @@ export function Footer() {
 
         {/* Locations(좌) + 공용 연락처(우) — 연락처는 특정 거점이 아니라 회사 공용 */}
         <div className="mt-14 grid gap-8 border-t border-ink-hover pt-8 lg:grid-cols-[2fr_1fr]">
-          {/* 주소 — Office · Studio */}
+          {/* 주소 — Head Office · XR Studio (Footer 전용 라벨 — site.ts kind는 조회 키라 유지) */}
           <div className="grid gap-6 sm:grid-cols-2">
             {locations.map((loc) => (
               <div key={loc.kind}>
-                <span className="font-mono text-xs uppercase tracking-wider text-footer-accent">{loc.kind}</span>
-                <p className="mt-1.5 text-sm font-medium text-white">{loc.name}</p>
-                <p className="text-sm text-footer-link">
+                <span className="font-mono text-xs uppercase tracking-wider text-footer-accent">
+                  {loc.kind === "Office" ? "Head Office" : "XR Studio"}
+                </span>
+                <p className="mt-1.5 text-sm text-footer-link">
                   {loc.address} <span className="text-footer-muted">({loc.zip})</span>
                 </p>
               </div>

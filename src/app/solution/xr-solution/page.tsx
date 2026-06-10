@@ -6,12 +6,13 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "XR Solution — EXLINK",
+  title: "EXLINK — XR 스튜디오 구축 통합 솔루션",
   alternates: { canonical: "/solution/xr-solution" },
   description:
-    "EXLINK는 촬영·트래킹·렌더·송출을 단일 제어 흐름으로 묶는 EX 자체 개발 올인원 실시간 XR 솔루션입니다. 검증된 파트너 기술을 연결·조율해 운영자 1인 중심 워크플로우를 만듭니다.",
+    "EXLINK는 촬영·트래킹·렌더·송출을 단일 제어 흐름으로 묶는 EX 자체 개발 올인원 실시간 XR 솔루션입니다. XR 스튜디오 구축부터 운영자 1인 중심 워크플로우까지, 견적·도입을 상담합니다.",
 };
 
 const contrast = [
@@ -42,7 +43,9 @@ const adoption = [
   { step: "기술 지원 · 운영", desc: "도입 이후에도 기술 지원과 운영을 지속적으로 함께합니다." },
 ];
 
-// 고객 사례 — 실제·공개 동의된 프로젝트만. (대표 1 + 보조 3)
+// 고객 사례 — 실제 프로젝트. 실 고객명은 리더 결정에 따라 노출 유지(발행 전 대표 검토 게이트).
+// ⚠ 정직성: 성과 수치·고객 인용문은 미검증 → 노출 금지. summary는 "무엇을 했는지"의 사실 기술만 유지.
+// {/* TODO: 고객 동의 후 공개 — 성과 수치·고객 인용문 추가는 동의 확인 후에만 */}
 type CaseStudy = { title: string; sector: string; client: string; summary: string; stack: string[]; period: string; img: string };
 const featuredCase: CaseStudy = {
   title: "GS리테일 홈쇼핑 XR 시스템 구축",
@@ -86,6 +89,12 @@ const cases: CaseStudy[] = [
 export default function XrSolutionPage() {
   return (
     <>
+      <JsonLd
+        schema={breadcrumbLd([
+          { name: "Solution", path: "/solution" },
+          { name: "XR Solution", path: "/solution/xr-solution" },
+        ])}
+      />
       <PageHero
         breadcrumb={[
           { label: "Solution", href: "/solution" },
@@ -127,7 +136,10 @@ export default function XrSolutionPage() {
             왜 통합 솔루션인가
           </h2>
           <p className="lead" style={{ maxWidth: "42rem" }}>
-            실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK는 이 과정을 하나의 흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다.
+            실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK는 이 과정을 하나의 흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다. 생방송은 한 번의 멈춤도 치명적이기에, EX는 구축으로 끝내지 않고 운영까지 함께하는 파트너로 남습니다.
+          </p>
+          <p className="mt-5 border-l-2 border-primary pl-4 text-base italic leading-relaxed text-muted">
+            「장비마다 따로 만지느라 사람이 여럿 붙는다」 — 통합으로 풀어야 할 지점입니다.
           </p>
           {/* 2열 대비 — 좌: 분산형 구성(✕) / 우: EXLINK 통합(✓), 항목별 1:1 정렬 */}
           <div className="mx-auto mt-12 max-w-5xl">
@@ -368,7 +380,7 @@ export default function XrSolutionPage() {
         </div>
       </section>
 
-      <CtaBanner />
+      <CtaBanner variant="studio" />
     </>
   );
 }

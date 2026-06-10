@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/page/PageHero";
 import { ComingSoon } from "@/components/page/ComingSoon";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 // 풀콘텐츠(가치·문화·공간·채용절차)는 src/app/careers/page.full.tsx.bak 에 보관 — 공개 시 복구.
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function CareersPage() {
   return (
     <>
+      <JsonLd schema={breadcrumbLd([{ name: "채용", path: "/careers" }])} />
       <PageHero
         breadcrumb={[{ label: "Career", href: "/careers" }]}
         tag="Career"

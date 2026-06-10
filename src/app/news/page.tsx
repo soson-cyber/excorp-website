@@ -3,19 +3,19 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { NewsList, type NewsItem } from "@/components/news/NewsList";
-import { CtaBanner } from "@/components/layout/CtaBanner";
 import { getNews, getInsights } from "@/lib/notion";
 import { pressFallback } from "@/lib/press-fallback";
 import { insights as localInsights } from "@/lib/insights";
+import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 // ISR — Notion(WEBSITE_NEWS) 변경을 5분 주기로 반영. 미설정 시 fallback.
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "뉴스 & 인사이트",
+  title: "뉴스 & 인사이트 — 버추얼 프로덕션·XR 가이드",
   alternates: { canonical: "/news" },
   description:
-    "이엑스(EX)의 보도자료와 기술 인사이트. 버추얼 프로덕션·마커리스 카메라 트래킹 등 실시간 XR 콘텐츠 제작을 쉽게 풀어 설명하고, EX의 파트너십·스튜디오 소식을 전합니다.",
+    "버추얼 프로덕션이란 무엇인지, 인카메라 VFX 원리와 언리얼엔진 방송 활용까지. EX의 기술 인사이트와 보도자료, 파트너십·스튜디오 소식을 전합니다.",
 };
 
 export default async function NewsPage() {
@@ -57,6 +57,7 @@ export default async function NewsPage() {
 
   return (
     <>
+      <JsonLd schema={breadcrumbLd([{ name: "뉴스 & 인사이트", path: "/news" }])} />
       <PageHero
         breadcrumb={[{ label: "News & Insight", href: "/news" }]}
         tag="News & Insight"
@@ -88,8 +89,6 @@ export default async function NewsPage() {
           </div>
         </div>
       </section>
-
-      <CtaBanner />
     </>
   );
 }

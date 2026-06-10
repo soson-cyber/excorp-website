@@ -5,17 +5,20 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { StudioOptions } from "@/components/studio/StudioOptions";
-import { site } from "@/lib/site";
+import { site, locations } from "@/lib/site";
+import { JsonLd, breadcrumbLd, localBusinessLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "하남 XR 스튜디오 — 버추얼 프로덕션 콘텐츠 제작",
+  title: "하남 XR 스튜디오 대관·제작 — 버추얼 프로덕션",
   alternates: { canonical: "/xr-studio" },
   description:
     "하남 EX XR 스튜디오. 대형 그린 크로마(W10×D7×H4, 약 70㎡)와 실시간 XR 기술로 IR·웨비나·토크 콘텐츠를 기획부터 촬영·송출까지 한 번에 제작합니다. 목적별 메뉴(S·M·L) 구성과 맞춤 견적 안내.",
 };
 
+const studioLoc = locations.find((l) => l.kind === "Studio")!;
+
 const reasons = [
-  { t: "하나의 무대, 무한한 배경", d: "물리적인 세트를 새로 짓지 않아도 됩니다. 가상 배경으로 콘텐츠 성격에 맞는 공간을 그때그때 연출하며, 같은 하루에도 전혀 다른 분위기의 촬영이 가능합니다." },
+  { t: "하나의 무대, 무한한 배경", d: "물리적인 세트를 새로 짓지 않아도 됩니다. 가상 배경으로 콘텐츠 성격에 맞는 공간을 그때그때 연출하며, 같은 하루에도 전혀 다른 분위기의 촬영이 가능합니다. 외주를 반복하기보다 자체 무대로 운영하려는 기업, 한정된 공간에서 매번 다른 비주얼이 필요한 라이브커머스에 맞습니다." },
   { t: "10m 크로마, 다인 풀샷까지", d: "W10 × D7 × H4(약 70㎡)의 호리존 그린 크로마 무대. 좁은 셀프 방송 스튜디오가 담기 어려운 다인 패널·풀샷·와이드 연출까지 안정적으로 소화합니다." },
   { t: "XR 리얼타임, 현장에서 완성", d: "단순 합성이 아닌 카메라 트래킹 기반 입체 연출. 인물과 가상 배경이 자연스럽게 어우러지고, 제품 데모용 AR 그래픽·입체 PPT 등 차별화된 표현이 가능합니다." },
   { t: "전담팀이 기획부터 송출까지", d: "PD · 가상환경 컨트롤 · 현장 운영을 담당하는 전담 인력이 함께해, 기획·촬영·라이브 송출을 한 번에 진행합니다." },
@@ -54,6 +57,20 @@ const facilitySpecs = [
 export default function XrStudioPage() {
   return (
     <>
+      <JsonLd
+        schema={[
+          breadcrumbLd([{ name: "XR Studio", path: "/xr-studio" }]),
+          localBusinessLd({
+            name: studioLoc.name,
+            address: studioLoc.address,
+            zip: studioLoc.zip,
+            tel: studioLoc.tel || site.contact.tel,
+            region: "경기도",
+            locality: "하남시",
+            path: "/xr-studio",
+          }),
+        ]}
+      />
       <PageHero
         breadcrumb={[{ label: "XR Studio", href: "/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
@@ -159,22 +176,25 @@ export default function XrStudioPage() {
       {/* CTA — quote & booking */}
       <section className="section section--white section--glow">
         <div className="container-ex">
-          <div className="card px-8 py-14 text-center" style={{ borderRadius: 24 }}>
+          <div className="card px-6 py-12 text-center sm:px-8 sm:py-14" style={{ borderRadius: 24 }}>
             <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-lav">
               <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
-              가격 및 예약 문의
+              체험 예약 및 견적 문의
             </span>
             <h2 className="mx-auto mt-6 max-w-2xl text-balance text-4xl font-semibold leading-snug text-fg md:text-5xl">
               목적에 맞는 구성을 제안해 드립니다.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted">
-              콘텐츠 형태 · 규모 · 옵션에 따라 견적을 맞춤 안내합니다. 부담 없이 문의 주세요.
+              글로 읽는 것보다 직접 보는 게 빠릅니다. 하남 스튜디오에서 가상 무대를 무료로 시연해 드립니다. 콘텐츠 형태·규모·옵션에 맞춘 견적도 함께 안내합니다. 원거리시면 화상 데모로 진행합니다.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button href="/contact" variant="accent">
+                무료 시연 예약 →
+              </Button>
+              <Button href="/contact" variant="secondary">
                 견적 문의하기 →
               </Button>
-              <Button href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} variant="secondary">
+              <Button href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} variant="glow">
                 전화 {site.contact.tel}
               </Button>
             </div>

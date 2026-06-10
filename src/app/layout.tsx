@@ -5,6 +5,10 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { site, sameAs, SITE_URL } from "@/lib/site";
+
+// 국내 전화번호(031-699-8228) → E.164(+82-31-699-8228). JSON-LD telephone 단일 변환.
+const telE164 = `+82-${site.contact.tel.replace(/^0/, "")}`;
 
 // Official EX brand typeface (브랜딩 가이드 p.10): Poppins (영문) + Noto Sans KR (국문)
 const poppins = Poppins({
@@ -22,7 +26,7 @@ const notoSansKr = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://excorp.kr"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "EX Corporation — 기술의 연결로 경험을 확장하다",
     template: "%s | EX Corporation",
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://excorp.kr",
+    url: SITE_URL,
     siteName: "EX Corporation",
     title: "EX Corporation — 기술의 연결로 경험을 확장하다",
     description:
@@ -89,12 +93,12 @@ export default function RootLayout({
               "@type": "Organization",
               name: "EX Corporation",
               alternateName: "이엑스 주식회사",
-              url: "https://excorp.kr",
-              logo: "https://excorp.kr/ex-logo.png",
+              url: SITE_URL,
+              logo: `${SITE_URL}/ex-logo.png`,
               description:
                 "AI와 XR 기술을 연결하는 All-in-One 실시간 XR 콘텐츠 제작 솔루션 기업",
-              email: "contact@excorp.kr",
-              telephone: "+82-31-699-8228",
+              email: site.contact.email,
+              telephone: telE164,
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "금토동 327, 스타트업스퀘어 B동 3층",
@@ -103,7 +107,8 @@ export default function RootLayout({
                 postalCode: "461380",
                 addressCountry: "KR",
               },
-              sameAs: ["https://instagram.com/ex.studio"],
+              // sameAs = site.ts의 sameAs(= site.social 3채널) 단일 출처. 잘못된 ex.studio 핸들 교정.
+              sameAs,
             }),
           }}
         />
@@ -117,7 +122,7 @@ export default function RootLayout({
               "@type": "WebSite",
               name: "EX Corporation",
               alternateName: "이엑스 주식회사",
-              url: "https://excorp.kr",
+              url: SITE_URL,
               inLanguage: "ko-KR",
               publisher: { "@type": "Organization", name: "EX Corporation" },
             }),

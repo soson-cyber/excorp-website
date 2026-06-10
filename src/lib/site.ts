@@ -1,3 +1,6 @@
+// 사이트 절대 URL 단일 출처 — JsonLd.tsx·layout.tsx 메타데이터가 이 상수를 import해 정합 유지.
+export const SITE_URL = "https://excorp.kr";
+
 export const site = {
   name: "EX Corporation",
   nameKo: "이엑스 주식회사",
@@ -18,6 +21,14 @@ export const site = {
     careersEmail: "careers@excorp.kr",
   },
 } as const;
+
+// JSON-LD sameAs 단일 출처 — Organization 스키마(layout.tsx)가 이 배열을 import해 정합 유지.
+// site.social을 그대로 반영(채널 추가/변경 시 한 곳만 고치면 SEO 마크업까지 동기화).
+export const sameAs: string[] = [
+  site.social.instagram,
+  site.social.facebook,
+  site.social.youtube,
+];
 
 export type NavChild = { label: string; href: string; tag?: string; desc?: string };
 export type NavFeatured = {

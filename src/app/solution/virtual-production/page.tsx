@@ -6,13 +6,30 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { ProblemTrio } from "@/components/page/ProblemTrio";
+import { SegmentGrid } from "@/components/page/SegmentGrid";
+import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Virtual Production — 촬영하는 순간 완성되는 영상 제작",
+  title: "버추얼 프로덕션 구축 — 촬영하는 순간 완성",
   alternates: { canonical: "/solution/virtual-production" },
   description:
-    "버추얼 프로덕션은 디지털 배경과 실제 촬영을 실시간으로 결합해 현장에서 완성하는 제작 방식입니다. 크로마키·Simulcam·ICVFX·AR까지, EX는 RETracker·Moverse·Aximmetry·EXLINK와 하남 XR 스튜디오를 하나의 파이프라인으로 연결합니다.",
+    "버추얼 프로덕션은 디지털 배경과 실제 촬영을 실시간 결합해 현장에서 완성하는 제작 방식입니다. 크로마키·Simulcam·인카메라 VFX(ICVFX)·AR까지, EX가 구축·견적·운영을 지원합니다.",
 };
+
+// Problem Quote Trio (§0-A) — VP를 처음 도입할 때의 페인(VP 특화).
+const problems = [
+  { id: "PAIN 01", quote: "버추얼 프로덕션, 어디서부터 시작할지 모르겠습니다.", desc: "장비·소프트웨어가 제각각이고 해외 솔루션은 소통이 어렵습니다." },
+  { id: "PAIN 02", quote: "초기 도입 비용이 얼마나 들지 가늠이 안 됩니다.", desc: "필요한 구성·규모를 모른 채 견적을 받으면 과·부족 어느 쪽이든 손해입니다." },
+  { id: "PAIN 03", quote: "촬영본이 현장에서 맞는지 확인이 안 됩니다.", desc: "인카메라로 합성 결과를 바로 보지 못하면 후반에서야 문제를 발견합니다." },
+];
+
+// 세그먼트 슬롯 (§0-C) — VP가 맞는 곳.
+const segments = [
+  { tag: "방송 · 라이브커머스", d: "세트 교체 없이 생중계·라이브커머스 무대를 즉시 전환하려는 곳." },
+  { tag: "기업 · 행사", d: "IR·웨비나·컨퍼런스를 신뢰감 있는 가상 무대에서 운영하려는 기업." },
+  { tag: "패션 · 커머스", d: "한 스튜디오에서 여러 공간·룩을 촬영해야 하는 패션·제품 콘텐츠." },
+];
 
 // UE 워크플로우(World Capture → Performance Capture → Simulcam → ICVFX)를 EX 실보유·총판 자산에 매핑
 const pipeline: { stage: string; t: string; tech: string; d: string; href?: string }[] = [
@@ -43,11 +60,21 @@ const useCases = [
   { t: "패션 · 커머스", d: "제품·룩을 돋보이게 하는 다양한 가상 공간 연출" },
   { t: "행사 · 이벤트", d: "무대를 화면 밖까지 확장하는 XR 라이브 연출" },
   { t: "교육", d: "가상 환경을 활용한 강의·실습 콘텐츠" },
+  { t: "홈쇼핑 · 라이브커머스", d: "세트 교체 없이 상품·시즌별 배경을 즉시 전환하고 AR 상품 그래픽을 더합니다." },
+  { t: "전시 · 실감 콘텐츠", d: "미디어월·인터랙티브 영상 등 실감형 콘텐츠를 언리얼 기반으로 제작합니다." },
+  { t: "버추얼 휴먼 · 라이브", d: "마커리스 모션캡처와 실시간 합성으로 버추얼 아이돌·캐릭터를 라이브로 구동합니다." },
+  { t: "공연 · XR 무대", d: "LED·트래킹을 연동한 XR Extension으로 무대를 화면 밖까지 확장합니다." },
 ];
 
 export default function VirtualProductionPage() {
   return (
     <>
+      <JsonLd
+        schema={breadcrumbLd([
+          { name: "Solution", path: "/solution" },
+          { name: "Virtual Production", path: "/solution/virtual-production" },
+        ])}
+      />
       <PageHero
         breadcrumb={[
           { label: "Solution", href: "/solution" },
@@ -56,6 +83,15 @@ export default function VirtualProductionPage() {
         tag="Methodology"
         title="촬영하는 순간, 콘텐츠가 완성됩니다."
         lead="디지털 배경과 실제 촬영을 실시간으로 결합해, 제작자가 라이브 액션처럼 현장에서 직접 연출하고 완성합니다. 길고 복잡한 후반 작업이 필요 없습니다."
+      />
+
+      {/* Problem Quote Trio — VP를 처음 도입할 때의 페인(§0-A) */}
+      <ProblemTrio
+        index="00"
+        label="The Problem"
+        title="처음 도입할 때, 가장 자주 듣는 말"
+        problems={problems}
+        note="처음 도입하는 곳도 막히지 않도록, 구성 설계부터 운영 교육까지 한국어로 함께합니다."
       />
 
       {/* §01 What is VP */}
@@ -149,7 +185,7 @@ export default function VirtualProductionPage() {
                 EX의 버추얼 프로덕션
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                EX는 자체 솔루션 EXLINK, 검증된 파트너 기술, 그리고 하남 XR 스튜디오를 하나의 제작 파이프라인으로 연결합니다. 대형 그린 크로마(W10m×D7m×H4m)와 시네마 카메라, 실시간 XR 트래킹을 기반으로 촬영과 합성을 동시에 진행해 현장에서 결과물을 완성합니다.
+                EX는 자체 솔루션 EXLINK, 검증된 파트너 기술, 그리고 하남 XR 스튜디오를 하나의 제작 파이프라인으로 연결합니다. 대형 그린 크로마(W10m×D7m×H4m)와 시네마 카메라, 실시간 XR 트래킹을 기반으로 촬영과 합성을 동시에 진행해 현장에서 결과물을 완성합니다. 처음 도입하는 곳도 막히지 않도록, 구성 설계부터 운영 교육까지 한국어로 함께합니다.
               </p>
               <ul className="mt-7 space-y-3">
                 {exPoints.map((p) => (
@@ -203,6 +239,9 @@ export default function VirtualProductionPage() {
           </div>
         </div>
       </section>
+
+      {/* Segment slot — 이런 곳에 맞습니다 (§0-C) */}
+      <SegmentGrid index="06" segments={segments} tone="section--surface" />
 
       <CtaBanner />
     </>

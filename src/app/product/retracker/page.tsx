@@ -6,12 +6,13 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
+import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "RETracker — 6-DOF 마커리스 카메라 트래킹",
+  title: "RETracker 한국 총판 — 마커리스 카메라 트래킹",
   alternates: { canonical: "/product/retracker" },
   description:
-    "천장 마커 없이 동작하는 6-DOF 마커리스 카메라 트래킹 RETracker. Bliss G2 센서 + Fizz 2 Pro 렌즈 인코더. 오차 <1cm/10m, 500fps IMU 퓨전, Unreal·Aximmetry 연동. EX 공식 한국 총판.",
+    "천장 마커 없이 동작하는 6-DOF 마커리스 카메라 트래킹 RETracker. Bliss G2 센서 + Fizz 2 Pro 렌즈 인코더. 오차 <1cm/10m, 500fps IMU 퓨전, Unreal·Aximmetry 연동. 카메라 트래킹 시스템 도입·RETracker 견적을 공식 한국 총판으로서 상담합니다.",
 };
 
 // quickSpec: 숫자는 solid text-fg. 수치 스펙(<1cm/10m·500fps)엔 Gauge 의미 매핑, 비수치엔 제거.
@@ -91,6 +92,7 @@ const process = [
 ];
 
 const faqs = [
+  { q: "기존 마커 트래킹 방식과 무엇이 다른가요?", a: "천장이나 무대에 마커를 부착하는 사전 설비가 필요 없습니다. 카메라에 센서를 장착하면 공간을 직접 매핑해 이동 범위 제한 없이 트래킹합니다. 6-DOF를 10m 이동 시 1cm 미만 오차(제조사 사양 기준)로 추적하며, Free-D·LiveLink로 Unreal·Aximmetry에 실시간 연동합니다. 도입 견적·구성은 현장에 맞춰 안내드립니다." },
   { q: "마커나 트래킹 설비가 필요한가요?", a: "필요 없습니다. Bliss G2는 천장 마커가 필요 없는 100% 마커리스 방식으로, 별도 설비 없이 카메라에 장착해 공간을 직접 매핑합니다. 이동 범위 제한도 없습니다." },
   { q: "트래킹 정확도는 어느 정도인가요?", a: "10m 이동 시 1cm 미만(<1cm)의 초정밀 오차이며(제조사 사양 기준), 초당 500fps IMU 센서 퓨전으로 핸드헬드·빠른 무빙에서도 안정적입니다." },
   { q: "Bliss와 Fizz는 어떻게 함께 쓰나요?", a: "Bliss G2가 카메라의 위치·방향(6-DOF)을 추적하고, Fizz 2 Pro가 렌즈의 Focus·Iris·Zoom 값을 추출해 가상 배경의 심도·시야각을 실사와 정합합니다." },
@@ -101,6 +103,22 @@ const faqs = [
 export default function RetrackerPage() {
   return (
     <>
+      <JsonLd
+        schema={[
+          breadcrumbLd([
+            { name: "Product", path: "/product" },
+            { name: "RETracker", path: "/product/retracker" },
+          ]),
+          productLd({
+            name: "RETracker — 6-DOF 마커리스 카메라 트래킹",
+            brand: "RETracker",
+            category: "버추얼 프로덕션 · 카메라 트래킹 하드웨어",
+            description: metadata.description as string,
+            path: "/product/retracker",
+          }),
+          faqPageLd(faqs),
+        ]}
+      />
       <PageHero
         breadcrumb={[
           { label: "Product", href: "/product" },
