@@ -8,6 +8,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { withLocale, type Locale } from "@/lib/i18n";
 
 /* Drifting mint/purple signal dust behind the headline. */
 function HeroStars() {
@@ -88,7 +89,8 @@ const CAMS = [
   { id: "PGM", img: "/uc-event.png" },
 ];
 
-function ExlinkConsole() {
+function ExlinkConsole({ locale }: { locale: Locale }) {
+  const en = locale === "en";
   const [sel, setSel] = useState(3); // PGM 기본 선택 → 큰 Program 피드 = PGM 이미지
   const [nonce, setNonce] = useState(0); // bump on manual pick to restart the auto-cycle window
   const program = CAMS[sel];
@@ -108,7 +110,7 @@ function ExlinkConsole() {
   };
 
   return (
-    <div className="console" role="img" aria-label="EXLINK 실시간 XR 운영 콘솔 미리보기">
+    <div className="console" role="img" aria-label={en ? "EXLINK real-time XR operations console preview" : "EXLINK 실시간 XR 운영 콘솔 미리보기"}>
       <div className="c-bar">
         <span className="c-dots">
           <i />
@@ -157,7 +159,7 @@ function ExlinkConsole() {
             <Image
               key={c.id}
               src={c.img}
-              alt={i === sel ? "실시간 프로그램 피드" : ""}
+              alt={i === sel ? (en ? "Live program feed" : "실시간 프로그램 피드") : ""}
               fill
               sizes="(min-width:1024px) 620px, 100vw"
               priority={i === 3}
@@ -201,7 +203,7 @@ function ExlinkConsole() {
                   className={`cam${i === sel ? " sel" : ""}`}
                   onClick={() => pick(i)}
                   aria-pressed={i === sel}
-                  title={`${c.id} 프로그램으로 전환`}
+                  title={en ? `Switch ${c.id} to program` : `${c.id} 프로그램으로 전환`}
                 >
                   <Image src={c.img} alt="" fill sizes="120px" unoptimized />
                   <span>{c.id}</span>
@@ -213,19 +215,19 @@ function ExlinkConsole() {
             <div className="p-h">Telemetry</div>
             <div className="tele">
               <div className="trow">
-                <span className="k">트래킹 동기화</span>
+                <span className="k">{en ? "Tracking sync" : "트래킹 동기화"}</span>
                 <span className="v ok">LOCKED</span>
               </div>
               <div className="trow">
-                <span className="k">렌더 지연</span>
+                <span className="k">{en ? "Render latency" : "렌더 지연"}</span>
                 <span className="v">1 frame</span>
               </div>
               <div className="trow">
-                <span className="k">크로마 키</span>
+                <span className="k">{en ? "Chroma key" : "크로마 키"}</span>
                 <span className="v ok">CLEAN</span>
               </div>
               <div className="trow">
-                <span className="k">송출</span>
+                <span className="k">{en ? "Output" : "송출"}</span>
                 <span className="v">RTMP · 2</span>
               </div>
             </div>
@@ -245,9 +247,9 @@ function ExlinkConsole() {
         </div>
       </div>
       <div className="c-foot">
-        <span className="g">EXLINK 통합 코어 · 운영자 1인</span>
+        <span className="g">{en ? "EXLINK unified core · 1 operator" : "EXLINK 통합 코어 · 운영자 1인"}</span>
         <span className="g">
-          렌더 부하{" "}
+          {en ? "Render load" : "렌더 부하"}{" "}
           <span className="loadbar">
             <i />
           </span>{" "}
@@ -258,7 +260,7 @@ function ExlinkConsole() {
   );
 }
 
-export function Hero() {
+export function Hero({ locale = "ko" }: { locale?: Locale }) {
   const shellRef = useRef<HTMLDivElement>(null);
   const onMove = (e: PointerEvent<HTMLDivElement>) => {
     const el = shellRef.current;
@@ -267,6 +269,7 @@ export function Hero() {
     el.style.setProperty("--mx", `${e.clientX - r.left}px`);
     el.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
+  const en = locale === "en";
   return (
     <section className="hero">
       <div className="hero-glow" aria-hidden="true" />
@@ -275,19 +278,31 @@ export function Hero() {
 
       <div className="container-ex hero-in">
         <h1 className="hero-h1">
-          기술의 연결로
-          <br />
-          경험을 <span className="grad">확장하다</span>
+          {en ? (
+            <>
+              Expand experiences
+              <br />
+              by connecting <span className="grad">technology</span>
+            </>
+          ) : (
+            <>
+              기술의 연결로
+              <br />
+              경험을 <span className="grad">확장하다</span>
+            </>
+          )}
         </h1>
         <p className="hero-lead">
-          이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을 하나의 흐름으로 연결합니다.
+          {en
+            ? "EX connects capture, tracking, rendering, and streaming for real-time XR and virtual production into a single workflow."
+            : "이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을 하나의 흐름으로 연결합니다."}
         </p>
         <div className="hero-cta">
-          <Link href="/contact" className="btn btn--onDark focus-on-dark">
-            프로젝트 시작 →
+          <Link href={withLocale("/contact", locale)} className="btn btn--onDark focus-on-dark">
+            {en ? "Start a project →" : "프로젝트 시작 →"}
           </Link>
-          <Link href="/solution/xr-solution" className="btn btn--glow focus-on-dark">
-            EXLINK 둘러보기
+          <Link href={withLocale("/solution/xr-solution", locale)} className="btn btn--glow focus-on-dark">
+            {en ? "Explore EXLINK" : "EXLINK 둘러보기"}
           </Link>
         </div>
       </div>
@@ -295,7 +310,7 @@ export function Hero() {
       <div className="container-ex console-shell" ref={shellRef} onPointerMove={onMove}>
         <div className="edge" aria-hidden="true" />
         <div className="spot" aria-hidden="true" />
-        <ExlinkConsole />
+        <ExlinkConsole locale={locale} />
       </div>
 
       <div className="hero-fade" aria-hidden="true" />

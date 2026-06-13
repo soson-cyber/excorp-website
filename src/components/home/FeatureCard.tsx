@@ -4,6 +4,7 @@
 // with scroll-reveal. Used by the Home §01 "What We Do" grid.
 import Link from "next/link";
 import { useEffect, useRef, type MouseEvent } from "react";
+import type { Locale } from "@/lib/i18n";
 
 export function FeatureCard({
   idx,
@@ -13,6 +14,7 @@ export function FeatureCard({
   href,
   delay = 0,
   full = false,
+  locale = "ko",
 }: {
   idx: string;
   tag: string;
@@ -21,6 +23,7 @@ export function FeatureCard({
   href: string;
   delay?: number;
   full?: boolean;
+  locale?: Locale;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -60,7 +63,7 @@ export function FeatureCard({
         <h3 className="feat-title">{title}</h3>
         <p className="feat-desc">{desc}</p>
         <Link href={href} className="feat-link">
-          자세히 <span aria-hidden="true">→</span>
+          {locale === "en" ? "Learn more" : "자세히"} <span aria-hidden="true">→</span>
         </Link>
       </div>
     </div>

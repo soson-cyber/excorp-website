@@ -11,7 +11,7 @@ import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/Jso
 
 export const metadata: Metadata = {
   title: "Moverse 한국 총판 — 마커리스 AI 모션캡처",
-  alternates: { canonical: "/product/moverse" },
+  alternates: { canonical: "/product/moverse", languages: { "ko-KR": "/product/moverse", "en-US": "/en/product/moverse", "x-default": "/product/moverse" } },
   description:
     "마커·수트 없이 표준 RGB 카메라로 최대 4명을 실시간 캡처하는 마커리스 AI 모션캡처 Moverse. 로컬 실시간 캡처 + 클라우드 Portal의 AI Reprocessing(지터 제거·손가락 트래킹). Unreal 연동·표준 리그 익스포트. 버추얼 아이돌·VTuber full body tracking, 게임 모션캡처에 활용합니다. EX 공식 한국 총판.",
 };

@@ -9,6 +9,8 @@ export const site = {
   subTitle: "All-in-One, Real-time XR Content Production Solution",
   mission:
     "AI와 XR 기술을 연결하여, 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다.",
+  missionEn:
+    "We connect AI and XR to create new content experiences where the physical and virtual converge.",
   social: {
     instagram: "https://www.instagram.com/excorp_kr",
     facebook: "https://www.facebook.com/EXCorp.Story",
@@ -163,6 +165,7 @@ export const locations = [
     kind: "Office",
     name: "EX AI Office",
     address: "경기 성남시 수정구 금토동 327, 스타트업스퀘어 B동 3층",
+    addressEn: "3F, Startup Square Bldg. B, 327 Geumto-dong, Sujeong-gu, Seongnam-si, Gyeonggi-do",
     zip: "461380",
     tel: "",
     mapEmbed:
@@ -172,6 +175,7 @@ export const locations = [
     kind: "Studio",
     name: "EX XR Studio",
     address: "경기도 하남시 미사대로 540, 현대한강미사2차 B동 530호",
+    addressEn: "Bldg. B #530, Hyundai Hangang Misa 2-cha, 540 Misa-daero, Hanam-si, Gyeonggi-do",
     zip: "12925",
     tel: "031-699-8228",
     mapEmbed:

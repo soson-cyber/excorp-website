@@ -10,7 +10,7 @@ import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "XR 솔루션 구축 · 버추얼 프로덕션",
-  alternates: { canonical: "/solution" },
+  alternates: { canonical: "/solution", languages: { "ko-KR": "/solution", "en-US": "/en/solution", "x-default": "/solution" } },
   description:
     "EX 자체 통합 XR 솔루션 EXLINK와 버추얼 프로덕션 구축. 촬영·트래킹·렌더·송출을 하나로 묶어 현장에 맞는 실시간 XR 환경을 구성하고, 도입 상담·견적부터 운영까지 지원합니다.",
 };

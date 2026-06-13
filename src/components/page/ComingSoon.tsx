@@ -1,23 +1,49 @@
 import { Button } from "@/components/ui/Button";
+import type { Locale } from "@/lib/i18n";
+import { withLocale } from "@/lib/i18n";
+
+const COPY = {
+  ko: {
+    badge: "준비 중",
+    title: "콘텐츠를 준비하고 있습니다",
+    description: "곧 새로운 내용으로 찾아뵙겠습니다. 먼저 상담이 필요하시면 언제든 문의해 주세요.",
+    ctaLabel: "문의하기 →",
+  },
+  en: {
+    badge: "Coming soon",
+    title: "We're putting this together",
+    description: "New content is on the way. If you'd like to talk in the meantime, reach out anytime.",
+    ctaLabel: "Contact us →",
+  },
+} as const;
 
 /*
   콘텐츠 준비 중 — 재사용 빈 상태(empty state).
   아직 콘텐츠가 없는 페이지/섹션에 임시로 적용한다. 다크 product-led 토큰 사용.
+  locale 미지정 시 ko. badge/title/description/ctaLabel을 직접 넘기면 그 값이 우선.
 */
 export function ComingSoon({
-  badge = "준비 중",
-  title = "콘텐츠를 준비하고 있습니다",
-  description = "곧 새로운 내용으로 찾아뵙겠습니다. 먼저 상담이 필요하시면 언제든 문의해 주세요.",
+  locale = "ko",
+  badge,
+  title,
+  description,
   ctaHref = "/contact",
-  ctaLabel = "문의하기 →",
+  ctaLabel,
 }: {
+  locale?: Locale;
   badge?: string;
   title?: string;
   description?: string;
-  /** null이면 CTA 버튼을 숨긴다. */
+  /** null이면 CTA 버튼을 숨긴다. ko 기준 경로를 넘기면 locale에 맞게 프리픽스된다. */
   ctaHref?: string | null;
   ctaLabel?: string;
 }) {
+  const t = COPY[locale];
+  badge ??= t.badge;
+  title ??= t.title;
+  description ??= t.description;
+  ctaLabel ??= t.ctaLabel;
+  const resolvedHref = ctaHref ? withLocale(ctaHref, locale) : null;
   return (
     <div className="mx-auto max-w-xl px-4 py-20 text-center sm:py-28">
       {/* 글리프 */}
@@ -38,9 +64,9 @@ export function ComingSoon({
       <h2 className="mt-5 text-balance text-2xl font-bold leading-snug text-fg md:text-3xl">{title}</h2>
       <p className="mx-auto mt-4 max-w-md text-pretty leading-relaxed text-muted">{description}</p>
 
-      {ctaHref && (
+      {resolvedHref && (
         <div className="mt-8 flex justify-center">
-          <Button href={ctaHref} variant="accent">
+          <Button href={resolvedHref} variant="accent">
             {ctaLabel}
           </Button>
         </div>

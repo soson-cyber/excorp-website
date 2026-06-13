@@ -10,7 +10,7 @@ import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "EXLINK — XR 스튜디오 구축 통합 솔루션",
-  alternates: { canonical: "/solution/xr-solution" },
+  alternates: { canonical: "/solution/xr-solution", languages: { "ko-KR": "/solution/xr-solution", "en-US": "/en/solution/xr-solution", "x-default": "/solution/xr-solution" } },
   description:
     "EXLINK는 촬영·트래킹·렌더·송출을 단일 제어 흐름으로 묶는 EX 자체 개발 올인원 실시간 XR 솔루션입니다. XR 스튜디오 구축부터 운영자 1인 중심 워크플로우까지, 견적·도입을 상담합니다.",
 };

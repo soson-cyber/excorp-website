@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav } from "@/lib/site";
+import { localeFromPathname, withLocale, oppositePath, ui } from "@/lib/i18n";
 
 export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -17,6 +18,10 @@ export function Header() {
   const [atHeroTop, setAtHeroTop] = useState(true);
 
   const pathname = usePathname();
+  const locale = localeFromPathname(pathname);
+  const t = ui[locale];
+  // 같은 페이지의 반대 언어 경로(언어 토글용).
+  const otherPath = oppositePath(pathname);
 
   // Transparent over the dark hero so its aurora/colour bleeds behind the bar;
   // flips to dark-glass once the hero scrolls away (or the mobile sheet opens).
@@ -99,7 +104,7 @@ export function Header() {
   return (
     <header className={`header ${overHero ? "header--overHero" : "header--solid"}${mobileOpen ? " header--sheet" : ""}`}>
       <div className="container-ex header__inner">
-        <Link href="/" className="focus-on-dark flex items-center" aria-label="EX Corporation 홈">
+        <Link href={withLocale("/", locale)} className="focus-on-dark flex items-center" aria-label="EX Corporation 홈">
           {/* 작은 고정 크기 브랜드 심볼 — 옵티마이저 우회(unoptimized)로 원본 PNG 직접 사용.
               (dev 이미지 옵티마이저가 소형 PNG의 대형 변형에서 멈춰 로고가 안 뜨던 문제 회피) */}
           <Image src="/ex-cube.png" alt="" width={120} height={120} priority unoptimized className="logo logo--symbol" />
@@ -124,7 +129,7 @@ export function Header() {
                 }}
               >
                 <Link
-                  href={item.href}
+                  href={withLocale(item.href, locale)}
                   className="navlink focus-on-dark"
                   aria-haspopup={item.children ? "true" : undefined}
                   aria-expanded={item.children ? openMenu === item.label : undefined}
@@ -151,20 +156,23 @@ export function Header() {
                 {item.children && openMenu === item.label && (
                   <div className="dropdown" style={alignRight ? { right: 0, left: "auto" } : undefined}>
                     <div className="dropdown__panel">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="dropdown__row"
-                          onClick={() => setOpenMenu(null)}
-                        >
-                          <span className="dropdown__top">
-                            <span className="dropdown__name">{child.label}</span>
-                            {child.tag && <span className="tag">{child.tag}</span>}
-                          </span>
-                          {child.desc && <span className="dropdown__desc">{child.desc}</span>}
-                        </Link>
-                      ))}
+                      {item.children.map((child) => {
+                        const desc = t.navDesc[child.href] ?? child.desc;
+                        return (
+                          <Link
+                            key={child.href}
+                            href={withLocale(child.href, locale)}
+                            className="dropdown__row"
+                            onClick={() => setOpenMenu(null)}
+                          >
+                            <span className="dropdown__top">
+                              <span className="dropdown__name">{child.label}</span>
+                              {child.tag && <span className="tag">{child.tag}</span>}
+                            </span>
+                            {desc && <span className="dropdown__desc">{desc}</span>}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -174,8 +182,31 @@ export function Header() {
         </nav>
 
         <div className="desktop-cta">
-          <Link href="/contact" className="btn btn--onDark btn--sm focus-on-dark">
-            문의하기
+          <span className="lang-toggle focus-on-dark" role="group" aria-label={t.langToggleAria}>
+            {locale === "ko" ? (
+              <span className="lang-toggle__on" aria-current="true">
+                KO
+              </span>
+            ) : (
+              <Link href={otherPath} className="lang-toggle__off">
+                KO
+              </Link>
+            )}
+            <span className="lang-toggle__sep" aria-hidden="true">
+              /
+            </span>
+            {locale === "en" ? (
+              <span className="lang-toggle__on" aria-current="true">
+                EN
+              </span>
+            ) : (
+              <Link href={otherPath} className="lang-toggle__off">
+                EN
+              </Link>
+            )}
+          </span>
+          <Link href={withLocale("/contact", locale)} className="btn btn--onDark btn--sm focus-on-dark">
+            {t.headerCta}
           </Link>
         </div>
 
@@ -245,7 +276,7 @@ export function Header() {
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
-                            href={child.href}
+                            href={withLocale(child.href, locale)}
                             className="mobile__subitem focus-on-dark"
                             onClick={closeMobile}
                           >
@@ -255,7 +286,7 @@ export function Header() {
                       </div>
                     </>
                   ) : (
-                    <Link href={item.href} className="mobile__item focus-on-dark" onClick={closeMobile}>
+                    <Link href={withLocale(item.href, locale)} className="mobile__item focus-on-dark" onClick={closeMobile}>
                       <span>{item.label}</span>
                     </Link>
                   )}
@@ -263,9 +294,32 @@ export function Header() {
               );
             })}
             <div className="mobile__foot">
-              <Link href="/contact" className="btn btn--onDark focus-on-dark" onClick={closeMobile}>
-                문의하기
+              <Link href={withLocale("/contact", locale)} className="btn btn--onDark focus-on-dark" onClick={closeMobile}>
+                {t.headerCta}
               </Link>
+              <span className="lang-toggle focus-on-dark" role="group" aria-label={t.langToggleAria}>
+                {locale === "ko" ? (
+                  <span className="lang-toggle__on" aria-current="true">
+                    KO
+                  </span>
+                ) : (
+                  <Link href={otherPath} className="lang-toggle__off" onClick={closeMobile}>
+                    KO
+                  </Link>
+                )}
+                <span className="lang-toggle__sep" aria-hidden="true">
+                  /
+                </span>
+                {locale === "en" ? (
+                  <span className="lang-toggle__on" aria-current="true">
+                    EN
+                  </span>
+                ) : (
+                  <Link href={otherPath} className="lang-toggle__off" onClick={closeMobile}>
+                    EN
+                  </Link>
+                )}
+              </span>
             </div>
           </nav>
         </div>

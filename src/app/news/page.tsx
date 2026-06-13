@@ -13,7 +13,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "뉴스 & 인사이트 — 버추얼 프로덕션·XR 가이드",
-  alternates: { canonical: "/news" },
+  alternates: { canonical: "/news", languages: { "ko-KR": "/news", "en-US": "/en/news", "x-default": "/news" } },
   description:
     "버추얼 프로덕션이란 무엇인지, 인카메라 VFX 원리와 언리얼엔진 방송 활용까지. EX의 기술 인사이트와 보도자료, 파트너십·스튜디오 소식을 전합니다.",
 };

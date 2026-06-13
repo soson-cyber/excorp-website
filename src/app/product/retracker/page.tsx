@@ -10,7 +10,7 @@ import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/Jso
 
 export const metadata: Metadata = {
   title: "RETracker 한국 총판 — 마커리스 카메라 트래킹",
-  alternates: { canonical: "/product/retracker" },
+  alternates: { canonical: "/product/retracker", languages: { "ko-KR": "/product/retracker", "en-US": "/en/product/retracker", "x-default": "/product/retracker" } },
   description:
     "천장 마커 없이 동작하는 6-DOF 마커리스 카메라 트래킹 RETracker. Bliss G2 센서 + Fizz 2 Pro 렌즈 인코더. 오차 <1cm/10m, 500fps IMU 퓨전, Unreal·Aximmetry 연동. 카메라 트래킹 시스템 도입·RETracker 견적을 공식 한국 총판으로서 상담합니다.",
 };

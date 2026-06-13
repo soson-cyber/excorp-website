@@ -10,7 +10,7 @@ import { JsonLd, breadcrumbLd, localBusinessLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "하남 XR 스튜디오 대관·제작 — 버추얼 프로덕션",
-  alternates: { canonical: "/xr-studio" },
+  alternates: { canonical: "/xr-studio", languages: { "ko-KR": "/xr-studio", "en-US": "/en/xr-studio", "x-default": "/xr-studio" } },
   description:
     "하남 EX XR 스튜디오. 대형 그린 크로마(W10×D7×H4, 약 70㎡)와 실시간 XR 기술로 IR·웨비나·토크 콘텐츠를 기획부터 촬영·송출까지 한 번에 제작합니다. 목적별 메뉴(S·M·L) 구성과 맞춤 견적 안내.",
 };

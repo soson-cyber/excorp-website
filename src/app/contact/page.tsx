@@ -8,7 +8,7 @@ import { JsonLd, breadcrumbLd, abs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "문의하기",
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/contact", languages: { "ko-KR": "/contact", "en-US": "/en/contact", "x-default": "/contact" } },
   description:
     "EXLINK 솔루션 도입, 파트너 제품 도입, 하남 XR 스튜디오 제작 문의를 받습니다. 문의를 남기시면 담당자가 영업일 기준 1~2일 내 회신드립니다. 전화 031-699-8228.",
 };

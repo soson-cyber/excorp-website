@@ -1,12 +1,79 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { withLocale, type Locale } from "@/lib/i18n";
 
+// 문의 유형 — API로 전송되는 값은 ko로 통일(route.ts 수정 금지). 영문 폼은 라벨만 영어로 보여준다.
 const types = ["솔루션 도입", "제품 도입", "스튜디오 제작", "기술 지원", "일반 문의"] as const;
+const typeLabels: Record<Locale, Record<(typeof types)[number], string>> = {
+  ko: {
+    "솔루션 도입": "솔루션 도입",
+    "제품 도입": "제품 도입",
+    "스튜디오 제작": "스튜디오 제작",
+    "기술 지원": "기술 지원",
+    "일반 문의": "일반 문의",
+  },
+  en: {
+    "솔루션 도입": "Solution adoption",
+    "제품 도입": "Product adoption",
+    "스튜디오 제작": "Studio production",
+    "기술 지원": "Technical support",
+    "일반 문의": "General inquiry",
+  },
+};
+
+const COPY = {
+  ko: {
+    errMissing: "이름·이메일·문의 내용을 입력해 주세요.",
+    errEmail: "올바른 이메일 형식을 입력해 주세요.",
+    errConsent: "개인정보 수집·이용에 동의해 주세요.",
+    errSend: "전송에 실패했습니다. 잠시 후 다시 시도하거나 전화로 문의해 주세요.",
+    successTitle: "문의가 접수되었습니다.",
+    successBody: "담당자가 영업일 기준 1~2일 내에 회신드립니다.",
+    newInquiry: "새 문의 작성 →",
+    name: "이름",
+    company: "회사 / 기관",
+    email: "이메일",
+    type: "문의 유형",
+    message: "문의 내용",
+    required: "(필수)",
+    requiredNote: "표시는 필수 항목입니다.",
+    consent: "개인정보 수집·이용에 동의합니다.",
+    consentTag: "(필수)",
+    consentLink: "자세히 보기",
+    marketing: "(선택) EX의 소식·제품 정보 수신에 동의합니다.",
+    submit: "문의 보내기 →",
+    submitting: "전송 중…",
+  },
+  en: {
+    errMissing: "Please enter your name, email, and message.",
+    errEmail: "Please enter a valid email address.",
+    errConsent: "Please agree to the collection and use of personal information.",
+    errSend: "Something went wrong. Please try again shortly or reach us by phone.",
+    successTitle: "Your inquiry has been received.",
+    successBody: "A team member will get back to you within 1–2 business days.",
+    newInquiry: "Write a new inquiry →",
+    name: "Name",
+    company: "Company / Organization",
+    email: "Email",
+    type: "Inquiry type",
+    message: "Message",
+    required: "(required)",
+    requiredNote: "indicates a required field.",
+    consent: "I agree to the collection and use of my personal information.",
+    consentTag: "(required)",
+    consentLink: "Learn more",
+    marketing: "(optional) I'd like to receive news and product updates from EX.",
+    submit: "Send message →",
+    submitting: "Sending…",
+  },
+} as const;
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm({ defaultType }: { defaultType?: string }) {
+export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: string; locale?: Locale }) {
+  const t = COPY[locale];
+  const labels = typeLabels[locale];
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [invalid, setInvalid] = useState<string[]>([]);
@@ -31,21 +98,21 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
     const missing = ["name", "email", "message"].filter((k) => !String(data[k] ?? "").trim());
     if (missing.length) {
       setInvalid(missing);
-      setError("이름·이메일·문의 내용을 입력해 주세요.");
+      setError(t.errMissing);
       setStatus("error");
       focusField(missing[0]);
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email))) {
       setInvalid(["email"]);
-      setError("올바른 이메일 형식을 입력해 주세요.");
+      setError(t.errEmail);
       setStatus("error");
       focusField("email");
       return;
     }
     if (data.consent !== "on") {
       setInvalid(["consent"]);
-      setError("개인정보 수집·이용에 동의해 주세요.");
+      setError(t.errConsent);
       setStatus("error");
       focusField("consent");
       return;
@@ -68,7 +135,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       setStatus("success");
       form.reset();
     } catch {
-      setError("전송에 실패했습니다. 잠시 후 다시 시도하거나 전화로 문의해 주세요.");
+      setError(t.errSend);
       setStatus("error");
     }
   }
@@ -77,15 +144,15 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
     return (
       <div role="status" className="rounded-2xl border border-success/40 bg-surface p-8 text-center">
         <p ref={successRef} tabIndex={-1} className="font-semibold text-success outline-none">
-          문의가 접수되었습니다.
+          {t.successTitle}
         </p>
-        <p className="mt-2 text-sm text-muted">담당자가 영업일 기준 1~2일 내에 회신드립니다.</p>
+        <p className="mt-2 text-sm text-muted">{t.successBody}</p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="mt-5 text-sm font-medium text-lav hover:underline"
         >
-          새 문의 작성 →
+          {t.newInquiry}
         </button>
       </div>
     );
@@ -100,8 +167,8 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="cf-name" className="mb-1.5 block text-xs font-medium text-muted">
-            이름 <span aria-hidden="true" className="text-lav">*</span>
-            <span className="sr-only">(필수)</span>
+            {t.name} <span aria-hidden="true" className="text-lav">*</span>
+            <span className="sr-only">{t.required}</span>
           </label>
           <input
             id="cf-name"
@@ -115,15 +182,15 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
         </div>
         <div>
           <label htmlFor="cf-company" className="mb-1.5 block text-xs font-medium text-muted">
-            회사 / 기관
+            {t.company}
           </label>
           <input id="cf-company" name="company" autoComplete="organization" className={field} />
         </div>
       </div>
       <div>
         <label htmlFor="cf-email" className="mb-1.5 block text-xs font-medium text-muted">
-          이메일 <span aria-hidden="true" className="text-lav">*</span>
-          <span className="sr-only">(필수)</span>
+          {t.email} <span aria-hidden="true" className="text-lav">*</span>
+          <span className="sr-only">{t.required}</span>
         </label>
         <input
           id="cf-email"
@@ -138,20 +205,20 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       </div>
       <div>
         <label htmlFor="cf-type" className="mb-1.5 block text-xs font-medium text-muted">
-          문의 유형
+          {t.type}
         </label>
         <select id="cf-type" name="type" defaultValue={defaultType ?? types[0]} className={field}>
-          {types.map((t) => (
-            <option key={t} value={t}>
-              {t}
+          {types.map((opt) => (
+            <option key={opt} value={opt}>
+              {labels[opt]}
             </option>
           ))}
         </select>
       </div>
       <div>
         <label htmlFor="cf-message" className="mb-1.5 block text-xs font-medium text-muted">
-          문의 내용 <span aria-hidden="true" className="text-lav">*</span>
-          <span className="sr-only">(필수)</span>
+          {t.message} <span aria-hidden="true" className="text-lav">*</span>
+          <span className="sr-only">{t.required}</span>
         </label>
         <textarea
           id="cf-message"
@@ -171,7 +238,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
       )}
 
       <p className="text-xs text-faint">
-        <span aria-hidden="true">*</span> 표시는 필수 항목입니다.
+        <span aria-hidden="true">*</span> {t.requiredNote}
       </p>
 
       <div className="flex items-start gap-2.5">
@@ -185,14 +252,14 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
           aria-describedby={describedBy("consent")}
         />
         <label htmlFor="cf-consent" className="text-xs leading-relaxed text-muted">
-          개인정보 수집·이용에 동의합니다. <span className="text-lav">(필수)</span>{" "}
+          {t.consent} <span className="text-lav">{t.consentTag}</span>{" "}
           <a
-            href="/privacy"
+            href={withLocale("/privacy", locale)}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-lav underline-offset-4 hover:underline"
           >
-            자세히 보기
+            {t.consentLink}
           </a>
         </label>
       </div>
@@ -205,7 +272,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-border bg-card text-primary accent-primary focus:ring-primary"
         />
         <label htmlFor="cf-marketing" className="text-xs leading-relaxed text-muted">
-          (선택) EX의 소식·제품 정보 수신에 동의합니다.
+          {t.marketing}
         </label>
       </div>
 
@@ -214,7 +281,7 @@ export function ContactForm({ defaultType }: { defaultType?: string }) {
         disabled={status === "submitting"}
         className="inline-flex items-center justify-center gap-1.5 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-hover disabled:opacity-60"
       >
-        {status === "submitting" ? "전송 중…" : "문의 보내기 →"}
+        {status === "submitting" ? t.submitting : t.submit}
       </button>
     </form>
   );

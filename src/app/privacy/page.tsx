@@ -4,7 +4,7 @@ import { PageHero } from "@/components/page/PageHero";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "이엑스 주식회사 개인정보 처리방침.",
-  alternates: { canonical: "/privacy" },
+  alternates: { canonical: "/privacy", languages: { "ko-KR": "/privacy", "en-US": "/en/privacy", "x-default": "/privacy" } },
 };
 
 const EFFECTIVE_DATE = "2026년 6월 11일";

@@ -6,25 +6,184 @@ import { FeatureCard } from "./FeatureCard";
 import { Reveal } from "@/components/motion/Reveal";
 import { CountUp } from "@/components/motion/CountUp";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { withLocale, type Locale } from "@/lib/i18n";
 
-/* ── data ──────────────────────────────────────────────────────────────── */
-const WHAT = [
-  { i: "01", tag: "EXLINK", title: "통합 XR 솔루션", desc: "자체 개발한 올인원 실시간 XR 제작·운영 솔루션", href: "/solution/xr-solution" },
-  { i: "02", tag: "PARTNER", title: "파트너 제품 유통", desc: "Aximmetry · Moverse · RETracker — 검증된 글로벌 XR 장비·SW 공급", href: "/product" },
-  { i: "03", tag: "STUDIO", title: "XR 콘텐츠 스튜디오", desc: "IR · 웨비나 · 대담을 실시간 XR로 제작하는 하남 스튜디오", href: "/xr-studio" },
-];
-const PARTNERS: { name: string; role: string; desc: string; initial: string; href: string; img?: string; objPos?: string }[] = [
-  { name: "Aximmetry", role: "Certified Reseller", desc: "리얼타임 버추얼 프로덕션 소프트웨어", initial: "A", href: "/product/aximmetry", img: "/aximmetry-vp.jpg" },
-  { name: "Moverse AI", role: "DISTRIBUTOR", desc: "마커리스 AI 모션캡처 시스템", initial: "M", href: "/product/moverse", img: "/moverse-mocap.jpg" },
-  { name: "RETracker", role: "DISTRIBUTOR", desc: "정밀 카메라 트래킹 솔루션", initial: "R", href: "/product/retracker", img: "/retracker-tracking.jpg" },
-];
-const STUDIO_BULLETS = ["후반 작업 없이 촬영과 동시에 완성", "대형 크로마 · 멀티캠 · XR 트래킹"];
-const STATS = [
-  { v: 6, s: "+", l: "기술 특허" },
-  { v: 3, s: "", l: "글로벌 파트너" },
-  { v: 3, s: "", l: "대학 MOU" },
-  { v: 4, s: "", l: "제품 인증" },
-];
+/* ── data (locale-keyed dicts) ───────────────────────────────────────────── */
+type Loc<T> = Record<Locale, T>;
+
+const WHAT: Loc<{ i: string; tag: string; title: string; desc: string; href: string }[]> = {
+  ko: [
+    { i: "01", tag: "EXLINK", title: "통합 XR 솔루션", desc: "자체 개발한 올인원 실시간 XR 제작·운영 솔루션", href: "/solution/xr-solution" },
+    { i: "02", tag: "PARTNER", title: "파트너 제품 유통", desc: "Aximmetry · Moverse · RETracker — 검증된 글로벌 XR 장비·SW 공급", href: "/product" },
+    { i: "03", tag: "STUDIO", title: "XR 콘텐츠 스튜디오", desc: "IR · 웨비나 · 대담을 실시간 XR로 제작하는 하남 스튜디오", href: "/xr-studio" },
+  ],
+  en: [
+    { i: "01", tag: "EXLINK", title: "Integrated XR solution", desc: "Our own all-in-one real-time XR production and operations solution", href: "/solution/xr-solution" },
+    { i: "02", tag: "PARTNER", title: "Partner product distribution", desc: "Aximmetry · Moverse · RETracker — proven global XR hardware and software", href: "/product" },
+    { i: "03", tag: "STUDIO", title: "XR content studio", desc: "Our Hanam studio produces IR sessions, webinars, and talks in real-time XR", href: "/xr-studio" },
+  ],
+};
+
+const PARTNERS: Loc<{ name: string; role: string; desc: string; initial: string; href: string; img?: string; objPos?: string }[]> = {
+  ko: [
+    { name: "Aximmetry", role: "Certified Reseller", desc: "리얼타임 버추얼 프로덕션 소프트웨어", initial: "A", href: "/product/aximmetry", img: "/aximmetry-vp.jpg" },
+    { name: "Moverse AI", role: "DISTRIBUTOR", desc: "마커리스 AI 모션캡처 시스템", initial: "M", href: "/product/moverse", img: "/moverse-mocap.jpg" },
+    { name: "RETracker", role: "DISTRIBUTOR", desc: "정밀 카메라 트래킹 솔루션", initial: "R", href: "/product/retracker", img: "/retracker-tracking.jpg" },
+  ],
+  en: [
+    { name: "Aximmetry", role: "Certified Reseller", desc: "Real-time virtual production software", initial: "A", href: "/product/aximmetry", img: "/aximmetry-vp.jpg" },
+    { name: "Moverse AI", role: "DISTRIBUTOR", desc: "Markerless AI motion capture system", initial: "M", href: "/product/moverse", img: "/moverse-mocap.jpg" },
+    { name: "RETracker", role: "DISTRIBUTOR", desc: "Precision camera tracking solution", initial: "R", href: "/product/retracker", img: "/retracker-tracking.jpg" },
+  ],
+};
+
+const STUDIO_BULLETS: Loc<string[]> = {
+  ko: ["후반 작업 없이 촬영과 동시에 완성", "대형 크로마 · 멀티캠 · XR 트래킹"],
+  en: ["Finished as you shoot — no post-production wait", "Large chroma stage · multicam · XR tracking"],
+};
+
+const STATS: Loc<{ v: number; s: string; l: string }[]> = {
+  ko: [
+    { v: 6, s: "+", l: "기술 특허" },
+    { v: 3, s: "", l: "글로벌 파트너" },
+    { v: 3, s: "", l: "대학 MOU" },
+    { v: 4, s: "", l: "제품 인증" },
+  ],
+  en: [
+    { v: 6, s: "+", l: "Technology patents" },
+    { v: 3, s: "", l: "Global partners" },
+    { v: 3, s: "", l: "University MOUs" },
+    { v: 4, s: "", l: "Product certifications" },
+  ],
+};
+
+/* Static section copy keyed by locale. */
+const COPY = {
+  ko: {
+    s01Label: "WHAT WE DO",
+    s01Title: (
+      <>
+        솔루션부터 스튜디오까지,{" "}
+        <br className="hidden sm:block" />
+        하나의 흐름으로
+      </>
+    ),
+    s01Lead: "EX는 실시간 XR 콘텐츠 제작의 전 과정을 솔루션 · 장비 · 스튜디오로 연결합니다.",
+    caseLabel: "EXLINK 구축사례",
+    caseTitle: (
+      <>
+        실시간{" "}
+        <br className="hidden lg:block" />
+        XR 방송 시스템을{" "}
+        <br className="hidden lg:block" />
+        하나로 통합
+      </>
+    ),
+    caseChip1: "운영 인력 4 → 1",
+    caseChip2: "셋업 시간 −70%",
+    caseLead:
+      "분산된 촬영·트래킹·렌더·송출 장비를 EXLINK로 통합하여, 운영 부담은 줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.",
+    caseNote: "※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.",
+    caseLink: "활용 시나리오 보기",
+    partnersLabel: "PARTNER PRODUCTS",
+    partnersTitle: (
+      <>
+        검증된 글로벌 XR 기술,{" "}
+        <br className="hidden sm:block" />
+        국내에 연결합니다
+      </>
+    ),
+    partnersLead:
+      "EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로 도입부터 기술지원과 운영교육까지 전 주기를 책임집니다.",
+    officialPartners: "공식 파트너 · OFFICIAL PARTNERS",
+    learnMore: "자세히",
+    studioTitle: (
+      <>
+        촬영이 곧 완성이 되는{" "}
+        <br className="hidden sm:block" />
+        실시간 XR 스튜디오
+      </>
+    ),
+    studioLead: "하남 70㎡ 그린 크로마에서 실시간 XR 콘텐츠를 제작합니다.",
+    studioLink: "스튜디오 둘러보기",
+    whyLabel: "WHY REAL-TIME XR",
+    whyQuote: "촬영과 동시에 결과물이 완성됩니다. 긴 후반 일정에 쫓기지 않고, 현장에서 바로 확인하고 끝낼 수 있습니다.",
+    whyNote: "실시간 XR 제작이 만드는 차이 — EXLINK · 파트너 기술 · 하남 스튜디오",
+    ctaLabel: "START A PROJECT",
+    ctaTitle: (
+      <>
+        당신의 다음 콘텐츠를{" "}
+        <br className="hidden sm:block" />
+        실시간 XR로 시작하세요
+      </>
+    ),
+    ctaLead: "솔루션 도입 · 제품 문의 · 스튜디오 제작 — 무엇이든 상담하세요.",
+    ctaPrimary: "도입 상담 →",
+    ctaSecondary: "회사 소개서 요청",
+  },
+  en: {
+    s01Label: "WHAT WE DO",
+    s01Title: (
+      <>
+        From solution to studio,{" "}
+        <br className="hidden sm:block" />
+        in one workflow
+      </>
+    ),
+    s01Lead: "EX connects every stage of real-time XR content production — solution, hardware, and studio.",
+    caseLabel: "EXLINK DEPLOYMENT",
+    caseTitle: (
+      <>
+        A real-time{" "}
+        <br className="hidden lg:block" />
+        XR broadcast system,{" "}
+        <br className="hidden lg:block" />
+        unified into one
+      </>
+    ),
+    caseChip1: "Crew 4 → 1",
+    caseChip2: "Setup time −70%",
+    caseLead:
+      "A representative scenario where EXLINK unifies scattered capture, tracking, rendering, and streaming hardware — lowering operational load while raising real-time compositing quality.",
+    caseNote: "* Figures above are illustrative expected outcomes and vary by configuration and environment.",
+    caseLink: "See use-case scenarios",
+    partnersLabel: "PARTNER PRODUCTS",
+    partnersTitle: (
+      <>
+        Proven global XR technology,{" "}
+        <br className="hidden sm:block" />
+        brought to your market
+      </>
+    ),
+    partnersLead:
+      "As an official reseller and distributor for world-class XR solutions, EX takes responsibility for the full cycle — from rollout to technical support and operator training.",
+    officialPartners: "OFFICIAL PARTNERS",
+    learnMore: "Learn more",
+    studioTitle: (
+      <>
+        A real-time XR studio{" "}
+        <br className="hidden sm:block" />
+        where the shoot is the finish
+      </>
+    ),
+    studioLead: "We produce real-time XR content in our 70㎡ green-chroma stage in Hanam.",
+    studioLink: "Tour the studio",
+    whyLabel: "WHY REAL-TIME XR",
+    whyQuote: "The result is finished the moment you shoot. No long post-production schedule — review and wrap on site.",
+    whyNote: "The difference real-time XR makes — EXLINK · partner technology · Hanam studio",
+    ctaLabel: "START A PROJECT",
+    ctaTitle: (
+      <>
+        Start your next content{" "}
+        <br className="hidden sm:block" />
+        in real-time XR
+      </>
+    ),
+    ctaLead: "Solution rollout · product inquiries · studio production — talk to us about anything.",
+    ctaPrimary: "Talk to us →",
+    ctaSecondary: "Request company profile",
+  },
+} satisfies Record<Locale, Record<string, ReactNode>>;
 
 function SectionHead({
   index,
@@ -59,37 +218,32 @@ function SectionHead({
   );
 }
 
-export function HomeClean() {
+export function HomeClean({ locale = "ko" }: { locale?: Locale }) {
+  const c = COPY[locale];
+  const what = WHAT[locale];
+  const partners = PARTNERS[locale];
+  const studioBullets = STUDIO_BULLETS[locale];
+  const stats = STATS[locale];
+
   return (
     <>
-      <Hero />
+      <Hero locale={locale} />
 
       {/* §01 — What we do (centered header + symmetric 3-card grid) */}
       <section className="section section--ink section--glow">
         <div className="container-ex">
-          <SectionHead
-            index="01"
-            label="WHAT WE DO"
-            title={
-              <>
-                솔루션부터 스튜디오까지,{" "}
-                <br className="hidden sm:block" />
-                하나의 흐름으로
-              </>
-            }
-            lead="EX는 실시간 XR 콘텐츠 제작의 전 과정을 솔루션 · 장비 · 스튜디오로 연결합니다."
-            center
-          />
+          <SectionHead index="01" label={c.s01Label as string} title={c.s01Title} lead={c.s01Lead} center />
           <div className="featgrid">
-            {WHAT.map((c, i) => (
+            {what.map((card, i) => (
               <FeatureCard
-                key={c.i}
-                idx={c.i}
-                tag={c.tag}
-                title={c.title}
-                desc={c.desc}
-                href={c.href}
+                key={card.i}
+                idx={card.i}
+                tag={card.tag}
+                title={card.title}
+                desc={card.desc}
+                href={withLocale(card.href, locale)}
                 delay={i * 90}
+                locale={locale}
               />
             ))}
           </div>
@@ -108,30 +262,26 @@ export function HomeClean() {
             </div>
           </Reveal>
           <Reveal>
-            <SectionLabel index="CASE">EXLINK 구축사례</SectionLabel>
+            <SectionLabel index="CASE">{c.caseLabel}</SectionLabel>
             <h2 className="h2" style={{ marginTop: 22 }}>
-              실시간{" "}
-              <br className="hidden lg:block" />
-              XR 방송 시스템을{" "}
-              <br className="hidden lg:block" />
-              하나로 통합
+              {c.caseTitle}
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 28 }}>
               <div className="statchip">
-                <div className="statchip-v">운영 인력 4 → 1</div>
+                <div className="statchip-v">{c.caseChip1}</div>
               </div>
               <div className="statchip">
-                <div className="statchip-v">셋업 시간 −70%</div>
+                <div className="statchip-v">{c.caseChip2}</div>
               </div>
             </div>
             <p className="lead" style={{ maxWidth: "36rem" }}>
-              분산된 촬영·트래킹·렌더·송출 장비를 EXLINK로 통합하여, 운영 부담은 줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.
+              {c.caseLead}
             </p>
             <p style={{ marginTop: 12, fontSize: 13, color: "var(--color-faint)", maxWidth: "36rem" }}>
-              ※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
+              {c.caseNote}
             </p>
-            <Link href="/work" className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
-              활용 시나리오 보기{" "}
+            <Link href={withLocale("/work", locale)} className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
+              {c.caseLink}{" "}
               <span className="ar" aria-hidden="true">
                 →
               </span>
@@ -143,22 +293,10 @@ export function HomeClean() {
       {/* §03 — Partner products */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead
-            index="03"
-            label="PARTNER PRODUCTS"
-            title={
-              <>
-                검증된 글로벌 XR 기술,{" "}
-                <br className="hidden sm:block" />
-                국내에 연결합니다
-              </>
-            }
-            lead="EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로 도입부터 기술지원과 운영교육까지 전 주기를 책임집니다."
-            narrow
-          />
+          <SectionHead index="03" label={c.partnersLabel as string} title={c.partnersTitle} lead={c.partnersLead} narrow />
           <Reveal>
             <p className="cap" style={{ marginTop: 40 }}>
-              공식 파트너 · OFFICIAL PARTNERS
+              {c.officialPartners}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 16, alignItems: "center" }}>
               <span className="cred">
@@ -186,7 +324,7 @@ export function HomeClean() {
             </div>
           </Reveal>
           <div className="partner-bento">
-            {PARTNERS.map((p, i) => (
+            {partners.map((p, i) => (
               <Reveal key={p.name} delay={i * 90} className={`card cardpad${p.img ? " card--media" : ""}`}>
                 {p.img && (
                   <>
@@ -200,8 +338,8 @@ export function HomeClean() {
                 </div>
                 <h3 className="cardtitle">{p.name}</h3>
                 <p className="carddesc">{p.desc}</p>
-                <Link href={p.href} className="arrowlink" style={{ marginTop: 24 }}>
-                  자세히{" "}
+                <Link href={withLocale(p.href, locale)} className="arrowlink" style={{ marginTop: 24 }}>
+                  {c.learnMore}{" "}
                   <span className="ar" aria-hidden="true">
                     →
                   </span>
@@ -232,23 +370,21 @@ export function HomeClean() {
           <Reveal>
             <SectionLabel index="04">XR STUDIO</SectionLabel>
             <h2 className="h2" style={{ marginTop: 22 }}>
-              촬영이 곧 완성이 되는{" "}
-              <br className="hidden sm:block" />
-              실시간 XR 스튜디오
+              {c.studioTitle}
             </h2>
             <p className="lead" style={{ maxWidth: "36rem" }}>
-              하남 70㎡ 그린 크로마에서 실시간 XR 콘텐츠를 제작합니다.
+              {c.studioLead}
             </p>
             <ul className="bullets">
-              {STUDIO_BULLETS.map((b) => (
+              {studioBullets.map((b) => (
                 <li key={b}>
                   <span className="bdot" />
                   {b}
                 </li>
               ))}
             </ul>
-            <Link href="/xr-studio" className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
-              스튜디오 둘러보기{" "}
+            <Link href={withLocale("/xr-studio", locale)} className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
+              {c.studioLink}{" "}
               <span className="ar" aria-hidden="true">
                 →
               </span>
@@ -264,7 +400,7 @@ export function HomeClean() {
             <SectionLabel index="05">BY THE NUMBERS</SectionLabel>
           </Reveal>
           <Reveal className="statgrid">
-            {STATS.map((s) => (
+            {stats.map((s) => (
               <div key={s.l} className="statcell">
                 <CountUp value={s.v} suffix={s.s} className="statnum" />
                 <span className="statlabel">{s.l}</span>
@@ -280,15 +416,10 @@ export function HomeClean() {
           <Reveal>
             <span className="quote-ey">
               <span className="quote-bar" />
-              WHY REAL-TIME XR
+              {c.whyLabel}
             </span>
-            <p className="quote-txt">
-              촬영과 동시에 결과물이 완성됩니다. 긴 후반 일정에 쫓기지 않고, 현장에서 바로 확인하고 끝낼 수
-              있습니다.
-            </p>
-            <p style={{ marginTop: 24, fontSize: 14, color: "var(--color-faint)" }}>
-              실시간 XR 제작이 만드는 차이 — EXLINK · 파트너 기술 · 하남 스튜디오
-            </p>
+            <p className="quote-txt">{c.whyQuote}</p>
+            <p style={{ marginTop: 24, fontSize: 14, color: "var(--color-faint)" }}>{c.whyNote}</p>
           </Reveal>
         </div>
       </section>
@@ -300,22 +431,20 @@ export function HomeClean() {
             <div className="ctacard">
               <span className="cta-ey">
                 <span className="cta-bar" />
-                START A PROJECT
+                {c.ctaLabel}
               </span>
               <h2 className="h2" style={{ marginTop: 22 }}>
-                당신의 다음 콘텐츠를{" "}
-                <br className="hidden sm:block" />
-                실시간 XR로 시작하세요
+                {c.ctaTitle}
               </h2>
               <p style={{ margin: "16px auto 0", maxWidth: "34rem", fontSize: 17, color: "var(--color-footer-link)" }}>
-                솔루션 도입 · 제품 문의 · 스튜디오 제작 — 무엇이든 상담하세요.
+                {c.ctaLead}
               </p>
               <div className="hero-cta" style={{ justifyContent: "center" }}>
-                <Link href="/contact" className="btn btn--pink">
-                  도입 상담 →
+                <Link href={withLocale("/contact", locale)} className="btn btn--pink">
+                  {c.ctaPrimary}
                 </Link>
-                <Link href="/support" className="btn btn--ghostDark">
-                  회사 소개서 요청
+                <Link href={withLocale("/support", locale)} className="btn btn--ghostDark">
+                  {c.ctaSecondary}
                 </Link>
               </div>
             </div>

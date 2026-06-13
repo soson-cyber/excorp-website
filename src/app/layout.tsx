@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { site, sameAs, SITE_URL } from "@/lib/site";
+import { ui } from "@/lib/i18n";
 
 // 국내 전화번호(031-699-8228) → E.164(+82-31-699-8228). JSON-LD telephone 단일 변환.
 const telE164 = `+82-${site.contact.tel.replace(/^0/, "")}`;
@@ -68,6 +69,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 전 페이지 정적 생성 유지를 위해 서버에서 locale을 읽지 않는다(headers() 미사용).
+  // <html lang>은 정적 ko로 출력하고, /en 경로면 hydration 이전(beforeInteractive)에
+  // 스크립트로 'en'으로 보정한다 — JS 실행 크롤러(구글)는 정확, hreflang(각 페이지 metadata)로 보완.
   return (
     <html
       lang="ko"
@@ -78,12 +82,12 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-bg text-fg">
         <GoogleAnalytics />
         {/* Enable scroll-reveal only when motion is allowed (pre-hydration, no-flash, no-JS safe).
-            Sets a data attribute (not className) to avoid hydration mismatch on <html>. */}
+            Also corrects <html lang> for /en routes before paint (static HTML stays ko). */}
         <Script id="anim-gate" strategy="beforeInteractive">
-          {`try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.setAttribute('data-anim','')}}catch(e){}`}
+          {`try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.setAttribute('data-anim','')}if(location.pathname==='/en'||location.pathname.indexOf('/en/')===0){document.documentElement.lang='en'}}catch(e){}`}
         </Script>
         <a href="#main" className="skip-link">
-          본문 바로가기
+          {ui.ko.skipToContent}
         </a>
         <Script
           id="org-jsonld"

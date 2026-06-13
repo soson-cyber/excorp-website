@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import type { Locale } from "@/lib/i18n";
 
 /*
   News & Insight — 카테고리 필터(클라이언트) + 카드 그리드.
@@ -22,13 +23,41 @@ export type NewsItem = {
 };
 type Item = NewsItem;
 
+// 카테고리 캐논 키(= NewsItem.cat). "전체"는 필터 전용(아이템 cat 아님).
 const categories = ["전체", "보도자료", "케이스", "인사이트", "자료실"] as const;
+
+// locale별 UI 카피. cat 캐논 키는 ko 라벨과 동일하므로 ko는 식별 매핑, en은 영문 라벨.
+const COPY = {
+  ko: {
+    catLabel: { 전체: "전체", 보도자료: "보도자료", 케이스: "케이스", 인사이트: "인사이트", 자료실: "자료실" },
+    readMore: "자세히",
+    emptyTitle: (cat: string) => `${cat} 콘텐츠는 준비 중입니다.`,
+    viewAll: "전체 보기 →",
+    cmsNote: "콘텐츠는 CMS 연동 시 자동 업데이트됩니다.",
+  },
+  en: {
+    catLabel: { 전체: "All", 보도자료: "Press", 케이스: "Case Studies", 인사이트: "Insights", 자료실: "Resources" },
+    readMore: "Read more",
+    emptyTitle: (cat: string) => `${cat} content is on the way.`,
+    viewAll: "View all →",
+    cmsNote: "Content updates automatically once the CMS is connected.",
+  },
+} as const;
 
 function catClass(cat: Item["cat"]) {
   return cat === "보도자료" ? "bg-accent-soft text-accent-bright" : "bg-primary-soft text-lav";
 }
 
-export function NewsList({ press, insights = [] }: { press: Item[]; insights?: Item[] }) {
+export function NewsList({
+  press,
+  insights = [],
+  locale = "ko",
+}: {
+  press: Item[];
+  insights?: Item[];
+  locale?: Locale;
+}) {
+  const t = COPY[locale];
   const items: Item[] = [...press, ...insights];
   const [active, setActive] = useState<(typeof categories)[number]>("전체");
   const list = active === "전체" ? items : items.filter((i) => i.cat === active);
@@ -52,7 +81,7 @@ export function NewsList({ press, insights = [] }: { press: Item[]; insights?: I
                   : "border border-border bg-card text-muted hover:border-primary/50 hover:text-fg"
               }`}
             >
-              {c}
+              {t.catLabel[c]}
               <span className={`ml-1.5 font-mono text-[11px] ${on ? "text-white/70" : "text-faint"}`}>{count}</span>
             </button>
           );
@@ -74,7 +103,7 @@ export function NewsList({ press, insights = [] }: { press: Item[]; insights?: I
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${catClass(n.cat)}`}>
-                    {n.cat}
+                    {t.catLabel[n.cat]}
                   </span>
                   <span className="font-mono text-xs text-faint">{n.year}</span>
                 </div>
@@ -84,7 +113,7 @@ export function NewsList({ press, insights = [] }: { press: Item[]; insights?: I
                 )}
                 {n.href && (
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-lav">
-                    자세히 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+                    {t.readMore} <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
                   </span>
                 )}
               </>
@@ -118,18 +147,18 @@ export function NewsList({ press, insights = [] }: { press: Item[]; insights?: I
             <rect x="3" y="4.5" width="18" height="15" rx="2" />
             <path d="M3 9h18M8 4.5v15" />
           </svg>
-          <p className="mt-4 text-sm text-muted">{active} 콘텐츠는 준비 중입니다.</p>
+          <p className="mt-4 text-sm text-muted">{t.emptyTitle(t.catLabel[active])}</p>
           <button
             type="button"
             onClick={() => setActive("전체")}
             className="mt-4 text-sm font-medium text-lav transition-colors hover:text-lav-hover"
           >
-            전체 보기 →
+            {t.viewAll}
           </button>
         </div>
       )}
 
-      <p className="mt-8 font-mono text-xs text-faint">콘텐츠는 CMS 연동 시 자동 업데이트됩니다.</p>
+      <p className="mt-8 font-mono text-xs text-faint">{t.cmsNote}</p>
     </div>
   );
 }

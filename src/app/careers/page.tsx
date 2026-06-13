@@ -13,7 +13,7 @@ const applyMailto = `mailto:${site.contact.careersEmail}?subject=${encodeURIComp
 // 풀콘텐츠(가치·문화·공간·채용절차)는 src/app/careers/page.full.tsx.bak 에 보관 — 공개 시 복구.
 export const metadata: Metadata = {
   title: "채용 — 함께 성장할 동료를 찾습니다",
-  alternates: { canonical: "/careers" },
+  alternates: { canonical: "/careers", languages: { "ko-KR": "/careers", "en-US": "/en/careers", "x-default": "/careers" } },
   description:
     "이엑스(EX) 채용. 일하는 사람이 행복한 회사를 지향합니다. 채용 콘텐츠를 준비 중이며, 관심 직무가 있다면 먼저 문의해 주세요.",
 };

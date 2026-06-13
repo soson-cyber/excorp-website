@@ -856,6 +856,56 @@ html.cursor-reduce .ex-cursor-ring {
   align-items: center;
   gap: 12px;
 }
+/* KO / EN language toggle — mono 12px, dark-header tone. */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+.lang-toggle__on {
+  color: #fff;
+  font-weight: 600;
+}
+.lang-toggle__off {
+  color: rgba(255, 255, 255, 0.42);
+  transition: color 0.2s;
+}
+.lang-toggle__off:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.lang-toggle__sep {
+  color: rgba(255, 255, 255, 0.28);
+}
+/* Solid (scrolled) header sits on a light surface → darken the toggle ink. */
+.header--solid .lang-toggle__on {
+  color: var(--color-fg, #fff);
+}
+.header--solid .lang-toggle__off {
+  color: var(--color-faint, #9094a9);
+}
+.header--solid .lang-toggle__off:hover {
+  color: var(--color-fg, #fff);
+}
+.header--solid .lang-toggle__sep {
+  color: var(--color-faint, #9094a9);
+}
+/* Mobile sheet toggle keeps the dark-on-sheet tone regardless of solid/overHero. */
+.mobile__foot .lang-toggle__on,
+.header--sheet .lang-toggle__on {
+  color: #fff;
+}
+.mobile__foot .lang-toggle__off,
+.header--sheet .lang-toggle__off {
+  color: rgba(255, 255, 255, 0.42);
+}
+.mobile__foot .lang-toggle__sep,
+.header--sheet .lang-toggle__sep {
+  color: rgba(255, 255, 255, 0.28);
+}
 .navlink {
   display: inline-flex;
   align-items: center;
@@ -1082,6 +1132,10 @@ html.cursor-reduce .ex-cursor-ring {
 .mobile__foot .kobadge {
   align-self: center;
   color: rgba(255, 255, 255, 0.55);
+}
+.mobile__foot .lang-toggle {
+  align-self: center;
+  font-size: 13px;
 }
 @media (max-width: 1023px) {
   .navbar,

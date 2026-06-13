@@ -9,7 +9,7 @@ import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "회사 소개",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about", languages: { "ko-KR": "/about", "en-US": "/en/about", "x-default": "/about" } },
   description:
     "AI·XR 기술로 콘텐츠 제작의 문턱을 낮추는 이엑스 주식회사(EX Corporation). 미션·비전, 연혁(2020~), 보유 특허 6건과 벤처기업 인증, 성남 EX AI Office·하남 EX XR Studio를 소개합니다.",
 };

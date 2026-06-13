@@ -4,7 +4,7 @@ import { PageHero } from "@/components/page/PageHero";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description: "이엑스 주식회사 이용약관.",
-  alternates: { canonical: "/terms" },
+  alternates: { canonical: "/terms", languages: { "ko-KR": "/terms", "en-US": "/en/terms", "x-default": "/terms" } },
 };
 
 const EFFECTIVE_DATE = "2026년 6월 11일";

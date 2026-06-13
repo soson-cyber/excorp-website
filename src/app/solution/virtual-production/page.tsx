@@ -12,7 +12,7 @@ import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "버추얼 프로덕션 구축 — 촬영하는 순간 완성",
-  alternates: { canonical: "/solution/virtual-production" },
+  alternates: { canonical: "/solution/virtual-production", languages: { "ko-KR": "/solution/virtual-production", "en-US": "/en/solution/virtual-production", "x-default": "/solution/virtual-production" } },
   description:
     "버추얼 프로덕션은 디지털 배경과 실제 촬영을 실시간 결합해 현장에서 완성하는 제작 방식입니다. 크로마키·Simulcam·인카메라 VFX(ICVFX)·AR까지, EX가 구축·견적·운영을 지원합니다.",
 };

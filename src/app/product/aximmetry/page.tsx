@@ -10,7 +10,7 @@ import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/Jso
 
 export const metadata: Metadata = {
   title: "Aximmetry 한국 공식 리셀러 — 버추얼 프로덕션",
-  alternates: { canonical: "/product/aximmetry" },
+  alternates: { canonical: "/product/aximmetry", languages: { "ko-KR": "/product/aximmetry", "en-US": "/en/product/aximmetry", "x-default": "/product/aximmetry" } },
   description:
     "Unreal Engine 네이티브 연동(플러그인 내장) + 자체 노드 기반 엔진으로 최대 8K 실시간 가상 스튜디오·XR·AR를 만드는 Aximmetry (Broadcast & Film Edition). 무제한 SDI/NDI/SMPTE 2110, Free-D·MOS. EX 공식 인증 리셀러.",
 };
