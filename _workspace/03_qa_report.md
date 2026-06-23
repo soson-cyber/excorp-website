@@ -3,7 +3,7 @@
 - 일자: 2026-06-10
 - 검증자: qa-verifier
 - 대상: 전체 사이트 콘텐츠·레이아웃 재빌드 직후 (Home/Hero/CtaBanner/site.ts/layout.tsx + 내부 페이지 전체 + src/components/seo/JsonLd.tsx 신규)
-- 작업 폴더: /Users/ex_ceo/Documents/Claude/Projects/excorp-website-rebuild
+- 작업 폴더: /Users/ex/Documents/Claude-Projects/excorp-website-rebuild
 - **전체 판정: PASS**
 
 ---

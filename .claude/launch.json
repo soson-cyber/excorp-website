@@ -5,7 +5,7 @@
       "name": "excorp-rebuild",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "cwd": "/Users/ex_ceo/Documents/Claude/Projects/excorp-website-rebuild",
+      "cwd": "/Users/ex/Documents/Claude-Projects/excorp-website-rebuild",
       "port": 3000
     }
   ]

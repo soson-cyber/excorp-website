@@ -79,7 +79,7 @@
 
 ## 1. 개요
 - **프로젝트**: 이엑스코퍼레이션(EX Corporation) 공식 웹사이트. 실시간 XR / 버추얼 프로덕션 콘텐츠 기업. (HQ 판교, Studio 하남)
-- **로컬 경로**: `/Users/ex_ceo/Documents/Claude/Projects/excorp-website`
+- **로컬 경로**: `/Users/ex/Documents/Claude-Projects/excorp-website`
 - **실행**: `npm install` → `npm run dev` (http://localhost:3000) / `npm run build`
 - **슬로건**: 기술의 연결로 경험을 확장하다 / All-in-One, Real-time XR Content Production
 

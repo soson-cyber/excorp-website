@@ -8,7 +8,7 @@ description: EX 웹사이트 변경분(diff)을 커밋/병합 전에 품질·보
 커밋/병합 직전, **diff를 사람 리뷰어처럼** 읽고 옳음·안전·유지보수성을 판단한다. 빌드를 돌리지 않는다(그건 ex-qa-verify). 무관한 리팩터를 강요하지 않는다.
 
 ## 범위 설정
-- `cd /Users/ex_ceo/Documents/Claude/Projects/excorp-website && git diff`(또는 변경 파일 목록)로 바뀐 부분과 영향 범위만 본다.
+- `cd /Users/ex/Documents/Claude-Projects/excorp-website && git diff`(또는 변경 파일 목록)로 바뀐 부분과 영향 범위만 본다.
 - 큰 diff는 모듈 단위로 나눠 보고, 못 본 범위를 명시한다.
 
 ## 보안 체크 (웹앱 — 최우선)

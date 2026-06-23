@@ -10,8 +10,8 @@ description: EX 웹사이트 변경분의 빌드·타입·린트와 데스크톱
 ## 명령 실행 (cwd 주의)
 cwd가 상위로 리셋되는 일이 있으므로 **항상 프로젝트 경로 prefix**:
 ```bash
-cd /Users/ex_ceo/Documents/Claude/Projects/excorp-website && npx tsc --noEmit
-cd /Users/ex_ceo/Documents/Claude/Projects/excorp-website && npx eslint <변경파일>
+cd /Users/ex/Documents/Claude-Projects/excorp-website && npx tsc --noEmit
+cd /Users/ex/Documents/Claude-Projects/excorp-website && npx eslint <변경파일>
 ```
 순서: `tsc --noEmit` → `eslint <변경파일>` → 라우팅/빌드 영향 시 `npm run build`. 텍스트·CSS 변경만이면 tsc+eslint로 충분.
 
