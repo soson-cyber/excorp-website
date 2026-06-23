@@ -52,8 +52,8 @@ IA/카피 작업 전 항상 Notion에서 최신본을 확인한다. (첨부: `EX
 - **Tailwind CSS v4** — **전체 다크 product-led** 디자인 시스템 (토큰은 `src/app/globals.css @theme`, 단일 기준은 `DESIGN.md §0`)
 - **three.js 제거됨** — Home 히어로 배경은 캔버스 파티클 + CSS 글로우/오로라(WebGL·퍼스펙티브 그리드 미사용). 자세한 건 `HANDOFF.md §0 v3.1`
 - **Sanity (Headless CMS)** — 블로그·채용·Work 갤러리 (스키마 예정, 미연결)
-- **Vercel** — 배포 / 호스팅
-- 문의/지원 폼 — Next.js API Route + 이메일 전송(추후 결정)
+- **Cloudflare Workers + OpenNext** — 실제 운영 배포 / 호스팅 (`wrangler.jsonc`, `open-next.config.ts`, `npm run cf:deploy`)
+- 문의/지원 폼 — Next.js API Route + Notion DB 저장/이메일 전송(추후 결정)
 
 ## AI 에이전트 팀
 
@@ -61,7 +61,7 @@ IA/카피 작업 전 항상 Notion에서 최신본을 확인한다. (첨부: `EX
 - **웹 제작·운영** → `ex-web-orchestrator` (7종: frontend-builder·design-ux-reviewer·content-brand-writer·seo-specialist·code-reviewer·qa-verifier·sanity-cms).
 - **이미지 자산 생성(Figma 연결)** → `ex-image-orchestrator` (3종: figma-art-director·image-generator·image-qc-reviewer). Figma 원본에서 사양을 읽어 생성·QC 후 `public/`+Figma에 납품. 엔진은 듀얼: **기본 GPT 이미지(OpenAI gpt-image-1) / 대안 Nano Banana(Gemini)**. **1회 셋업 필요(둘 중 택1): GPT=`OPENAI_API_KEY`+`pip install openai pillow`, Gemini=`GEMINI_API_KEY`+`pip install google-genai pillow`.**
 
-에이전트(누가)·스킬(어떻게)의 단일 출처는 `.claude/agents/`·`.claude/skills/`다. 배포(Vercel)는 사용자가 직접 수행하며, 배포 전 게이트는 qa-verifier PASS + code-reviewer 차단 이슈 없음.
+에이전트(누가)·스킬(어떻게)의 단일 출처는 `.claude/agents/`·`.claude/skills/`다. 배포는 **Cloudflare Workers + OpenNext** 기준이며, 배포 전 게이트는 qa-verifier PASS + code-reviewer 차단 이슈 없음. 실제 운영 확인: `https://excorp.kr` / `https://excorp.kr/en`.
 
 ## 코딩 운영 원칙 (Karpathy Guidelines 반영)
 
