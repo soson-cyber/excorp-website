@@ -33,7 +33,7 @@ export default async function NewsPageEn() {
           year: n.date ? n.date.slice(0, 4) : "",
           title: n.title,
           excerpt: n.summary || undefined,
-          href: `/news/${n.slug}`, // 사이트 내 요약 랜딩 → 거기서 원문 보기
+          href: `/en/news/${n.slug}`, // English summary landing → source link from detail
           thumbnail: n.thumbnail || undefined,
           featured: i === 0,
         }))
@@ -47,7 +47,7 @@ export default async function NewsPageEn() {
           year: i.year,
           title: i.title,
           excerpt: i.summary || undefined,
-          href: `/news/${i.slug}`,
+          href: `/en/news/${i.slug}`,
           thumbnail: i.thumbnail || undefined,
         }))
       : localInsights.map((i) => ({
@@ -55,7 +55,7 @@ export default async function NewsPageEn() {
           year: i.year,
           title: i.title,
           excerpt: i.summary,
-          href: `/news/${i.slug}`,
+          href: `/en/news/${i.slug}`,
           thumbnail: i.thumbnail,
         }));
 

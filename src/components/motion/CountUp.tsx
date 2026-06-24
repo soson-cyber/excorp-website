@@ -18,7 +18,10 @@ export function CountUp({
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [n, setN] = useState(0);
+  // Render the final value on the server so crawlers/no-JS users never see
+  // misleading "0" company metrics. The client can still replay the count-up
+  // animation once the stat enters the viewport.
+  const [n, setN] = useState(value);
 
   useEffect(() => {
     const el = ref.current;
@@ -33,6 +36,7 @@ export function CountUp({
       ([entry]) => {
         if (entry.isIntersecting && !started) {
           started = true;
+          setN(0);
           const t0 = performance.now();
           const tick = (t: number) => {
             const p = Math.min(1, (t - t0) / duration);

@@ -83,10 +83,10 @@ function HeroStars() {
 }
 
 const CAMS = [
-  { id: "CAM 01", img: "/studio.png" },
-  { id: "CAM 02", img: "/uc-broadcast.png" },
-  { id: "CAM 03", img: "/vp-chroma.png" },
-  { id: "PGM", img: "/uc-event.png" },
+  { id: "CAM 01", img: "/studio.jpg" },
+  { id: "CAM 02", img: "/uc-broadcast.jpg" },
+  { id: "CAM 03", img: "/vp-chroma.jpg" },
+  { id: "PGM", img: "/uc-event.jpg" },
 ];
 
 function ExlinkConsole({ locale }: { locale: Locale }) {
@@ -163,7 +163,7 @@ function ExlinkConsole({ locale }: { locale: Locale }) {
               fill
               sizes="(min-width:1024px) 620px, 100vw"
               priority={i === 3}
-              unoptimized
+              fetchPriority={i === 3 ? "high" : "auto"}
               className="c-feed"
               style={{ opacity: i === sel ? 1 : 0 }}
             />
@@ -205,7 +205,7 @@ function ExlinkConsole({ locale }: { locale: Locale }) {
                   aria-pressed={i === sel}
                   title={en ? `Switch ${c.id} to program` : `${c.id} 프로그램으로 전환`}
                 >
-                  <Image src={c.img} alt="" fill sizes="120px" unoptimized />
+                  <Image src={c.img} alt="" fill sizes="120px" />
                   <span>{c.id}</span>
                 </button>
               ))}
