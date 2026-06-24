@@ -206,6 +206,7 @@ export default function MoversePageEn() {
           </>
         }
         bgImage="/moverse-hero.jpg"
+        bgImageNoUpscale
       />
 
       {/* Quick spec bar */}

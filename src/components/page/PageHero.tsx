@@ -8,6 +8,7 @@ export function PageHero({
   title,
   lead,
   bgImage,
+  bgImageNoUpscale = false,
 }: {
   /** Accepted for back-compat but no longer rendered — the top nav covers it. */
   breadcrumb?: Crumb[];
@@ -17,6 +18,8 @@ export function PageHero({
   lead?: ReactNode;
   /** Optional full-bleed background image (key visual). When set, the aurora is suppressed and a scrim keeps text legible. */
   bgImage?: string;
+  /** Keep the background key visual at or below its intrinsic size instead of scaling it past 100%. */
+  bgImageNoUpscale?: boolean;
 }) {
   return (
     <section
@@ -26,9 +29,18 @@ export function PageHero({
     >
       {bgImage ? (
         <>
-          {/* 데코 배경 — 가로폭 기준 16:9로 채움(섹션 높이=폭×9/16). next/image 최적화 우회(풀블리드), alt 비움 */}
+          {/* 데코 배경 — 기본은 풀블리드 cover. 제품 키비주얼 중 원본보다 확대되면 품질이 깨지는 이미지는 no-upscale로 제한. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={bgImage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover object-center" />
+          <img
+            src={bgImage}
+            alt=""
+            aria-hidden="true"
+            className={
+              bgImageNoUpscale
+                ? "absolute left-1/2 top-1/2 h-auto w-auto max-h-full max-w-full -translate-x-1/2 -translate-y-1/2 object-contain"
+                : "absolute inset-0 h-full w-full object-cover object-center"
+            }
+          />
           <div
             className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"
             aria-hidden="true"
