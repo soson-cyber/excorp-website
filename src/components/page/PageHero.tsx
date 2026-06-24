@@ -29,7 +29,19 @@ export function PageHero({
     >
       {bgImage ? (
         <>
-          {/* 데코 배경 — 기본은 풀블리드 cover. 제품 키비주얼 중 원본보다 확대되면 품질이 깨지는 이미지는 no-upscale로 제한. */}
+          {/* 데코 배경 — 기본은 풀블리드 cover. no-upscale 키비주얼은 원본 크기를 유지하고, 좌우 여백은 같은 이미지를 흐린 컬러 필드로 깔아 자연스럽게 연결한다. */}
+          {bgImageNoUpscale && (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={bgImage}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full scale-110 object-cover object-center opacity-45 blur-2xl saturate-125"
+              />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--color-bg)_82%)]" aria-hidden="true" />
+            </>
+          )}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={bgImage}
