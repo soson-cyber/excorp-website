@@ -131,12 +131,6 @@ export default function ContactPageEn() {
                   </p>
                 </div>
               ))}
-              <div className="flex gap-5 text-muted">
-                <a href={site.social.instagram} className="transition-colors hover:text-lav" target="_blank" rel="noreferrer" aria-label="Instagram">
-                  <Icon name="instagram" />
-                  <span className="sr-only">Instagram</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>
