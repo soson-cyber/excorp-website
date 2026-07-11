@@ -53,6 +53,9 @@ export const metadata: Metadata = {
       "AI와 XR 기술을 연결하여 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다.",
     // 트위터 이미지는 og:image(생성된 opengraph-image)로 폴백된다.
   },
+  verification: {
+    other: { "naver-site-verification": "2b9d03e1bfbf29fbf1e6d732fd0c70eb68f26156" },
+  },
 };
 
 export default function RootLayout({
