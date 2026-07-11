@@ -52,6 +52,13 @@ const faqGroups = [
 ];
 
 const downloads = [
+  {
+    name: "Virtual studio build checklist & budget guide",
+    fmt: "PDF",
+    desc: "A self-check of 6 cost variables to review before drafting your budget",
+    href: `/en/contact?type=${encodeURIComponent("자료 요청")}#form`,
+    cta: "Download",
+  },
   { name: "EX company introduction", fmt: "PDF" },
   { name: "EXLINK solution brochure", fmt: "PDF" },
   { name: "Product spec sheets (Aximmetry · Moverse · RETracker)", fmt: "PDF" },
@@ -170,14 +177,17 @@ export default function SupportPageEn() {
                 className="flex items-center justify-between gap-4 p-6 md:px-8"
                 style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
               >
-                <span className="text-sm font-medium text-fg">
-                  {d.name} <span className="font-mono text-xs text-faint">· {d.fmt}</span>
-                </span>
+                <div>
+                  <span className="text-sm font-medium text-fg">
+                    {d.name} <span className="font-mono text-xs text-faint">· {d.fmt}</span>
+                  </span>
+                  {"desc" in d && d.desc ? <p className="mt-1 text-xs text-muted">{d.desc}</p> : null}
+                </div>
                 <Link
-                  href={`/en/contact?type=${encodeURIComponent("일반 문의")}#form`}
+                  href={"href" in d && d.href ? d.href : `/en/contact?type=${encodeURIComponent("일반 문의")}#form`}
                   className="arrowlink shrink-0 text-sm"
                 >
-                  Request by email{" "}
+                  {"cta" in d && d.cta ? d.cta : "Request by email"}{" "}
                   <span className="ar" aria-hidden="true">
                     →
                   </span>

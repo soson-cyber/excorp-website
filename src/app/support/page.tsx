@@ -49,6 +49,13 @@ const faqGroups = [
 ];
 
 const downloads = [
+  {
+    name: "버추얼 스튜디오 구축 체크리스트 & 예산 가이드",
+    fmt: "PDF",
+    desc: "예산 기안 전에 확인할 6가지 비용 변수 자가진단",
+    href: `/contact?type=${encodeURIComponent("자료 요청")}#form`,
+    cta: "다운로드",
+  },
   { name: "EX 회사 소개서", fmt: "PDF" },
   { name: "EXLINK 솔루션 브로셔", fmt: "PDF" },
   { name: "제품 스펙시트 (Aximmetry · Moverse · RETracker)", fmt: "PDF" },
@@ -167,14 +174,17 @@ export default function SupportPage() {
                 className="flex items-center justify-between gap-4 p-6 md:px-8"
                 style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
               >
-                <span className="text-sm font-medium text-fg">
-                  {d.name} <span className="font-mono text-xs text-faint">· {d.fmt}</span>
-                </span>
+                <div>
+                  <span className="text-sm font-medium text-fg">
+                    {d.name} <span className="font-mono text-xs text-faint">· {d.fmt}</span>
+                  </span>
+                  {"desc" in d && d.desc ? <p className="mt-1 text-xs text-muted">{d.desc}</p> : null}
+                </div>
                 <Link
-                  href={`/contact?type=${encodeURIComponent("일반 문의")}#form`}
+                  href={"href" in d && d.href ? d.href : `/contact?type=${encodeURIComponent("일반 문의")}#form`}
                   className="arrowlink shrink-0 text-sm"
                 >
-                  이메일로 요청{" "}
+                  {"cta" in d && d.cta ? d.cta : "이메일로 요청"}{" "}
                   <span className="ar" aria-hidden="true">
                     →
                   </span>

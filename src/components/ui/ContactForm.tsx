@@ -5,13 +5,14 @@ import { useSearchParams } from "next/navigation";
 import { withLocale, type Locale } from "@/lib/i18n";
 
 // 문의 유형 — API로 전송되는 값은 ko로 통일(route.ts 수정 금지). 영문 폼은 라벨만 영어로 보여준다.
-const types = ["솔루션 도입", "제품 도입", "스튜디오 제작", "시연·쇼룸 방문", "기술 지원", "일반 문의"] as const;
+const types = ["솔루션 도입", "제품 도입", "스튜디오 제작", "시연·쇼룸 방문", "자료 요청", "기술 지원", "일반 문의"] as const;
 const typeLabels: Record<Locale, Record<(typeof types)[number], string>> = {
   ko: {
     "솔루션 도입": "솔루션 도입",
     "제품 도입": "제품 도입",
     "스튜디오 제작": "스튜디오 제작",
     "시연·쇼룸 방문": "시연·쇼룸 방문",
+    "자료 요청": "자료 요청",
     "기술 지원": "기술 지원",
     "일반 문의": "일반 문의",
   },
@@ -20,6 +21,7 @@ const typeLabels: Record<Locale, Record<(typeof types)[number], string>> = {
     "제품 도입": "Product adoption",
     "스튜디오 제작": "Studio production",
     "시연·쇼룸 방문": "Demo · showroom visit",
+    "자료 요청": "Resource Request",
     "기술 지원": "Technical support",
     "일반 문의": "General inquiry",
   },
@@ -32,7 +34,9 @@ const COPY = {
     errConsent: "개인정보 수집·이용에 동의해 주세요.",
     errSend: "전송에 실패했습니다. 잠시 후 다시 시도하거나 전화로 문의해 주세요.",
     successTitle: "문의가 접수되었습니다.",
-    successBody: "담당자가 영업일 기준 1~2일 내에 회신드립니다.",
+    successBody: "담당자가 영업일 기준 1~2일 내에 회신드립니다. 급하시면 031-699-8228로 전화 주세요.",
+    downloadChecklist: "체크리스트 다운로드",
+    downloadNote: "그 외 자료는 영업일 1~2일 내 이메일로 보내드립니다.",
     newInquiry: "새 문의 작성 →",
     name: "이름",
     company: "회사 / 기관",
@@ -54,7 +58,9 @@ const COPY = {
     errConsent: "Please agree to the collection and use of personal information.",
     errSend: "Something went wrong. Please try again shortly or reach us by phone.",
     successTitle: "Your inquiry has been received.",
-    successBody: "A team member will get back to you within 1–2 business days.",
+    successBody: "A team member will get back to you within 1–2 business days. For urgent matters, call +82-31-699-8228.",
+    downloadChecklist: "Download checklist",
+    downloadNote: "We'll email any other materials within 1–2 business days.",
     newInquiry: "Write a new inquiry →",
     name: "Name",
     company: "Company / Organization",
@@ -157,6 +163,18 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
           {t.successTitle}
         </p>
         <p className="mt-2 text-sm text-muted">{t.successBody}</p>
+        {selectedType === "자료 요청" && (
+          <div className="mt-5">
+            <a
+              href="/downloads/ex-virtual-studio-checklist.pdf"
+              download
+              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-hover"
+            >
+              {t.downloadChecklist} ↓
+            </a>
+            <p className="mt-3 text-xs text-faint">{t.downloadNote}</p>
+          </div>
+        )}
         <button
           type="button"
           onClick={() => setStatus("idle")}
