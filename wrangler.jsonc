@@ -23,5 +23,10 @@
       "binding": "WORKER_SELF_REFERENCE",
       "service": "excorp-website"
     }
-  ]
+  ],
+  // Workers Logs 영속화 — Notion 저장 실패 등 서버 로그를 대시보드에서 조회 가능하게.
+  // 2026-07: 토큰 만료로 문의가 조용히 유실된 사고 후 도입(로그 없인 유실 감지 불가).
+  "observability": {
+    "enabled": true
+  }
 }
