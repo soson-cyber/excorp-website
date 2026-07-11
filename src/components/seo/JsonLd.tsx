@@ -39,24 +39,10 @@ export function breadcrumbLd(crumbs: { name: string; path: string }[]): Json {
   };
 }
 
-/** 가격 미공개 — offers 없이 brand·category만. price 없는 Offer는 무효 신호이므로 생략. */
-export function productLd(p: {
-  name: string;
-  brand: string;
-  category?: string;
-  description: string;
-  path: string;
-}): Json {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: p.name,
-    brand: { "@type": "Brand", name: p.brand },
-    ...(p.category ? { category: p.category } : {}),
-    description: p.description,
-    url: abs(p.path),
-  };
-}
+/* productLd() 제거 — Product 스키마는 offers/review/aggregateRating 중 하나가 필수인데
+   EX는 가격·평점을 공개하지 않으므로(정직성) 유효한 Product 스니펫을 만들 수 없다.
+   허위 가격·평점 대신 제품 페이지는 BreadcrumbList + FAQPage만 구조화한다.
+   (Google Search Console '제품 스니펫 필수 필드 누락' 오류 해소) */
 
 /** 화면에 보이는 q/a 배열을 그대로 매핑. */
 export function faqPageLd(faqs: { q: string; a: string }[]): Json {

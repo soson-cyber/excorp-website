@@ -6,7 +6,7 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
-import { JsonLd, productLd, faqPageLd, abs } from "@/components/seo/JsonLd";
+import { JsonLd, faqPageLd, abs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "RETracker — Korea Distributor for Markerless Camera Tracking",
@@ -123,13 +123,6 @@ export default function RetrackerPageEn() {
               { "@type": "ListItem", position: 3, name: "RETracker", item: abs("/en/product/retracker") },
             ],
           },
-          productLd({
-            name: "RETracker — 6-DOF Markerless Camera Tracking",
-            brand: "RETracker",
-            category: "Virtual production · camera tracking hardware",
-            description: metadata.description as string,
-            path: "/en/product/retracker",
-          }),
           faqPageLd(faqs),
         ]}
       />

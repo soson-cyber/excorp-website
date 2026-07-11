@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
 import { SpecTable } from "@/components/product/SpecTable";
-import { JsonLd, productLd, faqPageLd, abs } from "@/components/seo/JsonLd";
+import { JsonLd, faqPageLd, abs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Moverse — Korea Distributor for Markerless AI Motion Capture",
@@ -182,13 +182,6 @@ export default function MoversePageEn() {
               { "@type": "ListItem", position: 3, name: "Moverse", item: abs("/en/product/moverse") },
             ],
           },
-          productLd({
-            name: "Moverse — Markerless AI Motion Capture",
-            brand: "Moverse",
-            category: "Virtual production · motion capture software",
-            description: metadata.description as string,
-            path: "/en/product/moverse",
-          }),
           faqPageLd(faqs),
         ]}
       />

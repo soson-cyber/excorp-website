@@ -6,7 +6,7 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
-import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "RETracker 한국 총판 — 마커리스 카메라 트래킹",
@@ -109,13 +109,6 @@ export default function RetrackerPage() {
             { name: "Product", path: "/product" },
             { name: "RETracker", path: "/product/retracker" },
           ]),
-          productLd({
-            name: "RETracker — 6-DOF 마커리스 카메라 트래킹",
-            brand: "RETracker",
-            category: "버추얼 프로덕션 · 카메라 트래킹 하드웨어",
-            description: metadata.description as string,
-            path: "/product/retracker",
-          }),
           faqPageLd(faqs),
         ]}
       />

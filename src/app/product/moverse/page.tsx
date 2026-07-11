@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
 import { SpecTable } from "@/components/product/SpecTable";
-import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Moverse 한국 총판 — 마커리스 AI 모션캡처",
@@ -168,13 +168,6 @@ export default function MoversePage() {
             { name: "Product", path: "/product" },
             { name: "Moverse", path: "/product/moverse" },
           ]),
-          productLd({
-            name: "Moverse — 마커리스 AI 모션캡처",
-            brand: "Moverse",
-            category: "버추얼 프로덕션 · 모션캡처 소프트웨어",
-            description: metadata.description as string,
-            path: "/product/moverse",
-          }),
           faqPageLd(faqs),
         ]}
       />

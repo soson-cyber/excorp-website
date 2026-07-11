@@ -6,7 +6,7 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { SpecTable } from "@/components/product/SpecTable";
-import { JsonLd, breadcrumbLd, productLd, faqPageLd } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Aximmetry 한국 공식 리셀러 — 버추얼 프로덕션",
@@ -99,13 +99,6 @@ export default function AximmetryPage() {
             { name: "Product", path: "/product" },
             { name: "Aximmetry", path: "/product/aximmetry" },
           ]),
-          productLd({
-            name: "Aximmetry Broadcast & Film Edition",
-            brand: "Aximmetry",
-            category: "버추얼 프로덕션 소프트웨어",
-            description: metadata.description as string,
-            path: "/product/aximmetry",
-          }),
           faqPageLd(faqs),
         ]}
       />
