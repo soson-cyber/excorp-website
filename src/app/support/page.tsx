@@ -50,11 +50,11 @@ const faqGroups = [
 
 const downloads = [
   {
-    name: "버추얼 스튜디오 구축 체크리스트 & 예산 가이드",
-    fmt: "PDF",
-    desc: "예산 기안 전에 확인할 6가지 비용 변수 자가진단",
-    href: `/contact?type=${encodeURIComponent("자료 요청")}#form`,
-    cta: "다운로드",
+    name: "버추얼 스튜디오 구축 준비도 자가진단",
+    fmt: "설문",
+    desc: "예산 기안 전에 확인할 6가지 — 3분 자가진단, 결과와 가이드를 보내드립니다",
+    href: "https://tally.so/r/yPRMBd",
+    cta: "진단 시작",
   },
   { name: "EX 회사 소개서", fmt: "PDF" },
   { name: "EXLINK 솔루션 브로셔", fmt: "PDF" },
@@ -183,6 +183,7 @@ export default function SupportPage() {
                 <Link
                   href={"href" in d && d.href ? d.href : `/contact?type=${encodeURIComponent("일반 문의")}#form`}
                   className="arrowlink shrink-0 text-sm"
+                  {...("href" in d && d.href?.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
                 >
                   {"cta" in d && d.cta ? d.cta : "이메일로 요청"}{" "}
                   <span className="ar" aria-hidden="true">

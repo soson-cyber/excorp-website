@@ -53,11 +53,11 @@ const faqGroups = [
 
 const downloads = [
   {
-    name: "Virtual studio build checklist & budget guide",
-    fmt: "PDF",
-    desc: "A self-check of 6 cost variables to review before drafting your budget",
-    href: `/en/contact?type=${encodeURIComponent("자료 요청")}#form`,
-    cta: "Download",
+    name: "Virtual studio readiness self-assessment",
+    fmt: "Survey",
+    desc: "6 questions to review before drafting your budget — 3 minutes, in Korean",
+    href: "https://tally.so/r/yPRMBd",
+    cta: "Start",
   },
   { name: "EX company introduction", fmt: "PDF" },
   { name: "EXLINK solution brochure", fmt: "PDF" },
@@ -186,6 +186,7 @@ export default function SupportPageEn() {
                 <Link
                   href={"href" in d && d.href ? d.href : `/en/contact?type=${encodeURIComponent("일반 문의")}#form`}
                   className="arrowlink shrink-0 text-sm"
+                  {...("href" in d && d.href?.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
                 >
                   {"cta" in d && d.cta ? d.cta : "Request by email"}{" "}
                   <span className="ar" aria-hidden="true">
