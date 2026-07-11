@@ -62,7 +62,7 @@ export default async function NewsPage() {
         breadcrumb={[{ label: "News & Insight", href: "/news" }]}
         tag="News & Insight"
         title="EX의 소식과 산업 인사이트"
-        lead="보도자료 · 도입 사례 · 기술 인사이트 · 자료실 — 실시간 XR 콘텐츠 제작의 흐름을 전합니다."
+        lead="보도자료와 기술 인사이트 — 실시간 XR 콘텐츠 제작의 흐름과 EX 소식을 전합니다."
       />
 
       {/* §01 News list (filterable) — top glow bridges the hero aurora down */}
@@ -84,7 +84,7 @@ export default async function NewsPage() {
               <p className="mt-1.5 text-sm text-muted">EX의 새로운 소식과 인사이트를 메일로 받아보세요.</p>
             </div>
             <Button href="/contact" variant="secondary">
-              구독 신청 →
+              구독 문의 →
             </Button>
           </div>
         </div>

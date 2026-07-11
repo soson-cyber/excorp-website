@@ -18,6 +18,7 @@ const ROUTING: Record<string, string> = {
   "솔루션 도입": "sales@excorp.kr",
   "제품 도입": "sales@excorp.kr",
   "스튜디오 제작": "booking@excorp.kr",
+  "시연·쇼룸 방문": "booking@excorp.kr",
   "기술 지원": "support@excorp.kr",
   "일반 문의": "info@excorp.kr",
 };

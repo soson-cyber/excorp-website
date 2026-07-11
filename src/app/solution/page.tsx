@@ -9,7 +9,7 @@ import { SegmentGrid } from "@/components/page/SegmentGrid";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "XR 솔루션 구축 · 버추얼 프로덕션",
+  title: "XR 솔루션 구축 — EXLINK·파트너 기술·스튜디오",
   alternates: { canonical: "/solution", languages: { "ko-KR": "/solution", "en-US": "/en/solution", "x-default": "/solution" } },
   description:
     "EX 자체 통합 XR 솔루션 EXLINK와 버추얼 프로덕션 구축. 촬영·트래킹·렌더·송출을 하나로 묶어 현장에 맞는 실시간 XR 환경을 구성하고, 도입 상담·견적부터 운영까지 지원합니다.",
@@ -73,7 +73,7 @@ export default function SolutionPage() {
       <PageHero
         breadcrumb={[{ label: "Solution", href: "/solution" }]}
         tag="Solution"
-        title="현장에 맞는 XR 환경을 구성합니다."
+        title="현장에 맞는 XR 솔루션을 구축합니다."
         lead={
           <>
             <span className="inline-block">자체 통합 솔루션 EXLINK와 검증된 글로벌 파트너 기술, 그리고 실 운영 스튜디오까지</span>{" "}
@@ -86,7 +86,7 @@ export default function SolutionPage() {
       <ProblemTrio
         index="00"
         label="Before EX"
-        title="XR을 직접 꾸리려다 멈춘 적, 있으십니까."
+        title="XR을 직접 구성하려다 멈춘 적 있으신가요?"
         problems={problems}
         note="EX는 자체 솔루션 EXLINK와 한국어 기술지원으로 이 지점을 메웁니다."
       />
@@ -120,8 +120,9 @@ export default function SolutionPage() {
             }
             lead={
               <>
-                EX는 자체 통합 솔루션과 검증된 파트너 제품, 그리고 실 운영 스튜디오까지 — VP 제작에 필요한
-                자산을 보유하고 있습니다. 어떤 환경의 XR이라도 EX와 함께 시작할 수 있습니다.
+                자체 통합 솔루션과 검증된 파트너 제품, 그리고 실제로 운영 중인 스튜디오까지 — 버추얼 프로덕션에
+                필요한 모든 단계를 EX가 갖추고 있습니다. 방송이든 기업 행사든, 현장 조건에 맞춰 XR을 시작할 수
+                있습니다.
               </>
             }
           />
@@ -147,8 +148,8 @@ export default function SolutionPage() {
             titleMaxWidth="48rem"
             title={
               <>
-                <span className="inline-block">자체 솔루션과 방법론,</span>{" "}
-                <span className="inline-block">두 갈래로 시작합니다.</span>
+                <span className="inline-block">완제품이 필요하면 EXLINK,</span>{" "}
+                <span className="inline-block">제작 방식부터 알고 싶다면 버추얼 프로덕션.</span>
               </>
             }
           />
@@ -200,7 +201,7 @@ export default function SolutionPage() {
       {/* §03 Capability */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="03" label="Capability" title="제작 전 단계를 커버합니다" />
+          <SectionHead index="03" label="Capability" title="제작의 모든 단계를 지원합니다" />
           <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
             {capability.map((c, i) => (
               <div

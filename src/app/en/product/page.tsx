@@ -9,7 +9,7 @@ import { ProblemTrio } from "@/components/page/ProblemTrio";
 import { JsonLd, abs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Aximmetry · Moverse · RETracker — Official Korea Supply",
+  title: "Aximmetry·Moverse·RETracker — Official Korea Supply",
   description:
     "EX is the official Korea supplier of core virtual production products: real-time compositing platform Aximmetry (certified reseller), AI markerless motion capture Moverse, and 6-DOF camera tracking RETracker (official distributor). From rollout consulting and quotes to setup, training, and technical support in Korea.",
   alternates: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "https://excorp.kr/en/product",
-    title: "Aximmetry · Moverse · RETracker — Official Korea Supply",
+    title: "Aximmetry·Moverse·RETracker — Official Korea Supply",
     description:
       "Proven global virtual production products, supplied and supported in Korea by EX — from rollout consulting to setup, training, and technical support.",
   },
@@ -49,7 +49,7 @@ const lineup = [
   {
     badge: "Distributor",
     title: "Moverse AI",
-    copy: "AI markerless motion capture with no dedicated suits or markers (100% on-premise)",
+    copy: "AI markerless motion capture with no dedicated suits or markers — real-time capture runs 100% locally",
     meta: "Markerless MoCap",
     href: "/en/product/moverse",
   },
@@ -64,7 +64,7 @@ const lineup = [
 
 const compare = [
   { label: "Role", values: ["Real-time compositing & render", "Markerless motion capture", "6-DOF camera tracking"] },
-  { label: "Core", values: ["Unreal-compatible · up to 8K", "Markerless · On-Premise", "6-DOF · <1cm/10m"] },
+  { label: "Core", values: ["Unreal-compatible · up to 8K", "Markerless · Local real-time capture", "6-DOF · <1cm/10m"] },
   { label: "EX Status", values: ["Official certified reseller", "Official Korea distributor", "Official Korea distributor"] },
 ];
 
@@ -156,7 +156,7 @@ export default function ProductPageEn() {
                   {p.meta}
                 </span>
                 <span className="arrowlink shrink-0">
-                  Discover{" "}
+                  Explore {p.title}{" "}
                   <span className="ar" aria-hidden="true">
                     →
                   </span>

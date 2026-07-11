@@ -9,7 +9,7 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "EXLINK — XR 스튜디오 구축 통합 솔루션",
+  title: "EXLINK — 실시간 XR 통합 솔루션",
   alternates: { canonical: "/solution/xr-solution", languages: { "ko-KR": "/solution/xr-solution", "en-US": "/en/solution/xr-solution", "x-default": "/solution/xr-solution" } },
   description:
     "EXLINK는 촬영·트래킹·렌더·송출을 단일 제어 흐름으로 묶는 EX 자체 개발 올인원 실시간 XR 솔루션입니다. XR 스튜디오 구축부터 운영자 1인 중심 워크플로우까지, 견적·도입을 상담합니다.",
@@ -38,7 +38,7 @@ const connected: { t: string; role: string; d: string; href?: string }[] = [
 
 const adoption = [
   { step: "도입 컨설팅", desc: "목적·예산·현장 조건을 검토해 적합한 구성을 설계합니다." },
-  { step: "시스템 구축 · 셋업", desc: "장비와 EXLINK을 현장에 맞게 구축하고 안정화합니다." },
+  { step: "시스템 구축 · 셋업", desc: "장비와 EXLINK를 현장에 맞게 구축하고 안정화합니다." },
   { step: "교육", desc: "운영자가 직접 다룰 수 있도록 실무 중심으로 교육합니다." },
   { step: "기술 지원 · 운영", desc: "도입 이후에도 기술 지원과 운영을 지속적으로 함께합니다." },
 ];
@@ -139,7 +139,7 @@ export default function XrSolutionPage() {
             실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK는 이 과정을 하나의 흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다. 생방송은 한 번의 멈춤도 치명적이기에, EX는 구축으로 끝내지 않고 운영까지 함께하는 파트너로 남습니다.
           </p>
           <p className="mt-5 border-l-2 border-primary pl-4 text-base italic leading-relaxed text-muted">
-            「장비마다 따로 만지느라 사람이 여럿 붙는다」 — 통합으로 풀어야 할 지점입니다.
+            &ldquo;장비마다 따로 만지느라 사람이 여럿 붙는다&rdquo; — 통합으로 풀어야 할 지점입니다.
           </p>
           {/* 2열 대비 — 좌: 분산형 구성(✕) / 우: EXLINK 통합(✓), 항목별 1:1 정렬 */}
           <div className="mx-auto mt-12 max-w-5xl">
@@ -330,7 +330,7 @@ export default function XrSolutionPage() {
             고객 사례
           </h2>
           <p className="lead" style={{ maxWidth: "42rem" }}>
-            EXLINK과 하남 XR 스튜디오로 실제 현장에서 완성한 프로젝트입니다.
+            EXLINK와 하남 XR 스튜디오로 실제 현장에서 완성한 프로젝트입니다.
           </p>
 
           {/* 대표 사례 (Featured) */}

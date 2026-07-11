@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Moverse 한국 총판 — 마커리스 AI 모션캡처",
   alternates: { canonical: "/product/moverse", languages: { "ko-KR": "/product/moverse", "en-US": "/en/product/moverse", "x-default": "/product/moverse" } },
   description:
-    "마커·수트 없이 표준 RGB 카메라로 최대 4명을 실시간 캡처하는 마커리스 AI 모션캡처 Moverse. 로컬 실시간 캡처 + 클라우드 Portal의 AI Reprocessing(지터 제거·손가락 트래킹). Unreal 연동·표준 리그 익스포트. 버추얼 아이돌·VTuber full body tracking, 게임 모션캡처에 활용합니다. EX 공식 한국 총판.",
+    "마커·수트 없이 표준 RGB 카메라로 최대 4명을 실시간 캡처하는 AI 마커리스 모션캡처 Moverse. 로컬 실시간 캡처 + 클라우드 AI 보정, Unreal 연동. EX 공식 한국 총판.",
 };
 
 const quickSpecs: { v: string; l: string; numeric: boolean }[] = [
@@ -97,7 +97,7 @@ const specGroups: { title: string; rows: [string, string][] }[] = [
       ["실시간 성능", "60+ FPS · 저지연 라이브 MoCap · 최대 4 액터 동시 캡처"],
       ["카메라 운영", "카메라 컨트롤 · 캘리브레이션 · 테이크 녹화"],
       ["엔진 스트리밍", "다중 엔드포인트 · 다중 포맷 · 커스텀 플러그인"],
-      ["설치 규모", "Compact 4×4m/4캠 · Pro 8×8m/8캠 · Max 10×10m/16캠"],
+      ["설치 규모", "Compact 4×4m/4캠 · Pro 8×8m/8캠 · Max 10×10m/16캠 · 규모는 동시 캡처 인원·촬영 볼륨에 맞춰 상담 시 선택"],
     ],
   },
   {
@@ -138,7 +138,7 @@ const useCases = [
   { t: "게임 · 애니메이션", d: "마커리스 캡처 데이터를 Unreal·표준 리그로 보내 캐릭터 애니메이션에 활용합니다." },
   { t: "교육 · 학생", d: "수트·마커 없이 표준 카메라만으로 모션캡처를 가르치고 실습합니다." },
   { t: "연구 · 인터랙티브", d: "다수 인원의 움직임을 데이터화해 연구·인터랙티브 콘텐츠에 활용합니다." },
-  { t: "까다로운 조명의 라이브", d: "어려운 조명 환경의 라이브 현장에서도 마커리스로 안정적으로 캡처합니다." },
+  { t: "까다로운 조명의 라이브", d: "RGB-IR 카메라 구성으로, 조명이 까다로운 라이브 현장에서도 마커리스 캡처를 안정적으로 유지합니다." },
   { t: "손동작 캡처", d: "바디와 손가락을 한 시스템으로 후처리해 디테일한 손동작까지 담습니다." },
 ];
 
@@ -157,6 +157,9 @@ const faqs = [
   { q: "데이터는 어디에서 처리되나요?", a: "캡처와 실시간 연산은 현장 로컬 앱에서 처리하고, 데이터 관리·협업·AI Reprocessing은 Google Cloud 기반 Moverse Portal에서 처리하는 하이브리드 방식입니다." },
   { q: "카메라는 어떤 것을 쓰나요?", a: "Luxonis OAK 계열(OAK-1 W·OAK-D Pro W PoE 등)을 사용합니다. 필요한 대수·구성은 캡처 볼륨에 맞춰 상담 시 안내드립니다." },
   { q: "어떤 엔진·리그와 연동되나요?", a: "Unreal Engine 다이렉트 스트리밍과 게임엔진 플러그인·SDK·API(Python REST API·C++ SDK)를 지원하고, Mixamo Ybot·Mannequin·ActorCore 등 표준 리그로 자동 매핑·익스포트합니다." },
+  { q: "직접 시연해볼 수 있나요?", a: "가능합니다. 하남 XR 스튜디오에서 마커리스 캡처를 직접 확인하실 수 있고, 원거리시면 화상 데모로 안내합니다. 시연 일정은 상담 시 조율합니다." },
+  { q: "도입 비용은 어떻게 되나요?", a: "카메라 대수와 캡처 볼륨, Studio·Hub·Portal 구성에 따라 달라집니다. 운영 규모를 알려주시면 구성과 견적을 함께 제안해 드립니다." },
+  { q: "정밀 광학식 모션캡처만큼 정확한가요?", a: "용도에 따라 다릅니다. Moverse는 실시간 라이브와 빠른 준비에 강점이 있는 마커리스 방식으로, 밀리미터급 초정밀 작업과는 목적이 다릅니다. 캡처 목적을 알려주시면 적합 여부를 함께 검토합니다." },
 ];
 
 export default function MoversePage() {
@@ -204,7 +207,7 @@ export default function MoversePage() {
       {/* §01 Showcase */}
       <section className="section section--ink">
         <div className="container-ex">
-          <SectionHead index="01" label="Showcase" title="Motion Capture for Everyone" />
+          <SectionHead index="01" label="Showcase" title="모두를 위한 모션캡처" />
           <figure className="mt-12">
             {/* 자체 호스팅 16:9 — 무음 자동재생·루프. poster로 로드 전 폴백.
                 웹 최적화본(720p30·무음·~5MB, faststart). */}

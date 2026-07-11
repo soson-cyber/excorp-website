@@ -9,16 +9,16 @@ import { SpecTable } from "@/components/product/SpecTable";
 import { JsonLd, faqPageLd, abs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Aximmetry — Official Korea Reseller for Virtual Production",
+  title: "Aximmetry — Official Korea Reseller · Real-time Virtual Studio Engine",
   description:
-    "Aximmetry (Broadcast & Film Edition) builds up to 8K real-time virtual studios, XR, and AR with native Unreal Engine integration (built-in plugin) plus its own node-based engine. Unlimited SDI/NDI/SMPTE 2110, Free-D and MOS. EX is the official certified reseller in Korea.",
+    "Aximmetry delivers up to 8K real-time virtual studios, XR, and AR through native Unreal integration and a node-based engine. EX, the official certified reseller, supports broadcast and film chroma key and in-camera VFX in Korea.",
   alternates: {
     canonical: "/en/product/aximmetry",
     languages: { "ko-KR": "/product/aximmetry", "en-US": "/en/product/aximmetry", "x-default": "/product/aximmetry" },
   },
   openGraph: {
     url: "https://excorp.kr/en/product/aximmetry",
-    title: "Aximmetry — Official Korea Reseller for Virtual Production",
+    title: "Aximmetry — Official Korea Reseller · Real-time Virtual Studio Engine",
     description:
       "Up to 8K real-time virtual studios, XR, and AR with native Unreal Engine integration and a node-based engine. EX is the official certified reseller in Korea.",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const quickSpecs = [
   { v: "8K", l: "Real-time rendering" },
   { v: "Node", l: "Node-based graphics UI" },
-  { v: "Unlimited", l: "SDI/NDI/2110 I/O" },
+  { v: "Unlimited", l: "SDI/NDI/2110 I/O · license-based" },
   { v: "Unreal", l: "Native integration" },
 ];
 
@@ -60,7 +60,7 @@ const featureTech: { t: string; d: string; img?: string }[] = [
   },
   {
     t: "Single control interface",
-    d: "Operate visuals and direction flexibly from one intuitive interface.",
+    d: "One operator controls switching, graphics, and direction from a single screen.",
     img: "/aximmetry-virtual-production.jpg",
   },
   {
@@ -76,7 +76,7 @@ const bfSpecs: [string, string][] = [
   ["Graphics", "DLSS · Ray Tracing · RTXGI (real-time global illumination)"],
   ["Color", "10-bit · HDR I/O · color space and gamma handling"],
   ["Chroma key", "Built-in chroma keyer with 3D Clean Plate and Light Wrap"],
-  ["I/O", "Unlimited SDI · NDI · SMPTE 2110 (NMOS) · SRT I/O"],
+  ["I/O", "SDI · NDI · SMPTE 2110 (NMOS) · SRT I/O · license-based unlimited (actual channel count depends on hardware)"],
   ["Sync", "SDI Timecode · hardware Genlock"],
   ["Protocols", "Native Free-D · MOS (newsroom integration)"],
   ["Device control", "GPIO · OSC · MIDI · DMX · ArtNet"],
@@ -92,10 +92,13 @@ const steps = [
 ];
 
 const faqs = [
-  { q: "How is this different from existing broadcast graphics solutions?", a: "Aximmetry runs Unreal Engine natively and is a real-time graphics and virtual production platform supporting unlimited SDI, NDI, and SMPTE 2110 (NMOS) I/O along with Free-D and MOS. Rollout cost and license configuration are tailored to your scale during consultation, and EX, as the official certified reseller, provides installation, training, and technical support in Korean." },
+  { q: "How is this different from existing broadcast graphics solutions?", a: "Aximmetry runs Unreal Engine natively and is a real-time graphics and virtual production platform supporting license-based unlimited SDI, NDI, and SMPTE 2110 (NMOS) I/O along with Free-D and MOS. Rollout cost and license configuration are tailored to your scale during consultation, and EX, as the official certified reseller, provides installation, training, and technical support in Korean." },
   { q: "Which edition does EX supply?", a: "EX officially supplies the Broadcast & Film Edition for professional broadcast and film environments. We propose the license, hardware, and I/O configuration to fit your site and support installation, training, and technical support as the official certified reseller." },
   { q: "How high a resolution can run in real time?", a: "The Broadcast & Film Edition uses DLSS, Ray Tracing, and RTXGI to support real-time rendering up to 8K resolution, and handles 10-bit and HDR I/O." },
-  { q: "How does it integrate with broadcast systems?", a: "It supports unlimited SDI, NDI, SMPTE 2110 (NMOS), and SRT I/O along with timecode and hardware Genlock, and integrates into broadcast environments via the Free-D and MOS (newsroom) protocols." },
+  { q: "How does it integrate with broadcast systems?", a: "It supports license-based unlimited SDI, NDI, SMPTE 2110 (NMOS), and SRT I/O along with timecode and hardware Genlock, and integrates into broadcast environments via the Free-D and MOS (newsroom) protocols." },
+  { q: "Can we see a live demo?", a: "Yes. You can operate Aximmetry hands-on at our Hanam XR studio, and we run a video demo if you are remote. We arrange the demo schedule during consultation." },
+  { q: "What about rollout cost and licensing?", a: "It depends on the license, hardware, and I/O configuration. Tell us your site scale and goals, and we will propose a configuration and quote together. Exact terms are confirmed during consultation." },
+  { q: "Are there operating-environment constraints?", a: "Real-time performance depends on hardware such as the GPU, along with resolution and I/O channel count. We review your site conditions together to design a fitting configuration." },
 ];
 
 export default function AximmetryPageEn() {
@@ -121,7 +124,7 @@ export default function AximmetryPageEn() {
           { label: "Aximmetry", href: "/en/product/aximmetry" },
         ]}
         tag="Certified Reseller"
-        title="All-In-One Virtual Production Platform"
+        title="Aximmetry — All-In-One Virtual Production Platform"
         lead="A virtual production compositor that combines its own node-based engine with Unreal Engine to build real-time virtual studios, XR, and AR."
       />
 
@@ -299,7 +302,7 @@ export default function AximmetryPageEn() {
                 EX is the <span className="text-lav">official certified reseller</span> for Aximmetry.
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                From edition-selection consulting to system installation, security setup, on-site training, and maintenance, we support the entire rollout as an integrated turnkey. As the official Aximmetry reseller in Korea, we provide rollout quotes and technical support in Korean.
+                From rollout consulting to system installation, security setup, on-site training, and maintenance, we support the entire rollout as an integrated turnkey. As the official Aximmetry reseller in Korea, we provide rollout quotes and technical support in Korean.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["Rollout consulting", "Setup", "Training", "Maintenance"].map((x) => (

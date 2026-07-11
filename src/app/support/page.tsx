@@ -28,7 +28,7 @@ const faqGroups = [
     cat: "도입 · 견적",
     items: [
       { q: "도입 비용은 어떻게 산정되나요?", a: "구성·규모·운영 방식에 따라 맞춤 견적을 제공합니다. 문의 주시면 상담 후 산정해 드립니다." },
-      { q: "견적이나 데모는 어떻게 요청하나요?", a: "Contact의 ‘데모·쇼룸 체험’ 또는 ‘솔루션 도입’ 문의, 유선(031-699-8228)으로 요청하실 수 있습니다. 하남 스튜디오 시연은 무료이며, 원거리 고객은 화상 데모로 진행합니다." },
+      { q: "견적이나 데모는 어떻게 요청하나요?", a: "Contact의 ‘시연·쇼룸 방문’ 또는 ‘솔루션 도입’ 문의, 유선(031-699-8228)으로 요청하실 수 있습니다. 하남 스튜디오 시연은 무료이며, 원거리 고객은 화상 데모로 진행합니다." },
       { q: "도입까지 기간은 얼마나 걸리나요?", a: "구성 규모에 따라 상이하며, 사전 미팅에서 일정과 범위를 함께 확정합니다." },
     ],
   },
@@ -170,13 +170,21 @@ export default function SupportPage() {
                 <span className="text-sm font-medium text-fg">
                   {d.name} <span className="font-mono text-xs text-faint">· {d.fmt}</span>
                 </span>
-                <span className="shrink-0 font-mono text-xs uppercase tracking-wider text-faint">준비 중</span>
+                <Link
+                  href={`/contact?type=${encodeURIComponent("일반 문의")}#form`}
+                  className="arrowlink shrink-0 text-sm"
+                >
+                  이메일로 요청{" "}
+                  <span className="ar" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
               </div>
             ))}
           </div>
           <p className="mt-4 text-sm text-muted">
-            자료가 필요하시면{" "}
-            <Link href="/contact" className="text-lav hover:underline">
+            자료는 순차 공개 예정입니다. 지금 필요하시면{" "}
+            <Link href={`/contact?type=${encodeURIComponent("일반 문의")}#form`} className="text-lav hover:underline">
               문의
             </Link>
             로 요청해 주세요.

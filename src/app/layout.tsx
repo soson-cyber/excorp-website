@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { site, sameAs, SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ui } from "@/lib/i18n";
 
 // 국내 전화번호(031-699-8228) → E.164(+82-31-699-8228). JSON-LD telephone 단일 변환.
@@ -35,16 +36,6 @@ export const metadata: Metadata = {
   },
   description:
     "이엑스 주식회사(EX Corporation)는 AI와 XR 기술을 연결하여 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다. All-in-One, Real-time XR Content Production Solution.",
-  keywords: [
-    "버추얼 프로덕션",
-    "XR",
-    "실시간 콘텐츠",
-    "EXLINK",
-    "모션캡처",
-    "Aximmetry",
-    "Moverse",
-    "RETracker",
-  ],
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -89,12 +80,10 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           {ui.ko.skipToContent}
         </a>
-        <Script
-          id="org-jsonld"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+        {/* Organization·WebSite 스키마 — 서버 렌더로 첫 HTML에 포함(비-JS 크롤러도 수집). */}
+        <JsonLd
+          schema={[
+            {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "EX Corporation",
@@ -110,20 +99,13 @@ export default function RootLayout({
                 streetAddress: "금토동 327, 스타트업스퀘어 B동 3층",
                 addressLocality: "성남시 수정구",
                 addressRegion: "경기도",
-                postalCode: "461380",
+                postalCode: "13453",
                 addressCountry: "KR",
               },
               // sameAs = site.ts의 sameAs(= site.social 3채널) 단일 출처. 잘못된 ex.studio 핸들 교정.
               sameAs,
-            }),
-          }}
-        />
-        <Script
-          id="website-jsonld"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            },
+            {
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "EX Corporation",
@@ -131,8 +113,8 @@ export default function RootLayout({
               url: SITE_URL,
               inLanguage: "ko-KR",
               publisher: { "@type": "Organization", name: "EX Corporation" },
-            }),
-          }}
+            },
+          ]}
         />
         <div className="grain-overlay" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg">

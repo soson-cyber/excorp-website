@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/Button";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { StudioOptions } from "@/components/studio/StudioOptions";
 import { site, locations } from "@/lib/site";
-import { JsonLd, breadcrumbLd, localBusinessLd } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbLd, localBusinessLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Hanam XR Studio — Booking & Virtual Production",
+  title: "Hanam XR Studio — Chroma-Key Studio Rental & Production",
   description:
-    "The EX XR Studio in Hanam. A large green-screen chroma stage (W10×D7×H4, ~70㎡) paired with real-time XR technology to produce IR, webinar, and talk content end to end — from planning to shoot to live streaming. Purpose-built menus (S·M·L) and tailored quotes.",
+    "Hanam chroma-key studio rental and production. A large green-screen chroma stage (W10×D7×H4, ~70㎡) with real-time XR takes IR, webinars, and talks from planning to shoot to live streaming in one pass. Tailored quote consultation.",
   alternates: {
     canonical: "/en/xr-studio",
     languages: { ko: "/xr-studio", en: "/en/xr-studio", "x-default": "/xr-studio" },
@@ -44,10 +44,10 @@ const galleryBlanks = [
   { label: "Makeup · waiting area", tag: "PREP", img: "/studio_03.jpeg", alt: "Waiting area with ring-light makeup mirror, clothing rack, and changing booth" },
 ];
 
-const guide = [
-  "The workflow varies with the format and scale of your content; we’ll guide you according to the schedule and setup.",
-  "Share your slides (PPT) and script in advance, and we’ll lock the structure together in a pre-production meeting.",
-  "Free parking available · on-location shoot options available on request.",
+const faqs = [
+  { q: "How does the process work?", a: "The workflow varies with the format and scale of your content; we’ll guide you according to the schedule and setup." },
+  { q: "Is there anything to prepare in advance?", a: "Share your slides (PPT) and script in advance, and we’ll lock the structure together in a pre-production meeting." },
+  { q: "Are parking and on-location shoots available?", a: "Free parking is available, and on-location shoot options are available on request." },
 ];
 
 const facilitySpecs = [
@@ -71,13 +71,16 @@ export default function XrStudioPageEn() {
             region: "Gyeonggi-do",
             locality: "Hanam-si",
             path: "/en/xr-studio",
+            image: "/xr-studio.jpg",
+            geo: { lat: 37.5576, lng: 127.2050 },
           }),
+          faqPageLd(faqs),
         ]}
       />
       <PageHero
         breadcrumb={[{ label: "XR Studio", href: "/en/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
-        title="XR content finished on a virtual background"
+        title="Hanam XR Studio — from booking to production and streaming"
         lead="The EX XR Studio in Hanam is a virtual production studio that, with a large green-screen chroma stage and real-time XR technology, completes everything in one pass — from planning to shoot to live streaming."
       />
 
@@ -91,7 +94,12 @@ export default function XrStudioPageEn() {
       {/* §01 Why EX Studio */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <SectionHead index="01" label="Why EX XR Studio" title="What makes EX XR Studio different" />
+          <SectionHead
+            index="01"
+            label="Why EX XR Studio"
+            title="What makes EX XR Studio different"
+            lead="Real-time XR proven by 6 technology patents and real production work — including the Shell Corporation fashion film — put to use right here at our Hanam studio."
+          />
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (
               <div key={r.t} className="card" style={{ padding: 28 }}>
@@ -135,18 +143,25 @@ export default function XrStudioPageEn() {
         </div>
       </section>
 
-      {/* §04 Guide */}
+      {/* §04 FAQ (how-it-works Q&A) */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="04" label="Guide" title="How it works" />
-          <ul className="mt-12 max-w-3xl space-y-4">
-            {guide.map((g) => (
-              <li key={g} className="flex gap-3 text-fg">
-                <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
-                <span className="leading-relaxed">{g}</span>
-              </li>
+          <SectionHead index="04" label="FAQ" title="Frequently asked questions" />
+          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+            {faqs.map((f, i) => (
+              <details
+                key={f.q}
+                className="group p-6"
+                style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
+                  {f.q}
+                  <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+              </details>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -182,7 +197,7 @@ export default function XrStudioPageEn() {
           <div className="card px-6 py-12 text-center sm:px-8 sm:py-14" style={{ borderRadius: 24 }}>
             <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-lav">
               <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
-              Book a visit & request a quote
+              Book a demo & request a quote
             </span>
             <h2 className="mx-auto mt-6 max-w-2xl text-balance text-4xl font-semibold leading-snug text-fg md:text-5xl">
               We’ll propose a setup that fits your goal.
@@ -191,10 +206,10 @@ export default function XrStudioPageEn() {
               Seeing it beats reading about it. We’ll demo the virtual stage for free at our Hanam studio, along with a quote tailored to your content format, scale, and options. If you’re far away, we’ll run a remote video demo.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button href="/en/contact" variant="accent">
+              <Button href={`/en/contact?type=${encodeURIComponent("시연·쇼룸 방문")}#form`} variant="accent">
                 Book a free demo →
               </Button>
-              <Button href="/en/contact" variant="secondary">
+              <Button href={`/en/contact?type=${encodeURIComponent("스튜디오 제작")}#form`} variant="secondary">
                 Request a quote →
               </Button>
               <Button href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} variant="glow">

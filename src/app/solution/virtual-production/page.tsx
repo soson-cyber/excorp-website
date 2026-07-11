@@ -81,8 +81,8 @@ export default function VirtualProductionPage() {
           { label: "Virtual Production", href: "/solution/virtual-production" },
         ]}
         tag="Methodology"
-        title="촬영하는 순간, 콘텐츠가 완성됩니다."
-        lead="디지털 배경과 실제 촬영을 실시간으로 결합해, 제작자가 라이브 액션처럼 현장에서 직접 연출하고 완성합니다. 길고 복잡한 후반 작업이 필요 없습니다."
+        title="버추얼 프로덕션 — 촬영하는 순간, 콘텐츠가 완성됩니다."
+        lead="디지털 배경과 실제 촬영을 실시간으로 결합해, 촬영 현장에서 바로 연출하고 완성합니다. 길고 복잡한 후반 작업이 필요 없습니다."
       />
 
       {/* Problem Quote Trio — VP를 처음 도입할 때의 페인(§0-A) */}
@@ -107,7 +107,7 @@ export default function VirtualProductionPage() {
                 버추얼 프로덕션이란?
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                버추얼 프로덕션(Virtual Production)은 디지털 세계와 물리 세계를 실시간으로 결합하는 제작 방식입니다. 컴퓨터로 만든 가상 배경·세트를 실제 촬영과 그 자리에서 합쳐, 제작자가 라이브 액션을 다루듯 디지털 과정을 직접 연출합니다. 카메라가 움직여도 배경이 자연스럽게 따라오고, 긴 후반 작업 없이 현장에서 결과를 확인합니다.
+                버추얼 프로덕션(Virtual Production)은 디지털 세계와 물리 세계를 실시간으로 결합하는 제작 방식입니다. 컴퓨터로 만든 가상 배경·세트를 실제 촬영과 그 자리에서 합쳐, 실제 촬영을 하듯 가상 배경까지 촬영 현장에서 직접 연출합니다. 카메라가 움직여도 배경이 자연스럽게 따라오고, 긴 후반 작업 없이 현장에서 결과를 확인합니다.
               </p>
               <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
                 가상 배경 위에서 실제로 촬영하고, 그 자리에서 완성하는 영상 제작 방식.

@@ -294,8 +294,8 @@ export function Hero({ locale = "ko" }: { locale?: Locale }) {
         </h1>
         <p className="hero-lead">
           {en
-            ? "EX connects capture, tracking, rendering, and streaming for real-time XR and virtual production into a single workflow."
-            : "이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을 하나의 흐름으로 연결합니다."}
+            ? "EX connects capture, tracking, rendering, and streaming for real-time XR and virtual production into a single workflow — finished on set, with a smaller crew and no long post-production."
+            : "이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을 하나의 흐름으로 연결합니다. 긴 후반 작업 없이, 더 적은 인력으로 현장에서 완성합니다."}
         </p>
         <div className="hero-cta">
           <Link href={withLocale("/contact", locale)} className="btn btn--onDark focus-on-dark">

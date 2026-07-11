@@ -11,7 +11,7 @@ import { JsonLd, faqPageLd, abs } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: "RETracker — Korea Distributor for Markerless Camera Tracking",
   description:
-    "RETracker is 6-DOF markerless camera tracking with no ceiling markers. Bliss G2 sensor + Fizz 2 Pro lens encoder. Under 1cm error per 10m, 500fps IMU fusion, integration with Unreal and Aximmetry. As the official Korea distributor, we consult on camera tracking system rollout and RETracker quotes.",
+    "RETracker is 6-DOF markerless camera tracking that runs with under 1cm error per 10m and no ceiling markers. EX, the official Korea distributor, consults on the Bliss G2 sensor and Unreal/Aximmetry integration.",
   alternates: {
     canonical: "/en/product/retracker",
     languages: { "ko-KR": "/product/retracker", "en-US": "/en/product/retracker", "x-default": "/product/retracker" },
@@ -35,7 +35,7 @@ const quickSpecs: { v: string; l: string; gauge?: boolean }[] = [
 const whyPoints = [
   {
     t: "100% markerless",
-    d: "No pre-installation of ceiling markers required. Mount the sensor on your camera and it maps the space directly, tracking anywhere with no limit on range of movement.",
+    d: "No pre-installation of ceiling markers required. Mount the sensor on your camera and it maps the space directly, tracking over a wide range of movement without being tied to pre-installed infrastructure.",
   },
   {
     t: "6-DOF · <1cm/10m · 500fps IMU fusion",
@@ -102,11 +102,14 @@ const process = [
 
 const faqs = [
   { q: "How is this different from existing marker-based tracking?", a: "No pre-installation of ceiling or stage markers required. Mount the sensor on your camera and it maps the space directly, tracking with no limit on range of movement. It tracks 6-DOF to under 1cm error over 10m of movement (per manufacturer spec) and integrates in real time with Unreal and Aximmetry via Free-D and LiveLink. We’ll advise on rollout quotes and configuration to fit your site." },
-  { q: "Do I need markers or tracking infrastructure?", a: "No. Bliss G2 is a 100% markerless approach that needs no ceiling markers â mount it on the camera with no extra infrastructure and it maps the space directly. There’s no limit on range of movement either." },
+  { q: "Do I need markers or tracking infrastructure?", a: "No. Bliss G2 is a 100% markerless approach that needs no ceiling markers â mount it on the camera with no extra infrastructure and it maps the space directly. Unlike ceiling-marker systems, it isn’t constrained by a range tied to pre-installed infrastructure, so you can move the camera freely and track across large spaces." },
   { q: "How accurate is the tracking?", a: "Ultra-precise error of under 1cm (<1cm) over 10m of movement (per manufacturer spec), with 500fps IMU sensor fusion keeping it stable in handheld and fast moves." },
   { q: "How do Bliss and Fizz work together?", a: "Bliss G2 tracks the camera’s position and orientation (6-DOF), while Fizz 2 Pro extracts the lens’s Focus, Iris, and Zoom values to match the virtual background’s depth of field and field of view to live footage." },
   { q: "Which engines does it integrate with?", a: "It’s compatible with Unreal Engine (4.27â5.x), Aximmetry, Blender, and Ventuz, and supports the LiveLink Bliss, Free-D, OSC, and FBX (with LTC) protocols." },
-  { q: "Which cameras can it mount on?", a: "It’s compatible with all kinds of cameras. The sensor mounts on top of the camera with a standard hot shoe and sends data to a PC over LAN/USB â a camera-agnostic approach, with a dedicated 3D-printed mount included by default. It works both indoors and outdoors with no limit on range of movement." },
+  { q: "Which cameras can it mount on?", a: "It works with most cameras that accept a standard hot shoe. The sensor mounts on top of the camera with a standard hot shoe and sends data to a PC over LAN/USB â a camera-agnostic approach, with a dedicated 3D-printed mount included by default. Special rigs or mounting conditions are confirmed during consultation. It works both indoors and outdoors across a wide range of movement." },
+  { q: "Can we see a live demo?", a: "Yes. You can see camera tracking firsthand at our Hanam XR studio, and we run a video demo if you are remote. We arrange the demo schedule during consultation." },
+  { q: "What about rollout cost?", a: "It depends on the Bliss G2, Fizz 2 Pro, and Bliss Software configuration and any add-on modules. Tell us your shooting environment and operating scale, and we will propose a configuration and quote together." },
+  { q: "Does it work in low-feature environments like a green screen?", a: "vSLAM tracks based on features in the space, so in low-feature environments such as a uniform green screen, tracking accuracy can vary with conditions. Tell us your site environment and we will review complementary methods — tracking markers, lighting, and more — during consultation." },
 ];
 
 export default function RetrackerPageEn() {
@@ -163,7 +166,7 @@ export default function RetrackerPageEn() {
             }
             lead={
               <>
-                <span className="inline-block">A high-precision optical tracking system based on real-time 6-DoF that tracks without markers,</span>{" "}
+                <span className="inline-block">A markerless real-time 6-DoF vSLAM-based camera tracking system,</span>{" "}
                 <span className="inline-block">a complete camera tracking solution for XR and virtual production.</span>
               </>
             }
@@ -233,6 +236,9 @@ export default function RetrackerPageEn() {
               </div>
             ))}
           </div>
+          <p className="mt-5 text-sm text-muted">
+            ※ Bliss Software is the control software that calibrates, integrates, and outputs tracking data from the Bliss G2 sensor.
+          </p>
         </div>
       </section>
 

@@ -9,7 +9,7 @@ import { ProblemTrio } from "@/components/page/ProblemTrio";
 import { JsonLd, breadcrumbLd, abs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Aximmetry · Moverse · RETracker 한국 공식 공급",
+  title: "Aximmetry·Moverse·RETracker — 한국 공식 공급",
   alternates: { canonical: "/product", languages: { "ko-KR": "/product", "en-US": "/en/product", "x-default": "/product" } },
   description:
     "버추얼 프로덕션 핵심 제품을 EX가 한국에서 공식 공급합니다. 실시간 합성 Aximmetry(공식 리셀러), AI 마커리스 모션캡처 Moverse·6-DOF 카메라 트래킹 RETracker(공식 총판). 도입 컨설팅·셋업·교육·기술 지원까지.",
@@ -40,7 +40,7 @@ const lineup = [
   {
     badge: "Distributor",
     title: "Moverse AI",
-    copy: "전용 수트·마커 없이 동작하는 AI 마커리스 모션캡처 (100% On-Premise)",
+    copy: "전용 수트·마커 없이 동작하는 AI 마커리스 모션캡처 — 실시간 캡처는 100% 로컬 처리",
     meta: "Markerless MoCap",
     href: "/product/moverse",
   },
@@ -55,7 +55,7 @@ const lineup = [
 
 const compare = [
   { label: "역할", values: ["실시간 합성·렌더", "마커리스 모션캡처", "6-DOF 카메라 트래킹"] },
-  { label: "핵심", values: ["Unreal 호환 · 최대 8K", "마커리스 · On-Premise", "6-DOF · <1cm/10m"] },
+  { label: "핵심", values: ["Unreal 호환 · 최대 8K", "마커리스 · 로컬 실시간 캡처", "6-DOF · <1cm/10m"] },
   { label: "EX 자격", values: ["공식 인증 리셀러", "공식 한국 총판", "공식 한국 총판"] },
 ];
 
@@ -140,7 +140,7 @@ export default function ProductPage() {
                   {p.meta}
                 </span>
                 <span className="arrowlink shrink-0">
-                  Discover{" "}
+                  {p.title} 자세히 보기{" "}
                   <span className="ar" aria-hidden="true">
                     →
                   </span>

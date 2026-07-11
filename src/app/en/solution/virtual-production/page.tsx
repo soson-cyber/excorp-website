@@ -88,8 +88,8 @@ export default function VirtualProductionPageEn() {
           { label: "Virtual Production", href: "/en/solution/virtual-production" },
         ]}
         tag="Methodology"
-        title="The moment you shoot, the content is done."
-        lead="By combining digital backgrounds with live shooting in real time, creators direct and finish on set — just like live action. No long, complex post-production."
+        title="Virtual Production — the content is done the moment you shoot."
+        lead="By combining digital backgrounds with live shooting in real time, you direct and finish right on set. No long, complex post-production."
       />
 
       {/* Problem Quote Trio — pains when adopting VP for the first time (§0-A) */}
@@ -114,7 +114,7 @@ export default function VirtualProductionPageEn() {
                 What is virtual production?
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                Virtual production is a method that combines the digital and physical worlds in real time. Computer-made virtual backgrounds and sets are merged with live shooting on the spot, so creators direct the digital process directly — as if handling live action. The background follows naturally as the camera moves, and you check the result on set without long post-production.
+                Virtual production is a method that combines the digital and physical worlds in real time. Computer-made virtual backgrounds and sets are merged with live shooting on the spot, so you direct the virtual background right on set, just as you would a real shoot. The background follows naturally as the camera moves, and you check the result on set without long post-production.
               </p>
               <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
                 A way of making video where you shoot for real on a virtual background — and finish on the spot.

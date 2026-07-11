@@ -9,16 +9,16 @@ import { SpecTable } from "@/components/product/SpecTable";
 import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Aximmetry 한국 공식 리셀러 — 버추얼 프로덕션",
+  title: "Aximmetry 한국 공식 리셀러 — 실시간 가상 스튜디오 엔진",
   alternates: { canonical: "/product/aximmetry", languages: { "ko-KR": "/product/aximmetry", "en-US": "/en/product/aximmetry", "x-default": "/product/aximmetry" } },
   description:
-    "Unreal Engine 네이티브 연동(플러그인 내장) + 자체 노드 기반 엔진으로 최대 8K 실시간 가상 스튜디오·XR·AR를 만드는 Aximmetry (Broadcast & Film Edition). 무제한 SDI/NDI/SMPTE 2110, Free-D·MOS. EX 공식 인증 리셀러.",
+    "Unreal 네이티브 연동과 노드 기반 엔진으로 최대 8K 실시간 가상 스튜디오·XR·AR를 구현하는 Aximmetry. 방송·영화용 크로마키·인카메라 VFX를 EX 공식 인증 리셀러가 지원합니다.",
 };
 
 const quickSpecs = [
   { v: "8K", l: "실시간 렌더링" },
   { v: "Node", l: "기반 그래픽 UI" },
-  { v: "Unlimited", l: "SDI/NDI/2110 I/O" },
+  { v: "Unlimited", l: "SDI/NDI/2110 I/O · 라이선스 기준" },
   { v: "Unreal", l: "네이티브 연동" },
 ];
 
@@ -51,7 +51,7 @@ const featureTech: { t: string; d: string; img?: string }[] = [
   },
   {
     t: "단일 제어 인터페이스",
-    d: "직관적인 단일 인터페이스에서 영상·연출을 유연하게 운영합니다.",
+    d: "운영자 한 명이 스위칭·그래픽·연출을 한 화면에서 제어합니다.",
     img: "/aximmetry-virtual-production.jpg",
   },
   {
@@ -67,7 +67,7 @@ const bfSpecs: [string, string][] = [
   ["그래픽", "DLSS · Ray Tracing · RTXGI (실시간 전역 조명)"],
   ["컬러", "10-bit · HDR 입출력 · 색 공간(Color Space)·감마 처리"],
   ["크로마키", "3D Clean Plate·Light Wrap을 지원하는 내장 크로마키어"],
-  ["입출력", "무제한 SDI · NDI · SMPTE 2110(NMOS) · SRT I/O"],
+  ["입출력", "SDI · NDI · SMPTE 2110(NMOS) · SRT I/O · 라이선스 기준 무제한(실제 채널 수는 하드웨어 구성에 따름)"],
   ["동기화", "SDI 타임코드(Timecode) · 하드웨어 젠록(Genlock)"],
   ["프로토콜", "Free-D 네이티브 · MOS(뉴스룸 통합)"],
   ["디바이스 제어", "GPIO · OSC · MIDI · DMX · ArtNet"],
@@ -84,10 +84,13 @@ const steps = [
 ];
 
 const faqs = [
-  { q: "기존 방송 그래픽 솔루션과 무엇이 다른가요?", a: "Aximmetry는 Unreal Engine을 네이티브로 실행하고 무제한 SDI·NDI·SMPTE 2110(NMOS) 입출력과 Free-D·MOS를 지원하는 실시간 그래픽·버추얼 프로덕션 플랫폼입니다. 도입 비용·라이선스 구성은 현장 규모에 맞춰 상담 시 안내드리며, EX가 공식 인증 리셀러로 설치·교육·기술지원을 한국어로 제공합니다." },
+  { q: "기존 방송 그래픽 솔루션과 무엇이 다른가요?", a: "Aximmetry는 Unreal Engine을 네이티브로 실행하고 라이선스 기준 무제한 SDI·NDI·SMPTE 2110(NMOS) 입출력과 Free-D·MOS를 지원하는 실시간 그래픽·버추얼 프로덕션 플랫폼입니다. 도입 비용·라이선스 구성은 현장 규모에 맞춰 상담 시 안내드리며, EX가 공식 인증 리셀러로 설치·교육·기술지원을 한국어로 제공합니다." },
   { q: "EX는 어떤 에디션을 공급하나요?", a: "EX는 전문 방송·필름 현장을 위한 Broadcast & Film Edition을 공식 공급합니다. 라이선스·하드웨어·I/O 구성을 현장에 맞춰 제안하고 설치·교육·기술지원까지 공식 인증 리셀러로서 지원합니다." },
   { q: "어느 정도 해상도까지 실시간으로 가능한가요?", a: "Broadcast & Film Edition은 DLSS·Ray Tracing·RTXGI를 활용해 최대 8K 해상도 실시간 렌더링을 지원하며, 10-bit·HDR 입출력을 처리합니다." },
-  { q: "방송 시스템과 어떻게 연동되나요?", a: "무제한 SDI·NDI·SMPTE 2110(NMOS)·SRT 입출력과 타임코드·하드웨어 젠록을 지원하고, Free-D·MOS(뉴스룸) 프로토콜로 방송 환경에 통합됩니다." },
+  { q: "방송 시스템과 어떻게 연동되나요?", a: "라이선스 기준 무제한 SDI·NDI·SMPTE 2110(NMOS)·SRT 입출력과 타임코드·하드웨어 젠록을 지원하고, Free-D·MOS(뉴스룸) 프로토콜로 방송 환경에 통합됩니다." },
+  { q: "직접 시연해볼 수 있나요?", a: "가능합니다. 하남 XR 스튜디오에서 Aximmetry를 실제로 작동해보실 수 있고, 원거리시면 화상 데모로 진행합니다. 시연 일정은 상담 시 잡아 드립니다." },
+  { q: "도입 비용과 라이선스는 어떻게 되나요?", a: "라이선스·하드웨어·I/O 구성에 따라 달라집니다. 현장 규모와 목표를 알려주시면 구성과 견적을 함께 제안해 드립니다. 정확한 조건은 상담에서 확인해 드립니다." },
+  { q: "운영 환경에 제약이 있나요?", a: "실시간 성능은 GPU 등 하드웨어 구성과 해상도·I/O 채널 수에 따라 달라집니다. 현장 조건을 함께 검토해 적합한 구성을 설계합니다." },
 ];
 
 export default function AximmetryPage() {
@@ -108,7 +111,7 @@ export default function AximmetryPage() {
           { label: "Aximmetry", href: "/product/aximmetry" },
         ]}
         tag="Certified Reseller"
-        title="All-In-One Virtual Production Platform"
+        title="Aximmetry — 올인원 버추얼 프로덕션 플랫폼"
         lead="자체 노드 기반 엔진과 Unreal Engine을 결합해, 실시간 가상 스튜디오·XR·AR를 제작하는 버추얼 프로덕션 컴포저입니다."
       />
 
@@ -287,7 +290,7 @@ export default function AximmetryPage() {
                 EX는 Aximmetry <span className="text-lav">공식 인증 리셀러</span>입니다.
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                에디션 선택 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전 과정을 지원합니다. Aximmetry 한국 공식 리셀러로서 도입 견적과 한국어 기술지원을 함께 제공합니다.
+                도입 컨설팅부터 시스템 설치·보안 세팅·현장 교육·유지보수까지, 통합 턴키로 도입 전 과정을 지원합니다. Aximmetry 한국 공식 리셀러로서 도입 견적과 한국어 기술지원을 함께 제공합니다.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["도입 컨설팅", "셋업", "교육", "유지보수"].map((x) => (

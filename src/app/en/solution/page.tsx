@@ -9,7 +9,7 @@ import { SegmentGrid } from "@/components/page/SegmentGrid";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: { absolute: "XR Solution Builds & Virtual Production | EX Corporation" },
+  title: { absolute: "XR Solution Builds — EXLINK, Partner Tech & Studio | EX Corporation" },
   description:
     "EXLINK, our own integrated XR solution, plus virtual production builds. EX unifies capture, tracking, rendering, and streaming into a real-time XR environment tailored to your site — and supports you from consultation and quoting through day-to-day operation.",
   alternates: {
@@ -76,7 +76,7 @@ export default function SolutionPageEn() {
       <PageHero
         breadcrumb={[{ label: "Solution", href: "/en/solution" }]}
         tag="Solution"
-        title="We build the XR environment your site needs."
+        title="We build the XR solution your site needs."
         lead={
           <>
             <span className="inline-block">From EXLINK, our own integrated solution, to proven global partner technology and a working production studio</span>{" "}
@@ -123,8 +123,9 @@ export default function SolutionPageEn() {
             }
             lead={
               <>
-                EX holds the assets a VP project needs — our own integrated solution, proven partner products, and a
-                working studio. Whatever the XR environment, you can start it with EX.
+                From our own integrated solution to proven partner products and a working studio, EX has every stage
+                virtual production needs. Broadcast or corporate event, you can start XR to fit the conditions on your
+                site.
               </>
             }
           />
@@ -150,8 +151,8 @@ export default function SolutionPageEn() {
             titleMaxWidth="48rem"
             title={
               <>
-                <span className="inline-block">Our own solution and a proven methodology —</span>{" "}
-                <span className="inline-block">two ways to begin.</span>
+                <span className="inline-block">Need a finished product? EXLINK.</span>{" "}
+                <span className="inline-block">Want the method first? Virtual Production.</span>
               </>
             }
           />
@@ -203,7 +204,7 @@ export default function SolutionPageEn() {
       {/* §03 Capability */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="03" label="Capability" title="We cover every stage of production" />
+          <SectionHead index="03" label="Capability" title="We support every stage of production" />
           <div className="card mt-12" style={{ overflow: "hidden", padding: 0 }}>
             {capability.map((c, i) => (
               <div

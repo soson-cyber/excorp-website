@@ -66,6 +66,8 @@ export function localBusinessLd(args: {
   region?: string;
   locality?: string;
   path: string;
+  image?: string; // 스튜디오 대표 이미지(상대경로 → abs 처리)
+  geo?: { lat: number; lng: number }; // 위경도
 }): Json {
   return {
     "@context": "https://schema.org",
@@ -79,6 +81,10 @@ export function localBusinessLd(args: {
       postalCode: args.zip,
       addressCountry: "KR",
     },
+    ...(args.image ? { image: abs(args.image) } : {}),
+    ...(args.geo
+      ? { geo: { "@type": "GeoCoordinates", latitude: args.geo.lat, longitude: args.geo.lng } }
+      : {}),
     telephone: `+82-${args.tel.replace(/^0/, "").replace(/-/g, "-")}`,
     url: abs(args.path),
     parentOrganization: { "@type": "Organization", name: "EX Corporation" },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ContactForm } from "@/components/ui/ContactForm";
@@ -20,7 +21,7 @@ const inquiries = [
   { tag: "Solution", title: "Solution adoption", desc: "Evaluating EXLINK and quote consultation" },
   { tag: "Product", title: "Product adoption", desc: "Inquiries about Aximmetry · Moverse · RETracker" },
   { tag: "Studio", title: "Studio production", desc: "Discuss content production at the EX XR Studio" },
-  { tag: "Demo", title: "Demo Â· showroom visit", desc: "A free hands-on demo at the Hanam studio Â· remote video demo if you’re far away" },
+  { tag: "Demo", title: "Demo · showroom visit", desc: "A free hands-on demo at the Hanam studio · remote video demo if you’re far away" },
   { tag: "Support", title: "Technical support", desc: "Operations and technical support after adoption" },
   { tag: "General", title: "General inquiry", desc: "Careers, press, partnerships, and other inquiries" },
 ];
@@ -71,16 +72,18 @@ export default function ContactPageEn() {
             <div className="card mt-8" style={{ padding: 20 }}>
               <p className="flex items-center gap-2 text-sm font-medium text-fg">
                 <Icon name="pin" className="h-4 w-4 shrink-0 text-lav" aria-hidden="true" />
-                Book a showroom visit at the Hanam studio
+                Book a demo at the Hanam studio
               </p>
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 A free hands-on demo where you operate Aximmetry, RETracker, and Moverse yourself (about 60 minutes, at the Hanam studio).
-                If you’re far away, we’ll run a remote video demo. In the form below, set the inquiry type to <strong className="font-medium text-fg">Studio production</strong> and
+                If you’re far away, we’ll run a remote video demo. In the form below, set the inquiry type to <strong className="font-medium text-fg">Demo · showroom visit</strong> and
                 note your preferred dates.
               </p>
             </div>
-            <div className="mt-6">
-              <ContactForm locale="en" />
+            <div id="form" className="mt-6 scroll-mt-24">
+              <Suspense fallback={<div className="min-h-[560px]" aria-hidden="true" />}>
+                <ContactForm locale="en" />
+              </Suspense>
             </div>
           </div>
 

@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/Button";
 import { MediaBlank } from "@/components/ui/MediaBlank";
 import { StudioOptions } from "@/components/studio/StudioOptions";
 import { site, locations } from "@/lib/site";
-import { JsonLd, breadcrumbLd, localBusinessLd } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbLd, localBusinessLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "하남 XR 스튜디오 대관·제작 — 버추얼 프로덕션",
+  title: "하남 XR 스튜디오 대관 — 크로마키 스튜디오 제작",
   alternates: { canonical: "/xr-studio", languages: { "ko-KR": "/xr-studio", "en-US": "/en/xr-studio", "x-default": "/xr-studio" } },
   description:
-    "하남 EX XR 스튜디오. 대형 그린 크로마(W10×D7×H4, 약 70㎡)와 실시간 XR 기술로 IR·웨비나·토크 콘텐츠를 기획부터 촬영·송출까지 한 번에 제작합니다. 목적별 메뉴(S·M·L) 구성과 맞춤 견적 안내.",
+    "하남 크로마키 스튜디오 대관·제작. 대형 그린 크로마(W10×D7×H4, 약 70㎡)와 실시간 XR로 IR·웨비나·토크를 기획부터 촬영·송출까지 한 번에. 맞춤 견적 상담.",
 };
 
 const studioLoc = locations.find((l) => l.kind === "Studio")!;
@@ -41,10 +41,10 @@ const galleryBlanks = [
   { label: "메이크업 · 대기 공간", tag: "PREP", img: "/studio_03.jpeg", alt: "링라이트 메이크업 거울, 의류 행거, 탈의 부스를 갖춘 대기 공간" },
 ];
 
-const guide = [
-  "콘텐츠 형태와 규모에 따라 진행 방식이 달라지며, 일정·구성에 맞춰 안내드립니다.",
-  "발표 자료(PPT)·시나리오를 사전 제출해 주시면, 사전 미팅을 통해 구성을 함께 확정합니다.",
-  "무료 주차 가능 · 출장 촬영 옵션 문의 가능.",
+const faqs = [
+  { q: "진행 방식이 어떻게 되나요?", a: "콘텐츠 형태와 규모에 따라 진행 방식이 달라지며, 일정·구성에 맞춰 안내드립니다." },
+  { q: "사전에 준비할 자료가 있나요?", a: "발표 자료(PPT)·시나리오를 사전 제출해 주시면, 사전 미팅을 통해 구성을 함께 확정합니다." },
+  { q: "주차·출장 촬영이 가능한가요?", a: "무료 주차가 가능하며, 출장 촬영 옵션도 문의해 주시면 안내해 드립니다." },
 ];
 
 const facilitySpecs = [
@@ -68,13 +68,16 @@ export default function XrStudioPage() {
             region: "경기도",
             locality: "하남시",
             path: "/xr-studio",
+            image: "/xr-studio.jpg",
+            geo: { lat: 37.5576, lng: 127.2050 },
           }),
+          faqPageLd(faqs),
         ]}
       />
       <PageHero
         breadcrumb={[{ label: "XR Studio", href: "/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
-        title="가상 배경 위에서 완성되는 XR 콘텐츠"
+        title="하남 XR 스튜디오 — 대관부터 제작·송출까지"
         lead="하남 EX XR Studio는 대형 그린 크로마와 XR·리얼타임 기술로, 기획부터 촬영·송출까지 한 번에 완성하는 버추얼 프로덕션 스튜디오입니다."
       />
 
@@ -88,7 +91,12 @@ export default function XrStudioPage() {
       {/* §01 Why EX Studio */}
       <section className="section section--surface section--glow">
         <div className="container-ex">
-          <SectionHead index="01" label="Why EX XR Studio" title="EX XR Studio가 다른 이유" />
+          <SectionHead
+            index="01"
+            label="Why EX XR Studio"
+            title="EX XR Studio가 다른 이유"
+            lead="기술 특허 6건과 쉘 코퍼레이션 패션 필름 등 실제 제작 경험으로 검증한 실시간 XR을, 하남 스튜디오에서 그대로 씁니다."
+          />
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (
               <div key={r.t} className="card" style={{ padding: 28 }}>
@@ -132,18 +140,25 @@ export default function XrStudioPage() {
         </div>
       </section>
 
-      {/* §04 Guide */}
+      {/* §04 FAQ (이용 안내 Q&A) */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="04" label="Guide" title="이용 안내" />
-          <ul className="mt-12 max-w-3xl space-y-4">
-            {guide.map((g) => (
-              <li key={g} className="flex gap-3 text-fg">
-                <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
-                <span className="leading-relaxed">{g}</span>
-              </li>
+          <SectionHead index="04" label="FAQ" title="자주 묻는 질문" />
+          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+            {faqs.map((f, i) => (
+              <details
+                key={f.q}
+                className="group p-6"
+                style={{ borderTop: i === 0 ? "none" : "1px solid var(--color-border)" }}
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg">
+                  {f.q}
+                  <span className="font-mono text-lav transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+              </details>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -179,7 +194,7 @@ export default function XrStudioPage() {
           <div className="card px-6 py-12 text-center sm:px-8 sm:py-14" style={{ borderRadius: 24 }}>
             <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-lav">
               <span className="h-0.5 w-7 bg-primary" aria-hidden="true" />
-              체험 예약 및 견적 문의
+              시연 예약 및 견적 문의
             </span>
             <h2 className="mx-auto mt-6 max-w-2xl text-balance text-4xl font-semibold leading-snug text-fg md:text-5xl">
               목적에 맞는 구성을 제안해 드립니다.
@@ -188,11 +203,11 @@ export default function XrStudioPage() {
               글로 읽는 것보다 직접 보는 게 빠릅니다. 하남 스튜디오에서 가상 무대를 무료로 시연해 드립니다. 콘텐츠 형태·규모·옵션에 맞춘 견적도 함께 안내합니다. 원거리시면 화상 데모로 진행합니다.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button href="/contact" variant="accent">
+              <Button href={`/contact?type=${encodeURIComponent("시연·쇼룸 방문")}#form`} variant="accent">
                 무료 시연 예약 →
               </Button>
-              <Button href="/contact" variant="secondary">
-                견적 문의하기 →
+              <Button href={`/contact?type=${encodeURIComponent("스튜디오 제작")}#form`} variant="secondary">
+                견적 문의 →
               </Button>
               <Button href={`tel:${site.contact.tel.replace(/[^0-9+]/g, "")}`} variant="glow">
                 전화 {site.contact.tel}

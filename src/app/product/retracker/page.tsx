@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "RETracker 한국 총판 — 마커리스 카메라 트래킹",
   alternates: { canonical: "/product/retracker", languages: { "ko-KR": "/product/retracker", "en-US": "/en/product/retracker", "x-default": "/product/retracker" } },
   description:
-    "천장 마커 없이 동작하는 6-DOF 마커리스 카메라 트래킹 RETracker. Bliss G2 센서 + Fizz 2 Pro 렌즈 인코더. 오차 <1cm/10m, 500fps IMU 퓨전, Unreal·Aximmetry 연동. 카메라 트래킹 시스템 도입·RETracker 견적을 공식 한국 총판으로서 상담합니다.",
+    "천장 마커 없이 오차 <1cm/10m로 동작하는 6-DOF 마커리스 카메라 트래킹 RETracker. Bliss G2 센서·Unreal/Aximmetry 연동을 EX 공식 한국 총판이 상담합니다.",
 };
 
 // quickSpec: 숫자는 solid text-fg. 수치 스펙(<1cm/10m·500fps)엔 Gauge 의미 매핑, 비수치엔 제거.
@@ -26,7 +26,7 @@ const quickSpecs: { v: string; l: string; gauge?: boolean }[] = [
 const whyPoints = [
   {
     t: "100% 마커리스",
-    d: "천장에 마커를 붙이는 사전 설비가 필요 없습니다. 카메라에 센서를 장착하면 공간을 직접 매핑해, 이동 범위 제한 없이 어디서나 트래킹합니다.",
+    d: "천장에 마커를 붙이는 사전 설비가 필요 없습니다. 카메라에 센서를 장착하면 공간을 직접 매핑해, 사전 설비에 매이지 않고 넓은 이동 범위에서 트래킹합니다.",
   },
   {
     t: "6-DOF · <1cm/10m · 500fps IMU 퓨전",
@@ -93,11 +93,14 @@ const process = [
 
 const faqs = [
   { q: "기존 마커 트래킹 방식과 무엇이 다른가요?", a: "천장이나 무대에 마커를 부착하는 사전 설비가 필요 없습니다. 카메라에 센서를 장착하면 공간을 직접 매핑해 이동 범위 제한 없이 트래킹합니다. 6-DOF를 10m 이동 시 1cm 미만 오차(제조사 사양 기준)로 추적하며, Free-D·LiveLink로 Unreal·Aximmetry에 실시간 연동합니다. 도입 견적·구성은 현장에 맞춰 안내드립니다." },
-  { q: "마커나 트래킹 설비가 필요한가요?", a: "필요 없습니다. Bliss G2는 천장 마커가 필요 없는 100% 마커리스 방식으로, 별도 설비 없이 카메라에 장착해 공간을 직접 매핑합니다. 이동 범위 제한도 없습니다." },
-  { q: "트래킹 정확도는 어느 정도인가요?", a: "10m 이동 시 1cm 미만(<1cm)의 초정밀 오차이며(제조사 사양 기준), 초당 500fps IMU 센서 퓨전으로 핸드헬드·빠른 무빙에서도 안정적입니다." },
+  { q: "마커나 트래킹 설비가 필요한가요?", a: "필요 없습니다. Bliss G2는 천장 마커가 필요 없는 100% 마커리스 방식으로, 별도 설비 없이 카메라에 장착해 공간을 직접 매핑합니다. 천장 마커 방식과 달리 사전 설비에 매인 이동 범위 제약이 없어, 넓은 공간에서 자유롭게 카메라를 움직이며 트래킹합니다." },
+  { q: "트래킹 정확도는 어느 정도인가요?", a: "10m 이동 시 1cm 미만(<1cm)의 초정밀 오차이며(제조사 사양 기준), 500fps IMU 센서 퓨전으로 핸드헬드·빠른 무빙에서도 안정적입니다." },
   { q: "Bliss와 Fizz는 어떻게 함께 쓰나요?", a: "Bliss G2가 카메라의 위치·방향(6-DOF)을 추적하고, Fizz 2 Pro가 렌즈의 Focus·Iris·Zoom 값을 추출해 가상 배경의 심도·시야각을 실사와 정합합니다." },
   { q: "어떤 엔진과 연동되나요?", a: "Unreal Engine(4.27~5.x), Aximmetry, Blender, Ventuz와 호환되며 LiveLink Bliss·Free-D·OSC·FBX(with LTC) 프로토콜을 지원합니다." },
-  { q: "어떤 카메라에 장착할 수 있나요?", a: "모든 종류의 카메라와 호환됩니다. 센서를 카메라 상단에 표준 핫슈로 장착하고 LAN/USB로 PC에 데이터를 전송하는 카메라 비종속 방식이며, 전용 3D 프린팅 마운트가 기본 제공됩니다. 실내·실외 모두 이동 범위 제한 없이 사용할 수 있습니다." },
+  { q: "어떤 카메라에 장착할 수 있나요?", a: "표준 핫슈를 장착할 수 있는 대부분의 카메라에 사용할 수 있습니다. 센서를 카메라 상단에 표준 핫슈로 장착하고 LAN/USB로 PC에 데이터를 전송하는 카메라 비종속 방식이며, 전용 3D 프린팅 마운트가 기본 제공됩니다. 특수 리그·장착 조건은 상담 시 확인해 드립니다. 실내·실외 모두 넓은 이동 범위에서 사용할 수 있습니다." },
+  { q: "직접 시연해볼 수 있나요?", a: "가능합니다. 하남 XR 스튜디오에서 카메라 트래킹을 직접 확인하실 수 있고, 원거리시면 화상 데모로 안내합니다. 시연 일정은 상담 시 잡아 드립니다." },
+  { q: "도입 비용은 어떻게 되나요?", a: "Bliss G2·Fizz 2 Pro·Bliss Software 구성과 부가 모듈에 따라 달라집니다. 촬영 환경과 운영 규모를 알려주시면 구성과 견적을 함께 제안해 드립니다." },
+  { q: "그린스크린처럼 특징점이 적은 환경에서도 되나요?", a: "vSLAM은 공간의 특징점을 기준으로 트래킹하므로, 균일한 그린스크린처럼 특징점이 적은 환경에서는 조건에 따라 정합도가 달라질 수 있습니다. 현장 환경을 알려주시면 트래킹 마커·조명 등 보완 방법을 상담에서 함께 확인합니다." },
 ];
 
 export default function RetrackerPage() {
@@ -149,7 +152,7 @@ export default function RetrackerPage() {
             }
             lead={
               <>
-                <span className="inline-block">마커 없이 추적하는 실시간 6-DoF 기반의 고정밀 광학 트래킹 시스템으로,</span>{" "}
+                <span className="inline-block">마커 없이 추적하는 실시간 6-DoF vSLAM 기반 카메라 트래킹 시스템으로,</span>{" "}
                 <span className="inline-block">XR·버추얼 프로덕션 제작을 위한 완전한 카메라 추적 솔루션입니다.</span>
               </>
             }
@@ -219,6 +222,9 @@ export default function RetrackerPage() {
               </div>
             ))}
           </div>
+          <p className="mt-5 text-sm text-muted">
+            ※ Bliss Software는 Bliss G2 센서의 트래킹 데이터를 캘리브레이션·연동·출력하는 제어 소프트웨어입니다.
+          </p>
         </div>
       </section>
 

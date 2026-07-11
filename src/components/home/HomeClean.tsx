@@ -69,7 +69,7 @@ const COPY = {
       </>
     ),
     s01Lead: "EX는 실시간 XR 콘텐츠 제작의 전 과정을 솔루션 · 장비 · 스튜디오로 연결합니다.",
-    caseLabel: "EXLINK 구축사례",
+    caseLabel: "EXLINK 활용 시나리오",
     caseTitle: (
       <>
         실시간{" "}
@@ -79,18 +79,18 @@ const COPY = {
         하나로 통합
       </>
     ),
-    caseChip1: "운영 인력 4 → 1",
-    caseChip2: "셋업 시간 −70%",
+    caseChip1: "촬영·트래킹·렌더·송출 통합",
+    caseChip2: "운영자 1인 중심 워크플로우",
     caseLead:
       "분산된 촬영·트래킹·렌더·송출 장비를 EXLINK로 통합하여, 운영 부담은 줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.",
-    caseNote: "※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.",
+    caseNote: "※ 실제 구성·효과는 현장 환경에 따라 달라지며, 자세한 내용은 상담 시 안내드립니다.",
     caseLink: "활용 시나리오 보기",
     partnersLabel: "PARTNER PRODUCTS",
     partnersTitle: (
       <>
-        검증된 글로벌 XR 기술,{" "}
+        검증된 글로벌 XR 기술을,{" "}
         <br className="hidden sm:block" />
-        국내에 연결합니다
+        국내에 공급합니다
       </>
     ),
     partnersLead:
@@ -131,7 +131,7 @@ const COPY = {
       </>
     ),
     s01Lead: "EX connects every stage of real-time XR content production — solution, hardware, and studio.",
-    caseLabel: "EXLINK DEPLOYMENT",
+    caseLabel: "EXLINK USE CASE",
     caseTitle: (
       <>
         A real-time{" "}
@@ -141,11 +141,11 @@ const COPY = {
         unified into one
       </>
     ),
-    caseChip1: "Crew 4 → 1",
-    caseChip2: "Setup time −70%",
+    caseChip1: "Capture · tracking · render · streaming unified",
+    caseChip2: "One-operator workflow",
     caseLead:
       "A representative scenario where EXLINK unifies scattered capture, tracking, rendering, and streaming hardware — lowering operational load while raising real-time compositing quality.",
-    caseNote: "* Figures above are illustrative expected outcomes and vary by configuration and environment.",
+    caseNote: "* Actual setup and results vary by on-site conditions; we'll walk you through the details during consultation.",
     caseLink: "See use-case scenarios",
     partnersLabel: "PARTNER PRODUCTS",
     partnersTitle: (

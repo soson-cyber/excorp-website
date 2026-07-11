@@ -1,15 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { withLocale, type Locale } from "@/lib/i18n";
 
 // 문의 유형 — API로 전송되는 값은 ko로 통일(route.ts 수정 금지). 영문 폼은 라벨만 영어로 보여준다.
-const types = ["솔루션 도입", "제품 도입", "스튜디오 제작", "기술 지원", "일반 문의"] as const;
+const types = ["솔루션 도입", "제품 도입", "스튜디오 제작", "시연·쇼룸 방문", "기술 지원", "일반 문의"] as const;
 const typeLabels: Record<Locale, Record<(typeof types)[number], string>> = {
   ko: {
     "솔루션 도입": "솔루션 도입",
     "제품 도입": "제품 도입",
     "스튜디오 제작": "스튜디오 제작",
+    "시연·쇼룸 방문": "시연·쇼룸 방문",
     "기술 지원": "기술 지원",
     "일반 문의": "일반 문의",
   },
@@ -17,6 +19,7 @@ const typeLabels: Record<Locale, Record<(typeof types)[number], string>> = {
     "솔루션 도입": "Solution adoption",
     "제품 도입": "Product adoption",
     "스튜디오 제작": "Studio production",
+    "시연·쇼룸 방문": "Demo · showroom visit",
     "기술 지원": "Technical support",
     "일반 문의": "General inquiry",
   },
@@ -74,6 +77,13 @@ type Status = "idle" | "submitting" | "success" | "error";
 export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: string; locale?: Locale }) {
   const t = COPY[locale];
   const labels = typeLabels[locale];
+  // URL의 ?type= 값을 클라이언트에서 읽어 초기 선택값으로. (Suspense 경계 안에서 렌더 →
+  // 페이지 정적 생성 유지) prop defaultType > URL type(유효할 때) > 첫 유형 순.
+  const params = useSearchParams();
+  const urlType = params.get("type");
+  const presetType =
+    defaultType ?? (urlType && (types as readonly string[]).includes(urlType) ? urlType : types[0]);
+  const [selectedType, setSelectedType] = useState<string>(presetType);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [invalid, setInvalid] = useState<string[]>([]);
@@ -207,7 +217,13 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
         <label htmlFor="cf-type" className="mb-1.5 block text-xs font-medium text-muted">
           {t.type}
         </label>
-        <select id="cf-type" name="type" defaultValue={defaultType ?? types[0]} className={field}>
+        <select
+          id="cf-type"
+          name="type"
+          value={selectedType}
+          onChange={(e) => setSelectedType(e.target.value)}
+          className={field}
+        >
           {types.map((opt) => (
             <option key={opt} value={opt}>
               {labels[opt]}

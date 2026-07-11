@@ -173,13 +173,21 @@ export default function SupportPageEn() {
                 <span className="text-sm font-medium text-fg">
                   {d.name} <span className="font-mono text-xs text-faint">· {d.fmt}</span>
                 </span>
-                <span className="shrink-0 font-mono text-xs uppercase tracking-wider text-faint">Coming soon</span>
+                <Link
+                  href={`/en/contact?type=${encodeURIComponent("일반 문의")}#form`}
+                  className="arrowlink shrink-0 text-sm"
+                >
+                  Request by email{" "}
+                  <span className="ar" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
               </div>
             ))}
           </div>
           <p className="mt-4 text-sm text-muted">
-            Need a specific document? Request it via{" "}
-            <Link href="/en/contact" className="text-lav hover:underline">
+            Materials are being published in stages. Need one now? Request it via{" "}
+            <Link href={`/en/contact?type=${encodeURIComponent("일반 문의")}#form`} className="text-lav hover:underline">
               Contact
             </Link>
             .

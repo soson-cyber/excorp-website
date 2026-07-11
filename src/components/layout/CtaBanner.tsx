@@ -14,8 +14,8 @@ const COPY = {
         </>
       ),
       body: "하남 EX 스튜디오에서 버추얼 프로덕션 데모 시연과 기술 상담을 무료로 진행합니다. 방문이 어려우시면 화상 데모로 먼저 보여드립니다.",
-      primary: "하남 스튜디오 체험 예약 →",
-      secondary: "구축 견적 문의",
+      primary: "하남 스튜디오 시연 예약 →",
+      secondary: "견적 문의",
     },
     touch: {
       eyebrow: "Get in Touch",
@@ -31,7 +31,7 @@ const COPY = {
       body: "지금 바로 EX 전문가와 상담해보세요. 솔루션 도입부터 스튜디오 제작까지, 콘텐츠 제작의 모든 여정을 함께 설계합니다.",
       primary: "도입 상담 →",
       secondary: "스튜디오 둘러보기 →",
-      tertiary: "자료 요청 →",
+      tertiary: "자료 문의 →",
     },
   },
   en: {
@@ -103,7 +103,11 @@ export function CtaBanner({
           <Button href={withLocale("/xr-studio", locale)} variant="secondary">
             {t.secondary}
           </Button>
-          <Button href={withLocale("/support", locale)} variant="secondary">
+          {/* 자료실 미공개 → 자료 문의는 일반 문의 폼으로 착지(#form). 자료 공개 시 자료실로 환원. */}
+          <Button
+            href={`${withLocale("/contact", locale)}?type=${encodeURIComponent("일반 문의")}#form`}
+            variant="secondary"
+          >
             {t.tertiary}
           </Button>
         </div>

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 const whyEx = [
   { t: "An all-in-one integrated solution", d: "Cameras, trackers, and media servers — every moving part unified into one." },
-  { t: "Real-world project experience and know-how", d: "Hands-on delivery across major XR projects in Korea." },
+  { t: "Real-world project experience and know-how", d: "Hands-on XR project delivery with major Korean companies, including GS Retail." },
   { t: "Customer-focused system design and support", d: "Flexible setups tuned to each site, with full-cycle support." },
   { t: "Expertise bridging culture tech and entertainment", d: "Years of connecting production sets with the technology behind them." },
 ];

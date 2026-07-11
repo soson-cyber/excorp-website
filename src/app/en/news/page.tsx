@@ -66,7 +66,7 @@ export default async function NewsPageEn() {
         breadcrumb={[{ label: "News & Insight", href: "/en/news" }]}
         tag="News & Insight"
         title="EX news and industry insights"
-        lead="Press releases · case studies · technical insights · resources — the pulse of real-time XR content production."
+        lead="Press releases and technical insights — the pulse of real-time XR content production and news from EX."
       />
 
       {/* §01 News list (filterable) — top glow bridges the hero aurora down */}
@@ -88,7 +88,7 @@ export default async function NewsPageEn() {
               <p className="mt-1.5 text-sm text-muted">Get EX news and insights delivered to your inbox.</p>
             </div>
             <Button href="/en/contact" variant="secondary">
-              Subscribe →
+              Ask to subscribe →
             </Button>
           </div>
         </div>
