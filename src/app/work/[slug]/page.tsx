@@ -18,10 +18,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const w = getWork(slug);
-  if (!w) return { title: "활용 사례" };
+  if (!w) return { title: "Work" };
+  const kindLabel = w.kind === "scenario" ? "활용 시나리오" : "도입 사례";
   return {
-    title: `${w.title} — 활용 사례`,
-    description: w.summary,
+    title: `${w.title} — ${kindLabel}`,
+    description: w.kind === "scenario" ? `실제 고객 사례가 아닌 활용 시나리오입니다. ${w.summary}` : w.summary,
     alternates: { canonical: `/work/${slug}` },
   };
 }
@@ -35,7 +36,8 @@ export default async function WorkDetailPage({
   const w = getWork(slug);
   if (!w) notFound();
 
-  const others = works.filter((x) => x.slug !== w.slug).slice(0, 3);
+  const kindLabel = w.kind === "scenario" ? "활용 시나리오" : "도입 사례";
+  const others = works.filter((x) => x.slug !== w.slug && x.kind === w.kind).slice(0, 3);
 
   return (
     <>
@@ -58,7 +60,7 @@ export default async function WorkDetailPage({
           { label: "Work", href: "/work" },
           { label: w.title, href: `/work/${w.slug}` },
         ]}
-        tag={w.category}
+        tag={`${kindLabel} · ${w.category}`}
         title={w.title}
         lead={w.summary}
       />
@@ -79,7 +81,7 @@ export default async function WorkDetailPage({
             ))}
             <div className="ml-auto self-center">
               <span className="rounded-full bg-primary-soft px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-lav">
-                활용 시나리오
+                {kindLabel}
               </span>
             </div>
           </div>
@@ -117,7 +119,9 @@ export default async function WorkDetailPage({
       <section className="section section--white">
         <div className="container-ex">
           <SectionLabel index="03">Result</SectionLabel>
-          <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">기대 효과</h2>
+          <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">
+            {w.kind === "scenario" ? "기대 효과" : "검증 결과"}
+          </h2>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {w.result.map((r) => (
               <div key={r.l} className="card" style={{ padding: 28 }}>
@@ -126,9 +130,11 @@ export default async function WorkDetailPage({
               </div>
             ))}
           </div>
-          <p className="mt-6 text-xs leading-relaxed text-faint">
-            ※ 위 수치는 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
-          </p>
+          {w.kind === "scenario" && (
+            <p className="mt-6 text-xs leading-relaxed text-faint">
+              ※ 실제 고객 성과가 아닌 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
+            </p>
+          )}
         </div>
       </section>
 
@@ -136,7 +142,7 @@ export default async function WorkDetailPage({
       <section className="section section--surface section--glow">
         <div className="container-ex">
           <SectionLabel index="04">More Work</SectionLabel>
-          <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">다른 활용 시나리오</h2>
+          <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">다른 {kindLabel}</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-3">
             {others.map((o) => (
               <Link key={o.slug} href={`/work/${o.slug}`} className="card group" style={{ overflow: "hidden", padding: 0 }}>

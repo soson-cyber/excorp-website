@@ -8,6 +8,7 @@
 
 export type WorkCase = {
   slug: string;
+  kind: "scenario" | "case";
   category: "EXLINK 구축" | "스튜디오" | "버추얼 프로덕션";
   title: string;
   summary: string;
@@ -26,6 +27,7 @@ export const categories = ["전체", "EXLINK 구축", "스튜디오", "버추얼
 export const works: WorkCase[] = [
   {
     slug: "exlink-broadcast",
+    kind: "scenario",
     category: "EXLINK 구축",
     title: "실시간 XR 방송 시스템 통합",
     summary: "멀티캠·트래킹·렌더·송출을 EXLINK로 통합한 실시간 XR 방송 구축 시나리오.",
@@ -49,6 +51,7 @@ export const works: WorkCase[] = [
   },
   {
     slug: "exlink-conference",
+    kind: "scenario",
     category: "EXLINK 구축",
     title: "실시간 크로마 합성 컨퍼런스",
     summary: "그린 크로마 + 실시간 트래킹으로 멀티 패널 컨퍼런스를 가상 무대에서 운영.",
@@ -71,6 +74,7 @@ export const works: WorkCase[] = [
   },
   {
     slug: "studio-ir",
+    kind: "scenario",
     category: "스튜디오",
     title: "기업 IR 발표 영상 제작",
     summary: "그린 크로마 가상 무대에서 IR 발표 영상을 촬영과 동시에 완성.",
@@ -93,6 +97,7 @@ export const works: WorkCase[] = [
   },
   {
     slug: "studio-webinar",
+    kind: "scenario",
     category: "스튜디오",
     title: "기업 웨비나 라이브",
     summary: "가상 배경·AR 그래픽과 라이브 송출로 몰입형 온라인 세션 운영.",
@@ -115,6 +120,7 @@ export const works: WorkCase[] = [
   },
   {
     slug: "vp-fashion",
+    kind: "scenario",
     category: "버추얼 프로덕션",
     title: "버추얼 패션 필름",
     summary: "가상 세트를 실시간 합성해 다양한 공간의 패션 콘텐츠를 한 스튜디오에서.",
@@ -137,6 +143,7 @@ export const works: WorkCase[] = [
   },
   {
     slug: "vp-set",
+    kind: "scenario",
     category: "버추얼 프로덕션",
     title: "언리얼 기반 가상 세트 제작",
     summary: "Unreal Engine 실시간 3D 세트를 구성해 방송·콘텐츠에 활용.",
