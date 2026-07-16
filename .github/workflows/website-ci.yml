@@ -33,5 +33,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Verify hero performance contract
+        run: npm run test:hero-performance
+
       - name: Build
         run: npm run build
