@@ -21,7 +21,8 @@ test("scenario pages cannot present themselves as customer case studies", async 
     source("../src/app/work/page.tsx"),
     source("../src/app/work/[slug]/page.tsx"),
   ]);
-  assert.match(indexPage, /works\.map/);
+  assert.match(indexPage, /const scenarios = works\.filter/);
+  assert.match(indexPage, /work\.kind === "scenario"/);
   assert.match(indexPage, /실제 고객 사례가 아닌/);
   assert.doesNotMatch(detailPage, /활용 사례/);
   assert.match(detailPage, /w\.kind === "scenario"/);

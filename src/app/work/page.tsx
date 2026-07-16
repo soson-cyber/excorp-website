@@ -5,7 +5,7 @@ import { PageHero } from "@/components/page/PageHero";
 import { ComingSoon } from "@/components/page/ComingSoon";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { works } from "@/lib/work";
+import { works, type WorkCase } from "@/lib/work";
 
 export const metadata: Metadata = {
   title: "Work — 도입 사례 · 활용 시나리오",
@@ -14,7 +14,42 @@ export const metadata: Metadata = {
     "검증된 EX 도입 사례는 고객 공개 승인을 거쳐 순차적으로 공개합니다. 현재는 방송·컨퍼런스·IR·웨비나·패션·버추얼 세트 분야의 활용 시나리오와 기대 효과를 확인할 수 있습니다.",
 };
 
+function WorkGrid({ items }: { items: WorkCase[] }) {
+  return (
+    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((work) => (
+        <Link
+          key={work.slug}
+          href={`/work/${work.slug}`}
+          className="card group"
+          style={{ overflow: "hidden", padding: 0 }}
+        >
+          <div className="relative aspect-video overflow-hidden">
+            <Image
+              src={work.image}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+          </div>
+          <div className="p-5">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-lav">
+              {work.kind === "scenario" ? "활용 시나리오" : "도입 사례"}
+            </span>
+            <h3 className="mt-1.5 font-semibold text-fg">{work.title}</h3>
+            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{work.summary}</p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function WorkPage() {
+  const scenarios = works.filter((work) => work.kind === "scenario");
+  const verifiedCases = works.filter((work) => work.kind === "case");
+
   return (
     <>
       <PageHero
@@ -26,16 +61,24 @@ export default function WorkPage() {
 
       <section className="section section--ink section--glow">
         <div className="container-ex">
-          <ComingSoon
-            title="도입 사례를 준비하고 있습니다"
-            description="GS리테일 홈쇼핑 XR 시스템 등 EX가 진행한 프로젝트를 정리해 순차적으로 공개합니다. 먼저 상담이 필요하시면 언제든 문의해 주세요."
-          />
+          {verifiedCases.length > 0 ? (
+            <>
+              <SectionLabel index="01">Verified Cases</SectionLabel>
+              <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">검증된 도입 사례</h2>
+              <WorkGrid items={verifiedCases} />
+            </>
+          ) : (
+            <ComingSoon
+              title="도입 사례를 준비하고 있습니다"
+              description="GS리테일 홈쇼핑 XR 시스템 등 EX가 진행한 프로젝트를 정리해 순차적으로 공개합니다. 먼저 상담이 필요하시면 언제든 문의해 주세요."
+            />
+          )}
         </div>
       </section>
 
       <section className="section section--surface">
         <div className="container-ex">
-          <SectionLabel index="01">Use Scenarios</SectionLabel>
+          <SectionLabel index="02">Use Scenarios</SectionLabel>
           <div className="mt-5 max-w-3xl">
             <h2 className="text-balance text-2xl font-bold text-fg md:text-3xl">업종별 활용 시나리오</h2>
             <p className="mt-4 leading-relaxed text-muted">
@@ -43,31 +86,7 @@ export default function WorkPage() {
               검증된 프로젝트 실적은 고객 공개 승인을 거쳐 별도로 게시합니다.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {works.map((work) => (
-              <Link
-                key={work.slug}
-                href={`/work/${work.slug}`}
-                className="card group"
-                style={{ overflow: "hidden", padding: 0 }}
-              >
-                <div className="relative aspect-video overflow-hidden">
-                  <Image
-                    src={work.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <div className="p-5">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-lav">활용 시나리오</span>
-                  <h3 className="mt-1.5 font-semibold text-fg">{work.title}</h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{work.summary}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <WorkGrid items={scenarios} />
         </div>
       </section>
 
