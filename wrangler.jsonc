@@ -8,6 +8,15 @@
     "binding": "ASSETS",
     "directory": ".open-next/assets"
   },
+  // Data source IDs are non-secret runtime configuration. Tokens stay in
+  // Cloudflare Worker secrets as NOTION_PUBLIC_TOKEN and NOTION_INQUIRY_TOKEN.
+  "vars": {
+    "NOTION_DS_NEWS": "791df7ea-7c13-43ca-b672-df8cb78777f0",
+    "NOTION_DS_WORK": "a4710578-c39a-4fed-b810-5ea23175c4b8",
+    "NOTION_DS_CAREER": "6aa4cb41-9741-4d5c-9ad7-8e0f313a14e0",
+    "NOTION_DS_INSIGHTS": "6fd85bb5-43a8-4e49-ace3-3b3640d59d6d",
+    "NOTION_DS_INQUIRY": "0c82d66c-feaf-45e1-9128-ff1113619fbd"
+  },
   // ISR/SSG 증분 캐시 — 배포 전 R2 버킷 생성 필요:
   //   wrangler r2 bucket create excorp-website-cache
   "r2_buckets": [
