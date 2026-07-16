@@ -83,30 +83,20 @@ function HeroStars() {
 }
 
 const CAMS = [
-  { id: "CAM 01", img: "/studio.jpg" },
-  { id: "CAM 02", img: "/uc-broadcast.jpg" },
-  { id: "CAM 03", img: "/vp-chroma.jpg" },
-  { id: "PGM", img: "/uc-event.jpg" },
+  { id: "CAM 01", src: "/studio.jpg" },
+  { id: "CAM 02", src: "/uc-broadcast.jpg" },
+  { id: "CAM 03", src: "/vp-chroma.jpg" },
+  { id: "PGM", src: "/uc-event.jpg" },
 ];
 
 function ExlinkConsole({ locale }: { locale: Locale }) {
   const en = locale === "en";
-  const [sel, setSel] = useState(3); // PGM 기본 선택 → 큰 Program 피드 = PGM 이미지
-  const [nonce, setNonce] = useState(0); // bump on manual pick to restart the auto-cycle window
-  const program = CAMS[sel];
-
-  // Auto-cycle CAM 01 → … → PGM every 3s (paused for reduced-motion / hidden tab).
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(() => {
-      if (!document.hidden) setSel((s) => (s + 1) % CAMS.length);
-    }, 8000);
-    return () => clearInterval(id);
-  }, [nonce]);
+  const [current, setCurrent] = useState(3); // PGM 기본 선택 → 안정적인 첫 LCP 프레임
+  const activeMedia = CAMS[current];
+  const program = activeMedia;
 
   const pick = (i: number) => {
-    setSel(i);
-    setNonce((n) => n + 1); // wait a fresh 3s after a manual selection
+    setCurrent(i);
   };
 
   return (
@@ -154,20 +144,18 @@ function ExlinkConsole({ locale }: { locale: Locale }) {
           </span>
         </div>
         <div className="c-stage">
-          {/* stacked feeds — crossfade (dissolve) between cameras */}
-          {CAMS.map((c, i) => (
-            <Image
-              key={c.id}
-              src={c.img}
-              alt={i === sel ? (en ? "Live program feed" : "실시간 프로그램 피드") : ""}
-              fill
-              sizes="(min-width:1024px) 620px, 100vw"
-              priority={i === 3}
-              fetchPriority={i === 3 ? "high" : "auto"}
-              className="c-feed"
-              style={{ opacity: i === sel ? 1 : 0 }}
-            />
-          ))}
+          {/* Keep one stable LCP candidate; visitors switch feeds explicitly. */}
+          <Image
+            key={activeMedia.id}
+            src={activeMedia.src}
+            alt={en ? "Live program feed" : "실시간 프로그램 피드"}
+            fill
+            sizes="(min-width:1024px) 620px, 100vw"
+            priority={current === 3}
+            loading={current === 3 ? "eager" : "lazy"}
+            fetchPriority={current === 3 ? "high" : "auto"}
+            className="c-feed"
+          />
           <span className="c-hud" style={{ left: 12, top: 12 }}>
             <span className="c-rec" />
             PROGRAM · LIVE
@@ -200,12 +188,12 @@ function ExlinkConsole({ locale }: { locale: Locale }) {
                 <button
                   key={c.id}
                   type="button"
-                  className={`cam${i === sel ? " sel" : ""}`}
+                  className={`cam${i === current ? " sel" : ""}`}
                   onClick={() => pick(i)}
-                  aria-pressed={i === sel}
+                  aria-pressed={i === current}
                   title={en ? `Switch ${c.id} to program` : `${c.id} 프로그램으로 전환`}
                 >
-                  <Image src={c.img} alt="" fill sizes="120px" />
+                  <Image src={c.src} alt="" fill sizes="120px" />
                   <span>{c.id}</span>
                 </button>
               ))}
