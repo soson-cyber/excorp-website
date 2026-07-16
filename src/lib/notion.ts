@@ -2,6 +2,7 @@
  * Notion 데이터 레이어 (서버 전용).
  *
  * 관리자 = Notion. 사이트는 이 레이어로 Notion DB(데이터 소스)를 읽고, 문의는 여기로 쓴다.
+ * 공개 콘텐츠 읽기와 문의 쓰기는 서로 다른 Integration 토큰을 사용한다.
  * 미설정(.env 없음)이거나 에러면 read는 null을 반환 → 호출부가 하드코딩 fallback을 쓰므로
  * Notion 미연결 상태에서도 사이트는 정상 동작한다.
  *
@@ -31,23 +32,27 @@ async function resolveEnv(): Promise<EnvMap> {
     const { getCloudflareContext } = await import("@opennextjs/cloudflare");
     const ctx = await getCloudflareContext({ async: true });
     const cfEnv = ctx?.env as unknown as EnvMap | undefined;
-    if (cfEnv && cfEnv.NOTION_TOKEN) return { ...(process.env as EnvMap), ...cfEnv };
+    if (cfEnv && (cfEnv.NOTION_PUBLIC_TOKEN || cfEnv.NOTION_INQUIRY_TOKEN)) {
+      return { ...(process.env as EnvMap), ...cfEnv };
+    }
   } catch {
     // 워커 컨텍스트가 아님(빌드/Node) → process.env 사용
   }
   return process.env as EnvMap;
 }
 
-/** Notion 클라이언트 + 해석된 env. 토큰 없으면 null(호출부는 fallback). */
-async function notion(): Promise<{ c: Client; env: EnvMap } | null> {
+type NotionTokenKey = "NOTION_PUBLIC_TOKEN" | "NOTION_INQUIRY_TOKEN";
+
+/** 용도별 Notion 클라이언트 + 해석된 env. 토큰 없으면 null. */
+async function notion(tokenKey: NotionTokenKey): Promise<{ c: Client; env: EnvMap } | null> {
   const env = await resolveEnv();
-  const token = env.NOTION_TOKEN;
+  const token = env[tokenKey];
   if (!token) return null;
   return { c: new Client({ auth: token }), env };
 }
 
 export async function isNotionEnabled(): Promise<boolean> {
-  return Boolean((await resolveEnv()).NOTION_TOKEN);
+  return Boolean((await resolveEnv()).NOTION_PUBLIC_TOKEN);
 }
 
 /* ── 속성 안전 추출 헬퍼 (속성 부재·타입 불일치에도 안전) ─────────────── */
@@ -98,7 +103,7 @@ export type NotionCareer = {
 /* ── 공통 쿼리 (게시여부=true만, 미설정/에러 → null) ───────────────── */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 async function queryPublished(dsEnvKey: string): Promise<any[] | null> {
-  const n = await notion();
+  const n = await notion("NOTION_PUBLIC_TOKEN");
   if (!n) return null;
   const dataSourceId = n.env[dsEnvKey];
   if (!dataSourceId) return null;
@@ -190,7 +195,7 @@ export async function getInsights(): Promise<NotionInsightMeta[] | null> {
 /** 페이지 블록(heading_2 + paragraph)을 {h, p[]} 섹션 배열로 복원. */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 async function readInsightBody(pageId: string): Promise<{ h: string; p: string[] }[]> {
-  const n = await notion();
+  const n = await notion("NOTION_PUBLIC_TOKEN");
   if (!n) return [];
   const c = n.c;
   const sections: { h: string; p: string[] }[] = [];
@@ -279,7 +284,7 @@ export type InquiryInput = {
 
 /** Notion 미설정이면 false(호출부는 다른 경로로 처리). 성공 시 true. */
 export async function createInquiry(input: InquiryInput): Promise<boolean> {
-  const n = await notion();
+  const n = await notion("NOTION_INQUIRY_TOKEN");
   const dsId = n?.env.NOTION_DS_INQUIRY;
   if (!n || !dsId) return false;
   try {
