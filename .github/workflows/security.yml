@@ -19,7 +19,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run test:notion-boundary
-      - run: npm run test:contact-security
+      - run: node --experimental-strip-types --test scripts/contact-security.test.mjs
       - run: npm run test:cf-purge
       - run: npm run lint
       - run: npx tsc --noEmit
