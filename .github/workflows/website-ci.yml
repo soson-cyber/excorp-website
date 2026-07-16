@@ -34,7 +34,7 @@ jobs:
         run: npm run lint
 
       - name: Verify hero performance contract
-        run: npm run test:hero-performance
+        run: node --test scripts/hero-performance.test.mjs
 
       - name: Build
         run: npm run build
