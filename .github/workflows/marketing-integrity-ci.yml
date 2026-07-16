@@ -1,0 +1,33 @@
+name: Marketing Integrity CI
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/marketing-integrity-ci.yml"
+      - "docs/analytics-measurement-spec.md"
+      - "scripts/marketing-integrity.test.mjs"
+      - "src/app/work/**"
+      - "src/lib/work.ts"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/marketing-integrity-ci.yml"
+      - "docs/analytics-measurement-spec.md"
+      - "scripts/marketing-integrity.test.mjs"
+      - "src/app/work/**"
+      - "src/lib/work.ts"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Marketing integrity verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - run: node --experimental-strip-types --test scripts/marketing-integrity.test.mjs
