@@ -31,6 +31,8 @@ Run the boundary check before deployment:
 npm run test:notion-boundary
 ```
 
+`npm run cf:deploy` deploys the Worker and then purges the `excorp.kr` edge cache when `CLOUDFLARE_ZONE_ID` and `CLOUDFLARE_CACHE_TOKEN` are available. Keep the cache token out of Git and grant only `Zone > Cache Purge`. When those optional values are unavailable, deployment completes with a warning instead of failing after the Worker upload.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

@@ -1,11 +1,14 @@
 // Cloudflare 존 캐시 전체 퍼지 — cf:deploy 마지막 단계에서 자동 실행.
 // 페이지 HTML이 s-maxage=1y로 엣지 캐시되므로, 퍼지 없이는 배포 후에도 옛 페이지가 서빙된다.
-// 필요 env(.env.local): CLOUDFLARE_ZONE_ID, CLOUDFLARE_CACHE_TOKEN(Zone>Cache Purge 권한)
-import { readFileSync } from "node:fs";
+// 선택 env(.env.local): CLOUDFLARE_ZONE_ID, CLOUDFLARE_CACHE_TOKEN(Zone>Cache Purge 권한)
+import { existsSync, readFileSync } from "node:fs";
 
-for (const line of readFileSync(new URL("../.env.local", import.meta.url), "utf8").split("\n")) {
-  const m = line.match(/^([A-Z_]+)=(.+)$/);
-  if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
+const envFile = process.env.CLOUDFLARE_ENV_FILE || new URL("../.env.local", import.meta.url);
+if (existsSync(envFile)) {
+  for (const line of readFileSync(envFile, "utf8").split("\n")) {
+    const m = line.match(/^([A-Z_]+)=(.+)$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
+  }
 }
 
 const zone = process.env.CLOUDFLARE_ZONE_ID;
