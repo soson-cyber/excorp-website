@@ -1,0 +1,161 @@
+name: Production Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: "Optional full 40-character commit SHA from main (use a previous main SHA for rollback)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: excorp-website-production
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify release artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      commit_sha: ${{ steps.resolve.outputs.sha }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve an immutable commit on main
+        id: resolve
+        shell: bash
+        env:
+          REQUESTED_SHA: ${{ inputs.commit_sha }}
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          target="origin/main"
+          if [[ -n "$REQUESTED_SHA" ]]; then
+            if [[ ! "$REQUESTED_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+              echo "commit_sha must be a full lowercase 40-character SHA" >&2
+              exit 1
+            fi
+            git cat-file -e "$REQUESTED_SHA^{commit}"
+            git merge-base --is-ancestor "$REQUESTED_SHA" origin/main
+            target="$REQUESTED_SHA"
+          fi
+          sha="$(git rev-parse "$target")"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "Release commit: $sha"
+
+      - name: Verify release workflow policy
+        run: node --test scripts/release-governance.test.mjs
+
+      - name: Preserve release control scripts
+        shell: bash
+        run: |
+          mkdir -p .release-control
+          cp scripts/cf-purge.mjs scripts/verify-release.mjs .release-control/
+
+      - name: Check out immutable release target
+        shell: bash
+        run: git checkout --detach "${{ steps.resolve.outputs.sha }}"
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npx --no-install tsc --noEmit
+      - run: npm run test:notion-boundary
+      - run: npm run test:cf-purge
+      - run: npm run cf:build
+
+      - name: Bind artifact to commit
+        shell: bash
+        run: printf '%s\n' "${{ steps.resolve.outputs.sha }}" > .open-next/EX_RELEASE_SHA
+
+      - name: Upload verified Worker artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: worker-${{ steps.resolve.outputs.sha }}
+          path: |
+            .open-next/
+            .release-control/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 3
+
+  deploy:
+    name: Deploy approved artifact
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+      url: https://excorp.kr
+    steps:
+      - name: Enforce configured production gate
+        shell: bash
+        env:
+          RELEASE_ENABLED: ${{ vars.PRODUCTION_RELEASE_ENABLED }}
+        run: |
+          if [[ "$RELEASE_ENABLED" != "true" ]]; then
+            echo "Production environment is not enabled. Configure required reviewers first." >&2
+            exit 1
+          fi
+
+      - name: Check required release credentials
+        shell: bash
+        env:
+          DEPLOY_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CACHE_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CACHE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          for name in DEPLOY_API_TOKEN ACCOUNT_ID CACHE_ZONE_ID CACHE_API_TOKEN; do
+            if [[ -z "${!name}" ]]; then
+              echo "A required production credential is not configured." >&2
+              exit 1
+            fi
+          done
+
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          ref: ${{ needs.verify.outputs.commit_sha }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Download verified Worker artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: worker-${{ needs.verify.outputs.commit_sha }}
+          path: .
+
+      - name: Verify artifact provenance
+        shell: bash
+        run: test "$(cat .open-next/EX_RELEASE_SHA)" = "${{ needs.verify.outputs.commit_sha }}"
+
+      - name: Deploy exact verified artifact
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --no-install opennextjs-cloudflare deploy
+
+      - name: Purge production cache
+        env:
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: node .release-control/cf-purge.mjs
+
+      - name: Verify production smoke paths
+        run: node .release-control/verify-release.mjs https://excorp.kr

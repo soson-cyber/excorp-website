@@ -1,0 +1,36 @@
+name: Release Governance CI
+
+on:
+  pull_request:
+    paths:
+      - ".github/CODEOWNERS"
+      - ".github/dependabot.yml"
+      - ".github/workflows/production-release.yml"
+      - ".github/workflows/release-governance-ci.yml"
+      - "docs/release-runbook.md"
+      - "scripts/release-governance.test.mjs"
+      - "scripts/verify-release.mjs"
+  push:
+    branches: [main]
+    paths:
+      - ".github/CODEOWNERS"
+      - ".github/dependabot.yml"
+      - ".github/workflows/production-release.yml"
+      - ".github/workflows/release-governance-ci.yml"
+      - "docs/release-runbook.md"
+      - "scripts/release-governance.test.mjs"
+      - "scripts/verify-release.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - run: node --test scripts/release-governance.test.mjs
