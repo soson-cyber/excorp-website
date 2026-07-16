@@ -25,6 +25,9 @@ test("the verified artifact, not a rebuild, is deployed and then smoke-tested", 
   assert.match(workflow, /npx --no-install opennextjs-cloudflare deploy/);
   assert.doesNotMatch(workflow, /npm run cf:deploy/);
   assert.match(workflow, /node \.release-control\/cf-purge\.mjs/);
+  assert.match(workflow, /CLOUDFLARE_ZONE_ID:\s*\$\{\{ secrets\./);
+  assert.match(workflow, /CLOUDFLARE_CACHE_TOKEN:\s*\$\{\{ secrets\./);
+  assert.doesNotMatch(workflow, /^\s+CF_(?:ZONE_ID|API_TOKEN):/m);
   assert.match(workflow, /node \.release-control\/verify-release\.mjs/);
 });
 
