@@ -192,6 +192,10 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
 
   return (
     <form ref={formRef} onSubmit={onSubmit} className="space-y-4" noValidate>
+      <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="cf-website">Website</label>
+        <input id="cf-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="cf-name" className="mb-1.5 block text-xs font-medium text-muted">
@@ -203,6 +207,7 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
             name="name"
             autoComplete="name"
             required
+            maxLength={100}
             className={field}
             aria-invalid={invalid.includes("name") || undefined}
             aria-describedby={describedBy("name")}
@@ -212,7 +217,7 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
           <label htmlFor="cf-company" className="mb-1.5 block text-xs font-medium text-muted">
             {t.company}
           </label>
-          <input id="cf-company" name="company" autoComplete="organization" className={field} />
+          <input id="cf-company" name="company" autoComplete="organization" maxLength={200} className={field} />
         </div>
       </div>
       <div>
@@ -226,6 +231,7 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
           type="email"
           autoComplete="email"
           required
+          maxLength={320}
           className={field}
           aria-invalid={invalid.includes("email") || undefined}
           aria-describedby={describedBy("email")}
@@ -259,6 +265,7 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
           name="message"
           rows={5}
           required
+          maxLength={5000}
           className={field}
           aria-invalid={invalid.includes("message") || undefined}
           aria-describedby={describedBy("message")}
