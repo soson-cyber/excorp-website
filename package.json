@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:notion-boundary": "node scripts/check-notion-boundary.mjs",
+    "test:contact-security": "node --experimental-strip-types --test scripts/contact-security.test.mjs",
     "test:cf-purge": "node --test scripts/cf-purge.test.mjs",
     "cf:build": "opennextjs-cloudflare build",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
