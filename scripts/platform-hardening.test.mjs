@@ -23,7 +23,7 @@ test("production responses declare the baseline security headers", async () => {
 test("the Cloudflare runtime compatibility date is intentionally current", async () => {
   const wrangler = await read("wrangler.jsonc");
 
-  assert.match(wrangler, /"compatibility_date": "2026-07-23"/);
+  assert.match(wrangler, /"compatibility_date": "2026-07-22"/);
 });
 
 test("the sitemap merges published Notion content and localized alternates", async () => {
