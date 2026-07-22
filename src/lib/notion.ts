@@ -18,6 +18,50 @@ import { Client } from "@notionhq/client";
 
 type EnvMap = Record<string, string | undefined>;
 
+type DataSourceQueryRequest = {
+  data_source_id: string;
+  page_size: 100;
+  start_cursor?: string;
+};
+
+type DataSourceQueryPage<T> = {
+  results: readonly T[];
+  has_more: boolean;
+  next_cursor: string | null;
+};
+
+export async function queryAllDataSourcePages<T>(
+  queryPage: (request: DataSourceQueryRequest) => Promise<DataSourceQueryPage<T>>,
+  dataSourceId: string,
+): Promise<T[]> {
+  const rows: T[] = [];
+  let cursor: string | undefined;
+
+  while (true) {
+    const page = await queryPage({
+      data_source_id: dataSourceId,
+      page_size: 100,
+      ...(cursor ? { start_cursor: cursor } : {}),
+    });
+    rows.push(...page.results);
+    if (!page.has_more) return rows;
+    if (!page.next_cursor) throw new Error("Notion pagination cursor missing");
+    cursor = page.next_cursor;
+  }
+}
+
+const NOTION_RICH_TEXT_CHUNK_SIZE = 1_900;
+
+export function toNotionRichText(content: string): { text: { content: string } }[] {
+  const characters = Array.from(content);
+  const richText: { text: { content: string } }[] = [];
+
+  for (let start = 0; start < characters.length; start += NOTION_RICH_TEXT_CHUNK_SIZE) {
+    richText.push({ text: { content: characters.slice(start, start + NOTION_RICH_TEXT_CHUNK_SIZE).join("") } });
+  }
+  return richText;
+}
+
 /**
  * 런타임 env 해석 — Notion 시크릿/DS ID를 어디서 읽을지 결정한다.
  *
@@ -108,13 +152,9 @@ async function queryPublished(dsEnvKey: string): Promise<any[] | null> {
   const dataSourceId = n.env[dsEnvKey];
   if (!dataSourceId) return null;
   try {
-    const res = await n.c.dataSources.query({
-      data_source_id: dataSourceId,
-      // "게시여부" 체크박스가 true인 행만. 속성이 없으면 Notion이 무시하지 않고 에러낼 수 있어
-      // 실제 속성명 확정 후 필터를 활성화한다. 지금은 전체 조회 후 코드에서 거른다.
-      page_size: 100,
-    });
-    return (res as any).results ?? [];
+    // "게시여부" 체크박스가 true인 행만. 속성이 없으면 Notion이 무시하지 않고 에러낼 수 있어
+    // 실제 속성명 확정 후 필터를 활성화한다. 지금은 전체 페이지를 조회 후 코드에서 거른다.
+    return await queryAllDataSourcePages((request) => n.c.dataSources.query(request), dataSourceId);
   } catch (e) {
     console.warn("[notion] query 실패 — fallback 사용:", (e as Error).message);
     return null;
@@ -297,7 +337,7 @@ export async function createInquiry(input: InquiryInput): Promise<boolean> {
         이메일: { email: input.email },
         연락처: { phone_number: input.phone || null },
         유형: input.type ? { select: { name: input.type } } : { select: null },
-        메시지: { rich_text: [{ text: { content: input.message.slice(0, 1900) } }] },
+        메시지: { rich_text: toNotionRichText(input.message) },
         상태: { select: { name: "신규" } },
         "마케팅 수신동의": { checkbox: input.marketing ?? false },
       },

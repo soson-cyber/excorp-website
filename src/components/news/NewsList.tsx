@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n";
 /*
   News & Insight — 카테고리 필터(클라이언트) + 카드 그리드.
   정직성: 보도자료는 실제 마일스톤만 노출(연도 기준). 인사이트는 기술 설명 글
-  (/news/[slug] 상세). 케이스/자료실은 준비 전이므로 빈 상태로 안내 — CMS 연동 시 자동 노출.
+  (/news/[slug] 상세). 콘텐츠가 없는 카테고리는 선택지에서 제외해 빈 필터 상태를 만들지 않는다.
   데이터는 서버(news/page.tsx)에서 주입 — 보도자료·인사이트 모두 Notion 우선, 미연결 시 fallback.
   Light theme: 시맨틱 토큰 사용.
 */
@@ -20,6 +20,8 @@ export type NewsItem = {
   href?: string;
   featured?: boolean;
   thumbnail?: string;
+  /** Source language when known. Korean script detection is the conservative fallback. */
+  language?: "ko" | "en";
 };
 type Item = NewsItem;
 
@@ -31,21 +33,21 @@ const COPY = {
   ko: {
     catLabel: { 전체: "전체", 보도자료: "보도자료", 케이스: "케이스", 인사이트: "인사이트", 자료실: "자료실" },
     readMore: "자세히",
-    emptyTitle: (cat: string) => `${cat} 콘텐츠는 준비 중입니다.`,
-    viewAll: "전체 보기 →",
-    cmsNote: "콘텐츠는 CMS 연동 시 자동 업데이트됩니다.",
+    emptyTitle: "아직 공개된 콘텐츠가 없습니다.",
   },
   en: {
     catLabel: { 전체: "All", 보도자료: "Press", 케이스: "Case Studies", 인사이트: "Insights", 자료실: "Resources" },
     readMore: "Read more",
-    emptyTitle: (cat: string) => `${cat} content is on the way.`,
-    viewAll: "View all →",
-    cmsNote: "Content updates automatically once the CMS is connected.",
+    emptyTitle: "No published content yet.",
   },
 } as const;
 
 function catClass(cat: Item["cat"]) {
   return cat === "보도자료" ? "bg-accent-soft text-accent-bright" : "bg-primary-soft text-lav";
+}
+
+function containsKorean(value?: string) {
+  return Boolean(value && /[가-힣]/.test(value));
 }
 
 export function NewsList({
@@ -61,12 +63,16 @@ export function NewsList({
   const items: Item[] = [...press, ...insights];
   const [active, setActive] = useState<(typeof categories)[number]>("전체");
   const list = active === "전체" ? items : items.filter((i) => i.cat === active);
+  const availableCategories = categories.filter((category) => {
+    const count = category === "전체" ? items.length : items.filter((item) => item.cat === category).length;
+    return category === "전체" || count > 0;
+  });
 
   return (
     <div>
       {/* filter pills */}
       <div className="flex flex-wrap gap-2">
-        {categories.map((c) => {
+        {availableCategories.map((c) => {
           const on = c === active;
           const count = c === "전체" ? items.length : items.filter((i) => i.cat === c).length;
           return (
@@ -92,6 +98,9 @@ export function NewsList({
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {list.map((n) => {
             const span2 = n.featured && active === "전체" ? "md:col-span-2 lg:col-span-2" : "";
+            const isKoreanOriginal =
+              locale === "en" &&
+              (n.language === "ko" || (!n.language && (containsKorean(n.title) || containsKorean(n.excerpt))));
             const body = (
               <>
                 <div className="-mx-6 -mt-6 mb-4 aspect-[16/9] overflow-hidden rounded-t-2xl border-b border-border bg-gradient-to-br from-primary/25 via-surface to-card">
@@ -106,10 +115,19 @@ export function NewsList({
                     {t.catLabel[n.cat]}
                   </span>
                   <span className="font-mono text-xs text-faint">{n.year}</span>
+                  {isKoreanOriginal && (
+                    <span className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted">
+                      Korean original
+                    </span>
+                  )}
                 </div>
-                <h3 className="mt-3 flex-1 text-base font-semibold leading-relaxed text-fg">{n.title}</h3>
+                <h3 lang={isKoreanOriginal ? "ko" : undefined} className="mt-3 flex-1 text-base font-semibold leading-relaxed text-fg">
+                  {n.title}
+                </h3>
                 {n.excerpt && active === "전체" && (
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{n.excerpt}</p>
+                  <p lang={isKoreanOriginal ? "ko" : undefined} className="mt-2 text-sm leading-relaxed text-muted">
+                    {n.excerpt}
+                  </p>
                 )}
                 {n.href && (
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-lav">
@@ -147,18 +165,9 @@ export function NewsList({
             <rect x="3" y="4.5" width="18" height="15" rx="2" />
             <path d="M3 9h18M8 4.5v15" />
           </svg>
-          <p className="mt-4 text-sm text-muted">{t.emptyTitle(t.catLabel[active])}</p>
-          <button
-            type="button"
-            onClick={() => setActive("전체")}
-            className="mt-4 text-sm font-medium text-lav transition-colors hover:text-lav-hover"
-          >
-            {t.viewAll}
-          </button>
+          <p className="mt-4 text-sm text-muted">{t.emptyTitle}</p>
         </div>
       )}
-
-      <p className="mt-8 font-mono text-xs text-faint">{t.cmsNote}</p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ on:
       - ".github/workflows/marketing-integrity-ci.yml"
       - "docs/analytics-measurement-spec.md"
       - "scripts/marketing-integrity.test.mjs"
-      - "src/app/work/**"
+      - "src/app/(ko)/work/**"
       - "src/lib/work.ts"
   push:
     branches: [main]
@@ -14,7 +14,7 @@ on:
       - ".github/workflows/marketing-integrity-ci.yml"
       - "docs/analytics-measurement-spec.md"
       - "scripts/marketing-integrity.test.mjs"
-      - "src/app/work/**"
+      - "src/app/(ko)/work/**"
       - "src/lib/work.ts"
 
 permissions:

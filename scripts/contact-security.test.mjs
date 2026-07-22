@@ -8,6 +8,8 @@ import {
   validateContactPayload,
   validateContactRequestMetadata,
 } from "../src/lib/contact-validation.ts";
+import * as notionData from "../src/lib/notion.ts";
+import { serializeJsonLd } from "../src/lib/json-ld.ts";
 
 const validPayload = {
   type: "솔루션 도입",
@@ -22,6 +24,11 @@ const validPayload = {
 };
 
 const formSource = await readFile(new URL("../src/components/ui/ContactForm.tsx", import.meta.url), "utf8");
+const jsonLdSource = await readFile(new URL("../src/components/seo/JsonLd.tsx", import.meta.url), "utf8");
+const newsDetailSources = await Promise.all([
+  readFile(new URL("../src/app/(ko)/news/[slug]/page.tsx", import.meta.url), "utf8"),
+  readFile(new URL("../src/app/en/news/[slug]/page.tsx", import.meta.url), "utf8"),
+]);
 
 function request(body = validPayload, init = {}) {
   return new Request("https://excorp.kr/api/contact", {
@@ -108,4 +115,66 @@ test("the browser form exposes the honeypot and mirrors server length limits", (
   assert.match(formSource, /name="company"[\s\S]*?maxLength=\{200\}/);
   assert.match(formSource, /name="email"[\s\S]*?maxLength=\{320\}/);
   assert.match(formSource, /name="message"[\s\S]*?maxLength=\{5000\}/);
+});
+
+test("news JSON-LD uses the shared less-than escaping boundary", () => {
+  const attack = { title: "</script><script>globalThis.compromised=true</script>" };
+  const serialized = serializeJsonLd(attack);
+
+  assert.doesNotMatch(serialized, /<\/script>/i);
+  assert.deepEqual(JSON.parse(serialized), attack);
+  assert.match(jsonLdSource, /serializeJsonLd\(schema\)/);
+  for (const source of newsDetailSources) {
+    assert.match(source, /import \{ JsonLd \} from "@\/components\/seo\/JsonLd"/);
+    assert.match(source, /<JsonLd\s+schema=/);
+    assert.doesNotMatch(source, /dangerouslySetInnerHTML/);
+  }
+});
+
+test("Notion rich text preserves the full validated 5,000-character inquiry", () => {
+  assert.equal(typeof notionData.toNotionRichText, "function");
+  const message = "가".repeat(5_000);
+  const richText = notionData.toNotionRichText(message);
+
+  assert.equal(richText.map((item) => item.text.content).join(""), message);
+  assert.ok(richText.length > 1);
+  assert.ok(richText.every((item) => Array.from(item.text.content).length <= 1_900));
+});
+
+test("Notion rich text never splits Unicode surrogate pairs", () => {
+  const message = `${"가".repeat(1_899)}🙂${"나".repeat(1_900)}🚀`;
+  const richText = notionData.toNotionRichText(message);
+
+  assert.equal(richText.map((item) => item.text.content).join(""), message);
+  assert.ok(richText.every((item) => !/[\uD800-\uDBFF]$|^[\uDC00-\uDFFF]/u.test(item.text.content)));
+});
+
+test("Notion data source queries follow cursors until every page is collected", async () => {
+  assert.equal(typeof notionData.queryAllDataSourcePages, "function");
+  const calls = [];
+  const queryPage = async (request) => {
+    calls.push(request);
+    if (!request.start_cursor) {
+      return { results: Array.from({ length: 100 }, (_, id) => ({ id })), has_more: true, next_cursor: "page-2" };
+    }
+    return { results: [{ id: 100 }], has_more: false, next_cursor: null };
+  };
+
+  const rows = await notionData.queryAllDataSourcePages(queryPage, "data-source-id");
+
+  assert.equal(rows.length, 101);
+  assert.deepEqual(calls, [
+    { data_source_id: "data-source-id", page_size: 100 },
+    { data_source_id: "data-source-id", page_size: 100, start_cursor: "page-2" },
+  ]);
+});
+
+test("Notion pagination fails closed when has_more omits the next cursor", async () => {
+  await assert.rejects(
+    notionData.queryAllDataSourcePages(
+      async () => ({ results: [], has_more: true, next_cursor: null }),
+      "data-source-id",
+    ),
+    /cursor missing/,
+  );
 });

@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:regression": "node --experimental-strip-types --test scripts/*.test.mjs",
     "test:notion-boundary": "node scripts/check-notion-boundary.mjs",
     "test:cf-purge": "node --test scripts/cf-purge.test.mjs",
     "cf:build": "opennextjs-cloudflare build",

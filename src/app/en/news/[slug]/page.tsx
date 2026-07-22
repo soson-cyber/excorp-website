@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page/PageHero";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { insights, getInsight } from "@/lib/insights";
 import { getNews, getNewsItem, getInsights, getInsightItem, type NotionNews } from "@/lib/notion";
 
@@ -63,36 +64,33 @@ export default async function NewsDetailPageEn({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: a.title,
-              description: a.summary,
-              datePublished: String(a.year),
-              inLanguage: "en-US",
-              author: { "@type": "Organization", name: "EX Corporation" },
-              publisher: {
-                "@type": "Organization",
-                name: "EX Corporation",
-                logo: { "@type": "ImageObject", url: "https://excorp.kr/ex-logo.png" },
-              },
-              mainEntityOfPage: `https://excorp.kr/en/news/${a.slug}`,
+      <JsonLd
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: a.title,
+            description: a.summary,
+            datePublished: String(a.year),
+            inLanguage: "ko-KR",
+            author: { "@type": "Organization", name: "EX Corporation" },
+            publisher: {
+              "@type": "Organization",
+              name: "EX Corporation",
+              logo: { "@type": "ImageObject", url: "https://excorp.kr/ex-logo.png" },
             },
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://excorp.kr/en" },
-                { "@type": "ListItem", position: 2, name: "News & Insight", item: "https://excorp.kr/en/news" },
-                { "@type": "ListItem", position: 3, name: a.title, item: `https://excorp.kr/en/news/${a.slug}` },
-              ],
-            },
-          ]),
-        }}
+            mainEntityOfPage: `https://excorp.kr/en/news/${a.slug}`,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://excorp.kr/en" },
+              { "@type": "ListItem", position: 2, name: "News & Insight", item: "https://excorp.kr/en/news" },
+              { "@type": "ListItem", position: 3, name: a.title, item: `https://excorp.kr/en/news/${a.slug}` },
+            ],
+          },
+        ]}
       />
       <PageHero
         breadcrumb={[
@@ -100,6 +98,7 @@ export default async function NewsDetailPageEn({
           { label: "Insight", href: `/en/news/${a.slug}` },
         ]}
         tag={`Insight · ${a.year}`}
+        contentLang="ko"
         title={a.title}
         lead={a.summary}
       />
@@ -125,7 +124,7 @@ export default async function NewsDetailPageEn({
           </div>
 
           {a.body.map((sec) => (
-            <section key={sec.h}>
+            <section key={sec.h} lang="ko">
               <h2 className="text-balance text-2xl font-bold text-fg">{sec.h}</h2>
               <div className="mt-4 space-y-4">
                 {sec.p.map((para, i) => (
@@ -178,32 +177,29 @@ function PressLandingEn({ p }: { p: NotionNews }) {
   const year = p.date ? p.date.slice(0, 4) : "";
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "NewsArticle",
-              headline: p.title,
-              description: p.summary,
-              ...(p.date ? { datePublished: p.date } : {}),
-              ...(p.thumbnail ? { image: [p.thumbnail] } : {}),
-              inLanguage: "en-US",
-              ...(p.outlet ? { publisher: { "@type": "Organization", name: p.outlet } } : {}),
-              mainEntityOfPage: `https://excorp.kr/en/news/${p.slug}`,
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://excorp.kr/en" },
-                { "@type": "ListItem", position: 2, name: "News & Insight", item: "https://excorp.kr/en/news" },
-                { "@type": "ListItem", position: 3, name: p.title, item: `https://excorp.kr/en/news/${p.slug}` },
-              ],
-            },
-          ]),
-        }}
+      <JsonLd
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            headline: p.title,
+            description: p.summary,
+            ...(p.date ? { datePublished: p.date } : {}),
+            ...(p.thumbnail ? { image: [p.thumbnail] } : {}),
+            inLanguage: "ko-KR",
+            ...(p.outlet ? { publisher: { "@type": "Organization", name: p.outlet } } : {}),
+            mainEntityOfPage: `https://excorp.kr/en/news/${p.slug}`,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://excorp.kr/en" },
+              { "@type": "ListItem", position: 2, name: "News & Insight", item: "https://excorp.kr/en/news" },
+              { "@type": "ListItem", position: 3, name: p.title, item: `https://excorp.kr/en/news/${p.slug}` },
+            ],
+          },
+        ]}
       />
       <PageHero
         breadcrumb={[
@@ -211,6 +207,7 @@ function PressLandingEn({ p }: { p: NotionNews }) {
           { label: "Press", href: `/en/news/${p.slug}` },
         ]}
         tag={`Press${year ? ` · ${year}` : ""}`}
+        contentLang="ko"
         title={p.title}
         lead={p.summary}
       />
