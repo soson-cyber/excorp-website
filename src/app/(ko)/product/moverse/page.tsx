@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
+import { ControlledVideo } from "@/components/ui/ControlledVideo";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Gauge } from "@/components/motion/Gauge";
 import { SpecTable } from "@/components/product/SpecTable";
@@ -209,21 +210,14 @@ export default function MoversePage() {
         <div className="container-ex">
           <SectionHead index="01" label="Showcase" title="모두를 위한 모션캡처" />
           <figure className="mt-12">
-            {/* 자체 호스팅 16:9 — 무음 자동재생·루프. poster로 로드 전 폴백.
-                웹 최적화본(720p30·무음·~5MB, faststart). */}
             <div className="card aspect-video" style={{ overflow: "hidden", padding: 0 }}>
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              <ControlledVideo
+                src="/moverse-showcase-web.mp4"
                 poster="/moverse-showcase-poster.jpg"
-                aria-label="Moverse 마커리스 AI 모션캡처 데모 영상"
-                className="h-full w-full object-cover"
-              >
-                <source src="/moverse-showcase-web.mp4" type="video/mp4" />
-              </video>
+                label="Moverse 마커리스 AI 모션캡처 데모 영상"
+                playLabel="Moverse 데모 영상 재생"
+                pauseLabel="Moverse 데모 영상 일시정지"
+              />
             </div>
           </figure>
         </div>
@@ -281,25 +275,20 @@ export default function MoversePage() {
             lead="업로드한 녹화를 클라우드에서 자동 클린업합니다. 특허 출원·동료심사 연구를 기반으로, raw 캡처의 지터와 아티팩트를 줄여 안정적인 모션으로 만듭니다."
             leadMaxWidth="46rem"
           />
-          {/* Raw / AI Reprocessed 2-up 비교 — 자체 호스팅 16:9 무음 자동재생·루프 */}
+          {/* Raw / AI Reprocessed 2-up 비교 — 자체 호스팅 16:9, 재생 제어 제공 */}
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {[
               { src: "/moverse-raw-web.mp4", poster: "/moverse-raw-poster.jpg", tag: "RAW", label: "원본 캡처", aria: "AI 재처리 전 — 원본 캡처 영상" },
               { src: "/moverse-rendered-web.mp4", poster: "/moverse-rendered-poster.jpg", tag: "AI REPROCESSED", label: "AI 재처리 후", aria: "AI 재처리 후 — 정합된 모션 영상" },
             ].map((v) => (
               <figure key={v.src} className="card relative aspect-video" style={{ overflow: "hidden", padding: 0 }}>
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
+                <ControlledVideo
+                  src={v.src}
                   poster={v.poster}
-                  aria-label={v.aria}
-                  className="h-full w-full object-cover"
-                >
-                  <source src={v.src} type="video/mp4" />
-                </video>
+                  label={v.aria}
+                  playLabel={`${v.label} 영상 재생`}
+                  pauseLabel={`${v.label} 영상 일시정지`}
+                />
                 <span
                   className={`absolute left-4 top-4 z-10 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-wider ${
                     v.tag === "RAW" ? "border-border bg-black/60 text-white/80" : "border-lav/40 bg-black/60 text-lav"

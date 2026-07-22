@@ -71,7 +71,7 @@ jobs:
       - run: npm run lint
       - run: npx --no-install tsc --noEmit
       - run: npm run test:notion-boundary
-      - run: npm run test:cf-purge
+      - run: npm run test:regression
       - run: npm run cf:build
 
       - name: Bind artifact to commit

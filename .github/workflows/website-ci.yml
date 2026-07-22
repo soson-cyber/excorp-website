@@ -34,8 +34,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Verify hero performance contract
-        run: node --test scripts/hero-performance.test.mjs
+      - name: Run regression contracts
+        run: npm run test:regression
+
+      - name: Type-check
+        run: npx --no-install tsc --noEmit
 
       - name: Build
         run: npm run build

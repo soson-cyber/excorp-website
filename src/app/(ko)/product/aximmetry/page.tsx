@@ -4,6 +4,8 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
+import { ControlledVideo } from "@/components/ui/ControlledVideo";
+import { YouTubePreview } from "@/components/ui/YouTubePreview";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { SpecTable } from "@/components/product/SpecTable";
 import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
@@ -132,22 +134,13 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <SectionHead index="01" label="Showcase" />
           <figure className="mt-12">
-            {/* 반응형 16:9 — YouTube 임베드를 "배경 영상" 방식으로. 자동재생 + 무음(자동재생 정책상
-                mute 필수) + 루프(loop=1 + playlist=영상ID). controls=0·modestbranding으로 UI 최소화,
-                privacy 강화를 위해 youtube-nocookie 도메인 사용.
-                투명 오버레이가 클릭/일시정지를 막아 영상이 계속 재생되도록 → 고정 재생버튼·호버 UI가
-                뜨지 않는다(YouTube iframe은 교차 출처라 내부 버튼을 CSS로 직접 제어할 수 없어 오버레이로 해결). */}
             <div className="card relative aspect-video" style={{ overflow: "hidden", padding: 0 }}>
-              <iframe
-                className="pointer-events-none h-full w-full"
-                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?autoplay=1&mute=1&loop=1&playlist=vcuQegxG3dA&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
+              <YouTubePreview
+                videoId="vcuQegxG3dA"
+                poster="/aximmetry-showcase-poster.jpg"
                 title="Aximmetry 실시간 버추얼 프로덕션 데모"
-                allow="autoplay; encrypted-media; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                style={{ border: 0 }}
+                playLabel="Aximmetry 데모 영상 재생"
               />
-              {/* 투명 오버레이: 마우스 이벤트를 흡수해 영상 일시정지/호버 UI를 차단 */}
-              <span className="absolute inset-0" aria-hidden="true" />
             </div>
           </figure>
         </div>
@@ -167,18 +160,13 @@ export default function AximmetryPage() {
           {/* 최첨단 크로마 키어 — 영상 배너 (텍스트·배지 오버레이, BaM Awards 2023 수상) */}
           <figure className="mt-12">
             <div className="card relative aspect-video" style={{ overflow: "hidden", padding: 0 }}>
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              <ControlledVideo
+                src="/aximmetry-chroma-web.mp4"
                 poster="/aximmetry-fig-chroma.jpg"
-                aria-label="Aximmetry 최첨단 크로마 키어 실시간 키잉 데모 영상"
-                className="h-full w-full object-cover"
-              >
-                <source src="/aximmetry-chroma-web.mp4" type="video/mp4" />
-              </video>
+                label="Aximmetry 최첨단 크로마 키어 실시간 키잉 데모 영상"
+                playLabel="크로마 키어 영상 재생"
+                pauseLabel="크로마 키어 영상 일시정지"
+              />
 
               {/* 우상단 — BaM Awards 2023 Create 수상 배지 */}
               <Image

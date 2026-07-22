@@ -1513,6 +1513,36 @@ html.cursor-reduce .ex-cursor-ring {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
+.pagehero__breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+.pagehero__breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.pagehero__breadcrumb a {
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.18s var(--ease-ex);
+}
+.pagehero__breadcrumb a:hover {
+  color: #fff;
+}
+.pagehero__breadcrumb [aria-current="page"] {
+  color: var(--color-lav);
+}
+.pagehero__breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.24);
+}
 @media (min-width: 768px) {
   .pagehero__inner {
     padding-top: 8rem;
@@ -1526,6 +1556,113 @@ html.cursor-reduce .ex-cursor-ring {
   left: 0;
   height: 1px;
   width: 1px;
+}
+
+/* ── Product video controls — motion defaults remain cinematic while every
+   video keeps an explicit, keyboard-accessible play/pause surface. ───────── */
+.controlled-media,
+.youtube-preview {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.youtube-preview {
+  overflow: hidden;
+  border: 0;
+  background: #090714;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+.youtube-preview__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 5, 16, 0.04) 36%, rgba(7, 5, 16, 0.72) 100%);
+  transition: background 0.24s var(--ease-ex);
+}
+.youtube-preview__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 9999px;
+  background: rgba(9, 7, 20, 0.72);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.34);
+  transform: translate(-50%, -50%);
+  transition: transform 0.24s var(--ease-ex), background 0.24s var(--ease-ex);
+  backdrop-filter: blur(12px);
+}
+.youtube-preview__play svg {
+  margin-left: 0.18rem;
+}
+.youtube-preview:hover .youtube-preview__shade {
+  background: linear-gradient(180deg, rgba(7, 5, 16, 0) 36%, rgba(7, 5, 16, 0.62) 100%);
+}
+.youtube-preview:hover .youtube-preview__play {
+  background: var(--color-primary);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+.youtube-preview__label {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+.media-control {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9999px;
+  background: rgba(9, 7, 20, 0.76);
+  padding: 0.6rem 0.9rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
+  transition: background 0.18s var(--ease-ex), border-color 0.18s var(--ease-ex);
+  backdrop-filter: blur(12px);
+}
+.media-control:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(22, 18, 50, 0.9);
+}
+@media (max-width: 479px) {
+  .media-control span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .media-control {
+    width: 2.75rem;
+    justify-content: center;
+    padding: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .youtube-preview__shade,
+  .youtube-preview__play,
+  .media-control {
+    transition: none;
+  }
 }
 
 /* ── About hero — concentric expansion rings (브랜드 슬로건 'EXpansion of EXperience' 시각화).

@@ -9,6 +9,7 @@
 */
 
 import { SITE_URL } from "@/lib/site";
+import { serializeJsonLd } from "@/lib/json-ld";
 
 export const abs = (path: string) =>
   path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
@@ -19,7 +20,7 @@ export function JsonLd({ schema }: { schema: Json | Json[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
     />
   );
 }

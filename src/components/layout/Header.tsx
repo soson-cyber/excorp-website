@@ -13,6 +13,8 @@ export function Header() {
   // Which accordion group is expanded inside the mobile sheet (one at a time).
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
+  const wasMobileOpenRef = useRef(false);
   // `true` while the top of the page (inside the hero region) is in view.
   // Starts `true` so the first paint is transparent over the hero — no flash.
   const [atHeroTop, setAtHeroTop] = useState(true);
@@ -55,8 +57,28 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
+
+    const backgrounds = [...document.querySelectorAll<HTMLElement>("#main, footer, .skip-link")];
+    const previous = backgrounds.map((background) => ({
+      background,
+      inert: background.inert,
+      ariaHidden: background.getAttribute("aria-hidden"),
+    }));
+
+    if (mobileOpen) {
+      for (const background of backgrounds) {
+        background.inert = true;
+        background.setAttribute("aria-hidden", "true");
+      }
+    }
+
     return () => {
       document.body.style.overflow = "";
+      for (const state of previous) {
+        state.background.inert = state.inert;
+        if (state.ariaHidden === null) state.background.removeAttribute("aria-hidden");
+        else state.background.setAttribute("aria-hidden", state.ariaHidden);
+      }
     };
   }, [mobileOpen]);
 
@@ -64,13 +86,20 @@ export function Header() {
   // collapse any expanded accordion group so it reopens clean next time.
   useEffect(() => {
     if (mobileOpen) {
+      wasMobileOpenRef.current = true;
       const first = panelRef.current?.querySelector<HTMLElement>("a[href], button");
       first?.focus();
       return;
     }
     // Collapse any expanded group after close — deferred a frame so this isn't a
     // synchronous setState in the effect body (react-hooks/set-state-in-effect).
-    const raf = requestAnimationFrame(() => setOpenGroup(null));
+    const raf = requestAnimationFrame(() => {
+      setOpenGroup(null);
+      if (wasMobileOpenRef.current) {
+        wasMobileOpenRef.current = false;
+        mobileToggleRef.current?.focus();
+      }
+    });
     return () => cancelAnimationFrame(raf);
   }, [mobileOpen]);
 
@@ -79,7 +108,7 @@ export function Header() {
   // Esc closes the sheet; Tab is trapped within the panel for keyboard users.
   const onPanelKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Escape") {
-      setMobileOpen(false);
+      closeMobile();
       return;
     }
     if (e.key === "Tab" && panelRef.current) {
@@ -104,7 +133,11 @@ export function Header() {
   return (
     <header className={`header ${overHero ? "header--overHero" : "header--solid"}${mobileOpen ? " header--sheet" : ""}`}>
       <div className="container-ex header__inner">
-        <Link href={withLocale("/", locale)} className="focus-on-dark flex items-center" aria-label="EX Corporation 홈">
+        <Link
+          href={withLocale("/", locale)}
+          className="focus-on-dark flex items-center"
+          aria-label={locale === "en" ? "EX Corporation home" : "EX Corporation 홈"}
+        >
           {/* 작은 고정 크기 브랜드 심볼 — 옵티마이저 우회(unoptimized)로 원본 PNG 직접 사용.
               (dev 이미지 옵티마이저가 소형 PNG의 대형 변형에서 멈춰 로고가 안 뜨던 문제 회피) */}
           <Image src="/ex-cube.png" alt="" width={120} height={120} priority unoptimized className="logo logo--symbol" />
@@ -212,8 +245,17 @@ export function Header() {
 
         {/* Mobile toggle */}
         <button
+          ref={mobileToggleRef}
           type="button"
-          aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
+          aria-label={
+            locale === "en"
+              ? mobileOpen
+                ? "Close menu"
+                : "Open menu"
+              : mobileOpen
+                ? "메뉴 닫기"
+                : "메뉴 열기"
+          }
           aria-expanded={mobileOpen}
           className="hamb focus-on-dark"
           onClick={() => setMobileOpen((v) => !v)}
@@ -237,8 +279,15 @@ export function Header() {
 
       {/* Mobile menu — full-screen accordion sheet */}
       {mobileOpen && (
-        <div className="mobile" ref={panelRef} onKeyDown={onPanelKeyDown}>
-          <nav className="container-ex mobile__nav" aria-label="모바일 메뉴">
+        <div
+          className="mobile"
+          ref={panelRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={locale === "en" ? "Mobile menu" : "모바일 메뉴"}
+          onKeyDown={onPanelKeyDown}
+        >
+          <nav className="container-ex mobile__nav" aria-label={locale === "en" ? "Mobile menu" : "모바일 메뉴"}>
             {nav.map((item) => {
               const expanded = openGroup === item.label;
               return (

@@ -18,8 +18,8 @@ test("every published work entry declares whether it is a scenario or verified c
 
 test("scenario pages cannot present themselves as customer case studies", async () => {
   const [indexPage, detailPage] = await Promise.all([
-    source("../src/app/work/page.tsx"),
-    source("../src/app/work/[slug]/page.tsx"),
+    source("../src/app/(ko)/work/page.tsx"),
+    source("../src/app/(ko)/work/[slug]/page.tsx"),
   ]);
   assert.match(indexPage, /const scenarios = works\.filter/);
   assert.match(indexPage, /work\.kind === "scenario"/);
@@ -27,6 +27,15 @@ test("scenario pages cannot present themselves as customer case studies", async 
   assert.doesNotMatch(detailPage, /활용 사례/);
   assert.match(detailPage, /w\.kind === "scenario"/);
   assert.match(detailPage, /활용 시나리오/);
+});
+
+test("unverified scenarios do not publish precise performance claims", () => {
+  for (const work of works.filter((item) => item.kind === "scenario")) {
+    for (const result of work.result) {
+      assert.doesNotMatch(result.v, /\d\s*(?:%|→)|^[0-9]+$/u, `${work.slug} exposes an unverified exact metric`);
+      assert.notEqual(result.v, "무한", `${work.slug} exposes an unbounded marketing claim`);
+    }
+  }
 });
 
 test("marketing integrity policy runs on pull requests", async () => {

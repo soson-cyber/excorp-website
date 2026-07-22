@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 export type Crumb = { label: string; href: string };
 
@@ -7,11 +8,13 @@ export function PageHero({
   eyebrow,
   title,
   lead,
+  breadcrumb,
+  contentLang,
   bgImage,
   bgImageNoUpscale = false,
 }: {
-  /** Accepted for back-compat but no longer rendered — the top nav covers it. */
   breadcrumb?: Crumb[];
+  contentLang?: string;
   tag?: string;
   eyebrow?: string;
   title: string;
@@ -21,6 +24,10 @@ export function PageHero({
   /** Keep the background key visual at or below its intrinsic size instead of scaling it past 100%. */
   bgImageNoUpscale?: boolean;
 }) {
+  const isEnglish = breadcrumb?.some((crumb) => crumb.href === "/en" || crumb.href.startsWith("/en/")) ?? false;
+  const homeHref = isEnglish ? "/en" : "/";
+  const homeLabel = isEnglish ? "Home" : "홈";
+
   return (
     <section
       className={`pagehero relative overflow-hidden ${
@@ -63,8 +70,37 @@ export function PageHero({
       )}
       <div className="pagehero-fade" aria-hidden="true" />
       <div className="container-ex pagehero__inner relative text-center">
+        {breadcrumb && breadcrumb.length > 0 && (
+          <nav aria-label="Breadcrumb" className="pagehero__breadcrumb">
+            <ol>
+              <li>
+                <Link href={homeHref}>{homeLabel}</Link>
+              </li>
+              {breadcrumb.map((crumb, index) => {
+                const current = index === breadcrumb.length - 1;
+                return (
+                  <li key={`${crumb.href}-${crumb.label}`}>
+                    <span className="pagehero__breadcrumb-separator" aria-hidden="true">
+                      /
+                    </span>
+                    {current ? (
+                      <span aria-current="page">{crumb.label}</span>
+                    ) : (
+                      <Link href={crumb.href}>{crumb.label}</Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
+
         {tag && (
-          <div className="inline-flex rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-lav">
+          <div
+            className={`inline-flex rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-lav ${
+              breadcrumb?.length ? "mt-5" : ""
+            }`}
+          >
             {tag}
           </div>
         )}
@@ -72,7 +108,7 @@ export function PageHero({
         {eyebrow && (
           <p
             className={`mx-auto max-w-4xl text-balance bg-gradient-to-b from-white to-[#8b90a3] bg-clip-text text-2xl font-semibold text-transparent md:text-[2.5rem] md:leading-tight ${
-              tag ? "mt-7" : ""
+              tag ? "mt-7" : breadcrumb?.length ? "mt-5" : ""
             }`}
           >
             {eyebrow}
@@ -80,15 +116,16 @@ export function PageHero({
         )}
 
         <h1
+          lang={contentLang}
           className={`text-balance break-keep [overflow-wrap:anywhere] text-[clamp(1.9rem,6vw,5.25rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-gradient-ex-bright sm:leading-[1.02] ${
-            tag || eyebrow ? "mt-3" : ""
+            tag || eyebrow ? "mt-3" : breadcrumb?.length ? "mt-5" : ""
           }`}
         >
           {title}
         </h1>
 
         {lead && (
-          <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted">{lead}</p>
+          <p lang={contentLang} className="mx-auto mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted">{lead}</p>
         )}
       </div>
       {/* Header watches this: while it sits below the bar the header stays
