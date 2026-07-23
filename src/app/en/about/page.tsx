@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const whyEx = [
-  { t: "An all-in-one integrated solution", d: "Cameras, trackers, and media servers — every moving part unified into one." },
+  { t: "An integrated solution", d: "Cameras, trackers, and media servers: every moving part unified into one." },
   { t: "Real-world project experience and know-how", d: "Hands-on XR project delivery with major Korean companies, including GS Retail." },
   { t: "Customer-focused system design and support", d: "Flexible setups tuned to each site, with full-cycle support." },
   { t: "Expertise bridging culture tech and entertainment", d: "Years of connecting production sets with the technology behind them." },
@@ -39,7 +39,7 @@ const credentials: { tag: string; tagLabel: string; title: string; no?: string; 
 ];
 
 const history: { year: string; items: string[] }[] = [
-  { year: "2026", items: ["Selected for the Korean Ministry of SMEs and Startups TIPS program — R&D on an AI-based XR production solution"] },
+  { year: "2026", items: ["Selected for the Korean Ministry of SMEs and Startups TIPS program (R&D on an AI-based XR production solution)"] },
   { year: "2024", items: ["Signed as official Korea distributor for Moverse AI"] },
   {
     year: "2023",
@@ -97,7 +97,7 @@ export default function AboutPageEn() {
             EXpansion of EXperience.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted">
-            EX connects AI and XR technology to widen what everyone can create.
+            EX is a technology company that connects the tools of XR production on set and turns that operational experience into products that are easier to use.
           </p>
         </div>
         <span className="pagehero__sentinel" data-hero-sentinel aria-hidden="true" />

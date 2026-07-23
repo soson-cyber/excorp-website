@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     url: "https://excorp.kr/en/product",
     title: "Aximmetry·Moverse·RETracker — Official Korea Supply",
     description:
-      "Proven global virtual production products, supplied and supported in Korea by EX — from rollout consulting to setup, training, and technical support.",
+      "Proven global virtual production products, supplied and supported in Korea by EX, from rollout consulting to setup, training, and technical support.",
   },
 };
 
 const whyEx = [
   { t: "Rollout Consulting", d: "We recommend the right products, configuration, and rollout estimate for your on-site needs." },
-  { t: "System Setup", d: "The full process — installation, integration, and calibration." },
+  { t: "System Setup", d: "The full process: installation, integration, and calibration." },
   { t: "Training", d: "Hands-on training for your operating crew." },
   { t: "Technical Support", d: "Instead of dealing with an overseas HQ, EX supports the post-rollout phase in Korean, on the ground." },
 ];
@@ -34,7 +34,7 @@ const whyEx = [
 // Problem Quote Trio (§0-A) — the burden of bringing in unproven overseas tools directly.
 const problems = [
   { id: "PAIN 01", quote: "Overseas solutions only ship with English manuals.", desc: "Time zones and language slow down issue resolution, and it’s hard to gauge rollout cost or license configuration." },
-  { id: "PAIN 02", quote: "Buy the wrong gear and expensive equipment sits in storage.", desc: "Bring in a configuration that doesn’t fit your site and you can’t operate it â capital just stays locked up." },
+  { id: "PAIN 02", quote: "Buy the wrong gear and expensive equipment sits in storage.", desc: "Bring in a configuration that doesn’t fit your site and you can’t operate it, and capital just stays locked up." },
   { id: "PAIN 03", quote: "When something breaks, who do you even ask?", desc: "If supply is where it ends, setup, training, and operations are left to you. You need a partner for what comes after the rollout." },
 ];
 
@@ -49,14 +49,14 @@ const lineup = [
   {
     badge: "Distributor",
     title: "Moverse AI",
-    copy: "AI markerless motion capture with no dedicated suits or markers — real-time capture runs 100% locally",
+    copy: "AI markerless motion capture with no dedicated suits or markers. Real-time capture runs 100% locally.",
     meta: "Markerless MoCap",
     href: "/en/product/moverse",
   },
   {
     badge: "Distributor",
     title: "RETracker",
-    copy: "6-DOF markerless camera tracking with no ceiling markers — Bliss G2 / Fizz 2 Pro",
+    copy: "6-DOF markerless camera tracking with no ceiling markers: Bliss G2 / Fizz 2 Pro",
     meta: "6-DOF Marker-less",
     href: "/en/product/retracker",
   },
@@ -103,7 +103,7 @@ export default function ProductPageEn() {
         breadcrumb={[{ label: "Product", href: "/en/product" }]}
         tag="Product"
         title="Proven global partner products, owned end to end by EX in Korea."
-        lead="We officially supply Aximmetry (certified reseller), Moverse, and RETracker (official distributor) in Korea — from rollout consulting and quotes to setup, training, and technical support, all in Korean."
+        lead="We officially supply Aximmetry (certified reseller), Moverse, and RETracker (official distributor) in Korea, from rollout consulting and quotes to setup, training, and technical support, all in Korean."
       />
 
       {/* Problem Quote Trio — the burden of bringing in overseas tools directly (§0-A) */}
@@ -112,7 +112,7 @@ export default function ProductPageEn() {
         label="Before EX"
         title="Is buying the product really where it ends?"
         problems={problems}
-        note="As an official reseller and distributor, EX is with you from the rollout quote to operations — all in Korean."
+        note="As an official reseller and distributor, EX is with you from the rollout quote to operations, all in Korean."
       />
 
       {/* §01 Why EX */}

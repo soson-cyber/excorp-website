@@ -62,7 +62,7 @@ export default async function NewsPage() {
         breadcrumb={[{ label: "News & Insight", href: "/news" }]}
         tag="News & Insight"
         title="EX의 소식과 산업 인사이트"
-        lead="보도자료와 기술 인사이트 — 실시간 XR 콘텐츠 제작의 흐름과 EX 소식을 전합니다."
+        lead="보도자료와 기술 인사이트로 실시간 XR 콘텐츠 제작의 흐름과 EX 소식을 전합니다."
       />
 
       {/* §01 News list (filterable) — top glow bridges the hero aurora down */}

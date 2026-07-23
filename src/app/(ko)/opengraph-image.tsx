@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "EX Corporation — 기술의 연결로 경험을 확장하다";
+export const alt = "EX Corporation — 더 쉽게 쓰는 XR 시스템";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -45,10 +45,10 @@ export default function OgImage() {
             color: "transparent",
           }}
         >
-          기술의 연결로 경험을 확장하다
+          더 쉽게 쓰는 XR 시스템
         </div>
         <div style={{ marginTop: 28, fontSize: 30, color: "#b6bad0" }}>
-          All-in-One, Real-time XR Content Production Solution
+          Real-time XR Content Production Solution
         </div>
       </div>
     ),

@@ -11,7 +11,7 @@ import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: { absolute: "XR Solution Builds — EXLINK, Partner Tech & Studio | EX Corporation" },
   description:
-    "EXLINK, our own integrated XR solution, plus virtual production builds. EX unifies capture, tracking, rendering, and streaming into a real-time XR environment tailored to your site — and supports you from consultation and quoting through day-to-day operation.",
+    "EXLINK, our own integrated XR solution, plus virtual production builds. EX unifies capture, tracking, rendering, and streaming into a real-time XR environment tailored to your site, and supports you from consultation and quoting through day-to-day operation.",
   alternates: {
     canonical: "/en/solution",
     languages: { "ko-KR": "/solution", "en-US": "/en/solution", "x-default": "/solution" },
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 };
 
 const approach = [
-  { k: "All-in-One", v: "Unified system" },
-  { k: "Real-time", v: "Sub-1-frame latency target" },
+  { k: "System integration", v: "Single control core" },
+  { k: "Real-time", v: "Live compositing & output" },
   { k: "Integrated", v: "Single control UI" },
   { k: "End-to-End", v: "Setup · training · operation" },
 ];
@@ -29,13 +29,13 @@ const approach = [
 const problems = [
   { id: "PAIN 01", quote: "Every device has its own spec, and integration stalls.", desc: "Cameras, trackers, renderers, and streaming gear all differ, so wiring and syncing them takes time every single time." },
   { id: "PAIN 02", quote: "Overseas solutions ship English-only manuals, and support is slow when things break.", desc: "When something fails on set, time-zone gaps and language barriers slow the response." },
-  { id: "PAIN 03", quote: "The system got built â but there’s no one to run it.", desc: "If a project ends at installation, the gear just sits in storage. You need training and support to run it yourself." },
+  { id: "PAIN 03", quote: "The system got built, but there’s no one to run it.", desc: "If a project ends at installation, the gear just sits in storage. You need training and support to run it yourself." },
 ];
 
 // Segment slots (§0-C) — where the XR solution fits.
 const segments = [
   { tag: "Broadcast · Live", d: "Broadcasters and live production teams that need real-time XR and AR graphics layered onto live feeds." },
-  { tag: "Enterprise · Commerce", d: "Companies running IR sessions, webinars, and live commerce repeatedly on their own stage — no set changes." },
+  { tag: "Enterprise · Commerce", d: "Companies running IR sessions, webinars, and live commerce repeatedly on their own stage, with no set changes." },
   { tag: "University · Education", d: "Institutions building a hands-on environment to teach virtual production directly." },
 ];
 
@@ -80,7 +80,7 @@ export default function SolutionPageEn() {
         lead={
           <>
             <span className="inline-block">From EXLINK, our own integrated solution, to proven global partner technology and a working production studio</span>{" "}
-            <span className="inline-block">— we support content production from start to finish.</span>
+            <span className="inline-block">We support content production from start to finish.</span>
           </>
         }
       />
@@ -117,7 +117,7 @@ export default function SolutionPageEn() {
             titleMaxWidth="48rem"
             title={
               <>
-                <span className="inline-block">Our own technology and global partners —</span>{" "}
+                <span className="inline-block">Our own technology and global partners,</span>{" "}
                 <span className="inline-block">two pillars for every kind of set.</span>
               </>
             }
@@ -172,7 +172,7 @@ export default function SolutionPageEn() {
                 </h3>
                 <p className="mt-4 max-w-xl text-muted">
                   EX’s own integrated XR solution that ties cameras, trackers, motion sensors, networking, and the
-                  media server into a single control flow — run by one operator.
+                  media server into a single control flow, built to reduce on-set operational load.
                 </p>
               </div>
               <span className="arrowlink arrowlink--accent" style={{ marginTop: 32 }}>

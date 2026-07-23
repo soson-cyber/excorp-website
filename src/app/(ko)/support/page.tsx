@@ -52,7 +52,7 @@ const downloads = [
   {
     name: "버추얼 스튜디오 구축 준비도 자가진단",
     fmt: "설문",
-    desc: "예산 기안 전에 확인할 6가지 — 3분 자가진단, 결과와 가이드를 보내드립니다",
+    desc: "예산 기안 전에 확인할 6가지. 3분 자가진단으로 결과와 가이드를 보내드립니다",
     href: "https://tally.so/r/yPRMBd",
     cta: "진단 시작",
   },
@@ -77,7 +77,7 @@ export default function SupportPage() {
         breadcrumb={[{ label: "Support", href: "/support" }]}
         tag="Support"
         title="솔루션 도입 이후에도, EX는 계속 함께합니다."
-        lead="도입·견적부터 운영·교육, 기술 지원까지 — 필요한 자료와 답변을 한 곳에서."
+        lead="도입·견적부터 운영·교육, 기술 지원까지, 필요한 자료와 답변을 한 곳에서."
       />
 
       {/* §01 Quick Access */}

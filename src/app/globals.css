@@ -1513,36 +1513,6 @@ html.cursor-reduce .ex-cursor-ring {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
-.pagehero__breadcrumb ol {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.58);
-}
-.pagehero__breadcrumb li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-.pagehero__breadcrumb a {
-  color: rgba(255, 255, 255, 0.72);
-  transition: color 0.18s var(--ease-ex);
-}
-.pagehero__breadcrumb a:hover {
-  color: #fff;
-}
-.pagehero__breadcrumb [aria-current="page"] {
-  color: var(--color-lav);
-}
-.pagehero__breadcrumb-separator {
-  color: rgba(255, 255, 255, 0.24);
-}
 @media (min-width: 768px) {
   .pagehero__inner {
     padding-top: 8rem;

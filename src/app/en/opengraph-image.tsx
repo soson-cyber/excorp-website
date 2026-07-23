@@ -47,7 +47,7 @@ export default function OgImageEn() {
           Expand Experiences Through Connected Technology
         </div>
         <div style={{ marginTop: 28, fontSize: 30, color: "#b6bad0" }}>
-          All-in-One, Real-time XR Content Production Solution
+          Real-time XR Content Production Solution
         </div>
       </div>
     ),

@@ -26,14 +26,14 @@ export const metadata: Metadata = {
 
 // Problem Quote Trio (§0-A) — pains when adopting VP for the first time (VP-specific).
 const problems = [
-  { id: "PAIN 01", quote: "Virtual production â I don’t know where to start.", desc: "Devices and software are all over the place, and overseas solutions are hard to communicate with." },
-  { id: "PAIN 02", quote: "I can’t gauge how much the initial rollout will cost.", desc: "Get a quote without knowing the configuration and scale you need, and you lose either way â too much or too little." },
+  { id: "PAIN 01", quote: "Virtual production: I don’t know where to start.", desc: "Devices and software are all over the place, and overseas solutions are hard to communicate with." },
+  { id: "PAIN 02", quote: "I can’t gauge how much the initial rollout will cost.", desc: "Get a quote without knowing the configuration and scale you need, and you lose either way: too much or too little." },
   { id: "PAIN 03", quote: "I can’t confirm on set whether the footage works.", desc: "Without seeing the composited result in-camera, you only catch problems in post." },
 ];
 
 // Segment slots (§0-C) — where VP fits.
 const segments = [
-  { tag: "Broadcast · Live commerce", d: "Teams that need to switch live and live-commerce stages instantly — no set changes." },
+  { tag: "Broadcast · Live commerce", d: "Teams that need to switch live and live-commerce stages instantly, with no set changes." },
   { tag: "Enterprise · Events", d: "Companies running IR sessions, webinars, and conferences on a polished virtual stage." },
   { tag: "Fashion · Commerce", d: "Fashion and product content that needs many spaces and looks shot in one studio." },
 ];
@@ -48,9 +48,9 @@ const pipeline: { stage: string; t: string; tech: string; d: string; href?: stri
 ];
 
 const exPoints = [
-  "All-in-one real-time solution EXLINK — from virtual-background creation to real-time compositing and operation, in one",
-  "Connected, proven partner technology — combining Aximmetry, Moverse, and RETracker to fit each project",
-  "Finished as you shoot — a large green-chroma stage plus real-time tracking minimizes post-production",
+  "Integrated real-time solution EXLINK: from virtual-background creation to real-time compositing and operation, in one",
+  "Connected, proven partner technology: combining Aximmetry, Moverse, and RETracker to fit each project",
+  "Finished as you shoot: a large green-chroma stage plus real-time tracking minimizes post-production",
 ];
 
 const process = [
@@ -67,7 +67,7 @@ const useCases = [
   { t: "Fashion · Commerce", d: "Varied virtual spaces that make products and looks stand out" },
   { t: "Events", d: "XR live direction that extends the stage beyond the screen" },
   { t: "Education", d: "Lecture and lab content built on virtual environments" },
-  { t: "Home shopping · live commerce", d: "Switch backgrounds by product and season instantly — no set changes — and add AR product graphics." },
+  { t: "Home shopping · live commerce", d: "Switch backgrounds by product and season instantly, with no set changes, and add AR product graphics." },
   { t: "Exhibition · immersive content", d: "Immersive content like media walls and interactive video, built on Unreal." },
   { t: "Virtual human · live", d: "Drive virtual idols and characters live with markerless motion capture and real-time compositing." },
   { t: "Performance · XR stage", d: "Extend the stage beyond the screen with XR extension that links LED and tracking." },
@@ -88,7 +88,7 @@ export default function VirtualProductionPageEn() {
           { label: "Virtual Production", href: "/en/solution/virtual-production" },
         ]}
         tag="Methodology"
-        title="Virtual Production — the content is done the moment you shoot."
+        title="Virtual Production: the content is done the moment you shoot."
         lead="By combining digital backgrounds with live shooting in real time, you direct and finish right on set. No long, complex post-production."
       />
 
@@ -98,7 +98,7 @@ export default function VirtualProductionPageEn() {
         label="The Problem"
         title="What we hear most from first-time adopters"
         problems={problems}
-        note="So first-time adopters never get stuck, we’re with you in Korean â from configuration design to operator training."
+        note="So first-time adopters never get stuck, we’re with you in Korean, from configuration design to operator training."
       />
 
       {/* §01 What is VP */}
@@ -117,7 +117,7 @@ export default function VirtualProductionPageEn() {
                 Virtual production is a method that combines the digital and physical worlds in real time. Computer-made virtual backgrounds and sets are merged with live shooting on the spot, so you direct the virtual background right on set, just as you would a real shoot. The background follows naturally as the camera moves, and you check the result on set without long post-production.
               </p>
               <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
-                A way of making video where you shoot for real on a virtual background — and finish on the spot.
+                A way of making video where you shoot for real on a virtual background and finish on the spot.
               </p>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function VirtualProductionPageEn() {
             index="02"
             label="VP Pipeline"
             title="We connect every VP stage with EX assets"
-            lead="From camera tracking to performance capture, real-time render, and streaming â we connect each stage of virtual production with EX’s solution and partner technology."
+            lead="From camera tracking to performance capture, real-time render, and streaming, we connect each stage of virtual production with EX’s solution and partner technology."
             leadMaxWidth="46rem"
           />
           <figure className="card mt-10 overflow-hidden" style={{ padding: 0 }}>
@@ -192,7 +192,7 @@ export default function VirtualProductionPageEn() {
                 Virtual production at EX
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                EX connects its own solution EXLINK, proven partner technology, and the Hanam XR studio into one production pipeline. Built on a large green-chroma stage (W10m Ã D7m Ã H4m), cinema cameras, and real-time XR tracking, we shoot and composite at once to finish the result on set. So first-time adopters never get stuck, we’re with you in Korean â from configuration design to operator training.
+                EX connects its own solution EXLINK, proven partner technology, and the Hanam XR studio into one production pipeline. Built on a large green-chroma stage (W10m × D7m × H4m), cinema cameras, and real-time XR tracking, we shoot and composite at once to finish the result on set. So first-time adopters never get stuck, we’re with you in Korean, from configuration design to operator training.
               </p>
               <ul className="mt-7 space-y-3">
                 {exPoints.map((p) => (

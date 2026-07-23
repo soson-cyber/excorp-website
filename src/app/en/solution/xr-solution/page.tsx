@@ -9,9 +9,9 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: { absolute: "EXLINK — All-in-One Real-time XR Solution | EX Corporation" },
+  title: { absolute: "EXLINK — Integrated Real-time XR Solution | EX Corporation" },
   description:
-    "EXLINK is EX’s own all-in-one real-time XR solution, tying capture, tracking, rendering, and streaming into a single control flow. From XR studio builds to a one-operator workflow â talk to us about quoting and rollout.",
+    "EXLINK is EX’s own integrated real-time XR solution, tying capture, tracking, rendering, and streaming into a single control flow. From XR studio builds to a unified control workflow, talk to us about quoting and rollout.",
   alternates: {
     canonical: "/en/solution/xr-solution",
     languages: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const contrast = [
   { p: "Devices and software are scattered, each with different specs and controls", s: "Run consistently from a single control flow" },
   { p: "Every site needs time-consuming integration and sync setup", s: "Shorter setup and changeover, faster on-set response" },
-  { p: "Crew is spread across each part, driving up operational load", s: "Streamlined into a one-operator workflow" },
+  { p: "Crew is spread across each part, driving up operational load", s: "Streamlined into a unified control workflow" },
 ];
 
 const pipeline = [
@@ -108,7 +108,7 @@ export default function XrSolutionPageEn() {
         ]}
         tag="XR Solution · EX Original"
         title="Real-time XR production, finished in one flow"
-        lead="From capture and tracking to virtual-background rendering and streaming â EXLINK ties a scattered XR pipeline into a single control flow. It’s EX’s own all-in-one real-time XR solution."
+        lead="From capture and tracking to virtual-background rendering and streaming, EXLINK ties a scattered XR pipeline into a single control flow. It’s EX’s own integrated real-time XR solution."
       />
 
       {/* §01 What is EXLINK */}
@@ -121,14 +121,14 @@ export default function XrSolutionPageEn() {
                 What is EXLINK?
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                EXLINK is EX’s own all-in-one solution that unifies the capture, camera tracking, virtual-background rendering, compositing, media server, and streaming needed for real-time XR production into a single control flow. Instead of wiring up many devices and software separately, EXLINK orchestrates proven technologies from one place.
+                EXLINK is EX’s own solution that unifies the capture, camera tracking, virtual-background rendering, compositing, media server, and streaming needed for real-time XR production into a single control flow. Instead of wiring up many devices and software separately, EXLINK orchestrates proven technologies from one place.
               </p>
               <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
                 A scattered real-time XR pipeline, brought into one control flow.
               </p>
             </div>
             <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
-              <Image src="/exlink_solution.png" alt="EXLINK all-in-one real-time XR solution — unified control flow across capture, tracking, rendering, and streaming" width={1672} height={941} priority className="h-auto w-full" />
+              <Image src="/exlink_solution.png" alt="EXLINK integrated real-time XR solution — unified control flow across capture, tracking, rendering, and streaming" width={1672} height={941} priority className="h-auto w-full" />
             </figure>
           </div>
         </div>
@@ -142,10 +142,10 @@ export default function XrSolutionPageEn() {
             Why an integrated solution
           </h2>
           <p className="lead" style={{ maxWidth: "42rem" }}>
-            Build real-time XR yourself and your cameras, tracking, render, media server, and streaming all stand apart. EXLINK ties this into one flow â cutting complexity and letting you run faster with fewer people. Because a single drop is fatal in live broadcast, EX doesn’t stop at the build; we stay on as a partner through operation.
+            Build real-time XR yourself and your cameras, tracking, render, media server, and streaming all stand apart. EXLINK ties this into one flow, cutting complexity and making on-set operation simpler and faster. Because a single drop is fatal in live broadcast, EX doesn’t stop at the build; we stay on as a partner through operation.
           </p>
           <p className="mt-5 border-l-2 border-primary pl-4 text-base italic leading-relaxed text-muted">
-            &ldquo;Handling each device separately means it takes several people&rdquo; — this is exactly what integration solves.
+            &ldquo;Handling each device separately means it takes several people.&rdquo; This is exactly what integration solves.
           </p>
           {/* Two-column contrast — left: scattered setup (✕) / right: EXLINK integrated (✓), aligned 1:1 */}
           <div className="mx-auto mt-12 max-w-5xl">
@@ -260,7 +260,7 @@ export default function XrSolutionPageEn() {
             Technologies we connect
           </h2>
           <p className="lead" style={{ maxWidth: "42rem" }}>
-            <span className="inline-block">EXLINK doesn’t build proven specialist technology itself â it orchestrates it within one flow.</span>{" "}
+            <span className="inline-block">EXLINK doesn’t build proven specialist technology itself; it orchestrates it within one flow.</span>{" "}
             <span className="inline-block">The partner products below are technologies EX supplies in Korea,</span>{" "}
             <span className="inline-block">and EXLINK links and integrates them.</span>
           </p>
@@ -307,7 +307,7 @@ export default function XrSolutionPageEn() {
         <div className="container-ex">
           <SectionLabel index="05">Adoption</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            <span className="inline-block">How adoption works —</span>{" "}
+            <span className="inline-block">How adoption works,</span>{" "}
             <span className="inline-block">from consulting to operation</span>
           </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -13,7 +13,7 @@ const applyMailto = `mailto:${site.contact.careersEmail}?subject=${encodeURIComp
 export const metadata: Metadata = {
   title: { absolute: "Careers — Join the team building XR | EX Corporation" },
   description:
-    "Careers at EX. We aim to be a company where the people who work here are happy. Our hiring content is in the works â if there’s a role you’re interested in, reach out first.",
+    "Careers at EX. We aim to be a company where the people who work here are happy. Our hiring content is in the works. If there’s a role you’re interested in, reach out first.",
   alternates: {
     canonical: "/en/careers",
     languages: { "ko-KR": "/careers", "en-US": "/en/careers", "x-default": "/careers" },
@@ -36,7 +36,7 @@ export default function CareersPageEn() {
           <ComingSoon
             locale="en"
             title="Our hiring details are on the way"
-            description="We’re putting together EX’s values, how we work, and our open positions â coming soon. If there’s a role you’re interested in, apply by email first."
+            description="We’re putting together EX’s values, how we work, and our open positions, coming soon. If there’s a role you’re interested in, apply by email first."
             ctaHref={null}
           />
 

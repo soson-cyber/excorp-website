@@ -307,7 +307,7 @@ export default function RetrackerPage() {
                 />
               </div>
               <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-                RETracker Certificate of Excellence — EX Corporation
+                RETracker Certificate of Excellence · EX Corporation
               </figcaption>
             </figure>
           </div>

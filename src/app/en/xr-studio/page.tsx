@@ -23,7 +23,7 @@ const studioLoc = locations.find((l) => l.kind === "Studio")!;
 const reasons = [
   { t: "One stage, infinite backgrounds", d: "No need to build a new physical set. Stage spaces that fit the content with virtual backgrounds on the fly, and shoot entirely different looks within the same day. A fit for companies that want to run their own stage instead of repeatedly outsourcing, and for live commerce that needs a fresh visual every time within a limited space." },
   { t: "10m chroma, full group shots", d: "A horizon green-screen chroma stage of W10 × D7 × H4 (~70㎡). It comfortably handles multi-person panels, full shots, and wide framing that cramped self-broadcast studios struggle to capture." },
-  { t: "Real-time XR, finished on set", d: "Not simple compositing — dimensional direction driven by camera tracking. Subjects and virtual backgrounds blend naturally, enabling differentiated expression such as AR product-demo graphics and 3D slides." },
+  { t: "Real-time XR, finished on set", d: "Not simple compositing: dimensional direction driven by camera tracking. Subjects and virtual backgrounds blend naturally, enabling differentiated expression such as AR product-demo graphics and 3D slides." },
   { t: "A dedicated team, from planning to streaming", d: "A dedicated crew handling production, virtual-environment control, and on-site operations runs planning, the shoot, and live streaming in one pass." },
 ];
 
@@ -80,8 +80,8 @@ export default function XrStudioPageEn() {
       <PageHero
         breadcrumb={[{ label: "XR Studio", href: "/en/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
-        title="Hanam XR Studio — from booking to production and streaming"
-        lead="The EX XR Studio in Hanam is a virtual production studio that, with a large green-screen chroma stage and real-time XR technology, completes everything in one pass — from planning to shoot to live streaming."
+        title="Hanam XR Studio: from booking to production and streaming"
+        lead="The EX XR Studio in Hanam is a virtual production studio that, with a large green-screen chroma stage and real-time XR technology, completes everything in one pass, from planning to shoot to live streaming."
       />
 
       {/* Studio photo */}
@@ -98,7 +98,7 @@ export default function XrStudioPageEn() {
             index="01"
             label="Why EX XR Studio"
             title="What makes EX XR Studio different"
-            lead="Real-time XR proven by 6 technology patents and real production work — including the Shell Corporation fashion film — put to use right here at our Hanam studio."
+            lead="Real-time XR proven by 6 technology patents and real production work, including the Shell Corporation fashion film, put to use right here at our Hanam studio."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (

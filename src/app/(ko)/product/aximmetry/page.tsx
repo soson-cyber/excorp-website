@@ -53,7 +53,7 @@ const featureTech: { t: string; d: string; img?: string }[] = [
   },
   {
     t: "단일 제어 인터페이스",
-    d: "운영자 한 명이 스위칭·그래픽·연출을 한 화면에서 제어합니다.",
+    d: "스위칭·그래픽·연출을 한 화면에서 통합 제어합니다.",
     img: "/aximmetry-virtual-production.jpg",
   },
   {
@@ -113,7 +113,7 @@ export default function AximmetryPage() {
           { label: "Aximmetry", href: "/product/aximmetry" },
         ]}
         tag="Certified Reseller"
-        title="Aximmetry — 올인원 버추얼 프로덕션 플랫폼"
+        title="Aximmetry: 통합 버추얼 프로덕션 플랫폼"
         lead="자체 노드 기반 엔진과 Unreal Engine을 결합해, 실시간 가상 스튜디오·XR·AR를 제작하는 버추얼 프로덕션 컴포저입니다."
       />
 
@@ -307,7 +307,7 @@ export default function AximmetryPage() {
                 />
               </div>
               <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-                Aximmetry Authorization Certificate — EX Corporation
+                Aximmetry Authorization Certificate · EX Corporation
               </figcaption>
             </figure>
           </div>

@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   title: "EXLINK — 실시간 XR 통합 솔루션",
   alternates: { canonical: "/solution/xr-solution", languages: { "ko-KR": "/solution/xr-solution", "en-US": "/en/solution/xr-solution", "x-default": "/solution/xr-solution" } },
   description:
-    "EXLINK는 촬영·트래킹·렌더·송출을 단일 제어 흐름으로 묶는 EX 자체 개발 올인원 실시간 XR 솔루션입니다. XR 스튜디오 구축부터 운영자 1인 중심 워크플로우까지, 견적·도입을 상담합니다.",
+    "EXLINK는 촬영·트래킹·렌더·송출을 단일 제어 흐름으로 묶는 EX 자체 개발 통합 실시간 XR 솔루션입니다. XR 스튜디오 구축부터 통합 제어 워크플로우까지, 견적·도입을 상담합니다.",
 };
 
 const contrast = [
   { p: "장비·소프트웨어가 제각각, 규격·제어 방식이 다름", s: "단일 제어 흐름에서 일관되게 운영" },
   { p: "현장마다 연동·동기화 셋업에 시간 소요", s: "셋업·전환 시간 단축, 빠른 현장 대응" },
-  { p: "파트별 인력 분산으로 운영 부담이 큼", s: "운영자 1인 중심 워크플로우로 효율화" },
+  { p: "파트별 인력 분산으로 운영 부담이 큼", s: "통합 제어 워크플로우로 운영 부담 완화" },
 ];
 
 const pipeline = [
@@ -102,7 +102,7 @@ export default function XrSolutionPage() {
         ]}
         tag="XR Solution · EX Original"
         title="하나의 흐름으로 완성하는 실시간 XR 프로덕션"
-        lead="촬영부터 트래킹, 가상 배경 렌더링, 송출까지 — 흩어진 XR 파이프라인을 EXLINK 하나의 제어 흐름으로 묶습니다. EX가 자체 개발한 올인원 실시간 XR 솔루션입니다."
+        lead="촬영부터 트래킹, 가상 배경 렌더링, 송출까지 흩어져 있던 XR 파이프라인을 EXLINK 하나의 제어 흐름으로 묶습니다. EX가 자체 개발한 통합 실시간 XR 솔루션입니다."
       />
 
       {/* §01 What is EXLINK */}
@@ -115,14 +115,14 @@ export default function XrSolutionPage() {
                 EXLINK란?
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                EXLINK는 실시간 XR 제작에 필요한 촬영·카메라 트래킹·가상 배경 렌더링·합성·미디어서버·송출 과정을 하나의 제어 흐름으로 통합한 EX 자체 개발 올인원 솔루션입니다. 여러 장비와 소프트웨어를 따로 연동하는 대신, 검증된 기술들을 EXLINK가 한 자리에서 조율합니다.
+                EXLINK는 실시간 XR 제작에 필요한 촬영·카메라 트래킹·가상 배경 렌더링·합성·미디어서버·송출 과정을 하나의 제어 흐름으로 통합한 EX 자체 개발 솔루션입니다. 여러 장비와 소프트웨어를 따로 연동하는 대신, 검증된 기술들을 EXLINK가 한 자리에서 조율합니다.
               </p>
               <p className="mt-6 border-l-2 border-primary pl-4 text-lg font-medium text-fg">
                 흩어진 실시간 XR 파이프라인을, 하나의 제어 흐름으로.
               </p>
             </div>
             <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
-              <Image src="/exlink_solution.png" alt="EXLINK 올인원 실시간 XR 솔루션 — 촬영·트래킹·렌더·송출 통합 제어 흐름" width={1672} height={941} priority className="h-auto w-full" />
+              <Image src="/exlink_solution.png" alt="EXLINK 통합 실시간 XR 솔루션 — 촬영·트래킹·렌더·송출 통합 제어 흐름" width={1672} height={941} priority className="h-auto w-full" />
             </figure>
           </div>
         </div>
@@ -136,10 +136,10 @@ export default function XrSolutionPage() {
             왜 통합 솔루션인가
           </h2>
           <p className="lead" style={{ maxWidth: "42rem" }}>
-            실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK는 이 과정을 하나의 흐름으로 묶어 복잡성을 줄이고, 더 적은 인력으로 더 빠르게 운영하게 합니다. 생방송은 한 번의 멈춤도 치명적이기에, EX는 구축으로 끝내지 않고 운영까지 함께하는 파트너로 남습니다.
+            실시간 XR을 직접 구성하면 카메라·트래킹·렌더·미디어서버·송출이 제각각입니다. EXLINK는 이 과정을 하나의 흐름으로 묶어 복잡성을 줄이고, 현장 운영을 더 단순하고 빠르게 만듭니다. 생방송은 한 번의 멈춤도 치명적이기에, EX는 구축으로 끝내지 않고 운영까지 함께하는 파트너로 남습니다.
           </p>
           <p className="mt-5 border-l-2 border-primary pl-4 text-base italic leading-relaxed text-muted">
-            &ldquo;장비마다 따로 만지느라 사람이 여럿 붙는다&rdquo; — 통합으로 풀어야 할 지점입니다.
+            &ldquo;장비마다 따로 만지느라 사람이 여럿 붙는다.&rdquo; 통합으로 풀어야 할 지점입니다.
           </p>
           {/* 2열 대비 — 좌: 분산형 구성(✕) / 우: EXLINK 통합(✓), 항목별 1:1 정렬 */}
           <div className="mx-auto mt-12 max-w-5xl">
@@ -301,7 +301,7 @@ export default function XrSolutionPage() {
         <div className="container-ex">
           <SectionLabel index="05">Adoption</SectionLabel>
           <h2 className="h2" style={{ marginTop: 22 }}>
-            <span className="inline-block">도입 방식 —</span>{" "}
+            <span className="inline-block">도입 방식,</span>{" "}
             <span className="inline-block">컨설팅부터 운영까지</span>
           </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -12,7 +12,7 @@ import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: "Support — Resources & Technical Support",
   description:
-    "EX stays with you well beyond adoption. Frequently asked questions, a resource library of company and product spec sheets, remote and on-site technical support, and an urgent hotline (+82-31-699-8228) — all in one place.",
+    "EX stays with you well beyond adoption. Frequently asked questions, a resource library of company and product spec sheets, remote and on-site technical support, and an urgent hotline (+82-31-699-8228), all in one place.",
   alternates: {
     canonical: "/en/support",
     languages: { ko: "/support", en: "/en/support", "x-default": "/support" },
@@ -38,7 +38,7 @@ const faqGroups = [
   {
     cat: "Operations · Training",
     items: [
-      { q: "Do you provide operations training?", a: "Yes — hands-on training for your operating staff is included at adoption." },
+      { q: "Do you provide operations training?", a: "Yes. Hands-on training for your operating staff is included at adoption." },
       { q: "Can non-developers run it?", a: "EXLINK offers a single control UI, designed so it can be operated without complex technical skills." },
     ],
   },
@@ -55,7 +55,7 @@ const downloads = [
   {
     name: "Virtual studio readiness self-assessment",
     fmt: "Survey",
-    desc: "6 questions to review before drafting your budget — 3 minutes, in Korean",
+    desc: "6 questions to review before drafting your budget. 3 minutes, in Korean",
     href: "https://tally.so/r/yPRMBd",
     cta: "Start",
   },
@@ -80,7 +80,7 @@ export default function SupportPageEn() {
         breadcrumb={[{ label: "Support", href: "/en/support" }]}
         tag="Support"
         title="Even after adoption, EX stays with you."
-        lead="From adoption and quotes to operations, training, and technical support — find the materials and answers you need in one place."
+        lead="From adoption and quotes to operations, training, and technical support. Find the materials and answers you need in one place."
       />
 
       {/* §01 Quick Access */}

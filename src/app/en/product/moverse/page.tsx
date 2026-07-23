@@ -12,7 +12,7 @@ import { JsonLd, faqPageLd, abs } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: "Moverse — Korea Distributor for Markerless AI Motion Capture",
   description:
-    "Moverse is AI markerless motion capture that captures up to 4 people in real time with standard RGB cameras — no markers or suits. Local real-time capture plus cloud AI correction, with Unreal integration. EX is the official Korea distributor.",
+    "Moverse is AI markerless motion capture that captures up to 4 people in real time with standard RGB cameras, no markers or suits. Local real-time capture plus cloud AI correction, with Unreal integration. EX is the official Korea distributor.",
   alternates: {
     canonical: "/en/product/moverse",
     languages: { "ko-KR": "/product/moverse", "en-US": "/en/product/moverse", "x-default": "/product/moverse" },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://excorp.kr/en/product/moverse",
     title: "Moverse — Korea Distributor for Markerless AI Motion Capture",
     description:
-      "Markerless AI motion capture for up to 4 people with standard RGB cameras — no markers or suits. EX is the official Korea distributor.",
+      "Markerless AI motion capture for up to 4 people with standard RGB cameras, no markers or suits. EX is the official Korea distributor.",
   },
 };
 
@@ -35,7 +35,7 @@ const quickSpecs: { v: string; l: string; numeric: boolean }[] = [
 const why = [
   {
     t: "Markerless capture",
-    d: "Capture with standard RGB/RGB-IR cameras alone — no dedicated suits or markers to attach. Start right away with no gear to wear and no per-person calibration.",
+    d: "Capture with standard RGB/RGB-IR cameras alone, with no dedicated suits or markers to attach. Start right away with no gear to wear and no per-person calibration.",
   },
   {
     t: "Local real-time capture",
@@ -123,7 +123,7 @@ const specGroups: { title: string; rows: [string, string][] }[] = [
     rows: [
       ["Foundation", "Google Cloud–based web dashboard"],
       ["Data", "Data management · team collaboration"],
-      ["AI Reprocessing", "Automatic cleanup of uploaded recordings — Body Reprocessing (jitter and artifact correction) · Finger Tracking · built on patent-pending and peer-reviewed research"],
+      ["AI Reprocessing", "Automatic cleanup of uploaded recordings: Body Reprocessing (jitter and artifact correction) · Finger Tracking · built on patent-pending and peer-reviewed research"],
       ["Rig mapping", "Automatic mapping to Mixamo Ybot · Mannequin · ActorCore"],
       ["Export", "Multiple industry-standard formats"],
       ["Motifs", "A generative library that creates variations of predefined motions"],
@@ -145,7 +145,7 @@ const useCases = [
   { t: "Live music · performance", d: "Move characters in real time on game and live-music stages with live capture." },
   { t: "Virtual production", d: "Integrate live into virtual studio and LED wall production with local low-latency streaming." },
   { t: "Games · animation", d: "Send markerless capture data to Unreal and standard rigs for character animation." },
-  { t: "Education · students", d: "Teach and practice motion capture with standard cameras alone — no suits or markers." },
+  { t: "Education · students", d: "Teach and practice motion capture with standard cameras alone, no suits or markers." },
   { t: "Research · interactive", d: "Turn the movement of multiple people into data for research and interactive content." },
   { t: "Tricky-lighting live shows", d: "With an RGB-IR camera setup, markerless capture stays stable even on live sets with tricky lighting." },
   { t: "Hand-motion capture", d: "Post-process body and fingers as one system to capture detailed hand motion." },
@@ -159,11 +159,11 @@ const process = [
 ];
 
 const faqs = [
-  { q: "How is this different from existing optical motion capture?", a: "Moverse is a markerless approach that captures with standard RGB cameras alone â no dedicated suits or markers. You can start right away with no gear to wear and no per-person calibration, and it streams up to 4 people in real time at 60+ FPS locally. Suitability varies with environment and precision requirements, so tell us your capture goals and we’ll review the configuration with you." },
+  { q: "How is this different from existing optical motion capture?", a: "Moverse is a markerless approach that captures with standard RGB cameras alone, with no dedicated suits or markers. You can start right away with no gear to wear and no per-person calibration, and it streams up to 4 people in real time at 60+ FPS locally. Suitability varies with environment and precision requirements, so tell us your capture goals and we’ll review the configuration with you." },
   { q: "Do I need markers or a suit?", a: "No. It captures with standard RGB/RGB-IR cameras alone, and anyone can use it right away with no gear to wear and no per-person calibration." },
   { q: "Does it support real-time live integration?", a: "Yes. The local Capture Studio captures up to 4 people at 60+ FPS and direct-streams to Unreal Engine and others with low latency." },
   { q: "What is AI Reprocessing?", a: "It’s post-processing that automatically cleans up recordings once you upload them to the cloud Portal. It reduces jitter and artifacts and post-processes fingers as well, built on patent-pending and peer-reviewed research." },
-  { q: "Where is the data processed?", a: "It’s a hybrid approach: capture and real-time computation run in the on-site local app, while data management, collaboration, and AI Reprocessing run in the Google Cloudâbased Moverse Portal." },
+  { q: "Where is the data processed?", a: "It’s a hybrid approach: capture and real-time computation run in the on-site local app, while data management, collaboration, and AI Reprocessing run in the Google Cloud–based Moverse Portal." },
   { q: "What cameras does it use?", a: "It uses the Luxonis OAK family (OAK-1 W, OAK-D Pro W PoE, etc.). We’ll advise on the required count and configuration for your capture volume during consultation." },
   { q: "Which engines and rigs does it integrate with?", a: "It supports Unreal Engine direct streaming and game-engine plugins, SDK, and APIs (Python REST API, C++ SDK), and automatically maps and exports to standard rigs such as Mixamo Ybot, Mannequin, and ActorCore." },
   { q: "Can we see a live demo?", a: "Yes. You can see markerless capture firsthand at our Hanam XR studio, and we run a video demo if you are remote. We coordinate the demo schedule during consultation." },
@@ -430,7 +430,7 @@ export default function MoversePageEn() {
                 EX is the <span className="text-lav">official Korea distributor</span> for Moverse.
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                Beyond hardware and software supply, we own the entire domestic rollout as an integrated turnkey — system installation, calibration, engine integration, and on-site training.
+                Beyond hardware and software supply, we own the entire domestic rollout as an integrated turnkey: system installation, calibration, engine integration, and on-site training.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["Rollout consulting", "System setup", "Engine integration", "Training & support"].map((x) => (
@@ -459,7 +459,7 @@ export default function MoversePageEn() {
                 />
               </div>
               <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-                Moverse Certificate of Excellence — EX Corporation
+                Moverse Certificate of Excellence · EX Corporation
               </figcaption>
             </figure>
           </div>

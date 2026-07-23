@@ -41,9 +41,9 @@ const pipeline: { stage: string; t: string; tech: string; d: string; href?: stri
 ];
 
 const exPoints = [
-  "올인원 실시간 솔루션 EXLINK — 가상 배경 제작부터 실시간 합성·운영까지 하나로",
-  "검증된 파트너 기술 연결 — Aximmetry · Moverse · RETracker를 프로젝트에 맞게 결합",
-  "촬영과 동시에 완성 — 대형 그린 크로마 + 실시간 트래킹으로 후반 작업 최소화",
+  "통합 실시간 솔루션 EXLINK: 가상 배경 제작부터 실시간 합성·운영까지 하나로",
+  "검증된 파트너 기술 연결: Aximmetry · Moverse · RETracker를 프로젝트에 맞게 결합",
+  "촬영과 동시에 완성: 대형 그린 크로마 + 실시간 트래킹으로 후반 작업 최소화",
 ];
 
 const process = [
@@ -81,7 +81,7 @@ export default function VirtualProductionPage() {
           { label: "Virtual Production", href: "/solution/virtual-production" },
         ]}
         tag="Methodology"
-        title="버추얼 프로덕션 — 촬영하는 순간, 콘텐츠가 완성됩니다."
+        title="버추얼 프로덕션: 촬영하는 순간, 콘텐츠가 완성됩니다."
         lead="디지털 배경과 실제 촬영을 실시간으로 결합해, 촬영 현장에서 바로 연출하고 완성합니다. 길고 복잡한 후반 작업이 필요 없습니다."
       />
 

@@ -207,8 +207,8 @@ function ExlinkConsole({ locale }: { locale: Locale }) {
                 <span className="v ok">LOCKED</span>
               </div>
               <div className="trow">
-                <span className="k">{en ? "Render latency" : "렌더 지연"}</span>
-                <span className="v">1 frame</span>
+                <span className="k">{en ? "Render" : "렌더"}</span>
+                <span className="v ok">REALTIME</span>
               </div>
               <div className="trow">
                 <span className="k">{en ? "Chroma key" : "크로마 키"}</span>
@@ -235,7 +235,7 @@ function ExlinkConsole({ locale }: { locale: Locale }) {
         </div>
       </div>
       <div className="c-foot">
-        <span className="g">{en ? "EXLINK unified core · 1 operator" : "EXLINK 통합 코어 · 운영자 1인"}</span>
+        <span className="g">{en ? "EXLINK unified core · single control flow" : "EXLINK 통합 코어 · 단일 제어 흐름"}</span>
         <span className="g">
           {en ? "Render load" : "렌더 부하"}{" "}
           <span className="loadbar">
@@ -268,22 +268,22 @@ export function Hero({ locale = "ko" }: { locale?: Locale }) {
         <h1 className="hero-h1">
           {en ? (
             <>
-              Expand experiences
+              Complex XR production,
               <br />
-              by connecting <span className="grad">technology</span>
+              made <span className="grad">easier</span>{" "}to use
             </>
           ) : (
             <>
-              기술의 연결로
+              복잡한 XR 제작,
               <br />
-              경험을 <span className="grad">확장하다</span>
+              <span className="grad">더 쉽게</span>{" "}쓰는 시스템
             </>
           )}
         </h1>
         <p className="hero-lead">
           {en
-            ? "EX connects capture, tracking, rendering, and streaming for real-time XR and virtual production into a single workflow — finished on set, with a smaller crew and no long post-production."
-            : "이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을 하나의 흐름으로 연결합니다. 긴 후반 작업 없이, 더 적은 인력으로 현장에서 완성합니다."}
+            ? "EX connects capture, tracking, rendering, and streaming for real-time XR and virtual production into a single workflow."
+            : "이엑스는 실시간 XR과 버추얼 프로덕션의 촬영·트래킹·렌더·송출을 하나의 흐름으로 연결합니다."}
         </p>
         <div className="hero-cta">
           <Link href={withLocale("/contact", locale)} className="btn btn--onDark focus-on-dark">

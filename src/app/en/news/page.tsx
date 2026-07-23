@@ -66,7 +66,7 @@ export default async function NewsPageEn() {
         breadcrumb={[{ label: "News & Insight", href: "/en/news" }]}
         tag="News & Insight"
         title="EX news and industry insights"
-        lead="Press releases and technical insights — the pulse of real-time XR content production and news from EX."
+        lead="Press releases and technical insights: the pulse of real-time XR content production and news from EX."
       />
 
       {/* §01 News list (filterable) — top glow bridges the hero aurora down */}

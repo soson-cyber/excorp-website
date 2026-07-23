@@ -56,8 +56,8 @@ export function RootDocument({ children, locale }: RootDocumentProps) {
               url: SITE_URL,
               logo: `${SITE_URL}/ex-logo.png`,
               description: isEnglish
-                ? "An all-in-one real-time XR content production company connecting AI and XR technologies"
-                : "AI와 XR 기술을 연결하는 All-in-One 실시간 XR 콘텐츠 제작 솔루션 기업",
+                ? "A real-time XR content production company connecting AI and XR technologies"
+                : "AI와 XR 기술을 연결하는 실시간 XR 콘텐츠 제작 솔루션 기업",
               email: site.contact.email,
               telephone: telE164,
               address: {

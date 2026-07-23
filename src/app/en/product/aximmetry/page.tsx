@@ -60,12 +60,12 @@ const featureTech: { t: string; d: string; img?: string }[] = [
   },
   {
     t: "Single control interface",
-    d: "One operator controls switching, graphics, and direction from a single screen.",
+    d: "Control switching, graphics, and direction together from a single screen.",
     img: "/aximmetry-virtual-production.jpg",
   },
   {
     t: "External controller integration",
-    d: "Connect and control via a range of external controllers — MIDI, DMX, OSC, and more.",
+    d: "Connect and control via a range of external controllers: MIDI, DMX, OSC, and more.",
     img: "/aximmetry-external-control.png",
   },
 ];
@@ -124,7 +124,7 @@ export default function AximmetryPageEn() {
           { label: "Aximmetry", href: "/en/product/aximmetry" },
         ]}
         tag="Certified Reseller"
-        title="Aximmetry — All-In-One Virtual Production Platform"
+        title="Aximmetry: Integrated Virtual Production Platform"
         lead="A virtual production compositor that combines its own node-based engine with Unreal Engine to build real-time virtual studios, XR, and AR."
       />
 
@@ -172,7 +172,7 @@ export default function AximmetryPageEn() {
             index="02"
             label="Features & Technology"
             title="Features and technology"
-            lead="Aximmetry’s node-based editor adapts to the nature of each project â broadcast production, virtual events, previsualization, and LED wall virtual production, as well as complex 3D graphics work â by composing the graph to fit."
+            lead="Aximmetry’s node-based editor adapts to the nature of each project: broadcast production, virtual events, previsualization, and LED wall virtual production, as well as complex 3D graphics work, by composing the graph to fit."
             leadMaxWidth="48rem"
           />
           {/* Feature cards — priority order: top 4 (2 columns) + bottom 3 (3 columns) */}
@@ -331,7 +331,7 @@ export default function AximmetryPageEn() {
                 />
               </div>
               <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-                Aximmetry Authorization Certificate — EX Corporation
+                Aximmetry Authorization Certificate · EX Corporation
               </figcaption>
             </figure>
           </div>

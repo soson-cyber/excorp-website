@@ -115,7 +115,7 @@ const specGroups: { title: string; rows: [string, string][] }[] = [
     rows: [
       ["기반", "Google Cloud 기반 웹 대시보드"],
       ["데이터", "데이터 관리 · 팀 협업"],
-      ["AI Reprocessing", "업로드 녹화 자동 클린업 — Body Reprocessing(지터·아티팩트 보정) · Finger Tracking · 특허 출원·동료심사 연구 기반"],
+      ["AI Reprocessing", "업로드 녹화 자동 클린업: Body Reprocessing(지터·아티팩트 보정) · Finger Tracking · 특허 출원·동료심사 연구 기반"],
       ["리그 매핑", "Mixamo Ybot · Mannequin · ActorCore 자동 매핑"],
       ["익스포트", "다중 산업 표준 포맷"],
       ["Motifs", "사전 정의 모션의 변형을 생성하는 생성형 라이브러리"],
@@ -434,7 +434,7 @@ export default function MoversePage() {
                 />
               </div>
               <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-                Moverse Certificate of Excellence — EX Corporation
+                Moverse Certificate of Excellence · EX Corporation
               </figcaption>
             </figure>
           </div>

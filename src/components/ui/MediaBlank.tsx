@@ -134,7 +134,7 @@ export function MediaBlank({
     ? alt ?? label ?? undefined
     : hasRatio
       ? sublabel
-        ? `${label ?? ""} — ${sublabel} (자산 준비 중)`.trim()
+        ? `${label ?? ""} · ${sublabel} (자산 준비 중)`.trim()
         : `${label ?? ""} (자산 준비 중)`.trim()
       : undefined;
 

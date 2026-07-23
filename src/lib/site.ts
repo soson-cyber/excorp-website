@@ -4,9 +4,9 @@ export const SITE_URL = "https://excorp.kr";
 export const site = {
   name: "EX Corporation",
   nameKo: "이엑스 주식회사",
-  slogan: "기술의 연결로 경험을 확장하다",
+  slogan: "현장에서 연결해 온 기술로, 더 쉽게 쓰는 XR 시스템을 만듭니다",
   brandSlogan: "EXpand EXperiences",
-  subTitle: "All-in-One, Real-time XR Content Production Solution",
+  subTitle: "Real-time XR Content Production Solution",
   mission:
     "AI와 XR 기술을 연결하여, 현실과 가상이 융합되는 새로운 콘텐츠 경험을 만듭니다.",
   missionEn:
@@ -68,7 +68,7 @@ export const nav: NavItem[] = [
     featured: {
       eyebrow: "EX ORIGINAL",
       title: "EXLINK",
-      desc: "현실과 가상을 실시간으로 잇는 올인원 XR 솔루션",
+      desc: "현실과 가상을 실시간으로 잇는 통합 XR 솔루션",
       cta: "솔루션 보기",
       href: "/solution/xr-solution",
     },
@@ -93,7 +93,7 @@ export const nav: NavItem[] = [
         label: "RETracker",
         href: "/product/retracker",
         tag: "Distributor",
-        desc: "6-DOF 마커리스 카메라 트래킹 — Bliss / Fizz",
+        desc: "6-DOF 마커리스 카메라 트래킹: Bliss / Fizz",
       },
     ],
     featured: {

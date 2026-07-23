@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const whyEx = [
-  { t: "All-in-One 통합 솔루션 제공", d: "카메라·트래커·미디어서버까지 복잡한 요소를 하나로 통합." },
+  { t: "통합 솔루션 제공", d: "카메라·트래커·미디어서버까지 복잡한 요소를 하나로 통합." },
   { t: "다양한 실전 프로젝트 경험과 노하우", d: "GS리테일 등 국내 주요 기업과 XR 프로젝트를 수행한 경험." },
   { t: "고객 중심의 맞춤형 시스템 설계와 지원", d: "현장에 맞는 유연한 구성과 전 주기 지원." },
   { t: "문화기술과 엔터테인먼트를 잇는 전문성", d: "콘텐츠 제작 현장과 기술을 연결해 온 경험." },
@@ -36,7 +36,7 @@ const credentials: { tag: string; title: string; no?: string; img?: string }[] =
 ];
 
 const history: { year: string; items: string[] }[] = [
-  { year: "2026", items: ["중소벤처기업부 TIPS 선정 — AI 기반 XR 제작 솔루션 R&D"] },
+  { year: "2026", items: ["중소벤처기업부 TIPS 선정 (AI 기반 XR 제작 솔루션 R&D)"] },
   { year: "2024", items: ["Moverse AI 공식 한국 총판 계약"] },
   {
     year: "2023",
@@ -56,7 +56,7 @@ const history: { year: string; items: string[] }[] = [
       "벤처기업 혁신성장유형 인증",
     ],
   },
-  { year: "2021", items: ["사명 변경 — 이엑스 주식회사"] },
+  { year: "2021", items: ["이엑스 주식회사로 사명 변경"] },
   { year: "2020", items: ["주식회사 스페이스이엑스 법인 설립", "벤처기업 인증"] },
 ];
 
@@ -94,7 +94,7 @@ export default function AboutPage() {
             EXpansion of EXperience.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted">
-            이엑스는 AI와 XR 기술을 연결하여 모두의 창작 가능성을 넓히는 기술을 만듭니다.
+            이엑스는 XR 제작에 필요한 기술을 현장에서 연결하고, 그 운영 경험을 더 쉽게 쓰는 제품으로 옮기는 기술회사입니다.
           </p>
         </div>
         <span className="pagehero__sentinel" data-hero-sentinel aria-hidden="true" />

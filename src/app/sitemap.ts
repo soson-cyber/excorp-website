@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // 동적 라우트 — Notion을 우선하고, 미연결·빈 응답이면 저장소 fallback을 사용한다.
-  const workEntries: MetadataRoute.Sitemap = works.map((w) => ({
+  const workEntries: MetadataRoute.Sitemap = works.filter((w) => w.kind === "case").map((w) => ({
     url: `${BASE}/work/${w.slug}`,
     lastModified: LAST_UPDATE,
     changeFrequency: "monthly",

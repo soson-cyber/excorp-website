@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://excorp.kr/en/product/retracker",
     title: "RETracker — Korea Distributor for Markerless Camera Tracking",
     description:
-      "6-DOF markerless camera tracking with no ceiling markers — Bliss G2 sensor and Fizz 2 Pro lens encoder. EX is the official Korea distributor.",
+      "6-DOF markerless camera tracking with no ceiling markers: Bliss G2 sensor and Fizz 2 Pro lens encoder. EX is the official Korea distributor.",
   },
 };
 
@@ -102,14 +102,14 @@ const process = [
 
 const faqs = [
   { q: "How is this different from existing marker-based tracking?", a: "No pre-installation of ceiling or stage markers required. Mount the sensor on your camera and it maps the space directly, tracking with no limit on range of movement. It tracks 6-DOF to under 1cm error over 10m of movement (per manufacturer spec) and integrates in real time with Unreal and Aximmetry via Free-D and LiveLink. We’ll advise on rollout quotes and configuration to fit your site." },
-  { q: "Do I need markers or tracking infrastructure?", a: "No. Bliss G2 is a 100% markerless approach that needs no ceiling markers â mount it on the camera with no extra infrastructure and it maps the space directly. Unlike ceiling-marker systems, it isn’t constrained by a range tied to pre-installed infrastructure, so you can move the camera freely and track across large spaces." },
+  { q: "Do I need markers or tracking infrastructure?", a: "No. Bliss G2 is a 100% markerless approach that needs no ceiling markers. Mount it on the camera with no extra infrastructure and it maps the space directly. Unlike ceiling-marker systems, it isn’t constrained by a range tied to pre-installed infrastructure, so you can move the camera freely and track across large spaces." },
   { q: "How accurate is the tracking?", a: "Ultra-precise error of under 1cm (<1cm) over 10m of movement (per manufacturer spec), with 500fps IMU sensor fusion keeping it stable in handheld and fast moves." },
   { q: "How do Bliss and Fizz work together?", a: "Bliss G2 tracks the camera’s position and orientation (6-DOF), while Fizz 2 Pro extracts the lens’s Focus, Iris, and Zoom values to match the virtual background’s depth of field and field of view to live footage." },
-  { q: "Which engines does it integrate with?", a: "It’s compatible with Unreal Engine (4.27â5.x), Aximmetry, Blender, and Ventuz, and supports the LiveLink Bliss, Free-D, OSC, and FBX (with LTC) protocols." },
-  { q: "Which cameras can it mount on?", a: "It works with most cameras that accept a standard hot shoe. The sensor mounts on top of the camera with a standard hot shoe and sends data to a PC over LAN/USB â a camera-agnostic approach, with a dedicated 3D-printed mount included by default. Special rigs or mounting conditions are confirmed during consultation. It works both indoors and outdoors across a wide range of movement." },
+  { q: "Which engines does it integrate with?", a: "It’s compatible with Unreal Engine (4.27–5.x), Aximmetry, Blender, and Ventuz, and supports the LiveLink Bliss, Free-D, OSC, and FBX (with LTC) protocols." },
+  { q: "Which cameras can it mount on?", a: "It works with most cameras that accept a standard hot shoe. The sensor mounts on top of the camera with a standard hot shoe and sends data to a PC over LAN/USB, a camera-agnostic approach, with a dedicated 3D-printed mount included by default. Special rigs or mounting conditions are confirmed during consultation. It works both indoors and outdoors across a wide range of movement." },
   { q: "Can we see a live demo?", a: "Yes. You can see camera tracking firsthand at our Hanam XR studio, and we run a video demo if you are remote. We arrange the demo schedule during consultation." },
   { q: "What about rollout cost?", a: "It depends on the Bliss G2, Fizz 2 Pro, and Bliss Software configuration and any add-on modules. Tell us your shooting environment and operating scale, and we will propose a configuration and quote together." },
-  { q: "Does it work in low-feature environments like a green screen?", a: "vSLAM tracks based on features in the space, so in low-feature environments such as a uniform green screen, tracking accuracy can vary with conditions. Tell us your site environment and we will review complementary methods — tracking markers, lighting, and more — during consultation." },
+  { q: "Does it work in low-feature environments like a green screen?", a: "vSLAM tracks based on features in the space, so in low-feature environments such as a uniform green screen, tracking accuracy can vary with conditions. Tell us your site environment and we will review complementary methods, such as tracking markers and lighting, during consultation." },
 ];
 
 export default function RetrackerPageEn() {
@@ -135,7 +135,7 @@ export default function RetrackerPageEn() {
           { label: "RETracker", href: "/en/product/retracker" },
         ]}
         tag="Distributor"
-        title="No ceiling markers — the camera reads the space."
+        title="No ceiling markers: the camera reads the space."
         lead="6-DOF markerless camera tracking that runs its own vSLAM independently. The Bliss G2 sensor and Fizz 2 Pro lens encoder match live and virtual frame by frame."
       />
 
@@ -292,7 +292,7 @@ export default function RetrackerPageEn() {
                 EX is the <span className="text-lav">official Korea distributor</span> for RETracker.
               </h2>
               <p className="lead" style={{ maxWidth: "36rem" }}>
-                Beyond hardware and software supply, we own the entire rollout as an integrated turnkey — system installation, security setup, and on-site training included.
+                Beyond hardware and software supply, we own the entire rollout as an integrated turnkey: system installation, security setup, and on-site training included.
               </p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {["Rollout consulting", "Calibration", "Training", "Technical support"].map((x) => (
@@ -321,7 +321,7 @@ export default function RetrackerPageEn() {
                 />
               </div>
               <figcaption className="mt-3 text-center font-mono text-xs text-faint">
-                RETracker Certificate of Excellence — EX Corporation
+                RETracker Certificate of Excellence · EX Corporation
               </figcaption>
             </figure>
           </div>

@@ -7,8 +7,9 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { works, getWork } from "@/lib/work";
 
+// 활용 시나리오는 비공개(대표 결정, 2026-07-23) — 검증된 도입 사례(kind === "case")만 발행한다.
 export function generateStaticParams() {
-  return works.map((w) => ({ slug: w.slug }));
+  return works.filter((w) => w.kind === "case").map((w) => ({ slug: w.slug }));
 }
 
 export async function generateMetadata({
@@ -18,11 +19,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const w = getWork(slug);
-  if (!w) return { title: "Work" };
-  const kindLabel = w.kind === "scenario" ? "활용 시나리오" : "도입 사례";
+  if (!w || w.kind === "scenario") return { title: "Work" };
   return {
-    title: `${w.title} — ${kindLabel}`,
-    description: w.kind === "scenario" ? `실제 고객 사례가 아닌 활용 시나리오입니다. ${w.summary}` : w.summary,
+    title: `${w.title} — 도입 사례`,
+    description: w.summary,
     alternates: { canonical: `/work/${slug}` },
   };
 }
@@ -34,9 +34,9 @@ export default async function WorkDetailPage({
 }) {
   const { slug } = await params;
   const w = getWork(slug);
-  if (!w) notFound();
+  if (!w || w.kind === "scenario") notFound();
 
-  const kindLabel = w.kind === "scenario" ? "활용 시나리오" : "도입 사례";
+  const kindLabel = "도입 사례";
   const others = works.filter((x) => x.slug !== w.slug && x.kind === w.kind).slice(0, 3);
 
   return (
@@ -120,7 +120,7 @@ export default async function WorkDetailPage({
         <div className="container-ex">
           <SectionLabel index="03">Result</SectionLabel>
           <h2 className="mt-5 text-balance text-2xl font-bold text-fg md:text-3xl">
-            {w.kind === "scenario" ? "기대 효과" : "검증 결과"}
+            검증 결과
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {w.result.map((r) => (
@@ -130,11 +130,6 @@ export default async function WorkDetailPage({
               </div>
             ))}
           </div>
-          {w.kind === "scenario" && (
-            <p className="mt-6 text-xs leading-relaxed text-faint">
-              ※ 실제 고객 성과가 아닌 도입 시 기대 효과(예시)이며, 구성·환경에 따라 달라질 수 있습니다.
-            </p>
-          )}
         </div>
       </section>
 

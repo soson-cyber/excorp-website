@@ -13,13 +13,13 @@ type Loc<T> = Record<Locale, T>;
 
 const WHAT: Loc<{ i: string; tag: string; title: string; desc: string; href: string }[]> = {
   ko: [
-    { i: "01", tag: "EXLINK", title: "통합 XR 솔루션", desc: "자체 개발한 올인원 실시간 XR 제작·운영 솔루션", href: "/solution/xr-solution" },
-    { i: "02", tag: "PARTNER", title: "파트너 제품 유통", desc: "Aximmetry · Moverse · RETracker — 검증된 글로벌 XR 장비·SW 공급", href: "/product" },
+    { i: "01", tag: "EXLINK", title: "통합 XR 솔루션", desc: "자체 개발한 통합 실시간 XR 제작·운영 솔루션", href: "/solution/xr-solution" },
+    { i: "02", tag: "PARTNER", title: "파트너 제품 유통", desc: "Aximmetry · Moverse · RETracker 등 검증된 글로벌 XR 장비·SW 공급", href: "/product" },
     { i: "03", tag: "STUDIO", title: "XR 콘텐츠 스튜디오", desc: "IR · 웨비나 · 대담을 실시간 XR로 제작하는 하남 스튜디오", href: "/xr-studio" },
   ],
   en: [
-    { i: "01", tag: "EXLINK", title: "Integrated XR solution", desc: "Our own all-in-one real-time XR production and operations solution", href: "/solution/xr-solution" },
-    { i: "02", tag: "PARTNER", title: "Partner product distribution", desc: "Aximmetry · Moverse · RETracker — proven global XR hardware and software", href: "/product" },
+    { i: "01", tag: "EXLINK", title: "Integrated XR solution", desc: "Our own integrated real-time XR production and operations solution", href: "/solution/xr-solution" },
+    { i: "02", tag: "PARTNER", title: "Partner product distribution", desc: "Aximmetry · Moverse · RETracker: proven global XR hardware and software", href: "/product" },
     { i: "03", tag: "STUDIO", title: "XR content studio", desc: "Our Hanam studio produces IR sessions, webinars, and talks in real-time XR", href: "/xr-studio" },
   ],
 };
@@ -39,7 +39,7 @@ const PARTNERS: Loc<{ name: string; role: string; desc: string; initial: string;
 
 const STUDIO_BULLETS: Loc<string[]> = {
   ko: ["후반 작업 없이 촬영과 동시에 완성", "대형 크로마 · 멀티캠 · XR 트래킹"],
-  en: ["Finished as you shoot — no post-production wait", "Large chroma stage · multicam · XR tracking"],
+  en: ["Finished as you shoot, no post-production wait", "Large chroma stage · multicam · XR tracking"],
 };
 
 const STATS: Loc<{ v: number; s: string; l: string }[]> = {
@@ -80,11 +80,11 @@ const COPY = {
       </>
     ),
     caseChip1: "촬영·트래킹·렌더·송출 통합",
-    caseChip2: "운영자 1인 중심 워크플로우",
+    caseChip2: "통합 제어 워크플로우",
     caseLead:
       "분산된 촬영·트래킹·렌더·송출 장비를 EXLINK로 통합하여, 운영 부담은 줄이고 실시간 합성 품질은 끌어올리는 대표 활용 시나리오입니다.",
     caseNote: "※ 실제 구성·효과는 현장 환경에 따라 달라지며, 자세한 내용은 상담 시 안내드립니다.",
-    caseLink: "활용 시나리오 보기",
+    caseLink: "EXLINK 자세히 보기",
     partnersLabel: "PARTNER PRODUCTS",
     partnersTitle: (
       <>
@@ -108,7 +108,7 @@ const COPY = {
     studioLink: "스튜디오 둘러보기",
     whyLabel: "WHY REAL-TIME XR",
     whyQuote: "촬영과 동시에 결과물이 완성됩니다. 긴 후반 일정에 쫓기지 않고, 현장에서 바로 확인하고 끝낼 수 있습니다.",
-    whyNote: "실시간 XR 제작이 만드는 차이 — EXLINK · 파트너 기술 · 하남 스튜디오",
+    whyNote: "실시간 XR 제작이 만드는 차이: EXLINK · 파트너 기술 · 하남 스튜디오",
     ctaLabel: "START A PROJECT",
     ctaTitle: (
       <>
@@ -117,7 +117,7 @@ const COPY = {
         실시간 XR로 시작하세요
       </>
     ),
-    ctaLead: "솔루션 도입 · 제품 문의 · 스튜디오 제작 — 무엇이든 상담하세요.",
+    ctaLead: "솔루션 도입 · 제품 문의 · 스튜디오 제작, 무엇이든 상담하세요.",
     ctaPrimary: "도입 상담 →",
     ctaSecondary: "회사 소개서 요청",
   },
@@ -130,7 +130,7 @@ const COPY = {
         in one workflow
       </>
     ),
-    s01Lead: "EX connects every stage of real-time XR content production — solution, hardware, and studio.",
+    s01Lead: "EX connects every stage of real-time XR content production: solution, hardware, and studio.",
     caseLabel: "EXLINK USE CASE",
     caseTitle: (
       <>
@@ -142,11 +142,11 @@ const COPY = {
       </>
     ),
     caseChip1: "Capture · tracking · render · streaming unified",
-    caseChip2: "One-operator workflow",
+    caseChip2: "Unified control workflow",
     caseLead:
-      "A representative scenario where EXLINK unifies scattered capture, tracking, rendering, and streaming hardware — lowering operational load while raising real-time compositing quality.",
+      "A representative scenario where EXLINK unifies scattered capture, tracking, rendering, and streaming hardware, lowering operational load while raising real-time compositing quality.",
     caseNote: "* Actual setup and results vary by on-site conditions; we'll walk you through the details during consultation.",
-    caseLink: "See use-case scenarios",
+    caseLink: "Explore EXLINK",
     partnersLabel: "PARTNER PRODUCTS",
     partnersTitle: (
       <>
@@ -156,7 +156,7 @@ const COPY = {
       </>
     ),
     partnersLead:
-      "As an official reseller and distributor for world-class XR solutions, EX takes responsibility for the full cycle — from rollout to technical support and operator training.",
+      "As an official reseller and distributor for world-class XR solutions, EX takes responsibility for the full cycle, from rollout to technical support and operator training.",
     officialPartners: "OFFICIAL PARTNERS",
     learnMore: "Learn more",
     studioTitle: (
@@ -169,8 +169,8 @@ const COPY = {
     studioLead: "We produce real-time XR content in our 70㎡ green-chroma stage in Hanam.",
     studioLink: "Tour the studio",
     whyLabel: "WHY REAL-TIME XR",
-    whyQuote: "The result is finished the moment you shoot. No long post-production schedule — review and wrap on site.",
-    whyNote: "The difference real-time XR makes — EXLINK · partner technology · Hanam studio",
+    whyQuote: "The result is finished the moment you shoot. No long post-production schedule. Review and wrap on site.",
+    whyNote: "The difference real-time XR makes: EXLINK · partner technology · Hanam studio",
     ctaLabel: "START A PROJECT",
     ctaTitle: (
       <>
@@ -179,7 +179,7 @@ const COPY = {
         in real-time XR
       </>
     ),
-    ctaLead: "Solution rollout · product inquiries · studio production — talk to us about anything.",
+    ctaLead: "Solution rollout · product inquiries · studio production, talk to us about anything.",
     ctaPrimary: "Talk to us →",
     ctaSecondary: "Request company profile",
   },
@@ -280,7 +280,7 @@ export function HomeClean({ locale = "ko" }: { locale?: Locale }) {
             <p style={{ marginTop: 12, fontSize: 13, color: "var(--color-faint)", maxWidth: "36rem" }}>
               {c.caseNote}
             </p>
-            <Link href={withLocale("/work", locale)} className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
+            <Link href={withLocale("/solution/xr-solution", locale)} className="arrowlink arrowlink--accent" style={{ marginTop: 30 }}>
               {c.caseLink}{" "}
               <span className="ar" aria-hidden="true">
                 →

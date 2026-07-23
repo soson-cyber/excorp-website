@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 };
 
 const approach = [
-  { k: "All-in-One", v: "통합 시스템" },
-  { k: "Real-time", v: "1프레임 지연 목표" },
+  { k: "통합 시스템", v: "단일 제어 코어" },
+  { k: "Real-time", v: "실시간 합성·송출" },
   { k: "Integrated", v: "단일 제어 UI" },
   { k: "End-to-End", v: "셋업·교육·운영" },
 ];
@@ -76,8 +76,8 @@ export default function SolutionPage() {
         title="현장에 맞는 XR 솔루션을 구축합니다."
         lead={
           <>
-            <span className="inline-block">자체 통합 솔루션 EXLINK와 검증된 글로벌 파트너 기술, 그리고 실 운영 스튜디오까지</span>{" "}
-            <span className="inline-block">— 콘텐츠 제작의 처음과 끝을 지원합니다.</span>
+            <span className="inline-block">자체 통합 솔루션 EXLINK와 검증된 글로벌 파트너 기술, 그리고 실 운영 스튜디오까지.</span>{" "}
+            <span className="inline-block">콘텐츠 제작의 처음과 끝을 지원합니다.</span>
           </>
         }
       />
@@ -120,7 +120,7 @@ export default function SolutionPage() {
             }
             lead={
               <>
-                자체 통합 솔루션과 검증된 파트너 제품, 그리고 실제로 운영 중인 스튜디오까지 — 버추얼 프로덕션에
+                자체 통합 솔루션과 검증된 파트너 제품, 그리고 실제로 운영 중인 스튜디오까지. 버추얼 프로덕션에
                 필요한 모든 단계를 EX가 갖추고 있습니다. 방송이든 기업 행사든, 현장 조건에 맞춰 XR을 시작할 수
                 있습니다.
               </>
@@ -169,7 +169,7 @@ export default function SolutionPage() {
                 </h3>
                 <p className="mt-4 max-w-xl text-muted">
                   카메라·트래커·모션센서·네트워크·미디어서버를 하나의 제어 흐름으로 묶는 EX 자체 개발 통합 XR
-                  솔루션. 운영자 1인 중심으로 운용합니다.
+                  솔루션. 현장 운용 부담을 줄이는 구조입니다.
                 </p>
               </div>
               <span className="arrowlink arrowlink--accent" style={{ marginTop: 32 }}>

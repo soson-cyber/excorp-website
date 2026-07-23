@@ -40,14 +40,14 @@ const lineup = [
   {
     badge: "Distributor",
     title: "Moverse AI",
-    copy: "전용 수트·마커 없이 동작하는 AI 마커리스 모션캡처 — 실시간 캡처는 100% 로컬 처리",
+    copy: "전용 수트·마커 없이 동작하는 AI 마커리스 모션캡처. 실시간 캡처는 100% 로컬로 처리합니다.",
     meta: "Markerless MoCap",
     href: "/product/moverse",
   },
   {
     badge: "Distributor",
     title: "RETracker",
-    copy: "천장 마커 없는 6-DOF 마커리스 카메라 트래킹 — Bliss G2 / Fizz 2 Pro",
+    copy: "천장 마커 없는 6-DOF 마커리스 카메라 트래킹: Bliss G2 / Fizz 2 Pro",
     meta: "6-DOF Marker-less",
     href: "/product/retracker",
   },

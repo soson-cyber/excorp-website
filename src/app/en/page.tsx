@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     absolute: "EX Corporation — Real-time XR & Virtual Production Solutions",
   },
   description:
-    "EX connects the capture, tracking, rendering, and streaming of real-time XR and virtual production into a single workflow — with EXLINK, our own integrated solution, proven global partner products, and an XR studio in Hanam, Korea.",
+    "EX connects the capture, tracking, rendering, and streaming of real-time XR and virtual production into a single workflow, with EXLINK, our own integrated solution, proven global partner products, and an XR studio in Hanam, Korea.",
   alternates: {
     canonical: "/en",
     languages: { ko: "/", en: "/en", "x-default": "/" },

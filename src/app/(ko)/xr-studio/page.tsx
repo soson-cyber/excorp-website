@@ -77,7 +77,7 @@ export default function XrStudioPage() {
       <PageHero
         breadcrumb={[{ label: "XR Studio", href: "/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
-        title="하남 XR 스튜디오 — 대관부터 제작·송출까지"
+        title="하남 XR 스튜디오: 대관부터 제작·송출까지"
         lead="하남 EX XR Studio는 대형 그린 크로마와 XR·리얼타임 기술로, 기획부터 촬영·송출까지 한 번에 완성하는 버추얼 프로덕션 스튜디오입니다."
       />
 
