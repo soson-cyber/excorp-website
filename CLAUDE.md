@@ -29,6 +29,7 @@
 | 2026-06-03 | 스킬 보강 — 컴포넌트·폴더 구조 관례 / OWASP Top 10 대조 | skills/ex-frontend-implementation · ex-code-review | harness-100(16·21·36) 패턴 참고 |
 | 2026-06-05 | 이미지 생성팀 추가 (3인: figma-art-director·image-generator·image-qc-reviewer + ex-image-orchestrator) — Figma 연결 Nano Banana(Gemini) 이미지 생성·검증·납품 | agents/* · skills/ex-figma-image-bridge · ex-image-generation(+scripts) · ex-image-qc · ex-image-orchestrator | 홈페이지 이미지를 Figma와 연결해 생성하는 팀 필요 |
 | 2026-06-05 | 이미지 엔진 듀얼화 — **GPT 이미지(OpenAI gpt-image-1)를 기본 엔진으로 추가**, Nano Banana(Gemini) 보존. 동일 CLI 계약 | skills/ex-image-generation(+scripts/openai_generate.py) · agents/image-generator · ex-image-orchestrator | 사용자 요청: Figma에 GPT API 연결 |
+| 2026-07-23 | 리디자인 디렉터 추가 → 8인. 4-Phase 리디자인 프로그램(감사→전략→3안→상세설계) 스킬 신설, 카피 거버넌스(세션 확정 정체성 문장·Evidence Map §4·em-dash 규칙)를 브리프보다 우선하는 references로 고정 | agents/redesign-director.md · skills/ex-redesign(SKILL+references: redesign-brief·copy-governance) · ex-web-orchestrator 라우팅 | 대표 제공 리디자인 프롬프트(EX_Website_Claude_Design_Redesign_Prompt.md) 기반 디자인 에이전트 구성 요청 |
 
 ## 기준 문서 (Source of Truth)
 

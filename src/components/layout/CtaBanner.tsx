@@ -78,7 +78,7 @@ export function CtaBanner({
             <Button href={withLocale("/xr-studio", locale)} variant="accent" className="focus-on-dark">
               {t.primary}
             </Button>
-            <Button href={withLocale("/contact", locale)} variant="secondary" className="focus-on-dark">
+            <Button href={`${withLocale("/contact", locale)}?type=${encodeURIComponent("솔루션 도입")}#form`} variant="secondary" className="focus-on-dark">
               {t.secondary}
             </Button>
           </div>
@@ -97,15 +97,15 @@ export function CtaBanner({
           <p className="mt-4 max-w-xl text-muted">{t.body}</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-          <Button href={withLocale("/contact", locale)} variant="accent">
+          <Button href={`${withLocale("/contact", locale)}?type=${encodeURIComponent("솔루션 도입")}#form`} variant="accent">
             {t.primary}
           </Button>
           <Button href={withLocale("/xr-studio", locale)} variant="secondary">
             {t.secondary}
           </Button>
-          {/* 자료실 미공개 → 자료 문의는 일반 문의 폼으로 착지(#form). 자료 공개 시 자료실로 환원. */}
+          {/* 자료 문의 → 자료 요청 유형으로 프리셋(#form). 자료실 공개 시 자료실로 환원. */}
           <Button
-            href={`${withLocale("/contact", locale)}?type=${encodeURIComponent("일반 문의")}#form`}
+            href={`${withLocale("/contact", locale)}?type=${encodeURIComponent("자료 요청")}#form`}
             variant="secondary"
           >
             {t.tertiary}

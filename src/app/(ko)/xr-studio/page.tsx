@@ -144,7 +144,7 @@ export default function XrStudioPage() {
       <section className="section section--white">
         <div className="container-ex">
           <SectionHead index="04" label="FAQ" title="자주 묻는 질문" />
-          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+          <div className="card mx-auto mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
             {faqs.map((f, i) => (
               <details
                 key={f.q}
@@ -171,7 +171,7 @@ export default function XrStudioPage() {
               <MediaBlank key={b.label} ratio="16/9" kind="image" src={b.img} alt={b.alt} tag={b.tag} label={b.label} />
             ))}
           </div>
-          <div className="card mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
+          <div className="card mx-auto mt-12 max-w-3xl" style={{ overflow: "hidden", padding: 0 }}>
             <dl>
               {facilitySpecs.map(([k, v], i) => (
                 <div

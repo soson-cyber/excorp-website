@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "./Hero";
 import { FeatureCard } from "./FeatureCard";
+import { PatentSlider } from "./PatentSlider";
 import { Reveal } from "@/components/motion/Reveal";
 import { CountUp } from "@/components/motion/CountUp";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -40,6 +41,29 @@ const PARTNERS: Loc<{ name: string; role: string; desc: string; initial: string;
 const STUDIO_BULLETS: Loc<string[]> = {
   ko: ["후반 작업 없이 촬영과 동시에 완성", "대형 크로마 · 멀티캠 · XR 트래킹"],
   en: ["Finished as you shoot, no post-production wait", "Large chroma stage · multicam · XR tracking"],
+};
+
+/** 홈 뉴스룸 스트립용 최소 데이터 — 서버(page.tsx)에서 Notion/fallback을 매핑해 주입한다. */
+export type NewsBrief = { date: string; outlet?: string; title: string; href?: string };
+
+/* 등록특허 6건 — 번호·명칭은 About(특허청 공보)과 동일, 설명은 명칭의 쉬운 풀이(성능 주장 없음). */
+const PATENTS: Loc<{ no: string; title: string; desc: string }[]> = {
+  ko: [
+    { no: "KR 10-2762537", title: "다중 뷰포인트 생성 장치·방법", desc: "하나의 촬영에서 여러 시점의 화면을 만들어내는 기술." },
+    { no: "KR 10-2666600", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정", desc: "여러 대의 스테레오 카메라 위치·방향을 실시간으로 추정하는 기술." },
+    { no: "KR 10-2549811", title: "복수 스테레오 카메라 포지셔닝 정보 보정", desc: "다중 카메라의 위치 정보를 보정해 정합 정확도를 높이는 기술." },
+    { no: "KR 10-2453561", title: "가상 스튜디오 복합 센서 다중 추적 카메라 시스템", desc: "가상 스튜디오에서 여러 카메라를 복합 센서로 동시에 추적하는 기술." },
+    { no: "KR 10-2078198", title: "3차원 모델링을 위한 촬영 방법", desc: "3D 모델링에 필요한 촬영을 돕는 전자 장치 기술." },
+    { no: "KR 10-2029680", title: "합성 영상의 왜곡 결정 영상 처리", desc: "합성 화면의 왜곡을 감지·판정하는 영상 처리 기술." },
+  ],
+  en: [
+    { no: "KR 10-2762537", title: "Apparatus and method for generating multiple viewpoints", desc: "Creates views from multiple perspectives out of a single shoot." },
+    { no: "KR 10-2666600", title: "6DoF SLAM-based multi-stereo-camera positioning estimation", desc: "Estimates the position and orientation of multiple stereo cameras in real time." },
+    { no: "KR 10-2549811", title: "Positioning-information correction using multiple stereo cameras", desc: "Corrects multi-camera positioning data to improve alignment accuracy." },
+    { no: "KR 10-2453561", title: "Multi-sensor multi-tracking camera system for virtual studios", desc: "Tracks multiple cameras simultaneously with fused sensors in a virtual studio." },
+    { no: "KR 10-2078198", title: "Capture method for 3D modeling", desc: "Electronic-device technology that assists capture for 3D modeling." },
+    { no: "KR 10-2029680", title: "Image processing for detecting distortion in composited video", desc: "Detects and evaluates distortion in composited footage." },
+  ],
 };
 
 const STATS: Loc<{ v: number; s: string; l: string }[]> = {
@@ -95,7 +119,6 @@ const COPY = {
     ),
     partnersLead:
       "EX는 세계적인 XR 솔루션의 공식 리셀러·총판으로 도입부터 기술지원과 운영교육까지 전 주기를 책임집니다.",
-    officialPartners: "공식 파트너 · OFFICIAL PARTNERS",
     learnMore: "자세히",
     studioTitle: (
       <>
@@ -106,9 +129,32 @@ const COPY = {
     ),
     studioLead: "하남 70㎡ 그린 크로마에서 실시간 XR 콘텐츠를 제작합니다.",
     studioLink: "스튜디오 둘러보기",
-    whyLabel: "WHY REAL-TIME XR",
-    whyQuote: "촬영과 동시에 결과물이 완성됩니다. 긴 후반 일정에 쫓기지 않고, 현장에서 바로 확인하고 끝낼 수 있습니다.",
-    whyNote: "실시간 XR 제작이 만드는 차이: EXLINK · 파트너 기술 · 하남 스튜디오",
+    patentsTitle: (
+      <>
+        현장에서 검증해 온 기술을,{" "}
+        <br className="hidden sm:block" />
+        특허로 증명합니다
+      </>
+    ),
+    patentsLink: "특허·인증 전체 보기",
+    newsTitle: (
+      <>
+        미디어가 기록한{" "}
+        <br className="hidden sm:block" />
+        EX의 오늘
+      </>
+    ),
+    newsLink: "뉴스 전체 보기",
+    invTitle: (
+      <>
+        EX의 다음 단계에,{" "}
+        <br className="hidden sm:block" />
+        함께할 파트너를 찾습니다
+      </>
+    ),
+    invLead:
+      "2026년 중소벤처기업부 TIPS에 선정되어 AI 기반 XR 제작 솔루션 R&D를 진행하고 있습니다. IR 관련 문의를 환영합니다.",
+    invLink: "IR 문의하기",
     ctaLabel: "START A PROJECT",
     ctaTitle: (
       <>
@@ -157,7 +203,6 @@ const COPY = {
     ),
     partnersLead:
       "As an official reseller and distributor for world-class XR solutions, EX takes responsibility for the full cycle, from rollout to technical support and operator training.",
-    officialPartners: "OFFICIAL PARTNERS",
     learnMore: "Learn more",
     studioTitle: (
       <>
@@ -168,9 +213,32 @@ const COPY = {
     ),
     studioLead: "We produce real-time XR content in our 70㎡ green-chroma stage in Hanam.",
     studioLink: "Tour the studio",
-    whyLabel: "WHY REAL-TIME XR",
-    whyQuote: "The result is finished the moment you shoot. No long post-production schedule. Review and wrap on site.",
-    whyNote: "The difference real-time XR makes: EXLINK · partner technology · Hanam studio",
+    patentsTitle: (
+      <>
+        Technology proven on set,{" "}
+        <br className="hidden sm:block" />
+        backed by registered patents
+      </>
+    ),
+    patentsLink: "View all patents & certifications",
+    newsTitle: (
+      <>
+        EX in the media,{" "}
+        <br className="hidden sm:block" />
+        the latest coverage
+      </>
+    ),
+    newsLink: "See all news",
+    invTitle: (
+      <>
+        For EX&apos;s next chapter,{" "}
+        <br className="hidden sm:block" />
+        we&apos;re looking for partners
+      </>
+    ),
+    invLead:
+      "Selected for the Korean Ministry of SMEs and Startups TIPS program in 2026, EX is advancing R&D on an AI-based XR production solution. Investor relations inquiries are welcome.",
+    invLink: "Contact IR",
     ctaLabel: "START A PROJECT",
     ctaTitle: (
       <>
@@ -218,12 +286,13 @@ function SectionHead({
   );
 }
 
-export function HomeClean({ locale = "ko" }: { locale?: Locale }) {
+export function HomeClean({ locale = "ko", news }: { locale?: Locale; news?: NewsBrief[] }) {
   const c = COPY[locale];
   const what = WHAT[locale];
   const partners = PARTNERS[locale];
   const studioBullets = STUDIO_BULLETS[locale];
   const stats = STATS[locale];
+  const patents = PATENTS[locale];
 
   return (
     <>
@@ -294,35 +363,6 @@ export function HomeClean({ locale = "ko" }: { locale?: Locale }) {
       <section className="section section--white">
         <div className="container-ex">
           <SectionHead index="03" label={c.partnersLabel as string} title={c.partnersTitle} lead={c.partnersLead} narrow />
-          <Reveal>
-            <p className="cap" style={{ marginTop: 40 }}>
-              {c.officialPartners}
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 16, alignItems: "center" }}>
-              <span className="cred">
-                <span className="cred-nm">Aximmetry</span>
-                <span style={{ color: "var(--color-faint)" }}>·</span>
-                <span className="cap">Certified Reseller</span>
-              </span>
-              <span className="cred">
-                <span className="cred-nm">Moverse AI</span>
-                <span style={{ color: "var(--color-faint)" }}>·</span>
-                <span className="cap">DISTRIBUTOR</span>
-              </span>
-              <span className="cred">
-                <span className="cred-nm">RETracker</span>
-                <span style={{ color: "var(--color-faint)" }}>·</span>
-                <span className="cap">DISTRIBUTOR</span>
-              </span>
-              <span style={{ width: 1, height: 24, background: "var(--color-border-strong)" }} />
-              <span className="cred">
-                <span className="cred-nm">NVIDIA Inception</span>
-              </span>
-              <span className="cred">
-                <span className="cred-nm">Epic Games · Unreal</span>
-              </span>
-            </div>
-          </Reveal>
           <div className="partner-bento">
             {partners.map((p, i) => (
               <Reveal key={p.name} delay={i * 90} className={`card cardpad${p.img ? " card--media" : ""}`}>
@@ -345,6 +385,31 @@ export function HomeClean({ locale = "ko" }: { locale?: Locale }) {
                   </span>
                 </Link>
               </Reveal>
+            ))}
+          </div>
+          {/* 공식 파트너 로고 스트립 — §03 하단.
+              기반 기준(실측 정규화): 주 워드마크 캡하이트 14px 앵커 · 의미 보조행 ≥9px · 폭 ≤220px.
+              원본은 투명 여백이 18~52%로 제각각이라 *-trim.png(알파 bbox 크롭) 사본 사용 → height=콘텐츠 높이.
+              대표 조정(2026-07-24): 기준 계산값에서 Aximmetry ×1.3(25→33)·Moverse ×1.2(47→56)·
+              RETracker는 변경 전 시각 크기 복구(원본 h-8=캔버스 32px ≒ 콘텐츠 26px). NVIDIA 43 유지. */}
+          {/* -mb-12: 섹션 하단 패딩 96px로 로고 아래 여백(96)이 위(49)보다 커지는 것을 48px로 보정(상하 대칭).
+              높이는 --h(실측 기준값) × --logo-scale(뷰포트별 1 / 1.15 / 1.35 — .plogos, globals.css)로 반응형 확대. */}
+          <div className="plogos -mb-12 mt-14 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 border-t border-border pt-12">
+            {[
+              { src: "/partner-aximmetry-trim.png", alt: "Aximmetry", w: 3724, h: 1036, px: 33 },
+              { src: "/partner-moverse-trim.png", alt: "Moverse AI", w: 947, h: 702, px: 56 },
+              { src: "/partner-retracker-trim.png", alt: "RETracker Bliss", w: 7134, h: 1328, px: 26 },
+              { src: "/partner-nvidia-trim.png", alt: "NVIDIA Inception Program", w: 926, h: 322, px: 43 },
+            ].map((p) => (
+              <Image
+                key={p.src}
+                src={p.src}
+                alt={p.alt}
+                width={p.w}
+                height={p.h}
+                className="w-auto object-contain opacity-90"
+                style={{ "--h": `${p.px}px` } as React.CSSProperties}
+              />
             ))}
           </div>
         </div>
@@ -393,12 +458,10 @@ export function HomeClean({ locale = "ko" }: { locale?: Locale }) {
         </div>
       </section>
 
-      {/* §05 — Numbers */}
+      {/* §05 — Proven technology (숫자 + 등록특허 카드: 검증된 신뢰 신호의 전면 배치) */}
       <section className="section section--white section--glow">
         <div className="container-ex">
-          <Reveal>
-            <SectionLabel index="05">BY THE NUMBERS</SectionLabel>
-          </Reveal>
+          <SectionHead index="05" label="PROVEN TECHNOLOGY" title={c.patentsTitle} narrow />
           <Reveal className="statgrid">
             {stats.map((s) => (
               <div key={s.l} className="statcell">
@@ -407,19 +470,89 @@ export function HomeClean({ locale = "ko" }: { locale?: Locale }) {
               </div>
             ))}
           </Reveal>
+          <Reveal>
+            <PatentSlider
+              items={patents.map((p) => ({ ...p, img: `/patent-${p.no.replace("KR 10-", "")}.jpg` }))}
+              prevLabel={locale === "en" ? "Previous patent" : "이전 특허 보기"}
+              nextLabel={locale === "en" ? "Next patent" : "다음 특허 보기"}
+              certLabel={locale === "en" ? "patent certificate" : "특허증"}
+              pauseLabel={locale === "en" ? "Pause auto-rotation" : "자동 회전 정지"}
+              playLabel={locale === "en" ? "Resume auto-rotation" : "자동 회전 재생"}
+            />
+          </Reveal>
+          <Reveal>
+            <Link href={withLocale("/about", locale)} className="arrowlink" style={{ marginTop: 32 }}>
+              {c.patentsLink}{" "}
+              <span className="ar" aria-hidden="true">
+                →
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
-      {/* Value band */}
-      <section className="section section--surface section--glow">
+      {/* §06 — Newsroom (Notion WEBSITE_NEWS 상위 3건, 서버에서 주입 — 없으면 섹션 생략) */}
+      {news && news.length > 0 && (
+        <section className="section section--ink">
+          <div className="container-ex">
+            <SectionHead index="06" label="NEWSROOM" title={c.newsTitle} narrow />
+            <div className="mt-10">
+              {news.map((n) => {
+                const inner = (
+                  <>
+                    <span className="font-mono text-xs text-faint shrink-0" style={{ minWidth: 88 }}>{n.date}</span>
+                    {n.outlet && <span className="cap shrink-0">{n.outlet}</span>}
+                    <span className="flex-1 font-medium text-fg leading-snug">{n.title}</span>
+                    <span className="ar text-lav" aria-hidden="true">↗</span>
+                  </>
+                );
+                const rowCls = "flex flex-wrap items-baseline gap-x-5 gap-y-1 border-b py-5 transition-colors hover:bg-white/[0.03]";
+                return n.href ? (
+                  <a key={n.title} href={n.href} target="_blank" rel="noopener noreferrer" className={rowCls} style={{ borderColor: "var(--color-border)" }}>
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={n.title} className={rowCls} style={{ borderColor: "var(--color-border)" }}>
+                    {inner}
+                  </div>
+                );
+              })}
+            </div>
+            <Reveal>
+              <Link href={withLocale("/news", locale)} className="arrowlink" style={{ marginTop: 28 }}>
+                {c.newsLink}{" "}
+                <span className="ar" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* §07 — For Investors (공개 사실만: TIPS 선정·특허·파트너. 라운드 조건·재무는 게시하지 않음) */}
+      <section className="section section--surface">
         <div className="container-ex" style={{ maxWidth: "54rem", textAlign: "center" }}>
+          <SectionHead index="07" label="FOR INVESTORS" title={c.invTitle} center />
           <Reveal>
-            <span className="quote-ey">
-              <span className="quote-bar" />
-              {c.whyLabel}
-            </span>
-            <p className="quote-txt">{c.whyQuote}</p>
-            <p style={{ marginTop: 24, fontSize: 14, color: "var(--color-faint)" }}>{c.whyNote}</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 28, justifyContent: "center" }}>
+              <div className="statchip">
+                <div className="statchip-v">{locale === "en" ? "TIPS 2026 (Ministry of SMEs and Startups)" : "2026 중소벤처기업부 TIPS 선정"}</div>
+              </div>
+              <div className="statchip">
+                <div className="statchip-v">{locale === "en" ? "6 registered patents" : "등록 특허 6건"}</div>
+              </div>
+              <div className="statchip">
+                <div className="statchip-v">{locale === "en" ? "3 global partners" : "글로벌 파트너 3사"}</div>
+              </div>
+            </div>
+            <p className="lead" style={{ maxWidth: "36rem", marginInline: "auto" }}>
+              {c.invLead}
+            </p>
+            {/* 히어로 'EXLINK 둘러보기'와 동일한 버튼 스타일(btn--glow) — 대표 지시 */}
+            <Link href={withLocale("/contact", locale)} className="btn btn--glow focus-on-dark" style={{ marginTop: 26 }}>
+              {c.invLink}
+            </Link>
           </Reveal>
         </div>
       </section>

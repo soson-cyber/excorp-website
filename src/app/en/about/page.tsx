@@ -24,18 +24,17 @@ const whyEx = [
   { t: "Expertise bridging culture tech and entertainment", d: "Years of connecting production sets with the technology behind them." },
 ];
 
-// 4 certifications + 6 patents (requested order). Items with img show the certificate scan, else a placeholder.
-const credentials: { tag: string; tagLabel: string; title: string; no?: string; img?: string }[] = [
+// 3 certifications + 6 patents (requested order). Dedicated Creative Department re-added once certified (per CEO).
+const credentials: { tag: string; tagLabel: string; title: string; no?: string; img?: string; desc?: string }[] = [
   { tag: "cert", tagLabel: "Certified", title: "Business Registration", img: "/cert-business-registration.jpg" },
   { tag: "cert", tagLabel: "Certified", title: "Venture Company Certification", img: "/cert-venture.jpg" },
   { tag: "cert", tagLabel: "Certified", title: "Dedicated R&D Department", img: "/cert-rnd.jpg" },
-  { tag: "cert", tagLabel: "Certified", title: "Dedicated Creative Department" },
-  { tag: "patent", tagLabel: "Patent", title: "Apparatus and method for generating multiple viewpoints", no: "KR 10-2762537", img: "/patent-2762537.jpg" },
-  { tag: "patent", tagLabel: "Patent", title: "6DoF SLAM-based multi-stereo-camera positioning estimation method", no: "KR 10-2666600", img: "/patent-2666600.jpg" },
-  { tag: "patent", tagLabel: "Patent", title: "Positioning-information correction method using multiple stereo cameras", no: "KR 10-2549811", img: "/patent-2549811.jpg" },
-  { tag: "patent", tagLabel: "Patent", title: "Operating method for a multi-sensor multi-tracking camera system in a virtual studio", no: "KR 10-2453561", img: "/patent-2453561.jpg" },
-  { tag: "patent", tagLabel: "Patent", title: "Electronic device and capture method for 3D modeling", no: "KR 10-2078198", img: "/patent-2078198.jpg" },
-  { tag: "patent", tagLabel: "Patent", title: "Image-processing device and method for determining distortion in composited video", no: "KR 10-2029680", img: "/patent-2029680.jpg" },
+  { tag: "patent", tagLabel: "Patent", title: "Apparatus and method for generating multiple viewpoints", no: "KR 10-2762537", img: "/patent-2762537.jpg", desc: "Creates views from multiple perspectives out of a single shoot." },
+  { tag: "patent", tagLabel: "Patent", title: "6DoF SLAM-based multi-stereo-camera positioning estimation method", no: "KR 10-2666600", img: "/patent-2666600.jpg", desc: "Estimates the position and orientation of multiple stereo cameras in real time." },
+  { tag: "patent", tagLabel: "Patent", title: "Positioning-information correction method using multiple stereo cameras", no: "KR 10-2549811", img: "/patent-2549811.jpg", desc: "Corrects multi-camera positioning data to improve alignment accuracy." },
+  { tag: "patent", tagLabel: "Patent", title: "Operating method for a multi-sensor multi-tracking camera system in a virtual studio", no: "KR 10-2453561", img: "/patent-2453561.jpg", desc: "Tracks multiple cameras simultaneously with fused sensors in a virtual studio." },
+  { tag: "patent", tagLabel: "Patent", title: "Electronic device and capture method for 3D modeling", no: "KR 10-2078198", img: "/patent-2078198.jpg", desc: "Electronic-device technology that assists capture for 3D modeling." },
+  { tag: "patent", tagLabel: "Patent", title: "Image-processing device and method for determining distortion in composited video", no: "KR 10-2029680", img: "/patent-2029680.jpg", desc: "Detects and evaluates distortion in composited footage." },
 ];
 
 const history: { year: string; items: string[] }[] = [
@@ -171,13 +170,22 @@ export default function AboutPageEn() {
                 <li className="patent-card__inner">
                   <div className="patent-card__media">
                     {c.img ? (
-                      <Image
-                        src={c.img}
-                        alt={`${c.tagLabel} — ${c.title}${c.no ? ` (${c.no})` : ""}`}
-                        fill
-                        sizes="(min-width:1024px) 240px, (min-width:640px) 33vw, 50vw"
-                        className="object-cover object-top"
-                      />
+                      <a
+                        href={c.img}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${c.title} at full size`}
+                        className="absolute inset-0 block"
+                        title="Click to enlarge"
+                      >
+                        <Image
+                          src={c.img}
+                          alt={`${c.tagLabel} — ${c.title}${c.no ? ` (${c.no})` : ""}`}
+                          fill
+                          sizes="(min-width:1024px) 240px, (min-width:640px) 33vw, 50vw"
+                          className="object-cover object-top"
+                        />
+                      </a>
                     ) : (
                       <div className="patent-card__ph">
                         <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">{c.tagLabel}</span>
@@ -195,6 +203,7 @@ export default function AboutPageEn() {
                       {c.no && <span className="font-mono text-[11px] font-semibold text-lav">{c.no}</span>}
                     </div>
                     <h3 className="mt-2 text-[13px] font-medium leading-snug text-fg">{c.title}</h3>
+                    {c.desc && <p className="mt-1.5 text-xs leading-relaxed text-muted">{c.desc}</p>}
                   </div>
                 </li>
               </Reveal>

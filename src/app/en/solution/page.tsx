@@ -27,16 +27,31 @@ const approach = [
 
 // Problem Quote Trio (§0-A) — where building XR yourself stalls (customer language).
 const problems = [
-  { id: "PAIN 01", quote: "Every device has its own spec, and integration stalls.", desc: "Cameras, trackers, renderers, and streaming gear all differ, so wiring and syncing them takes time every single time." },
-  { id: "PAIN 02", quote: "Overseas solutions ship English-only manuals, and support is slow when things break.", desc: "When something fails on set, time-zone gaps and language barriers slow the response." },
-  { id: "PAIN 03", quote: "The system got built, but there’s no one to run it.", desc: "If a project ends at installation, the gear just sits in storage. You need training and support to run it yourself." },
+  {
+    no: "01",
+    cat: "Market",
+    title: "Different specs per device: a fragmented XR production environment",
+    desc: "Cameras, trackers, renderers, and streaming gear all differ, so wiring and syncing them takes time every single time.",
+  },
+  {
+    no: "02",
+    cat: "Pain Point",
+    title: "Barriers that continue after adoption: operations and support",
+    desc: "Overseas solutions ship English-only manuals with time-zone-bound support, and after the build there is often no training or backup to run it yourself.",
+  },
+  {
+    no: "03",
+    cat: "Opportunity",
+    title: "Real-time XR has matured: unified operation is now possible",
+    desc: "As real-time rendering and tracking technology matured, running scattered devices as a single flow became practical.",
+  },
 ];
 
 // Segment slots (§0-C) — where the XR solution fits.
 const segments = [
-  { tag: "Broadcast · Live", d: "Broadcasters and live production teams that need real-time XR and AR graphics layered onto live feeds." },
-  { tag: "Enterprise · Commerce", d: "Companies running IR sessions, webinars, and live commerce repeatedly on their own stage, with no set changes." },
-  { tag: "University · Education", d: "Institutions building a hands-on environment to teach virtual production directly." },
+  { id: "seg-broadcast", tag: "Broadcast · Live", d: "Broadcasters and live production teams that need real-time XR and AR graphics layered onto live feeds." },
+  { id: "seg-enterprise", tag: "Enterprise · Commerce", d: "Companies running IR sessions, webinars, and live commerce repeatedly on their own stage, with no set changes." },
+  { id: "seg-education", tag: "University · Education", d: "Institutions building a hands-on environment to teach virtual production directly." },
 ];
 
 // Items with their own page link out via href.

@@ -5,7 +5,6 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { ControlledVideo } from "@/components/ui/ControlledVideo";
-import { YouTubePreview } from "@/components/ui/YouTubePreview";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { SpecTable } from "@/components/product/SpecTable";
 import { JsonLd, breadcrumbLd, faqPageLd } from "@/components/seo/JsonLd";
@@ -134,13 +133,20 @@ export default function AximmetryPage() {
         <div className="container-ex">
           <SectionHead index="01" label="Showcase" />
           <figure className="mt-12">
+            {/* 접속 즉시 자동 재생되는 배경형 영상(대표 지시) — autoplay 정책상 mute 필수,
+                loop=1+playlist 반복, controls=0으로 영상만 노출. youtube-nocookie 프라이버시 도메인.
+                투명 오버레이가 클릭을 흡수해 일시정지 없이 재생 유지. */}
             <div className="card relative aspect-video" style={{ overflow: "hidden", padding: 0 }}>
-              <YouTubePreview
-                videoId="vcuQegxG3dA"
-                poster="/aximmetry-showcase-poster.jpg"
+              <iframe
+                className="pointer-events-none h-full w-full"
+                src="https://www.youtube-nocookie.com/embed/vcuQegxG3dA?autoplay=1&mute=1&loop=1&playlist=vcuQegxG3dA&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"
                 title="Aximmetry 실시간 버추얼 프로덕션 데모"
-                playLabel="Aximmetry 데모 영상 재생"
+                allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                style={{ border: 0 }}
               />
+              {/* 투명 오버레이: 마우스 이벤트 흡수(일시정지·호버 UI 방지) */}
+              <span className="absolute inset-0" aria-hidden="true" />
             </div>
           </figure>
         </div>
@@ -185,12 +191,12 @@ export default function AximmetryPage() {
             </div>
           </figure>
 
-          {/* 나머지 기능 카드 6개 — 모든 카드 상단에 16:9 이미지 영역 고정(object-cover로 채움, 여백 없음).
-              이미지 미지정 카드는 동일 비율 플레이스홀더로 레이아웃을 맞춘다. */}
+          {/* 나머지 기능 카드 6개 — 이미지 영역은 16:9 최소 비율 + flex-1로 카드 잔여 높이를 세로 채움
+              (행 높이 차이로 생기던 하단 공백 제거). 이미지 미지정 카드는 동일 비율 플레이스홀더. */}
           <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featureTech.slice(1).map((p) => (
               <div key={p.t} className="card flex flex-col" style={{ padding: 0, overflow: "hidden" }}>
-                <div className="aspect-video w-full overflow-hidden bg-bg/60">
+                <div className="aspect-video w-full flex-1 overflow-hidden bg-bg/60">
                   {p.img ? (
                     <Image
                       src={p.img}

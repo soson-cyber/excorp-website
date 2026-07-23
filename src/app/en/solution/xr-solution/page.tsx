@@ -7,6 +7,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
+import { SignalFlow } from "@/components/solution/SignalFlow";
 
 export const metadata: Metadata = {
   title: { absolute: "EXLINK — Integrated Real-time XR Solution | EX Corporation" },
@@ -130,6 +131,15 @@ export default function XrSolutionPageEn() {
             <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
               <Image src="/exlink_solution.png" alt="EXLINK integrated real-time XR solution — unified control flow across capture, tracking, rendering, and streaming" width={1672} height={941} priority className="h-auto w-full" />
             </figure>
+          </div>
+          {/* Interactive signal flow (shared with home) — role/problem/EX scope/partner/result per stage */}
+          <div className="mt-14">
+            <p className="lead" style={{ maxWidth: "42rem" }}>
+              Select each stage to see its role, the common problem, the scope EX owns, and the partner technology it connects to.
+            </p>
+            <div className="mt-8">
+              <SignalFlow locale="en" />
+            </div>
           </div>
         </div>
       </section>

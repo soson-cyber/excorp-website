@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { HomeClean } from "@/components/home/HomeClean";
+import { HomeClean, type NewsBrief } from "@/components/home/HomeClean";
+import { getNews } from "@/lib/notion";
+import { pressFallback } from "@/lib/press-fallback";
+
+// ISR — 홈 뉴스룸 스트립이 Notion(WEBSITE_NEWS) 변경을 5분 주기로 반영(news 페이지와 동일).
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   // absolute → 루트 layout의 "%s | EX Corporation" 템플릿 접미사를 피해 슬로건 그대로 노출
@@ -20,6 +25,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  return <HomeClean locale="ko" />;
+export default async function HomePage() {
+  // Notion 우선, 미설정/장애 시 fallback — 보도자료만 최신 3건.
+  const notionNews = await getNews();
+  const news: NewsBrief[] =
+    notionNews && notionNews.length > 0
+      ? notionNews
+          .filter((n) => n.category === "보도자료")
+          .slice(0, 3)
+          .map((n) => ({ date: n.date, outlet: n.outlet || undefined, title: n.title, href: n.sourceUrl || undefined }))
+      : pressFallback.slice(0, 3).map((p) => ({ date: p.year, title: p.title, href: p.href }));
+
+  return <HomeClean locale="ko" news={news} />;
 }

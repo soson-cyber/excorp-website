@@ -265,18 +265,17 @@ export function Hero({ locale = "ko" }: { locale?: Locale }) {
       <div className="hero-vig" aria-hidden="true" />
 
       <div className="container-ex hero-in">
+        {/* H1 = 브랜드 슬로건 (2026-07-24 대표 확정: "복잡한 XR 제작, 더 쉽게 쓰는 시스템" → 기존 슬로건 복귀) */}
         <h1 className="hero-h1">
           {en ? (
             <>
-              Complex XR production,
-              <br />
-              made <span className="grad">easier</span>{" "}to use
+              EXpand <span className="grad">EXperiences</span>
             </>
           ) : (
             <>
-              복잡한 XR 제작,
+              기술의 연결로
               <br />
-              <span className="grad">더 쉽게</span>{" "}쓰는 시스템
+              경험을 <span className="grad">확장하다</span>
             </>
           )}
         </h1>

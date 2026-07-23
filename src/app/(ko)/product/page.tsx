@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { CompareTable } from "@/components/product/CompareTable";
+import { PipelinePosition } from "@/components/product/PipelinePosition";
 import { ProblemTrio } from "@/components/page/ProblemTrio";
 import { JsonLd, breadcrumbLd, abs } from "@/components/seo/JsonLd";
 
@@ -24,9 +25,24 @@ const whyEx = [
 
 // Problem Quote Trio (§0-A) — 검증 안 된 해외 도구를 직접 들이는 부담.
 const problems = [
-  { id: "PAIN 01", quote: "해외 솔루션은 영어 매뉴얼뿐입니다.", desc: "본사 시차·언어로 문제 대응이 늦고, 도입 비용·라이선스 구성도 가늠하기 어렵습니다." },
-  { id: "PAIN 02", quote: "잘못 사면 비싼 장비가 창고에 잠깁니다.", desc: "현장에 맞지 않는 구성을 들이면 운영하지 못하고 자산만 묶입니다." },
-  { id: "PAIN 03", quote: "사고 나면 누구에게 물어보죠?", desc: "공급으로 끝나면 셋업·교육·운영이 막막합니다. 도입 이후를 함께할 곳이 필요합니다." },
+  {
+    no: "01",
+    cat: "Support Gap",
+    title: "영어 매뉴얼뿐인 해외 솔루션",
+    desc: "본사 시차·언어로 문제 대응이 늦고, 도입 비용·라이선스 구성도 가늠하기 어렵습니다.",
+  },
+  {
+    no: "02",
+    cat: "Purchase Risk",
+    title: "잘못 사면 창고에 잠기는 장비",
+    desc: "현장에 맞지 않는 구성을 들이면 운영하지 못하고 자산만 묶입니다.",
+  },
+  {
+    no: "03",
+    cat: "After Adoption",
+    title: "도입 이후를 물어볼 곳의 부재",
+    desc: "공급으로 끝나면 셋업·교육·운영이 막막합니다. 도입 이후를 함께할 곳이 필요합니다.",
+  },
 ];
 
 const lineup = [
@@ -151,11 +167,20 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* §03 Compare */}
+      {/* §03 Compare — 파이프라인 위치(P2-8) + 스펙 비교 */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="03" label="Compare" title="한눈에 비교" />
+          <SectionHead
+            index="03"
+            label="Compare"
+            title="한눈에 비교"
+            lead="세 제품은 제작 흐름에서 맡는 단계가 서로 다릅니다. 위치부터 확인하세요."
+            leadMaxWidth="40rem"
+          />
           <div className="mt-12">
+            <PipelinePosition locale="ko" />
+          </div>
+          <div className="mt-5">
             <CompareTable columns={lineup.map((p) => p.title)} rows={compare} />
           </div>
         </div>
@@ -174,7 +199,10 @@ export default function ProductPage() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {certs.map((c) => (
               <Link key={c.name} href={c.href} className="card group" style={{ overflow: "hidden", padding: 0 }}>
-                <Image src={c.src} alt={c.name} width={957} height={700} className="h-auto w-full" />
+                {/* 인증서 비율이 서로 달라(637/696) 세로 채움 고정 비율 + cover로 하단 공백 제거 */}
+                <span className="relative block aspect-[4/3] w-full">
+                  <Image src={c.src} alt={c.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
+                </span>
               </Link>
             ))}
           </div>

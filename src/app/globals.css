@@ -1461,6 +1461,237 @@ html.cursor-reduce .ex-cursor-ring {
   z-index: 2;
   text-align: center;
 }
+/* SignalFlow (리디자인 A · P1-6) — 인터랙티브 신호 흐름. EX=민트 / 파트너=라벤더, 색+라벨 이중 구분. */
+.signalflow__track {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  gap: 0;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+.signalflow__track::-webkit-scrollbar { display: none; }
+.signalflow__cell { display: flex; align-items: center; flex: 1 0 auto; }
+.sf-node {
+  flex: 1;
+  min-width: 148px;
+  text-align: left;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-card);
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease-ex), box-shadow 0.18s var(--ease-ex), background 0.18s var(--ease-ex);
+}
+.sf-node:hover { border-color: var(--color-border-strong); }
+.sf-node.is-sel { border-color: var(--color-mint); box-shadow: 0 0 0 1px var(--color-mint), 0 10px 34px rgba(69, 241, 224, 0.14); }
+.sf-node__label { display: block; margin-top: 10px; font-size: 15px; font-weight: 600; color: var(--color-fg); }
+.sf-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.sf-tag--ex { background: rgba(69, 241, 224, 0.14); color: var(--color-mint); }
+.sf-tag--partner { background: rgba(196, 181, 253, 0.16); color: var(--color-lav); }
+.sf-conn { flex: 0 0 26px; text-align: center; color: var(--color-faint); font-size: 15px; }
+.signalflow__detail {
+  margin-top: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-raised);
+  padding: 24px;
+}
+.sf-detail__head { display: flex; align-items: center; gap: 12px; }
+.sf-detail__title { font-size: 18px; font-weight: 700; color: var(--color-fg); }
+.sf-detail__grid { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; }
+.sf-detail__grid .sf-k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  margin-bottom: 5px;
+}
+.sf-detail__grid p { font-size: 14px; line-height: 1.55; color: var(--color-muted); }
+.sf-detail__product { margin-top: 20px; }
+.signalflow__legend { display: flex; gap: 20px; margin-top: 16px; font-size: 12px; color: var(--color-muted); }
+.sf-sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 7px; vertical-align: middle; }
+.sf-sw--ex { background: var(--color-mint); }
+.sf-sw--pt { background: var(--color-lav); }
+@media (max-width: 768px) {
+  .signalflow__track { flex-direction: column; overflow-x: visible; gap: 8px; }
+  .signalflow__cell { flex-direction: column; align-items: stretch; }
+  .sf-conn { transform: rotate(90deg); padding: 4px 0; }
+  .sf-detail__grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* PatentCarousel (§05) — 다중 항목(1/2/3장) + 자동 회전. 화살표(순환)·도트·재생/정지·카운터. */
+.pcar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+.pcar__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-fg);
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease-ex), background 0.18s var(--ease-ex);
+}
+.pcar__arrow:hover { border-color: var(--color-border-strong); background: rgba(255, 255, 255, 0.04); }
+.pcar__viewport { overflow: hidden; min-width: 0; }
+.pcar__track {
+  display: flex;
+  gap: 20px; /* PatentSlider.tsx의 GAP 상수와 일치해야 함 */
+  transition: transform 0.55s var(--ease-ex);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pcar__track { transition: none; }
+}
+.pcar__card {
+  flex: 0 0 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-card);
+  padding: 18px;
+}
+@media (min-width: 640px) {
+  .pcar__card { flex-basis: calc((100% - 20px) / 2); }
+}
+@media (min-width: 1024px) {
+  .pcar__card { flex-basis: calc((100% - 40px) / 3); }
+}
+.pcar__media {
+  margin: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 10px;
+}
+.pcar__img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover; /* 가로 채우기 — 특허증 상단(표제·번호)부터 노출 */
+  object-position: top;
+}
+.pcar__meta {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.pcar__play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 10px;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease-ex), color 0.18s var(--ease-ex);
+}
+.pcar__play:hover { border-color: var(--color-border-strong); color: var(--color-fg); }
+.pcar__dots { display: inline-flex; gap: 7px; }
+.pcar__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.18s var(--ease-ex), transform 0.18s var(--ease-ex);
+}
+.pcar__dot.is-on { background: var(--color-mint); transform: scale(1.2); }
+@media (max-width: 767px) {
+  .pcar { gap: 10px; }
+  .pcar__arrow { width: 36px; height: 36px; }
+  .pcar__img { height: 250px; }
+}
+
+/* 파트너 로고 스트립 — 뷰포트별 스케일(개별 실측 높이 --h에 배율 적용, 로고 간 비율은 유지) */
+.plogos { --logo-scale: 1; }
+@media (min-width: 768px) { .plogos { --logo-scale: 1.15; } }
+@media (min-width: 1200px) { .plogos { --logo-scale: 1.35; } }
+.plogos img {
+  height: calc(var(--h) * var(--logo-scale));
+  max-width: calc(220px * var(--logo-scale));
+}
+
+/* PipelinePosition (리디자인 A · P2-8) — 제품별 파이프라인 위치. SignalFlow 축·색 규칙 공유. */
+.pipepos {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-card);
+  padding: 24px;
+}
+.pipepos__head,
+.pipepos__row {
+  display: grid;
+  grid-template-columns: 200px 1fr 280px;
+  gap: 20px;
+  align-items: center;
+}
+.pipepos__head { padding-bottom: 10px; }
+.pipepos__row { padding: 14px 0; border-top: 1px solid var(--color-border); }
+.pipepos__stage,
+.pipepos__cell { min-width: 0; }
+.pipepos__axis {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+.pipepos__axis--5 { grid-template-columns: repeat(5, 1fr); }
+.pipepos__stage {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pipepos__cell {
+  height: 10px;
+  border-radius: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+.pipepos__cell.is-pt { background: var(--color-lav); border-color: var(--color-lav); }
+.pipepos__cell.is-ex { background: var(--color-mint); border-color: var(--color-mint); }
+.pipepos__name { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.pipepos__pos { font-size: 13px; line-height: 1.5; color: var(--color-muted); }
+.pipepos__note {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+@media (max-width: 1023px) {
+  .pipepos__head { display: none; }
+  .pipepos__row { grid-template-columns: 1fr; gap: 10px; }
+}
+
 .hero-h1 {
   margin: 30px auto 0;
   max-width: 15ch;
@@ -2534,30 +2765,6 @@ html.cursor-reduce .ex-cursor-ring {
   margin-top: 8px;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
-}
-
-/* ── Quote band ──────────────────────────────────────────────────────────── */
-.quote-ey {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-lav);
-}
-.quote-bar {
-  height: 2px;
-  width: 28px;
-  background: var(--color-lav);
-}
-.quote-txt {
-  margin: 24px 0 0;
-  font-size: clamp(1.35rem, 2.6vw, 1.875rem);
-  font-weight: 600;
-  line-height: 1.45;
-  color: #fff;
 }
 
 /* ── CTA card ────────────────────────────────────────────────────────────── */

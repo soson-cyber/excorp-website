@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page/PageHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { CompareTable } from "@/components/product/CompareTable";
+import { PipelinePosition } from "@/components/product/PipelinePosition";
 import { ProblemTrio } from "@/components/page/ProblemTrio";
 import { JsonLd, abs } from "@/components/seo/JsonLd";
 
@@ -33,9 +34,24 @@ const whyEx = [
 
 // Problem Quote Trio (§0-A) — the burden of bringing in unproven overseas tools directly.
 const problems = [
-  { id: "PAIN 01", quote: "Overseas solutions only ship with English manuals.", desc: "Time zones and language slow down issue resolution, and it’s hard to gauge rollout cost or license configuration." },
-  { id: "PAIN 02", quote: "Buy the wrong gear and expensive equipment sits in storage.", desc: "Bring in a configuration that doesn’t fit your site and you can’t operate it, and capital just stays locked up." },
-  { id: "PAIN 03", quote: "When something breaks, who do you even ask?", desc: "If supply is where it ends, setup, training, and operations are left to you. You need a partner for what comes after the rollout." },
+  {
+    no: "01",
+    cat: "Support Gap",
+    title: "Overseas solutions, English-only manuals",
+    desc: "Time zones and language slow down issue resolution, and it’s hard to gauge rollout cost or license configuration.",
+  },
+  {
+    no: "02",
+    cat: "Purchase Risk",
+    title: "The wrong purchase leaves gear locked in storage",
+    desc: "Bring in a configuration that doesn’t fit your site and you can’t operate it, and capital just stays locked up.",
+  },
+  {
+    no: "03",
+    cat: "After Adoption",
+    title: "No one to ask after the rollout",
+    desc: "If supply is where it ends, setup, training, and operations are left to you. You need a partner for what comes after the rollout.",
+  },
 ];
 
 const lineup = [
@@ -167,11 +183,20 @@ export default function ProductPageEn() {
         </div>
       </section>
 
-      {/* §03 Compare */}
+      {/* §03 Compare — pipeline position (P2-8) + spec compare */}
       <section className="section section--white">
         <div className="container-ex">
-          <SectionHead index="03" label="Compare" title="Compare at a glance" />
+          <SectionHead
+            index="03"
+            label="Compare"
+            title="Compare at a glance"
+            lead="The three products own different stages of the production flow. Start with where each one sits."
+            leadMaxWidth="40rem"
+          />
           <div className="mt-12">
+            <PipelinePosition locale="en" />
+          </div>
+          <div className="mt-5">
             <CompareTable columns={lineup.map((p) => p.title)} rows={compare} />
           </div>
         </div>
@@ -190,7 +215,10 @@ export default function ProductPageEn() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {certs.map((c) => (
               <Link key={c.name} href={c.href} className="card group" style={{ overflow: "hidden", padding: 0 }}>
-                <Image src={c.src} alt={c.name} width={957} height={700} className="h-auto w-full" />
+                {/* Certificate ratios differ (637/696) — fixed ratio + cover removes the bottom gap */}
+                <span className="relative block aspect-[4/3] w-full">
+                  <Image src={c.src} alt={c.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
+                </span>
               </Link>
             ))}
           </div>

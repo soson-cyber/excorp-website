@@ -26,9 +26,24 @@ export const metadata: Metadata = {
 
 // Problem Quote Trio (§0-A) — pains when adopting VP for the first time (VP-specific).
 const problems = [
-  { id: "PAIN 01", quote: "Virtual production: I don’t know where to start.", desc: "Devices and software are all over the place, and overseas solutions are hard to communicate with." },
-  { id: "PAIN 02", quote: "I can’t gauge how much the initial rollout will cost.", desc: "Get a quote without knowing the configuration and scale you need, and you lose either way: too much or too little." },
-  { id: "PAIN 03", quote: "I can’t confirm on set whether the footage works.", desc: "Without seeing the composited result in-camera, you only catch problems in post." },
+  {
+    no: "01",
+    cat: "Market",
+    title: "Traditional production built around physical sets",
+    desc: "Building and striking a set for every shoot costs time and space, and changing the background means building again.",
+  },
+  {
+    no: "02",
+    cat: "Pain Point",
+    title: "A daunting start and a hard-to-scope configuration",
+    desc: "Device and software information is scattered, the right configuration and scale are hard to pin down, and without on-set confirmation problems only surface in post.",
+  },
+  {
+    no: "03",
+    cat: "Opportunity",
+    title: "Real-time compositing, finished as you shoot",
+    desc: "Advances in real-time compositing and tracking make it possible to shoot on a virtual background and confirm and finish right on set.",
+  },
 ];
 
 // Segment slots (§0-C) — where VP fits.

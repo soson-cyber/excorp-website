@@ -214,7 +214,8 @@ export default function AximmetryPageEn() {
           <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featureTech.slice(1).map((p) => (
               <div key={p.t} className="card flex flex-col" style={{ padding: 0, overflow: "hidden" }}>
-                <div className="aspect-video w-full overflow-hidden bg-bg/60">
+                {/* 16:9 minimum + flex-1 so the image fills leftover card height (no bottom gap) */}
+                <div className="aspect-video w-full flex-1 overflow-hidden bg-bg/60">
                   {p.img ? (
                     <Image
                       src={p.img}

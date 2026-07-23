@@ -7,7 +7,7 @@
 */
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-export type Segment = { tag: string; d: string };
+export type Segment = { tag: string; d: string; id?: string };
 
 export function SegmentGrid({
   index,
@@ -31,7 +31,7 @@ export function SegmentGrid({
         </h2>
         <div className="featgrid">
           {segments.map((s) => (
-            <div key={s.tag} className="card cardpad">
+            <div key={s.tag} id={s.id} className="card cardpad scroll-mt-28">
               <span className="tag">{s.tag}</span>
               <p className="mt-4 text-sm leading-relaxed text-muted">{s.d}</p>
             </div>

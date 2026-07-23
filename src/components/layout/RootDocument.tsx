@@ -4,7 +4,6 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { type Locale, ui } from "@/lib/i18n";
 import { sameAs, site, SITE_URL } from "@/lib/site";
 
@@ -89,7 +88,6 @@ export function RootDocument({ children, locale }: RootDocumentProps) {
             <rect width="100%" height="100%" filter="url(#ex-grain)" />
           </svg>
         </div>
-        <CustomCursor />
         <Header />
         <main id="main" className="flex-1">
           {children}

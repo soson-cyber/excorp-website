@@ -7,6 +7,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
+import { SignalFlow } from "@/components/solution/SignalFlow";
 
 export const metadata: Metadata = {
   title: "EXLINK — 실시간 XR 통합 솔루션",
@@ -124,6 +125,15 @@ export default function XrSolutionPage() {
             <figure className="card" style={{ overflow: "hidden", padding: 0 }}>
               <Image src="/exlink_solution.png" alt="EXLINK 통합 실시간 XR 솔루션 — 촬영·트래킹·렌더·송출 통합 제어 흐름" width={1672} height={941} priority className="h-auto w-full" />
             </figure>
+          </div>
+          {/* 인터랙티브 신호 흐름(홈과 공유) — 단계 선택 시 역할·문제·EX 범위·파트너·결과 */}
+          <div className="mt-14">
+            <p className="lead" style={{ maxWidth: "42rem" }}>
+              각 단계를 선택하면 역할과 흔한 문제, EX가 맡는 범위와 연결되는 파트너 기술을 확인할 수 있습니다.
+            </p>
+            <div className="mt-8">
+              <SignalFlow locale="ko" />
+            </div>
           </div>
         </div>
       </section>

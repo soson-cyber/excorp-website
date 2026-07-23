@@ -21,18 +21,17 @@ const whyEx = [
   { t: "문화기술과 엔터테인먼트를 잇는 전문성", d: "콘텐츠 제작 현장과 기술을 연결해 온 경험." },
 ];
 
-// 인증 4종 + 특허 6건 (요청 순서). img 있는 항목은 인증서 이미지, 없으면 플레이스홀더.
-const credentials: { tag: string; title: string; no?: string; img?: string }[] = [
+// 인증 3종 + 특허 6건 (요청 순서). 창작전담부서는 인증서 취득 후 재삽입 예정(대표 지시로 제외).
+const credentials: { tag: string; title: string; no?: string; img?: string; desc?: string }[] = [
   { tag: "인증", title: "사업자등록증", img: "/cert-business-registration.jpg" },
   { tag: "인증", title: "벤처기업 인증", img: "/cert-venture.jpg" },
   { tag: "인증", title: "연구개발전담부서", img: "/cert-rnd.jpg" },
-  { tag: "인증", title: "창작전담부서" },
-  { tag: "특허", title: "다중 뷰포인트 생성 장치·방법", no: "KR 10-2762537", img: "/patent-2762537.jpg" },
-  { tag: "특허", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정 방법", no: "KR 10-2666600", img: "/patent-2666600.jpg" },
-  { tag: "특허", title: "복수의 스테레오 카메라 장치를 활용한 포지셔닝 정보 보정 방법", no: "KR 10-2549811", img: "/patent-2549811.jpg" },
-  { tag: "특허", title: "가상 스튜디오의 복합 센서 기반 다중 추적 카메라 시스템 동작 방법", no: "KR 10-2453561", img: "/patent-2453561.jpg" },
-  { tag: "특허", title: "전자 장치 및 전자 장치의 3차원 모델링을 위한 촬영방법", no: "KR 10-2078198", img: "/patent-2078198.jpg" },
-  { tag: "특허", title: "합성 영상의 왜곡을 결정하는 영상 처리 장치 및 방법", no: "KR 10-2029680", img: "/patent-2029680.jpg" },
+  { tag: "특허", title: "다중 뷰포인트 생성 장치·방법", no: "KR 10-2762537", img: "/patent-2762537.jpg", desc: "하나의 촬영에서 여러 시점의 화면을 만들어내는 기술." },
+  { tag: "특허", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정 방법", no: "KR 10-2666600", img: "/patent-2666600.jpg", desc: "여러 대의 스테레오 카메라 위치·방향을 실시간으로 추정하는 기술." },
+  { tag: "특허", title: "복수의 스테레오 카메라 장치를 활용한 포지셔닝 정보 보정 방법", no: "KR 10-2549811", img: "/patent-2549811.jpg", desc: "다중 카메라의 위치 정보를 보정해 정합 정확도를 높이는 기술." },
+  { tag: "특허", title: "가상 스튜디오의 복합 센서 기반 다중 추적 카메라 시스템 동작 방법", no: "KR 10-2453561", img: "/patent-2453561.jpg", desc: "가상 스튜디오에서 여러 카메라를 복합 센서로 동시에 추적하는 기술." },
+  { tag: "특허", title: "전자 장치 및 전자 장치의 3차원 모델링을 위한 촬영방법", no: "KR 10-2078198", img: "/patent-2078198.jpg", desc: "3D 모델링에 필요한 촬영을 돕는 전자 장치 기술." },
+  { tag: "특허", title: "합성 영상의 왜곡을 결정하는 영상 처리 장치 및 방법", no: "KR 10-2029680", img: "/patent-2029680.jpg", desc: "합성 화면의 왜곡을 감지·판정하는 영상 처리 기술." },
 ];
 
 const history: { year: string; items: string[] }[] = [
@@ -167,13 +166,22 @@ export default function AboutPage() {
                 <li className="patent-card__inner">
                   <div className="patent-card__media">
                     {c.img ? (
-                      <Image
-                        src={c.img}
-                        alt={`${c.tag} — ${c.title}${c.no ? ` (${c.no})` : ""}`}
-                        fill
-                        sizes="(min-width:1024px) 240px, (min-width:640px) 33vw, 50vw"
-                        className="object-cover object-top"
-                      />
+                      <a
+                        href={c.img}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${c.title} 원본 크게 보기`}
+                        className="absolute inset-0 block"
+                        title="클릭하여 확대"
+                      >
+                        <Image
+                          src={c.img}
+                          alt={`${c.tag} — ${c.title}${c.no ? ` (${c.no})` : ""}`}
+                          fill
+                          sizes="(min-width:1024px) 240px, (min-width:640px) 33vw, 50vw"
+                          className="object-cover object-top"
+                        />
+                      </a>
                     ) : (
                       <div className="patent-card__ph">
                         <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-lav">{c.tag === "특허" ? "Patent" : "Certified"}</span>
@@ -191,6 +199,7 @@ export default function AboutPage() {
                       {c.no && <span className="font-mono text-[11px] font-semibold text-lav">{c.no}</span>}
                     </div>
                     <h3 className="mt-2 text-[13px] font-medium leading-snug text-fg">{c.title}</h3>
+                    {c.desc && <p className="mt-1.5 text-xs leading-relaxed text-muted">{c.desc}</p>}
                   </div>
                 </li>
               </Reveal>
