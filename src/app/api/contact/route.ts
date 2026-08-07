@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { parseContactRequest } from "@/lib/contact-validation";
 import { createInquiry } from "@/lib/notion";
+import { sendChatNotice, sendInquiryEmail } from "@/lib/notify";
 
 const RESPONSE_HEADERS = {
   "Cache-Control": "no-store, max-age=0",
@@ -40,14 +41,21 @@ export async function POST(req: Request) {
     );
   }
 
-  // ── 2) (선택) 이메일 알림 ────────────────────────────────────────
-  //   `npm i resend` + RESEND_API_KEY 후 아래 활성화 — 유형별 `to`로 발송, replyTo=문의자
-  //   import { Resend } from "resend";
-  //   await new Resend(process.env.RESEND_API_KEY!).emails.send({
-  //     from: "EX Website <noreply@excorp.kr>", to: "info@excorp.kr", replyTo: email,
-  //     subject: `[웹문의·${type ?? "일반 문의"}] ${name}`,
-  //     text: `이름:${name}\n회사:${body.company ?? "-"}\n이메일:${email}\n유형:${type ?? "-"}\n\n${message}`,
-  //   });
+  // ── 2) 알림: 이메일(Resend) + Google Chat ────────────────────────
+  // 접수는 이미 Notion에 저장됐다. 알림 실패로 접수를 실패시키지 않고 로그만 남긴다.
+  const notice = {
+    name,
+    company: body.company,
+    email,
+    phone: body.phone,
+    type,
+    message,
+    marketing: body.marketing === true,
+  };
+  const [mail, chat] = await Promise.all([sendInquiryEmail(notice), sendChatNotice(notice)]);
+  if (mail === "failed" || chat === "failed") {
+    console.error("[contact] notification degraded", { type, mail, chat });
+  }
 
   return json({ ok: true });
 }

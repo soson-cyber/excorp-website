@@ -15,8 +15,7 @@
  * ⚠️ 속성명은 거버넌스 정렬 설계 기준(가칭). MCP 복구 후 실제 DB 속성명과 1:1 대조 필요.
  */
 import { Client } from "@notionhq/client";
-
-type EnvMap = Record<string, string | undefined>;
+import { resolveEnv, type EnvMap } from "./runtime-env";
 
 type DataSourceQueryRequest = {
   data_source_id: string;
@@ -60,29 +59,6 @@ export function toNotionRichText(content: string): { text: { content: string } }
     richText.push({ text: { content: characters.slice(start, start + NOTION_RICH_TEXT_CHUNK_SIZE).join("") } });
   }
   return richText;
-}
-
-/**
- * 런타임 env 해석 — Notion 시크릿/DS ID를 어디서 읽을지 결정한다.
- *
- * ⚠️ Cloudflare Workers(OpenNext)에서는 시크릿이 `process.env`가 아니라
- * `getCloudflareContext().env`에 들어온다. process.env로 읽으면 런타임에 전부 undefined가 되어
- * Notion 호출이 모두 실패한다(= 뉴스가 fallback으로 표시되고, 문의가 DB에 저장 안 되던 원인).
- * - Workers 런타임: ctx.env 사용
- * - Node(빌드/`next dev`): process.env(.dev.vars/.env.local) 사용
- */
-async function resolveEnv(): Promise<EnvMap> {
-  try {
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const ctx = await getCloudflareContext({ async: true });
-    const cfEnv = ctx?.env as unknown as EnvMap | undefined;
-    if (cfEnv && (cfEnv.NOTION_PUBLIC_TOKEN || cfEnv.NOTION_INQUIRY_TOKEN)) {
-      return { ...(process.env as EnvMap), ...cfEnv };
-    }
-  } catch {
-    // 워커 컨텍스트가 아님(빌드/Node) → process.env 사용
-  }
-  return process.env as EnvMap;
 }
 
 type NotionTokenKey = "NOTION_PUBLIC_TOKEN" | "NOTION_INQUIRY_TOKEN";
