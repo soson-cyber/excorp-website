@@ -424,13 +424,10 @@ export default function XrStudioPage() {
             </li>
           ))}
         </ol>
-        {/* 첫 화면 버튼 2개(대표 정리 2026-10-01). 구성·견적은 주 버튼, 과업지시서 초안은 보조 버튼. */}
+        {/* 첫 화면 버튼은 구성·견적 1개(대표 지시 2026-10-01). 과업지시서 초안 버튼은 마지막 CTA에만 둔다. */}
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button href={CONTACT.quote} variant="primary">
             구성·견적 문의 <span aria-hidden="true">→</span>
-          </Button>
-          <Button href={CONTACT.brief} variant="secondary">
-            과업지시서 초안 받기 <span aria-hidden="true">→</span>
           </Button>
         </div>
       </PageHero>
@@ -450,8 +447,9 @@ export default function XrStudioPage() {
           </p>
           {/* 서로 다른 기업의 웨비나 4편에서 배치만 옮긴 도식(대표 선택 2026-09-30). 스크린샷을 쓰지 않는다 —
               다른 회사 방송 화면이라 저작권·비방 광고 위험이 있다. 원본 좌표·생성 스크립트는 _workspace/xr-live-brochure/before-webinar. */}
-          {/* 도식 크기 80%(대표 4차 수정 2026-10-01). 1024px 미만은 도식 속 글자가 작아져 전체 폭을 유지한다. */}
-          <figure className="mt-11 lg:w-4/5">
+          {/* 도식은 가운데 정렬, 최대 960px(대표 지시 2026-10-01). 4차의 80%(973px)와 같은 크기이고,
+              좁은 화면은 칸 전체 폭이다. 도식 속 글자(13px 기준)가 너무 작아지지 않게 더 줄이지 않는다. */}
+          <figure className="mx-auto mt-11 max-w-[60rem]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/before-webinar-layout.svg"
