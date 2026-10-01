@@ -43,6 +43,12 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // /xr-live는 /xr-studio로 통합했다(2026-10-01, 스펙 10). 승인 설계가 301이라 statusCode로 쓴다(permanent: true는 308).
+      { source: "/xr-live", destination: "/xr-studio", statusCode: 301 },
+    ];
+  },
 };
 
 export default nextConfig;

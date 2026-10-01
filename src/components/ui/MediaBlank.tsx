@@ -42,6 +42,8 @@ type MediaBlankProps = {
   src?: string;
   /** 이미지 대체 텍스트(src 사용 시). 미지정 시 label 사용. */
   alt?: string;
+  /** 이미지 위치(object-position, 예: "75% 50%"). 칸과 그림의 비율이 달라 잘릴 때 보일 부분을 고른다. 미지정 시 가운데. */
+  position?: string;
   /** 좌상단 모노 태그. `null`이면 숨김(작은 로고 슬롯 등). */
   tag?: string | null;
   /** 중앙 글리프 직접 지정. 레거시 방식. 미지정 시 image. */
@@ -114,6 +116,7 @@ export function MediaBlank({
   kind,
   src,
   alt,
+  position,
   tag = "MEDIA",
   glyph = "image",
   children,
@@ -162,7 +165,7 @@ export function MediaBlank({
         <>
           {/* 실제 이미지 — 옵티마이저 우회(원본 직접) 안정 로딩. 동일 비율 컨테이너라 CLS 0. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt ?? label ?? ""} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={src} alt={alt ?? label ?? ""} loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={position ? { objectPosition: position } : undefined} />
           {/* 하단 가독성 스크림 + 라벨 캡션 */}
           {(tag || label) && (
             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-4 pb-3 pt-10">

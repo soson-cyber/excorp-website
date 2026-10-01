@@ -9,9 +9,9 @@ import { site, locations } from "@/lib/site";
 import { JsonLd, breadcrumbLd, localBusinessLd, faqPageLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Hanam XR Studio — Chroma-Key Studio Rental & Production",
+  title: "Hanam XR Studio — Chroma-Key Studio Production",
   description:
-    "Hanam chroma-key studio rental and production. A large green-screen chroma stage (W10×D7×H4, ~70㎡) with real-time XR takes IR, webinars, and talks from planning to shoot to live streaming in one pass. Tailored quote consultation.",
+    "Hanam chroma-key studio production. A large green-screen chroma stage (W10×D7×H4, ~70㎡) with real-time XR takes IR, webinars, and talks from planning to shoot to live streaming in one pass. Tailored quote consultation.",
   alternates: {
     canonical: "/en/xr-studio",
     languages: { ko: "/xr-studio", en: "/en/xr-studio", "x-default": "/xr-studio" },
@@ -30,12 +30,12 @@ const reasons = [
 const presets = [
   { name: "Garden Lounge", cat: "TALK", img: "/studio-bg-01.jpg" },
   { name: "Executive Office", cat: "IR", img: "/studio-bg-02.jpg" },
-  { name: "Seminar Room", cat: "WEBI", img: "/studio-bg-03.jpg" },
+  { name: "Seminar Room", cat: "WEBI", img: "/studio-preset-seminar.webp" },
   { name: "Immersive Media Art", cat: "TALK", img: "/studio-bg-04.jpg" },
   { name: "Café Kitchen", cat: "TALK", img: "/studio-bg-05.jpg" },
-  { name: "Keynote Hall", cat: "IR", img: "/studio-bg-06.jpg" },
+  { name: "Keynote Hall", cat: "IR", img: "/studio-preset-keynote.webp", pos: "75% 50%" },
   { name: "Immersive Gallery", cat: "TALK", img: "/studio-bg-07.jpg" },
-  { name: "LED Cube Stage", cat: "IR", img: "/studio-bg-08.jpg" },
+  { name: "LED Stage", cat: "IR", img: "/studio-preset-led-stage.webp" },
 ];
 
 const galleryBlanks = [
@@ -80,7 +80,7 @@ export default function XrStudioPageEn() {
       <PageHero
         breadcrumb={[{ label: "XR Studio", href: "/en/xr-studio" }]}
         tag="Hanam · Virtual Production Studio"
-        title="Hanam XR Studio: from booking to production and streaming"
+        title="Hanam XR Studio: from planning to production and streaming"
         lead="The EX XR Studio in Hanam is a virtual production studio that, with a large green-screen chroma stage and real-time XR technology, completes everything in one pass, from planning to shoot to live streaming."
       />
 
@@ -122,7 +122,7 @@ export default function XrStudioPageEn() {
           />
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {presets.map((p) => (
-              <MediaBlank key={p.name} ratio="4/3" src={p.img} alt={`${p.name} virtual background preset`} tag={p.cat} label={p.name} />
+              <MediaBlank key={p.name} ratio="4/3" src={p.img} position={p.pos} alt={`${p.name} virtual background preset`} tag={p.cat} label={p.name} />
             ))}
           </div>
         </div>

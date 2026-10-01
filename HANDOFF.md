@@ -97,7 +97,7 @@
 ## 4. IA / GNB (v2 — 적용 완료)
 - **Solution ▾** — XR Solution(EXLINK) · Virtual Production
 - **Product ▾** — Aximmetry(Reseller) · Moverse AI(Distributor) · RETracker(Distributor)
-- **XR Studio** (대관/상품화)
+- **XR Studio** (XR Live Presentation 상품 · 2026-10-01 /xr-live 통합, 장소 대관 없음)
 - **Work** (도입 사례·포트폴리오 갤러리)
 - **Company ▾** — About EX · News & Insight · Career
 - CTA: 문의하기 / 유틸리티(Footer): Support · Contact · Privacy · Terms + 거점·연락처
@@ -119,7 +119,7 @@
 | `/solution/virtual-production` | ✅ **심층 재구성**(8섹션, 교육형) |
 | `/work` | ✅ 필터 갤러리(정적 데이터) |
 | `/product` + `/product/{aximmetry,moverse,retracker}` | ✅ **1차 규격서 실사양 반영**(`docs/sales-products.md`) |
-| `/xr-studio` (EX Studio) | ✅ **메뉴형 상품 재구성** — 차별점 + 콘텐츠 메뉴(탭+S/M/L, `components/studio/StudioMenu.tsx`) + 옵션 + 이용안내 + 시설스펙 + 견적 CTA |
+| `/xr-studio` (EX Studio) | ✅ **XR Live Presentation 상품 페이지**(2026-10-01, 옛 /xr-live 통합 · 스펙 `_workspace/xr-live-redesign/10_spec_xr-studio_merge.md`) — 11구간 + 스튜디오 사양·사진·FAQ. `/xr-live`는 301. `xr-live.excorp.kr`은 Cloudflare excorp.kr 존 Redirect Rule 2개로 301(대표 결정 b, 2026-10-01 · 설정 대기, 지금 운영 522). 워커 미들웨어 없음 |
 | `/work` + `/work/[slug]` | ✅ **사례 상세 구축** — `lib/work.ts`(활용 시나리오 6건) · 갤러리 카드→상세 · 과제/해결/기대효과 템플릿 · 홈 CASE→상세 연결 |
 | `/about` `/news` `/careers` (Company) | ✅ **재구성** — 좌측 에디토리얼 헤더 통일 · News 필터 실동작(`NewsList`) · **인사이트 2편**(`lib/insights.ts`, `/news/[slug]`) · 액센트 절제 |
 | `/product` `/solution` (인덱스) | ✅ 재구성 — 좌측 헤더 통일 · Product 비교표/라인업 실사양 정합 |

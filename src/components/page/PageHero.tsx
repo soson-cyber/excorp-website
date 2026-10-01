@@ -8,7 +8,9 @@ export function PageHero({
   tag,
   eyebrow,
   title,
+  titleTone = "gradient",
   lead,
+  children,
   contentLang,
   bgImage,
   bgImageNoUpscale = false,
@@ -17,8 +19,13 @@ export function PageHero({
   contentLang?: string;
   tag?: string;
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
+  /** H1 색 처리. gradient(기본) = 제목 전체에 브랜드 그라데이션. plain = 흰색 본문색으로 두고
+   *  강조할 구절만 호출부에서 text-gradient-ex-bright 로 감싼다(부분 그라데이션). */
+  titleTone?: "gradient" | "plain";
   lead?: ReactNode;
+  /** 리드 아래에 들어가는 추가 요소(칩 스트립 등). 히어로 안에서 중앙 정렬된다. */
+  children?: ReactNode;
   /** Optional full-bleed background image (key visual). When set, the aurora is suppressed and a scrim keeps text legible. */
   bgImage?: string;
   /** Keep the background key visual at or below its intrinsic size instead of scaling it past 100%. */
@@ -67,7 +74,7 @@ export function PageHero({
       <div className="pagehero-fade" aria-hidden="true" />
       <div className="container-ex pagehero__inner relative text-center">
         {tag && (
-          <div className="inline-flex rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-lav">
+          <div className="pagehero__tag inline-flex rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-lav">
             {tag}
           </div>
         )}
@@ -84,7 +91,9 @@ export function PageHero({
 
         <h1
           lang={contentLang}
-          className={`text-balance break-keep [overflow-wrap:anywhere] text-[clamp(1.9rem,6vw,5.25rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-gradient-ex-bright sm:leading-[1.02] ${
+          className={`pagehero__title text-balance break-keep [overflow-wrap:anywhere] text-[clamp(1.9rem,6vw,5.25rem)] font-semibold leading-[1.08] tracking-[-0.02em] sm:leading-[1.02] ${
+            titleTone === "plain" ? "text-fg" : "text-gradient-ex-bright"
+          } ${
             tag || eyebrow ? "mt-3" : ""
           }`}
         >
@@ -92,8 +101,10 @@ export function PageHero({
         </h1>
 
         {lead && (
-          <p lang={contentLang} className="mx-auto mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted">{lead}</p>
+          <p lang={contentLang} className="pagehero__lead mx-auto mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted">{lead}</p>
         )}
+
+        {children}
       </div>
       {/* Header watches this: while it sits below the bar the header stays
           transparent so the aurora bleeds through; scrolling past it → solid. */}

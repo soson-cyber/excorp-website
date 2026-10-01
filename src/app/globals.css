@@ -546,6 +546,14 @@ html.cursor-reduce .ex-cursor-ring {
   background: var(--color-lav);
   flex: none;
 }
+/* 민트 톤 — 배경만으로 구분되지 않는 별개 상품 블록에만 쓴다(예: XR Live §08 Premium).
+   footer(#0f1129)와 ink(#0e0626)의 채널 델타가 (1,11,3)이라 라벨이 유일한 구분 신호다. */
+.seclabel--mint {
+  color: var(--color-mint);
+}
+.seclabel--mint .bar {
+  background: var(--color-mint);
+}
 
 /* ── Cards ───────────────────────────────────────────────────────────────── */
 .card {
@@ -780,6 +788,23 @@ html.cursor-reduce .ex-cursor-ring {
   margin: 16px 0 0;
   /* 본문 줄바꿈은 브라우저에 위임 — 마지막 줄 고아 단어 방지(미지원 시 keep-all 폴백). */
   text-wrap: pretty;
+}
+
+/* 앵커 이동·키보드 포커스가 sticky 헤더(84px) 뒤로 숨는 것을 막는다. */
+html {
+  scroll-padding-top: 96px;
+}
+
+/* Windows 고대비 모드 — 배경 클리핑 그라데이션 텍스트는 색이 강제 치환되면 투명해져
+   글자가 사라진다. 강제 색 모드에서는 시스템 텍스트색으로 되돌린다. */
+@media (forced-colors: active) {
+  .text-gradient-ex,
+  .text-gradient-ex-bright,
+  .hero-h1 .grad {
+    -webkit-text-fill-color: currentColor;
+    background: none;
+    color: CanvasText;
+  }
 }
 
 /* ── Header ──────────────────────────────────────────────────────────────── */
@@ -1527,6 +1552,41 @@ html.cursor-reduce .ex-cursor-ring {
   .signalflow__cell { flex-direction: column; align-items: stretch; }
   .sf-conn { transform: rotate(90deg); padding: 4px 0; }
   .sf-detail__grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* XR Live 제작 흐름 칩 — 설계본 `XR Live Page.dc.html` 값 그대로.
+   컨테이너 margin-top:40px / justify-content:center / gap:8px / max-width:920px.
+   칩 padding:8px 16px / font-size:13px / weight:500 / color:#fff / nowrap.
+   화살표는 칩 뒤에 오고 color:#9094a9 / font-size:14px. 임의 변경 금지. */
+.xrflow {
+  margin: 40px auto 0;
+  max-width: 920px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+.xrflow__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.xrflow__chip {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--color-card);
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-fg);
+  white-space: nowrap;
+}
+.xrflow__arrow {
+  color: var(--color-faint);
+  font-size: 14px;
 }
 
 /* PatentCarousel (§05) — 다중 항목(1/2/3장) + 자동 회전. 화살표(순환)·도트·재생/정지·카운터. */
@@ -3005,4 +3065,92 @@ html.cursor-reduce .ex-cursor-ring {
 }
 @media (prefers-reduced-motion: reduce) {
   .flowline-x, .flowline-y { animation: none; background: var(--color-violet); opacity: 0.5; }
+}
+
+/* ── XR Live Presentation 랜딩 — 설계본 값 복원 스코프 ────────────────────
+   근거: Claude Design 핸드오프 `XR Live Page.dc.html`(2026-09-11 검토본).
+   사이트 키트(.section/.h2/.lead/.container-ex/.card)는 홈·제품 페이지 기준이라
+   이 설계본보다 14~46% 크고 느슨하다. 전역 키트는 그대로 두고 .xrlive 안에서만
+   설계본 수치로 되돌린다. 값은 설계본 실측이며 임의로 바꾸지 않는다. */
+
+/* 섹션 리듬 — 설계본 96px(모바일 64px). 키트는 데스크톱 140px이라 페이지가 968px 길어진다. */
+.xrlive .section {
+  padding-block: 64px;
+}
+@media (min-width: 768px) {
+  .xrlive .section {
+    padding-block: 96px;
+  }
+  /* 콘텐츠 1216px + 거터 32px(설계본 --wrap-max). 모바일 거터 20px은 키트와 동일. */
+  .xrlive .container-ex {
+    padding-inline: 32px;
+  }
+}
+
+/* 섹션 제목 — 설계본 clamp(1.7rem,3.4cqw,3.2rem)/1.08.
+   CTA 제목은 설계본에서도 키트와 같은 .h2 크기이므로 이 클래스를 붙이지 않는다. */
+.h2--xr {
+  font-size: clamp(1.7rem, 3.4vw, 3.2rem);
+  line-height: 1.08;
+}
+.xrlive .lead {
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+}
+.xrlive .seclabel {
+  letter-spacing: 0.14em;
+}
+/* 이 페이지의 카드는 전부 정보 카드다. 퍼플 발광 + 부양은 클릭 가능 신호로 읽힌다.
+   설계본의 .card:hover는 테두리만 밝힌다("NO drop shadows in this system"). */
+.xrlive .card:hover {
+  border-color: var(--color-border-strong);
+  transform: none;
+}
+/* 사례 영상의 재생·일시정지 버튼 — 모든 폭에서 44px 원형 아이콘만 보인다(대표 15차 수정 2026-10-01:
+   영상에 새겨진 글자를 가리지 않게). 글자는 화면에서 숨기고 보조기기용으로만 남긴다(버튼 aria-label과 같은 말).
+   전역 .media-control은 Aximmetry 페이지와 공용이라 그대로 두고, 전역의 480px 미만 규칙을 이 페이지 전체 폭에 쓴다. */
+.xrlive .media-control {
+  width: 2.75rem;
+  justify-content: center;
+  padding: 0;
+}
+.xrlive .media-control span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 히어로 — 설계본 padding 128/104(모바일 80/64), h1 clamp(2.1rem,5.4cqw,4.6rem) max 18ch,
+   태그 칩 뒤 28px. PageHero는 사이트 공용이라 훅 클래스로만 이 페이지를 덮는다. */
+.xrlive .pagehero__inner {
+  padding-top: 80px;
+  padding-bottom: 64px;
+}
+@media (min-width: 768px) {
+  .xrlive .pagehero__inner {
+    padding-top: 128px;
+    padding-bottom: 104px;
+  }
+}
+.xrlive .pagehero__tag {
+  padding: 7px 16px;
+  letter-spacing: 0.12em;
+  /* 불투명 서페이스가 아니라 투명 흰색 — 히어로 오로라가 칩을 통과한다. */
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.xrlive .pagehero__title {
+  margin-top: 28px;
+  margin-inline: auto;
+  max-width: 18ch;
+  font-size: clamp(2.1rem, 5.4vw, 4.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+.xrlive .pagehero__lead {
+  max-width: 40rem;
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.7);
 }
