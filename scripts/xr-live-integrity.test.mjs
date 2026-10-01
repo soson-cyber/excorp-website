@@ -144,7 +144,7 @@ test("xr-studio: public search metadata and link preview", () => {
   // 스펙 10 §2.3(2026-10-01): /xr-live를 /xr-studio로 옮기고 공개(검색 허용)한다.
   assert.ok(code.includes('const TITLE = "하남 XR 스튜디오 · XR Live Presentation · XR 가상공간 라이브 영상 제작";'));
   assert.ok(code.includes("const FULL_TITLE = `${TITLE} | EX Corporation`;"));
-  assert.ok(code.includes('"원고와 발표자료를 보내주시면, 기획부터 포스트 프로덕션까지 EX가 하나의 흐름으로 연결합니다. 라이브가 끝나면 영상도 납품합니다."'));
+  assert.ok(code.includes('"원고와 발표자료를 보내주시면, 기획부터 포스트 프로덕션까지 성공적인 온라인 행사 영상을 만들어 드립니다. 라이브가 끝나면 영상도 납품합니다."'));
   assert.match(code, /export const metadata: Metadata = \{\s*title: TITLE,/);
   assert.match(code, /openGraph: \{[^}]*url: "\/xr-studio",[^}]*title: FULL_TITLE,[^}]*description: DESCRIPTION/);
   assert.match(code, /twitter: \{[^}]*title: FULL_TITLE,[^}]*description: DESCRIPTION/);

@@ -27,7 +27,7 @@ import { JsonLd, breadcrumbLd, localBusinessLd, faqPageLd } from "@/components/s
 const TITLE = "하남 XR 스튜디오 · XR Live Presentation · XR 가상공간 라이브 영상 제작";
 const FULL_TITLE = `${TITLE} | EX Corporation`;
 const DESCRIPTION =
-  "원고와 발표자료를 보내주시면, 기획부터 포스트 프로덕션까지 EX가 하나의 흐름으로 연결합니다. 라이브가 끝나면 영상도 납품합니다.";
+  "원고와 발표자료를 보내주시면, 기획부터 포스트 프로덕션까지 성공적인 온라인 행사 영상을 만들어 드립니다. 라이브가 끝나면 영상도 납품합니다.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -407,7 +407,7 @@ export default function XrStudioPage() {
           <>
             원고와 발표자료를 보내주시면, 기획부터 포스트 프로덕션까지
             <br />
-            EX가 하나의 흐름으로 연결합니다.
+            성공적인 온라인 행사 영상을 만들어 드립니다.
           </>
         }
       >
@@ -437,13 +437,12 @@ export default function XrStudioPage() {
       <section className="section section--ink">
         <div className="container-ex">
           <SectionLabel>BEFORE</SectionLabel>
+          {/* 제목·리드는 대표가 브로슈어 v2에서 고친 문구(2026-10-01). */}
           <h2 className="h2 h2--xr" style={{ marginTop: 20, maxWidth: "26ch" }}>
-            발표 내용은 달라도,
-            <br />
-            웨비나 화면은 비슷해 보입니다.
+            웨비나 화면, 꼭 이렇게 해야 하나요?
           </h2>
           <p className="lead" style={{ maxWidth: "44rem" }}>
-            장소도 카메라도 내용도 다른데 결과는 같습니다.
+            고객도 내용도 다른데 시청자가 보는 화면은 똑같습니다.
           </p>
           {/* 서로 다른 기업의 웨비나 4편에서 배치만 옮긴 도식(대표 선택 2026-09-30). 스크린샷을 쓰지 않는다 —
               다른 회사 방송 화면이라 저작권·비방 광고 위험이 있다. 원본 좌표·생성 스크립트는 _workspace/xr-live-brochure/before-webinar. */}
@@ -531,16 +530,16 @@ export default function XrStudioPage() {
         </div>
       </section>
 
-      {/* USE CASES — 가상공간 프리셋 렌더 4종(대표 정리 2026-10-01: 제목 = 공간 이름, 설명 = 어울리는 발표).
+      {/* 3D ENVIRONMENT(옛 USE CASES, 라벨·리드는 브로슈어 v2 문구 2026-10-01) — 가상공간 프리셋 렌더 4종(대표 정리 2026-10-01: 제목 = 공간 이름, 설명 = 어울리는 발표).
           실제 발표 현장이 아니므로 칸마다 "예시 렌더"를 단다(각주는 대표 3차 수정으로 삭제). 4·2·1열 어디서도 고아 카드가 없다. */}
       <section className="section section--ink">
         <div className="container-ex">
-          <SectionLabel>USE CASES</SectionLabel>
+          <SectionLabel>3D ENVIRONMENT</SectionLabel>
           <h2 className="h2 h2--xr" style={{ marginTop: 20, maxWidth: "26ch" }}>
             발표 주제마다 공간이 달라집니다.
           </h2>
           <p className="lead" style={{ maxWidth: "44rem" }}>
-            기업·기관 발표부터 신제품 발표까지 콘셉트에 맞는 가상공간에서 진행합니다.
+            프레젠테이션부터 인터뷰까지 콘셉트에 맞는 가상공간에서 진행합니다.
           </p>
           {/* 4열 전환점을 1280px로 둔다. lg(1024)에서 4열이면 이미지가 221px까지 줄어
               3D 실내 장면의 유형 구분이 안 된다. 4장이라 4·2·1열 어디서도 고아 카드가 없다. */}
@@ -569,8 +568,11 @@ export default function XrStudioPage() {
       <section className="section section--surface">
         <div className="container-ex">
           <SectionLabel>PRICING</SectionLabel>
-          <h2 className="h2 h2--xr" style={{ marginTop: 20, maxWidth: "26ch" }}>
-            예산에 맞는 구성을 고르실 수 있습니다.
+          {/* 브로슈어 v2처럼 "중" 뒤에서 줄을 바꾼다. 둘째 줄이 한 줄에 들어가게 폭을 26ch보다 넓힌다. */}
+          <h2 className="h2 h2--xr" style={{ marginTop: 20, maxWidth: "32ch" }}>
+            단편과 패키지 중
+            <br />
+            원하는 구성을 고르실 수 있습니다.
           </h2>
           <div className="mt-11 grid gap-5 lg:grid-cols-2">
             {plans.map((p) => (
@@ -689,7 +691,7 @@ export default function XrStudioPage() {
               <span className="whitespace-nowrap">하남 EX XR Studio에서</span> 촬영합니다.
             </h2>
             <p className="lead">
-              카메라부터 XR 시스템까지 한 스튜디오에 갖췄습니다. 스튜디오로 방문해 실제 결과를 보실 수 있습니다.
+              카메라와 XR 시스템, 전문 인력까지 모두 스튜디오에 갖췄습니다. 스튜디오로 방문하시면 현장에서 결과를 직접 확인하실 수 있습니다.
             </p>
             {/* 스튜디오 사양(스펙 10 §3.1) — 가격 카드와 같은 Row(dt/dd) 형식. */}
             <dl className="mt-8 flex flex-col border-b border-border" aria-label="스튜디오 사양">
@@ -839,7 +841,7 @@ export default function XrStudioPage() {
             {/* 판매가 비노출 — 연출과 요구사항에 따라 구성이 달라져 고정가를 걸지 않는다
                 (대표 지시 2026-09-12). 정가는 상품설계서 v4에 그대로 둔다. */}
             <p className="mt-6 max-w-[34rem] text-pretty text-[15px] leading-relaxed text-muted">
-              연출과 요구사항에 따라 구성이 달라집니다. 내용을 확인한 뒤 견적을 드립니다.
+              연출과 요구사항에 따라 비용이 달라집니다. 내용을 확인한 뒤 견적을 드립니다.
             </p>
             {/* 구간 버튼은 대표 지시(2026-10-01, CTA 정리)로 뺐다. 문의는 FAQ 다음 마지막 CTA가 받는다. */}
           </div>
@@ -883,8 +885,11 @@ export default function XrStudioPage() {
               <span className="cta-bar" aria-hidden="true" />
               START A PROJECT
             </span>
-            <h2 className="h2 max-w-2xl" style={{ marginTop: 22, marginInline: "auto" }}>
-              다음 발표를 영상 콘텐츠로 남기세요.
+            {/* 브로슈어 v2처럼 "웨비나를" 뒤에서 줄을 바꾼다. 둘째 줄이 한 줄에 들어가게 max-w-2xl → 4xl. */}
+            <h2 className="h2 max-w-4xl" style={{ marginTop: 22, marginInline: "auto" }}>
+              여러분의 라이브 웨비나를
+              <br />
+              차별화된 XR 콘텐츠로 남기세요.
             </h2>
             <p className="mx-auto mt-4 max-w-[34rem] text-[17px] text-footer-link">
               주제와 회차, 예산을 알려주시면 구성안과 견적을 회신합니다. 발주 서류가 필요하시면 과업지시서 초안도 함께 드립니다.
