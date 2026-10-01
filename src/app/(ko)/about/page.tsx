@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "회사 소개",
   alternates: { canonical: "/about", languages: { "ko-KR": "/about", "en-US": "/en/about", "x-default": "/about" } },
   description:
-    "AI·XR 기술로 콘텐츠 제작의 문턱을 낮추는 이엑스 주식회사(EX Corporation). 미션·비전, 연혁(2020~), 보유 특허 6건과 벤처기업 인증, 성남 EX AI Office·하남 EX XR Studio를 소개합니다.",
+    "AI·XR 기술로 콘텐츠 제작의 문턱을 낮추는 이엑스 주식회사(EX Corporation). 미션·비전, 연혁(2020~), 보유 특허 7건과 벤처기업 인증, 성남 EX AI Office·하남 EX XR Studio를 소개합니다.",
 };
 
 const whyEx = [
@@ -21,11 +21,12 @@ const whyEx = [
   { t: "문화기술과 엔터테인먼트를 잇는 전문성", d: "콘텐츠 제작 현장과 기술을 연결해 온 경험." },
 ];
 
-// 인증 3종 + 특허 6건 (요청 순서). 창작전담부서는 인증서 취득 후 재삽입 예정(대표 지시로 제외).
+// 인증 3종 + 특허 7건 (요청 순서). 특허는 최근 등록이 앞이다(KR 10-3026293 추가, 대표 지시 2026-10-01). 창작전담부서는 인증서 취득 후 재삽입 예정(대표 지시로 제외).
 const credentials: { tag: string; title: string; no?: string; img?: string; desc?: string }[] = [
   { tag: "인증", title: "사업자등록증", img: "/cert-business-registration.jpg" },
   { tag: "인증", title: "벤처기업 인증", img: "/cert-venture.jpg" },
   { tag: "인증", title: "연구개발전담부서", img: "/cert-rnd.jpg" },
+  { tag: "특허", title: "가상 카메라 조작을 이용한 영상 출력 조절 장치 및 방법", no: "KR 10-3026293", img: "/patent-3026293.jpg", desc: "가상 카메라를 조작해 출력 영상을 조절하는 기술." },
   { tag: "특허", title: "다중 뷰포인트 생성 장치·방법", no: "KR 10-2762537", img: "/patent-2762537.jpg", desc: "하나의 촬영에서 여러 시점의 화면을 만들어내는 기술." },
   { tag: "특허", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정 방법", no: "KR 10-2666600", img: "/patent-2666600.jpg", desc: "여러 대의 스테레오 카메라 위치·방향을 실시간으로 추정하는 기술." },
   { tag: "특허", title: "복수의 스테레오 카메라 장치를 활용한 포지셔닝 정보 보정 방법", no: "KR 10-2549811", img: "/patent-2549811.jpg", desc: "다중 카메라의 위치 정보를 보정해 정합 정확도를 높이는 기술." },
@@ -157,7 +158,7 @@ export default function AboutPage() {
               보유 특허 &amp; 인증
             </h2>
             <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
-              기술 특허 6건 보유 · 벤처기업 인증 · 정부·공공 인증
+              기술 특허 7건 보유 · 벤처기업 인증 · 정부·공공 인증
             </p>
           </Reveal>
           <ol className="mt-12 grid list-none gap-4 p-0 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">

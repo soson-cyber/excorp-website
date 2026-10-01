@@ -10,7 +10,7 @@ import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: { absolute: "About EX | Real-time XR & Virtual Production" },
   description:
-    "EX Corporation lowers the barrier to content production with AI and XR technology. Our mission and vision, company history (since 2020), 6 registered patents and venture certification, plus the EX AI Office in Seongnam and EX XR Studio in Hanam, Korea.",
+    "EX Corporation lowers the barrier to content production with AI and XR technology. Our mission and vision, company history (since 2020), 7 registered patents and venture certification, plus the EX AI Office in Seongnam and EX XR Studio in Hanam, Korea.",
   alternates: {
     canonical: "/en/about",
     languages: { "ko-KR": "/about", "en-US": "/en/about", "x-default": "/about" },
@@ -24,11 +24,12 @@ const whyEx = [
   { t: "Expertise bridging culture tech and entertainment", d: "Years of connecting production sets with the technology behind them." },
 ];
 
-// 3 certifications + 6 patents (requested order). Dedicated Creative Department re-added once certified (per CEO).
+// 3 certifications + 7 patents (requested order). Patents run newest first (KR 10-3026293 added per CEO, 2026-10-01). Dedicated Creative Department re-added once certified (per CEO).
 const credentials: { tag: string; tagLabel: string; title: string; no?: string; img?: string; desc?: string }[] = [
   { tag: "cert", tagLabel: "Certified", title: "Business Registration", img: "/cert-business-registration.jpg" },
   { tag: "cert", tagLabel: "Certified", title: "Venture Company Certification", img: "/cert-venture.jpg" },
   { tag: "cert", tagLabel: "Certified", title: "Dedicated R&D Department", img: "/cert-rnd.jpg" },
+  { tag: "patent", tagLabel: "Patent", title: "Apparatus and method for adjusting video output using virtual camera manipulation", no: "KR 10-3026293", img: "/patent-3026293.jpg", desc: "Adjusts the output video by manipulating a virtual camera." },
   { tag: "patent", tagLabel: "Patent", title: "Apparatus and method for generating multiple viewpoints", no: "KR 10-2762537", img: "/patent-2762537.jpg", desc: "Creates views from multiple perspectives out of a single shoot." },
   { tag: "patent", tagLabel: "Patent", title: "6DoF SLAM-based multi-stereo-camera positioning estimation method", no: "KR 10-2666600", img: "/patent-2666600.jpg", desc: "Estimates the position and orientation of multiple stereo cameras in real time." },
   { tag: "patent", tagLabel: "Patent", title: "Positioning-information correction method using multiple stereo cameras", no: "KR 10-2549811", img: "/patent-2549811.jpg", desc: "Corrects multi-camera positioning data to improve alignment accuracy." },
@@ -161,7 +162,7 @@ export default function AboutPageEn() {
               Patents &amp; Certifications
             </h2>
             <p className="lead" style={{ maxWidth: "40rem", marginInline: "auto" }}>
-              6 technology patents · venture-company certification · government and public certifications
+              7 technology patents · venture-company certification · government and public certifications
             </p>
           </Reveal>
           <ol className="mt-12 grid list-none gap-4 p-0 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">

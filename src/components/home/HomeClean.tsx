@@ -46,9 +46,10 @@ const STUDIO_BULLETS: Loc<string[]> = {
 /** 홈 뉴스룸 스트립용 최소 데이터 — 서버(page.tsx)에서 Notion/fallback을 매핑해 주입한다. */
 export type NewsBrief = { date: string; outlet?: string; title: string; href?: string };
 
-/* 등록특허 6건 — 번호·명칭은 About(특허청 공보)과 동일, 설명은 명칭의 쉬운 풀이(성능 주장 없음). */
+/* 등록특허 7건 — 번호·명칭은 About(특허청 공보)과 동일, 설명은 명칭의 쉬운 풀이(성능 주장 없음). */
 const PATENTS: Loc<{ no: string; title: string; desc: string }[]> = {
   ko: [
+    { no: "KR 10-3026293", title: "가상 카메라 조작 기반 영상 출력 조절", desc: "가상 카메라를 조작해 출력 영상을 조절하는 기술." },
     { no: "KR 10-2762537", title: "다중 뷰포인트 생성 장치·방법", desc: "하나의 촬영에서 여러 시점의 화면을 만들어내는 기술." },
     { no: "KR 10-2666600", title: "6DoF SLAM 기반 복수 스테레오 카메라 포지셔닝 추정", desc: "여러 대의 스테레오 카메라 위치·방향을 실시간으로 추정하는 기술." },
     { no: "KR 10-2549811", title: "복수 스테레오 카메라 포지셔닝 정보 보정", desc: "다중 카메라의 위치 정보를 보정해 정합 정확도를 높이는 기술." },
@@ -57,6 +58,7 @@ const PATENTS: Loc<{ no: string; title: string; desc: string }[]> = {
     { no: "KR 10-2029680", title: "합성 영상의 왜곡 결정 영상 처리", desc: "합성 화면의 왜곡을 감지·판정하는 영상 처리 기술." },
   ],
   en: [
+    { no: "KR 10-3026293", title: "Video output adjustment using virtual camera manipulation", desc: "Adjusts the output video by manipulating a virtual camera." },
     { no: "KR 10-2762537", title: "Apparatus and method for generating multiple viewpoints", desc: "Creates views from multiple perspectives out of a single shoot." },
     { no: "KR 10-2666600", title: "6DoF SLAM-based multi-stereo-camera positioning estimation", desc: "Estimates the position and orientation of multiple stereo cameras in real time." },
     { no: "KR 10-2549811", title: "Positioning-information correction using multiple stereo cameras", desc: "Corrects multi-camera positioning data to improve alignment accuracy." },
@@ -68,13 +70,13 @@ const PATENTS: Loc<{ no: string; title: string; desc: string }[]> = {
 
 const STATS: Loc<{ v: number; s: string; l: string }[]> = {
   ko: [
-    { v: 6, s: "+", l: "기술 특허" },
+    { v: 7, s: "", l: "기술 특허" },
     { v: 3, s: "", l: "글로벌 파트너" },
     { v: 3, s: "", l: "대학 MOU" },
     { v: 4, s: "", l: "제품 인증" },
   ],
   en: [
-    { v: 6, s: "+", l: "Technology patents" },
+    { v: 7, s: "", l: "Technology patents" },
     { v: 3, s: "", l: "Global partners" },
     { v: 3, s: "", l: "University MOUs" },
     { v: 4, s: "", l: "Product certifications" },
@@ -540,7 +542,7 @@ export function HomeClean({ locale = "ko", news }: { locale?: Locale; news?: New
                 <div className="statchip-v">{locale === "en" ? "TIPS 2026 (Ministry of SMEs and Startups)" : "2026 중소벤처기업부 TIPS 선정"}</div>
               </div>
               <div className="statchip">
-                <div className="statchip-v">{locale === "en" ? "6 registered patents" : "등록 특허 6건"}</div>
+                <div className="statchip-v">{locale === "en" ? "7 registered patents" : "등록 특허 7건"}</div>
               </div>
               <div className="statchip">
                 <div className="statchip-v">{locale === "en" ? "3 global partners" : "글로벌 파트너 3사"}</div>

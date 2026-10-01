@@ -121,7 +121,7 @@ export default function XrStudioPageEn() {
             index="01"
             label="Why EX XR Studio"
             title="What makes EX XR Studio different"
-            lead="Real-time XR proven by 6 technology patents and real production work, including the Shell Corporation fashion film, put to use right here at our Hanam studio."
+            lead="Real-time XR proven by 7 technology patents and real production work, including the Shell Corporation fashion film, put to use right here at our Hanam studio."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {reasons.map((r) => (

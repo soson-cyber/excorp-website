@@ -75,7 +75,7 @@ const capability: { step: string; parts: { label: string; href?: string }[] }[] 
 ];
 
 const proof = [
-  { n: "6+", l: "기술 특허" },
+  { n: "7", l: "기술 특허" },
   { n: "3", l: "글로벌 파트너" },
   { n: "3", l: "대학 MOU" },
   { n: "4", l: "제품 인증" },
