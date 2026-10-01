@@ -7,14 +7,37 @@ import { MediaBlank } from "@/components/ui/MediaBlank";
 import { StudioOptions } from "@/components/studio/StudioOptions";
 import { site, locations } from "@/lib/site";
 import { JsonLd, breadcrumbLd, localBusinessLd, faqPageLd } from "@/components/seo/JsonLd";
+import { alt as ogAlt, size as ogSize, contentType as ogType } from "../opengraph-image";
+
+const TITLE = "Hanam XR Studio — Chroma-Key Studio Production";
+const FULL_TITLE = `${TITLE} | EX Corporation`;
+const DESCRIPTION =
+  "Hanam chroma-key studio production. A large green-screen chroma stage (W10×D7×H4, ~70㎡) with real-time XR takes IR, webinars, and talks from planning to shoot to live streaming in one pass. Tailored quote consultation.";
+// 페이지에 openGraph를 쓰면 /en 레이아웃의 openGraph(이미지·사이트 이름·언어)를 통째로 덮는다.
+// 그래서 /en 브랜드 카드를 직접 단다(대표 지시 2026-10-01: 공유 미리보기가 /en 홈 제목·주소를 물려받던 문제).
+const OG_IMAGE = { url: "/en/opengraph-image", alt: ogAlt, type: ogType, ...ogSize };
 
 export const metadata: Metadata = {
-  title: "Hanam XR Studio — Chroma-Key Studio Production",
-  description:
-    "Hanam chroma-key studio production. A large green-screen chroma stage (W10×D7×H4, ~70㎡) with real-time XR takes IR, webinars, and talks from planning to shoot to live streaming in one pass. Tailored quote consultation.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: "/en/xr-studio",
     languages: { ko: "/xr-studio", en: "/en/xr-studio", "x-default": "/xr-studio" },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/en/xr-studio",
+    siteName: "EX Corporation",
+    title: FULL_TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: FULL_TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 

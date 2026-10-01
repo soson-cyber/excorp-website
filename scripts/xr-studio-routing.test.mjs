@@ -26,9 +26,25 @@ test("routing: no middleware — the legacy xr-live subdomain is a Cloudflare zo
 
 test("en xr-studio: no rental or booking wording in title, description, hero (spec 10 §4)", async () => {
   const en = await src("src/app/en/xr-studio/page.tsx");
-  assert.ok(en.includes('title: "Hanam XR Studio — Chroma-Key Studio Production",'));
+  assert.ok(en.includes('const TITLE = "Hanam XR Studio — Chroma-Key Studio Production";'));
   assert.ok(en.includes('"Hanam chroma-key studio production. A large green-screen chroma stage'));
   assert.ok(en.includes('title="Hanam XR Studio: from planning to production and streaming"'));
   const visible = en.replace(/\{\/\*[\s\S]*?\*\/\}/g, "").replace(/\/\*[\s\S]*?\*\//g, "");
   assert.doesNotMatch(visible, /[Rr]ental|from booking/);
+});
+
+test("en xr-studio: share preview uses this page's title and URL and keeps the /en brand card (대표 지시 2026-10-01)", async () => {
+  // 페이지에 openGraph를 쓰면 /en 레이아웃의 openGraph(이미지·사이트 이름·언어)를 통째로 덮는다.
+  // 그래서 제목·주소만 넣으면 공유 이미지가 사라진다(영문 Aximmetry가 그 상태다). 이미지까지 직접 단다.
+  const en = await src("src/app/en/xr-studio/page.tsx");
+  const og = en.match(/openGraph: \{([\s\S]*?)\n  \},/)?.[1] ?? "";
+  assert.match(og, /url: "\/en\/xr-studio"/);
+  assert.match(og, /title: FULL_TITLE/);
+  assert.match(og, /images: \[OG_IMAGE\]/);
+  assert.match(og, /siteName: "EX Corporation"/);
+  assert.match(og, /locale: "en_US"/);
+  assert.match(en, /const OG_IMAGE = \{ url: "\/en\/opengraph-image"/);
+  const tw = en.match(/twitter: \{([\s\S]*?)\n  \},/)?.[1] ?? "";
+  assert.match(tw, /title: FULL_TITLE/);
+  assert.match(tw, /images: \[OG_IMAGE\]/);
 });
