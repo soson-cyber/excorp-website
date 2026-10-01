@@ -40,12 +40,12 @@ IA/카피 작업 전 항상 Notion에서 최신본을 확인한다. (첨부: `EX
 - **사이트맵 (GNB v2 — `src/lib/site.ts`에 반영 완료)**:
   - Solution▾ — XR Solution(EXLINK, 자체 통합 솔루션) / Virtual Production
   - Product▾ — Aximmetry(Reseller) / Moverse AI(Distributor) / RETracker(Distributor)
-  - XR Studio(대관·상품화) · **Work**(도입 사례·포트폴리오) · **Company▾**(About EX / News & Insight / Career)
+  - XR Studio(XR Live 제작) · **Work**(도입 사례·포트폴리오) · **Company▾**(About EX / News & Insight / Career)
   - 문의하기 CTA / 유틸리티(Footer): Support · Contact · Privacy · Terms + 거점·연락처
 - **거점**: EX AI Office(경기 성남시 수정구 금토동 327, 스타트업스퀘어 B동 3층) / EX XR Studio(경기 하남시 미사대로 540). *단일 출처는 `src/lib/site.ts`의 `locations`.*
 - **사업 구조**: EXLINK(자체 통합 XR 솔루션) · EXEZ(무인 스튜디오, *V2 사이트에서는 제외 — 대표 컨펌 대기*) · 파트너 제품 유통(Aximmetry/Moverse/RETracker)
 - **미션/비전/문화**: Notion RULEBOOK 운영-001·002. 단 Draft·Internal(온보딩용) → 외부 공개용 톤 재작성 필요
-- SEO(검색 노출)·다중 CTA(상담·데모·대관·자료다운로드) 중요
+- SEO(검색 노출)·다중 CTA(상담·데모·스튜디오 방문 예약·자료다운로드) 중요. 장소 대관은 하지 않는다(2026-10-01 대표 결정)
 
 ## 기술 스택
 
