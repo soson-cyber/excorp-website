@@ -114,7 +114,7 @@ test("the browser form exposes the honeypot and mirrors server length limits", (
   assert.match(formSource, /name="name"[\s\S]*?maxLength=\{100\}/);
   assert.match(formSource, /name="company"[\s\S]*?maxLength=\{200\}/);
   assert.match(formSource, /name="email"[\s\S]*?maxLength=\{320\}/);
-  assert.match(formSource, /name="message"[\s\S]*?maxLength=\{5000\}/);
+  assert.match(formSource, /name="message"[\s\S]*?maxLength=\{messageMaxLength\(topic\)\}/);
 });
 
 test("news JSON-LD uses the shared less-than escaping boundary", () => {

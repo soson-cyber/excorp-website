@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { withLocale, type Locale } from "@/lib/i18n";
+import { CONTACT_TOPICS, activeContactTopic, messageMaxLength, withTopicPrefix } from "@/lib/contact-topics";
 
 // 문의 유형 — API로 전송되는 값은 ko로 통일(route.ts 수정 금지). 영문 폼은 라벨만 영어로 보여준다.
 const types = ["솔루션 도입", "제품 도입", "스튜디오 제작", "시연·쇼룸 방문", "자료 요청", "기술 지원", "일반 문의"] as const;
@@ -90,6 +91,8 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
   const presetType =
     defaultType ?? (urlType && (types as readonly string[]).includes(urlType) ? urlType : types[0]);
   const [selectedType, setSelectedType] = useState<string>(presetType);
+  // 상품 상세 페이지가 넘긴 topic(?topic=). 국문 폼에서만, 고른 유형이 topic의 유형과 같을 때만 적용한다.
+  const topic = activeContactTopic(locale === "ko" ? params.get("topic") : null, selectedType);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [invalid, setInvalid] = useState<string[]>([]);
@@ -143,6 +146,7 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          message: withTopicPrefix(topic, String(data.message ?? "")),
           consent: data.consent === "on",
           marketing: data.marketing === "on",
         }),
@@ -157,13 +161,15 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
   }
 
   if (status === "success") {
+    const done = topic ? CONTACT_TOPICS[topic].success : null;
     return (
       <div role="status" className="rounded-2xl border border-success/40 bg-surface p-8 text-center">
         <p ref={successRef} tabIndex={-1} className="font-semibold text-success outline-none">
-          {t.successTitle}
+          {done ? done.title : t.successTitle}
         </p>
-        <p className="mt-2 text-sm text-muted">{t.successBody}</p>
-        {selectedType === "자료 요청" && (
+        <p className="mt-2 text-sm text-muted">{done ? done.body : t.successBody}</p>
+        {done && <p className="mt-1 text-sm text-muted">{done.note}</p>}
+        {!topic && selectedType === "자료 요청" && (
           <div className="mt-5">
             <a
               href="/downloads/ex-virtual-studio-checklist.pdf"
@@ -265,7 +271,7 @@ export function ContactForm({ defaultType, locale = "ko" }: { defaultType?: stri
           name="message"
           rows={5}
           required
-          maxLength={5000}
+          maxLength={messageMaxLength(topic)}
           className={field}
           aria-invalid={invalid.includes("message") || undefined}
           aria-describedby={describedBy("message")}
