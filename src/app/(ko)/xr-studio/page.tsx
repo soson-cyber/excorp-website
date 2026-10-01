@@ -83,7 +83,6 @@ const plans = [
       ["라이브", "회당 60분"],
       ["프로덕션", "회당 최대 4시간"],
     ] as [string, string][],
-    variant: "primary" as const,
   },
   {
     name: "XR Live Broadcast 단편",
@@ -98,7 +97,6 @@ const plans = [
       ["라이브", "60분"],
       ["프로덕션", "최대 4시간"],
     ] as [string, string][],
-    variant: "secondary" as const,
   },
 ];
 
@@ -368,11 +366,12 @@ const Cap = ({ children, as: Tag = "span" }: { children: React.ReactNode; as?: "
 /* 토글 — 발주 정보·사양 비교·FAQ가 같이 쓴다. 사이트 키트 .faq-item(details/summary, 스크립트 없음).
    제목 아래 요약 한 줄은 닫힌 상태에서도 보여 무엇이 들어 있는지 알 수 있다(FAQ는 질문만 두고 요약을 생략한다).
    + 아이콘은 열리면 45° 돌아 ×가 된다. */
-const Toggle = ({ title, summary, children }: { title: string; summary?: string; children: React.ReactNode }) => (
+/* light = FAQ 질문용(대표 지시 2026-10-01): 굵게 쓰지 않고 한 단계 작게(20px → 18px). 발주 안내·사양 비교 토글은 굵은 제목 그대로. */
+const Toggle = ({ title, summary, children, light = false }: { title: string; summary?: string; children: React.ReactNode; light?: boolean }) => (
   <details className="faq-item">
     <summary>
       <span className="min-w-0">
-        <span className="block text-xl font-semibold leading-[1.3] text-fg">{title}</span>
+        <span className={light ? "block text-lg font-normal leading-[1.4] text-fg" : "block text-xl font-semibold leading-[1.3] text-fg"}>{title}</span>
         {summary && <span className="mt-1.5 block text-pretty text-[15px] font-normal leading-relaxed text-muted">{summary}</span>}
       </span>
       <span className="q-icon" aria-hidden="true">
@@ -603,11 +602,6 @@ export default function XrStudioPage() {
                     <Row key={k} k={k} v={v} />
                   ))}
                 </dl>
-                <div className="mt-auto flex">
-                  <Button href={CONTACT.quote} variant={p.variant} aria-label={`${p.name} 일정·진행 상담`}>
-                    일정·진행 상담 <span aria-hidden="true">→</span>
-                  </Button>
-                </div>
               </div>
             ))}
           </div>
@@ -656,6 +650,13 @@ export default function XrStudioPage() {
                 ))}
               </ul>
             </Toggle>
+          </div>
+          {/* CTA 1개(대표 지시 2026-10-01): 카드마다 있던 "일정·진행 상담" 2개를 합쳤다. 둘 다 같은 견적 폼이었다.
+              카드를 보고, 필요하면 사양을 비교한 뒤 문의하는 순서로 구간 끝에 둔다. */}
+          <div className="mt-10 flex">
+            <Button href={CONTACT.quote} variant="primary">
+              구성·견적 문의 <span aria-hidden="true">→</span>
+            </Button>
           </div>
         </div>
       </section>
@@ -842,14 +843,7 @@ export default function XrStudioPage() {
             <p className="mt-6 max-w-[34rem] text-pretty text-[15px] leading-relaxed text-muted">
               연출과 요구사항에 따라 구성이 달라집니다. 내용을 확인한 뒤 견적을 드립니다.
             </p>
-            <Button
-              href={CONTACT.quote}
-              variant="primary"
-              className="mt-7"
-              aria-label="Premium Contents 구성·견적 문의"
-            >
-              구성·견적 문의 <span aria-hidden="true">→</span>
-            </Button>
+            {/* 구간 버튼은 대표 지시(2026-10-01, CTA 정리)로 뺐다. 문의는 FAQ 다음 마지막 CTA가 받는다. */}
           </div>
           <div className="card" style={{ padding: 32 }}>
             <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-mint">사양</span>
@@ -873,7 +867,7 @@ export default function XrStudioPage() {
           <h2 className="sr-only">자주 묻는 질문</h2>
           <div className="mt-8">
             {faqs.map((f) => (
-              <Toggle key={f.q} title={f.q}>
+              <Toggle key={f.q} title={f.q} light>
                 <p className="max-w-[52rem] text-pretty text-[15px] leading-relaxed text-muted">{f.a}</p>
               </Toggle>
             ))}
